@@ -5,8 +5,11 @@ ruby '2.7.2'
 # Rails and rails-y stuff
 gem 'rails', '~> 6.0.3'
 gem 'turbolinks', '~> 5'
-gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.4.2', require: false
+
+# Authentication & Authorization
+gem 'bcrypt', '~> 3.1.7'
+gem 'cancancan', '~> 3.1.0'
 
 # Puma
 gem 'puma', '~> 4.1'
@@ -21,6 +24,7 @@ gem 'webpacker', '~> 4.0'
 # Application structure
 gem 'rails_ops', '~> 1.1.7'
 gem 'inquery', '~> 1.0.3'
+gem 'schemacop'
 
 # Views
 gem 'haml-rails', '~> 2.0'
