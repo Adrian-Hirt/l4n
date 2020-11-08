@@ -13,6 +13,7 @@ gem 'puma', '~> 4.1'
 
 # Database
 gem 'pg', '~> 1.2.3'
+gem 'sqlite3'
 
 # Assets
 gem 'sass-rails', '>= 6'
