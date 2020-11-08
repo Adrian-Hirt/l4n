@@ -23,6 +23,10 @@ gem 'webpacker', '~> 4.0'
 gem 'rails_ops', '~> 1.1.7'
 gem 'inquery', '~> 1.0.3'
 
+# Views
+gem 'haml-rails', '~> 2.0'
+gem 'simple_form', '~> 5.0.2'
+
 # Code analysis and standards
 gem 'rubocop', '~> 0.86'
 
