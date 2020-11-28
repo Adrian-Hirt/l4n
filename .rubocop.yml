@@ -5,6 +5,7 @@ AllCops:
     - 'tmp/**/*'
     - 'vendor/**/*'
     - '.git/**/*'
+  NewCops: enable
 
 Layout/LineLength:
   Enabled: false
