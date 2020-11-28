@@ -2,7 +2,7 @@ module SessionsHelper
   def current_user
     @current_user ||= begin
       if (user_id = session[:user_id])
-        User.find(session[:user_id])
+        User.find(user_id)
       elsif (user_id = cookies.signed[:user_id])
         nil
       else
@@ -17,11 +17,11 @@ module SessionsHelper
   end
 
   def require_logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = 'Please log in'
-      redirect_to login_url
-    end
+    return if logged_in?
+
+    store_location
+    flash[:danger] = 'Please log in'
+    redirect_to login_url
   end
 
   def redirect_back_or_root

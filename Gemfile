@@ -3,9 +3,9 @@ source 'https://rubygems.org'
 ruby '2.7.2'
 
 # Rails and rails-y stuff
+gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rails', '~> 6.0.3'
 gem 'turbolinks', '~> 5'
-gem 'bootsnap', '>= 1.4.2', require: false
 
 # Authentication & Authorization
 gem 'bcrypt', '~> 3.1.7'
@@ -22,8 +22,8 @@ gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
 
 # Application structure
-gem 'rails_ops', '~> 1.1.7'
 gem 'inquery', '~> 1.0.3'
+gem 'rails_ops', '~> 1.1.7'
 gem 'schemacop'
 
 # Views
@@ -35,8 +35,8 @@ gem 'rubocop', '~> 0.86'
 
 # Development gems
 group :development do
-  gem 'pry-byebug', '~> 3.9'
   gem 'listen', '~> 3.2'
+  gem 'pry-byebug', '~> 3.9'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
