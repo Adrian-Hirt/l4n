@@ -11,6 +11,9 @@ gem 'turbolinks', '~> 5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'cancancan', '~> 3.1.0'
 
+# Session handling
+gem 'activerecord-session_store', '~> 1.1.3'
+
 # Puma
 gem 'puma', '~> 4.1'
 
