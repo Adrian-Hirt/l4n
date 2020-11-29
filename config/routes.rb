@@ -7,4 +7,9 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :users, only: %i[new create]
+
+  namespace :admin do
+    get '/', to: 'dashboard#index'
+    resources :users
+  end
 end
