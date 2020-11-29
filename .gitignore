@@ -39,3 +39,6 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+app.edit.po
+app.po.time_stamp
