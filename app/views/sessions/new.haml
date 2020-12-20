@@ -3,4 +3,5 @@
 = simple_form_for :login do |f|
   = f.input :email, label: _('User|Email')
   = f.input :password, label: _('User|Password')
+  = f.input :remember_me, as: :boolean, label: _('Session|Remember me')
   = f.submit
