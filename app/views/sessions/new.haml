@@ -1,7 +1,7 @@
-%h3 Login
+%h3= _('User|Log in')
 
 = simple_form_for :login do |f|
   = f.input :email, label: _('User|Email')
   = f.input :password, label: _('User|Password')
   = f.input :remember_me, as: :boolean, label: _('Session|Remember me')
-  = f.submit
+  = f.save _('User|Log in')

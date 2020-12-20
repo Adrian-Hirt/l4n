@@ -5,7 +5,6 @@ module Operations::Admin::User
         opt :email
         opt :password
       end
-      opt :commit
     end
 
     model ::User
