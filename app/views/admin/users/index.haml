@@ -1,0 +1,12 @@
+%h3= _('Users')
+
+= link_to _('User|New'), new_admin_user_path
+
+%hr
+
+%table{class: 'table table-striped'}
+  - op.users.each do |u|
+    %tr
+      %td= u.email
+      %td= link_to _('User|Edit'), edit_admin_user_path(u)
+      %td= link_to _('User|Destroy'), admin_user_path(u), method: :delete, data: { confirm: 'soos' }

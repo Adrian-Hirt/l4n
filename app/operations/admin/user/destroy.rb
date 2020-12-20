@@ -1,5 +1,5 @@
 module Operations::Admin::User
-  class Load < RailsOps::Operation::Model::Destroy
+  class Destroy < RailsOps::Operation::Model::Destroy
     schema do
       req :id
     end
