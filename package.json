@@ -10,6 +10,7 @@
     "@rails/webpacker": "4.3.0",
     "bootstrap": "5.0.0-beta1",
     "jquery": "^3.5.1",
+    "sweetalert2": "^10.12.5",
     "turbolinks": "^5.2.0",
     "webpack": "^4.0.0"
   },
