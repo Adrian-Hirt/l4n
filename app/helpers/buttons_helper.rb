@@ -35,7 +35,7 @@ module ButtonsHelper
     title += _("#{model.class.name}|Delete") unless icon_only
     options = {
       method: :delete,
-      data: {
+      data:   {
         confirm: _("#{model.class.name}|Delete confirmation?")
       }
     }
@@ -57,6 +57,6 @@ module ButtonsHelper
     classes << "btn-#{size}" if size
     classes << 'icon-btn' unless icon_only
     classes << 'disabled' if disabled
-    return classes
+    classes
   end
 end
