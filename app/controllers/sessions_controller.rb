@@ -6,10 +6,10 @@ class SessionsController < ApplicationController
     if user&.authenticate(params[:login][:password])
       reset_session
       session[:user_id] = user.id
-      flash[:success] = 'Successfully logged in'
+      flash[:success] = _('Session|Successful login')
       redirect_to root_path
     else
-      flash.now[:danger] = 'Failed login'
+      flash.now[:danger] = _('Session|Login failed')
       render :new
     end
   end
