@@ -2,6 +2,8 @@
 
 = new_button User, namespace: %i[admin]
 
+= button 'Users', root_path, btn_icon: %i[fa fa-user]
+
 %hr
 
 %table{class: 'table table-striped'}
@@ -10,6 +12,6 @@
       %td= u.id
       %td= u.email
       %td
-        = show_button u, namespace: %i[admin], disabled: true, size: :sm, icon_only: true
-        = edit_button u, namespace: %i[admin], disabled: true, size: :sm, icon_only: true
-        = delete_button u, namespace: %i[admin], disabled: true, size: :sm, icon_only: true
+        = show_button u, namespace: %i[admin], size: :sm, icon_only: true
+        = edit_button u, namespace: %i[admin], size: :sm, icon_only: true
+        = delete_button u, namespace: %i[admin], size: :sm, icon_only: true, disabled: u == current_user
