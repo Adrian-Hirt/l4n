@@ -6,7 +6,6 @@ module Operations::User
         opt :password
         opt :password_confirmation
       end
-      opt :commit
     end
 
     without_authorization

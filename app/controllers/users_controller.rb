@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     if run Operations::User::Create
       redirect_to root_path
     else
-      render partial: 'form'
+      render :new
     end
   end
 end

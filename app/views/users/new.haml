@@ -1,3 +1,7 @@
-%h3 Sign up
+%h3= _('User|Sign up')
 
-= render partial: 'form'
+= simple_form_for model do |f|
+  = f.input :email
+  = f.input :password, required: true
+  = f.input :password_confirmation, required: true
+  = f.save _('User|Create account')

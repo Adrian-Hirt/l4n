@@ -1,0 +1,8 @@
+- if current_user
+  = current_user.email
+  = link_to _('User|Logout'), logout_path, method: :delete
+- else
+  = link_to _('User|Login'), login_path
+  = link_to _('User|Sign up'), new_user_path
+
+%hr
