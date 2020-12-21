@@ -1,4 +1,5 @@
 import Rails from '@rails/ujs';
+import { i18n } from 'components/translations';
 import sweetAlert from 'sweetalert2/dist/sweetalert2.all'
 
 const confirmed = (element, result) => {
@@ -19,8 +20,8 @@ const showConfirmationDialog = (element) => {
     text: text || '',
     icon: 'warning',
     showCancelButton: true,
-    confirmButtonText: 'Yes',
-    cancelButtonText: 'Cancel',
+    confirmButtonText: i18n._('ConfirmDialog|Confirm'),
+    cancelButtonText: i18n._('ConfirmDialog|Cancel'),
   }).then(result => confirmed(element, result))
 };
 
@@ -28,7 +29,6 @@ const allowAction = (element) => {
   if (element.getAttribute('data-confirm') === null) {
     return true
   }
-console.log('12fg43e');
   showConfirmationDialog(element)
   return false
 };

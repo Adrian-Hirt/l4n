@@ -17,14 +17,93 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "\n"
 
+msgid "Admin Panel"
+msgstr ""
+
+msgid "ConfirmDialog|Cancel"
+msgstr "Cancel"
+
+msgid "ConfirmDialog|Confirm"
+msgstr "Ok"
+
+msgid "Dashboard"
+msgstr ""
+
+msgid "Homepage"
+msgstr ""
+
+msgid "Session|Login failed"
+msgstr ""
+
+msgid "Session|Please log in"
+msgstr ""
+
+msgid "Session|Remember me"
+msgstr ""
+
+msgid "Session|Successful login"
+msgstr ""
+
 msgid "User"
+msgstr "User"
+
+#, fuzzy
+msgid "Users"
+msgstr "User"
+
+#, fuzzy
+msgid "User|Cannot be deleted"
+msgstr "User"
+
+#, fuzzy
+msgid "User|Create account"
+msgstr "User"
+
+#, fuzzy
+msgid "User|Create failed"
 msgstr "User"
 
 msgid "User|Email"
 msgstr "Email"
+
+#, fuzzy
+msgid "User|Log in"
+msgstr "User"
+
+#, fuzzy
+msgid "User|Login"
+msgstr "User"
+
+#, fuzzy
+msgid "User|Logout"
+msgstr "User"
 
 msgid "User|Password"
 msgstr "Password"
 
 msgid "User|Password digest"
 msgstr "Password"
+
+#, fuzzy
+msgid "User|Remember me token digest"
+msgstr "User"
+
+#, fuzzy
+msgid "User|Sign up"
+msgstr "User"
+
+#, fuzzy
+msgid "User|Successfully created"
+msgstr "User"
+
+#, fuzzy
+msgid "User|Successfully deleted"
+msgstr "User"
+
+#, fuzzy
+msgid "User|Successfully updated"
+msgstr "User"
+
+#, fuzzy
+msgid "User|Update failed"
+msgstr "User"

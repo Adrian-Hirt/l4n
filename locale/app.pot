@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-29 12:24+0100\n"
-"PO-Revision-Date: 2020-11-29 12:24+0100\n"
+"POT-Creation-Date: 2020-12-21 20:06+0100\n"
+"PO-Revision-Date: 2020-12-21 20:06+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -18,14 +18,80 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
+msgid "Admin Panel"
+msgstr ""
+
+msgid "ConfirmDialog|Cancel"
+msgstr ""
+
+msgid "ConfirmDialog|Confirm"
+msgstr ""
+
+msgid "Dashboard"
+msgstr ""
+
+msgid "Homepage"
+msgstr ""
+
+msgid "Session|Login failed"
+msgstr ""
+
+msgid "Session|Please log in"
+msgstr ""
+
+msgid "Session|Remember me"
+msgstr ""
+
+msgid "Session|Successful login"
+msgstr ""
+
 msgid "User"
 msgstr ""
 
+msgid "Users"
+msgstr ""
+
+msgid "User|Cannot be deleted"
+msgstr ""
+
+msgid "User|Create account"
+msgstr ""
+
+msgid "User|Create failed"
+msgstr ""
+
 msgid "User|Email"
+msgstr ""
+
+msgid "User|Log in"
+msgstr ""
+
+msgid "User|Login"
+msgstr ""
+
+msgid "User|Logout"
 msgstr ""
 
 msgid "User|Password"
 msgstr ""
 
 msgid "User|Password digest"
+msgstr ""
+
+msgid "User|Remember me token digest"
+msgstr ""
+
+msgid "User|Sign up"
+msgstr ""
+
+msgid "User|Successfully created"
+msgstr ""
+
+msgid "User|Successfully deleted"
+msgstr ""
+
+msgid "User|Successfully updated"
+msgstr ""
+
+msgid "User|Update failed"
 msgstr ""
