@@ -1,9 +1,16 @@
-ADMIN PANEL
-\|
-- if current_user
-  = current_user.email
-  = link_to 'Logout', logout_path, method: :delete
-- else
-  = link_to 'Login', login_path
+%div
+  ADMIN PANEL
+  \|
+  - if current_user
+    = current_user.email
+    = link_to 'Logout', logout_path, method: :delete
+  - else
+    = link_to 'Login', login_path
+%div
+  = link_to _('Dashboard'), admin_path
+  \|
+  = link_to _('Users'), admin_users_path
+  \|
+  = link_to _('Homepage'), root_path
 
 %hr
