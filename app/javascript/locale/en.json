@@ -1,0 +1,10 @@
+{
+    "": {
+        "language": "en",
+        "plural-forms": "nplurals=2; plural=n != 1;"
+    },
+    "User": "User",
+    "User|Email": "Email",
+    "User|Password": "Password",
+    "User|Password digest": "Password"
+}
