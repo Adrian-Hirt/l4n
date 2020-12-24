@@ -11,6 +11,7 @@ require("channels");
 import 'bootstrap';
 import 'components/confirm_dialog';
 import Translations from 'components/translations';
+import Alert from 'components/alert';
 
 $(function() {
   Translations.setup();
@@ -19,4 +20,5 @@ $(function() {
 document.addEventListener("turbolinks:load", () => {
   $('[data-toggle="tooltip"]').tooltip();
   $('[data-toggle="popover"]').popover();
+  Alert.hideAfterTimeout();
 });

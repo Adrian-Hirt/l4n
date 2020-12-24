@@ -69,7 +69,7 @@ module ButtonsHelper
     classes = %i[btn]
     classes << (opts[:outline] ? "btn-outline-#{opts[:color]}" : "btn-#{opts[:color]}")
     classes << "btn-#{opts[:size]}" if opts[:size]
-    classes << 'icon-btn' unless opts[:icon_only]
+    classes << 'icon-only-btn' if opts[:icon_only]
     classes << 'disabled' if opts[:disabled]
     classes
   end
