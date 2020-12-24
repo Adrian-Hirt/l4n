@@ -47,36 +47,29 @@ msgstr ""
 msgid "User"
 msgstr "User"
 
-#, fuzzy
 msgid "Users"
-msgstr "User"
+msgstr "Users"
 
-#, fuzzy
 msgid "User|Cannot be deleted"
-msgstr "User"
+msgstr ""
 
-#, fuzzy
 msgid "User|Create account"
-msgstr "User"
+msgstr ""
 
-#, fuzzy
 msgid "User|Create failed"
-msgstr "User"
+msgstr ""
 
 msgid "User|Email"
 msgstr "Email"
 
-#, fuzzy
 msgid "User|Log in"
-msgstr "User"
+msgstr ""
 
-#, fuzzy
 msgid "User|Login"
-msgstr "User"
+msgstr ""
 
-#, fuzzy
 msgid "User|Logout"
-msgstr "User"
+msgstr ""
 
 msgid "User|Password"
 msgstr "Password"
@@ -84,26 +77,20 @@ msgstr "Password"
 msgid "User|Password digest"
 msgstr "Password"
 
-#, fuzzy
 msgid "User|Remember me token digest"
-msgstr "User"
+msgstr ""
 
-#, fuzzy
 msgid "User|Sign up"
-msgstr "User"
+msgstr ""
 
-#, fuzzy
 msgid "User|Successfully created"
-msgstr "User"
+msgstr ""
 
-#, fuzzy
 msgid "User|Successfully deleted"
-msgstr "User"
+msgstr ""
 
-#, fuzzy
 msgid "User|Successfully updated"
-msgstr "User"
+msgstr ""
 
-#, fuzzy
 msgid "User|Update failed"
-msgstr "User"
+msgstr ""
