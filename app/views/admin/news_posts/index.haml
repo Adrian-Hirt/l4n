@@ -1,0 +1,16 @@
+%h3= _('NewsPosts')
+
+= new_button NewsPost, namespace: %i[admin]
+
+%hr
+
+%table{class: 'table table-striped'}
+  - op.posts.each do |p|
+    %tr
+      %td= p.title
+      %td= p.published
+      %td= p.published_at.present? ? p.published_at : '--'
+      %td= p.user.email
+      %td
+        = edit_button p, namespace: %i[admin], size: :sm, icon_only: true
+        = delete_button p, namespace: %i[admin], size: :sm, icon_only: true
