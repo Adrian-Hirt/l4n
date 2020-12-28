@@ -12,6 +12,7 @@ import 'bootstrap';
 import 'components/confirm_dialog';
 import Translations from 'components/translations';
 import Alert from 'components/alert';
+import 'components/markdown_editor'
 
 $(function() {
   Translations.setup();
