@@ -5,7 +5,7 @@ module Operations::Admin::NewsPost
     end
 
     def posts
-      NewsPost.all
+      ::NewsPost.all
     end
   end
 end
