@@ -75,6 +75,6 @@ module ButtonsHelper
   end
 
   def get_options(**opts)
-    DEFAULT_OPTS.merge(opts)
+    DEFAULT_OPTS.deep_dup.merge(opts)
   end
 end
