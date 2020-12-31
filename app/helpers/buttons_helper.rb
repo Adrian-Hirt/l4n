@@ -36,7 +36,7 @@ module ButtonsHelper
   def edit_button(model, html: {}, **opts)
     options = get_options(opts)
     href = options[:href] || edit_polymorphic_path(options[:namespace] << model)
-    title = icon %i[fa fa-pencil]
+    title = icon %i[fa fa-edit]
     title += _("#{model.class.name}|Edit") unless options[:icon_only]
     _button(title, href, get_btn_class(options), **html)
   end
@@ -45,7 +45,7 @@ module ButtonsHelper
     opts[:color] ||= :danger
     options = get_options(opts)
     href = options[:href] || polymorphic_path(options[:namespace] << model)
-    title = icon %i[fa fa-trash]
+    title = icon %i[fa fa-trash-alt]
     title += _("#{model.class.name}|Delete") unless options[:icon_only]
     html_options = {
       method: :delete,
