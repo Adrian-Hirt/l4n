@@ -26,7 +26,7 @@ export default class MarkdownEditor extends EasyMDE {
     // is active, as the EasyMDE only adds the active class after a delay
     // of 1 ms
     setTimeout(function () {
-      if (!$(previewContainer).hasClass('editor-preview-active')) {
+      if (!(self.parent.isPreviewActive() || self.parent.isSideBySideActive())) {
         return null;
       }
 
@@ -60,7 +60,8 @@ export default class MarkdownEditor extends EasyMDE {
 
   // Our toggle side by side uses a debounced version of the preview
   // render, as we don't want to update the preview with every update
-  debouncedToggleSideBySide(editor) {
+  static debouncedToggleSideBySide(editor) {
+    console.log('aaa');
     // Call the original toggleSideBySide
     editor.toggleSideBySide();
 
