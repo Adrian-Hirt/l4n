@@ -42,15 +42,15 @@ module Services
         text.gsub(/\{iframe\}\(([^})]*)\)/) do
           link = Regexp.last_match(1)
           case link
-          when %r{^https?://(www.|)youtube.com/watch\?v=(\w*)\b}
+          when %r{^https?://(www.|)youtube.com/watch\?v=(.*)\b}
             "<div class='responsive-iframe'>
                           <iframe src='https://www.youtube.com/embed/#{Regexp.last_match(2)}' allowfullscreen></iframe>
                       </div>"
-          when %r{^https?://(www.|)youtube.com/embed/(\w*)\b}
+          when %r{^https?://(www.|)youtube.com/embed/(.)\b}
             "<div class='responsive-iframe'>
                           <iframe src='https://www.youtube.com/embed/#{Regexp.last_match(2)}' allowfullscreen></iframe>
                       </div>"
-          when %r{^https?://(www.|)google.(ch|com|de)/maps/d/embed\?mid=(\w*)\b}
+          when %r{^https?://(www.|)google.(ch|com|de)/maps/d/embed\?mid=(.*)\b}
             "<div class='responsive-iframe'>
                           <iframe src='https://www.google.com/maps/d/embed?mid=#{Regexp.last_match(3)}'></iframe>
                       </div>"
