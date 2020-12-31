@@ -40,5 +40,11 @@ module Admin
       end
       redirect_to admin_news_posts_path
     end
+
+    def preview_markdown
+      authorize! :preview, NewsPost
+      output = Services::Markdown.render params[:body]
+      render json: output.to_json
+    end
   end
 end

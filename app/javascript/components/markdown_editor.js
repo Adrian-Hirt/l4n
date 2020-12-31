@@ -2,154 +2,64 @@ import EasyMDE from 'easymde';
 import { i18n } from 'components/translations';
 import sweetAlert from 'sweetalert2/dist/sweetalert2.all'
 import { debounce } from 'utils/debounce';
+import { rectanglesLoader } from 'components/loading_animations'
+import sweetalert2All from 'sweetalert2/dist/sweetalert2.all';
 
-export default class MarkdownEditor {
+export default class MarkdownEditor extends EasyMDE {
+  // Constructs our markdown editor, which extends the EasyMDE editor
   constructor(domElement) {
-    this.easyMDE = new EasyMDE({
-      element: domElement,
-      spellChecker: false,
+    super({
+      toolbar: MarkdownEditor.constructToolbar(),
       promptURLs: true,
-      previewRender: this.previewRender,
-      toolbar: [
-        {
-          name: "bold",
-          action: EasyMDE.toggleBold,
-          className: 'fa fa-bold',
-          title: i18n._('MarkdownEditor|Toolbar|Bold')
-        },
-        {
-          name: "italic",
-          action: EasyMDE.toggleItalic,
-          className: 'fa fa-italic',
-          title: i18n._('MarkdownEditor|Toolbar|Italic')
-        },
-        {
-          name: "strikethrough",
-          action: EasyMDE.toggleStrikethrough,
-          className: 'fa fa-strikethrough',
-          title: i18n._('MarkdownEditor|Toolbar|Strikethrough')
-        },
-        {
-          name: "heading",
-          action: EasyMDE.toggleHeadingSmaller,
-          className: 'fa fa-header',
-          title: i18n._('MarkdownEditor|Toolbar|Heading')
-        },
-        {
-          name: "highlight",
-          action: this.highlight,
-          className: 'fas fa-highlighter',
-          title: i18n._('MarkdownEditor|Toolbar|Highlight text'),
-        },
-        "|",
-        {
-          name: "quote",
-          action: EasyMDE.toggleBlockquote,
-          className: 'fa fa-quote-left',
-          title: i18n._('MarkdownEditor|Toolbar|Quote')
-        },
-        {
-          name: "code",
-          action: EasyMDE.toggleCodeBlock,
-          className: 'fa fa-code',
-          title: i18n._('MarkdownEditor|Toolbar|Code')
-        },
-        {
-          name: "unordered-list",
-          action: EasyMDE.toggleUnorderedList,
-          className: 'fa fa-list-ul',
-          title: i18n._('MarkdownEditor|Toolbar|Unordered list')
-        },
-        {
-          name: "ordered-list",
-          action: EasyMDE.toggleOrderedList,
-          className: 'fa fa-list-ol',
-          title: i18n._('MarkdownEditor|Toolbar|Ordered list')
-        },
-        {
-          name: "clean-block",
-          action: EasyMDE.cleanBlock,
-          className: 'fa fa-eraser',
-          title: i18n._('MarkdownEditor|Toolbar|Clean block')
-        },
-        "|",
-        {
-          name: 'link',
-          action: this.insertLink,
-          className: 'fa fa-link',
-          title:  i18n._('MarkdownEditor|Toolbar|Insert link')
-        },
-        {
-          name: 'image',
-          action: this.insertImage,
-          className: 'fa fa-image',
-          title:  i18n._('MarkdownEditor|Toolbar|Insert image')
-        },
-        {
-          name: "table",
-          action: EasyMDE.drawTable,
-          className: 'fa fa-table',
-          title: i18n._('MarkdownEditor|Toolbar|Insert table')
-        },
-        {
-          name: "horizontal-rule",
-          action: EasyMDE.drawHorizontalRule,
-          className: 'fa fa-minus',
-          title: i18n._('MarkdownEditor|Toolbar|Insert horizontal rule')
-        },
-        "|",
-        {
-          name: "insertIcon",
-          action: this.insertIcon,
-          className: "fa fa-font-awesome",
-          title: i18n._('MarkdownEditor|Toolbar|Insert an icon')
-        },
-        {
-          name: "youtubeVideo",
-          action: this.insertYoutubeVideo,
-          className: "fa fa-youtube-square",
-          title: i18n._('MarkdownEditor|Toolbar|Insert a Youtube video')
-        },
-        {
-          name: "googleMaps",
-          action: this.insertGoogleMaps,
-          className: "fa fa-map",
-          title: i18n._('MarkdownEditor|Toolbar|Insert map')
-        },
-        "|",
-        {
-          name: "preview",
-          action: EasyMDE.togglePreview,
-          className: 'fa fa-eye',
-          title: i18n._('MarkdownEditor|Toolbar|Toggle preview')
-        },
-        {
-          name: "side-by-side",
-          action: this.debouncedToggleSideBySide,
-          className: "fa fa-columns no-disable no-mobile",
-          title: i18n._('MarkdownEditor|Toolbar|Show side-by-side preview')
-        },
-        {
-          name: "fullscreen",
-          action: EasyMDE.toggleFullScreen,
-          className: 'fa fa-arrows-alt',
-          title: i18n._('MarkdownEditor|Toolbar|Toggle full screen')
-        },
-        "|",
-        {
-          name: "iconInfo",
-          action: this.showIconInfo,
-          className: "fa fa-info-circle",
-          title: i18n._('MarkdownEditor|Toolbar|Need help with the icons?')
-        }
-      ]
+      spellChecker: false,
+      previewRender: MarkdownEditor.previewRender
     });
+
+    this.previewUrl = domElement.dataset.previewUrl;
   }
 
-  previewRender(plainText, previewContainer) {
-    return plainText;
+  // Render the markdown for preview.
+  static previewRender(plainText, previewContainer) {
+    var self = this;
+
+    // We need to use a timeout of 1 ms before we check if the preview
+    // is active, as the EasyMDE only adds the active class after a delay
+    // of 1 ms
+    setTimeout(function () {
+      if (!$(previewContainer).hasClass('editor-preview-active')) {
+        return null;
+      }
+
+      // Get the url from the parent
+      var url = self.parent.previewUrl;
+
+      $.ajax({
+        url: url,
+        type: 'POST',
+        dataType: 'json',
+        data: {
+          body: plainText,
+          authenticity_token: window._token
+        },
+        success: function(data) {
+          previewContainer.innerHTML = data;
+        },
+        error: function(data) {
+          sweetalert2All.fire({
+            title: i18n._('MarkdownEditor|Rendering preview failed'),
+            icon: 'error',
+            confirmButtonText: i18n._('MarkdownEditor|Popup|Confirm')
+          });
+        }
+      });
+    }, 1);
+
+    // While our AJAX call is still loading, display the loading animation
+    return "<div class='markdownPreviewLoading'>" + rectanglesLoader() + "</div>";
   }
 
+  // Our toggle side by side uses a debounced version of the preview
+  // render, as we don't want to update the preview with every update
   debouncedToggleSideBySide(editor) {
     // Call the original toggleSideBySide
     editor.toggleSideBySide();
@@ -171,7 +81,146 @@ export default class MarkdownEditor {
     cm.on('update', debounce(updateCallback, 2000));
   }
 
-  highlight(editor) {
+
+  // Constructs the toolbar, with the correct methods and localized titles
+  static constructToolbar() {
+    return [
+      {
+        name: "bold",
+        action: EasyMDE.toggleBold,
+        className: 'fa fa-bold',
+        title: i18n._('MarkdownEditor|Toolbar|Bold')
+      },
+      {
+        name: "italic",
+        action: EasyMDE.toggleItalic,
+        className: 'fa fa-italic',
+        title: i18n._('MarkdownEditor|Toolbar|Italic')
+      },
+      {
+        name: "strikethrough",
+        action: EasyMDE.toggleStrikethrough,
+        className: 'fa fa-strikethrough',
+        title: i18n._('MarkdownEditor|Toolbar|Strikethrough')
+      },
+      {
+        name: "heading",
+        action: EasyMDE.toggleHeadingSmaller,
+        className: 'fa fa-header',
+        title: i18n._('MarkdownEditor|Toolbar|Heading')
+      },
+      {
+        name: "highlight",
+        action: MarkdownEditor.highlight,
+        className: 'fas fa-highlighter',
+        title: i18n._('MarkdownEditor|Toolbar|Highlight text'),
+      },
+      "|",
+      {
+        name: "quote",
+        action: EasyMDE.toggleBlockquote,
+        className: 'fa fa-quote-left',
+        title: i18n._('MarkdownEditor|Toolbar|Quote')
+      },
+      {
+        name: "code",
+        action: EasyMDE.toggleCodeBlock,
+        className: 'fa fa-code',
+        title: i18n._('MarkdownEditor|Toolbar|Code')
+      },
+      {
+        name: "unordered-list",
+        action: EasyMDE.toggleUnorderedList,
+        className: 'fa fa-list-ul',
+        title: i18n._('MarkdownEditor|Toolbar|Unordered list')
+      },
+      {
+        name: "ordered-list",
+        action: EasyMDE.toggleOrderedList,
+        className: 'fa fa-list-ol',
+        title: i18n._('MarkdownEditor|Toolbar|Ordered list')
+      },
+      {
+        name: "clean-block",
+        action: EasyMDE.cleanBlock,
+        className: 'fa fa-eraser',
+        title: i18n._('MarkdownEditor|Toolbar|Clean block')
+      },
+      "|",
+      {
+        name: 'link',
+        action: MarkdownEditor.insertLink,
+        className: 'fa fa-link',
+        title:  i18n._('MarkdownEditor|Toolbar|Insert link')
+      },
+      {
+        name: 'image',
+        action: MarkdownEditor.insertImage,
+        className: 'fa fa-image',
+        title:  i18n._('MarkdownEditor|Toolbar|Insert image')
+      },
+      {
+        name: "table",
+        action: EasyMDE.drawTable,
+        className: 'fa fa-table',
+        title: i18n._('MarkdownEditor|Toolbar|Insert table')
+      },
+      {
+        name: "horizontal-rule",
+        action: EasyMDE.drawHorizontalRule,
+        className: 'fa fa-minus',
+        title: i18n._('MarkdownEditor|Toolbar|Insert horizontal rule')
+      },
+      "|",
+      {
+        name: "insertIcon",
+        action: MarkdownEditor.insertIcon,
+        className: "fa fa-font-awesome",
+        title: i18n._('MarkdownEditor|Toolbar|Insert an icon')
+      },
+      {
+        name: "youtubeVideo",
+        action: MarkdownEditor.insertYoutubeVideo,
+        className: "fa fa-youtube-square",
+        title: i18n._('MarkdownEditor|Toolbar|Insert a Youtube video')
+      },
+      {
+        name: "googleMaps",
+        action: MarkdownEditor.insertGoogleMaps,
+        className: "fa fa-map",
+        title: i18n._('MarkdownEditor|Toolbar|Insert map')
+      },
+      "|",
+      {
+        name: "preview",
+        action: EasyMDE.togglePreview,
+        className: 'fa fa-eye no-disable no-mobile',
+        title: i18n._('MarkdownEditor|Toolbar|Toggle preview')
+      },
+      {
+        name: "side-by-side",
+        action: MarkdownEditor.debouncedToggleSideBySide,
+        className: "fa fa-columns no-disable no-mobile",
+        title: i18n._('MarkdownEditor|Toolbar|Show side-by-side preview')
+      },
+      {
+        name: "fullscreen",
+        action: EasyMDE.toggleFullScreen,
+        className: 'fa fa-arrows-alt no-disable no-mobile',
+        title: i18n._('MarkdownEditor|Toolbar|Toggle full screen')
+      },
+      "|",
+      {
+        name: "iconInfo",
+        action: MarkdownEditor.showIconInfo,
+        className: "fa fa-info-circle",
+        title: i18n._('MarkdownEditor|Toolbar|Need help with the icons?')
+      }
+    ]
+  }
+
+  // Highlight text in markdown
+  static highlight(editor) {
     var cm = editor.codemirror;
     var output = '';
     var str = cm.getSelection();
@@ -191,7 +240,8 @@ export default class MarkdownEditor {
     cm.replaceSelection(output);
   }
 
-  insertIcon(editor) {
+  // Insert a font awesome icon
+  static insertIcon(editor) {
     sweetAlert.fire({
       title: i18n._('MarkdownEditor|Popup|Insert icon'),
       text:  i18n._('MarkdownEditor|Popup|Please enter the name of the icon you want to use. If you need help with the names of the icons, click on the i button in the editor!'),
@@ -215,7 +265,8 @@ export default class MarkdownEditor {
     })
   }
 
-  insertYoutubeVideo(editor) {
+  // Insert a youtube video as an iframe
+  static insertYoutubeVideo(editor) {
     sweetAlert.fire({
       title: i18n._('MarkdownEditor|Popup|Insert youtube video'),
       text:  i18n._("MarkdownEditor|Popup|Please paste the URL of the youtube video here. The URL needs to be of format 'https://www.youtube.com/watch?v='"),
@@ -236,7 +287,8 @@ export default class MarkdownEditor {
     })
   }
 
-  insertGoogleMaps(editor) {
+  // Insert a google maps map as an iframe
+  static insertGoogleMaps(editor) {
     sweetAlert.fire({
       title: i18n._('MarkdownEditor|Popup|Insert Google Maps Map'),
       text:  i18n._("MarkdownEditor|Popup|Please paste the URL of the map you want to share here! The URL needs to be of format 'https://www.google.com/maps/d/embed?mid=' or 'https://www.google.com/maps/embed?pb='"),
@@ -257,11 +309,14 @@ export default class MarkdownEditor {
     })
   }
 
-  showIconInfo(editor) {
+  // Opens a window with a list of the fontawesome icons
+  static showIconInfo(editor) {
     window.open("https://fontawesome.com/v5.15.1/icons?d=gallery&m=free");
   }
 
-  insertLink(editor) {
+  // Insert a link. Instead of the browser prompt, we'll use the sweetalert
+  // popup, as this looks way better
+  static insertLink(editor) {
     sweetAlert.fire({
       title: i18n._('MarkdownEditor|Popup|Please enter your link'),
       input: 'text',
@@ -280,7 +335,9 @@ export default class MarkdownEditor {
     })
   }
 
-  insertImage(editor) {
+  // Insert an image. Instead of the browser prompt, we'll use the sweetalert
+  // popup, as this looks way better
+  static insertImage(editor) {
     sweetAlert.fire({
       title: i18n._('MarkdownEditor|Popup|Please enter the URL of the image'),
       input: 'text',
@@ -301,8 +358,8 @@ export default class MarkdownEditor {
 
   // TODO: Change this to maybe requiring a 'data' element set on the textarea
   static init(body) {
-    $(body).find('textarea').each(function(el) {
-      new MarkdownEditor(el);
+    $(body).find('textarea').each(function() {
+      new MarkdownEditor(this);
     });
   }
 }

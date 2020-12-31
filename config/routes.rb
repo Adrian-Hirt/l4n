@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/', to: 'dashboard#index'
     resources :users
-    resources :news, controller: :news_posts, as: :news_posts
+    resources :news, controller: :news_posts, as: :news_posts do
+      collection do
+        post :preview_markdown
+      end
+    end
   end
 end
