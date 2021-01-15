@@ -32,6 +32,7 @@ gem 'schemacop', '2.4.7'
 # Views
 gem 'haml-rails', '~> 2.0'
 gem 'simple_form', '~> 5.0.2'
+gem 'kaminari', '~> 1.2.1'
 
 # Code analysis and standards
 gem 'rubocop', '~> 0.86'
