@@ -27,7 +27,7 @@ gem 'webpacker', '~> 4.0'
 # Application structure
 gem 'inquery', '~> 1.0.3'
 gem 'rails_ops', '~> 1.1.7'
-gem 'schemacop'
+gem 'schemacop', '2.4.7'
 
 # Views
 gem 'haml-rails', '~> 2.0'
@@ -41,6 +41,9 @@ gem 'gettext_i18n_rails', '~> 1.8.1'
 
 # Markdown rendering
 gem 'redcarpet', '~> 3.5.1'
+
+# Security
+gem 'bundler-audit', '0.7.0.1'
 
 # Development gems
 group :development do
