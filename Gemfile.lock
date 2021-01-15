@@ -183,6 +183,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redcarpet (3.5.1)
     regexp_parser (1.8.2)
     request_store (1.5.0)
       rack (>= 1.4)
@@ -266,6 +267,7 @@ DEPENDENCIES
   puma (~> 4.1)
   rails (~> 6.0.3)
   rails_ops (~> 1.1.7)
+  redcarpet (~> 3.5.1)
   rubocop (~> 0.86)
   ruby_parser
   sass-rails (>= 6)

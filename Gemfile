@@ -39,6 +39,9 @@ gem 'rubocop', '~> 0.86'
 # Translations
 gem 'gettext_i18n_rails', '~> 1.8.1'
 
+# Markdown rendering
+gem 'redcarpet', '~> 3.5.1'
+
 # Development gems
 group :development do
   gem 'listen', '~> 3.2'
