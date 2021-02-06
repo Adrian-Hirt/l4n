@@ -4,7 +4,7 @@ ruby '2.7.1'
 
 # Rails and rails-y stuff
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'rails', '~> 6.0.3'
+gem 'rails', '~> 6.1.1'
 gem 'turbolinks', '~> 5'
 
 # Authentication & Authorization
@@ -31,8 +31,8 @@ gem 'schemacop', '2.4.7'
 
 # Views
 gem 'haml-rails', '~> 2.0'
-gem 'simple_form', '~> 5.0.2'
 gem 'kaminari', '~> 1.2.1'
+gem 'simple_form', '~> 5.0.2'
 
 # Code analysis and standards
 gem 'rubocop', '~> 0.86'
