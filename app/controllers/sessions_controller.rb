@@ -12,12 +12,12 @@ class SessionsController < ApplicationController
         user.update(remember_me_token: remember_me_token)
         cookies.permanent.encrypted[:user_id] = {
           value:     user.id,
-          same_site: :strict,
+          same_site: :lax,
           http_only: true
         }
         cookies.permanent[:remember_token] = {
           value:     remember_me_token,
-          same_site: :strict,
+          same_site: :lax,
           http_only: true
         }
       else
