@@ -11,5 +11,10 @@ module Operations::User
     without_authorization
 
     model ::User
+
+    def perform
+      super
+      UserMailer.with(user: model).confirm_signup.deliver_now
+    end
   end
 end
