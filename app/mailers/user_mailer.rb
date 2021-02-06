@@ -1,6 +1,6 @@
 class UserMailer < ApplicationMailer
   def confirm_signup
-    @greeting = "Hi"
+    @user = params[:user]
 
     mail to: "to@example.org"
   end

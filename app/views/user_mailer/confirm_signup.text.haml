@@ -1,3 +1,8 @@
-UserMailer#confirm_signup
-
-= @greeting + ", find me in app/views/user_mailer_mailer/confirm_signup.text.haml"
+= _('UserMailer|ConfirmSignup|Title')
+\------------------------------------
+\
+= _('UserMailer|ConfirmSignup|Greeting %{username}') % { username: @user.username }
+\
+= _('UserMailer|ConfirmSignup|Copy url below')
+\
+=  activate_users_url(activation_token: @user.activation_token, email: @user.email)

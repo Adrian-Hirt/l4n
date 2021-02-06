@@ -6,7 +6,12 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :users, only: %i[new create]
+  resources :users, only: %i[new create] do
+    collection do
+      get :activate
+    end
+  end
+
   resources :news, controller: :news_posts, as: :news_posts, only: %i[index show]
 
   namespace :admin do

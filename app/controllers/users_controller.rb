@@ -10,4 +10,13 @@ class UsersController < ApplicationController
       render :new
     end
   end
+
+  def activate
+    run Operations::User::Activate
+    flash[:success] = _('User|Successfully activated')
+  rescue Operations::User::InvalidActivationError
+    flash[:danger] = _('User|Activation invalid')
+  ensure
+    redirect_to root_path
+  end
 end
