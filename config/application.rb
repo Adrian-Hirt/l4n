@@ -15,12 +15,12 @@ module L4n
     #
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
-    
+
     # Load all we have in '/app'
     config.paths = Rails::Paths::Root.new(Rails.root)
     config.paths.add 'app/models', eager_load: true
     config.paths.add 'app', eager_load: true
 
-    config.time_zone = "Bern"
+    config.time_zone = 'Bern'
   end
 end
