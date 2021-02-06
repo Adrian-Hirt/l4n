@@ -27,7 +27,7 @@ gem 'webpacker', '~> 4.0'
 # Application structure
 gem 'inquery', '~> 1.0.3'
 gem 'rails_ops', '~> 1.1.7'
-gem 'schemacop', '2.4.7'
+gem 'schemacop', '3.0.0.rc5'
 
 # Views
 gem 'haml-rails', '~> 2.0'

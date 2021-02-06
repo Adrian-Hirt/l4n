@@ -219,6 +219,7 @@ GEM
     rubocop-ast (1.4.1)
       parser (>= 2.7.1.5)
     ruby-progressbar (1.11.0)
+    ruby2_keywords (0.0.4)
     ruby_parser (3.15.1)
       sexp_processor (~> 4.9)
     sass-rails (6.0.0)
@@ -231,8 +232,9 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    schemacop (2.4.7)
+    schemacop (3.0.0.rc5)
       activesupport (>= 4.0)
+      ruby2_keywords (= 0.0.4)
     sexp_processor (4.15.2)
     simple_form (5.0.3)
       actionpack (>= 5.0)
@@ -291,7 +293,7 @@ DEPENDENCIES
   rubocop (~> 0.86)
   ruby_parser
   sass-rails (>= 6)
-  schemacop (= 2.4.7)
+  schemacop (= 3.0.0.rc5)
   simple_form (~> 5.0.2)
   spring
   spring-watcher-listen (~> 2.0.0)
