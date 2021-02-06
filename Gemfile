@@ -22,7 +22,7 @@ gem 'pg', '~> 1.2.3'
 
 # Assets
 gem 'sass-rails', '>= 6'
-gem 'webpacker', '~> 4.0'
+gem 'webpacker', '~> 5.2.1'
 
 # Application structure
 gem 'inquery', '~> 1.0.3'
