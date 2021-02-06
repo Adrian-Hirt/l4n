@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def create
     if run Operations::User::Create
+      flash[:success] = _('User|Successfully created, check your mail for activation')
       redirect_to root_path
     else
       render :new
