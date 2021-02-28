@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  # Password resetting
+  match '/request_password_reset', to: 'password_resets#request_password_reset', via: %i[get post]
+  match '/reset_password', to: 'password_resets#reset_password', via: %i[get patch]
+
   resources :users, only: %i[new create] do
     collection do
       get :activate

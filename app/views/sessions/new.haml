@@ -1,7 +1,10 @@
-%h3= _('User|Log in')
+%h3= _('Session|Log in')
 
 = simple_form_for :login do |f|
   = f.input :email, label: _('User|Email')
   = f.input :password, label: _('User|Password')
   = f.input :remember_me, as: :boolean, label: _('Session|Remember me')
-  = f.save _('User|Log in')
+
+  = link_to _('Session|Forgot password'), request_password_reset_path  
+
+  = f.save _('Session|Log in')
