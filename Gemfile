@@ -25,9 +25,9 @@ gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 5.2.1'
 
 # Application structure
-gem 'inquery', '~> 1.0.3'
-gem 'rails_ops', '~> 1.1.7'
-gem 'schemacop', '3.0.0.rc5'
+gem 'inquery', '~> 1.0.9'
+gem 'rails_ops', '~> 1.1.20'
+gem 'schemacop', '3.0.9'
 
 # Views
 gem 'haml-rails', '~> 2.0'
