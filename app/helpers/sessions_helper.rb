@@ -2,17 +2,24 @@ module SessionsHelper
   def current_user
     @current_user ||= begin
       if (user_id = session[:user_id])
-        User.find(user_id)
-      elsif (user_id = cookies.encrypted[:user_id])
-        temp_user = User.find(user_id)
-        return temp_user if temp_user.authenticate_remember_me_token(cookies[:remember_token])
-
-        cookies.delete(:user_id)
-        return nil
+        result = User.find_by(id: user_id)
+      elsif (user_id = cookies.encrypted[Session::REMEMBER_ME_USER_COOKIE])
+        temp_user = User.find_by(id: user_id)
+        if temp_user.authenticate_remember_me_token(cookies[Session::REMEMBER_ME_TOKEN_COOKIE])
+          controller.reset_session
+          session[:user_id] = temp_user.id
+          result = temp_user
+        else
+          controller.reset_session
+          cookies.delete(Session::REMEMBER_ME_USER_COOKIE)
+          cookies.delete(Session::REMEMBER_ME_TOKEN_COOKIE)
+          result = nil
+        end
       else
-        cookies.delete(:user_id)
-        return nil
+        result =  nil
       end
+
+      result
     end
   end
 
