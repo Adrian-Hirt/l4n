@@ -10,13 +10,12 @@ module SessionsHelper
           session[:user_id] = temp_user.id
           result = temp_user
         else
-          controller.reset_session
           cookies.delete(Session::REMEMBER_ME_USER_COOKIE)
           cookies.delete(Session::REMEMBER_ME_TOKEN_COOKIE)
           result = nil
         end
       else
-        result =  nil
+        result = nil
       end
 
       result

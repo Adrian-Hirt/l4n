@@ -13,6 +13,9 @@ Layout/HashAlignment:
   EnforcedColonStyle: table
   EnforcedHashRocketStyle: table
 
+Style/SignalException:
+  EnforcedStyle: only_fail
+
 Metrics/AbcSize:
   Enabled: false
 

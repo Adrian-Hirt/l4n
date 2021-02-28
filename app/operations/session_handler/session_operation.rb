@@ -5,7 +5,7 @@ module Operations::SessionHandler
     end
 
     private
-    
+
     def clean_remember_me_cookies
       cookies.delete(Session::REMEMBER_ME_USER_COOKIE)
       cookies.delete(Session::REMEMBER_ME_TOKEN_COOKIE)

@@ -3,7 +3,7 @@ class UserMailer < ApplicationMailer
     @user = params[:user]
 
     mail(
-      to: @user.email,
+      to:      @user.email,
       subject: _('UserMailer|ConfirmSignup|Confirm your account')
     )
   end

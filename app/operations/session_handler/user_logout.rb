@@ -5,7 +5,7 @@ module Operations::SessionHandler
     end
 
     without_authorization
-    
+
     def perform
       osparams.user.update(remember_me_token: nil)
       clean_remember_me_cookies

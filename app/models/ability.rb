@@ -2,7 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    if user && user.activated?
+    if user&.activated?
       can :manage, :all
       can :access, :admin_panel
     end

@@ -10,19 +10,16 @@ module Operations::User
     model ::User
 
     def perform
-      binding.pry
-      if !model.activated? && (model.activation_token == osparams.activation_token)
-        model.activated = true
-        model.activation_token = nil
-        model.save!
-      else
-        fail InvalidActivationError
-      end
+      fail InvalidActivationError if model.activated? || (model.activation_token != osparams.activation_token)
+
+      model.activated = true
+      model.activation_token = nil
+      model.save!
     end
 
     def build_model
       @model = User.find_by(email: osparams.email)
-      
+
       fail InvalidActivationError unless @model.present?
     end
   end

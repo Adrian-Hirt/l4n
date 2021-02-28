@@ -15,10 +15,11 @@ module Operations::SessionHandler
     end
 
     def perform
+      # rubocop:disable Style/GuardClause
       user = User.find_by(email: osparams.dig(:login, :email))
 
       # User exists, is activated and the password is correct
-      if user && user.activated? && user.authenticate(osparams.dig(:login, :password))
+      if user&.activated? && user&.authenticate(osparams.dig(:login, :password))
         reset_session
         clean_remember_me_cookies
         context.session[:user_id] = user.id
@@ -44,10 +45,12 @@ module Operations::SessionHandler
           user.update(remember_me_token: nil)
         end
 
-        return true
+        true
       else
         fail Operations::SessionHandler::LoginFailed
       end
+
+      # rubocop:enable Style/GuardClause
     end
   end
 end
