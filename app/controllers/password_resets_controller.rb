@@ -1,9 +1,11 @@
 class PasswordResetsController < ApplicationController
   def request_password_reset
+    # rubocop:disable Style/GuardClause
     if request.post? && run(Operations::User::RequestPasswordReset)
       flash[:success] = _('PasswordResetRequest|If account exists, password reset mail was sent')
       redirect_to root_path
     end
+    # rubocop:enable Style/GuardClause
   end
 
   def reset_password

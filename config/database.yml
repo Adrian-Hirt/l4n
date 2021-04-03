@@ -15,3 +15,7 @@ default: &default
 development:
   <<: *default
   database: l4n
+
+test:
+  <<: *default
+  database: l4n_test

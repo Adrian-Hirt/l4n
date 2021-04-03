@@ -4,7 +4,7 @@ ruby '2.7.1'
 
 # Rails and rails-y stuff
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'rails', '~> 6.1.3'
+gem 'rails', '~> 6.1.3.1'
 gem 'turbolinks', '~> 5'
 
 # Authentication & Authorization

@@ -13,8 +13,8 @@ class UserMailer < ApplicationMailer
     @token = params[:reset_token]
 
     mail(
-      to: @user.email,
-      subject:  _('UserMailer|PasswordResetRequest|You resetted your password')
+      to:      @user.email,
+      subject: _('UserMailer|PasswordResetRequest|You resetted your password')
     )
   end
 end
