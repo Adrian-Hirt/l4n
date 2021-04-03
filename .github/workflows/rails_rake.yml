@@ -3,7 +3,7 @@ on: push
 
 jobs:
   verify:
-    name: Build
+    name: Test
     runs-on: ubuntu-latest
 
     services:
@@ -23,9 +23,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Set up Ruby
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7.1
+          ruby-version: 2.7.2
       - name: Set up Node
         uses: actions/setup-node@v1
         with:
