@@ -30,6 +30,7 @@ jobs:
           node-version: v14.4.0
       - name: Install dependencies
         run: |
+          sudo apt update
           sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev
           gem install bundler
           bundle install --jobs 4 --retry 3
