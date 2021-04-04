@@ -26,17 +26,24 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7.2
+          bundler-cache: true
       - name: Set up Node
         uses: actions/setup-node@v1
         with:
           node-version: v14.4.0
-      - name: Install dependencies
+      - name: Find yarn cache location
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: JS package cache
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install packages
         run: |
-          sudo apt update
-          sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev
-          gem install bundler
-          bundle install --jobs 4 --retry 3
-          yarn install
+          yarn install --pure-lockfile
       - name: Setup test database
         env:
           RAILS_ENV: test
@@ -46,7 +53,7 @@ jobs:
           POSTGRES_PASSWORD: postgres
         run: |
           cp config/database.ci.yml config/database.yml
-          rake db:create db:migrate
+          bundle exec rake db:create db:migrate
       - name: Run tests
         env:
           PGHOST: localhost
@@ -55,4 +62,4 @@ jobs:
           POSTGRES_PASSWORD: postgres
           PGPORT: ${{ job.services.postgres.ports[5432] }}
           RAILS_ENV: test
-        run: rake test
+        run: bundle exec rake test
