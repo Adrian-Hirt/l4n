@@ -42,3 +42,6 @@ yarn-debug.log*
 
 app.edit.po
 app.po.time_stamp
+
+# Ignore application configuration
+/config/application.yml

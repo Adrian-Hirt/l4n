@@ -1,11 +1,12 @@
 module Operations::User
   class Create < RailsOps::Operation::Model::Create
-    schema do
-      opt :user do
-        opt :email
-        opt :password
-        opt :password_confirmation
+    schema3 do
+      hsh? :user do
+        str! :email
+        str! :password
+        str! :password_confirmation
       end
+      str? :'g-recaptcha-response'
     end
 
     without_authorization

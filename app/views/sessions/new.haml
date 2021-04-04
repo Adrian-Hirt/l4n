@@ -4,7 +4,5 @@
   = f.input :email, label: _('User|Email')
   = f.input :password, label: _('User|Password')
   = f.input :remember_me, as: :boolean, label: _('Session|Remember me')
-
-  = link_to _('Session|Forgot password'), request_password_reset_path  
-
+  = link_to _('Session|Forgot password'), request_password_reset_path
   = f.save _('Session|Log in')
