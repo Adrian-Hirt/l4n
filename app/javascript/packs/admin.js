@@ -16,6 +16,7 @@ import "@fortawesome/fontawesome-free/css/all"
 import 'components/confirm_dialog';
 import Translations from 'components/translations';
 import Alert from 'components/alert';
+import MarkdownEditor from 'components/markdown_editor'
 
 $(function() {
   Translations.setup();
@@ -25,4 +26,5 @@ document.addEventListener("turbolinks:load", () => {
   $('[data-toggle="tooltip"]').tooltip();
   $('[data-toggle="popover"]').popover();
   Alert.hideAfterTimeout();
+  MarkdownEditor.init(document.body);
 });
