@@ -53,7 +53,7 @@ jobs:
           POSTGRES_PASSWORD: postgres
         run: |
           cp config/database.ci.yml config/database.yml
-          rake db:create db:migrate
+          bundle exec rake db:create db:migrate
       - name: Run tests
         env:
           PGHOST: localhost
@@ -62,4 +62,4 @@ jobs:
           POSTGRES_PASSWORD: postgres
           PGPORT: ${{ job.services.postgres.ports[5432] }}
           RAILS_ENV: test
-        run: rake test
+        run: bundle exec rake test
