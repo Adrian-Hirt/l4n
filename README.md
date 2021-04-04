@@ -1,24 +1,7 @@
-# README
+# l4n
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[![Rails Rake Test](https://github.com/Adrian-Hirt/l4n/actions/workflows/rails_rake.yml/badge.svg)](https://github.com/Adrian-Hirt/l4n/actions/workflows/rails_rake.yml)
 
-Things you may want to cover:
+[![Rubocop check](https://github.com/Adrian-Hirt/l4n/actions/workflows/rubocop.yml/badge.svg)](https://github.com/Adrian-Hirt/l4n/actions/workflows/rubocop.yml)
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+l4n is an upcoming CMS for managing lan parties.
