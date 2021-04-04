@@ -230,7 +230,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    schemacop (3.0.9)
+    schemacop (3.0.11)
       activesupport (>= 4.0)
       ruby2_keywords (= 0.0.4)
     semantic_range (2.3.1)
@@ -293,7 +293,7 @@ DEPENDENCIES
   rubocop (~> 0.86)
   ruby_parser
   sass-rails (>= 6)
-  schemacop (= 3.0.9)
+  schemacop (= 3.0.11)
   simple_form (~> 5.0.2)
   spring
   spring-watcher-listen (~> 2.0.0)
