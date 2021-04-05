@@ -1,0 +1,27 @@
+%aside.main-sidebar.sidebar-dark-primary.elevation-4
+  / Brand Logo
+  %a.brand-link{href: admin_path}
+    %img.brand-image.img-circle.elevation-3{alt: 'Application Logo', src: 'http://placekitten.com/100/100', style: 'opacity: .8'}
+    %span.brand-text.font-weight-light= _('ApplicationName')
+  / Sidebar
+  .sidebar
+    / Sidebar Menu
+    %nav.mt-2
+      %ul.nav.nav-pills.nav-sidebar.nav-flat.flex-column{data: { accordion: false, widget: 'treeview', role: 'menu' }}
+        /
+          Add icons to the links using the .nav-icon class
+          with font-awesome or any other icon font library
+        %li.nav-item
+          %a.nav-link{href: admin_path, class: active_classes(:dashboard)}
+            %i.nav-icon.fas.fa-tachometer-alt
+            %p= _('Dashboard')
+        %li.nav-item
+          %a.nav-link{href: admin_users_path, class: active_classes(:users)}
+            %i.nav-icon.fas.fa-users
+            %p= _('Users')
+        %li.nav-item
+          %a.nav-link{href: admin_news_posts_path, class: active_classes(:news_posts)}
+            %i.nav-icon.fas.fa-newspaper
+            %p= _('NewsPosts')
+    / /.sidebar-menu
+  / /.sidebar

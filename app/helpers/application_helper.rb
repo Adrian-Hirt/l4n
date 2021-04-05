@@ -8,4 +8,8 @@ module ApplicationHelper
     end
     nil
   end
+
+  def dark_mode_class
+    'dark-mode' if false
+  end
 end

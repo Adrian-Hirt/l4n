@@ -1,0 +1,29 @@
+%nav.main-header.navbar.navbar-expand.navbar-white.navbar-light
+  / Left navbar links
+  %ul.navbar-nav
+    %li.nav-item
+      %a.nav-link{ data: { widget: :pushmenu }, href: '#', role: :button }
+        %i.fas.fa-bars
+  / Right navbar links
+  %ul.navbar-nav.ml-auto
+    / Messages Dropdown Menu
+    -# render partial: 'layouts/admin/header_messages'
+    / Notifications Dropdown Menu
+    -# render partial: 'layouts/admin/header_notifications'
+    %li.nav-item
+      %a.nav-link{ data: { widget: :fullscreen }, href: '#', role: :button }
+        %i.fas.fa-expand-arrows-alt
+    %li.nav-item.dropdown
+      %a.nav-link{data: { toggle: :dropdown}, href: '#'}
+        %div{style: 'height: 100%;'}
+          %img.img-circle.mr-2{alt: 'User Image', src: 'http://placekitten.com/160/160', style: 'height: 100%;'}
+          = current_user.username
+          = icon %i[fa fa-chevron-down]
+      .dropdown-menu.dropdown-menu-lg.dropdown-menu-right
+        %a.dropdown-item{href: root_path}
+          = icon %i[fa fa-home]
+          = _('AdminPanel|Back to application')
+        .dropdown-divider
+        = link_to logout_path, method: :delete, class: 'dropdown-item' do
+          = icon %i[fa fa-sign-out-alt]
+          = ('User|Logout')
