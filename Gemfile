@@ -31,6 +31,7 @@ gem 'rails_ops', '~> 1.1.20'
 gem 'schemacop', '3.0.11'
 
 # Views
+gem 'breadcrumbs_on_rails', '~> 4.1.0'
 gem 'haml-rails', '~> 2.0'
 gem 'kaminari', '~> 1.2.1'
 gem 'simple_form', '~> 5.0.2'

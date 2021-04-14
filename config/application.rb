@@ -22,5 +22,7 @@ module L4n
     config.paths.add 'app', eager_load: true
 
     config.time_zone = 'Bern'
+
+    config.form_with_generates_remote_forms = false
   end
 end

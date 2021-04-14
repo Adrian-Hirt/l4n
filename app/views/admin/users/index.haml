@@ -1,4 +1,4 @@
-- provide :page_title, _('Users')
+- provide :page_title, _('Admin|Users')
 
 = new_button User, namespace: %i[admin]
 
@@ -9,7 +9,7 @@
     %tr
       %td= u.id
       %td= u.email
-      %td
+      %td.tar
         = show_button u, namespace: %i[admin], size: :sm, icon_only: true
         = edit_button u, namespace: %i[admin], size: :sm, icon_only: true
         = delete_button u, namespace: %i[admin], size: :sm, icon_only: true, disabled: u == current_user

@@ -1,6 +1,6 @@
-- provide :page_title, _('Users|Edit user')
+- provide :page_title, _('Admin|Users|Edit user')
 
-= simple_form_for model, url: admin_user_path(model) do |f|
+= simple_form_for model, url: admin_user_path(model), remote: false do |f|
   = f.input :email
   = f.input :password
   = f.save
