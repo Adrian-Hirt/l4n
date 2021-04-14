@@ -107,7 +107,7 @@ export default class MarkdownEditor extends EasyMDE {
       {
         name: "heading",
         action: EasyMDE.toggleHeadingSmaller,
-        className: 'fa fa-header',
+        className: 'fa fa-heading',
         title: i18n._('MarkdownEditor|Toolbar|Heading')
       },
       {
@@ -176,13 +176,13 @@ export default class MarkdownEditor extends EasyMDE {
       {
         name: "insertIcon",
         action: MarkdownEditor.insertIcon,
-        className: "fa fa-font-awesome",
+        className: "fa fa-icons",
         title: i18n._('MarkdownEditor|Toolbar|Insert an icon')
       },
       {
         name: "youtubeVideo",
         action: MarkdownEditor.insertYoutubeVideo,
-        className: "fa fa-youtube-square",
+        className: "fab fa-youtube",
         title: i18n._('MarkdownEditor|Toolbar|Insert a Youtube video')
       },
       {
