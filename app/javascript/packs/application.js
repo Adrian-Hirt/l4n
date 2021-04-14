@@ -4,7 +4,6 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
 // import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
@@ -18,15 +17,11 @@ import Translations from 'components/translations';
 import Alert from 'components/alert';
 
 Rails.start()
-Turbolinks.start()
 // ActiveStorage.start()
 
 $(function() {
   Translations.setup();
-})
-
-document.addEventListener("turbolinks:load", () => {
   $('[data-toggle="tooltip"]').tooltip();
   $('[data-toggle="popover"]').popover();
   Alert.hideAfterTimeout();
-});
+})

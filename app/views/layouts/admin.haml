@@ -5,8 +5,8 @@
     %meta{content: 'width=device-width,initial-scale=1', name: 'viewport'}
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'admin', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'admin', media: 'all'
+    = javascript_pack_tag 'admin'
   %body.hold-transition.sidebar-mini.layout-fixed.layout-navbar-fixed{ "data-scrollbar-auto-hide" => "n", class: dark_mode_class }
     .wrapper
       = render partial: "layouts/admin/header"
