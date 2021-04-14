@@ -2,6 +2,6 @@
 
 = simple_form_for model, url: admin_news_posts_path do |f|
   = f.input :title
-  = f.input :content
+  = f.input :content, input_html: { data: { preview_url: preview_markdown_admin_news_posts_path } }
   = f.input :published
   = f.save

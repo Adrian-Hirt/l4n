@@ -198,18 +198,18 @@ export default class MarkdownEditor extends EasyMDE {
         className: 'fa fa-eye no-disable no-mobile',
         title: i18n._('MarkdownEditor|Toolbar|Toggle preview')
       },
-      {
-        name: "side-by-side",
-        action: MarkdownEditor.debouncedToggleSideBySide,
-        className: "fa fa-columns no-disable no-mobile",
-        title: i18n._('MarkdownEditor|Toolbar|Show side-by-side preview')
-      },
-      {
-        name: "fullscreen",
-        action: EasyMDE.toggleFullScreen,
-        className: 'fa fa-arrows-alt no-disable no-mobile',
-        title: i18n._('MarkdownEditor|Toolbar|Toggle full screen')
-      },
+      // {
+      //   name: "side-by-side",
+      //   action: MarkdownEditor.debouncedToggleSideBySide,
+      //   className: "fa fa-columns no-disable no-mobile",
+      //   title: i18n._('MarkdownEditor|Toolbar|Show side-by-side preview')
+      // },
+      // {
+      //   name: "fullscreen",
+      //   action: EasyMDE.toggleFullScreen,
+      //   className: 'fa fa-arrows-alt no-disable no-mobile',
+      //   title: i18n._('MarkdownEditor|Toolbar|Toggle full screen')
+      // },
       "|",
       {
         name: "iconInfo",
