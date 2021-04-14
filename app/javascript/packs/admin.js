@@ -10,7 +10,7 @@ import "channels"
 
 // Libraries
 import 'bootstrap';
-import "@fortawesome/fontawesome-free/css/all"
+import "@fortawesome/fontawesome-free/js/all";
 import 'admin-lte'
 
 // Our stuff
