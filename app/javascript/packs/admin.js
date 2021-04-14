@@ -3,10 +3,10 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-require("@rails/ujs").start();
-require("turbolinks").start();
-// require("@rails/activestorage").start();
-require("channels");
+import Rails from "@rails/ujs"
+import Turbolinks from "turbolinks"
+// import * as ActiveStorage from "@rails/activestorage"
+import "channels"
 
 // Libraries
 import 'bootstrap';
@@ -18,6 +18,10 @@ import 'components/confirm_dialog';
 import Translations from 'components/translations';
 import Alert from 'components/alert';
 import MarkdownEditor from 'components/markdown_editor'
+
+Rails.start()
+Turbolinks.start()
+// ActiveStorage.start()
 
 $(function() {
   Translations.setup();
