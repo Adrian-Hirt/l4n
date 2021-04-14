@@ -4,7 +4,7 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
-// import * as ActiveStorage from "@rails/activestorage"
+import * as Turbo from "@hotwired/turbo"
 import "channels"
 
 // Libraries
@@ -23,8 +23,14 @@ Rails.start()
 
 $(function() {
   Translations.setup();
+});
+
+document.addEventListener("turbo:load", () => {
+  // Fix required as the sidebar would wobble around otherwise
+  $(".main-sidebar .sidebar").css("overflow-y", "auto");
+
   $('[data-toggle="tooltip"]').tooltip();
   $('[data-toggle="popover"]').popover();
   Alert.hideAfterTimeout();
   MarkdownEditor.init(document.body);
-})
+});
