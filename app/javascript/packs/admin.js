@@ -28,6 +28,9 @@ $(function() {
 })
 
 document.addEventListener("turbolinks:load", () => {
+  // Fix required as the sidebar would wobble around otherwise
+  $(".main-sidebar .sidebar").css("overflow-y", "auto");
+
   $('[data-toggle="tooltip"]').tooltip();
   $('[data-toggle="popover"]').popover();
   Alert.hideAfterTimeout();
