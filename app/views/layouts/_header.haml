@@ -1,9 +1,13 @@
 %div
   - if current_user
     = current_user.username
+    \|
     = link_to _('User|Logout'), logout_path, method: :delete
+    \|
+    = link_to _('User|Edit my profile'), profile_users_path
   - else
     = link_to _('User|Login'), login_path
+    \|
     = link_to _('User|Sign up'), new_user_path
 
 %div

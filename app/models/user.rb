@@ -22,7 +22,7 @@ class User < ApplicationRecord
   end
 
   def medium_avatar
-    model.avatar.variant(resize_to_fill: [300, 300]).processed
+    avatar.variant(resize_to_fill: [300, 300]).processed
   end
 
   private

@@ -10,9 +10,10 @@ Rails.application.routes.draw do
   match '/request_password_reset', to: 'password_resets#request_password_reset', via: %i[get post]
   match '/reset_password', to: 'password_resets#reset_password', via: %i[get patch]
 
-  resources :users, only: %i[new create] do
+  resources :users, only: %i[new create show] do
     collection do
       get :activate
+      match :profile, via: %i[get patch]
     end
   end
 
