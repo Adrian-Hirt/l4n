@@ -6,6 +6,9 @@
       = f.input :username
       = f.input :email
       = f.input :password
+      = f.input :avatar
+      - if model.avatar.present?
+        = image_tag model.thumb_avatar
       %hr
       = f.input :website
       = f.save

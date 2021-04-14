@@ -16,7 +16,7 @@
     %li.nav-item.dropdown
       %a.nav-link{data: { toggle: :dropdown}, href: '#'}
         %div{style: 'height: 100%;'}
-          %img.img-circle.mr-2{alt: 'User Image', src: 'http://placekitten.com/160/160', style: 'height: 100%;'}
+          = image_tag current_user.thumb_avatar, class: %i[img-circle mr-2], style: 'height: 100%;'
           = current_user.username
           = icon %i[fa fa-chevron-down]
       .dropdown-menu.dropdown-menu-lg.dropdown-menu-right

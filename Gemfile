@@ -51,6 +51,9 @@ gem 'bundler-audit', '0.7.0.1'
 # Settings
 gem 'figaro', '1.2.0'
 
+# Attachments
+gem 'image_processing', '~> 1.12.1'
+
 # Development gems
 group :development do
   gem 'listen', '~> 3.2'
