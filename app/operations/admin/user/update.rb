@@ -3,8 +3,10 @@ module Operations::Admin::User
     schema do
       req :id
       opt :user do
+        opt :username
         opt :email
         opt :password
+        opt :website
       end
     end
 

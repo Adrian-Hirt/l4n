@@ -1,8 +1,12 @@
-- provide :page_title, _('Admin|Users|View user')
+- provide :page_title, model.username
 
-%p
-  ID:
-  = model.id
-%p
-  Email:
-  = model.email
+.card
+  .card-body
+    ID:
+    = model.id
+    %br
+    Email:
+    = model.email
+    %br
+    Website:
+    = model.website.presence ||'-'

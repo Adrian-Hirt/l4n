@@ -2,6 +2,7 @@ module Operations::User
   class Create < RailsOps::Operation::Model::Create
     schema3 do
       hsh? :user do
+        str! :username
         str! :email
         str! :password
         str! :password_confirmation

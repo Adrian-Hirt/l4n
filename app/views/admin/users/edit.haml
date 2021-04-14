@@ -1,6 +1,11 @@
 - provide :page_title, _('Admin|Users|Edit user')
 
-= simple_form_for model, url: admin_user_path(model), remote: false do |f|
-  = f.input :email
-  = f.input :password
-  = f.save
+.card
+  .card-body
+    = simple_form_for model, url: admin_user_path(model), remote: false do |f|
+      = f.input :username
+      = f.input :email
+      = f.input :password
+      %hr
+      = f.input :website
+      = f.save

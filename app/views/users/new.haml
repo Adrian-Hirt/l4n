@@ -1,6 +1,7 @@
 %h3= _('User|Sign up')
 
 = simple_form_for model do |f|
+  = f.input :username
   = f.input :email
   = f.input :password, required: true
   = f.input :password_confirmation, required: true
