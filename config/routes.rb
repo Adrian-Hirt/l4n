@@ -27,5 +27,6 @@ Rails.application.routes.draw do
         post :preview_markdown
       end
     end
+    resources :events
   end
 end

@@ -1,0 +1,6 @@
+- provide :page_title, _('Event|New')
+
+= simple_form_for model, url: admin_events_path do |f|
+  = f.input :title
+  = f.input :description, input_html: { data: { preview_url: preview_markdown_admin_news_posts_path } }
+  = f.save

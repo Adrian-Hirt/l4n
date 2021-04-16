@@ -1,0 +1,16 @@
+- provide :page_title, _('Admin|Events')
+
+= new_button Event, namespace: %i[admin]
+
+%hr
+
+%table{class: 'table table-striped'}
+  %tr
+    %th= _('Event|Title')
+    %th
+  - op.events.each do |e|
+    %tr
+      %td= e.title
+      %td.tar
+        = edit_button e, namespace: %i[admin], size: :sm, icon_only: true
+        = delete_button e, namespace: %i[admin], size: :sm, icon_only: true
