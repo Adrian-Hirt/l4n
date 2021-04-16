@@ -15,7 +15,7 @@
     %tr
       %td= p.title
       %td= p.published
-      %td= p.published_at.present? ? p.published_at : '--'
+      %td= p.published_at.present? ? l(p.published_at, format: :long) : '--'
       %td= p.user.email
       %td.tar
         = edit_button p, namespace: %i[admin], size: :sm, icon_only: true
