@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :news, controller: :news_posts, as: :news_posts, only: %i[index show]
+  resources :events, only: %i[index show]
 
   namespace :admin do
     get '/', to: 'dashboard#index'

@@ -1,0 +1,9 @@
+%h3= _('Events')
+
+%hr
+
+%table{class: 'table table-striped'}
+  - op.events.each do |e|
+    %tr
+      %td= e.title
+      %td.tar= show_button e, size: :sm, icon_only: true

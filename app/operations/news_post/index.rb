@@ -1,9 +1,5 @@
 module Operations::NewsPost
   class Index < RailsOps::Operation
-    policy :on_init do
-      authorize! :read, NewsPost
-    end
-
     # No auth needed
     without_authorization
 
