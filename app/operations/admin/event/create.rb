@@ -4,6 +4,7 @@ module Operations::Admin::Event
       opt :event do
         opt :title
         opt :description
+        opt :event_dates_attributes
       end
     end
 

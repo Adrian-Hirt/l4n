@@ -1,0 +1,14 @@
+.nested-fields
+  .row
+    .col-md-3
+      = f.input :start_date, as: :string, input_html: { type: :date }
+    .col-md-2
+      = f.input :start_time, as: :string, input_html: { type: :time }
+    .col-md-3
+      = f.input :end_date, as: :string, input_html: { type: :date }
+    .col-md-2
+      = f.input :end_time, as: :string, input_html: { type: :time }
+    .col-md-1
+      %label &nbsp;
+      = link_to_remove_association f, class: 'btn btn-danger icon-only-btn d-table' do
+        = icon %i[fa fa-trash]

@@ -12,6 +12,7 @@ import "channels"
 import 'bootstrap';
 import "@fortawesome/fontawesome-free/js/all";
 import 'admin-lte'
+require("@nathanvda/cocoon")
 
 // Our stuff
 import 'components/confirm_dialog';
