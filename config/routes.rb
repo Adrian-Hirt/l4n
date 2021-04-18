@@ -28,6 +28,10 @@ Rails.application.routes.draw do
         post :preview_markdown
       end
     end
-    resources :events
+    resources :events do
+      collection do
+        get :archive
+      end
+    end
   end
 end

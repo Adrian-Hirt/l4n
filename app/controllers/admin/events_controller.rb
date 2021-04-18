@@ -6,6 +6,11 @@ module Admin
       op Operations::Admin::Event::Index
     end
 
+    def archive
+      add_breadcrumb _('Admin|Events|Archive')
+      op Operations::Admin::Event::Archive
+    end
+
     def new
       add_breadcrumb _('Admin|Event|New')
       op Operations::Admin::Event::Create

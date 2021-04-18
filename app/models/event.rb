@@ -9,8 +9,16 @@ class Event < ApplicationRecord
     event_dates.future
   end
 
+  def past_dates
+    event_dates.past
+  end
+
   def next_date
     future_dates.order('event_dates.start_date ASC, event_dates.start_time ASC').first
+  end
+
+  def last_date
+    past_dates.order('event_dates.end_date DESC, event_dates.end_time DESC').first
   end
 
   private

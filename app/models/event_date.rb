@@ -7,6 +7,7 @@ class EventDate < ApplicationRecord
   validate :end_date_at_least_start
 
   scope :future, -> { where('(start_date >= ?) OR (start_date <= ? AND end_date >= ?)', Time.zone.today, Time.zone.today, Time.zone.today) }
+  scope :past, -> { where('(start_date < ?) OR (start_date > ? AND end_date < ?)', Time.zone.today, Time.zone.today, Time.zone.today) }
 
   private
 

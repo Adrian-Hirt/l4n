@@ -12,20 +12,31 @@
           Add icons to the links using the .nav-icon class
           with font-awesome or any other icon font library
         %li.nav-item
-          %a.nav-link{href: admin_path, class: active_classes(:dashboard)}
+          %a.nav-link{href: admin_path, class: active_link_classes(:dashboard)}
             %i.nav-icon.fas.fa-tachometer-alt
             %p= _('Admin|Dashboard')
         %li.nav-item
-          %a.nav-link{href: admin_users_path, class: active_classes(:users)}
+          %a.nav-link{href: admin_users_path, class: active_link_classes(:users)}
             %i.nav-icon.fas.fa-users
             %p= _('Admin|Users')
         %li.nav-item
-          %a.nav-link{href: admin_news_posts_path, class: active_classes(:news_posts)}
+          %a.nav-link{href: admin_news_posts_path, class: active_link_classes(:news_posts)}
             %i.nav-icon.fas.fa-newspaper
             %p= _('Admin|NewsPosts')
-        %li.nav-item
-          %a.nav-link{href: admin_events_path, class: active_classes(:events)}
+        %li.nav-item{class: dropdown_header_classes(:events)}
+          %a.nav-link{href: '#', class: active_link_classes(:events)}
             %i.nav-icon.fas.fa-calendar-alt
-            %p= _('Admin|Events')
+            %p
+              = _('Admin|Events')
+              %i.right.fas.fa-angle-left
+          %ul.nav.nav-treeview{style:  dropdown_body_style(:events)}
+            %li.nav-item
+              %a.nav-link{href: admin_events_path, class: active_link_classes(:events, excluded_actions: %i[archive])}
+                %i.nav-icon.far.fa-circle
+                %p= _('Admin|Events|Events')
+            %li.nav-item
+              %a.nav-link{href: archive_admin_events_path, class: active_link_classes(:events, actions: %i[archive])}
+                %i.nav-icon.far.fa-circle
+                %p= _('Admin|Events|Archive')
     / /.sidebar-menu
   / /.sidebar
