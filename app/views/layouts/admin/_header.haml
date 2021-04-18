@@ -16,6 +16,15 @@
           %i.fas.fa-expand-arrows-alt
     %li.nav-item.dropdown
       %a.nav-link{data: { toggle: :dropdown}, href: '#'}
+        = icon %i[fa fa-lg fa-language]
+        = icon %i[fa fa-chevron-down]
+      .dropdown-menu.dropdown-menu-right
+        = link_to set_locale_path(locale: :en), method: :post, class: 'dropdown-item' + active_locale_class(:en) do
+          = _('Language|English')
+        = link_to set_locale_path(locale: :de), method: :post, class: 'dropdown-item' + active_locale_class(:de) do
+          = _('Language|German')
+    %li.nav-item.dropdown
+      %a.nav-link{data: { toggle: :dropdown}, href: '#'}
         %div{style: 'height: 100%;'}
           = image_tag current_user.thumb_avatar, class: %i[img-circle mr-2], style: 'height: 100%;'
           = current_user.username

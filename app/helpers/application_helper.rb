@@ -8,4 +8,12 @@ module ApplicationHelper
     end
     nil
   end
+
+  def active_locale_class(locale)
+    if FastGettext.locale == locale.to_s
+      ' active'
+    else
+      ''
+    end
+  end
 end

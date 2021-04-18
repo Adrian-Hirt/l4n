@@ -1,16 +1,16 @@
-# English translations for app package.
-# Copyright (C) 2020 THE PACKAGE'S COPYRIGHT HOLDER
+# German translations for app package.
+# Copyright (C) 2021 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the app package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2020-11-29 11:35+0100\n"
+"PO-Revision-Date: 2021-04-18 18:21+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: English\n"
-"Language: en\n"
+"Language-Team: German\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -44,30 +44,26 @@ msgstr ""
 msgid "Admin|NewsPosts|New"
 msgstr ""
 
-#, fuzzy
 msgid "Admin|Users"
-msgstr "Users"
+msgstr ""
 
-#, fuzzy
 msgid "Admin|Users|Create user"
-msgstr "Users"
+msgstr ""
 
-#, fuzzy
 msgid "Admin|Users|Edit user"
-msgstr "Users"
+msgstr ""
 
-#, fuzzy
 msgid "Admin|Users|New"
-msgstr "Users"
+msgstr ""
 
 msgid "ApplicationName"
 msgstr ""
 
 msgid "ConfirmDialog|Cancel"
-msgstr "Cancel"
+msgstr ""
 
 msgid "ConfirmDialog|Confirm"
-msgstr "Ok"
+msgstr ""
 
 msgid "EventDate|Needs to be at larger or equal to the start date"
 msgstr ""
@@ -256,67 +252,52 @@ msgid "Session|Successful logout"
 msgstr ""
 
 msgid "User"
-msgstr "User"
+msgstr ""
 
-#, fuzzy
 msgid "UserMailer|ConfirmSignup|Click following link to activate"
-msgstr "User"
+msgstr ""
 
-#, fuzzy
 msgid "UserMailer|ConfirmSignup|Confirm your account"
-msgstr "User"
+msgstr ""
 
-#, fuzzy
 msgid "UserMailer|ConfirmSignup|Copy url below"
-msgstr "User"
+msgstr ""
 
-#, fuzzy
 msgid "UserMailer|ConfirmSignup|Greeting %{username}"
-msgstr "User"
+msgstr ""
 
-#, fuzzy
 msgid "UserMailer|ConfirmSignup|Link"
-msgstr "User"
+msgstr ""
 
-#, fuzzy
 msgid "UserMailer|ConfirmSignup|Title"
-msgstr "User"
+msgstr ""
 
-#, fuzzy
 msgid "UserMailer|PasswordResetRequest|Click following link to reset your password"
-msgstr "User"
+msgstr ""
 
-#, fuzzy
 msgid "UserMailer|PasswordResetRequest|Copy url below"
-msgstr "User"
+msgstr ""
 
-#, fuzzy
 msgid "UserMailer|PasswordResetRequest|End of mail hint"
-msgstr "User"
+msgstr ""
 
-#, fuzzy
 msgid "UserMailer|PasswordResetRequest|Greeting %{username}"
-msgstr "User"
+msgstr ""
 
-#, fuzzy
 msgid "UserMailer|PasswordResetRequest|Link"
-msgstr "User"
+msgstr ""
 
-#, fuzzy
 msgid "UserMailer|PasswordResetRequest|Title"
-msgstr "User"
+msgstr ""
 
-#, fuzzy
 msgid "UserMailer|PasswordResetRequest|You resetted your password"
-msgstr "User"
+msgstr ""
 
-#, fuzzy
 msgid "User|Activated"
-msgstr "User"
+msgstr ""
 
-#, fuzzy
 msgid "User|Activation invalid"
-msgstr "User"
+msgstr ""
 
 msgid "User|Cannot be deleted"
 msgstr ""
@@ -327,16 +308,14 @@ msgstr ""
 msgid "User|Create failed"
 msgstr ""
 
-#, fuzzy
 msgid "User|Edit my profile"
-msgstr "User"
+msgstr ""
 
 msgid "User|Email"
-msgstr "Email"
+msgstr ""
 
-#, fuzzy
 msgid "User|Id"
-msgstr "User"
+msgstr ""
 
 msgid "User|Login"
 msgstr ""
@@ -345,18 +324,16 @@ msgid "User|Logout"
 msgstr ""
 
 msgid "User|Password"
-msgstr "Password"
+msgstr ""
 
 msgid "User|Password digest"
-msgstr "Password"
+msgstr ""
 
-#, fuzzy
 msgid "User|Profile could not be updated"
-msgstr "User"
+msgstr ""
 
-#, fuzzy
 msgid "User|Profile updated successfully"
-msgstr "User"
+msgstr ""
 
 msgid "User|Remember me token digest"
 msgstr ""
@@ -364,16 +341,14 @@ msgstr ""
 msgid "User|Sign up"
 msgstr ""
 
-#, fuzzy
 msgid "User|Successfully activated"
-msgstr "User"
+msgstr ""
 
 msgid "User|Successfully created"
 msgstr ""
 
-#, fuzzy
 msgid "User|Successfully created, check your mail for activation"
-msgstr "User"
+msgstr ""
 
 msgid "User|Successfully deleted"
 msgstr ""
@@ -384,10 +359,8 @@ msgstr ""
 msgid "User|Update failed"
 msgstr ""
 
-#, fuzzy
 msgid "User|Update password"
-msgstr "User"
+msgstr ""
 
-#, fuzzy
 msgid "User|Username"
-msgstr "User"
+msgstr ""

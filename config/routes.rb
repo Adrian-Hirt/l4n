@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  post 'locale/:locale', to: 'application#set_locale', as: :set_locale
+
   # Password resetting
   match '/request_password_reset', to: 'password_resets#request_password_reset', via: %i[get post]
   match '/reset_password', to: 'password_resets#reset_password', via: %i[get patch]

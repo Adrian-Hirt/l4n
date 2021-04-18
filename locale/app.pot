@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-24 20:37+0100\n"
-"PO-Revision-Date: 2020-12-24 20:37+0100\n"
+"POT-Creation-Date: 2021-04-18 18:21+0200\n"
+"PO-Revision-Date: 2021-04-18 18:21+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -21,16 +21,217 @@ msgstr ""
 msgid "Admin Panel"
 msgstr ""
 
+msgid "AdminPanel|Back to application"
+msgstr ""
+
+msgid "Admin|Dashboard"
+msgstr ""
+
+msgid "Admin|Events"
+msgstr ""
+
+msgid "Admin|Events|Archive"
+msgstr ""
+
+msgid "Admin|Events|Events"
+msgstr ""
+
+msgid "Admin|Event|New"
+msgstr ""
+
+msgid "Admin|NewsPosts"
+msgstr ""
+
+msgid "Admin|NewsPosts|New"
+msgstr ""
+
+msgid "Admin|Users"
+msgstr ""
+
+msgid "Admin|Users|Create user"
+msgstr ""
+
+msgid "Admin|Users|Edit user"
+msgstr ""
+
+msgid "Admin|Users|New"
+msgstr ""
+
+msgid "ApplicationName"
+msgstr ""
+
 msgid "ConfirmDialog|Cancel"
 msgstr ""
 
 msgid "ConfirmDialog|Confirm"
 msgstr ""
 
-msgid "Dashboard"
+msgid "EventDate|Needs to be at larger or equal to the start date"
+msgstr ""
+
+msgid "EventDate|Overlaps with another date"
+msgstr ""
+
+msgid "Events"
+msgstr ""
+
+msgid "Event|Add event date"
+msgstr ""
+
+msgid "Event|Cannot be deleted"
+msgstr ""
+
+msgid "Event|Create failed"
+msgstr ""
+
+msgid "Event|Edit"
+msgstr ""
+
+msgid "Event|Edit failed"
+msgstr ""
+
+msgid "Event|End date"
+msgstr ""
+
+msgid "Event|End time"
+msgstr ""
+
+msgid "Event|Info"
+msgstr ""
+
+msgid "Event|Location"
+msgstr ""
+
+msgid "Event|New"
+msgstr ""
+
+msgid "Event|Published"
+msgstr ""
+
+msgid "Event|Start date"
+msgstr ""
+
+msgid "Event|Start time"
+msgstr ""
+
+msgid "Event|Successfully created"
+msgstr ""
+
+msgid "Event|Successfully deleted"
+msgstr ""
+
+msgid "Event|Successfully updated"
+msgstr ""
+
+msgid "Event|Title"
+msgstr ""
+
+msgid "Event|You need to add at least one date"
 msgstr ""
 
 msgid "Homepage"
+msgstr ""
+
+msgid "Language|English"
+msgstr ""
+
+msgid "Language|German"
+msgstr ""
+
+msgid "MarkdownEditor|Popup|Cancel"
+msgstr ""
+
+msgid "MarkdownEditor|Popup|Confirm"
+msgstr ""
+
+msgid "MarkdownEditor|Popup|Insert Google Maps Map"
+msgstr ""
+
+msgid "MarkdownEditor|Popup|Insert icon"
+msgstr ""
+
+msgid "MarkdownEditor|Popup|Insert youtube video"
+msgstr ""
+
+msgid "MarkdownEditor|Popup|Please enter the URL of the image"
+msgstr ""
+
+msgid "MarkdownEditor|Popup|Please enter the name of the icon you want to use. If you need help with the names of the icons, click on the i button in the editor!"
+msgstr ""
+
+msgid "MarkdownEditor|Popup|Please enter your link"
+msgstr ""
+
+msgid "MarkdownEditor|Popup|Please paste the URL of the map you want to share here! The URL needs to be of format 'https://www.google.com/maps/d/embed?mid=' or 'https://www.google.com/maps/embed?pb='"
+msgstr ""
+
+msgid "MarkdownEditor|Popup|Please paste the URL of the youtube video here. The URL needs to be of format 'https://www.youtube.com/watch?v='"
+msgstr ""
+
+msgid "NewsPosts"
+msgstr ""
+
+msgid "NewsPosts|Author"
+msgstr ""
+
+msgid "NewsPosts|Edit"
+msgstr ""
+
+msgid "NewsPosts|New"
+msgstr ""
+
+msgid "NewsPosts|Published"
+msgstr ""
+
+msgid "NewsPosts|Published at"
+msgstr ""
+
+msgid "NewsPosts|Title"
+msgstr ""
+
+msgid "NewsPost|Cannot be deleted"
+msgstr ""
+
+msgid "NewsPost|Create failed"
+msgstr ""
+
+msgid "NewsPost|Edit failed"
+msgstr ""
+
+msgid "NewsPost|Successfully created"
+msgstr ""
+
+msgid "NewsPost|Successfully deleted"
+msgstr ""
+
+msgid "NewsPost|Successfully updated"
+msgstr ""
+
+msgid "PasswordResetRequest|Failed to change password"
+msgstr ""
+
+msgid "PasswordResetRequest|If account exists, password reset mail was sent"
+msgstr ""
+
+msgid "PasswordResetRequest|Password changed successfully"
+msgstr ""
+
+msgid "PasswordResetRequest|Request password reset"
+msgstr ""
+
+msgid "PasswordResetRequest|Request reset"
+msgstr ""
+
+msgid "PasswordResetRequest|Reset your password"
+msgstr ""
+
+msgid "PasswordResetRequest|Token invalid or expired"
+msgstr ""
+
+msgid "Session|Forgot password"
+msgstr ""
+
+msgid "Session|Log in"
 msgstr ""
 
 msgid "Session|Login failed"
@@ -39,16 +240,64 @@ msgstr ""
 msgid "Session|Please log in"
 msgstr ""
 
+msgid "Session|Recaptcha failed, please try again"
+msgstr ""
+
 msgid "Session|Remember me"
 msgstr ""
 
 msgid "Session|Successful login"
 msgstr ""
 
+msgid "Session|Successful logout"
+msgstr ""
+
 msgid "User"
 msgstr ""
 
-msgid "Users"
+msgid "UserMailer|ConfirmSignup|Click following link to activate"
+msgstr ""
+
+msgid "UserMailer|ConfirmSignup|Confirm your account"
+msgstr ""
+
+msgid "UserMailer|ConfirmSignup|Copy url below"
+msgstr ""
+
+msgid "UserMailer|ConfirmSignup|Greeting %{username}"
+msgstr ""
+
+msgid "UserMailer|ConfirmSignup|Link"
+msgstr ""
+
+msgid "UserMailer|ConfirmSignup|Title"
+msgstr ""
+
+msgid "UserMailer|PasswordResetRequest|Click following link to reset your password"
+msgstr ""
+
+msgid "UserMailer|PasswordResetRequest|Copy url below"
+msgstr ""
+
+msgid "UserMailer|PasswordResetRequest|End of mail hint"
+msgstr ""
+
+msgid "UserMailer|PasswordResetRequest|Greeting %{username}"
+msgstr ""
+
+msgid "UserMailer|PasswordResetRequest|Link"
+msgstr ""
+
+msgid "UserMailer|PasswordResetRequest|Title"
+msgstr ""
+
+msgid "UserMailer|PasswordResetRequest|You resetted your password"
+msgstr ""
+
+msgid "User|Activated"
+msgstr ""
+
+msgid "User|Activation invalid"
 msgstr ""
 
 msgid "User|Cannot be deleted"
@@ -60,10 +309,13 @@ msgstr ""
 msgid "User|Create failed"
 msgstr ""
 
+msgid "User|Edit my profile"
+msgstr ""
+
 msgid "User|Email"
 msgstr ""
 
-msgid "User|Log in"
+msgid "User|Id"
 msgstr ""
 
 msgid "User|Login"
@@ -78,13 +330,25 @@ msgstr ""
 msgid "User|Password digest"
 msgstr ""
 
+msgid "User|Profile could not be updated"
+msgstr ""
+
+msgid "User|Profile updated successfully"
+msgstr ""
+
 msgid "User|Remember me token digest"
 msgstr ""
 
 msgid "User|Sign up"
 msgstr ""
 
+msgid "User|Successfully activated"
+msgstr ""
+
 msgid "User|Successfully created"
+msgstr ""
+
+msgid "User|Successfully created, check your mail for activation"
 msgstr ""
 
 msgid "User|Successfully deleted"
@@ -94,4 +358,10 @@ msgid "User|Successfully updated"
 msgstr ""
 
 msgid "User|Update failed"
+msgstr ""
+
+msgid "User|Update password"
+msgstr ""
+
+msgid "User|Username"
 msgstr ""

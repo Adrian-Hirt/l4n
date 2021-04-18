@@ -12,6 +12,17 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_locale
+    if FastGettext.default_available_locales.include?(params[:locale])
+      requested_locale = params[:locale]
+      locale = FastGettext.set_locale(requested_locale)
+      session[:locale] = locale
+      I18n.locale = locale
+      current_user&.update(preferred_locale: locale)
+    end
+    redirect_back(fallback_location: root_path)
+  end
+
   private
 
   def require_logged_in_user
@@ -19,5 +30,12 @@ class ApplicationController < ActionController::Base
 
     flash[:danger] = _('Session|Please log in')
     redirect_to login_url
+  end
+
+  def set_gettext_locale
+    requested_locale = current_user&.preferred_locale || session[:locale] || request.env['HTTP_ACCEPT_LANGUAGE'] || I18n.default_locale
+    locale = FastGettext.set_locale(requested_locale)
+    session[:locale] = locale
+    I18n.locale = locale # some weird overwriting in action-controller makes this necessary ... see I18nProxy
   end
 end
