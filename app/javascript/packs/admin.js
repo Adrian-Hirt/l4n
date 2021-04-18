@@ -19,6 +19,7 @@ import 'components/confirm_dialog';
 import Translations from 'components/translations';
 import Alert from 'components/alert';
 import MarkdownEditor from 'components/markdown_editor'
+import AdminPushmenuToggler from 'components/admin_pushmenu_toggler'
 
 Rails.start()
 Turbolinks.start()
@@ -36,4 +37,5 @@ document.addEventListener("turbolinks:load", () => {
   $('[data-toggle="popover"]').popover();
   Alert.hideAfterTimeout();
   MarkdownEditor.init(document.body);
+  AdminPushmenuToggler.addListener();
 });

@@ -8,10 +8,4 @@ module ApplicationHelper
     end
     nil
   end
-
-  def dark_mode_class
-    # rubocop:disable Lint/LiteralAsCondition
-    'dark-mode' if false
-    # rubocop:enable Lint/LiteralAsCondition
-  end
 end
