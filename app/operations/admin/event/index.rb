@@ -5,7 +5,7 @@ module Operations::Admin::Event
     end
 
     def events
-      ::Event.all
+      Queries::Event::FetchFutureEvents.run
     end
   end
 end

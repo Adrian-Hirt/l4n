@@ -1,3 +1,19 @@
 %h3= model.title
+
+%h4= _('Event|Info')
+
+%p
+  %b= _('Event|Start date')
+  = model.next_date.start_date || '-'
+%p
+  %b= _('Event|Start time')
+  = model.next_date.start_time || '-'
+%p
+  %b= _('Event|End date')
+  = model.next_date.end_date || '-'
+%p
+  %b= _('Event|End time')
+  = model.next_date.end_time || '-'
+
 %hr
 = markdown(model.description)

@@ -3,7 +3,18 @@
 %hr
 
 %table{class: 'table table-striped'}
+  %tr
+    %th= _('Event|Title')
+    %th= _('Event|Start date')
+    %th= _('Event|Start time')
+    %th= _('Event|End date')
+    %th= _('Event|End time')
+    %th
   - op.events.each do |e|
     %tr
       %td= e.title
+      %td= e.next_date.start_date || '-'
+      %td= e.next_date.start_time || '-'
+      %td= e.next_date.end_date || '-'
+      %td= e.next_date.end_time || '-'
       %td.tar= show_button e, size: :sm, icon_only: true
