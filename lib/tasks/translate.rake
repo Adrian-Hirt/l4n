@@ -8,7 +8,7 @@ namespace :translate do
 
     puts '----- Storing translations as JSON -----'
     FastGettext.available_locales.each do |lang|
-      exec("bin/po2json locale/#{lang}/app.po app/javascript/locale/#{lang}.json -p")
+      system("bin/po2json locale/#{lang}/app.po app/javascript/locale/#{lang}.json -p")
     end
   end
 end

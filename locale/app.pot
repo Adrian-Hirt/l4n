@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-18 18:21+0200\n"
-"PO-Revision-Date: 2021-04-18 18:21+0200\n"
+"POT-Creation-Date: 2021-04-18 20:16+0200\n"
+"PO-Revision-Date: 2021-04-18 20:16+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -17,6 +17,39 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+msgid "Active storage/record"
+msgstr ""
+
+msgid "ActiveStorage::Record|Byte size"
+msgstr ""
+
+msgid "ActiveStorage::Record|Checksum"
+msgstr ""
+
+msgid "ActiveStorage::Record|Content type"
+msgstr ""
+
+msgid "ActiveStorage::Record|Filename"
+msgstr ""
+
+msgid "ActiveStorage::Record|Key"
+msgstr ""
+
+msgid "ActiveStorage::Record|Metadata"
+msgstr ""
+
+msgid "ActiveStorage::Record|Name"
+msgstr ""
+
+msgid "ActiveStorage::Record|Record type"
+msgstr ""
+
+msgid "ActiveStorage::Record|Service name"
+msgstr ""
+
+msgid "ActiveStorage::Record|Variation digest"
+msgstr ""
 
 msgid "Admin Panel"
 msgstr ""
@@ -66,10 +99,28 @@ msgstr ""
 msgid "ConfirmDialog|Confirm"
 msgstr ""
 
+msgid "Event"
+msgstr ""
+
+msgid "Event date"
+msgstr ""
+
+msgid "EventDate|End date"
+msgstr ""
+
+msgid "EventDate|End time"
+msgstr ""
+
 msgid "EventDate|Needs to be at larger or equal to the start date"
 msgstr ""
 
 msgid "EventDate|Overlaps with another date"
+msgstr ""
+
+msgid "EventDate|Start date"
+msgstr ""
+
+msgid "EventDate|Start time"
 msgstr ""
 
 msgid "Events"
@@ -82,6 +133,9 @@ msgid "Event|Cannot be deleted"
 msgstr ""
 
 msgid "Event|Create failed"
+msgstr ""
+
+msgid "Event|Description"
 msgstr ""
 
 msgid "Event|Edit"
@@ -168,6 +222,9 @@ msgstr ""
 msgid "MarkdownEditor|Popup|Please paste the URL of the youtube video here. The URL needs to be of format 'https://www.youtube.com/watch?v='"
 msgstr ""
 
+msgid "News post"
+msgstr ""
+
 msgid "NewsPosts"
 msgstr ""
 
@@ -192,10 +249,19 @@ msgstr ""
 msgid "NewsPost|Cannot be deleted"
 msgstr ""
 
+msgid "NewsPost|Content"
+msgstr ""
+
 msgid "NewsPost|Create failed"
 msgstr ""
 
 msgid "NewsPost|Edit failed"
+msgstr ""
+
+msgid "NewsPost|Published"
+msgstr ""
+
+msgid "NewsPost|Published at"
 msgstr ""
 
 msgid "NewsPost|Successfully created"
@@ -205,6 +271,9 @@ msgid "NewsPost|Successfully deleted"
 msgstr ""
 
 msgid "NewsPost|Successfully updated"
+msgstr ""
+
+msgid "NewsPost|Title"
 msgstr ""
 
 msgid "PasswordResetRequest|Failed to change password"
@@ -300,6 +369,9 @@ msgstr ""
 msgid "User|Activation invalid"
 msgstr ""
 
+msgid "User|Activation token"
+msgstr ""
+
 msgid "User|Cannot be deleted"
 msgstr ""
 
@@ -328,6 +400,15 @@ msgid "User|Password"
 msgstr ""
 
 msgid "User|Password digest"
+msgstr ""
+
+msgid "User|Password reset token created at"
+msgstr ""
+
+msgid "User|Password reset token digest"
+msgstr ""
+
+msgid "User|Preferred locale"
 msgstr ""
 
 msgid "User|Profile could not be updated"
@@ -364,4 +445,7 @@ msgid "User|Update password"
 msgstr ""
 
 msgid "User|Username"
+msgstr ""
+
+msgid "User|Website"
 msgstr ""
