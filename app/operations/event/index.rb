@@ -4,7 +4,7 @@ module Operations::Event
     without_authorization
 
     def events
-      Queries::Event::FetchFutureEvents.run
+      Queries::Event::FetchFutureEvents.run.where(published: true)
     end
   end
 end

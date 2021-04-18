@@ -3,6 +3,8 @@
 %table{class: 'table table-striped'}
   %tr
     %th= _('Event|Title')
+    %th= _('Event|Location')
+    %th= _('Event|Published')
     %th= _('Event|Start date')
     %th= _('Event|Start time')
     %th= _('Event|End date')
@@ -11,6 +13,8 @@
   - op.events.each do |e|
     %tr
       %td= e.title
+      %td= e.location || '-'
+      %td= format_boolean(e.published?)
       %td= e.last_date.start_date || '-'
       %td= e.last_date.start_time || '-'
       %td= e.last_date.end_date || '-'

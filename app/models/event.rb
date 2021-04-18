@@ -3,6 +3,7 @@ class Event < ApplicationRecord
   accepts_nested_attributes_for :event_dates, reject_if: :all_blank, allow_destroy: true
 
   validates :title, presence: true
+  validates :published, inclusion: [true, false]
   validate :minimum_one_date
 
   def future_dates

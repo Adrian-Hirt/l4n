@@ -3,6 +3,8 @@ module Operations::Admin::Event
     schema do
       opt :event do
         opt :title
+        opt :location
+        opt :published
         opt :description
         opt :event_dates_attributes
       end
