@@ -10,9 +10,10 @@
     -# render partial: 'layouts/admin/header_messages'
     / Notifications Dropdown Menu
     -# render partial: 'layouts/admin/header_notifications'
-    %li.nav-item
-      %a.nav-link{ data: { widget: :fullscreen }, href: '#', role: :button }
-        %i.fas.fa-expand-arrows-alt
+    .d-none.d-md-block
+      %li.nav-item
+        %a.nav-link{ data: { widget: :fullscreen }, href: '#', role: :button }
+          %i.fas.fa-expand-arrows-alt
     %li.nav-item.dropdown
       %a.nav-link{data: { toggle: :dropdown}, href: '#'}
         %div{style: 'height: 100%;'}
