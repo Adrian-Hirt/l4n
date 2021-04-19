@@ -6,7 +6,7 @@ module SessionsHelper
       elsif (user_id = cookies.encrypted[Session::REMEMBER_ME_USER_COOKIE])
         temp_user = User.find_by(id: user_id)
         if temp_user.authenticate_remember_me_token(cookies[Session::REMEMBER_ME_TOKEN_COOKIE])
-          controller.reset_session
+          reset_session
           session[:user_id] = temp_user.id
           result = temp_user
         else
