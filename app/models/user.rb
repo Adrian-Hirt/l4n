@@ -11,6 +11,18 @@ class User < ApplicationRecord
 
   RESET_TOKEN_EXPIRES_AFTER = 6.hours
 
+  ADMIN_SIDEBAR_HIGHLIGHT_COLORS = [
+    ['primary', _('Highlightcolors|Blue')],
+    ['secondary', _('Highlightcolors|Grey')],
+    ['warning', _('Highlightcolors|Yellow')],
+    ['danger', _('Highlightcolors|Red')],
+    ['success', _('Highlightcolors|Green')],
+    ['lime', _('Highlightcolors|Lime')],
+    ['purple', _('Highlightcolors|Purple')],
+    ['orange', _('Highlightcolors|Orange')],
+    ['fuchsia', _('Highlightcolors|Fuchsia')]
+  ].freeze
+
   attr_writer :needs_password_set
 
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }

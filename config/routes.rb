@@ -23,7 +23,8 @@ Rails.application.routes.draw do
   resources :events, only: %i[index show]
 
   namespace :admin do
-    get '/', to: 'dashboard#index'
+    get '/',          to: 'home#dashboard'
+    match 'settings', to: 'home#settings', via: %i[get patch]
     resources :users
     resources :news, controller: :news_posts, as: :news_posts do
       collection do

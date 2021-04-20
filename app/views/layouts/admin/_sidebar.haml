@@ -1,4 +1,4 @@
-%aside.main-sidebar.sidebar-dark-primary.elevation-4
+%aside.main-sidebar.elevation-2{class: admin_sidebar_classes}
   / Brand Logo
   %a.brand-link{href: admin_path}
     %img.brand-image.img-circle.elevation-3{alt: 'Application Logo', src: 'http://placekitten.com/100/100', style: 'opacity: .8'}
@@ -12,7 +12,7 @@
           Add icons to the links using the .nav-icon class
           with font-awesome or any other icon font library
         %li.nav-item
-          %a.nav-link{href: admin_path, class: active_link_classes(:dashboard)}
+          %a.nav-link{href: admin_path, class: active_link_classes(:home)}
             %i.nav-icon.fas.fa-tachometer-alt
             %p= _('Admin|Dashboard')
         %li.nav-item

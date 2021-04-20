@@ -1,0 +1,14 @@
+- provide :page_title, _('Admin|Settings')
+
+.card
+  = simple_form_for model, url: admin_settings_path do |f|
+    .card-body
+      %h4.mb-3= _('Admin|Settings|Styling')
+      .form-group
+        = f.input :admin_panel_dark_mode, input_html: { class: 'no-validation' }
+        = f.input :admin_panel_sidebar_dark_mode, input_html: { class: 'no-validation' }
+        = f.input :admin_sidebar_highlight_color, collection: User::ADMIN_SIDEBAR_HIGHLIGHT_COLORS,
+          as: :select, value_method: :first, label_method: :second, include_blank: _('Highlightcolors|Default'),
+          input_html: { class: 'no-validation' }
+    .card-footer
+      = f.button :save, _('Admin|Update my preferences'), name: nil

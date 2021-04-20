@@ -16,6 +16,9 @@ Layout/HashAlignment:
 Style/SignalException:
   EnforcedStyle: only_fail
 
+Style/ConditionalAssignment:
+  Enabled: false
+
 Metrics/AbcSize:
   Enabled: false
 

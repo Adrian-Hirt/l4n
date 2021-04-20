@@ -1,4 +1,4 @@
-%nav.main-header.navbar.navbar-expand.navbar-white.navbar-light
+%nav.main-header.navbar.navbar-expand{class: admin_header_classes}
   / Left navbar links
   %ul.navbar-nav
     %li.nav-item
@@ -30,6 +30,10 @@
           = current_user.username
           = icon %i[fa fa-chevron-down]
       .dropdown-menu.dropdown-menu-lg.dropdown-menu-right
+        %a.dropdown-item{href: admin_settings_path}
+          = icon %i[fa fa-cog]
+          = _('Admin|Settings')
+        .dropdown-divider
         %a.dropdown-item{href: root_path}
           = icon %i[fa fa-home]
           = _('AdminPanel|Back to application')
