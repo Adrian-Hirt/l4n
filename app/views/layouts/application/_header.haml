@@ -39,9 +39,9 @@
                   = icon %i[fa fa-sign-out-alt]
                   = ('User|Logout')
           - else
-            %a.nav-link.dropdown-toggle{'data-toggle' => :dropdown, href: '#'} Dropdown
+            %a.nav-link.dropdown-toggle{'data-toggle' => :dropdown, href: '#'}= _('Login / Sign up')
             %ul.dropdown-menu.dropdown-menu-right.border-1.shadow
               %li
                 = link_to _('User|Login'), login_path, class: %i[dropdown-item]
               %li
-                = link_to _('User|Sign up'), new_user_path
+                = link_to _('User|Sign up'), new_user_path, class: %i[dropdown-item]
