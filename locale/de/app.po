@@ -77,6 +77,21 @@ msgstr ""
 msgid "Admin|NewsPosts|New"
 msgstr ""
 
+msgid "Admin|Preferences could not be updated"
+msgstr ""
+
+msgid "Admin|Preferences updated successfully"
+msgstr ""
+
+msgid "Admin|Settings"
+msgstr ""
+
+msgid "Admin|Settings|Styling"
+msgstr ""
+
+msgid "Admin|Update my preferences"
+msgstr ""
+
 msgid "Admin|Users"
 msgstr ""
 
@@ -180,6 +195,36 @@ msgid "Event|Title"
 msgstr ""
 
 msgid "Event|You need to add at least one date"
+msgstr ""
+
+msgid "Highlightcolors|Blue"
+msgstr ""
+
+msgid "Highlightcolors|Default"
+msgstr ""
+
+msgid "Highlightcolors|Fuchsia"
+msgstr ""
+
+msgid "Highlightcolors|Green"
+msgstr ""
+
+msgid "Highlightcolors|Grey"
+msgstr ""
+
+msgid "Highlightcolors|Lime"
+msgstr ""
+
+msgid "Highlightcolors|Orange"
+msgstr ""
+
+msgid "Highlightcolors|Purple"
+msgstr ""
+
+msgid "Highlightcolors|Red"
+msgstr ""
+
+msgid "Highlightcolors|Yellow"
 msgstr ""
 
 msgid "Homepage"
@@ -320,6 +365,9 @@ msgstr ""
 msgid "Session|Successful logout"
 msgstr ""
 
+msgid "Settings"
+msgstr ""
+
 msgid "User"
 msgstr ""
 
@@ -371,6 +419,18 @@ msgstr ""
 msgid "User|Activation token"
 msgstr ""
 
+msgid "User|Admin header color"
+msgstr ""
+
+msgid "User|Admin panel dark mode"
+msgstr ""
+
+msgid "User|Admin panel sidebar dark mode"
+msgstr ""
+
+msgid "User|Admin sidebar highlight color"
+msgstr ""
+
 msgid "User|Cannot be deleted"
 msgstr ""
 
@@ -390,9 +450,6 @@ msgid "User|Id"
 msgstr ""
 
 msgid "User|Login"
-msgstr ""
-
-msgid "User|Logout"
 msgstr ""
 
 msgid "User|Password"

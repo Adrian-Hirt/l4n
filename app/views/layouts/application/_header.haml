@@ -1,0 +1,47 @@
+%nav.main-header.navbar.navbar-expand-md.navbar-light.navbar-white
+  .container-fluid
+    %a.navbar-brand{href: root_path}
+      %img.brand-image.img-circle.elevation-3{:alt => "AdminLTE Logo", src: 'http://placekitten.com/100/100', :style => "opacity: .8"}/
+      %span.brand-text.font-weight-light L4N Dev
+    %button.navbar-toggler.order-1{"aria-controls" => "navbarCollapse", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarCollapse", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarCollapse.collapse.navbar-collapse.order-3
+      / Left navbar links
+      %ul.navbar-nav
+        %li.nav-item
+          = link_to _('Homepage'), root_path, class: navbar_item_classes(:home)
+        %li.nav-item
+          = link_to _('NewsPosts'), news_posts_path, class: navbar_item_classes(:news_posts)
+        %li.nav-item
+          = link_to _('Events'), events_path, class: navbar_item_classes(:events)
+      / Right navbar links
+      %ul.order-1.order-md-3.navbar-nav.ml-auto
+        / Messages Dropdown Menu
+        -# render partial: 'layouts/application/header_messages'
+        / Notifications Dropdown Menu
+        -# render partial: 'layouts/application/header_notifications'
+        %li.nav-item.dropdown
+          - if current_user
+            %a.nav-link{data: { toggle: :dropdown}, href: '#'}
+              %div{style: 'height: 100%;'}
+                = image_tag current_user.thumb_avatar, class: %i[img-circle mr-2], style: 'height: 100%;'
+                = current_user.username
+                = icon %i[fa fa-chevron-down]
+            %ul.dropdown-menu.dropdown-menu-right.border-1.shadow
+              %li
+                = link_to _('User|Edit my profile'), profile_users_path, class: %i[dropdown-item]
+              %li.dropdown-divider
+              - if can? :access, :admin_panel
+                = link_to _('Admin Panel'), admin_path, class: %i[dropdown-item]
+                %li.dropdown-divider
+              %li
+                = link_to logout_path, method: :delete, class: 'dropdown-item' do
+                  = icon %i[fa fa-sign-out-alt]
+                  = ('User|Logout')
+          - else
+            %a.nav-link.dropdown-toggle{'data-toggle' => :dropdown, href: '#'} Dropdown
+            %ul.dropdown-menu.dropdown-menu-right.border-1.shadow
+              %li
+                = link_to _('User|Login'), login_path, class: %i[dropdown-item]
+              %li
+                = link_to _('User|Sign up'), new_user_path

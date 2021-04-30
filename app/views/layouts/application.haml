@@ -7,7 +7,20 @@
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-  %body
-    = flash_messages
-    = render partial: 'layouts/header'
-    = yield
+  %body.layout-top-nav
+    .wrapper
+      = render partial: 'layouts/application/header'
+      = flash_messages
+      .content-wrapper
+        .content-header
+          .container-fluid
+            .row.mb-2
+              .col-sm-6
+                %h1.m-0= yield :page_title
+              .col-sm-6
+                %ol.breadcrumb.float-sm-right
+                  = render_breadcrumbs tag: :li, separator: "&nbsp;/&nbsp;"
+        .content.container-fluid
+          .container-fluid
+            = yield
+      = render partial: 'layouts/application/footer'

@@ -11,7 +11,7 @@ module AdminLayoutHelper
     if current_user.admin_panel_dark_mode?
       classes << 'navbar-dark'
     else
-      classes << 'navbar-light'
+      classes << 'navbar-light navbar-white'
     end
     classes
   end
