@@ -252,9 +252,9 @@ GEM
       ruby2_keywords (= 0.0.4)
     semantic_range (2.3.1)
     sexp_processor (4.15.2)
-    simple_form (5.0.3)
-      actionpack (>= 5.0)
-      activemodel (>= 5.0)
+    simple_form (5.1.0)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -317,7 +317,7 @@ DEPENDENCIES
   ruby_parser
   sass-rails (>= 6)
   schemacop (= 3.0.11)
-  simple_form (~> 5.0.2)
+  simple_form (~> 5.1.0)
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

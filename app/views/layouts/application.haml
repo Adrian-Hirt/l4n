@@ -13,7 +13,7 @@
       = flash_messages
       .content-wrapper
         .content-header
-          .container-fluid
+          .container-xl
             .row.mb-2
               .col-sm-6
                 %h1.m-0= yield :page_title
@@ -21,6 +21,6 @@
                 %ol.breadcrumb.float-sm-right
                   = render_breadcrumbs tag: :li, separator: "&nbsp;/&nbsp;"
         .content.container-fluid
-          .container-fluid
+          .container-xl
             = yield
       = render partial: 'layouts/application/footer'

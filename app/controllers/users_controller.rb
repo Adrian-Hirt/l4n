@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :check_captcha, only: %i[create]
   before_action :require_logged_in_user, only: %i[show profile update_profile]
+  layout 'login_register', only: %i[new create]
 
   def new
     op Operations::User::Create
@@ -48,6 +49,7 @@ class UsersController < ApplicationController
     return if verify_recaptcha
 
     op Operations::User::Create
+    flash.delete(:recaptcha_error)
     flash.now[:danger] = _('Session|Recaptcha failed, please try again')
     render :new
   end
