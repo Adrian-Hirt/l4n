@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
       session[:locale] = locale
       I18n.locale = locale
       current_user&.update(preferred_locale: locale)
+      flash[:success] = _('Application|Language successfully changed')
     end
     redirect_back(fallback_location: root_path)
   end
