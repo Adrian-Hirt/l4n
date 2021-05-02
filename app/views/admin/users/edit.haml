@@ -1,14 +1,15 @@
 - provide :page_title, _('Admin|Users|Edit user')
 
 .card
-  .card-body
-    = simple_form_for model, url: admin_user_path(model), remote: false do |f|
+  = simple_form_for model, url: admin_user_path(model), wrapper: :input_group do |f|
+    .card-body
       = f.input :username
       = f.input :email
-      = f.input :password
+      = f.input :password, append: icon(%i[fa fa-eye-slash fa-fw]), input_html: { data: { component: 'PasswordVisibilityToggler' } }, placeholder: _('Settings|Password|Leave blank to keep current password')
       = f.input :avatar
       - if model.avatar.present?
         = image_tag model.thumb_avatar
       %hr
       = f.input :website
+    .card-footer
       = f.save

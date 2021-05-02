@@ -1,7 +1,10 @@
 - provide :page_title, _('NewsPosts|Edit')
 
-= simple_form_for model, url: admin_news_post_path(model) do |f|
-  = f.input :title
-  = f.input :content, input_html: { data: { preview_url: preview_markdown_admin_news_posts_path } }
-  = f.input :published
-  = f.save
+.card
+  = simple_form_for model, url: admin_news_post_path(model) do |f|
+    .card-body
+      = f.input :title
+      = f.input :content, input_html: { data: { preview_url: preview_markdown_admin_news_posts_path } }
+      = f.input :published
+    .card-footer
+      = f.save

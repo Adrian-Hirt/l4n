@@ -20,6 +20,7 @@ import Translations from 'components/translations';
 import Alert from 'components/alert';
 import MarkdownEditor from 'components/markdown_editor'
 import AdminPushmenuToggler from 'components/admin_pushmenu_toggler'
+import PasswordVisibilityToggler from 'components/password_visibility_toggler'
 
 Rails.start()
 Turbolinks.start()
@@ -38,4 +39,8 @@ document.addEventListener("turbolinks:load", () => {
   Alert.hideAfterTimeout();
   MarkdownEditor.init(document.body);
   AdminPushmenuToggler.addListener();
+
+  $('[data-component="PasswordVisibilityToggler"]').each((index, element) => {
+    new PasswordVisibilityToggler(element);
+  });
 });

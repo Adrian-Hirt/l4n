@@ -1,8 +1,8 @@
 - provide :page_title, _('Event|Edit')
 
 .card
-  .card-body
-    = simple_form_for model, url: admin_event_path(model) do |f|
+  = simple_form_for model, url: admin_event_path(model) do |f|
+    .card-body
       = f.input :title
       = f.input :location
       = f.label :published
@@ -15,5 +15,5 @@
           = link_to_add_association f, :event_dates, class: 'btn btn-primary' do
             = icon %i[fa fa-plus]
             =_('Event|Add event date')
-      %hr
+    .card-footer
       = f.save

@@ -1,8 +1,8 @@
 - provide :page_title, _('Admin|Users|Create user')
 
 .card
-  .card-body
-    = simple_form_for model, url: admin_users_path do |f|
+  = simple_form_for model, url: admin_users_path do |f|
+    .card-body
       = f.input :username
       = f.input :email
       = f.input :password
@@ -12,4 +12,5 @@
         = image_tag model.thumb_avatar
       %hr
       = f.input :website
+    .card-footer
       = f.save
