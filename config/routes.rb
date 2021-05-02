@@ -15,6 +15,11 @@ Rails.application.routes.draw do
   resources :users, only: %i[new create show] do
     collection do
       get :activate
+    end
+  end
+
+  resources :settings, only: [] do
+    collection do
       match :profile, via: %i[get patch]
     end
   end

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :check_captcha, only: %i[create]
-  before_action :require_logged_in_user, only: %i[show profile update_profile]
+  before_action :require_logged_in_user, only: %i[show profile]
   layout 'login_register', only: %i[new create]
 
   def new
@@ -19,20 +19,6 @@ class UsersController < ApplicationController
   def show
     op Operations::User::Load
   end
-
-  def profile
-    op Operations::User::UpdateProfile
-
-    return unless request.patch?
-
-    if op.run
-      flash.now[:success] = _('User|Profile updated successfully')
-    else
-      flash.now[:danger] = _('User|Profile could not be updated')
-    end
-  end
-
-  def update_profile; end
 
   def activate
     run Operations::User::Activate

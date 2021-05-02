@@ -1,0 +1,20 @@
+- provide :page_title, _('Settings|Edit profile')
+
+.row
+  .col-md-3
+    = render partial: 'sidebar'
+  .col-md-9
+    .card
+      = simple_form_for model, url: profile_settings_path, wrapper: :input_group do |f|
+        .card-body
+          = f.input :username, append: icon(%i[fa fa-user])
+          = f.input :email, append: icon(%i[fa fa-envelope])
+          = f.input :password, placeholder: _('Settings|Password|Leave blank to keep current password'), append: icon(%i[fa fa-lock])
+          = f.input :password_confirmation, placeholder: _('Settings|Password confirmation|Leave blank to keep current password'), append: icon(%i[fa fa-lock])
+          = f.input :avatar
+          - if model.avatar.present?
+            = image_tag model.thumb_avatar
+          %hr
+          = f.input :website, append: icon(%i[fa fa-globe])
+        .card-footer
+          = f.save _('Settings|Update profile')
