@@ -8,10 +8,10 @@
       .card-body
         %p.login-box-msg= _('User|Sign up')
         = simple_form_for model, wrapper: :input_group do |f|
-          = f.input :username, append: icon(%i[fa fa-user]), label: false, placeholder: _('User|Username')
-          = f.input :email, append: icon(%i[fa fa-envelope]), label: false, placeholder: _('User|Email')
-          = f.input :password, append: icon(%i[fa fa-lock]), label: false, placeholder: _('User|Password')
-          = f.input :password_confirmation, append: icon(%i[fa fa-lock]), label: false, placeholder: _('User|Password confirmation')
+          = f.input :username, label: false, placeholder: _('User|Username')
+          = f.input :email, label: false, placeholder: _('User|Email')
+          = f.input :password, append: icon(%i[fa fa-eye-slash fa-fw]), label: false, placeholder: _('User|Password'), input_html: { data: { component: 'PasswordVisibilityToggler' } }
+          = f.input :password_confirmation, append: icon(%i[fa fa-eye-slash fa-fw]), label: false, placeholder: _('User|Password confirmation'), input_html: { data: { component: 'PasswordVisibilityToggler' } }
           .mb-3
             = recaptcha_tags
           .input-group.mb-3

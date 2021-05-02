@@ -17,6 +17,7 @@ import 'admin-lte'
 import 'components/confirm_dialog';
 import Translations from 'components/translations';
 import Alert from 'components/alert';
+import PasswordVisibilityToggler from 'components/password_visibility_toggler'
 
 Rails.start()
 Turbolinks.start()
@@ -30,4 +31,8 @@ document.addEventListener("turbolinks:load", () => {
   $('[data-toggle="tooltip"]').tooltip();
   $('[data-toggle="popover"]').popover();
   Alert.hideAfterTimeout();
+
+  $('[data-component="PasswordVisibilityToggler"]').each((index, element) => {
+    new PasswordVisibilityToggler(element);
+  });
 });
