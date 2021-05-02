@@ -23,10 +23,7 @@ class User < ApplicationRecord
 
   ################################### Associations #################################
   # Avatar image
-  has_one_attached :avatar do |attachable|
-    attachable.variant :thumb, resize: '100x100'
-    attachable.variant :medium, resize: '300x300'
-  end
+  has_one_attached :avatar
 
   ################################### Validations ##################################
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }
@@ -41,11 +38,11 @@ class User < ApplicationRecord
 
   ################################### Instance Methods #############################
   def thumb_avatar
-    avatar.variant(resize_to_fill: [100, 100]).processed
+    avatar.variant(resize_to_fill: [100, 100])&.processed
   end
 
   def medium_avatar
-    avatar.variant(resize_to_fill: [300, 300]).processed
+    avatar.variant(resize_to_fill: [300, 300])&.processed
   end
 
   ################################### Private Methods ##############################
