@@ -1,11 +1,22 @@
 class Event < ApplicationRecord
+  ################################### Attributes ###################################
+
+  ################################### Constants ####################################
+
+  ################################### Associations #################################
   has_many :event_dates, dependent: :destroy
   accepts_nested_attributes_for :event_dates, reject_if: :all_blank, allow_destroy: true
 
+  ################################### Validations ##################################
   validates :title, presence: true
   validates :published, inclusion: [true, false]
   validate :minimum_one_date
 
+  ################################### Scopes #######################################
+
+  ################################### Class Methods ################################
+
+  ################################### Instance Methods #############################
   def future_dates
     event_dates.future
   end
@@ -22,6 +33,7 @@ class Event < ApplicationRecord
     past_dates.order('event_dates.end_date DESC, event_dates.end_time DESC').first
   end
 
+  ################################### Private Methods ##############################
   private
 
   def minimum_one_date

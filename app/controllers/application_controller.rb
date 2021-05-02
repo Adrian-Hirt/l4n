@@ -24,6 +24,19 @@ class ApplicationController < ActionController::Base
     redirect_back(fallback_location: root_path)
   end
 
+  def toggle_dark_mode
+    # Update dark mode preference of the user
+    current_mode = current_user&.frontend_dark_mode || cookies[:_l4n_dark_mode].present? || false
+    new_mode = !current_mode
+    current_user&.update(frontend_dark_mode: new_mode)
+    if new_mode
+      cookies[:_l4n_dark_mode] = true
+    else
+      cookies.delete(:_l4n_dark_mode)
+    end
+    redirect_back(fallback_location: root_path)
+  end
+
   private
 
   def require_logged_in_user

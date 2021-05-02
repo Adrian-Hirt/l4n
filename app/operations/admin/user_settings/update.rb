@@ -3,7 +3,6 @@ module Operations::Admin::UserSettings
     schema do
       opt :user do
         opt :admin_panel_dark_mode
-        opt :admin_panel_sidebar_dark_mode
         opt :admin_sidebar_highlight_color
       end
     end

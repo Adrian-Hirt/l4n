@@ -7,7 +7,7 @@
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-  %body.layout-top-nav
+  %body.layout-top-nav{class: body_classes}
     .wrapper
       = render partial: 'layouts/application/header'
       = flash_messages

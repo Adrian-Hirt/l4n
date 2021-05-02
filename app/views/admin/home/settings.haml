@@ -6,7 +6,6 @@
       %h4.mb-3= _('Admin|Settings|Styling')
       .form-group
         = f.input :admin_panel_dark_mode, input_html: { class: 'no-validation' }
-        = f.input :admin_panel_sidebar_dark_mode, input_html: { class: 'no-validation' }
         = f.input :admin_sidebar_highlight_color, collection: User::ADMIN_SIDEBAR_HIGHLIGHT_COLORS,
           as: :select, value_method: :first, label_method: :second, include_blank: _('Highlightcolors|Default'),
           input_html: { class: 'no-validation' }

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   post 'locale/:locale', to: 'application#set_locale', as: :set_locale
+  post 'toggle_dark_mode', to: 'application#toggle_dark_mode'
 
   # Password resetting
   match '/request_password_reset', to: 'password_resets#request_password_reset', via: %i[get post]

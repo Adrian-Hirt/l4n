@@ -1,14 +1,26 @@
 class EventDate < ApplicationRecord
+  ################################### Attributes ###################################
+
+  ################################### Constants ####################################
+
+  ################################### Associations #################################
   belongs_to :event
 
+  ################################### Validations ##################################
   validates :start_date, presence: true
   validates :end_date, presence: true
   validate :no_date_overlap
   validate :end_date_at_least_start
 
+  ################################### Scopes #######################################
   scope :future, -> { where('(start_date >= ?) OR (start_date <= ? AND end_date >= ?)', Time.zone.today, Time.zone.today, Time.zone.today) }
   scope :past, -> { where('(start_date < ?) OR (start_date > ? AND end_date < ?)', Time.zone.today, Time.zone.today, Time.zone.today) }
 
+  ################################### Class Methods ################################
+
+  ################################### Instance Methods #############################
+
+  ################################### Private Methods ##############################
   private
 
   def no_date_overlap

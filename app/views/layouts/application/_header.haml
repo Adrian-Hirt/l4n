@@ -1,4 +1,4 @@
-%nav.main-header.navbar.navbar-expand-md.navbar-light.navbar-white
+%nav.main-header.navbar.navbar-expand-md{class: header_classes}
   .container-fluid
     %a.navbar-brand{href: root_path}
       %img.brand-image.img-circle.elevation-3{:alt => "AdminLTE Logo", src: 'http://placekitten.com/100/100', :style => "opacity: .8"}/
@@ -20,6 +20,9 @@
         -# render partial: 'layouts/application/header_messages'
         / Notifications Dropdown Menu
         -# render partial: 'layouts/application/header_notifications'
+        %li.nav-item
+          = link_to toggle_dark_mode_path, class: %i[nav-link], method: :post do
+            = icon %i[fa fa-adjust]
         %li.nav-item.dropdown
           %a.nav-link{data: { toggle: :dropdown}, href: '#'}
             = icon %i[fa fa-lg fa-language]
