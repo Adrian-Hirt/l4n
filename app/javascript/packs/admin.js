@@ -14,13 +14,16 @@ import "@fortawesome/fontawesome-free/js/all";
 import 'admin-lte'
 require("@nathanvda/cocoon")
 
-// Our stuff
+// Our JS stuff
 import 'components/confirm_dialog';
 import Translations from 'components/translations';
 import Alert from 'components/alert';
 import MarkdownEditor from 'components/markdown_editor'
 import AdminPushmenuToggler from 'components/admin_pushmenu_toggler'
 import PasswordVisibilityToggler from 'components/password_visibility_toggler'
+
+// Our CSS Stuff
+import 'stylesheets/admin'
 
 Rails.start()
 Turbolinks.start()

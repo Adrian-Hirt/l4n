@@ -13,11 +13,14 @@ import 'bootstrap';
 import "@fortawesome/fontawesome-free/js/all"
 import 'admin-lte'
 
-// Our stuff
+// Our JS stuff
 import 'components/confirm_dialog';
 import Translations from 'components/translations';
 import Alert from 'components/alert';
 import PasswordVisibilityToggler from 'components/password_visibility_toggler'
+
+// Our CSS Stuff
+import 'stylesheets/application'
 
 Rails.start()
 Turbolinks.start()
