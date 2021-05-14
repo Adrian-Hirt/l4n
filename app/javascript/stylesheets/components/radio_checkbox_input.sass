@@ -1,0 +1,97 @@
+input[type=checkbox],
+input[type=radio]
+  display: none
+
+.form-check
+  padding-left: 0 !important
+  & > label
+    padding-left: 29px !important
+    min-height: 22px
+    line-height: 22px
+    display: inline-block
+    position: relative
+    vertical-align: top
+    margin-bottom: 0
+    font-weight: normal
+    cursor: pointer
+    &::before
+      content: ""
+      display: inline-block
+      position: absolute
+      width: 22px
+      height: 22px
+      border: 1px solid #D3CFC8
+      border-radius: 0px
+      margin-left: -29px
+
+  & > input
+    &.radio_buttons + label::before
+      border-radius: 50%
+    &:second-child
+      position: absolute !important
+      opacity: 0
+      margin: 0
+    &:checked
+      & + label::after
+        content: ""
+        display: inline-block
+        position: absolute
+        top: 0
+        left: 0
+        width: 7px
+        height: 10px
+        border: solid 2px #fff
+        border-left: none
+        border-top: none
+        transform: translate(7.75px, 4.5px) rotate(45deg)
+
+      & + label::before
+        border: 1px solid $primary
+        background: $primary
+
+    &.checkbox-secondary:checked + label::before,
+    &.radio-secondary:checked + label::before
+      border: 1px solid $secondary
+      background: $secondary
+
+    &.checkbox-success:checked + label::before,
+    &.radio-success:checked + label::before
+      border: 1px solid $success
+      background: $success
+
+    &.checkbox-danger:checked + label::before,
+    &.radio-danger:checked + label::before
+      border: 1px solid $danger
+      background: $danger
+
+    &.checkbox-info:checked + label::before,
+    &.radio-info:checked + label::before
+      border: 1px solid $info
+      background: $info
+
+    &.checkbox-warning:checked + label::before,
+    &.radio-warning:checked + label::before
+      border: 1px solid $warning
+      background: $warning
+
+    &:not(:checked):not(:disabled):hover + label::before
+      border-width: 2px
+
+    &:not(:checked):not(:disabled):hover + label::before,
+    &:not(:checked):not(:disabled):hover + label::before
+      border-color: $primary
+    &.checkbox-secondary:not(:checked):not(:disabled):hover + label::before,
+    &.radio-secondary:not(:checked):not(:disabled):hover + label::before
+      border-color: $secondary
+    &.checkbox-success:not(:checked):not(:disabled):hover + label::before,
+    &.radio-success:not(:checked):not(:disabled):hover + label::before
+      border-color: $success
+    &.checkbox-danger:not(:checked):not(:disabled):hover + label::before,
+    &.radio-danger:not(:checked):not(:disabled):hover + label::before
+      border-color: $danger
+    &.checkbox-info:not(:checked):not(:disabled):hover + label::before,
+    &.radio-info:not(:checked):not(:disabled):hover + label::before
+      border-color: $info
+    &.checkbox-warning:not(:checked):not(:disabled):hover + label::before,
+    &.radio-warning:not(:checked):not(:disabled):hover + label::before
+      border-color: $warning

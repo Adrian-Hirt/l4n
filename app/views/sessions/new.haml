@@ -11,7 +11,7 @@
           = f.input :email, label: false, placeholder: _('User|Email')
           = f.input :password, append: icon(%i[fa fa-eye-slash fa-fw]), label: false, placeholder: _('User|Password'), input_html: { data: { component: 'PasswordVisibilityToggler' } }
           .input-group
-            = f.input :remember_me, as: :boolean, label: _('Session|Remember me')
+            = f.input :remember_me, as: :boolean, label: _('Session|Remember me'), input_html: { class: 'checkbox-primary' }
           .input-group.mb-3
             = f.save _('Session|Log in')
         %hr

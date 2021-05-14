@@ -5,6 +5,6 @@
     .card-body
       = f.input :title
       = f.input :content, input_html: { data: { preview_url: preview_markdown_admin_news_posts_path } }
-      = f.input :published
+      = f.input :published, input_html: { class: 'no-validation' }
     .card-footer
       = f.save
