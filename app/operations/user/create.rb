@@ -8,6 +8,7 @@ module Operations::User
         str! :password_confirmation
       end
       str? :'g-recaptcha-response'
+      str? :'h-captcha-response'
     end
 
     without_authorization

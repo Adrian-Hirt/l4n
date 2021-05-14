@@ -13,7 +13,7 @@
           = f.input :password, append: icon(%i[fa fa-eye-slash fa-fw]), label: false, placeholder: _('User|Password'), input_html: { data: { component: 'PasswordVisibilityToggler' } }
           = f.input :password_confirmation, append: icon(%i[fa fa-eye-slash fa-fw]), label: false, placeholder: _('User|Password confirmation'), input_html: { data: { component: 'PasswordVisibilityToggler' } }
           .mb-3
-            = recaptcha_tags
+            = hcaptcha_tags theme: (dark_mode_active? ? :dark : :light)
           .input-group.mb-3
             = f.save _('User|Create account')
         %hr

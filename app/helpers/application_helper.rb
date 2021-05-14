@@ -17,12 +17,16 @@ module ApplicationHelper
     end
   end
 
+  def dark_mode_active?
+    current_user&.frontend_dark_mode || cookies[:_l4n_dark_mode].present?
+  end
+
   def body_classes
-    'dark-mode' if current_user&.frontend_dark_mode || cookies[:_l4n_dark_mode].present?
+    'dark-mode' if dark_mode_active?
   end
 
   def header_classes
-    if current_user&.frontend_dark_mode || cookies[:_l4n_dark_mode].present?
+    if dark_mode_active?
       'navbar-dark'
     else
       'navbar-light navbar-white'

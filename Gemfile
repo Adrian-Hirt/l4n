@@ -10,7 +10,7 @@ gem 'turbolinks', '~> 5'
 # Authentication & Authorization
 gem 'bcrypt', '~> 3.1.7'
 gem 'cancancan', '~> 3.1.0'
-gem 'recaptcha', '~> 5.7'
+gem 'hcaptcha', '~> 7.1'
 
 # Session handling
 gem 'activerecord-session_store', '~> 2.0.0'
