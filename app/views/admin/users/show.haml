@@ -2,7 +2,8 @@
 
 .card
   .card-body
-    = image_tag model.thumb_avatar
+    - if current_user.thumb_avatar.present?
+      = image_tag model.thumb_avatar
     ID:
     = model.id
     %br

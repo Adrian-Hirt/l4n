@@ -1,9 +1,9 @@
 %nav.main-header.navbar.navbar-expand-md{class: header_classes}
   .container-fluid
     %a.navbar-brand{href: root_path}
-      %img.brand-image.img-circle.elevation-3{:alt => "AdminLTE Logo", src: 'http://placekitten.com/100/100', :style => "opacity: .8"}/
+      %img.brand-image.img-circle.elevation-3{alt: 'L4N Logo', src: 'http://placekitten.com/100/100', style: 'opacity: .8'}
       %span.brand-text.font-weight-light L4N Dev
-    %button.navbar-toggler.order-1{"aria-controls" => "navbarCollapse", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarCollapse", "data-toggle" => "collapse", :type => "button"}
+    %button.navbar-toggler.order-1{data: {target: '#navbarCollapse', toggle: 'collapse'}, type: "button"}
       %span.navbar-toggler-icon
     #navbarCollapse.collapse.navbar-collapse.order-3
       / Left navbar links
