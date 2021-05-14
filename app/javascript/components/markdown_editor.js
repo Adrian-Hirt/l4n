@@ -61,7 +61,6 @@ export default class MarkdownEditor extends EasyMDE {
   // Our toggle side by side uses a debounced version of the preview
   // render, as we don't want to update the preview with every update
   static debouncedToggleSideBySide(editor) {
-    console.log('aaa');
     // Call the original toggleSideBySide
     editor.toggleSideBySide();
 

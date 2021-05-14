@@ -6,7 +6,7 @@ export default class ImageCropper {
     this.canvas = container.find('canvas').get(0);
     this.imageLoader = container.find('#imageLoader').get(0);
     this.ctx = this.canvas.getContext('2d');
-    this.cropper = new Cropper(this.canvas, {aspectRatio: 1/1, preview: '.cropperPreview'});
+    this.cropper = new Cropper(this.canvas, {aspectRatio: 1/1, preview: '.cropper-preview'});
     this.uploadButton = container.find('#cropperUploadButton');
 
     this.canvas.addEventListener('ready', function () {
@@ -19,19 +19,23 @@ export default class ImageCropper {
     });
 
     this.imageLoader.addEventListener('change', (e) => {
-      console.log(this);
       var reader = new FileReader();
-      reader.onload = (event) => {
-        console.log(this);
+      reader.onload = (event) => {;
         var img = new Image();
         img.src = event.target.result;
         this.cropper.replace(img.src);
       }
       reader.readAsDataURL(e.target.files[0]);
+
+      let fileName = this.imageLoader.files[0].name;
+      this.container.find('#fileNameList').html(fileName);
+      this.uploadButton.removeClass('disabled');
     });
 
-    this.uploadButton.on('click', () => {
+    this.uploadButton.on('click', (e) => {
       this.uploadImageToUrl();
+      e.preventDefault();
+      return false;
     });
 
     var initialUrl = $(this.canvas).attr('data-initial');
@@ -74,7 +78,6 @@ export default class ImageCropper {
         processData: false,
         contentType: false,
         success() {
-          console.log('Upload success');
           Turbolinks.visit(window.location);
         },
         error() {

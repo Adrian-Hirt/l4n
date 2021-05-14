@@ -1,4 +1,5 @@
 - provide :page_title, _('Settings|Edit avatar')
+- avatar_present = current_user.avatar.present?
 
 .row
   .col-md-3
@@ -6,4 +7,23 @@
   .col-md-9
     .card
       .card-body
-        = render partial: 'components/image_uploader'
+        .image-cropper{data: { component: 'ImageCropper' }}
+          .row
+            .col-md-6
+              %h4.mb-3= _('User|Crop your avatar')
+              .canvas-wrapper
+                - url = avatar_present ? url_for(current_user.avatar) : nil
+                %canvas{width: '300', height: '300', data: {initial: url}}
+            .col-md-6
+              %h4.mb-3= _('User|Preview your avatar')
+              .cropper-preview
+          %hr
+          .input-group.mb-3
+            %input{type: 'file', id:'imageLoader', name: 'imageLoader', style: 'display: none'}
+            %span{type: 'text', class: 'form-control', id: 'fileNameList'}
+            .input-group-append
+              %label{for: 'imageLoader', class: 'btn btn-outline-primary mb-0 font-weight-normal'}= _('ImageUploader|Select file')
+          %hr
+          = button _('User|Upload avatar'), nil, html: { id: 'cropperUploadButton', data: { url: '/settings/avatar' } }, disabled: !avatar_present
+          - if avatar_present
+            = button _('User|Remove avatar'), remove_avatar_settings_path, html: { data: { confirm: _('User|Avatar remove confirmation')}, method: :delete}, color: :danger
