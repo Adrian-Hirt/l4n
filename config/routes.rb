@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   resources :settings, only: [] do
     collection do
       match :profile, via: %i[get patch]
+      match :avatar, via: %i[get patch]
+      match :remove_avatar, via: %i[delete]
     end
   end
 

@@ -11,6 +11,7 @@
     "@rails/webpacker": "5.2.1",
     "admin-lte": "^3.1",
     "bootstrap": "4.6.0",
+    "cropperjs": "^1.5.11",
     "easymde": "^2.14.0",
     "gettext.js": "^1.0.0",
     "jquery": "^3.5.1",
@@ -21,7 +22,8 @@
     "ssri": "^8.0.0",
     "sweetalert2": "^10.12.5",
     "turbolinks": "^5.2.0",
-    "webpack": "^4.0.0"
+    "webpack": "^4.0.0",
+    "webpack-cli": "3.3.12"
   },
   "version": "0.1.0",
   "devDependencies": {
@@ -29,7 +31,6 @@
     "css-loader": "^5.2.0",
     "file-loader": "^6.2.0",
     "style-loader": "^2.0.0",
-    "webpack-cli": "^4.6.0",
     "webpack-dev-server": "^3.11.2"
   }
 }

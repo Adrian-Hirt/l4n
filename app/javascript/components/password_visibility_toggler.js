@@ -2,7 +2,6 @@ export default class PasswordVisibilityToggler {
   constructor(input) {
     this.input = input;
     this.toggler = $(input).next('.input-group-append');
-console.log(this.toggler);
     this.toggler.on('click', () => {
       this.toggleState();
     });

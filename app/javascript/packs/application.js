@@ -18,6 +18,7 @@ import 'components/confirm_dialog';
 import Translations from 'components/translations';
 import Alert from 'components/alert';
 import PasswordVisibilityToggler from 'components/password_visibility_toggler'
+import ImageCropper from 'components/image_cropper';
 
 // Our CSS Stuff
 import 'stylesheets/application'
@@ -37,5 +38,9 @@ document.addEventListener("turbolinks:load", () => {
 
   $('[data-component="PasswordVisibilityToggler"]').each((index, element) => {
     new PasswordVisibilityToggler(element);
+  });
+
+  $('[data-component="ImageCropper"]').each((index, element) => {
+    new ImageCropper($(element));
   });
 });

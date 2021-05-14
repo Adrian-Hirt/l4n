@@ -11,9 +11,6 @@
           = f.input :email
           = f.input :password, placeholder: _('Settings|Password|Leave blank to keep current password'), append: icon(%i[fa fa-eye-slash fa-fw]), input_html: { data: { component: 'PasswordVisibilityToggler' } }
           = f.input :password_confirmation, placeholder: _('Settings|Password confirmation|Leave blank to keep current password'), append: icon(%i[fa fa-eye-slash fa-fw]), input_html: { data: { component: 'PasswordVisibilityToggler' } }
-          = f.input :avatar
-          - if model.avatar.present?
-            = image_tag model.thumb_avatar
           %hr
           = f.input :website
         .card-footer
