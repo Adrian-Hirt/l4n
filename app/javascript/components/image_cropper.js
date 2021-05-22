@@ -7,7 +7,7 @@ export default class ImageCropper {
     this.imageLoader = container.find('#imageLoader').get(0);
     this.ctx = this.canvas.getContext('2d');
     this.cropper = new Cropper(this.canvas, {aspectRatio: 1/1, preview: '.cropper-preview'});
-    this.uploadButton = container.find('#cropperUploadButton');
+    this.uploadButton = $('#cropperUploadButton');
 
     this.canvas.addEventListener('ready', function () {
       this.cropper.setCropBoxData({
