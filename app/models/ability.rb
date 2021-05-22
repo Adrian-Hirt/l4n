@@ -2,11 +2,12 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    can :read, NewsPost
+    can :read, Event
+
     if user&.activated?
       can :manage, :all
       can :access, :admin_panel
     end
-
-    can :read, NewsPost
   end
 end
