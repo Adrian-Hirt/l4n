@@ -16,7 +16,7 @@ gem 'hcaptcha', '~> 7.1'
 gem 'activerecord-session_store', '~> 2.0.0'
 
 # Puma
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 4.3'
 
 # Database
 gem 'pg', '~> 1.2.3'
