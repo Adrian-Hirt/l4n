@@ -98,7 +98,6 @@ ActiveRecord::Schema.define(version: 2021_05_02_134806) do
     t.string "preferred_locale"
     t.boolean "admin_panel_dark_mode", default: false, null: false
     t.string "admin_sidebar_highlight_color"
-    t.string "admin_header_color"
     t.boolean "frontend_dark_mode", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
