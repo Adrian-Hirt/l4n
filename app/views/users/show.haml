@@ -1,3 +1,35 @@
-%h3= model.username
+- provide :page_title, _('User|Profile')
 
-= image_tag model.medium_avatar
+.row
+  .col-md-3
+    .card.card-primary.card-outline
+      .card-body.box-profile
+        .text-center
+          = image_tag model.medium_avatar, class: 'profile-user-img img-fluid img-circle'
+        %h3.profile-username.text-center
+          = model.username
+        %p.text-muted.text-center
+          Admin
+    .card.card-primary
+      .card-header
+        = _('User|About me')
+      .card-body
+  .col-md-9
+    .card
+      .card-header.p2
+        %ul.nav.nav-pills
+          %li.nav-item
+            %a.nav-link.active{href: '#achievements', data: { toggle: 'tab' }}
+              = _('User|Achievements')
+          %li.nav-item
+            %a.nav-link{href: '#game-profiles', data: { toggle: 'tab' }}
+              = _('User|Game Profiles')
+      .card-body
+        .tab-content
+          .tab-pane.active#achievements
+            ADD ACHIEVEMENTS HERE
+          .tab-pane#game-profiles
+            ADD GAME PROFILES HERE
+        
+    
+
