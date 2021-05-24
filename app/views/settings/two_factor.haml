@@ -1,0 +1,17 @@
+- provide :page_title, _('Settings|2FA')
+
+.row
+  .col-md-3
+    = render partial: 'sidebar'
+  .col-md-9
+    .card
+      - if current_user.two_factor_enabled?
+        .card-body
+          Enabled!
+        .card-footer
+          = delete_button(current_user, href: remove_two_factor_settings_path, title: _('User|Remove 2FA'), html: { data: { confirm: _('User|Remove 2FA confirmation') } })
+      - else
+        .card-body
+          Not enabled!
+        .card-footer
+          = button(_('User|Add 2FA'), two_factor_activate_settings_path)

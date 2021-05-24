@@ -8,6 +8,7 @@ gem 'rails', '~> 6.1.3.2'
 gem 'turbolinks', '~> 5'
 
 # Authentication & Authorization
+gem 'active_model_otp', '~> 2.1.1'
 gem 'bcrypt', '~> 3.1.7'
 gem 'cancancan', '~> 3.1.0'
 gem 'hcaptcha', '~> 7.1'
@@ -35,6 +36,7 @@ gem 'breadcrumbs_on_rails', '~> 4.1.0'
 gem 'cocoon', '~> 1.2.15'
 gem 'haml-rails', '~> 2.0'
 gem 'kaminari', '~> 1.2.1'
+gem 'rqrcode', '~> 2.0.0'
 gem 'simple_form', '~> 5.1.0'
 
 # Code analysis and standards

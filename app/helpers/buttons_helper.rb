@@ -46,7 +46,13 @@ module ButtonsHelper
     options = get_options(opts)
     href = options[:href] || polymorphic_path(options[:namespace] << model)
     title = icon %i[fa fa-trash]
-    title += _("#{model.class.name}|Delete") unless options[:icon_only]
+    unless options[:icon_only]
+      if options[:title]
+        title += options[:title]
+      else
+        title += _("#{model.class.name}|Delete")
+      end
+    end
     html_options = {
       method: :delete,
       data:   {

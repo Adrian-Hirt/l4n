@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :set_gettext_locale
 
   include SessionsHelper
+  include RailsOps::ControllerMixin
 
   rescue_from CanCan::AccessDenied do |_exception|
     respond_to do |format|

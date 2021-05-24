@@ -24,6 +24,9 @@ Rails.application.routes.draw do
       match :profile, via: %i[get patch]
       match :avatar, via: %i[get patch]
       match :remove_avatar, via: %i[delete]
+      match :two_factor, via: %i[get post]
+      match 'two_factor/activate', via: %i[get post], to: 'settings#activate_two_factor'
+      match :remove_two_factor, via: %i[delete]
     end
   end
 
