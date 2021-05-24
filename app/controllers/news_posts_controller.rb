@@ -1,6 +1,6 @@
 class NewsPostsController < ApplicationController
   def index
-    op Operations::NewsPost::Index, page: params.dig(:page)
+    op Operations::NewsPost::Index, page: params[:page]
   end
 
   def show
