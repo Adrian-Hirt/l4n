@@ -1,0 +1,15 @@
+.d-flex.justify-content-center
+  .login-box.mx-auto
+    .card.card-outline.card-primary
+      .card-header.text-center
+        %a.h1{href: root_path}
+          %b> L4N
+          Dev
+      .card-body
+        %p.login-box-msg= _('Session|2FA authentication')
+        = simple_form_for :login do |f|
+          = f.input :two_factor_code, label: false, placeholder: _('User|2FA code from authenticator')
+          .input-group.mb-3
+            = f.save _('Session|Submit 2FA code')
+        %hr
+          = button 'Back to application', root_path, btn_icon: %i[fas fa-arrow-left], color: :secondary

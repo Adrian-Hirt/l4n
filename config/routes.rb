@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   root 'home#index'
 
   # Login / Logout
-  get '/login', to: 'sessions#new'
+  get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
+  match 'login/two_factor', to: 'sessions#two_factor', via: %i[get post]
+  delete 'logout', to: 'sessions#destroy'
 
   post 'locale/:locale', to: 'application#set_locale', as: :set_locale
   post 'toggle_dark_mode', to: 'application#toggle_dark_mode'
@@ -25,7 +26,7 @@ Rails.application.routes.draw do
       match :avatar, via: %i[get patch]
       match :remove_avatar, via: %i[delete]
       match :two_factor, via: %i[get post]
-      match 'two_factor/activate', via: %i[get post], to: 'settings#activate_two_factor'
+      match 'two_factor/activate', to: 'settings#activate_two_factor', via: %i[get post]
       match :remove_two_factor, via: %i[delete]
     end
   end

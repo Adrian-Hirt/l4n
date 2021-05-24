@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_gettext_locale
+  before_action :remove_tmp_login_hash
 
   include SessionsHelper
   include RailsOps::ControllerMixin
@@ -52,5 +53,9 @@ class ApplicationController < ActionController::Base
     locale = FastGettext.set_locale(requested_locale)
     session[:locale] = locale
     I18n.locale = locale # some weird overwriting in action-controller makes this necessary ... see I18nProxy
+  end
+
+  def remove_tmp_login_hash
+    session.delete(:tmp_login)
   end
 end
