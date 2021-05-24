@@ -28,6 +28,11 @@ class SettingsController < ApplicationController
   end
 
   def activate_two_factor
+    if current_user.two_factor_enabled?
+      flash[:danger] = _('User|2FA already activated')
+      redirect_to two_factor_settings_path
+    end
+
     op Operations::User::Activate2fa
 
     return unless request.post?
