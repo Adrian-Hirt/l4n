@@ -8,7 +8,7 @@
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
-    "@rails/webpacker": "5.2.1",
+    "@rails/webpacker": "5.4.0",
     "admin-lte": "^3.1",
     "bootstrap": "4.6.0",
     "cropperjs": "^1.5.11",
