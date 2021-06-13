@@ -6,6 +6,7 @@ module Operations::Admin::User
         opt :email
         opt :password
         opt :avatar
+        opt :website
       end
     end
 
