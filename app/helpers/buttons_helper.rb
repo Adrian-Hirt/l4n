@@ -71,7 +71,7 @@ module ButtonsHelper
     end
   end
 
-  def get_btn_class(**opts)
+  def get_btn_class(opts)
     classes = %i[btn]
     classes << (opts[:outline] ? "btn-outline-#{opts[:color]}" : "btn-#{opts[:color]}")
     classes << "btn-#{opts[:size]}" if opts[:size]
@@ -80,7 +80,7 @@ module ButtonsHelper
     classes
   end
 
-  def get_options(**opts)
+  def get_options(opts)
     DEFAULT_OPTS.deep_dup.merge(opts)
   end
 end
