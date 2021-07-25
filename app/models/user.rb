@@ -36,6 +36,9 @@ class User < ApplicationRecord
   validates :admin_panel_dark_mode, inclusion: [true, false]
   validates :frontend_dark_mode, inclusion: [true, false]
 
+  ################################### Hooks #######################################
+  before_save { self.email = email.downcase } # turns email to downcase for uniqueness
+
   ################################### Scopes #######################################
 
   ################################### Class Methods ################################

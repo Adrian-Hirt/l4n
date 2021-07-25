@@ -12,6 +12,8 @@ class Event < ApplicationRecord
   validates :published, inclusion: [true, false]
   validate :minimum_one_date
 
+  ################################### Hooks #######################################
+
   ################################### Scopes #######################################
 
   ################################### Class Methods ################################
