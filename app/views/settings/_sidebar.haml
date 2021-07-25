@@ -1,5 +1,5 @@
 .card
   .list-group.list-group-flush
-    = link_to _('Settings|Profile'), profile_settings_path, class: nav_item_classes(actions: [:profile])
-    = link_to _('Settings|Avatar'), avatar_settings_path, class: nav_item_classes(actions: [:avatar])
+    = link_to _('Settings|Profile'), settings_profile_path, class: nav_item_classes(controller: 'settings/profile')
+    = link_to _('Settings|Avatar'), settings_avatar_path, class: nav_item_classes(controller: 'settings/avatar')
     = link_to _('Settings|2FA'), settings_two_factor_path, class: nav_item_classes(controller: 'settings/two_factor')

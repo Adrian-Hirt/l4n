@@ -1,5 +1,6 @@
 module Settings
   class TwoFactorController < ApplicationController
+    before_action :require_logged_in_user
     before_action :two_factor_not_enabled, only: %i[activate_two_factor activate_two_factor_save]
 
     def index; end

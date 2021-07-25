@@ -20,20 +20,21 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :settings, only: [] do
-    collection do
-      match :profile, via: %i[get patch]
-      match :avatar, via: %i[get patch]
-      match :remove_avatar, via: %i[delete]
-    end
-  end
-
   namespace :settings do
     namespace :two_factor do
       get '/', action: :index
       get :activate
       post :activate, action: :activate_save
       delete :deactivate
+    end
+
+    namespace :profile do
+      match '/', via: %i[get patch], action: :index
+    end
+
+    namespace :avatar do
+      match '/', via: %i[get patch], action: :index
+      delete '/', action: :destroy
     end
   end
 

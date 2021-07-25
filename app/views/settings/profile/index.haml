@@ -2,10 +2,10 @@
 
 .row
   .col-md-3
-    = render partial: 'sidebar'
+    = render partial: 'settings/sidebar'
   .col-md-9
     .card
-      = simple_form_for model, url: profile_settings_path, wrapper: :input_group do |f|
+      = simple_form_for model, url: settings_profile_path, wrapper: :input_group do |f|
         .card-body
           = f.input :username
           = f.input :email
