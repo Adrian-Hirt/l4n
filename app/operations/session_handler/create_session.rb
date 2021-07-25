@@ -18,7 +18,7 @@ module Operations::SessionHandler
       # when opening a browser with this cookie.
       if osparams.remember_me
         remember_me_token = SecureRandom.urlsafe_base64(32)
-        osparams.user.update(remember_me_token: remember_me_token)
+        osparams.user.update!(remember_me_token: remember_me_token, remember_me_token_created_at: Time.zone.now)
         cookies.permanent.encrypted[Session::REMEMBER_ME_USER_COOKIE] = {
           value:     osparams.user.id,
           same_site: :lax,

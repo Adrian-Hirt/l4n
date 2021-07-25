@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   ################################### Constants ####################################
   RESET_TOKEN_EXPIRES_AFTER = 6.hours
+  REMEMBER_ME_TOKEN_EXPIRES_AFTER = 2.weeks
 
   ADMIN_SIDEBAR_HIGHLIGHT_COLORS = [
     ['primary', _('Highlightcolors|Blue')],
