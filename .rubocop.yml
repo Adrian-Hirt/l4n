@@ -28,6 +28,9 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Enabled: false
 
+Metrics/PerceivedComplexity:
+  Enabled: false
+
 Style/ClassAndModuleChildren:
   Enabled: false
 
