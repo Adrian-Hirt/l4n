@@ -6,7 +6,8 @@ class User < ApplicationRecord
   has_secure_password :remember_me_token, validations: false
   has_secure_password :password_reset_token, validations: false
 
-  has_one_time_password
+  has_one_time_password one_time_backup_codes: true
+  serialize :otp_backup_codes, JSON
 
   ################################### Constants ####################################
   RESET_TOKEN_EXPIRES_AFTER = 6.hours

@@ -2,4 +2,4 @@
   .list-group.list-group-flush
     = link_to _('Settings|Profile'), profile_settings_path, class: nav_item_classes(actions: [:profile])
     = link_to _('Settings|Avatar'), avatar_settings_path, class: nav_item_classes(actions: [:avatar])
-    = link_to _('Settings|2FA'), two_factor_settings_path, class: nav_item_classes(actions: %i[two_factor activate_two_factor])
+    = link_to _('Settings|2FA'), settings_two_factor_path, class: nav_item_classes(controller: 'settings/two_factor')
