@@ -1,0 +1,14 @@
+- provide :page_title, _('Settings|Account')
+
+.row
+  .col-md-3
+    = render partial: 'settings/sidebar'
+  .col-md-9
+    .card
+      .card-body
+        %h5= _('Settings|Export account info')
+        TBD
+        %hr
+        %h5.text-danger= _('Settings|Destroy account')
+        %p= _('Settings|Destroy account warning')
+        = button _('Settings|Destroy my account'), settings_account_destroy_path, color: :danger

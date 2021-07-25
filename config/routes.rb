@@ -22,19 +22,25 @@ Rails.application.routes.draw do
 
   namespace :settings do
     namespace :two_factor do
-      get '/', action: :index
+      get :/, action: :index
       get :activate
       post :activate, action: :activate_save
       delete :deactivate
     end
 
     namespace :profile do
-      match '/', via: %i[get patch], action: :index
+      match :/, via: %i[get patch], action: :index
     end
 
     namespace :avatar do
-      match '/', via: %i[get patch], action: :index
-      delete '/', action: :destroy
+      match :/, via: %i[get patch], action: :index
+      delete :/, action: :destroy
+    end
+
+    namespace :account do
+      get :/, action: :index
+      get :destroy, action: :init_destroy_account
+      post :destroy, action: :destroy_account
     end
   end
 
