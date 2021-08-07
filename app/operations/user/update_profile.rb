@@ -13,6 +13,8 @@ module Operations::User
 
     model ::User
 
+    model_authorization_action :update_profile
+
     private
 
     def build_model

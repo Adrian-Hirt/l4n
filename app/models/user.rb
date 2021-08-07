@@ -11,7 +11,6 @@ class User < ApplicationRecord
 
   ################################### Constants ####################################
   RESET_TOKEN_EXPIRES_AFTER = 6.hours
-  REMEMBER_ME_TOKEN_EXPIRES_AFTER = 2.weeks
 
   ADMIN_SIDEBAR_HIGHLIGHT_COLORS = [
     ['primary', _('Highlightcolors|Blue')],
@@ -25,6 +24,12 @@ class User < ApplicationRecord
     ['fuchsia', _('Highlightcolors|Fuchsia')]
   ].freeze
 
+  PERMISSION_FIELDS = %i[
+    user_admin_permission
+    news_admin_permission
+    event_admin_permission
+  ].freeze
+
   ################################### Associations #################################
   # Avatar image
   has_one_attached :avatar
@@ -35,6 +40,11 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   validates :admin_panel_dark_mode, inclusion: [true, false]
   validates :frontend_dark_mode, inclusion: [true, false]
+
+  # Permission booleans
+  PERMISSION_FIELDS.each do |field|
+    validates field, inclusion: [true, false]
+  end
 
   ################################### Hooks #######################################
   before_save { self.email = email.downcase } # turns email to downcase for uniqueness
@@ -54,6 +64,10 @@ class User < ApplicationRecord
 
   def destroyable?
     true
+  end
+
+  def any_admin_permission?
+    User::PERMISSION_FIELDS.any? { |permission| send(permission) }
   end
 
   ################################### Private Methods ##############################
