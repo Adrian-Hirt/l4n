@@ -12,18 +12,6 @@ class User < ApplicationRecord
   ################################### Constants ####################################
   RESET_TOKEN_EXPIRES_AFTER = 6.hours
 
-  ADMIN_SIDEBAR_HIGHLIGHT_COLORS = [
-    ['primary', _('Highlightcolors|Blue')],
-    ['secondary', _('Highlightcolors|Grey')],
-    ['warning', _('Highlightcolors|Yellow')],
-    ['danger', _('Highlightcolors|Red')],
-    ['success', _('Highlightcolors|Green')],
-    ['lime', _('Highlightcolors|Lime')],
-    ['purple', _('Highlightcolors|Purple')],
-    ['orange', _('Highlightcolors|Orange')],
-    ['fuchsia', _('Highlightcolors|Fuchsia')]
-  ].freeze
-
   PERMISSION_FIELDS = %i[
     user_admin_permission
     news_admin_permission

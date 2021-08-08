@@ -17,13 +17,7 @@ module AdminLayoutHelper
   end
 
   def admin_sidebar_classes
-    classes = []
     sidebar_mode = current_user.use_dark_mode? ? 'sidebar-dark' : 'sidebar-light'
-    if current_user.admin_sidebar_highlight_color.present?
-      classes << "#{sidebar_mode}-#{current_user.admin_sidebar_highlight_color}"
-    else
-      classes << "#{sidebar_mode}-primary"
-    end
-    classes
+    ["#{sidebar_mode}-primary"]
   end
 end
