@@ -4,9 +4,6 @@ module Operations::NewsPost
       req :id
     end
 
-    # No auth needed
-    without_authorization
-
     model ::NewsPost
   end
 end

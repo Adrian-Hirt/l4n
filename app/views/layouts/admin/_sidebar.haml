@@ -41,5 +41,10 @@
                 %a.nav-link{href: archive_admin_events_path, class: active_link_classes(:events, actions: %i[archive])}
                   %i.nav-icon.far.fa-circle
                   %p= _('Admin|Events|Archive')
+        - if can? :manage, FeatureFlag
+          %li.nav-item
+            %a.nav-link{href: admin_feature_flags_path, class: active_link_classes(:feature_flags)}
+              %i.nav-icon.fas.fa-flag
+              %p= _('Admin|Feature Flags')
     / /.sidebar-menu
   / /.sidebar

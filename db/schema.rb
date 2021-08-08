@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_08_103134) do
+ActiveRecord::Schema.define(version: 2021_08_08_132921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,14 @@ ActiveRecord::Schema.define(version: 2021_08_08_103134) do
     t.boolean "published", default: false, null: false
   end
 
+  create_table "feature_flags", force: :cascade do |t|
+    t.string "key"
+    t.boolean "enabled", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["key"], name: "index_feature_flags_on_key"
+  end
+
   create_table "news_posts", force: :cascade do |t|
     t.string "title", null: false
     t.text "content"
@@ -104,6 +112,7 @@ ActiveRecord::Schema.define(version: 2021_08_08_103134) do
     t.boolean "user_admin_permission", default: false, null: false
     t.boolean "news_admin_permission", default: false, null: false
     t.boolean "event_admin_permission", default: false, null: false
+    t.boolean "system_admin_permission", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end

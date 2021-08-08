@@ -60,5 +60,14 @@ Rails.application.routes.draw do
         get :archive
       end
     end
+
+    resources :feature_flags, only: %i[index] do
+      collection do
+        post :reinitialize
+      end
+      member do
+        post :toggle
+      end
+    end
   end
 end
