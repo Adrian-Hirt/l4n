@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_07_151402) do
+ActiveRecord::Schema.define(version: 2021_08_08_102601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,9 +96,8 @@ ActiveRecord::Schema.define(version: 2021_08_07_151402) do
     t.string "username", null: false
     t.string "website"
     t.string "preferred_locale"
-    t.boolean "admin_panel_dark_mode", default: false, null: false
     t.string "admin_sidebar_highlight_color"
-    t.boolean "frontend_dark_mode", default: false, null: false
+    t.boolean "use_dark_mode", default: false, null: false
     t.string "otp_secret_key"
     t.boolean "two_factor_enabled", default: false
     t.text "otp_backup_codes"

@@ -14,6 +14,9 @@
       %li.nav-item
         %a.nav-link{ data: { widget: :fullscreen }, href: '#', role: :button }
           %i.fas.fa-expand-arrows-alt
+    %li.nav-item
+      = link_to toggle_dark_mode_path, class: %i[nav-link], method: :post do
+        = icon %i[fa fa-adjust]
     %li.nav-item.dropdown
       %a.nav-link{data: { toggle: :dropdown}, href: '#'}
         = icon %i[fa fa-lg fa-language]

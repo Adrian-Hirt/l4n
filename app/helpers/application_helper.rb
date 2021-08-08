@@ -18,7 +18,7 @@ module ApplicationHelper
   end
 
   def dark_mode_active?
-    current_user&.frontend_dark_mode || cookies[:_l4n_dark_mode].present?
+    current_user&.use_dark_mode || cookies[:_l4n_dark_mode].present?
   end
 
   def body_classes

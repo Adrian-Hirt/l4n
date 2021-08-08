@@ -38,8 +38,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, presence: true, length: { minimum: 10, maximum: 72 }, confirmation: true, if: -> { password.present? || new_record? || needs_password_set? }
   validates :username, presence: true, uniqueness: { case_sensitive: false }
-  validates :admin_panel_dark_mode, inclusion: [true, false]
-  validates :frontend_dark_mode, inclusion: [true, false]
+  validates :use_dark_mode, inclusion: [true, false]
 
   # Permission booleans
   PERMISSION_FIELDS.each do |field|
