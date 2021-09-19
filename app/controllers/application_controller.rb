@@ -6,12 +6,10 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include RailsOps::ControllerMixin
 
-  rescue_from CanCan::AccessDenied do |_exception|
-    respond_to do |format|
-      format.json { head :not_found }
-      format.html { head :not_found }
-      format.js   { head :not_found }
-    end
+  # Fail with a 404 as we don't want to expose possible existing,
+  # but not accessible entities
+  rescue_from CanCan::AccessDenied do |exception|
+    fail ActiveRecord::RecordNotFound
   end
 
   def set_locale
