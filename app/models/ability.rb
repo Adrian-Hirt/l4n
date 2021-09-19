@@ -38,14 +38,9 @@ class Ability
     # admin permission
     can :access, :admin_panel if user.any_admin_permission?
 
-    can :update_profile, User do |m|
-      m == user
-    end
-
-    can :update_profile, User do |m|
-      m == user
-    end
-
+    ##############################################################
+    # User profile
+    ##############################################################
     can :destroy_my_user, User do |m|
       m == user
     end
