@@ -16,9 +16,6 @@ require_relative 'test_data_factory'
 class ApplicationTest < ActiveSupport::TestCase
   include ::TestDataFactory
 
-  # Run tests in parallel with specified workers
-  parallelize(workers: :number_of_processors)
-
   def store(key, value)
     test_data[key] = value
   end
