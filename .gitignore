@@ -48,3 +48,6 @@ app.po.time_stamp
 
 # Installed gems
 vendor/bundle
+
+# Test coverage
+coverage

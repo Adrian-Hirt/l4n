@@ -68,3 +68,8 @@ group :development do
   gem 'gettext', '>=3.0.2', require: false
   gem 'ruby_parser', require: false
 end
+
+# Test gems
+group :test do
+  gem 'simplecov', '~> 0.21.2', require: false
+end
