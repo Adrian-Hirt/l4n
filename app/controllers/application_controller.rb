@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   # Fail with a 404 as we don't want to expose possible existing,
   # but not accessible entities
-  rescue_from CanCan::AccessDenied do |exception|
+  rescue_from CanCan::AccessDenied do |_exception|
     fail ActiveRecord::RecordNotFound
   end
 
