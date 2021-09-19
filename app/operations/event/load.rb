@@ -4,9 +4,6 @@ module Operations::Event
       req :id
     end
 
-    # No auth needed
-    without_authorization
-
     model ::Event
   end
 end

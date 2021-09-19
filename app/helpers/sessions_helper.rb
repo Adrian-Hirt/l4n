@@ -8,7 +8,7 @@ module SessionsHelper
 
         if temp_user
           token_valid = temp_user.authenticate_remember_me_token(cookies[Session::REMEMBER_ME_TOKEN_COOKIE])
-          token_expired = (temp_user.remember_me_token_created_at + User::REMEMBER_ME_TOKEN_EXPIRES_AFTER) <= Time.zone.now
+          token_expired = (temp_user.remember_me_token_created_at + Session::REMEMBER_ME_TOKEN_EXPIRES_AFTER) <= Time.zone.now
 
           if token_valid && !token_expired
             reset_session

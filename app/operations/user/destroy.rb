@@ -7,7 +7,7 @@ module Operations::User
       end
     end
 
-    without_authorization
+    model_authorization_action :destroy_my_user
 
     model ::User
 

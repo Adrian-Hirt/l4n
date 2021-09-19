@@ -8,6 +8,10 @@ module Operations::Admin::User
         opt :password
         opt :website
         opt :avatar
+        opt :user_admin_permission
+        opt :news_admin_permission
+        opt :event_admin_permission
+        opt :system_admin_permission
       end
     end
 

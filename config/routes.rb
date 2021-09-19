@@ -48,8 +48,7 @@ Rails.application.routes.draw do
   resources :events, only: %i[index show]
 
   namespace :admin do
-    get '/',          to: 'home#dashboard'
-    match 'settings', to: 'home#settings', via: %i[get patch]
+    get '/', to: 'home#dashboard'
     resources :users
     resources :news, controller: :news_posts, as: :news_posts do
       collection do
@@ -59,6 +58,15 @@ Rails.application.routes.draw do
     resources :events do
       collection do
         get :archive
+      end
+    end
+
+    resources :feature_flags, only: %i[index] do
+      collection do
+        post :reinitialize
+      end
+      member do
+        post :toggle
       end
     end
   end

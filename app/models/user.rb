@@ -11,18 +11,12 @@ class User < ApplicationRecord
 
   ################################### Constants ####################################
   RESET_TOKEN_EXPIRES_AFTER = 6.hours
-  REMEMBER_ME_TOKEN_EXPIRES_AFTER = 2.weeks
 
-  ADMIN_SIDEBAR_HIGHLIGHT_COLORS = [
-    ['primary', _('Highlightcolors|Blue')],
-    ['secondary', _('Highlightcolors|Grey')],
-    ['warning', _('Highlightcolors|Yellow')],
-    ['danger', _('Highlightcolors|Red')],
-    ['success', _('Highlightcolors|Green')],
-    ['lime', _('Highlightcolors|Lime')],
-    ['purple', _('Highlightcolors|Purple')],
-    ['orange', _('Highlightcolors|Orange')],
-    ['fuchsia', _('Highlightcolors|Fuchsia')]
+  PERMISSION_FIELDS = %i[
+    user_admin_permission
+    news_admin_permission
+    event_admin_permission
+    system_admin_permission
   ].freeze
 
   ################################### Associations #################################
@@ -33,8 +27,12 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, presence: true, length: { minimum: 10, maximum: 72 }, confirmation: true, if: -> { password.present? || new_record? || needs_password_set? }
   validates :username, presence: true, uniqueness: { case_sensitive: false }
-  validates :admin_panel_dark_mode, inclusion: [true, false]
-  validates :frontend_dark_mode, inclusion: [true, false]
+  validates :use_dark_mode, inclusion: [true, false]
+
+  # Permission booleans
+  PERMISSION_FIELDS.each do |field|
+    validates field, inclusion: [true, false]
+  end
 
   ################################### Hooks #######################################
   before_save { self.email = email.downcase } # turns email to downcase for uniqueness
@@ -54,6 +52,10 @@ class User < ApplicationRecord
 
   def destroyable?
     true
+  end
+
+  def any_admin_permission?
+    User::PERMISSION_FIELDS.any? { |permission| send(permission) }
   end
 
   ################################### Private Methods ##############################

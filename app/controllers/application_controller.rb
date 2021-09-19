@@ -8,9 +8,9 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |_exception|
     respond_to do |format|
-      format.json { head :forbidden, content_type: 'text/html' }
-      format.html { head :forbidden }
-      format.js   { head :forbidden, content_type: 'text/html' }
+      format.json { head :not_found }
+      format.html { head :not_found }
+      format.js   { head :not_found }
     end
   end
 
@@ -28,9 +28,9 @@ class ApplicationController < ActionController::Base
 
   def toggle_dark_mode
     # Update dark mode preference of the user
-    current_mode = current_user&.frontend_dark_mode || cookies[:_l4n_dark_mode].present? || false
+    current_mode = current_user&.use_dark_mode || cookies[:_l4n_dark_mode].present? || false
     new_mode = !current_mode
-    current_user&.update(frontend_dark_mode: new_mode)
+    current_user&.update(use_dark_mode: new_mode)
     if new_mode
       cookies[:_l4n_dark_mode] = true
     else

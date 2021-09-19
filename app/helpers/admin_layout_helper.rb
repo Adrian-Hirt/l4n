@@ -2,13 +2,13 @@ module AdminLayoutHelper
   def admin_body_classes
     classes = []
     classes << 'sidebar-collapse' if cookies['_l4n_admin_sidebar_collapsed'].present?
-    classes << 'dark-mode' if current_user.admin_panel_dark_mode?
+    classes << 'dark-mode' if current_user.use_dark_mode?
     classes
   end
 
   def admin_header_classes
     classes = []
-    if current_user.admin_panel_dark_mode?
+    if current_user.use_dark_mode?
       classes << 'navbar-dark'
     else
       classes << 'navbar-light navbar-white'
@@ -17,13 +17,7 @@ module AdminLayoutHelper
   end
 
   def admin_sidebar_classes
-    classes = []
-    sidebar_mode = current_user.admin_panel_dark_mode? ? 'sidebar-dark' : 'sidebar-light'
-    if current_user.admin_sidebar_highlight_color.present?
-      classes << "#{sidebar_mode}-#{current_user.admin_sidebar_highlight_color}"
-    else
-      classes << "#{sidebar_mode}-primary"
-    end
-    classes
+    sidebar_mode = current_user.use_dark_mode? ? 'sidebar-dark' : 'sidebar-light'
+    ["#{sidebar_mode}-primary"]
   end
 end

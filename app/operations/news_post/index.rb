@@ -1,7 +1,8 @@
 module Operations::NewsPost
   class Index < RailsOps::Operation
-    # No auth needed
-    without_authorization
+    policy :on_init do
+      authorize! :read, NewsPost
+    end
 
     schema3 do
       str? :page

@@ -14,6 +14,9 @@
       %li.nav-item
         %a.nav-link{ data: { widget: :fullscreen }, href: '#', role: :button }
           %i.fas.fa-expand-arrows-alt
+    %li.nav-item
+      = link_to toggle_dark_mode_path, class: %i[nav-link], method: :post do
+        = icon %i[fa fa-adjust]
     %li.nav-item.dropdown
       %a.nav-link{data: { toggle: :dropdown}, href: '#'}
         = icon %i[fa fa-lg fa-language]
@@ -33,10 +36,6 @@
           = current_user.username
           = icon %i[fa fa-chevron-down]
       .dropdown-menu.dropdown-menu-lg.dropdown-menu-right
-        %a.dropdown-item{href: admin_settings_path}
-          = icon %i[fa fa-cog]
-          = _('Admin|Settings')
-        .dropdown-divider
         %a.dropdown-item{href: root_path}
           = icon %i[fa fa-home]
           = _('AdminPanel|Back to application')

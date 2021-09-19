@@ -10,10 +10,12 @@
       %ul.navbar-nav
         %li.nav-item
           = link_to _('Homepage'), root_path, class: navbar_item_classes(:home)
-        %li.nav-item
-          = link_to _('NewsPosts'), news_posts_path, class: navbar_item_classes(:news_posts)
-        %li.nav-item
-          = link_to _('Events'), events_path, class: navbar_item_classes(:events)
+        - if can? :read, NewsPost
+          %li.nav-item
+            = link_to _('NewsPosts'), news_posts_path, class: navbar_item_classes(:news_posts)
+        - if can? :read, Event
+          %li.nav-item
+            = link_to _('Events'), events_path, class: navbar_item_classes(:events)
       / Right navbar links
       %ul.order-1.order-md-3.navbar-nav.ml-auto
         / Messages Dropdown Menu
