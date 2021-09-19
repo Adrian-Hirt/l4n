@@ -11,9 +11,10 @@ module Operations::User
       end
     end
 
-    model ::User
+    # Uses context user, so no need to authorize
+    without_authorization
 
-    model_authorization_action :update_profile
+    model ::User
 
     private
 
