@@ -9,9 +9,8 @@ import Turbolinks from "turbolinks"
 import "channels"
 
 // Libraries
-import 'bootstrap';
+// import 'bootstrap';
 import "@fortawesome/fontawesome-free/js/all";
-import 'admin-lte'
 require("@nathanvda/cocoon")
 
 // Our JS stuff
