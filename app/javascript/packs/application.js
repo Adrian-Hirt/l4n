@@ -9,7 +9,7 @@ import Turbolinks from "turbolinks"
 import "channels"
 
 // Libraries
-// import 'bootstrap';
+import 'bootstrap';
 import "@fortawesome/fontawesome-free/js/all"
 
 // Our JS stuff
