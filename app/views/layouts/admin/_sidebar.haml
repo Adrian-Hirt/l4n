@@ -1,7 +1,13 @@
 #sidebar.d-flex.flex-column.flex-shrink-0
-  %a.brand{href: admin_path}
-    %img{alt: 'Application Logo', src: 'http://placekitten.com/100/100'}
-    %span.brand-text= _('ApplicationName')
+  %a.brand{href: admin_path}= _('ApplicationName')
+  .current-user-info
+    .current-user-avatar
+      - if current_user.thumb_avatar.present?
+        = image_tag current_user.thumb_avatar
+      - else
+        = icon %i[fas fa-user mr-2]
+    .current-user-details
+      = current_user.username
   %ul.nav.nav-pills.flex-column.sidenav
     %li.nav-item
       %a.nav-link{href: admin_path, class: active_link_classes(:home)}
@@ -22,12 +28,12 @@
             %span= _('Admin|NewsPosts')
     - if can? :manage, Event
       %li.nav-item.dropdown
-        %a.nav-link{data: {'bs-toggle' => 'collapse'}, href: '#events-collapse', class: active_link_classes(:events)}
+        %a.nav-link.collapse-link{data: {'bs-toggle' => 'collapse'}, href: '#events-collapse', class: sidenav_collapser_classes(:events)}
           %span
             %i.nav-icon.fas.fa-calendar-alt
             %span
               = _('Admin|Events')
-              %i.right.fas.fa-angle-right
+          %i.right.fas.fa-angle-right
         #events-collapse.collapse{class: sidenav_collapse_classes(:events), data: { 'bs-parent' => '.sidenav' }}
           %ul.nav.nav-pills.flex-column
             %li.nav-item

@@ -1,20 +1,47 @@
 #sidebar
-  background-color: $dark
-  color: $white !important
   width: 270px
+  color: $sidenav-color
+  background: linear-gradient(0deg, $sidenav-bg-color, $sidenav-bg-color), url('./../images/sidenav-bg.jpg')
+  background-size: cover
   a
-    color: $white !important
+    color: $sidenav-color !important
   .brand
-    padding: map-get($spacers, 2)
+    padding: map-get($spacers, 3)
     text-decoration: none
-    border-bottom: 1px solid $secondary
-    img
-      width: 50px
-      height: 50px
-      border-radius: 25px
+    border-bottom: 1px solid $sidenav-lighter-bg-color
+    font-weight: bold
+  .current-user-info
+    padding: map-get($spacers, 3)
+    border-bottom: 1px solid $sidenav-lighter-bg-color
+    display: flex
+    .current-user-avatar
+      img
+        height: 65px
+        width: 65px
+        border-radius: 5px
+    .current-user-details
+      margin-left: map-get($spacers, 3)
   .sidenav
     margin-top: map-get($spacers, 2)
+    font-weight: $sidenav-font-weight
+    font-size: $sidenav-font-size
     .nav-link
       border-radius: 0
       display: flex
       align-items: center
+      justify-content: space-between
+      &.active
+        background-color: unset
+        color: white !important
+      &.collapse-link
+        .fa-angle-right
+          transition: transform 0.25s ease
+        &:not(.collapsed)
+          .fa-angle-right
+            transform: rotate(90deg)
+    .collapse,
+    .collapsing
+      background-color: $sidenav-lighter-bg-color
+    .collapse
+      ul
+        margin-left: map-get($spacers, 3)

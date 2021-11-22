@@ -7,10 +7,12 @@ module AdminSidebarHelper
     'active'
   end
 
-  def dropdown_header_classes(name)
-    return unless name.to_s == controller_name
-
-    'menu-open'
+  def sidenav_collapser_classes(name)
+    if name.to_s == controller_name
+      'active'
+    else
+      'collapsed'
+    end
   end
 
   def sidenav_collapse_classes(name)
