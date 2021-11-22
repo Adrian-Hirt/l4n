@@ -7,25 +7,28 @@
     = csp_meta_tag
     = stylesheet_pack_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'admin', 'data-turbolinks-track': 'reload'
-  %body.sidebar-mini.layout-fixed.layout-navbar-fixed{ class: admin_body_classes }
-    .wrapper
-      = render partial: "layouts/admin/header"
-      = render partial: "layouts/admin/sidebar"
-      = flash_messages
-      .content-wrapper
-        .content-header
-          .container-fluid
-            .row.mb-2
-              .col-sm-6
-                %h1.m-0= yield :page_title
-              / /.col
-              .col-sm-6
-                %ol.breadcrumb.float-sm-right
-                  = render_breadcrumbs tag: :li, separator: "&nbsp;/&nbsp;"
-              / /.col
-            / /.row
-          / /.container-fluid
-        .content.container-fluid
-          .container-fluid
-            = yield
-      = render partial: "layouts/admin/footer"
+  %body
+    -# = render partial: "layouts/admin/header"
+    %main.d-flex
+      = render partial: 'layouts/admin/sidebar'
+      .content
+        = yield
+
+      -# = flash_messages
+      -# .content-wrapper
+      -#   .content-header
+      -#     .container-fluid
+      -#       .row.mb-2
+      -#         .col-sm-6
+      -#           %h1.m-0= yield :page_title
+      -#         / /.col
+      -#         .col-sm-6
+      -#           %ol.breadcrumb.float-sm-right
+      -#             = render_breadcrumbs tag: :li, separator: "&nbsp;/&nbsp;"
+      -#         / /.col
+      -#       / /.row
+      -#     / /.container-fluid
+      -#   .content.container-fluid
+      -#     .container-fluid
+      -#       = yield
+      -# = render partial: "layouts/admin/footer"

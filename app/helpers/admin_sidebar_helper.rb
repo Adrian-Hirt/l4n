@@ -13,9 +13,9 @@ module AdminSidebarHelper
     'menu-open'
   end
 
-  def dropdown_body_style(name)
+  def sidenav_collapse_classes(name)
     return unless name.to_s == controller_name
 
-    'display: block'
+    'show'
   end
 end
