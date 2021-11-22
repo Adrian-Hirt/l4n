@@ -1,54 +1,69 @@
 #sidebar.d-flex.flex-column.flex-shrink-0
-  %a.brand{href: admin_path}= _('ApplicationName')
-  .current-user-info
-    .current-user-avatar
-      - if current_user.thumb_avatar.present?
-        = image_tag current_user.thumb_avatar
-      - else
-        = icon %i[fas fa-user mr-2]
-    .current-user-details
-      = current_user.username
-  %ul.nav.nav-pills.flex-column.sidenav
-    %li.nav-item
-      %a.nav-link{href: admin_path, class: active_link_classes(:home)}
-        %span
-          %i.nav-icon.fas.fa-tachometer-alt
-          %span.nav-item-text= _('Admin|Dashboard')
-    - if can? :manage, User
+  .sidebar-content
+    %a.brand{href: admin_path}= _('ApplicationName')
+    .current-user-info
+      .current-user-avatar
+        - if current_user.thumb_avatar.present?
+          = image_tag current_user.thumb_avatar
+        - else
+          = icon %i[fas fa-user mr-2]
+      .current-user-details
+        = current_user.username
+    %ul.nav.nav-pills.flex-column.sidenav
       %li.nav-item
-        %a.nav-link{href: admin_users_path, class: active_link_classes(:users)}
+        %a.nav-link{href: admin_path, class: active_link_classes(:home)}
           %span
-            %i.nav-icon.fas.fa-users
-            %span= _('Admin|Users')
-    - if can? :manage, NewsPost
-      %li.nav-item
-        %a.nav-link{href: admin_news_posts_path, class: active_link_classes(:news_posts)}
-          %span
-            %i.nav-icon.fas.fa-newspaper
-            %span= _('Admin|NewsPosts')
-    - if can? :manage, Event
-      %li.nav-item.dropdown
-        %a.nav-link.collapse-link{data: {'bs-toggle' => 'collapse'}, href: '#events-collapse', class: sidenav_collapser_classes(:events)}
-          %span
-            %i.nav-icon.fas.fa-calendar-alt
+            %i.nav-icon.fas.fa-tachometer-alt
+            %span.nav-item-text= _('Admin|Dashboard')
+      - if can? :manage, User
+        %li.nav-item
+          %a.nav-link{href: admin_users_path, class: active_link_classes(:users)}
             %span
-              = _('Admin|Events')
-          %i.right.fas.fa-angle-right
-        #events-collapse.collapse{class: sidenav_collapse_classes(:events), data: { 'bs-parent' => '.sidenav' }}
-          %ul.nav.nav-pills.flex-column
-            %li.nav-item
-              %a.nav-link{href: admin_events_path, class: active_link_classes(:events, excluded_actions: %i[archive])}
-                %span
-                  %i.nav-icon.far.fa-circle
-                  %span= _('Admin|Events|Events')
-            %li.nav-item
-              %a.nav-link{href: archive_admin_events_path, class: active_link_classes(:events, actions: %i[archive])}
-                %span
-                  %i.nav-icon.far.fa-circle
-                  %span= _('Admin|Events|Archive')
-    - if can? :manage, FeatureFlag
-      %li.nav-item
-        %a.nav-link{href: admin_feature_flags_path, class: active_link_classes(:feature_flags)}
-          %span
-            %i.nav-icon.fas.fa-flag
-            %span= _('Admin|Feature Flags')
+              %i.nav-icon.fas.fa-users
+              %span= _('Admin|Users')
+      - if can? :manage, NewsPost
+        %li.nav-item
+          %a.nav-link{href: admin_news_posts_path, class: active_link_classes(:news_posts)}
+            %span
+              %i.nav-icon.fas.fa-newspaper
+              %span= _('Admin|NewsPosts')
+      - if can? :manage, Event
+        %li.nav-item.dropdown
+          %a.nav-link.collapse-link{data: {'bs-toggle' => 'collapse'}, href: '#events-collapse', class: sidenav_collapser_classes(:events)}
+            %span
+              %i.nav-icon.fas.fa-calendar-alt
+              %span
+                = _('Admin|Events')
+            %i.right.fas.fa-angle-right
+          #events-collapse.collapse{class: sidenav_collapse_classes(:events), data: { 'bs-parent' => '.sidenav' }}
+            %ul.nav.nav-pills.flex-column
+              %li.nav-item
+                %a.nav-link{href: admin_events_path, class: active_link_classes(:events, excluded_actions: %i[archive])}
+                  %span
+                    %i.nav-icon.far.fa-circle
+                    %span= _('Admin|Events|Events')
+              %li.nav-item
+                %a.nav-link{href: archive_admin_events_path, class: active_link_classes(:events, actions: %i[archive])}
+                  %span
+                    %i.nav-icon.far.fa-circle
+                    %span= _('Admin|Events|Archive')
+      - if can? :manage, FeatureFlag
+        %li.nav-item
+          %a.nav-link{href: admin_feature_flags_path, class: active_link_classes(:feature_flags)}
+            %span
+              %i.nav-icon.fas.fa-flag
+              %span= _('Admin|Feature Flags')
+  .sidebar-footer
+    %div
+      = link_to '#' do
+        = icon %i[fas fa-bell]
+    %div
+      = link_to '#' do
+        = icon %i[fas fa-envelope]
+    %div
+      = link_to '#' do
+        = icon %i[fas fa-cog]
+    %div
+      = link_to logout_path, method: :delete  do
+        = icon %i[fas fa-power-off]
+

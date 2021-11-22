@@ -3,45 +3,74 @@
   color: $sidenav-color
   background: linear-gradient(0deg, $sidenav-bg-color, $sidenav-bg-color), url('./../images/sidenav-bg.jpg')
   background-size: cover
-  a
-    color: $sidenav-color !important
-  .brand
-    padding: map-get($spacers, 3)
-    text-decoration: none
-    border-bottom: 1px solid $sidenav-lighter-bg-color
-    font-weight: bold
-  .current-user-info
-    padding: map-get($spacers, 3)
-    border-bottom: 1px solid $sidenav-lighter-bg-color
-    display: flex
-    .current-user-avatar
-      img
-        height: 65px
-        width: 65px
-        border-radius: 5px
-    .current-user-details
-      margin-left: map-get($spacers, 3)
-  .sidenav
-    margin-top: map-get($spacers, 2)
-    font-weight: $sidenav-font-weight
-    font-size: $sidenav-font-size
-    .nav-link
-      border-radius: 0
+  position: relative
+  .sidebar-content
+    height: calc(100% - 35px)
+    overflow-y: auto
+    padding-top: map-get($spacers, 3)
+    &::-webkit-scrollbar
+      width: 3px
+    &::-webkit-scrollbar-track
+      background-color: $sidenav-footer-bg-color
+    &::-webkit-scrollbar-thumb
+      background-color: $sidenav-color
+    a
+      color: $sidenav-color !important
+    .brand
+      padding: map-get($spacers, 3)
+      text-decoration: none
+      border-bottom: 1px solid $sidenav-lighter-bg-color
+      font-weight: bold
+    .current-user-info
+      padding: map-get($spacers, 3)
+      border-bottom: 1px solid $sidenav-lighter-bg-color
       display: flex
-      align-items: center
-      justify-content: space-between
-      &.active
-        background-color: unset
-        color: white !important
-      &.collapse-link
-        .fa-angle-right
-          transition: transform 0.25s ease
-        &:not(.collapsed)
-          .fa-angle-right
-            transform: rotate(90deg)
-    .collapse,
-    .collapsing
-      background-color: $sidenav-lighter-bg-color
-    .collapse
-      ul
+      .current-user-avatar
+        img
+          height: 65px
+          width: 65px
+          border-radius: 5px
+      .current-user-details
         margin-left: map-get($spacers, 3)
+    .sidenav
+      margin-top: map-get($spacers, 2)
+      font-weight: $sidenav-font-weight
+      font-size: $sidenav-font-size
+      .nav-link
+        border-radius: 0
+        display: flex
+        align-items: center
+        justify-content: space-between
+        &.active
+          background-color: unset
+          color: white !important
+        &.collapse-link
+          .fa-angle-right
+            transition: transform 0.25s ease
+          &:not(.collapsed)
+            .fa-angle-right
+              transform: rotate(90deg)
+      .collapse,
+      .collapsing
+        background-color: $sidenav-lighter-bg-color
+      .collapse
+        ul
+          margin-left: map-get($spacers, 3)
+  .sidebar-footer
+    position: absolute
+    width: 100%
+    bottom: 0
+    display: flex
+    height: 35px
+    background-color: $sidenav-footer-bg-color
+    div
+      height: 35px
+      flex-grow: 1
+      line-height: 35px
+      text-align: center
+      a
+        color: $sidenav-color !important
+        &:hover
+          color: white !important
+          svg
+            filter: drop-shadow(0 0 3px $sidenav-color)
