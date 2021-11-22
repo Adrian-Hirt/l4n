@@ -11,7 +11,8 @@ import "channels"
 // Libraries
 import 'bootstrap';
 import "@fortawesome/fontawesome-free/js/all";
-require("@nathanvda/cocoon")
+require("@nathanvda/cocoon");
+import "@fontsource/roboto";
 
 // Our JS stuff
 import 'components/confirm_dialog';
