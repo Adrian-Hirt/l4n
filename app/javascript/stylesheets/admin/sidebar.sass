@@ -7,7 +7,6 @@
   .sidebar-content
     height: calc(100% - 35px)
     overflow-y: auto
-    padding-top: map-get($spacers, 3)
     &::-webkit-scrollbar
       width: 3px
     &::-webkit-scrollbar-track
@@ -21,15 +20,15 @@
       text-decoration: none
       border-bottom: 1px solid $sidenav-lighter-bg-color
       font-weight: bold
+      display: block
     .current-user-info
       padding: map-get($spacers, 3)
       border-bottom: 1px solid $sidenav-lighter-bg-color
       display: flex
       .current-user-avatar
-        img
+        img, svg
           height: 65px
           width: 65px
-          border-radius: 5px
       .current-user-details
         margin-left: map-get($spacers, 3)
     .sidenav
