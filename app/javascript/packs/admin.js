@@ -19,7 +19,7 @@ import 'components/confirm_dialog';
 import Translations from 'components/translations';
 import Alert from 'components/alert';
 import MarkdownEditor from 'components/markdown_editor'
-import AdminPushmenuToggler from 'components/admin_pushmenu_toggler'
+import AdminSidebar from 'components/admin_sidebar'
 import PasswordVisibilityToggler from 'components/password_visibility_toggler'
 
 // Our CSS Stuff
@@ -45,7 +45,7 @@ document.addEventListener("turbolinks:load", () => {
   });
   Alert.hideAfterTimeout();
   MarkdownEditor.init(document.body);
-  AdminPushmenuToggler.addListener();
+  AdminSidebar.addListener();
 
   $('[data-component="PasswordVisibilityToggler"]').each((index, element) => {
     new PasswordVisibilityToggler(element);
