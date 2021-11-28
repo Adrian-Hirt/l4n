@@ -8,10 +8,15 @@
     = stylesheet_pack_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'admin', 'data-turbolinks-track': 'reload'
   %body.d-flex
-    -# = render partial: "layouts/admin/header"
+    = flash_messages
     = render partial: 'layouts/admin/sidebar'
-    .content
-      = yield
+    .main.d-flex
+      .toolbar
+        .page-title
+          %h1= breadcrumbs_on_rails.last.name
+          .breadcrumbs= render_breadcrumbs tag: :span, separator: '<span class="breadcrumb-seperator">-</span>'
+      .content
+        = yield
 
     -# = flash_messages
     -# .content-wrapper
