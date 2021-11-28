@@ -20,4 +20,10 @@ module AdminSidebarHelper
 
     'show'
   end
+
+  def admin_sidebar_classes
+    classes = []
+    classes << 'sidebar-collapsed' if cookies['_l4n_admin_sidebar_collapsed'].present?
+    classes
+  end
 end

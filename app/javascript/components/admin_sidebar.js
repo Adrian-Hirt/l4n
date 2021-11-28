@@ -7,7 +7,15 @@ export default class AdminSidebar {
     });
 
     $('#collapses-sidebar-toggler').on('click', () => {
-      $('#sidebar').toggleClass('collapsed');
+      let sidebar = $('#sidebar');
+      if(sidebar.hasClass('sidebar-collapsed')) {
+        sidebar.removeClass('sidebar-collapsed');
+        Cookies.deleteCookie('_l4n_admin_sidebar_collapsed');
+      }
+      else {
+        sidebar.addClass('sidebar-collapsed');
+        Cookies.setCookie('_l4n_admin_sidebar_collapsed', true, 365);
+      }
     });
 
     $('.sidebar-backdrop').on('click', () => {

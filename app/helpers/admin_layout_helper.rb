@@ -1,7 +1,6 @@
 module AdminLayoutHelper
   def admin_body_classes
     classes = []
-    classes << 'sidebar-collapse' if cookies['_l4n_admin_sidebar_collapsed'].present?
     classes << 'dark-mode' if current_user.use_dark_mode?
     classes
   end

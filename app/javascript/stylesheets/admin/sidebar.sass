@@ -87,7 +87,7 @@
             filter: drop-shadow(0 0 3px $sidenav-color)
     .sidebar-footer-more-dots
       display: none
-  &.collapsed:not(:hover)
+  &.sidebar-collapsed:not(:hover)
     width: $sidebar-collapsed-width
     .nav-item-text
       display: none
@@ -112,8 +112,8 @@
     transform: translateX(-100%)
     transition: transform 0.25s ease
     z-index: 999
-    // Disable the "collapsed" special stylings
-    &.collapsed
+    // Disable the "sidebar-collapsed" special stylings
+    &.sidebar-collapsed
       width: $sidebar-width !important
       .nav-item-text
         display: inline !important
