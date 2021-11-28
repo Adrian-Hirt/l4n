@@ -6,6 +6,10 @@ export default class AdminSidebar {
       $('body').addClass('sidebar-show');
     });
 
+    $('#collapses-sidebar-toggler').on('click', () => {
+      $('#sidebar').toggleClass('collapsed');
+    });
+
     $('.sidebar-backdrop').on('click', () => {
       $('body').removeClass('sidebar-show');
     });
