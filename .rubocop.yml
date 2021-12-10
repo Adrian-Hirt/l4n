@@ -1,7 +1,6 @@
 AllCops:
   Exclude:
     - 'bin/*'
-    - 'node_modules/**/*'
     - 'tmp/**/*'
     - 'vendor/**/*'
     - '.git/**/*'
