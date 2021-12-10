@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '3.0.2'
+ruby '3.0.3'
 
 # Rails and rails-y stuff
 gem 'bootsnap', '>= 1.4.2', require: false
