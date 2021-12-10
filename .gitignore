@@ -26,6 +26,9 @@
 # Ignore uploaded files in development.
 /storage/*
 !/storage/.keep
+/tmp/storage/*
+!/tmp/storage/
+!/tmp/storage/.keep
 
 /public/assets
 .byebug_history
@@ -51,3 +54,5 @@ vendor/bundle
 
 # Test coverage
 coverage
+/app/assets/builds/*
+!/app/assets/builds/.keep
