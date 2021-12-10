@@ -3,9 +3,8 @@ source 'https://rubygems.org'
 ruby '3.0.3'
 
 # Rails and rails-y stuff
-gem 'bootsnap', '>= 1.4.2', require: false
-gem 'rails', '~> 6.1.4'
-gem 'turbolinks', '~> 5'
+gem 'bootsnap', '>= 1.4.4', require: false
+gem 'rails', '~> 7.0.0.rc1'
 
 # Authentication & Authorization
 gem 'active_model_otp', '~> 2.1.1'
@@ -17,14 +16,17 @@ gem 'hcaptcha', '~> 7.1'
 gem 'activerecord-session_store', '~> 2.0.0'
 
 # Puma
-gem 'puma', '~> 4.3'
+gem 'puma', '~> 5.0'
 
 # Database
 gem 'pg', '~> 1.2.3'
 
 # Assets
-gem 'sass-rails', '>= 6'
-gem 'webpacker', '~> 5.2.1'
+gem 'cssbundling-rails', '~> 0.2.7'
+gem 'importmap-rails', '~> 0.9.2'
+gem 'sprockets-rails', '~> 3.4.1'
+gem 'stimulus-rails', '~> 0.7.3'
+gem 'turbo-rails', '~> 0.9.0'
 
 # Application structure
 gem 'inquery', '~> 1.0.9'
@@ -56,14 +58,12 @@ gem 'bundler-audit', '0.7.0.1'
 gem 'figaro', '1.2.0'
 
 # Attachments
-gem 'image_processing', '~> 1.12.1'
+gem 'image_processing', '~> 1.2'
 
 # Development gems
 group :development do
   gem 'listen', '~> 3.2'
   gem 'pry-byebug', '~> 3.9'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
 
   gem 'gettext', '>=3.0.2', require: false
   gem 'ruby_parser', require: false
