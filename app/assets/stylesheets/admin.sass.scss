@@ -1,9 +1,13 @@
-// @import 'admin-lte/dist/css/adminlte.min';
-// @import 'utils/variables';
-// @import 'utils/fonts';
-// @import 'base';
-// @import 'components/*';
+// Libraries
+@import 'bootstrap/bootstrap.scss';
 // @import 'easymde/dist/easymde.min';
-// @import 'admin/*';
 
-@import 'bootstrap/bootstrap.scss'
+// General stuff
+@import 'utils';
+@import 'base';
+
+// Components
+
+// Admin CSS stuff
+@import 'admin/body';
+@import 'admin/sidebar';
