@@ -7,15 +7,23 @@ module AdminSidebarHelper
     'active'
   end
 
-  def dropdown_header_classes(name)
-    return unless name.to_s == controller_name
-
-    'menu-open'
+  def sidenav_collapser_classes(name)
+    if name.to_s == controller_name
+      'active'
+    else
+      'collapsed'
+    end
   end
 
-  def dropdown_body_style(name)
+  def sidenav_collapse_classes(name)
     return unless name.to_s == controller_name
 
-    'display: block'
+    'show'
+  end
+
+  def admin_sidebar_classes
+    classes = []
+    classes << 'sidebar-collapsed' if cookies['_l4n_admin_sidebar_collapsed'].present?
+    classes
   end
 end

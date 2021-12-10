@@ -11,15 +11,15 @@ import "channels"
 // Libraries
 import 'bootstrap';
 import "@fortawesome/fontawesome-free/js/all";
-import 'admin-lte'
-require("@nathanvda/cocoon")
+require("@nathanvda/cocoon");
+import "@fontsource/roboto";
 
 // Our JS stuff
 import 'components/confirm_dialog';
 import Translations from 'components/translations';
 import Alert from 'components/alert';
 import MarkdownEditor from 'components/markdown_editor'
-import AdminPushmenuToggler from 'components/admin_pushmenu_toggler'
+import AdminSidebar from 'components/admin_sidebar'
 import PasswordVisibilityToggler from 'components/password_visibility_toggler'
 
 // Our CSS Stuff
@@ -34,14 +34,18 @@ $(function() {
 })
 
 document.addEventListener("turbolinks:load", () => {
-  // Fix required as the sidebar would wobble around otherwise
-  $(".main-sidebar .sidebar").css("overflow-y", "auto");
-
-  $('[data-toggle="tooltip"]').tooltip();
-  $('[data-toggle="popover"]').popover();
+  // TODO: add to component maybe?
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  });
+  var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+  var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+    return new bootstrap.Popover(popoverTriggerEl)
+  });
   Alert.hideAfterTimeout();
   MarkdownEditor.init(document.body);
-  AdminPushmenuToggler.addListener();
+  AdminSidebar.addListener();
 
   $('[data-component="PasswordVisibilityToggler"]').each((index, element) => {
     new PasswordVisibilityToggler(element);

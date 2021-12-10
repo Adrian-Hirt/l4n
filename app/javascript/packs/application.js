@@ -11,7 +11,6 @@ import "channels"
 // Libraries
 import 'bootstrap';
 import "@fortawesome/fontawesome-free/js/all"
-import 'admin-lte'
 
 // Our JS stuff
 import 'components/confirm_dialog';
