@@ -22,8 +22,8 @@ class SessionsController < ApplicationController
       end
     else
       # if not, re-render form
-      flash.now[:danger] = _('Session|Login failed')
-      render :new
+      flash[:danger] = _('Session|Login failed')
+      render :new, status: :unprocessable_entity
     end
   end
 

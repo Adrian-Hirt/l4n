@@ -8,5 +8,6 @@
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
     = javascript_importmap_tags
   %body.login-page{class: body_classes}
-    = flash_messages
+    = turbo_frame_tag "flash" do
+      = flash_messages
     = yield
