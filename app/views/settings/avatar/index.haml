@@ -26,4 +26,4 @@
       .card-footer
         = button _('User|Upload avatar'), nil, html: { id: 'cropperUploadButton', data: { url: '/settings/avatar' } }, disabled: !avatar_present
         - if avatar_present
-          = button _('User|Remove avatar'), settings_avatar_path, html: { data: { confirm: _('User|Avatar remove confirmation')}, method: :delete}, color: :danger
+          = button _('User|Remove avatar'), settings_avatar_path, html: { data: { confirm: _('User|Avatar remove confirmation')}, data: { turbo_method: :delete } }, color: :danger

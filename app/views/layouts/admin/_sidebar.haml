@@ -64,7 +64,7 @@
       = link_to '#' do
         = icon %i[fas fa-cog]
     .sidebar-footer-button
-      = link_to logout_path, method: :delete  do
+      = link_to logout_path, data: { turbo_method: :delete }  do
         = icon %i[fas fa-power-off]
     .sidebar-footer-more-dots
       = icon %i[fas fa-ellipsis-h]

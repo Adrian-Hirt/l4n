@@ -15,16 +15,16 @@
         %a.nav-link{ data: { widget: :fullscreen }, href: '#', role: :button }
           %i.fas.fa-expand-arrows-alt
     %li.nav-item
-      = link_to toggle_dark_mode_path, class: %i[nav-link], method: :post do
+      = link_to toggle_dark_mode_path, class: %i[nav-link], data: { turbo_method: :post } do
         = icon %i[fa fa-adjust]
     %li.nav-item.dropdown
       %a.nav-link{data: { toggle: :dropdown}, href: '#'}
         = icon %i[fa fa-lg fa-language]
         = icon %i[fa fa-chevron-down]
       .dropdown-menu.dropdown-menu-right
-        = link_to set_locale_path(locale: :en), method: :post, class: 'dropdown-item' + active_locale_class(:en) do
+        = link_to set_locale_path(locale: :en), data: { turbo_method: :post }, class: 'dropdown-item' + active_locale_class(:en) do
           = _('Language|English')
-        = link_to set_locale_path(locale: :de), method: :post, class: 'dropdown-item' + active_locale_class(:de) do
+        = link_to set_locale_path(locale: :de), data: { turbo_method: :post }, class: 'dropdown-item' + active_locale_class(:de) do
           = _('Language|German')
     %li.nav-item.dropdown
       %a.nav-link{data: { toggle: :dropdown}, href: '#'}
@@ -40,6 +40,6 @@
           = icon %i[fa fa-home]
           = _('AdminPanel|Back to application')
         .dropdown-divider
-        = link_to logout_path, method: :delete, class: 'dropdown-item' do
+        = link_to logout_path, data: { turbo_method: :delete }, class: 'dropdown-item' do
           = icon %i[fa fa-sign-out-alt]
           = ('User|Logout')
