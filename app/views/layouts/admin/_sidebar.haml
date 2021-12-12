@@ -7,7 +7,7 @@
         - if current_user.thumb_avatar.present?
           = image_tag current_user.thumb_avatar
         - else
-          = icon %i[fas fa-user mr-2]
+          = image_tag 'user.svg', class: %i[placeholder-avatar]
       .current-user-details
         = current_user.username
     %ul.nav.nav-pills.flex-column.sidenav

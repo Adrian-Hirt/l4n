@@ -30,10 +30,12 @@
       border-bottom: 1px solid $sidenav-lighter-bg-color
       display: flex
       .current-user-avatar
-        img, svg
+        img
           height: auto
           width: 65px
           transition: width 0.5s ease
+          &.placeholder-avatar
+            filter: invert(80%)
       .current-user-details
         margin-left: map-get($spacers, 3)
         overflow: hidden

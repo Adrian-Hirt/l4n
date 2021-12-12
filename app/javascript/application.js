@@ -3,3 +3,7 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "@popperjs/core"
 import * as bootstrap from "bootstrap"
+import '@fortawesome/fontawesome-free'
+
+// https://fontawesome.com/v5.15/how-to-use/on-the-web/using-with/turbolinks
+FontAwesome.config.mutateApproach = 'sync'
