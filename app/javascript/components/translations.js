@@ -21,4 +21,8 @@ export default class Translations {
     window.i18n = i18nConst;
     this.loadTranslations();
   }
+
+  static _(str) {
+    return i18nConst._(str);
+  }
 };
