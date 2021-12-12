@@ -10,5 +10,5 @@
       = f.input :end_time, as: :string, input_html: { type: :time }
     .col-md-1
       %label &nbsp;
-      = link_to_remove_association f, class: 'btn btn-danger icon-only-btn d-table' do
+      = link_to_remove_association f, class: 'btn btn-danger icon-only-btn d-table', data: { action: 'click->cocoon#removeRow' } do
         = icon %i[fa fa-trash]
