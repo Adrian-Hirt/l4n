@@ -49,7 +49,7 @@ module Admin
 
     def preview_markdown
       authorize! :preview, NewsPost
-      output = Services::Markdown.render  params[:_json]
+      output = Services::Markdown.render params[:_json]
       render json: output.to_json
     end
   end

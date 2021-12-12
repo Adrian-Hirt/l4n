@@ -29,10 +29,10 @@ gem 'stimulus-rails', '~> 0.7.3'
 gem 'turbo-rails', '~> 0.9.0'
 
 # Application structure
+gem 'active_type', '~> 1.10.1' # Need to lock as 2.0 somehow does not work with rails_ops
 gem 'inquery', '~> 1.0.9'
 gem 'rails_ops', '~> 1.1.20'
 gem 'schemacop', '3.0.11'
-gem 'active_type', '~> 1.10.1' # Need to lock as 2.0 somehow does not work with rails_ops
 
 # Views
 gem 'breadcrumbs_on_rails', '~> 4.1.0'

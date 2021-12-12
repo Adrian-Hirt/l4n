@@ -8,6 +8,7 @@ module ButtonsHelper
     disabled:  false
   }.freeze
 
+  # rubocop:disable Metrics/ParameterLists
   def button(title, href, html: {}, btn_icon: nil, method: nil, **opts)
     options = get_options(opts)
     if btn_icon
@@ -21,6 +22,7 @@ module ButtonsHelper
     end
     _button(title, href, get_btn_class(options), **html)
   end
+  # rubocop:enable Metrics/ParameterLists
 
   def show_button(model, html: {}, **opts)
     options = get_options(opts)
@@ -59,8 +61,8 @@ module ButtonsHelper
       end
     end
     html_options = {
-      data:   {
-        confirm: _("#{model.class.name}|Delete confirmation?"),
+      data: {
+        confirm:      _("#{model.class.name}|Delete confirmation?"),
         turbo_method: :delete
       }
     }
