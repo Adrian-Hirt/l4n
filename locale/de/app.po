@@ -71,25 +71,16 @@ msgstr ""
 msgid "Admin|Event|New"
 msgstr ""
 
+msgid "Admin|Feature Flags"
+msgstr ""
+
+msgid "Admin|FeatureFlags"
+msgstr ""
+
 msgid "Admin|NewsPosts"
 msgstr ""
 
 msgid "Admin|NewsPosts|New"
-msgstr ""
-
-msgid "Admin|Preferences could not be updated"
-msgstr ""
-
-msgid "Admin|Preferences updated successfully"
-msgstr ""
-
-msgid "Admin|Settings"
-msgstr ""
-
-msgid "Admin|Settings|Styling"
-msgstr ""
-
-msgid "Admin|Update my preferences"
 msgstr ""
 
 msgid "Admin|Users"
@@ -105,6 +96,9 @@ msgid "Admin|Users|New"
 msgstr ""
 
 msgid "ApplicationName"
+msgstr ""
+
+msgid "Application|Language successfully changed"
 msgstr ""
 
 msgid "ConfirmDialog|Cancel"
@@ -197,43 +191,49 @@ msgstr ""
 msgid "Event|You need to add at least one date"
 msgstr ""
 
-msgid "Highlightcolors|Blue"
+msgid "Feature flag"
 msgstr ""
 
-msgid "Highlightcolors|Default"
+msgid "FeatureFlag|Could not reinitialize the feature flags"
 msgstr ""
 
-msgid "Highlightcolors|Fuchsia"
+msgid "FeatureFlag|Could not toggle the flag"
 msgstr ""
 
-msgid "Highlightcolors|Green"
+msgid "FeatureFlag|Enabled"
 msgstr ""
 
-msgid "Highlightcolors|Grey"
+msgid "FeatureFlag|Key"
 msgstr ""
 
-msgid "Highlightcolors|Lime"
+msgid "FeatureFlag|Reinitialize"
 msgstr ""
 
-msgid "Highlightcolors|Orange"
+msgid "FeatureFlag|Successfully reinitialized feature flags"
 msgstr ""
 
-msgid "Highlightcolors|Purple"
+msgid "FeatureFlag|Successfully toggled flag"
 msgstr ""
 
-msgid "Highlightcolors|Red"
-msgstr ""
-
-msgid "Highlightcolors|Yellow"
+msgid "FeatureFlag|Toggle"
 msgstr ""
 
 msgid "Homepage"
+msgstr ""
+
+msgid "ImageUploader|Select file"
+msgstr ""
+
+msgid "L4N Version % {version}"
 msgstr ""
 
 msgid "Language|English"
 msgstr ""
 
 msgid "Language|German"
+msgstr ""
+
+msgid "Login / Sign up"
 msgstr ""
 
 msgid "MarkdownEditor|Popup|Cancel"
@@ -341,7 +341,19 @@ msgstr ""
 msgid "PasswordResetRequest|Token invalid or expired"
 msgstr ""
 
+msgid "Session|2FA authentication"
+msgstr ""
+
+msgid "Session|Back to application"
+msgstr ""
+
+msgid "Session|Confirm"
+msgstr ""
+
 msgid "Session|Forgot password"
+msgstr ""
+
+msgid "Session|Hcaptcha failed, please try again"
 msgstr ""
 
 msgid "Session|Log in"
@@ -353,10 +365,13 @@ msgstr ""
 msgid "Session|Please log in"
 msgstr ""
 
-msgid "Session|Recaptcha failed, please try again"
+msgid "Session|Remember me"
 msgstr ""
 
-msgid "Session|Remember me"
+msgid "Session|Sign in"
+msgstr ""
+
+msgid "Session|Submit 2FA code"
 msgstr ""
 
 msgid "Session|Successful login"
@@ -365,7 +380,91 @@ msgstr ""
 msgid "Session|Successful logout"
 msgstr ""
 
-msgid "Settings"
+msgid "Session|You first need to enter your password"
+msgstr ""
+
+msgid "Session|Your login expired"
+msgstr ""
+
+msgid "Settings|2FA"
+msgstr ""
+
+msgid "Settings|Abort destroying my account"
+msgstr ""
+
+msgid "Settings|Account"
+msgstr ""
+
+msgid "Settings|Account is not destroyable"
+msgstr ""
+
+msgid "Settings|Account successfully destroyed"
+msgstr ""
+
+msgid "Settings|Activate 2FA"
+msgstr ""
+
+msgid "Settings|Avatar"
+msgstr ""
+
+msgid "Settings|Destroy account"
+msgstr ""
+
+msgid "Settings|Destroy account warning"
+msgstr ""
+
+msgid "Settings|Destroy my account"
+msgstr ""
+
+msgid "Settings|Edit avatar"
+msgstr ""
+
+msgid "Settings|Edit profile"
+msgstr ""
+
+msgid "Settings|Enter password and two factor code to confirm destroying your account"
+msgstr ""
+
+msgid "Settings|Enter password to confirm destroying your account"
+msgstr ""
+
+msgid "Settings|Export account info"
+msgstr ""
+
+msgid "Settings|Password confirmation|Leave blank to keep current password"
+msgstr ""
+
+msgid "Settings|Password is incorrect"
+msgstr ""
+
+msgid "Settings|Password|Leave blank to keep current password"
+msgstr ""
+
+msgid "Settings|Profile"
+msgstr ""
+
+msgid "Settings|Save two factor code"
+msgstr ""
+
+msgid "Settings|Two factor code is incorrect"
+msgstr ""
+
+msgid "Settings|Update profile"
+msgstr ""
+
+msgid "TwoFactor|2FA activated successfully"
+msgstr ""
+
+msgid "TwoFactor|2FA code was wrong, please try again"
+msgstr ""
+
+msgid "TwoFactor|Please confirm that you saved the backup codes"
+msgstr ""
+
+msgid "TwoFactor|Save the backup codes"
+msgstr ""
+
+msgid "TwoFactor|Scan code with auth app"
 msgstr ""
 
 msgid "User"
@@ -410,6 +509,24 @@ msgstr ""
 msgid "UserMailer|PasswordResetRequest|You resetted your password"
 msgstr ""
 
+msgid "User|2FA already activated"
+msgstr ""
+
+msgid "User|2FA code from authenticator"
+msgstr ""
+
+msgid "User|2FA could not be removed, please try again"
+msgstr ""
+
+msgid "User|2FA removed successfully"
+msgstr ""
+
+msgid "User|About me"
+msgstr ""
+
+msgid "User|Achievements"
+msgstr ""
+
 msgid "User|Activated"
 msgstr ""
 
@@ -419,16 +536,16 @@ msgstr ""
 msgid "User|Activation token"
 msgstr ""
 
-msgid "User|Admin header color"
+msgid "User|Add 2FA"
 msgstr ""
 
-msgid "User|Admin panel dark mode"
+msgid "User|Avatar remove confirmation"
 msgstr ""
 
-msgid "User|Admin panel sidebar dark mode"
+msgid "User|Avatar removed successfully"
 msgstr ""
 
-msgid "User|Admin sidebar highlight color"
+msgid "User|Avatar updated successfully"
 msgstr ""
 
 msgid "User|Cannot be deleted"
@@ -440,10 +557,19 @@ msgstr ""
 msgid "User|Create failed"
 msgstr ""
 
-msgid "User|Edit my profile"
+msgid "User|Crop your avatar"
 msgstr ""
 
 msgid "User|Email"
+msgstr ""
+
+msgid "User|Event admin permission"
+msgstr ""
+
+msgid "User|Game Profiles"
+msgstr ""
+
+msgid "User|General Settings"
 msgstr ""
 
 msgid "User|Id"
@@ -452,7 +578,19 @@ msgstr ""
 msgid "User|Login"
 msgstr ""
 
+msgid "User|News admin permission"
+msgstr ""
+
+msgid "User|Otp backup codes"
+msgstr ""
+
+msgid "User|Otp secret key"
+msgstr ""
+
 msgid "User|Password"
+msgstr ""
+
+msgid "User|Password confirmation"
 msgstr ""
 
 msgid "User|Password digest"
@@ -464,7 +602,16 @@ msgstr ""
 msgid "User|Password reset token digest"
 msgstr ""
 
+msgid "User|Permissions"
+msgstr ""
+
 msgid "User|Preferred locale"
+msgstr ""
+
+msgid "User|Preview your avatar"
+msgstr ""
+
+msgid "User|Profile"
 msgstr ""
 
 msgid "User|Profile could not be updated"
@@ -473,7 +620,19 @@ msgstr ""
 msgid "User|Profile updated successfully"
 msgstr ""
 
+msgid "User|Remember me token created at"
+msgstr ""
+
 msgid "User|Remember me token digest"
+msgstr ""
+
+msgid "User|Remove 2FA"
+msgstr ""
+
+msgid "User|Remove 2FA confirmation"
+msgstr ""
+
+msgid "User|Remove avatar"
 msgstr ""
 
 msgid "User|Sign up"
@@ -494,10 +653,25 @@ msgstr ""
 msgid "User|Successfully updated"
 msgstr ""
 
+msgid "User|System admin permission"
+msgstr ""
+
+msgid "User|Two factor enabled"
+msgstr ""
+
 msgid "User|Update failed"
 msgstr ""
 
 msgid "User|Update password"
+msgstr ""
+
+msgid "User|Upload avatar"
+msgstr ""
+
+msgid "User|Use dark mode"
+msgstr ""
+
+msgid "User|User admin permission"
 msgstr ""
 
 msgid "User|Username"

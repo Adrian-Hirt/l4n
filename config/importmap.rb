@@ -9,3 +9,4 @@ pin_all_from 'app/javascript/components', under: 'components'
 pin 'bootstrap' # @5.1.0
 pin '@popperjs/core', to: 'popperjs.min.js' # @2.11.0
 pin '@fortawesome/fontawesome-free', to: 'fontawesome-free-all.min.js' # @6.0.0-beta3
+pin "gettext.js" # @1.1.1
