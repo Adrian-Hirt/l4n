@@ -5,6 +5,7 @@ pin '@hotwired/turbo-rails', to: 'turbo.min.js', preload: true
 pin '@hotwired/stimulus', to: 'stimulus.min.js', preload: true
 pin '@hotwired/stimulus-loading', to: 'stimulus-loading.js', preload: true
 pin_all_from 'app/javascript/controllers', under: 'controllers'
+pin_all_from 'app/javascript/components', under: 'components'
 pin 'bootstrap' # @5.1.0
 pin '@popperjs/core', to: 'popperjs.min.js' # @2.11.0
 pin '@fortawesome/fontawesome-free', to: 'fontawesome-free-all.min.js' # @6.0.0-beta3

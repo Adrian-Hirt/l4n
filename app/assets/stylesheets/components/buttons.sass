@@ -8,29 +8,3 @@
   &.icon-only-btn
     .svg-inline--fa
       margin-right: 0
-
-////////////////////////////////////////////////////////////////////////////////
-// Colors
-////////////////////////////////////////////////////////////////////////////////
-@each $name, $color in $colors
-  .btn-#{$name}
-    background-color: $color
-    border-color: rgba(0, 0, 0, 0)
-    box-shadow: none
-    &:hover
-      background-color: scale-color($color, $lightness: -10%)
-      border-color: rgba(0, 0, 0, 0)
-  .btn-outline-#{$name}
-    border-color: $color
-    color: $color
-    &:hover
-      border-color: $color
-      background-color: $color
-
-.btn-info
-  color: white
-  &:hover
-    color: white
-.btn-outline-info
-  &:hover
-    color: white
