@@ -34,7 +34,7 @@
       .current-user-avatar
         img
           height: auto
-          width: 65px
+          width: 38px
           transition: width 0.5s ease
           &.placeholder-avatar
             filter: invert(80%)
@@ -53,10 +53,13 @@
           display: flex
           align-items: center
           justify-content: space-between
+          padding-left: 1.5rem
           & > span
             white-space: nowrap
             text-overflow: ellipsis
             overflow: hidden
+            .nav-item-text
+              padding-left: map-get($spacers, 1)
           &.active
             background-color: unset
             color: white !important
@@ -69,8 +72,6 @@
         .collapse,
         .collapsing
           background-color: $sidenav-lighter-bg-color
-          ul
-            margin-left: map-get($spacers, 3)
   .sidebar-footer
     position: absolute
     width: 100%
@@ -93,8 +94,10 @@
       display: none
   &.sidebar-collapsed:not(:hover)
     width: $sidebar-collapsed-width
-    .nav-item-text
-      display: none
+    .nav-item
+      .nav-item-text,
+      .dropdown-icon
+        display: none
     .current-user-details
       display: none
     .current-user-avatar
