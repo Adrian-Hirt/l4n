@@ -64,11 +64,16 @@
         = link_to '#' do
           = icon %i[fas fa-bell]
       .sidebar-footer-button
-        = link_to '#' do
-          = icon %i[fas fa-envelope]
-      .sidebar-footer-button
-        = link_to '#' do
-          = icon %i[fas fa-cog]
+        = link_to toggle_dark_mode_path, data: { turbo_method: :post } do
+          = icon %i[fa fa-adjust]
+      .sidebar-footer-button.dropup
+        = link_to '#', data: { 'bs-toggle' => 'dropdown' } do
+          = icon %i[fas fa-language]
+        %ul.dropdown-menu.dropdown-menu-dark
+          = link_to set_locale_path(locale: :en), data: { turbo_method: :post }, class: 'dropdown-item' + active_locale_class(:en) do
+            = _('Language|English')
+          = link_to set_locale_path(locale: :de), data: { turbo_method: :post }, class: 'dropdown-item' + active_locale_class(:de) do
+            = _('Language|German')
       .sidebar-footer-button
         = link_to logout_path, data: { turbo_method: :delete }  do
           = icon %i[fas fa-power-off]

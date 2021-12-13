@@ -32,8 +32,10 @@ class ApplicationController < ActionController::Base
     current_user&.update(use_dark_mode: new_mode)
     if new_mode
       cookies[:_l4n_dark_mode] = true
+      flash[:success] = _('Application|Dark mode successfully enabled')
     else
       cookies.delete(:_l4n_dark_mode)
+      flash[:success] = _('Application|Dark mode successfully disabled')
     end
     redirect_back(fallback_location: root_path)
   end
