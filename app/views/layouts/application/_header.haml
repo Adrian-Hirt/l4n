@@ -1,13 +1,10 @@
-%nav.main-header.navbar.navbar-expand-md{class: header_classes}
+%nav.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
   .container-fluid
-    %a.navbar-brand{href: root_path}
-      %img.brand-image.img-circle.elevation-3{alt: 'L4N Logo', src: 'http://placekitten.com/100/100', style: 'opacity: .8'}
-      %span.brand-text.font-weight-light L4N Dev
-    %button.navbar-toggler.order-1{data: {target: '#navbarCollapse', toggle: 'collapse'}, type: "button"}
+    %a.navbar-brand{:href => "#"} L4N Dev
+    %button.navbar-toggler{"aria-controls" => "navbarCollapse", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarCollapse", "data-bs-toggle" => "collapse", :type => "button"}
       %span.navbar-toggler-icon
-    #navbarCollapse.collapse.navbar-collapse.order-3
-      / Left navbar links
-      %ul.navbar-nav
+    #navbarCollapse.collapse.navbar-collapse
+      %ul.navbar-nav.me-auto.mb-2.mb-md-0
         %li.nav-item
           = link_to _('Homepage'), root_path, class: navbar_item_classes(:home)
         - if can? :read, NewsPost
@@ -16,35 +13,30 @@
         - if can? :read, Event
           %li.nav-item
             = link_to _('Events'), events_path, class: navbar_item_classes(:events)
-      / Right navbar links
       %ul.order-1.order-md-3.navbar-nav.ml-auto
-        / Messages Dropdown Menu
-        -# render partial: 'layouts/application/header_messages'
-        / Notifications Dropdown Menu
-        -# render partial: 'layouts/application/header_notifications'
         %li.nav-item
           = link_to toggle_dark_mode_path, class: %i[nav-link], data: { turbo_method: :post } do
             = icon %i[fa fa-adjust]
         %li.nav-item.dropdown
-          %a.nav-link{data: { toggle: :dropdown}, href: '#'}
+          %a.nav-link{data: { 'bs-toggle' => :dropdown}, href: '#'}
             = icon %i[fa fa-lg fa-language]
             = icon %i[fa fa-chevron-down]
-          %ul.dropdown-menu.dropdown-menu-right.border-1.shadow
+          %ul.dropdown-menu.dropdown-menu-end.dropdown-menu-dark
             = link_to set_locale_path(locale: :en), data: { turbo_method: :post }, class: 'dropdown-item' + active_locale_class(:en) do
               = _('Language|English')
             = link_to set_locale_path(locale: :de), data: { turbo_method: :post }, class: 'dropdown-item' + active_locale_class(:de) do
               = _('Language|German')
         %li.nav-item.dropdown
           - if current_user
-            %a.nav-link{data: { toggle: :dropdown}, href: '#'}
+            %a.nav-link{data: { 'bs-toggle' => :dropdown}, href: '#'}
               %div{style: 'height: 100%;'}
-                - if current_user.thumb_avatar.present?
-                  = image_tag current_user.thumb_avatar, class: %i[img-circle mr-2], style: 'height: 100%;'
-                - else
-                  = icon %i[fas fa-user mr-2]
+                -# - if current_user.thumb_avatar.present?
+                -#   = image_tag current_user.thumb_avatar, class: %i[img-circle mr-2], style: 'height: 100%;'
+                -# - else
+                -#   = icon %i[fas fa-user mr-2]
                 = current_user.username
                 = icon %i[fa fa-chevron-down]
-            %ul.dropdown-menu.dropdown-menu-right.border-1.shadow
+            %ul.dropdown-menu.dropdown-menu-end.dropdown-menu-dark
               %li
                 = link_to _('Settings|Edit profile'), settings_profile_path, class: %i[dropdown-item]
               %li.dropdown-divider
@@ -56,8 +48,8 @@
                   = icon %i[fa fa-sign-out-alt]
                   = ('User|Logout')
           - else
-            %a.nav-link.dropdown-toggle{'data-toggle' => :dropdown, href: '#'}= _('Login / Sign up')
-            %ul.dropdown-menu.dropdown-menu-right.border-1.shadow
+            %a.nav-link.dropdown-toggle{data: { 'bs-toggle' => :dropdown}, href: '#'}= _('Login / Sign up')
+            %ul.dropdown-menu.dropdown-menu-end.dropdown-menu-dark
               %li
                 = link_to _('User|Login'), login_path, class: %i[dropdown-item]
               %li

@@ -7,20 +7,12 @@
     = csp_meta_tag
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
     = javascript_importmap_tags
-  %body.layout-top-nav{class: body_classes}
-    .wrapper
-      = render partial: 'layouts/application/header'
-      = flash_messages
-      .content-wrapper
-        .content-header
-          .container-xl
-            .row.mb-2
-              .col-sm-6
-                %h1.m-0= yield :page_title
-              .col-sm-6
-                %ol.breadcrumb.float-sm-right
-                  = render_breadcrumbs tag: :li, separator: "&nbsp;/&nbsp;"
-        .content.container-fluid
-          .container-xl
-            = yield
-      = render partial: 'layouts/application/footer'
+  %body.d-flex.application{class: body_classes}
+    = render partial: 'layouts/application/header'
+    = flash_messages
+    .main.container
+      .page-title
+        %h1= yield :page_title
+      .content
+        = yield
+    = render partial: 'layouts/application/footer'

@@ -13,26 +13,7 @@
     .main.d-flex
       .toolbar
         .page-title
-          %h1= breadcrumbs_on_rails.last.name
+          %h1= breadcrumbs_on_rails.last.name # yield :page_title
           .breadcrumbs= render_breadcrumbs tag: :span, separator: '<span class="breadcrumb-seperator">-</span>'
       .content
         = yield
-
-    -# = flash_messages
-    -# .content-wrapper
-    -#   .content-header
-    -#     .container-fluid
-    -#       .row.mb-2
-    -#         .col-sm-6
-    -#           %h1.m-0= yield :page_title
-    -#         / /.col
-    -#         .col-sm-6
-    -#           %ol.breadcrumb.float-sm-right
-    -#             = render_breadcrumbs tag: :li, separator: "&nbsp;/&nbsp;"
-    -#         / /.col
-    -#       / /.row
-    -#     / /.container-fluid
-    -#   .content.container-fluid
-    -#     .container-fluid
-    -#       = yield
-    -# = render partial: "layouts/admin/footer"
