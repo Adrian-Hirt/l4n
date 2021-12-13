@@ -6,6 +6,7 @@ AllCops:
     - '.git/**/*'
     - 'db/schema.rb'
     - 'locale/model_attributes.rb'
+    - 'node_modules/**/*'
   NewCops: enable
 
 Layout/HashAlignment:

@@ -61,7 +61,7 @@ module ButtonsHelper
       end
     end
     html_options = {
-      data: {
+      data:   {
         confirm: _("#{model.class.name}|Delete confirmation?")
       },
       method: :delete
