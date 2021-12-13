@@ -1,12 +1,12 @@
 AllCops:
   Exclude:
     - 'bin/*'
-    - 'node_modules/**/*'
     - 'tmp/**/*'
     - 'vendor/**/*'
     - '.git/**/*'
     - 'db/schema.rb'
     - 'locale/model_attributes.rb'
+    - 'node_modules/**/*'
   NewCops: enable
 
 Layout/HashAlignment:

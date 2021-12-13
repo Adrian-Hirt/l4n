@@ -1,21 +1,22 @@
-.d-flex.justify-content-center
-  .login-box.mx-auto
-    .card.card-outline.card-primary
-      .card-header.text-center
-        %a.h1{href: root_path}
-          %b> L4N
-          Dev
-      .card-body
-        %p.login-box-msg= _('Session|Sign in')
-        = simple_form_for :login, wrapper: :input_group do |f|
-          = f.input :email, label: false, placeholder: _('User|Email')
-          = f.input :password, append: icon(%i[fa fa-eye-slash fa-fw]), label: false, placeholder: _('User|Password'), input_html: { data: { component: 'PasswordVisibilityToggler' } }
-          .input-group
-            = f.input :remember_me, as: :boolean, label: _('Session|Remember me'), input_html: { class: 'checkbox-primary' }
-          .input-group.mb-3
-            = f.save _('Session|Log in')
-        %hr
-        %p.mb-1.mt-2
-          = link_to _('Session|Forgot password'), request_password_reset_path
-        %hr
-          = button _('Session|Back to application'), root_path, btn_icon: %i[fas fa-arrow-left], color: :secondary
+= turbo_frame_tag 'login' do
+  .d-flex.justify-content-center
+    .login-box.mx-auto
+      .card.card-outline.card-primary
+        .card-header.text-center
+          %a.h1{href: root_path}
+            %b> L4N
+            Dev
+        .card-body
+          %p.login-box-msg= _('Session|Sign in')
+          = simple_form_for :login, wrapper: :input_group do |f|
+            = f.input :email, label: false, placeholder: _('User|Email')
+            = f.password :password, label: false, placeholder: _('User|Password')
+            .input-group
+              = f.input :remember_me, as: :boolean, label: _('Session|Remember me'), input_html: { class: 'checkbox-primary' }
+            .input-group.mb-3
+              = f.save _('Session|Log in')
+          %hr
+          %p.mb-1.mt-2
+            = link_to _('Session|Forgot password'), request_password_reset_path
+          %hr
+            = button _('Session|Back to application'), root_path, btn_icon: %i[fas fa-arrow-left], color: :secondary

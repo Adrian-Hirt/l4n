@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_gettext_locale
   before_action :remove_tmp_login_hash
+  after_action :enable_turbo_frame_rendering
 
   include SessionsHelper
   include RailsOps::ControllerMixin
@@ -31,8 +32,10 @@ class ApplicationController < ActionController::Base
     current_user&.update(use_dark_mode: new_mode)
     if new_mode
       cookies[:_l4n_dark_mode] = true
+      flash[:success] = _('Application|Dark mode successfully enabled')
     else
       cookies.delete(:_l4n_dark_mode)
+      flash[:success] = _('Application|Dark mode successfully disabled')
     end
     redirect_back(fallback_location: root_path)
   end
@@ -55,5 +58,10 @@ class ApplicationController < ActionController::Base
 
   def remove_tmp_login_hash
     session.delete(:tmp_login)
+  end
+
+  # See https://github.com/hotwired/turbo-rails/pull/80#issuecomment-769259325
+  def enable_turbo_frame_rendering
+    self.content_type = 'text/html; charset=utf-8' if request.env['HTTP_ACCEPT'] == 'text/vnd.turbo-stream.html, text/html, application/xhtml+xml'
   end
 end

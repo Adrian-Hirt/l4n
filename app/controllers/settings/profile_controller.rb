@@ -2,15 +2,19 @@ module Settings
   class ProfileController < ApplicationController
     before_action :require_logged_in_user
 
-    def index
+    def edit
+      op Operations::User::UpdateProfile
+    end
+
+    def update
       op Operations::User::UpdateProfile
 
-      return unless request.patch?
-
       if op.run
-        flash.now[:success] = _('User|Profile updated successfully')
+        flash[:success] = _('User|Profile updated successfully')
+        redirect_to settings_profile_path
       else
-        flash.now[:danger] = _('User|Profile could not be updated')
+        flash[:danger] = _('User|Profile could not be updated')
+        render :edit, status: :unprocessable_entity
       end
     end
   end

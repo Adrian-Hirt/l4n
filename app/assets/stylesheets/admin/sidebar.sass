@@ -1,0 +1,168 @@
+#sidebar
+  width: $sidebar-width
+  color: $sidenav-color
+  background: linear-gradient(0deg, $sidenav-bg-color, $sidenav-bg-color), url('sidenav-bg.jpg')
+  background-size: cover
+  position: sticky
+  transition: width 0.5s ease
+  overflow: hidden
+  height: 100vh
+  top: 0
+  .sidebar-content
+    height: calc(100% - 35px)
+    overflow-y: auto
+    &::-webkit-scrollbar
+      width: 3px
+    &::-webkit-scrollbar-track
+      background-color: $sidenav-footer-bg-color
+    &::-webkit-scrollbar-thumb
+      background-color: $sidenav-color
+    a
+      color: $sidenav-color !important
+    .brand-container
+      padding: map-get($spacers, 3)
+      border-bottom: 1px solid $sidenav-lighter-bg-color
+      .brand
+        text-decoration: none
+        font-weight: bold
+        display: block
+        overflow: hidden
+        text-overflow: ellipsis
+    .current-user-info
+      padding: map-get($spacers, 3)
+      border-bottom: 1px solid $sidenav-lighter-bg-color
+      display: flex
+      .current-user-avatar
+        img
+          height: auto
+          width: 38px
+          transition: width 0.5s ease
+          &.placeholder-avatar
+            filter: invert(80%)
+      .current-user-details
+        margin-left: map-get($spacers, 3)
+        overflow: hidden
+        text-overflow: ellipsis
+    .sidenav
+      margin-top: map-get($spacers, 2)
+      font-weight: $sidenav-font-weight
+      font-size: $sidenav-font-size
+      .nav-item
+        width: 100%
+        .nav-link
+          border-radius: 0
+          display: flex
+          align-items: center
+          justify-content: space-between
+          padding-left: 1.5rem
+          & > span
+            white-space: nowrap
+            text-overflow: ellipsis
+            overflow: hidden
+            .nav-item-text
+              padding-left: map-get($spacers, 1)
+          &.active
+            background-color: unset
+            color: white !important
+          &.collapse-link
+            .fa-angle-right
+              transition: transform 0.25s ease
+            &:not(.collapsed)
+              .fa-angle-right
+                transform: rotate(90deg)
+        .collapse,
+        .collapsing
+          background-color: $sidenav-lighter-bg-color
+  .sidebar-footer
+    position: absolute
+    width: 100%
+    bottom: 0
+    display: flex
+    height: 35px
+    background-color: $sidenav-footer-bg-color
+    .sidebar-footer-button
+      height: 35px
+      flex-grow: 1
+      line-height: 35px
+      text-align: center
+      a
+        color: $sidenav-color !important
+        &:hover
+          color: white !important
+          svg
+            filter: drop-shadow(0 0 3px $sidenav-color)
+      .button_to
+        button
+          color: $sidenav-color !important
+          background-color: transparent
+          border: none
+          padding: 0
+          &:hover
+            color: white !important
+            svg
+              filter: drop-shadow(0 0 3px $sidenav-color)
+    .sidebar-footer-more-dots
+      display: none
+  &.sidebar-collapsed:not(:hover)
+    width: $sidebar-collapsed-width
+    .nav-item
+      .nav-item-text,
+      .dropdown-icon
+        display: none
+    .current-user-details
+      display: none
+    .current-user-avatar
+      img, svg
+        width: 38px
+    .sidebar-footer
+      .sidebar-footer-button
+        display: none
+      .sidebar-footer-more-dots
+        display: block
+
+// Responsive stuff
+@include media-breakpoint-down(md)
+  #sidebar
+    position: fixed
+    top: 0
+    bottom: 0
+    left: 0
+    transform: translateX(-100%)
+    transition: transform 0.25s ease
+    z-index: 999
+    // Disable the "sidebar-collapsed" special stylings
+    &.sidebar-collapsed
+      width: $sidebar-width !important
+      .nav-item-text
+        display: inline !important
+      .current-user-details
+        display: block !important
+      .current-user-avatar
+        img
+          width: 65px !important
+      .sidebar-footer
+        .sidebar-footer-button
+          display: block !important
+        .sidebar-footer-more-dots
+          display: none !important
+  .sidebar-backdrop
+    position: fixed
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    z-index: 998
+    background: #000
+    opacity: .5
+    display: none
+  body.sidebar-show
+    #sidebar
+      transform: none
+    .sidebar-backdrop
+      display: block
+  .offcanvas-toggler
+    display: block !important
+    position: fixed
+    top: 20px
+    right: 20px
+    z-index: 100

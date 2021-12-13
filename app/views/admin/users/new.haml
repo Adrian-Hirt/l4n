@@ -1,11 +1,11 @@
 - provide :page_title, _('Admin|Users|Create user')
 
 .card
-  = simple_form_for model, url: admin_users_path do |f|
+  = simple_form_for model, url: admin_users_path, wrapper: :input_group do |f|
     .card-body
       = f.input :username
       = f.input :email
-      = f.input :password
+      = f.password :password
       %hr
       = f.input :avatar
       - if model.avatar.present?

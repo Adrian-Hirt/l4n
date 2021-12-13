@@ -35,8 +35,9 @@ class UsersController < ApplicationController
     return if verify_hcaptcha
 
     op Operations::User::Create
+    model.validate
     flash.delete(:hcaptcha_error)
-    flash.now[:danger] = _('Session|Hcaptcha failed, please try again')
+    flash[:danger] = _('Session|Hcaptcha failed, please try again')
     render :new
   end
 end

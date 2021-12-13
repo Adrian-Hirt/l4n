@@ -7,11 +7,11 @@
           Dev
       .card-body
         %p.login-box-msg= _('User|Sign up')
-        = simple_form_for model, wrapper: :input_group do |f|
+        = simple_form_for model, wrapper: :input_group, url: signup_path, data: { turbo: 'false' } do |f|
           = f.input :username, label: false, placeholder: _('User|Username')
           = f.input :email, label: false, placeholder: _('User|Email')
-          = f.input :password, append: icon(%i[fa fa-eye-slash fa-fw]), label: false, placeholder: _('User|Password'), input_html: { data: { component: 'PasswordVisibilityToggler' } }
-          = f.input :password_confirmation, append: icon(%i[fa fa-eye-slash fa-fw]), label: false, placeholder: _('User|Password confirmation'), input_html: { data: { component: 'PasswordVisibilityToggler' } }
+          = f.password :password, label: false, placeholder: _('User|Password')
+          = f.password :password_confirmation, label: false, placeholder: _('User|Password confirmation')
           .mb-3
             = hcaptcha_tags theme: (dark_mode_active? ? :dark : :light)
           .input-group.mb-3

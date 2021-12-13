@@ -1,6 +1,6 @@
 import Rails from '@rails/ujs';
 import { i18n } from 'components/translations';
-import sweetAlert from 'sweetalert2/dist/sweetalert2.all'
+import 'sweetalert2'
 
 const confirmed = (element, result) => {
   if (result.value) {
@@ -15,7 +15,7 @@ const showConfirmationDialog = (element) => {
   const message = element.getAttribute('data-confirm')
   const text = element.getAttribute('data-text')
 
-  sweetAlert.fire({
+  Sweetalert2.fire({
     title: message,
     text: text || '',
     icon: 'warning',

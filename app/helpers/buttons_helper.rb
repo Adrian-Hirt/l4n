@@ -8,14 +8,21 @@ module ButtonsHelper
     disabled:  false
   }.freeze
 
-  def button(title, href, html: {}, btn_icon: nil, **opts)
+  # rubocop:disable Metrics/ParameterLists
+  def button(title, href, html: {}, btn_icon: nil, method: nil, **opts)
     options = get_options(opts)
     if btn_icon
       button_icon = icon btn_icon
       title = (options[:icon_only] ? button_icon : (button_icon + title))
     end
+    if method
+      html.merge!(
+        data: { turbo_method: method }
+      )
+    end
     _button(title, href, get_btn_class(options), **html)
   end
+  # rubocop:enable Metrics/ParameterLists
 
   def show_button(model, html: {}, **opts)
     options = get_options(opts)
@@ -54,13 +61,15 @@ module ButtonsHelper
       end
     end
     html_options = {
-      method: :delete,
       data:   {
         confirm: _("#{model.class.name}|Delete confirmation?")
-      }
+      },
+      method: :delete
     }
     html_options.merge!(html)
-    _button(title, href, get_btn_class(options), **html_options)
+    button_to href, class: get_btn_class(options), **html_options do
+      title
+    end
   end
 
   private

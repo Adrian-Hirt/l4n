@@ -1,22 +1,28 @@
-const gettext = require('gettext.js');
-export const i18n = gettext.default();
+import i18n from 'gettext.js';
 
-import {available_locales} from 'components/locales.js.erb';
+const i18nConst = i18n();
 
-i18n._ = function(str) {
-  return i18n.gettext(str);
+i18nConst._ = function(str) {
+  return i18nConst.gettext(str);
 }
 
 export default class Translations {
+  static available_locales =  ["en", "de"];
+
   static loadTranslations() {
-    for(let lang of available_locales) {
-      let json_data = require('../locale/' + lang + '.json');
-      i18n.loadJSON(json_data, 'messages');
+    for(let lang of Translations.available_locales) {
+      fetch(`/locale/${lang}.json`)
+        .then(response => response.json())
+        .then(data => i18nConst.loadJSON(data, 'messages'));
     }
   }
 
   static setup() {
-    window.i18n = i18n;
+    window.i18n = i18nConst;
     this.loadTranslations();
+  }
+
+  static _(str) {
+    return i18nConst._(str);
   }
 };

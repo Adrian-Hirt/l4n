@@ -1,0 +1,25 @@
+@each $name, $color in $theme-colors
+  .alert-#{$name}
+    background-color: $color
+    border-color: rgba(0, 0, 0, 0)
+    border-left: 5px solid scale-color($color, $lightness: -25%)
+    color: white
+
+.alert-warning
+  color: black
+
+.notification-flash
+  position: fixed
+  top: 30px
+  right: 20px
+  width: 400px
+  border-radius: 0
+  z-index: 1000
+
+.alert-dismissible
+  .close
+    padding-top: .55rem
+
+body.application
+  .notification-flash
+    top: 80px !important

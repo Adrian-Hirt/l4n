@@ -22,8 +22,8 @@ module Admin
         redirect_to admin_users_path
       else
         add_breadcrumb _('Admin|Users|New')
-        flash.now[:danger] = _('User|Create failed')
-        render 'new'
+        flash[:danger] = _('User|Create failed')
+        render :new, status: :unprocessable_entity
       end
     end
 
@@ -38,8 +38,8 @@ module Admin
         redirect_to admin_users_path
       else
         add_breadcrumb model.username, edit_admin_user_path(model)
-        flash.now[:danger] = _('User|Update failed')
-        render 'edit'
+        flash[:danger] = _('User|Update failed')
+        render :edit, status: :unprocessable_entity
       end
     end
 

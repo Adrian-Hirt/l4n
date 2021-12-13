@@ -1,12 +1,12 @@
 module InputGroup
   def prepend(_wrapper_options = nil)
-    span_tag = content_tag(:span, options[:prepend], class: 'input-group-text')
-    template.content_tag(:div, span_tag, class: 'input-group-prepend')
+    options[:prepend_options] ||= {}
+    template.content_tag(:div, options[:prepend], class: 'input-group-text', **options[:prepend_options])
   end
 
   def append(_wrapper_options = nil)
-    span_tag = content_tag(:span, options[:append], class: 'input-group-text')
-    template.content_tag(:div, span_tag, class: 'input-group-append')
+    options[:append_options] ||= {}
+    template.content_tag(:div, options[:append], class: 'input-group-text', **options[:append_options])
   end
 end
 

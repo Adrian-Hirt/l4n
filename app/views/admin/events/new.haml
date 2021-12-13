@@ -1,19 +1,4 @@
 - provide :page_title, _('Event|New')
 
 .card
-  = simple_form_for model, url: admin_events_path do |f|
-    .card-body
-      = f.input :title
-      = f.input :location
-      = f.label :published
-      = f.input :published, input_html: { class: 'no-validation' }
-      = f.input :description, input_html: { data: { preview_url: preview_markdown_admin_news_posts_path } }
-      #event_dates
-        = f.simple_fields_for :event_dates do |event_date|
-          = render 'event_date_fields', f: event_date
-        .links
-          = link_to_add_association f, :event_dates, class: 'btn btn-primary' do
-            = icon %i[fa fa-plus]
-            =_('Event|Add event date')
-    .card-footer
-      = f.save
+  = render partial: 'form'

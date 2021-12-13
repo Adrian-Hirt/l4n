@@ -22,8 +22,8 @@ module Admin
         redirect_to admin_events_path
       else
         add_breadcrumb _('Admin|Event|New')
-        flash.now[:danger] = _('Event|Create failed')
-        render 'new'
+        flash[:danger] = _('Event|Create failed')
+        render :new, status: :unprocessable_entity
       end
     end
 
@@ -39,7 +39,7 @@ module Admin
       else
         add_breadcrumb model.title
         flash[:danger] = _('Event|Edit failed')
-        render 'edit'
+        render :edit, status: :unprocessable_entity
       end
     end
 

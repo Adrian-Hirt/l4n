@@ -1,9 +1,8 @@
-import EasyMDE from 'easymde';
-import { i18n } from 'components/translations';
-import sweetAlert from 'sweetalert2/dist/sweetalert2.all'
+import 'easymde';
+import Translations from 'components/translations';
 import { debounce } from 'utils/debounce';
-import { rectanglesLoader } from 'components/loading_animations'
-import sweetalert2All from 'sweetalert2/dist/sweetalert2.all';
+import { rectanglesLoader } from 'components/loading_animations';
+import 'sweetalert2'
 
 export default class MarkdownEditor extends EasyMDE {
   // Constructs our markdown editor, which extends the EasyMDE editor
@@ -21,6 +20,7 @@ export default class MarkdownEditor extends EasyMDE {
   // Render the markdown for preview.
   static previewRender(plainText, previewContainer) {
     var self = this;
+    let csrfToken = document.querySelector("[name='csrf-token']").content;
 
     // We need to use a timeout of 1 ms before we check if the preview
     // is active, as the EasyMDE only adds the active class after a delay
@@ -33,24 +33,25 @@ export default class MarkdownEditor extends EasyMDE {
       // Get the url from the parent
       var url = self.parent.previewUrl;
 
-      $.ajax({
-        url: url,
-        type: 'POST',
-        dataType: 'json',
-        data: {
-          body: plainText,
-          authenticity_token: window._token
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': csrfToken
         },
-        success: function(data) {
-          previewContainer.innerHTML = data;
-        },
-        error: function(data) {
-          sweetalert2All.fire({
-            title: i18n._('MarkdownEditor|Rendering preview failed'),
-            icon: 'error',
-            confirmButtonText: i18n._('MarkdownEditor|Popup|Confirm')
-          });
-        }
+        body: JSON.stringify(plainText)
+      })
+      .then(response => response.json())
+      .then(data => {
+        previewContainer.innerHTML = data;
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        Sweetalert2.fire({
+          title: i18n._('MarkdownEditor|Rendering preview failed'),
+          icon: 'error',
+          confirmButtonText: i18n._('ConfirmDialog|Confirm')
+        });
       });
     }, 1);
 
@@ -242,7 +243,7 @@ export default class MarkdownEditor extends EasyMDE {
 
   // Insert a font awesome icon
   static insertIcon(editor) {
-    sweetAlert.fire({
+    Sweetalert2.fire({
       title: i18n._('MarkdownEditor|Popup|Insert icon'),
       text:  i18n._('MarkdownEditor|Popup|Please enter the name of the icon you want to use. If you need help with the names of the icons, click on the i button in the editor!'),
       input: 'text',
@@ -267,7 +268,7 @@ export default class MarkdownEditor extends EasyMDE {
 
   // Insert a youtube video as an iframe
   static insertYoutubeVideo(editor) {
-    sweetAlert.fire({
+    Sweetalert2.fire({
       title: i18n._('MarkdownEditor|Popup|Insert youtube video'),
       text:  i18n._("MarkdownEditor|Popup|Please paste the URL of the youtube video here. The URL needs to be of format 'https://www.youtube.com/watch?v='"),
       input: 'text',
@@ -289,7 +290,7 @@ export default class MarkdownEditor extends EasyMDE {
 
   // Insert a google maps map as an iframe
   static insertGoogleMaps(editor) {
-    sweetAlert.fire({
+    Sweetalert2.fire({
       title: i18n._('MarkdownEditor|Popup|Insert Google Maps Map'),
       text:  i18n._("MarkdownEditor|Popup|Please paste the URL of the map you want to share here! The URL needs to be of format 'https://www.google.com/maps/d/embed?mid=' or 'https://www.google.com/maps/embed?pb='"),
       input: 'text',
@@ -317,7 +318,7 @@ export default class MarkdownEditor extends EasyMDE {
   // Insert a link. Instead of the browser prompt, we'll use the sweetalert
   // popup, as this looks way better
   static insertLink(editor) {
-    sweetAlert.fire({
+    Sweetalert2.fire({
       title: i18n._('MarkdownEditor|Popup|Please enter your link'),
       input: 'text',
       inputPlaceholder: 'https://',
@@ -338,7 +339,7 @@ export default class MarkdownEditor extends EasyMDE {
   // Insert an image. Instead of the browser prompt, we'll use the sweetalert
   // popup, as this looks way better
   static insertImage(editor) {
-    sweetAlert.fire({
+    Sweetalert2.fire({
       title: i18n._('MarkdownEditor|Popup|Please enter the URL of the image'),
       input: 'text',
       inputPlaceholder: 'https://',
@@ -354,12 +355,5 @@ export default class MarkdownEditor extends EasyMDE {
         cm.replaceSelection(output);
       }
     })
-  }
-
-  // TODO: Change this to maybe requiring a 'data' element set on the textarea
-  static init(body) {
-    $(body).find('textarea').each(function() {
-      new MarkdownEditor(this);
-    });
   }
 }
