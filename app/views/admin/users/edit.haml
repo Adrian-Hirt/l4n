@@ -6,7 +6,7 @@
       %h4= _('User|General Settings')
       = f.input :username
       = f.input :email
-      = f.input :password, append: icon(%i[fa fa-eye-slash fa-fw]), input_html: { data: { component: 'PasswordVisibilityToggler' } }, placeholder: _('Settings|Password|Leave blank to keep current password')
+      = f.password :password, placeholder: _('Settings|Password|Leave blank to keep current password')
       = f.input :avatar
       - if model.avatar.present?
         = image_tag model.thumb_avatar

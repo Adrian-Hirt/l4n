@@ -10,7 +10,7 @@
           %p.login-box-msg= _('Session|Sign in')
           = simple_form_for :login, wrapper: :input_group do |f|
             = f.input :email, label: false, placeholder: _('User|Email')
-            = f.input :password, append: icon(%i[fa fa-eye-slash fa-fw]), label: false, placeholder: _('User|Password'), input_html: { data: { component: 'PasswordVisibilityToggler' } }
+            = f.password :password, label: false, placeholder: _('User|Password')
             .input-group
               = f.input :remember_me, as: :boolean, label: _('Session|Remember me'), input_html: { class: 'checkbox-primary' }
             .input-group.mb-3
