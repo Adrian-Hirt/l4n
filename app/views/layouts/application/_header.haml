@@ -44,7 +44,7 @@
                 = link_to _('Admin Panel'), admin_path, class: %i[dropdown-item]
                 %li.dropdown-divider
               %li
-                = link_to logout_path, data: { turbo_method: :delete }, class: 'dropdown-item' do
+                = button_to logout_path, method: :delete, class: 'dropdown-item' do
                   = icon %i[fa fa-sign-out-alt]
                   = ('User|Logout')
           - else

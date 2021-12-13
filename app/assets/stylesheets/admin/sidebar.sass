@@ -80,7 +80,7 @@
     display: flex
     height: 35px
     background-color: $sidenav-footer-bg-color
-    div
+    .sidebar-footer-button
       height: 35px
       flex-grow: 1
       line-height: 35px
@@ -91,6 +91,16 @@
           color: white !important
           svg
             filter: drop-shadow(0 0 3px $sidenav-color)
+      .button_to
+        button
+          color: $sidenav-color !important
+          background-color: transparent
+          border: none
+          padding: 0
+          &:hover
+            color: white !important
+            svg
+              filter: drop-shadow(0 0 3px $sidenav-color)
     .sidebar-footer-more-dots
       display: none
   &.sidebar-collapsed:not(:hover)

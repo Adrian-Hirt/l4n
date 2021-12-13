@@ -62,12 +62,14 @@ module ButtonsHelper
     end
     html_options = {
       data: {
-        confirm:      _("#{model.class.name}|Delete confirmation?"),
-        turbo_method: :delete
-      }
+        confirm: _("#{model.class.name}|Delete confirmation?")
+      },
+      method: :delete
     }
     html_options.merge!(html)
-    _button(title, href, get_btn_class(options), **html_options)
+    button_to href, class: get_btn_class(options), **html_options do
+      title
+    end
   end
 
   private

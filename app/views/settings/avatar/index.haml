@@ -5,25 +5,25 @@
   .col-md-3
     = render partial: 'settings/sidebar'
   .col-md-9
-    .card
+    .card{data: { controller: 'image-cropper' }}
       .card-body
-        .image-cropper{data: { component: 'ImageCropper' }}
+        .image-cropper
           .row
             .col-md-6
               %h4.mb-3= _('User|Crop your avatar')
               .canvas-wrapper
                 - url = avatar_present ? url_for(current_user.avatar) : nil
-                %canvas{width: '300', height: '300', data: {initial: url}}
+                %canvas{width: '300', height: '300', data: { initial: url, 'image-cropper-target' => 'canvas' }}
             .col-md-6
               %h4.mb-3= _('User|Preview your avatar')
               .cropper-preview
           %hr
           .input-group.mb-3
-            %input{type: 'file', id:'imageLoader', name: 'imageLoader', style: 'display: none'}
-            %span{type: 'text', class: 'form-control', id: 'fileNameList'}
+            %input{type: 'file', id:'imageLoader', name: 'imageLoader', style: 'display: none', data: { 'image-cropper-target' => 'imageLoader' }}
+            %span{type: 'text', class: 'form-control', data: { 'image-cropper-target' => 'fileNameList' }}
             .input-group-append
               %label{for: 'imageLoader', class: 'btn btn-outline-primary mb-0 font-weight-normal'}= _('ImageUploader|Select file')
       .card-footer
-        = button _('User|Upload avatar'), nil, html: { id: 'cropperUploadButton', data: { url: '/settings/avatar' } }, disabled: !avatar_present
+        = button _('User|Upload avatar'), nil, html: { data: { url: '/settings/avatar', 'image-cropper-target' => 'uploadButton', 'action' => 'click->image-cropper#uploadImage' } }, disabled: !avatar_present
         - if avatar_present
-          = button _('User|Remove avatar'), settings_avatar_path, html: { data: { confirm: _('User|Avatar remove confirmation')}, data: { turbo_method: :delete } }, color: :danger
+          = delete_button nil, title: _('User|Remove avatar'), href: settings_avatar_path

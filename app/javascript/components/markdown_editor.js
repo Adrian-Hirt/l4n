@@ -50,7 +50,7 @@ export default class MarkdownEditor extends EasyMDE {
         Sweetalert2.fire({
           title: i18n._('MarkdownEditor|Rendering preview failed'),
           icon: 'error',
-          confirmButtonText: i18n._('MarkdownEditor|Popup|Confirm')
+          confirmButtonText: i18n._('ConfirmDialog|Confirm')
         });
       });
     }, 1);
