@@ -33,7 +33,8 @@ Rails.application.routes.draw do
     end
 
     namespace :profile do
-      match :/, via: %i[get patch], action: :index
+      get :/, action: :edit
+      patch :/, action: :update
     end
 
     namespace :avatar do

@@ -1,0 +1,10 @@
+= simple_form_for model, url: settings_profile_path, wrapper: :input_group do |f|
+  .card-body
+    = f.input :username
+    = f.input :email
+    = f.password :password, placeholder: _('Settings|Password|Leave blank to keep current password')
+    = f.password :password_confirmation, placeholder: _('Settings|Password confirmation|Leave blank to keep current password')
+    %hr
+    = f.input :website
+  .card-footer
+    = f.save _('Settings|Update profile')

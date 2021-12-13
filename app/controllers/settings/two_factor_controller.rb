@@ -16,11 +16,11 @@ module Settings
         redirect_to settings_two_factor_path
       end
     rescue Operations::TwoFactor::InvalidOtpCodeError
-      flash.now[:danger] = _('TwoFactor|2FA code was wrong, please try again')
-      render 'activate'
+      flash[:danger] = _('TwoFactor|2FA code was wrong, please try again')
+      render :activate, status: :unprocessable_entity
     rescue Operations::TwoFactor::BackupCodesNotConfirmed
-      flash.now[:danger] = _('TwoFactor|Please confirm that you saved the backup codes')
-      render 'activate'
+      flash[:danger] = _('TwoFactor|Please confirm that you saved the backup codes')
+      render :activate, status: :unprocessable_entity
     end
 
     def deactivate
