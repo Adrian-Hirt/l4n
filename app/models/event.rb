@@ -39,6 +39,6 @@ class Event < ApplicationRecord
   private
 
   def minimum_one_date
-    errors.add(:base, _('Event|You need to add at least one date')) if event_dates.count < 1 && event_dates.empty?
+    errors.add(:event_dates, _('Event|You need to add at least one date')) if event_dates.count < 1 && event_dates.empty?
   end
 end
