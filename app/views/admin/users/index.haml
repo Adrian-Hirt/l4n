@@ -19,5 +19,5 @@
           %td= u.activated?
           %td.tar
             = show_button u, namespace: %i[admin], size: :sm, icon_only: true
-            = edit_button u, namespace: %i[admin], size: :sm, icon_only: true
+            = edit_button u, href: profile_admin_user_path(u), size: :sm, icon_only: true
             = delete_button u, namespace: %i[admin], size: :sm, icon_only: true, disabled: u == current_user

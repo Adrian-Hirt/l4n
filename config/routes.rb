@@ -54,7 +54,18 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/', to: 'home#dashboard'
-    resources :users
+    resources :users, only: %i[index new show destroy] do
+      member do
+        get :profile, action: :edit, controller: 'users/profile'
+        patch :profile, action: :update, controller: 'users/profile'
+
+        get :permissions, action: :edit, controller: 'users/permissions'
+        patch :permissions, action: :update, controller: 'users/permissions'
+
+        match :avatar, action: :edit, controller: 'users/avatar', via: %i[get patch]
+        delete :avatar, action: :destroy, controller: 'users/avatar'
+      end
+    end
     resources :news, controller: :news_posts, as: :news_posts do
       collection do
         post :preview_markdown

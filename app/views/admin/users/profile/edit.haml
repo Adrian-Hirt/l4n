@@ -1,0 +1,14 @@
+.row
+  .col-md-3
+    = render partial: 'admin/users/sidebar'
+  .col-md-9
+    .card
+      = simple_form_for model, url: profile_admin_user_path(model), wrapper: :input_group do |f|
+        .card-body
+          = f.input :username
+          = f.input :email
+          = f.password :password, placeholder: _('Admin|Users|Profile|Password|Leave blank to keep current password')
+          %hr
+          = f.input :website
+        .card-footer
+          = f.save _('Admin|Users|Profile|Update profile')

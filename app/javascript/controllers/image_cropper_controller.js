@@ -5,8 +5,6 @@ export default class extends Controller {
   static targets = ['imageLoader', 'uploadButton', 'canvas', 'fileNameList'];
 
   connect() {
-    console.log('connect');
-
     this.canvas = this.canvasTarget;
     this.imageLoader = this.imageLoaderTarget
     this.ctx = this.canvas.getContext('2d');
@@ -50,8 +48,6 @@ export default class extends Controller {
     this.cropper.getCroppedCanvas().toBlob((blob) => {
       let formData = new FormData();
       formData.append('croppedImage', blob);
-
-      console.log(submitUrl);
 
       fetch(submitUrl, {
         method: 'PATCH',

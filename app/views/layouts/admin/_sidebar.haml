@@ -24,7 +24,7 @@
               %span.nav-item-text= _('Admin|Dashboard')
         - if can? :manage, User
           %li.nav-item
-            %a.nav-link{href: admin_users_path, class: active_link_classes(:users)}
+            %a.nav-link{href: admin_users_path, class: active_link_classes(:users, include_children: true)}
               %span
                 %i.nav-icon.fas.fa-users
                 %span.nav-item-text= _('Admin|Users')

@@ -1,5 +1,6 @@
 // Libraries
 @import 'bootstrap/bootstrap.scss';
+@import 'cropperjs/cropper.scss';
 @import 'easymde/easymde.scss';
 
 // General stuff
@@ -10,6 +11,7 @@
 @import 'components/alerts';
 @import 'components/buttons';
 @import 'components/forms';
+@import 'components/image_cropper';
 @import 'components/loading_animations';
 @import 'components/markdown_editor';
 @import 'components/radio_checkbox_input';

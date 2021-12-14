@@ -1,0 +1,11 @@
+.row
+  .col-md-3
+    = render partial: 'admin/users/sidebar'
+  .col-md-9
+    .card
+      = simple_form_for model, url: permissions_admin_user_path(model), wrapper: :input_group do |f|
+        .card-body
+          - User::PERMISSION_FIELDS.each do |field|
+            = f.input field, input_html: { class: 'no-validation' }
+        .card-footer
+          = f.save _('Admin|Users|Permissions|Update')

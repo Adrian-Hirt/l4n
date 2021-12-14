@@ -1,0 +1,26 @@
+.row
+  .col-md-3
+    = render partial: 'admin/users/sidebar'
+  .col-md-9
+    .card{data: { controller: 'image-cropper' }}
+      .card-body
+        .image-cropper
+          .row
+            .col-md-6
+              %h4.mb-3= _('Admin|Users|Avatar|Crop your avatar')
+              .canvas-wrapper
+                - url = model.avatar.present? ? url_for(model.avatar) : nil
+                %canvas{width: '300', height: '300', data: { initial: url, 'image-cropper-target' => 'canvas' }}
+            .col-md-6
+              %h4.mb-3= _('Admin|Users|Avatar|Preview your avatar')
+              .cropper-preview
+          %hr
+          .input-group.mb-3
+            %input{type: 'file', id:'imageLoader', name: 'imageLoader', style: 'display: none', data: { 'image-cropper-target' => 'imageLoader' }}
+            %span{type: 'text', class: 'form-control', data: { 'image-cropper-target' => 'fileNameList' }}
+            .input-group-append
+              %label{for: 'imageLoader', class: 'btn btn-outline-primary mb-0 font-weight-normal'}= _('ImageUploader|Select file')
+      .card-footer
+        = button _('Admin|Users|Avatar|Upload avatar'), nil, html: { data: { url: avatar_admin_user_path(model), 'image-cropper-target' => 'uploadButton', 'action' => 'click->image-cropper#uploadImage' } }, disabled: !model.avatar.present?
+        - if model.avatar.present?
+          = delete_button nil, title: _('Admin|Users|Avatar|Remove avatar'), href: avatar_admin_user_path
