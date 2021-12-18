@@ -4,8 +4,10 @@ module Operations::Admin::User
       authorize! :manage, User
     end
 
-    def users
-      User.all
+    def grid
+      @grid ||= Grids::Users.new(osparams.grids_users) do |scope|
+        scope.page(params[:page])
+      end
     end
   end
 end

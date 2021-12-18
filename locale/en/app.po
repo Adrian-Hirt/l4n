@@ -53,9 +53,6 @@ msgstr ""
 msgid "Admin Panel"
 msgstr ""
 
-msgid "AdminPanel|Back to application"
-msgstr ""
-
 msgid "Admin|Dashboard"
 msgstr ""
 
@@ -88,18 +85,84 @@ msgid "Admin|Users"
 msgstr "Users"
 
 #, fuzzy
-msgid "Admin|Users|Create user"
+msgid "Admin|Users|Avatar"
 msgstr "Users"
 
 #, fuzzy
-msgid "Admin|Users|Edit user"
+msgid "Admin|Users|Avatar|Avatar removed successfully"
+msgstr "User"
+
+#, fuzzy
+msgid "Admin|Users|Avatar|Avatar updated successfully"
+msgstr "User"
+
+#, fuzzy
+msgid "Admin|Users|Avatar|Crop your avatar"
+msgstr "Users"
+
+#, fuzzy
+msgid "Admin|Users|Avatar|Preview your avatar"
+msgstr "Users"
+
+#, fuzzy
+msgid "Admin|Users|Avatar|Remove avatar"
+msgstr "Users"
+
+#, fuzzy
+msgid "Admin|Users|Avatar|Upload avatar"
+msgstr "Users"
+
+#, fuzzy
+msgid "Admin|Users|Create user"
 msgstr "Users"
 
 #, fuzzy
 msgid "Admin|Users|New"
 msgstr "Users"
 
+#, fuzzy
+msgid "Admin|Users|Permissions"
+msgstr "Users"
+
+#, fuzzy
+msgid "Admin|Users|Permissions|Successfully updated"
+msgstr "Users"
+
+#, fuzzy
+msgid "Admin|Users|Permissions|Update"
+msgstr "Users"
+
+#, fuzzy
+msgid "Admin|Users|Permissions|Update failed"
+msgstr "Users"
+
+#, fuzzy
+msgid "Admin|Users|Profile"
+msgstr "Users"
+
+#, fuzzy
+msgid "Admin|Users|Profile|Password|Leave blank to keep current password"
+msgstr "Users"
+
+#, fuzzy
+msgid "Admin|Users|Profile|Successfully updated"
+msgstr "Users"
+
+#, fuzzy
+msgid "Admin|Users|Profile|Update failed"
+msgstr "Users"
+
+#, fuzzy
+msgid "Admin|Users|Profile|Update profile"
+msgstr "Users"
+
 msgid "ApplicationName"
+msgstr ""
+
+msgid "Application|Dark mode successfully disabled"
+msgstr ""
+
+msgid "Application|Dark mode successfully enabled"
 msgstr ""
 
 msgid "Application|Language successfully changed"
@@ -110,6 +173,12 @@ msgstr "Cancel"
 
 msgid "ConfirmDialog|Confirm"
 msgstr "Ok"
+
+msgid "Datagrid|No columns"
+msgstr ""
+
+msgid "Datagrid|No results"
+msgstr ""
 
 msgid "Event"
 msgstr ""
@@ -567,10 +636,6 @@ msgid "User|Add 2FA"
 msgstr "User"
 
 #, fuzzy
-msgid "User|Avatar remove confirmation"
-msgstr "User"
-
-#, fuzzy
 msgid "User|Avatar removed successfully"
 msgstr "User"
 
@@ -600,10 +665,6 @@ msgstr "User"
 
 #, fuzzy
 msgid "User|Game Profiles"
-msgstr "User"
-
-#, fuzzy
-msgid "User|General Settings"
 msgstr "User"
 
 #, fuzzy
@@ -642,10 +703,6 @@ msgstr "Password"
 #, fuzzy
 msgid "User|Password reset token digest"
 msgstr "Password"
-
-#, fuzzy
-msgid "User|Permissions"
-msgstr "User"
 
 #, fuzzy
 msgid "User|Preferred locale"
@@ -703,9 +760,6 @@ msgstr "User"
 msgid "User|Successfully deleted"
 msgstr ""
 
-msgid "User|Successfully updated"
-msgstr ""
-
 #, fuzzy
 msgid "User|System admin permission"
 msgstr "User"
@@ -713,9 +767,6 @@ msgstr "User"
 #, fuzzy
 msgid "User|Two factor enabled"
 msgstr "User"
-
-msgid "User|Update failed"
-msgstr ""
 
 #, fuzzy
 msgid "User|Update password"

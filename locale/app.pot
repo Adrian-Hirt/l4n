@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-12 16:30+0100\n"
-"PO-Revision-Date: 2021-12-12 16:30+0100\n"
+"POT-Creation-Date: 2021-12-18 01:01+0100\n"
+"PO-Revision-Date: 2021-12-18 01:01+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -54,9 +54,6 @@ msgstr ""
 msgid "Admin Panel"
 msgstr ""
 
-msgid "AdminPanel|Back to application"
-msgstr ""
-
 msgid "Admin|Dashboard"
 msgstr ""
 
@@ -87,16 +84,67 @@ msgstr ""
 msgid "Admin|Users"
 msgstr ""
 
-msgid "Admin|Users|Create user"
+msgid "Admin|Users|Avatar"
 msgstr ""
 
-msgid "Admin|Users|Edit user"
+msgid "Admin|Users|Avatar|Avatar removed successfully"
+msgstr ""
+
+msgid "Admin|Users|Avatar|Avatar updated successfully"
+msgstr ""
+
+msgid "Admin|Users|Avatar|Crop your avatar"
+msgstr ""
+
+msgid "Admin|Users|Avatar|Preview your avatar"
+msgstr ""
+
+msgid "Admin|Users|Avatar|Remove avatar"
+msgstr ""
+
+msgid "Admin|Users|Avatar|Upload avatar"
+msgstr ""
+
+msgid "Admin|Users|Create user"
 msgstr ""
 
 msgid "Admin|Users|New"
 msgstr ""
 
+msgid "Admin|Users|Permissions"
+msgstr ""
+
+msgid "Admin|Users|Permissions|Successfully updated"
+msgstr ""
+
+msgid "Admin|Users|Permissions|Update"
+msgstr ""
+
+msgid "Admin|Users|Permissions|Update failed"
+msgstr ""
+
+msgid "Admin|Users|Profile"
+msgstr ""
+
+msgid "Admin|Users|Profile|Password|Leave blank to keep current password"
+msgstr ""
+
+msgid "Admin|Users|Profile|Successfully updated"
+msgstr ""
+
+msgid "Admin|Users|Profile|Update failed"
+msgstr ""
+
+msgid "Admin|Users|Profile|Update profile"
+msgstr ""
+
 msgid "ApplicationName"
+msgstr ""
+
+msgid "Application|Dark mode successfully disabled"
+msgstr ""
+
+msgid "Application|Dark mode successfully enabled"
 msgstr ""
 
 msgid "Application|Language successfully changed"
@@ -106,6 +154,12 @@ msgid "ConfirmDialog|Cancel"
 msgstr ""
 
 msgid "ConfirmDialog|Confirm"
+msgstr ""
+
+msgid "Datagrid|No columns"
+msgstr ""
+
+msgid "Datagrid|No results"
 msgstr ""
 
 msgid "Event"
@@ -540,9 +594,6 @@ msgstr ""
 msgid "User|Add 2FA"
 msgstr ""
 
-msgid "User|Avatar remove confirmation"
-msgstr ""
-
 msgid "User|Avatar removed successfully"
 msgstr ""
 
@@ -568,9 +619,6 @@ msgid "User|Event admin permission"
 msgstr ""
 
 msgid "User|Game Profiles"
-msgstr ""
-
-msgid "User|General Settings"
 msgstr ""
 
 msgid "User|Id"
@@ -601,9 +649,6 @@ msgid "User|Password reset token created at"
 msgstr ""
 
 msgid "User|Password reset token digest"
-msgstr ""
-
-msgid "User|Permissions"
 msgstr ""
 
 msgid "User|Preferred locale"
@@ -651,16 +696,10 @@ msgstr ""
 msgid "User|Successfully deleted"
 msgstr ""
 
-msgid "User|Successfully updated"
-msgstr ""
-
 msgid "User|System admin permission"
 msgstr ""
 
 msgid "User|Two factor enabled"
-msgstr ""
-
-msgid "User|Update failed"
 msgstr ""
 
 msgid "User|Update password"

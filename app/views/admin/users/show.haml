@@ -2,7 +2,7 @@
 
 .card
   .card-body
-    - if current_user.thumb_avatar.present?
+    - if model.thumb_avatar.present?
       = image_tag model.thumb_avatar
     ID:
     = model.id

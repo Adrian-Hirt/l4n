@@ -4,20 +4,4 @@
   .card-body
     = new_button User, namespace: %i[admin]
     %hr
-    %table{class: 'table table-striped'}
-      %tr
-        %th= _('User|Id')
-        %th= _('User|Username')
-        %th= _('User|Email')
-        %th= _('User|Activated')
-        %th
-      - op.users.each do |u|
-        %tr
-          %td= u.id
-          %td= u.username
-          %td= u.email
-          %td= u.activated?
-          %td.tar
-            = show_button u, namespace: %i[admin], size: :sm, icon_only: true
-            = edit_button u, href: profile_admin_user_path(u), size: :sm, icon_only: true
-            = delete_button u, namespace: %i[admin], size: :sm, icon_only: true, disabled: u == current_user
+    = datagrid_table op.grid, html: { class: 'table' }

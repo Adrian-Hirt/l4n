@@ -27,7 +27,7 @@ module ButtonsHelper
   def show_button(model, html: {}, **opts)
     options = get_options(opts)
     href = options[:href] || polymorphic_path(options[:namespace] << model)
-    title = icon %i[fa fa-arrow-right]
+    title = icon %i[fa fa-fw fa-arrow-right]
     title += _("#{model.class.name}|Show") unless options[:icon_only]
     _button(title, href, get_btn_class(options), **html)
   end
@@ -35,7 +35,7 @@ module ButtonsHelper
   def new_button(klass, html: {}, **opts)
     options = get_options(opts)
     href = options[:href] || new_polymorphic_path(options[:namespace] << klass)
-    title = icon %i[fa fa-plus]
+    title = icon %i[fa fa-fw fa-plus]
     title += _("#{klass.name}|New") unless options[:icon_only]
     _button(title, href, get_btn_class(options), **html)
   end
@@ -43,7 +43,7 @@ module ButtonsHelper
   def edit_button(model, html: {}, **opts)
     options = get_options(opts)
     href = options[:href] || edit_polymorphic_path(options[:namespace] << model)
-    title = icon %i[fa fa-edit]
+    title = icon %i[fa fa-fw fa-edit]
     title += _("#{model.class.name}|Edit") unless options[:icon_only]
     _button(title, href, get_btn_class(options), **html)
   end
@@ -52,7 +52,7 @@ module ButtonsHelper
     opts[:color] ||= :danger
     options = get_options(opts)
     href = options[:href] || polymorphic_path(options[:namespace] << model)
-    title = icon %i[fa fa-trash]
+    title = icon %i[fa fa-fw fa-trash]
     unless options[:icon_only]
       if options[:title]
         title += options[:title]

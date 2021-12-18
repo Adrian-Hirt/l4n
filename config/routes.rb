@@ -54,7 +54,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/', to: 'home#dashboard'
-    resources :users, only: %i[index new show destroy] do
+    resources :users, only: %i[index new create show destroy] do
       member do
         get :profile, action: :edit, controller: 'users/profile'
         patch :profile, action: :update, controller: 'users/profile'

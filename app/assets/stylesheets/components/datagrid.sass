@@ -1,0 +1,33 @@
+table.datagrid
+  td,
+  th
+    border-top: 1px solid $gray-700
+    padding: 5px 10px
+    vertical-align: middle
+    .order
+      display: inline
+      margin-left: map-get($spacers, 1)
+      a.asc, a.desc
+        text-decoration: none
+        font-weight: normal
+    &.ordered
+      background-color: $gray-100
+      &.asc
+        a.asc
+          font-weight: bold
+          color: $red
+      &.desc
+        a.desc
+          font-weight: bold
+          color: $red
+  .datagrid-actions
+    width: 1%
+    .datagrid-actions-wrapper
+      white-space: nowrap
+      a:not(:last-child)
+        margin-right: map-get($spacers, 1)
+  tfoot
+    ul
+      margin-bottom: 0
+    .table-info-box
+      text-align: right

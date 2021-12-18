@@ -1,0 +1,5 @@
+.order
+  = link_to datagrid_order_path(grid, column, false), class: 'asc' do
+    = icon %i[fas fa-arrow-down]
+  = link_to datagrid_order_path(grid, column, true), class: 'desc' do
+    = icon %i[fas fa-arrow-up]

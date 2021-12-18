@@ -1,0 +1,24 @@
+-# Local variables:
+-# * grid - instance of Datagrid
+-# * assets - Array of database Entities
+-# * options - passed options Hash
+
+- if grid.html_columns(*options[:columns]).any?
+  %table.datagrid{**options[:html]}
+    %thead
+      = datagrid_header grid, options
+    %tbody
+      - if assets.any?
+        = datagrid_rows grid, assets, **options
+      - else
+        %tr
+          %td.noresults{colspan: '100%'}
+            = _('Datagrid|No results')
+    %tfoot
+      %tr
+        %td.px-0.py-2
+          = paginate grid.assets, theme: 'bootstrap'
+        %td.px-0.py-2.table-info-box{colspan: '100%'}
+          = page_entries_info grid.assets, entry_name: _(grid.assets.name)
+- else
+  = _('Datagrid|No columns')

@@ -53,9 +53,6 @@ msgstr ""
 msgid "Admin Panel"
 msgstr ""
 
-msgid "AdminPanel|Back to application"
-msgstr ""
-
 msgid "Admin|Dashboard"
 msgstr ""
 
@@ -86,16 +83,83 @@ msgstr ""
 msgid "Admin|Users"
 msgstr ""
 
-msgid "Admin|Users|Create user"
-msgstr ""
+#, fuzzy
+msgid "Admin|Users|Avatar"
+msgstr "Benutzer"
 
-msgid "Admin|Users|Edit user"
+#, fuzzy
+msgid "Admin|Users|Avatar|Avatar removed successfully"
+msgstr "Benutzer"
+
+#, fuzzy
+msgid "Admin|Users|Avatar|Avatar updated successfully"
+msgstr "Benutzer"
+
+#, fuzzy
+msgid "Admin|Users|Avatar|Crop your avatar"
+msgstr "Benutzer"
+
+#, fuzzy
+msgid "Admin|Users|Avatar|Preview your avatar"
+msgstr "Benutzer"
+
+#, fuzzy
+msgid "Admin|Users|Avatar|Remove avatar"
+msgstr "Benutzer"
+
+#, fuzzy
+msgid "Admin|Users|Avatar|Upload avatar"
+msgstr "Benutzer"
+
+msgid "Admin|Users|Create user"
 msgstr ""
 
 msgid "Admin|Users|New"
 msgstr ""
 
+#, fuzzy
+msgid "Admin|Users|Permissions"
+msgstr "Benutzer"
+
+#, fuzzy
+msgid "Admin|Users|Permissions|Successfully updated"
+msgstr "Benutzer"
+
+#, fuzzy
+msgid "Admin|Users|Permissions|Update"
+msgstr "Benutzer"
+
+#, fuzzy
+msgid "Admin|Users|Permissions|Update failed"
+msgstr "Benutzer"
+
+#, fuzzy
+msgid "Admin|Users|Profile"
+msgstr "Benutzer"
+
+#, fuzzy
+msgid "Admin|Users|Profile|Password|Leave blank to keep current password"
+msgstr "Benutzer"
+
+#, fuzzy
+msgid "Admin|Users|Profile|Successfully updated"
+msgstr "Benutzer"
+
+#, fuzzy
+msgid "Admin|Users|Profile|Update failed"
+msgstr "Benutzer"
+
+#, fuzzy
+msgid "Admin|Users|Profile|Update profile"
+msgstr "Benutzer"
+
 msgid "ApplicationName"
+msgstr ""
+
+msgid "Application|Dark mode successfully disabled"
+msgstr ""
+
+msgid "Application|Dark mode successfully enabled"
 msgstr ""
 
 msgid "Application|Language successfully changed"
@@ -105,6 +169,12 @@ msgid "ConfirmDialog|Cancel"
 msgstr ""
 
 msgid "ConfirmDialog|Confirm"
+msgstr ""
+
+msgid "Datagrid|No columns"
+msgstr ""
+
+msgid "Datagrid|No results"
 msgstr ""
 
 msgid "Event"
@@ -468,7 +538,7 @@ msgid "TwoFactor|Scan code with auth app"
 msgstr ""
 
 msgid "User"
-msgstr ""
+msgstr "Benutzer"
 
 msgid "UserMailer|ConfirmSignup|Click following link to activate"
 msgstr ""
@@ -539,9 +609,6 @@ msgstr ""
 msgid "User|Add 2FA"
 msgstr ""
 
-msgid "User|Avatar remove confirmation"
-msgstr ""
-
 msgid "User|Avatar removed successfully"
 msgstr ""
 
@@ -567,9 +634,6 @@ msgid "User|Event admin permission"
 msgstr ""
 
 msgid "User|Game Profiles"
-msgstr ""
-
-msgid "User|General Settings"
 msgstr ""
 
 msgid "User|Id"
@@ -600,9 +664,6 @@ msgid "User|Password reset token created at"
 msgstr ""
 
 msgid "User|Password reset token digest"
-msgstr ""
-
-msgid "User|Permissions"
 msgstr ""
 
 msgid "User|Preferred locale"
@@ -650,16 +711,10 @@ msgstr ""
 msgid "User|Successfully deleted"
 msgstr ""
 
-msgid "User|Successfully updated"
-msgstr ""
-
 msgid "User|System admin permission"
 msgstr ""
 
 msgid "User|Two factor enabled"
-msgstr ""
-
-msgid "User|Update failed"
 msgstr ""
 
 msgid "User|Update password"
