@@ -4,8 +4,10 @@ module Operations::Admin::NewsPost
       authorize! :manage, NewsPost
     end
 
-    def posts
-      ::NewsPost.all
+    def grid
+      @grid ||= Grids::NewsPosts.new(osparams.grids_news_posts) do |scope|
+        scope.page(params[:page])
+      end
     end
   end
 end

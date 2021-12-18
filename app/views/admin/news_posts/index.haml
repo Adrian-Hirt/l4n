@@ -3,22 +3,23 @@
 .card
   .card-body
     = new_button NewsPost, namespace: %i[admin]
-
     %hr
+    = datagrid_table op.grid, html: { class: 'table' }
 
-    %table{class: 'table table-striped'}
-      %tr
-        %th= _('NewsPosts|Title')
-        %th= _('NewsPosts|Published')
-        %th= _('NewsPosts|Published at')
-        %th= _('NewsPosts|Author')
-        %th
-      - op.posts.each do |p|
-        %tr
-          %td= p.title
-          %td= p.published
-          %td= p.published_at.present? ? l(p.published_at, format: :long) : '--'
-          %td= p.user.email
-          %td.tar
-            = edit_button p, namespace: %i[admin], size: :sm, icon_only: true
-            = delete_button p, namespace: %i[admin], size: :sm, icon_only: true
+
+    -# %table{class: 'table table-striped'}
+    -#   %tr
+    -#     %th= _('NewsPosts|Title')
+    -#     %th= _('NewsPosts|Published')
+    -#     %th= _('NewsPosts|Published at')
+    -#     %th= _('NewsPosts|Author')
+    -#     %th
+    -#   - op.posts.each do |p|
+    -#     %tr
+    -#       %td= p.title
+    -#       %td= p.published
+    -#       %td= p.published_at.present? ? l(p.published_at, format: :long) : '--'
+    -#       %td= p.user.email
+    -#       %td.tar
+    -#         = edit_button p, namespace: %i[admin], size: :sm, icon_only: true
+    -#         = delete_button p, namespace: %i[admin], size: :sm, icon_only: true

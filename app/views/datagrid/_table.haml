@@ -4,7 +4,7 @@
 -# * options - passed options Hash
 
 - if grid.html_columns(*options[:columns]).any?
-  %table.datagrid{**options[:html]}
+  %table.datagrid.table-striped.table-hover{**options[:html]}
     %thead
       = datagrid_header grid, options
     %tbody
