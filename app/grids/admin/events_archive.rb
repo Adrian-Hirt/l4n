@@ -9,15 +9,9 @@ module Grids
 
       column :title, header: _('Event|Title')
       column :location, header: _('Event|Location')
-      column :published, header: _('Event|Published'), html: true do |event|
-        format_boolean(event.published)
-      end
-      column :next_start_date, html: true, header: _('Event|Last start') do |event|
-        l(event.last_date.start_date) || '-'
-      end
-      column :next_end_date, html: true, header: _('Event|Last end') do |event|
-        l(event.last_date.end_date) || '-'
-      end
+      column :published, header: _('Event|Published'), html: ->(published) { format_boolean(published) }
+      column :last_date, header: _('Event|Last start'), html: ->(last_date) { l(last_date.start_date) }
+      column :last_date, header: _('Event|Last end'), html: ->(last_date) { l(last_date.end_date) }
       column :'datagrid-actions', html: true, header: '' do |event|
         tag.div class: %i[datagrid-actions-wrapper] do
           safe_join([

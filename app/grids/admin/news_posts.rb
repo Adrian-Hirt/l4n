@@ -8,16 +8,9 @@ module Grids
       end
 
       column :title, header: _('NewsPosts|Title')
-      column :published, header: _('NewsPosts|Published'), html: true do |news_post|
-        format_boolean(news_post.published)
-      end
-      column :published_at, header: _('NewsPosts|Published at'), html: true do |news_post|
-        l(news_post.published_at)
-      end
-      column :user, header: _('NewsPosts|Author'), html: true do |news_post|
-        news_post.user.username
-      end
-
+      column :published, header: _('NewsPosts|Published'), html: ->(published) { format_boolean(published) }
+      column :published_at, header: _('NewsPosts|Published at'), html: ->(published_at) { l(published_at) }
+      column :user, header: _('NewsPosts|Author'), html: ->(user) { user.username }
       column :'datagrid-actions', html: true, header: '' do |news_post|
         tag.div class: %i[datagrid-actions-wrapper] do
           safe_join([

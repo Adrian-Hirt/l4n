@@ -10,10 +10,7 @@ module Grids
       column :id, header: _('User|Id')
       column :username, header: _('User|Username')
       column :email, header: _('User|Email')
-      column :activated, html: true, header: _('User|Activated') do |user|
-        format_boolean(user.activated?)
-      end
-
+      column :activated, html: ->(activated) { format_boolean(activated) }, header: _('User|Activated')
       column :'datagrid-actions', html: true, header: '' do |user|
         tag.div class: %i[datagrid-actions-wrapper] do
           safe_join([
