@@ -61,8 +61,8 @@
                 %span.nav-item-text= _('Admin|Feature Flags')
     .sidebar-footer
       .sidebar-footer-button
-        = link_to '#' do
-          = icon %i[fas fa-bell]
+        = link_to root_path do
+          = icon %i[fas fa-house]
       .sidebar-footer-button
         = link_to toggle_dark_mode_path, data: { turbo_method: :post } do
           = icon %i[fa fa-adjust]
