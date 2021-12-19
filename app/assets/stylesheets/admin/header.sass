@@ -1,0 +1,18 @@
+.header
+  width: 100%
+  padding: map-get($spacers, 4)
+  .breadcrumb-seperator
+    color: map-get($colors, 'gray')
+    margin: 0 map-get($spacers, 1)
+  .page-title
+    h1
+      font-size: 1.25rem
+      font-weight: bold
+    .breadcrumbs
+      font-size: .95rem
+      span
+        a
+          @extend .text-muted
+          text-decoration: none
+          &:hover
+            color: black !important
