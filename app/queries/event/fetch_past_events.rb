@@ -16,14 +16,14 @@ module Queries::Event
               event_dates.start_date <= '#{Time.zone.today}'
               AND event_dates.end_date >= '#{Time.zone.today}'
             )
-            ORDER BY event_id, start_date ASC, start_time ASC
+            ORDER BY event_id, start_date ASC
           )
-          ORDER BY event_id, start_date ASC, start_time ASC
+          ORDER BY event_id, start_date ASC
         ) AS event_dates_grouped
         ON events.id = event_dates_grouped.event_id
       ")
 
-      rel.order('event_dates_grouped.start_date ASC, event_dates_grouped.start_time ASC')
+      rel.order('event_dates_grouped.start_date ASC')
     end
   end
 end

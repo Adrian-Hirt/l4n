@@ -28,11 +28,11 @@ class Event < ApplicationRecord
   end
 
   def next_date
-    future_dates.order('event_dates.start_date ASC, event_dates.start_time ASC').first
+    future_dates.order('event_dates.start_date ASC').first
   end
 
   def last_date
-    past_dates.order('event_dates.end_date DESC, event_dates.end_time DESC').first
+    past_dates.order('event_dates.end_date DESC').first
   end
 
   ################################### Private Methods ##############################

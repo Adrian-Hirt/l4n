@@ -1,13 +1,9 @@
 .nested-fields
   .row
     .col-md-3
-      = f.input :start_date, as: :string, input_html: { type: :date }
-    .col-md-2
-      = f.input :start_time, as: :string, input_html: { type: :time }
+      = f.input :start_date, as: :datetime, html5: true
     .col-md-3
-      = f.input :end_date, as: :string, input_html: { type: :date }
-    .col-md-2
-      = f.input :end_time, as: :string, input_html: { type: :time }
+      = f.input :end_date, as: :datetime, html5: true
     .col-md-1
       %label &nbsp;
       = link_to_remove_association f, class: 'btn btn-danger icon-only-btn d-table', data: { action: 'click->cocoon#removeRow' } do

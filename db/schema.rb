@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_08_132921) do
+ActiveRecord::Schema.define(version: 2021_12_19_193909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,10 +44,8 @@ ActiveRecord::Schema.define(version: 2021_08_08_132921) do
   end
 
   create_table "event_dates", force: :cascade do |t|
-    t.date "start_date", null: false
-    t.time "start_time"
-    t.date "end_date"
-    t.time "end_time"
+    t.datetime "start_date", null: false
+    t.datetime "end_date", null: false
     t.bigint "event_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -96,11 +94,6 @@ ActiveRecord::Schema.define(version: 2021_08_08_132921) do
     t.string "password_digest", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "remember_me_token_digest"
-    t.boolean "activated", default: false, null: false
-    t.string "activation_token"
-    t.string "password_reset_token_digest"
-    t.datetime "password_reset_token_created_at"
     t.string "username", null: false
     t.string "website"
     t.string "preferred_locale"
@@ -108,6 +101,11 @@ ActiveRecord::Schema.define(version: 2021_08_08_132921) do
     t.string "otp_secret_key"
     t.boolean "two_factor_enabled", default: false
     t.text "otp_backup_codes"
+    t.boolean "activated", default: false, null: false
+    t.string "activation_token"
+    t.string "remember_me_token_digest"
+    t.string "password_reset_token_digest"
+    t.datetime "password_reset_token_created_at"
     t.datetime "remember_me_token_created_at"
     t.boolean "user_admin_permission", default: false, null: false
     t.boolean "news_admin_permission", default: false, null: false
