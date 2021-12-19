@@ -62,9 +62,9 @@ module ButtonsHelper
     end
     html_options = {
       data:   {
-        confirm: _("#{model.class.name}|Delete confirmation?"),
+        confirm:    _("#{model.class.name}|Delete confirmation?"),
         controller: 'destroy-button',
-        action: 'click->destroy-button#confirm'
+        action:     'click->destroy-button#confirm'
       },
       method: :delete
     }
