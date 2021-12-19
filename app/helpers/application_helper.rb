@@ -21,15 +21,7 @@ module ApplicationHelper
     current_user&.use_dark_mode || cookies[:_l4n_dark_mode].present?
   end
 
-  def body_classes
-    'dark-mode' if dark_mode_active?
-  end
-
-  def header_classes
-    if dark_mode_active?
-      'navbar-dark'
-    else
-      'navbar-light navbar-white'
-    end
+  def dark_mode_classes
+    'dark' if dark_mode_active?
   end
 end

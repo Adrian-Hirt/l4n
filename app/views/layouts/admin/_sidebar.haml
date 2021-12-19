@@ -64,7 +64,7 @@
         = link_to root_path do
           = icon %i[fas fa-house]
       .sidebar-footer-button
-        = link_to toggle_dark_mode_path, data: { turbo_method: :post } do
+        = button_to toggle_dark_mode_path, data: { turbo: false } do
           = icon %i[fa fa-adjust]
       .sidebar-footer-button.dropup
         = link_to '#', data: { 'bs-toggle' => 'dropdown' } do
