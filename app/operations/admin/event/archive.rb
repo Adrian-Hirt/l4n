@@ -5,7 +5,7 @@ module Operations::Admin::Event
     end
 
     def grid
-      @grid ||= Grids::Admin::EventsArchive.new(osparams.grids_events) do |scope|
+      @grid ||= Grids::Admin::EventsArchive.new(osparams.grids_admin_events_archive) do |scope|
         scope.page(params[:page])
       end
     end
