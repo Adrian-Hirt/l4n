@@ -4,8 +4,10 @@ module Operations::Admin::Event
       authorize! :manage, Event
     end
 
-    def events
-      Queries::Event::FetchFutureEvents.run
+    def grid
+      @grid ||= Grids::Admin::Events.new(osparams.grids_events) do |scope|
+        scope.page(params[:page])
+      end
     end
   end
 end

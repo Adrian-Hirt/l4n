@@ -5,7 +5,7 @@ module Operations::Admin::NewsPost
     end
 
     def grid
-      @grid ||= Grids::NewsPosts.new(osparams.grids_news_posts) do |scope|
+      @grid ||= Grids::Admin::NewsPosts.new(osparams.grids_news_posts) do |scope|
         scope.page(params[:page])
       end
     end

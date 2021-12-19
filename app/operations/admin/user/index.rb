@@ -5,7 +5,7 @@ module Operations::Admin::User
     end
 
     def grid
-      @grid ||= Grids::Users.new(osparams.grids_users) do |scope|
+      @grid ||= Grids::Admin::Users.new(osparams.grids_users) do |scope|
         scope.page(params[:page])
       end
     end

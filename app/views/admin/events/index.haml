@@ -3,28 +3,5 @@
 .card
   .card-body
     = new_button Event, namespace: %i[admin]
-
     %hr
-
-    %table{class: 'table table-striped'}
-      %tr
-        %th= _('Event|Title')
-        %th= _('Event|Location')
-        %th= _('Event|Published')
-        %th= _('Event|Start date')
-        %th= _('Event|Start time')
-        %th= _('Event|End date')
-        %th= _('Event|End time')
-        %th
-      - op.events.each do |e|
-        %tr
-          %td= e.title
-          %td= e.location.presence || '-'
-          %td= format_boolean(e.published?)
-          %td= e.next_date.start_date || '-'
-          %td= e.next_date.start_time || '-'
-          %td= e.next_date.end_date || '-'
-          %td= e.next_date.end_time || '-'
-          %td.tar
-            = edit_button e, namespace: %i[admin], size: :sm, icon_only: true
-            = delete_button e, namespace: %i[admin], size: :sm, icon_only: true
+    = datagrid_table op.grid, html: { class: 'table' }
