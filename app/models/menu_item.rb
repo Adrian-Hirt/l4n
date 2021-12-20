@@ -10,9 +10,9 @@ class MenuItem < ApplicationRecord
   validate :no_parent_if_children
 
   PREDEFINED_PAGES = {
-    'news' => NewsPost,
+    'news'   => NewsPost,
     'events' => Event
-  }
+  }.freeze
 
   private
 

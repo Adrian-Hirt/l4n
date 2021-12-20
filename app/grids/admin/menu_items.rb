@@ -10,7 +10,7 @@ module Grids
       model MenuItem
 
       column :title
-      column :visible, html: -> (visible) { format_boolean(visible) }
+      column :visible, html: ->(visible) { format_boolean(visible) }
       column :page_name
       column :sort
       column :parent, html: ->(parent) { parent&.title || '-' }
