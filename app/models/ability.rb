@@ -29,7 +29,7 @@ class Ability
     can :manage, User if user.user_admin_permission?
 
     # Pages admin permission
-    can :manage, Page
+    can :manage, Page if user.page_admin_permission? && FeatureFlag.enabled?(:pages)
 
     # User can access system settings
     can :manage, FeatureFlag if user.system_admin_permission?

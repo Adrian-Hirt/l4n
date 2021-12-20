@@ -16,6 +16,7 @@ class User < ApplicationRecord
     user_admin_permission
     news_admin_permission
     event_admin_permission
+    page_admin_permission
     system_admin_permission
   ].freeze
 

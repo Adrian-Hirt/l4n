@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_20_111608) do
+ActiveRecord::Schema.define(version: 2021_12_20_124837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 2021_12_20_111608) do
     t.boolean "news_admin_permission", default: false, null: false
     t.boolean "event_admin_permission", default: false, null: false
     t.boolean "system_admin_permission", default: false, null: false
+    t.boolean "page_admin_permission", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
