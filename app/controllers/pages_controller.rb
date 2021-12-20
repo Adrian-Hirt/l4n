@@ -1,3 +1,5 @@
 class PagesController < ApplicationController
-  def show; end
+  def show
+    op Operations::Page::Load
+  end
 end
