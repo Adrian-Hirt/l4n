@@ -28,11 +28,11 @@ class Ability
     # User admin permission
     can :manage, User if user.user_admin_permission?
 
+    # Pages admin permission
+    can :manage, Page
+
     # User can access system settings
-    if user.system_admin_permission?
-      can :manage, FeatureFlag
-      # TODO: Add more later
-    end
+    can :manage, FeatureFlag if user.system_admin_permission?
 
     # User can access admin panel if the user has any
     # admin permission

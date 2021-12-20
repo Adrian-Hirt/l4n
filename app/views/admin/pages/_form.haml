@@ -1,0 +1,9 @@
+= simple_form_for [:admin, model] do |f|
+  .card-body
+    = f.input :title
+    = f.label :published
+    = f.input :published, input_html: { class: 'no-validation' }
+    = f.input :url
+    = f.markdown :content, preview_url: preview_markdown_admin_news_posts_path
+  .card-footer
+    = f.save

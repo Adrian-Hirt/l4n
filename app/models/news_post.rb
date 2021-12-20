@@ -8,6 +8,7 @@ class NewsPost < ApplicationRecord
 
   ################################### Validations ##################################
   validates :title, presence: true
+  validates :published, inclusion: [true, false]
 
   ################################### Hooks #######################################
 

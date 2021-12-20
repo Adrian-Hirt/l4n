@@ -249,7 +249,7 @@ GEM
     ruby2_keywords (0.0.4)
     ruby_parser (3.18.1)
       sexp_processor (~> 4.16)
-    schemacop (3.0.11)
+    schemacop (3.0.16)
       activesupport (>= 4.0)
       ruby2_keywords (= 0.0.4)
     sexp_processor (4.16.0)
@@ -321,7 +321,7 @@ DEPENDENCIES
   rqrcode (~> 2.0.0)
   rubocop (~> 0.86)
   ruby_parser
-  schemacop (= 3.0.11)
+  schemacop (~> 3.0.11)
   simple_form (~> 5.1.0)
   simplecov (~> 0.21.2)
   simplecov-lcov (~> 0.8.0)

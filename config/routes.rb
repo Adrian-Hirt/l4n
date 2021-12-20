@@ -52,8 +52,11 @@ Rails.application.routes.draw do
   resources :news, controller: :news_posts, as: :news_posts, only: %i[index show]
   resources :events, only: %i[index show]
 
+  # Admin panel stuff
   namespace :admin do
     get '/', to: 'home#dashboard'
+
+    # User management
     resources :users, only: %i[index new create show destroy] do
       member do
         get :profile, action: :edit, controller: 'users/profile'
@@ -66,17 +69,22 @@ Rails.application.routes.draw do
         delete :avatar, action: :destroy, controller: 'users/avatar'
       end
     end
+
+    # News posts
     resources :news, controller: :news_posts, as: :news_posts do
       collection do
         post :preview_markdown
       end
     end
+
+    # Events
     resources :events do
       collection do
         get :archive
       end
     end
 
+    # Feature flags
     resources :feature_flags, only: %i[index] do
       collection do
         post :reinitialize
@@ -85,5 +93,11 @@ Rails.application.routes.draw do
         post :toggle
       end
     end
+
+    # Pages
+    resources :pages
   end
+
+  # Wildcard route for dynamic pages. This **needs** to come last at all times
+  get '*page', to: 'pages#show', page: /((?!rails|admin).)*/
 end
