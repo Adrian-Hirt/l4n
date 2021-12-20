@@ -10,9 +10,10 @@ module Grids
       model MenuItem
 
       column :title
+      column :visible, html: -> (visible) { format_boolean(visible) }
       column :page_name
       column :sort
-      column :parent, html: ->(parent) { parent&.name || '-' }
+      column :parent, html: ->(parent) { parent&.title || '-' }
       column :'datagrid-actions', html: true, header: false do |menu_item|
         tag.div class: %i[datagrid-actions-wrapper] do
           safe_join([

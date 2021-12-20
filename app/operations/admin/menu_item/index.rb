@@ -5,7 +5,7 @@ module Operations::Admin::MenuItem
     end
 
     def grid
-      @grid ||= Grids::Admin::MenuItems.new(osparams.grids_menu_items) do |scope|
+      @grid ||= Grids::Admin::MenuItems.new(osparams.grids_admin_menu_items) do |scope|
         scope.page(params[:page])
       end
     end

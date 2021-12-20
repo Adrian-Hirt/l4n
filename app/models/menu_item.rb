@@ -9,6 +9,11 @@ class MenuItem < ApplicationRecord
   validate :parent_has_no_parent
   validate :no_parent_if_children
 
+  PREDEFINED_PAGES = {
+    'news' => NewsPost,
+    'events' => Event
+  }
+
   private
 
   def parent_has_no_parent

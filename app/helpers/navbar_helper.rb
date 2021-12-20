@@ -1,13 +1,24 @@
 module NavbarHelper
-  def navbar_item_classes(name, actions: [], excluded_actions: [])
-    classes = 'nav-link'
+  def visible?(menu_item)
+    if MenuItem::PREDEFINED_PAGES.keys.include?(menu_item.page_name)
+      can?(:read, MenuItem::PREDEFINED_PAGES[menu_item.page_name]) && menu_item.visible?
+    else
+      menu_item.visible?
+    end
+  end
 
-    return classes unless name == controller_name.to_sym
-    return classes if actions.any? && !actions.include?(action_name.to_sym)
-    return classes if excluded_actions.any? && excluded_actions.include?(action_name.to_sym)
+  # Todo: Tidy up this logic a bit
+  def menu_item_active_classes(menu_item)
+    if MenuItem::PREDEFINED_PAGES.keys.include?(menu_item.page_name)
+      return navbar_item_active_classes(menu_item.page_name)
+    elsif menu_item.children.any?
+      return 'active' if menu_item.children.any? { |child| menu_item_active_classes(child) == 'active' }
+    else
+      return 'active' if menu_item.page_name == request.path.gsub('/', '')
+    end
+  end
 
-    classes += ' active'
-
-    classes
+  def navbar_item_active_classes(name)
+    name.to_s == controller_name ? 'active' : ''
   end
 end

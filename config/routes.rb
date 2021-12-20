@@ -49,7 +49,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :news, controller: :news_posts, as: :news_posts, only: %i[index show]
+  resources :news, only: %i[index show]
   resources :events, only: %i[index show]
 
   # Admin panel stuff
