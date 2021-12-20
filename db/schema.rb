@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_20_124837) do
+ActiveRecord::Schema.define(version: 2021_12_20_133852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,17 @@ ActiveRecord::Schema.define(version: 2021_12_20_124837) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["key"], name: "index_feature_flags_on_key"
+  end
+
+  create_table "menu_items", force: :cascade do |t|
+    t.string "title"
+    t.integer "sort", default: 0, null: false
+    t.bigint "parent_id"
+    t.string "page_name", null: false
+    t.boolean "visible", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["parent_id"], name: "index_menu_items_on_parent_id"
   end
 
   create_table "news_posts", force: :cascade do |t|

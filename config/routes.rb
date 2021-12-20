@@ -96,6 +96,9 @@ Rails.application.routes.draw do
 
     # Pages
     resources :pages
+
+    # Configurable menu items
+    resources :menu_items
   end
 
   # Wildcard route for dynamic pages. This **needs** to come last at all times

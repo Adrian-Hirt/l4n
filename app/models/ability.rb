@@ -31,6 +31,9 @@ class Ability
     # Pages admin permission
     can :manage, Page if user.page_admin_permission? && FeatureFlag.enabled?(:pages)
 
+    # Menu items permission
+    can :manage, MenuItem
+
     # User can access system settings
     can :manage, FeatureFlag if user.system_admin_permission?
 
