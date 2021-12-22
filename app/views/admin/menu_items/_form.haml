@@ -3,8 +3,8 @@
     = f.input :title_en
     = f.input :title_de
     = f.input :visible, input_html: { class: 'no-validation' }
-    = f.input :parent_id, as: :select, collection: MenuItem.all, include_blank: '-'
+    = f.input :parent_id, as: :select, collection: op.parent_candidates, include_blank: '-', disabled: model.children.any?
     = f.input :sort
-    = f.input :page_name
+    = f.input :page_name, as: :select, collection: op.page_candidates, include_blank: '-'
   .card-footer
     = f.save

@@ -13,8 +13,8 @@ class MenuItem < ApplicationRecord
   validate :no_parent_if_children
 
   PREDEFINED_PAGES = {
-    'news'   => NewsPost,
-    'events' => Event
+    'news'   => { auth_subject: NewsPost, title: _('News') },
+    'events' => { auth_subject: Event, title: _('Events') }
   }.freeze
 
   private

@@ -13,5 +13,25 @@ module Operations::Admin::MenuItem
     end
 
     model ::MenuItem
+
+    def page_candidates
+      candidates = []
+
+      # Add "static" pages
+      ::MenuItem::PREDEFINED_PAGES.each do |page|
+        candidates << [page[1][:title], page[0]]
+      end
+
+      # Add dynamic pages
+      ::Page.order(:title).each do |page|
+        candidates << [page.title, page.url]
+      end
+
+      candidates
+    end
+
+    def parent_candidates
+      ::MenuItem.i18n.where(parent: nil).where.not(id: model.id).order(:title)
+    end
   end
 end

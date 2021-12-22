@@ -1,7 +1,7 @@
 module NavbarHelper
   def visible?(menu_item)
     if MenuItem::PREDEFINED_PAGES.keys.include?(menu_item.page_name)
-      can?(:read, MenuItem::PREDEFINED_PAGES[menu_item.page_name]) && menu_item.visible?
+      can?(:read, MenuItem::PREDEFINED_PAGES[menu_item.page_name][:auth_subject]) && menu_item.visible?
     else
       menu_item.visible?
     end
@@ -9,6 +9,8 @@ module NavbarHelper
 
   # TODO: Tidy up this logic a bit
   def menu_item_active_classes(menu_item)
+    return unless menu_item.page_name.present?
+
     if MenuItem::PREDEFINED_PAGES.keys.include?(menu_item.page_name)
       navbar_item_active_classes(menu_item.page_name)
     elsif menu_item.children.any?
