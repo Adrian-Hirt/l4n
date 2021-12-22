@@ -4,6 +4,7 @@ module Admin
 
     def index
       op Operations::Admin::FeatureFlag::Index
+      flash[:warning] = _('FeatureFlag|Please re-initialize the flags, as not all are present and/or unneeded flags are present') if op.flag_warning_present?
     end
 
     def reinitialize
