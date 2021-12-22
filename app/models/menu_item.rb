@@ -1,10 +1,13 @@
 class MenuItem < ApplicationRecord
+  extend Mobility
+  translates :title
+
   belongs_to :parent, class_name: 'MenuItem', optional: true
   has_many :children, class_name: 'MenuItem', foreign_key: 'parent_id'
 
   validates :sort, numericality: { min: 0 }, presence: true
-  validates :page_name, presence: true
   validates :visible, inclusion: [true, false]
+  validates_translated :title, presence: true, length: { maximum: 255 }
 
   validate :parent_has_no_parent
   validate :no_parent_if_children

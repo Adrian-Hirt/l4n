@@ -9,7 +9,8 @@ module Grids
 
       model MenuItem
 
-      column :title
+      column :title_en
+      column :title_de
       column :visible, html: ->(visible) { format_boolean(visible) }
       column :page_name
       column :sort
