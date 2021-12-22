@@ -3,7 +3,7 @@ module NavbarHelper
     if MenuItem::PREDEFINED_PAGES.keys.include?(menu_item.page_name)
       can?(:read, MenuItem::PREDEFINED_PAGES[menu_item.page_name][:auth_subject]) && menu_item.visible?
     else
-      menu_item.visible?
+      can?(:read, Page) && menu_item.visible?
     end
   end
 
