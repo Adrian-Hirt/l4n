@@ -11,11 +11,9 @@ module NavbarHelper
 
   # TODO: Tidy up this logic a bit
   def menu_item_active_classes(menu_item)
-    return unless menu_item.page_name.present?
-
     if MenuItem::PREDEFINED_PAGES.keys.include?(menu_item.page_name)
       navbar_item_active_classes(menu_item.page_name)
-    elsif menu_item.children.any?
+    elsif menu_item.dropdown_type?
       return 'active' if menu_item.children.any? { |child| menu_item_active_classes(child) == 'active' }
     elsif menu_item.page_name == request.path.gsub('/', '')
       'active'
