@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_22_120242) do
+ActiveRecord::Schema.define(version: 2021_12_22_162706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 2021_12_22_120242) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "title_en", null: false
     t.string "title_de", null: false
+    t.string "item_type", default: "link_type", null: false
     t.index ["parent_id"], name: "index_menu_items_on_parent_id"
   end
 

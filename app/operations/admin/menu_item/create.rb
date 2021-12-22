@@ -8,6 +8,7 @@ module Operations::Admin::MenuItem
         str! :sort, format: :integer
         str! :visible, format: :boolean
         str? :parent_id
+        str? :item_type
       end
     end
 
@@ -30,7 +31,7 @@ module Operations::Admin::MenuItem
     end
 
     def parent_candidates
-      ::MenuItem.i18n.where(parent: nil).order(:title)
+      ::MenuItem.i18n.where(item_type: MenuItem::DROPDOWN_TYPE).order(:title)
     end
   end
 end

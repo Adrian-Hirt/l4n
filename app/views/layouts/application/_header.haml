@@ -11,7 +11,8 @@
 
         - Queries::MenuItem::FindActiveTopElements.call.each do |menu_item|
           - next unless visible?(menu_item)
-          - if menu_item.children.any?
+
+          - if menu_item.dropdown_type?
             %li.nav-item.dropdown
               %a.nav-link{data: { 'bs-toggle' => :dropdown}, href: '#', class: menu_item_active_classes(menu_item)}
                 = menu_item.title
@@ -25,7 +26,6 @@
             %li.nav-item
               %a.nav-link{href: "/#{menu_item.page_name}", class: menu_item_active_classes(menu_item)}
                 = menu_item.title
-
       -# Right menu
       %ul.order-1.order-md-3.navbar-nav.ml-auto
         %li.nav-item

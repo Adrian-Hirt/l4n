@@ -2,6 +2,8 @@ module NavbarHelper
   def visible?(menu_item)
     if MenuItem::PREDEFINED_PAGES.keys.include?(menu_item.page_name)
       can?(:read, MenuItem::PREDEFINED_PAGES[menu_item.page_name][:auth_subject]) && menu_item.visible?
+    elsif menu_item.dropdown_type?
+      menu_item.visible? && menu_item.children.any? { |child| visible?(child) }
     else
       can?(:read, Page) && menu_item.visible?
     end
