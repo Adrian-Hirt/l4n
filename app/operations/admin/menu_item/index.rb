@@ -4,10 +4,8 @@ module Operations::Admin::MenuItem
       authorize! :manage, MenuItem
     end
 
-    def grid
-      @grid ||= Grids::Admin::MenuItems.new(osparams.grids_admin_menu_items) do |scope|
-        scope.page(params[:page])
-      end
+    def top_items
+      ::MenuItem.where(parent: nil).order(:sort).includes(:children)
     end
   end
 end
