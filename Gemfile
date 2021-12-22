@@ -32,7 +32,7 @@ gem 'turbo-rails', '~> 0.9.0'
 gem 'active_type', '~> 1.10.1' # Need to lock as 2.0 somehow does not work with rails_ops
 gem 'inquery', '~> 1.0.9'
 gem 'rails_ops', '~> 1.1.20'
-gem 'schemacop', '3.0.11'
+gem 'schemacop', '~> 3.0.11'
 
 # Views
 gem 'breadcrumbs_on_rails', '~> 4.1.0'
@@ -48,6 +48,7 @@ gem 'rubocop', '~> 0.86'
 
 # Translations
 gem 'gettext_i18n_rails', '~> 1.8.1'
+gem 'mobility', '~> 1.2.5'
 gem 'rails-i18n', '~> 6.0.0'
 
 # Markdown rendering

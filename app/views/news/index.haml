@@ -9,6 +9,6 @@
       %td= p.published_at
       %td= p.user.email
       %td
-        = show_button p, size: :sm, icon_only: true
+        = show_button p, href: news_path(p), size: :sm, icon_only: true
 
 = paginate op.posts

@@ -6,6 +6,8 @@ module Operations::Admin::User
         opt :user_admin_permission
         opt :news_admin_permission
         opt :event_admin_permission
+        opt :page_admin_permission
+        opt :menu_items_admin_permission
         opt :system_admin_permission
       end
     end

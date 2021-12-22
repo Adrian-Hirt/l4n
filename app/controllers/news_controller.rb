@@ -1,4 +1,4 @@
-class NewsPostsController < ApplicationController
+class NewsController < ApplicationController
   def index
     op Operations::NewsPost::Index, page: params[:page]
   end

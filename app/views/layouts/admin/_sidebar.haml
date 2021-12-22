@@ -53,6 +53,18 @@
                     %span
                       %i.nav-icon.far.fa-circle
                       %span.nav-item-text= _('Admin|Events|Archive')
+        - if can? :manage, Page
+          %li.nav-item
+            %a.nav-link{href: admin_pages_path, class: active_link_classes(:pages)}
+              %span
+                %i.nav-icon.fas.fa-book
+                %span.nav-item-text= _('Admin|Pages')
+        - if can? :manage, MenuItem
+          %li.nav-item
+            %a.nav-link{href: admin_menu_items_path, class: active_link_classes(:menu_items)}
+              %span
+                %i.nav-icon.fas.fa-compass
+                %span.nav-item-text= _('Admin|MenuItems')
         - if can? :manage, FeatureFlag
           %li.nav-item
             %a.nav-link{href: admin_feature_flags_path, class: active_link_classes(:feature_flags)}

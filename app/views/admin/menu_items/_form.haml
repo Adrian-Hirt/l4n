@@ -1,0 +1,11 @@
+= simple_form_for [:admin, model] do |f|
+  .card-body
+    = f.input :title_en
+    = f.input :title_de
+    = f.input :visible, input_html: { class: 'no-validation' }
+    = f.input :parent_id, as: :select, collection: op.parent_candidates, include_blank: '-', disabled: model.children.any?
+    = f.input :sort
+    = f.input :item_type, as: :select, collection: MenuItem::ITEM_TYPES, include_blank: false
+    = f.input :page_name, as: :select, collection: op.page_candidates, include_blank: '-'
+  .card-footer
+    = f.save

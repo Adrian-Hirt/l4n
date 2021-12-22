@@ -4,15 +4,29 @@
     %button.navbar-toggler{"aria-controls" => "navbarCollapse", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarCollapse", "data-bs-toggle" => "collapse", :type => "button"}
       %span.navbar-toggler-icon
     #navbarCollapse.collapse.navbar-collapse
+      -# Left dynamic menu
       %ul.navbar-nav.me-auto.mb-2.mb-md-0
         %li.nav-item
-          = link_to _('Homepage'), root_path, class: navbar_item_classes(:home)
-        - if can? :read, NewsPost
-          %li.nav-item
-            = link_to _('NewsPosts'), news_posts_path, class: navbar_item_classes(:news_posts)
-        - if can? :read, Event
-          %li.nav-item
-            = link_to _('Events'), events_path, class: navbar_item_classes(:events)
+          = link_to _('Homepage'), root_path, class: 'nav-link ' + navbar_item_active_classes(:home)
+
+        - Queries::MenuItem::FindActiveTopElements.call.each do |menu_item|
+          - next unless visible?(menu_item)
+
+          - if menu_item.dropdown_type?
+            %li.nav-item.dropdown
+              %a.nav-link{data: { 'bs-toggle' => :dropdown}, href: '#', class: menu_item_active_classes(menu_item)}
+                = menu_item.title
+                = icon %i[fa fa-chevron-down]
+              %ul.dropdown-menu.dropdown-menu-dark
+                - menu_item.children.each do |child_menu_item|
+                  - next unless visible?(child_menu_item)
+                  %a.dropdown-item{href: "/#{child_menu_item.page_name}", class: menu_item_active_classes(child_menu_item)}
+                    = child_menu_item.title
+          - else
+            %li.nav-item
+              %a.nav-link{href: "/#{menu_item.page_name}", class: menu_item_active_classes(menu_item)}
+                = menu_item.title
+      -# Right menu
       %ul.order-1.order-md-3.navbar-nav.ml-auto
         %li.nav-item
           = link_to toggle_dark_mode_path, class: %i[nav-link], data: { turbo_method: :post } do

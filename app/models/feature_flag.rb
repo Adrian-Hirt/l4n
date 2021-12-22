@@ -5,6 +5,7 @@ class FeatureFlag < ApplicationRecord
   AVAILABLE_FLAGS = %w[
     events
     news_posts
+    pages
   ].freeze
 
   ################################### Associations #################################

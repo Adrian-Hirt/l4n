@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_19_193909) do
+ActiveRecord::Schema.define(version: 2021_12_22_172329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,19 @@ ActiveRecord::Schema.define(version: 2021_12_19_193909) do
     t.index ["key"], name: "index_feature_flags_on_key"
   end
 
+  create_table "menu_items", force: :cascade do |t|
+    t.integer "sort", default: 0, null: false
+    t.bigint "parent_id"
+    t.string "page_name"
+    t.boolean "visible", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "title_en", null: false
+    t.string "title_de", null: false
+    t.string "item_type", default: "link_type", null: false
+    t.index ["parent_id"], name: "index_menu_items_on_parent_id"
+  end
+
   create_table "news_posts", force: :cascade do |t|
     t.string "title", null: false
     t.text "content"
@@ -78,6 +91,17 @@ ActiveRecord::Schema.define(version: 2021_12_19_193909) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_news_posts_on_user_id"
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "content"
+    t.boolean "published", null: false
+    t.string "url", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["title"], name: "index_pages_on_title", unique: true
+    t.index ["url"], name: "index_pages_on_url", unique: true
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -111,6 +135,8 @@ ActiveRecord::Schema.define(version: 2021_12_19_193909) do
     t.boolean "news_admin_permission", default: false, null: false
     t.boolean "event_admin_permission", default: false, null: false
     t.boolean "system_admin_permission", default: false, null: false
+    t.boolean "page_admin_permission", default: false, null: false
+    t.boolean "menu_items_admin_permission", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end

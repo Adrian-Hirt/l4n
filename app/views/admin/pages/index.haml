@@ -1,0 +1,7 @@
+- provide :page_title, _('Admin|Pages')
+
+.card
+  .card-body
+    = new_button Page, namespace: %i[admin]
+    %hr
+    = datagrid_table op.grid, html: { class: 'table' }

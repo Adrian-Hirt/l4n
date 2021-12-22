@@ -1,0 +1,33 @@
+.card
+  .card-body
+    = new_button MenuItem, namespace: %i[admin]
+    %hr
+    .table-responsive
+      %table.table.datagrid.table-hover
+        %tr
+          %th= _('MenuItem|Title_en')
+          %th= _('MenuItem|Title_de')
+          %th= _('MenuItem|Visible')
+          %th= _('MenuItem|Page_name')
+          %th
+        - op.top_items.each do |top_item|
+          %tr
+            %td= top_item.title_en
+            %td= top_item.title_de
+            %td= format_boolean(top_item.visible)
+            %td= top_item.page_name.presence || '-'
+            %td.datagrid-actions
+              .datagrid-actions-wrapper
+                = edit_button(top_item, namespace: %i[admin], size: :sm, icon_only: true)
+                = delete_button(top_item, namespace: %i[admin], size: :sm, icon_only: true)
+          - if top_item.dropdown_type?
+            - top_item.children.order(:sort).each do |child_item|
+              %tr.bg-light
+                %td{style: 'text-indent: 2em;'}= child_item.title_en
+                %td{style: 'text-indent: 2em;'}= child_item.title_de
+                %td= format_boolean(child_item.visible)
+                %td= child_item.page_name
+                %td.datagrid-actions
+                  .datagrid-actions-wrapper
+                    = edit_button(child_item, namespace: %i[admin], size: :sm, icon_only: true)
+                    = delete_button(child_item, namespace: %i[admin], size: :sm, icon_only: true)
