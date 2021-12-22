@@ -12,7 +12,7 @@ class MenuItem < ApplicationRecord
   ITEM_TYPES = [LINK_TYPE, DROPDOWN_TYPE].freeze
 
   belongs_to :parent, class_name: 'MenuItem', optional: true
-  has_many :children, class_name: 'MenuItem', foreign_key: 'parent_id'
+  has_many :children, class_name: 'MenuItem', foreign_key: 'parent_id', dependent: :destroy
 
   validates :sort, numericality: { min: 0 }, presence: true
   validates :visible, inclusion: [true, false]
