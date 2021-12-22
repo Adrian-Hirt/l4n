@@ -1,7 +1,9 @@
 class MenuItem < ApplicationRecord
+  ################################### Attributes ###################################
   extend Mobility
   translates :title
 
+  ################################### Constants ####################################
   PREDEFINED_PAGES = {
     'news'   => { auth_subject: NewsPost, title: _('News') },
     'events' => { auth_subject: Event, title: _('Events') }
@@ -11,14 +13,17 @@ class MenuItem < ApplicationRecord
   DROPDOWN_TYPE = 'dropdown_type'.freeze
   ITEM_TYPES = [LINK_TYPE, DROPDOWN_TYPE].freeze
 
+  ################################### Associations #################################
   belongs_to :parent, class_name: 'MenuItem', optional: true
   has_many :children, class_name: 'MenuItem', foreign_key: 'parent_id', dependent: :destroy
 
+  ################################### Validations ##################################
   validates :sort, numericality: { min: 0 }, presence: true
   validates :visible, inclusion: [true, false]
   validates :item_type, inclusion: ITEM_TYPES
   validates :page_name, presence: true, if: :link_type?
   validates :page_name, absence: true, if: :dropdown_type?
+  validates :page_name, length: { maximum: 255 }
   validates :parent_id, absence: true, if: :dropdown_type?
 
   validates_translated :title, presence: true, length: { maximum: 255 }
@@ -26,6 +31,13 @@ class MenuItem < ApplicationRecord
   validate :link_item_no_children
   validate :dropdown_item_no_parent
 
+  ################################### Hooks #######################################
+
+  ################################### Scopes #######################################
+
+  ################################### Class Methods ################################
+
+  ################################### Instance Methods #############################
   def link_type?
     item_type == LINK_TYPE
   end
@@ -34,6 +46,7 @@ class MenuItem < ApplicationRecord
     item_type == DROPDOWN_TYPE
   end
 
+  ################################### Private Methods ##############################
   private
 
   def link_item_no_children

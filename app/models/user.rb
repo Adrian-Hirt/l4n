@@ -26,10 +26,11 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   ################################### Validations ##################################
-  validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }, length: { maximum: 255 }
   validates :password, presence: true, length: { minimum: 10, maximum: 72 }, confirmation: true, if: -> { password.present? || new_record? || needs_password_set? }
-  validates :username, presence: true, uniqueness: { case_sensitive: false }
+  validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }
   validates :use_dark_mode, inclusion: [true, false]
+  validates :website, length: { maximum: 255 }
 
   # Permission booleans
   PERMISSION_FIELDS.each do |field|

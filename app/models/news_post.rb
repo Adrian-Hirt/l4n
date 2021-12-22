@@ -7,7 +7,7 @@ class NewsPost < ApplicationRecord
   belongs_to :user
 
   ################################### Validations ##################################
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 255 }
   validates :published, inclusion: [true, false]
 
   ################################### Hooks #######################################

@@ -8,8 +8,9 @@ class Event < ApplicationRecord
   accepts_nested_attributes_for :event_dates, reject_if: :all_blank, allow_destroy: true
 
   ################################### Validations ##################################
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 255 }
   validates :published, inclusion: [true, false]
+  validates :location, length: { maximum: 255 }
   validate :minimum_one_date
 
   ################################### Hooks #######################################
