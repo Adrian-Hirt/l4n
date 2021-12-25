@@ -71,11 +71,7 @@ Rails.application.routes.draw do
     end
 
     # News posts
-    resources :news, controller: :news_posts, as: :news_posts do
-      collection do
-        post :preview_markdown
-      end
-    end
+    resources :news, controller: :news_posts, as: :news_posts
 
     # Events
     resources :events do
@@ -99,6 +95,9 @@ Rails.application.routes.draw do
 
     # Configurable menu items
     resources :menu_items
+
+    # Markdown preview endpoint
+    post :markdown_preview, to: 'markdown#preview'
   end
 
   # Wildcard route for dynamic pages. This **needs** to come last at all times
