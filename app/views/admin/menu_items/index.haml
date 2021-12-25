@@ -1,7 +1,8 @@
+- content_for :header_buttons do
+  = new_button MenuItem, namespace: %i[admin]
+
 .card
   .card-body
-    = new_button MenuItem, namespace: %i[admin]
-    %hr
     .table-responsive
       %table.table.datagrid.table-hover
         %tr

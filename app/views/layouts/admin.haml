@@ -11,10 +11,13 @@
     = flash_messages
     = render partial: 'layouts/admin/sidebar'
     .main.d-flex.w-100
-      .header
+      .header.d-flex.justify-content-between
         .page-title
           %h1= breadcrumbs_on_rails.last.name # yield :page_title
           .breadcrumbs= render_breadcrumbs tag: :span, separator: '<span class="breadcrumb-seperator">-</span>'
+        - if content_for? :header_buttons
+          %div.mt-auto
+            = yield :header_buttons
       .content
         = yield
       = render partial: 'layouts/admin/footer'

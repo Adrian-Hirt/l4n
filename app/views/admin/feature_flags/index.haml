@@ -1,9 +1,8 @@
-- provide :page_title, _('Admin|FeatureFlags')
+- content_for :header_buttons do
+  = button _('FeatureFlag|Reinitialize'), reinitialize_admin_feature_flags_path, method: :post
 
 .card
   .card-body
-    = button _('FeatureFlag|Reinitialize'), reinitialize_admin_feature_flags_path, method: :post
-    %hr
     .table-responsive
       %table.table.datagrid.table-striped.table-hover
         %tr

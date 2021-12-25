@@ -1,7 +1,6 @@
-- provide :page_title, _('Admin|Events')
+- content_for :header_buttons do
+  = new_button Event, namespace: %i[admin]
 
 .card
   .card-body
-    = new_button Event, namespace: %i[admin]
-    %hr
     = datagrid_table op.grid, html: { class: 'table' }
