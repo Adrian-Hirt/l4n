@@ -8,6 +8,7 @@ AllCops:
     - 'locale/model_attributes.rb'
     - 'node_modules/**/*'
   NewCops: enable
+  SuggestExtensions: false
 
 Layout/HashAlignment:
   EnforcedColonStyle: table

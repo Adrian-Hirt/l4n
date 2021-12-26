@@ -44,7 +44,7 @@ gem 'rqrcode', '~> 2.0.0'
 gem 'simple_form', '~> 5.1.0'
 
 # Code analysis and standards
-gem 'rubocop', '~> 0.86'
+gem 'rubocop', '~> 1.24'
 
 # Translations
 gem 'gettext_i18n_rails', '~> 1.8.1'
