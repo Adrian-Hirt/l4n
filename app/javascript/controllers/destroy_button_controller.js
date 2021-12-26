@@ -21,7 +21,10 @@ export default class extends Controller {
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: i18n._('ConfirmDialog|Confirm'),
-      cancelButtonText: i18n._('ConfirmDialog|Cancel')
+      cancelButtonText: i18n._('ConfirmDialog|Cancel'),
+      customClass: {
+        confirmButton: 'btn btn-primary'
+      },
     }).then(result => {
       if(result.isConfirmed) {
         this.confirmed = true;

@@ -12,3 +12,5 @@ FontAwesome.config.mutateApproach = 'sync'
 
 Translations.setup();
 BootstrapTooltips.setup();
+
+window.bootstrap = bootstrap;
