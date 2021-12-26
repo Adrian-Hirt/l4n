@@ -1,5 +1,4 @@
 import 'easymde';
-import Translations from 'components/translations';
 import { debounce } from 'utils/debounce';
 import { rectanglesLoader } from 'components/loading_animations';
 import 'sweetalert2'
@@ -161,7 +160,7 @@ export default class MarkdownEditor extends EasyMDE {
         title:  i18n._('MarkdownEditor|Toolbar|Insert image')
       },
       {
-        name: "table",
+        name: "button-table",
         action: EasyMDE.drawTable,
         className: 'fa fa-table',
         title: i18n._('MarkdownEditor|Toolbar|Insert table')
@@ -312,7 +311,7 @@ export default class MarkdownEditor extends EasyMDE {
 
   // Opens a window with a list of the fontawesome icons
   static showIconInfo(editor) {
-    window.open("https://fontawesome.com/v5.15.1/icons?d=gallery&m=free");
+    window.open("https://fontawesome.com/v6.0/icons?m=free");
   }
 
   // Insert a link. Instead of the browser prompt, we'll use the sweetalert
