@@ -61,10 +61,13 @@
                 = button_to logout_path, method: :delete, class: 'dropdown-item' do
                   = icon %i[fa fa-sign-out-alt]
                   = ('User|Logout')
-          - else
+          - elsif FeatureFlag.enabled?(:user_registration)
             %a.nav-link.dropdown-toggle{data: { 'bs-toggle' => :dropdown}, href: '#'}= _('Login / Sign up')
             %ul.dropdown-menu.dropdown-menu-end.dropdown-menu-dark
               %li
                 = link_to _('User|Login'), login_path, class: %i[dropdown-item]
               %li
                 = link_to _('User|Sign up'), signup_path, class: %i[dropdown-item]
+          - else
+            %li.nav-item
+              = link_to _('User|Login'), login_path, class: %i[nav-link]
