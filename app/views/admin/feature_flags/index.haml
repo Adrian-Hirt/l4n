@@ -12,12 +12,10 @@
           - op.flags.each do |flag|
             %tr
               %td= flag.key.humanize
-              %td= flag.enabled
-              - if flag.enabled
-                %td
-                  = link_to toggle_admin_feature_flag_path(flag), data: { turbo_method: :post } do
+              %td= format_boolean(flag.enabled)
+              %td
+                = link_to toggle_admin_feature_flag_path(flag), data: { turbo_method: :post } do
+                  - if flag.enabled
                     = icon %i[fas fa-toggle-on]
-              - else
-                %td
-                  = link_to toggle_admin_feature_flag_path(flag), data: { turbo_method: :post } do
+                  - else
                     = icon %i[fas fa-toggle-off]
