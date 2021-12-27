@@ -9,12 +9,11 @@ module TestDataFactory
   # and can safely use them in other tests to create data.
 
   def create_user(attrs = {})
-    ::Operations::User::Create.run!(
+    ::Operations::Admin::User::Create.run!(
       user: {
-        username:              'Testuser',
-        email:                 'testuser@example.com',
-        password:              'Password123',
-        password_confirmation: 'Password123'
+        username: 'Testuser',
+        email:    'testuser@example.com',
+        password: 'Password123'
       }.merge(attrs)
     ).model.reload
   end

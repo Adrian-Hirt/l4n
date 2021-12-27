@@ -20,6 +20,13 @@ require_relative 'test_data_factory'
 class ApplicationTest < ActiveSupport::TestCase
   include ::TestDataFactory
 
+  setup do
+    ::Operations::Admin::FeatureFlag::Reinitialize.run
+    ::FeatureFlag.find_each do |flag|
+      flag.update(enabled: true)
+    end
+  end
+
   def store(key, value)
     test_data[key] = value
   end
