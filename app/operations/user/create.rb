@@ -15,6 +15,8 @@ module Operations::User
       fail ::Exceptions::UserException::SignupClosed unless FeatureFlag.enabled?(:user_registration)
     end
 
+    without_authorization
+
     model ::User
 
     def perform
