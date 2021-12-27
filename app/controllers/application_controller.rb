@@ -49,6 +49,13 @@ class ApplicationController < ActionController::Base
     redirect_to login_url
   end
 
+  def require_not_logged_in
+    return unless logged_in?
+
+    flash[:danger] = _('Session|You are already logged in')
+    redirect_to root_url
+  end
+
   def set_gettext_locale
     requested_locale = current_user&.preferred_locale || session[:locale] || request.env['HTTP_ACCEPT_LANGUAGE'] || I18n.default_locale
     locale = FastGettext.set_locale(requested_locale)

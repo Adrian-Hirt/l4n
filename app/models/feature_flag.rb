@@ -6,6 +6,7 @@ class FeatureFlag < ApplicationRecord
     events
     news_posts
     pages
+    user_registration
   ].freeze
 
   ################################### Associations #################################

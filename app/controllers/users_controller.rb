@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
   before_action :check_captcha, only: %i[create]
-  before_action :require_logged_in_user, only: %i[show profile]
+  before_action :require_logged_in_user, only: %i[show]
+  before_action :require_not_logged_in, only: %i[new create activate]
   layout 'login_register', only: %i[new create]
+
+  rescue_from Exceptions::UserException::SignupClosed do |_exception|
+    flash[:danger] = _('User|Signup is currently closed')
+    redirect_to root_path
+  end
 
   def new
     op Operations::User::Create

@@ -3,4 +3,7 @@
 
 .card
   .card-body
+    - unless FeatureFlag.enabled?(:user_registration)
+      .alert.alert-warning.rounded-0.p-1
+        = _('Admin|Users|Registration is currently disabled')
     = datagrid_table op.grid, html: { class: 'table' }

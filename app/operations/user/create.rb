@@ -11,7 +11,9 @@ module Operations::User
       str? :'h-captcha-response'
     end
 
-    without_authorization
+    policy :on_init do
+      fail ::Exceptions::UserException::SignupClosed unless FeatureFlag.enabled?(:user_registration)
+    end
 
     model ::User
 
