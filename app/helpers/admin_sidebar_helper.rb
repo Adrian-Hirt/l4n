@@ -7,7 +7,7 @@ module AdminSidebarHelper
       return unless name == controller_name.to_sym
     end
 
-    return if actions.any? && !actions.include?(action_name.to_sym)
+    return if actions.any? && actions.exclude?(action_name.to_sym)
     return if excluded_actions.any? && excluded_actions.include?(action_name.to_sym)
 
     'active'

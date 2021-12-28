@@ -20,7 +20,7 @@ module Operations::User
     def build_model
       @model = User.find_by(email: osparams.email)
 
-      fail InvalidActivationError unless @model.present?
+      fail InvalidActivationError if @model.blank?
     end
   end
 

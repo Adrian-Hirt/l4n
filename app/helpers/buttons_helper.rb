@@ -15,11 +15,7 @@ module ButtonsHelper
       button_icon = icon btn_icon
       title = (options[:icon_only] ? button_icon : (button_icon + title))
     end
-    if method
-      html.merge!(
-        data: { turbo_method: method }
-      )
-    end
+    html[:data] = { turbo_method: method } if method
     _button(title, href, get_btn_class(options), **html)
   end
   # rubocop:enable Metrics/ParameterLists

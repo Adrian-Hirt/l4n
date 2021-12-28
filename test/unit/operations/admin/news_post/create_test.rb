@@ -18,7 +18,7 @@ module Unit
                                                                 }).model.reload
 
               assert_equal 'Testpost', post.title
-              refute post.published
+              assert_not post.published
               assert_nil post.published_at
               assert_nil post.content
               assert_equal fetch(:user).id, post.user.id

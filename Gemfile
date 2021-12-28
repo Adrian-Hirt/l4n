@@ -43,9 +43,6 @@ gem 'kaminari', '~> 1.2.1'
 gem 'rqrcode', '~> 2.0.0'
 gem 'simple_form', '~> 5.1.0'
 
-# Code analysis and standards
-gem 'rubocop', '~> 1.24'
-
 # Translations
 gem 'gettext_i18n_rails', '~> 1.8.1'
 gem 'mobility', '~> 1.2.5'
@@ -70,6 +67,11 @@ group :development do
 
   gem 'gettext', '>=3.0.2', require: false
   gem 'ruby_parser', require: false
+
+  # Code analysis and standards
+  gem 'rubocop', '~> 1.24'
+  gem 'rubocop-performance', '~> 1.13'
+  gem 'rubocop-rails', '~> 2.13'
 end
 
 # Test gems

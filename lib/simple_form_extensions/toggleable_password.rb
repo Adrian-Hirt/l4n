@@ -8,17 +8,13 @@ module ToggleablePassword
       }
     }
     kwargs[:wrapper_html] ||= {}
-    kwargs[:wrapper_html].merge!({
-                                   data: {
-                                     controller: 'toggleable-password'
-                                   }
-                                 })
+    kwargs[:wrapper_html][:data] = {
+      controller: 'toggleable-password'
+    }
     kwargs[:input_html] ||= {}
-    kwargs[:input_html].merge!({
-                                 data: {
-                                   'toggleable-password-target' => 'input'
-                                 }
-                               })
+    kwargs[:input_html][:data] = {
+      'toggleable-password-target' => 'input'
+    }
     input(*args, **kwargs, &block)
   end
 end

@@ -15,7 +15,7 @@ class MenuItem < ApplicationRecord
 
   ################################### Associations #################################
   belongs_to :parent, class_name: 'MenuItem', optional: true
-  has_many :children, class_name: 'MenuItem', foreign_key: 'parent_id', dependent: :destroy
+  has_many :children, class_name: 'MenuItem', foreign_key: 'parent_id', dependent: :destroy, inverse_of: :parent
 
   ################################### Validations ##################################
   validates :sort, numericality: { min: 0 }, presence: true

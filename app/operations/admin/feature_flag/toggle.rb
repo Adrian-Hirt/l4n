@@ -7,7 +7,8 @@ module Operations::Admin::FeatureFlag
     model ::FeatureFlag
 
     def perform
-      model.toggle!(:enabled)
+      model.toggle(:enabled)
+      model.save
     end
   end
 end

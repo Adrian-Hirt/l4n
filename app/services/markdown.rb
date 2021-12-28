@@ -83,7 +83,9 @@ module Services
     end
 
     def self.render(text)
+      # rubocop:disable Rails/OutputSafety
       renderer.render(text).html_safe
+      # rubocop:enable Rails/OutputSafety
     end
   end
 end

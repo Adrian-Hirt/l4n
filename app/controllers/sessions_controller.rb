@@ -41,7 +41,7 @@ class SessionsController < ApplicationController
     end
 
     # Check if the session already expired
-    if session[:tmp_login][:timestamp] < Time.zone.now - 5.minutes
+    if session[:tmp_login][:timestamp] < 5.minutes.ago
       session.delete(:tmp_login)
       flash[:danger] = _('Session|Your login expired')
       redirect_to login_path
