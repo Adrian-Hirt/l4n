@@ -3,6 +3,9 @@
 
 .card
   .card-body
+    - if op.flag_warning_present?
+      .alert.alert-warning.rounded-0.p-1
+        = _('FeatureFlag|Please re-initialize the flags, as not all are present and/or unneeded flags are present')
     .table-responsive
       %table.table.datagrid.table-striped.table-hover
         %tr
