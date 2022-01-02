@@ -36,11 +36,11 @@ module Operations::Admin::MenuItem
     def perform
       if model.is_a? MenuLinkItem
         given_page = osparams.menu_link_item[:page_attr]
+        model.page_id = nil
+        model.static_page_name = nil
         if ::MenuItem::PREDEFINED_PAGES.key?(given_page)
-          model.page_id = nil
           model.static_page_name = given_page
         elsif given_page.present?
-          model.static_page_name = nil
           model.page_id = given_page.to_i
         end
       end
