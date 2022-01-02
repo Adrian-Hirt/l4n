@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_30_153806) do
+ActiveRecord::Schema.define(version: 2022_01_02_181820) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,13 +72,14 @@ ActiveRecord::Schema.define(version: 2021_12_30_153806) do
   create_table "menu_items", force: :cascade do |t|
     t.integer "sort", default: 0, null: false
     t.bigint "parent_id"
-    t.string "page_name"
+    t.string "static_page_name"
     t.boolean "visible", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "title_en", null: false
     t.string "title_de", null: false
     t.string "type", default: "MenuLinkItem", null: false
+    t.integer "page_id"
     t.index ["parent_id"], name: "index_menu_items_on_parent_id"
   end
 

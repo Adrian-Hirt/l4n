@@ -5,6 +5,6 @@
       = f.input :title_de
       = f.input :sort
       = f.input :parent_id, as: :select, collection: op.parent_candidates, include_blank: '-'
-      = f.input :page_name, as: :select, collection: op.page_candidates, include_blank: '-'
+      = f.input :page_attr, as: :select, collection: op.page_candidates, include_blank: '-'
     .card-footer
       = f.save

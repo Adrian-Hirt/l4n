@@ -6,7 +6,7 @@ module Operations::Admin::MenuItem
         str! :title_en
         str! :title_de
         str! :sort, format: :integer
-        str? :page_name
+        str? :page_attr
         str? :parent_id
       end
       hsh? :menu_dropdown_item do
@@ -33,6 +33,21 @@ module Operations::Admin::MenuItem
       relation.find_by!(model_id_field => params[model_id_field])
     end
 
+    def perform
+      if model.is_a? MenuLinkItem
+        given_page = osparams.menu_link_item[:page_attr]
+        if ::MenuItem::PREDEFINED_PAGES.key?(given_page)
+          model.page_id = nil
+          model.static_page_name = given_page
+        elsif given_page.present?
+          model.static_page_name = nil
+          model.page_id = given_page.to_i
+        end
+      end
+
+      super
+    end
+
     def page_candidates
       candidates = []
 
@@ -43,7 +58,7 @@ module Operations::Admin::MenuItem
 
       # Add dynamic pages
       ::Page.order(:title).each do |page|
-        candidates << [page.title, page.url]
+        candidates << [page.title, page.id]
       end
 
       candidates

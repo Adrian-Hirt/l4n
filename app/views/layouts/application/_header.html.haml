@@ -20,11 +20,11 @@
               %ul.dropdown-menu.dropdown-menu-dark
                 - menu_item.children.each do |child_menu_item|
                   - next unless child_menu_item.visible?
-                  %a.dropdown-item{href: "/#{child_menu_item.page_name}", class: menu_item_active_classes(child_menu_item)}
+                  %a.dropdown-item{href: "/#{child_menu_item.linked_page_url}", class: menu_item_active_classes(child_menu_item)}
                     = child_menu_item.title
           - else
             %li.nav-item
-              %a.nav-link{href: "/#{menu_item.page_name}", class: menu_item_active_classes(menu_item)}
+              %a.nav-link{href: "/#{menu_item.linked_page_url}", class: menu_item_active_classes(menu_item)}
                 = menu_item.title
       -# Right menu
       %ul.order-1.order-md-3.navbar-nav.ml-auto

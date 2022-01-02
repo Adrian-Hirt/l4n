@@ -1,11 +1,11 @@
 module NavbarHelper
   # TODO: Tidy up this logic a bit
   def menu_item_active_classes(menu_item)
-    if MenuItem::PREDEFINED_PAGES.key?(menu_item.page_name)
-      navbar_item_active_classes(menu_item.page_name)
+    if menu_item.static_page_name.present?
+      navbar_item_active_classes(menu_item.static_page_name)
     elsif menu_item.is_a? MenuDropdownItem
       return 'active' if menu_item.children.any? { |child| menu_item_active_classes(child) == 'active' }
-    elsif menu_item.page_name == request.path.delete('/')
+    elsif menu_item.page.url == request.path.delete('/')
       'active'
     end
   end
