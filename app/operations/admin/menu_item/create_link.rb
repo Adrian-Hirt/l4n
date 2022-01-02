@@ -1,18 +1,16 @@
 module Operations::Admin::MenuItem
-  class Create < RailsOps::Operation::Model::Create
+  class CreateLink < RailsOps::Operation::Model::Create
     schema3 do
-      hsh? :menu_item do
+      hsh? :menu_link_item do
         str! :title_en
         str! :title_de
-        str? :page_name
         str! :sort, format: :integer
-        str! :visible, format: :boolean
+        str? :page_name
         str? :parent_id
-        str? :item_type
       end
     end
 
-    model ::MenuItem
+    model ::MenuLinkItem
 
     def page_candidates
       candidates = []
@@ -31,7 +29,7 @@ module Operations::Admin::MenuItem
     end
 
     def parent_candidates
-      ::MenuItem.i18n.where(item_type: MenuItem::DROPDOWN_TYPE).order(:title)
+      ::MenuDropdownItem.i18n.order(:title)
     end
   end
 end

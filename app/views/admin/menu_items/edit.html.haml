@@ -1,2 +1,13 @@
 .card
-  = render partial: 'form'
+  = simple_form_for model, url: admin_menu_item_path(model) do |f|
+    .card-body
+      = f.input :title_en
+      = f.input :title_de
+      = f.input :sort
+      - if model.is_a? MenuLinkItem
+        = f.input :parent_id, as: :select, collection: op.parent_candidates, include_blank: '-'
+        = f.input :page_name, as: :select, collection: op.page_candidates, include_blank: '-'
+      - else
+        = f.input :visible, input_html: { class: 'no-validation' }
+    .card-footer
+      = f.save

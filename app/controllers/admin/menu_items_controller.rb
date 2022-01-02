@@ -6,19 +6,35 @@ module Admin
       op Operations::Admin::MenuItem::Index
     end
 
-    def new
-      add_breadcrumb _('Admin|MenuItem|New')
-      op Operations::Admin::MenuItem::Create
+    def new_link
+      add_breadcrumb _('Admin|MenuItem|New Link')
+      op Operations::Admin::MenuItem::CreateLink
     end
 
-    def create
-      if run Operations::Admin::MenuItem::Create
+    def create_link
+      if run Operations::Admin::MenuItem::CreateLink
         flash[:success] = _('MenuItem|Successfully created')
         redirect_to admin_menu_items_path
       else
-        add_breadcrumb _('Admin|MenuItem|New')
+        add_breadcrumb _('Admin|MenuItem|New Link')
         flash[:danger] = _('MenuItem|Create failed')
-        render :new, status: :unprocessable_entity
+        render :new_link, status: :unprocessable_entity
+      end
+    end
+
+    def new_dropdown
+      add_breadcrumb _('Admin|MenuItem|New Dropdown')
+      op Operations::Admin::MenuItem::CreateDropdown
+    end
+
+    def create_dropdown
+      if run Operations::Admin::MenuItem::CreateDropdown
+        flash[:success] = _('MenuItem|Successfully created')
+        redirect_to admin_menu_items_path
+      else
+        add_breadcrumb _('Admin|MenuItem|New Dropdown')
+        flash[:danger] = _('MenuItem|Create failed')
+        render :new_dropdown, status: :unprocessable_entity
       end
     end
 

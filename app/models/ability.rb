@@ -6,11 +6,14 @@ class Ability
     # Default Permissions
     ##############################################################
 
-    # Anyone can read a newspost if the feature flag is enabled
+    # Anyone can read a newspost if the feature flag is enabled and it's published
     can :read, NewsPost, &:published? if FeatureFlag.enabled?(:news_posts)
 
-    # Anyone can read an event if the feature flag is enabled
+    # Anyone can read an event if the feature flag is enabled and it's published
     can :read, Event, &:published? if FeatureFlag.enabled?(:events)
+
+    # Anyone can read a page if the feature flag is enabled and it's published
+    can :read, Page, &:published? if FeatureFlag.enabled?(:pages)
 
     # Return early if user does not exist
     return if user.nil?

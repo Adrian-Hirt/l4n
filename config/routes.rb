@@ -94,7 +94,14 @@ Rails.application.routes.draw do
     resources :pages
 
     # Configurable menu items
-    resources :menu_items
+    resources :menu_items, except: %i[new create show] do
+      collection do
+        get :'new/link', action: :new_link
+        post :'new/link', action: :create_link
+        get :'new/dropdown', action: :new_dropdown
+        post :'new/dropdown', action: :create_dropdown
+      end
+    end
 
     # Markdown preview endpoint
     post :markdown_preview, to: 'markdown#preview'

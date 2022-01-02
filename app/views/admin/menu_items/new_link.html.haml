@@ -1,0 +1,10 @@
+.card
+  = simple_form_for model, url: new_link_admin_menu_items_path do |f|
+    .card-body
+      = f.input :title_en
+      = f.input :title_de
+      = f.input :sort
+      = f.input :parent_id, as: :select, collection: op.parent_candidates, include_blank: '-'
+      = f.input :page_name, as: :select, collection: op.page_candidates, include_blank: '-'
+    .card-footer
+      = f.save

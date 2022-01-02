@@ -1,23 +1,14 @@
-class MenuItem < ApplicationRecord
+class MenuDropdownItem < MenuItem
   ################################### Attributes ###################################
-  extend Mobility
-  translates :title
 
   ################################### Constants ####################################
-  PREDEFINED_PAGES = {
-    'news'   => { title: _('News'), feature_flag: :news_posts },
-    'events' => { title: _('Events'), feature_flag: :events }
-  }.freeze
-
-  TYPES = %w[MenuLinkItem MenuDropdownItem].freeze
 
   ################################### Associations #################################
+  has_many :children, class_name: 'MenuLinkItem', foreign_key: 'parent_id', dependent: :destroy, inverse_of: :parent
 
   ################################### Validations ##################################
-  validates :sort, numericality: { min: 0 }, presence: true
-  validates :visible, inclusion: [true, false]
-  validates_translated :title, presence: true, length: { maximum: 255 }
-  validates :type, inclusion: TYPES
+  validates :page_name, absence: true
+  validates :parent_id, absence: true
 
   ################################### Hooks #######################################
 

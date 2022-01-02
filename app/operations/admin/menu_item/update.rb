@@ -2,18 +2,36 @@ module Operations::Admin::MenuItem
   class Update < RailsOps::Operation::Model::Update
     schema3 do
       str! :id, format: :integer
-      hsh? :menu_item do
+      hsh? :menu_link_item do
         str! :title_en
         str! :title_de
-        str? :page_name
         str! :sort, format: :integer
-        str! :visible, format: :boolean
+        str? :page_name
         str? :parent_id
-        str? :item_type
+      end
+      hsh? :menu_dropdown_item do
+        str! :title_en
+        str! :title_de
+        str! :sort, format: :integer
+        str? :visible, format: :boolean
       end
     end
 
     model ::MenuItem
+
+    # Needed as default find_model does not work with STI
+    def find_model
+      fail "Param #{model_id_field.inspect} must be given." unless params[model_id_field]
+
+      # Get model class
+      relation = MenuItem
+
+      # Express intention to lock if required
+      relation = relation.lock if self.class.lock_model_at_build?
+
+      # Fetch (and possibly lock) model
+      relation.find_by!(model_id_field => params[model_id_field])
+    end
 
     def page_candidates
       candidates = []
@@ -32,7 +50,7 @@ module Operations::Admin::MenuItem
     end
 
     def parent_candidates
-      ::MenuItem.i18n.where(item_type: MenuItem::DROPDOWN_TYPE).where.not(id: model.id).order(:title)
+      ::MenuDropdownItem.i18n.order(:title)
     end
   end
 end

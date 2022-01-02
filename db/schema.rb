@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_28_104913) do
+ActiveRecord::Schema.define(version: 2021_12_30_153806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2021_12_28_104913) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "title_en", null: false
     t.string "title_de", null: false
-    t.string "item_type", default: "link_type", null: false
+    t.string "type", default: "MenuLinkItem", null: false
     t.index ["parent_id"], name: "index_menu_items_on_parent_id"
   end
 
@@ -118,11 +118,6 @@ ActiveRecord::Schema.define(version: 2021_12_28_104913) do
     t.string "password_digest", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "remember_me_token_digest"
-    t.boolean "activated", default: false, null: false
-    t.string "activation_token"
-    t.string "password_reset_token_digest"
-    t.datetime "password_reset_token_created_at"
     t.string "username", null: false
     t.string "website"
     t.string "preferred_locale"
@@ -130,6 +125,11 @@ ActiveRecord::Schema.define(version: 2021_12_28_104913) do
     t.string "otp_secret_key"
     t.boolean "two_factor_enabled", default: false
     t.text "otp_backup_codes"
+    t.boolean "activated", default: false, null: false
+    t.string "activation_token"
+    t.string "remember_me_token_digest"
+    t.string "password_reset_token_digest"
+    t.datetime "password_reset_token_created_at"
     t.datetime "remember_me_token_created_at"
     t.boolean "user_admin_permission", default: false, null: false
     t.boolean "news_admin_permission", default: false, null: false

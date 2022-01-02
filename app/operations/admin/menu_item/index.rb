@@ -5,7 +5,7 @@ module Operations::Admin::MenuItem
     end
 
     def top_items
-      ::MenuItem.where(parent: nil).order(:sort).includes(:children)
+      ::MenuItem.where(parent_id: nil).order(:sort)
     end
   end
 end
