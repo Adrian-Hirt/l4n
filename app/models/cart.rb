@@ -5,8 +5,10 @@ class Cart < ApplicationRecord
 
   ################################### Associations #################################
   belongs_to :user
+  has_many :cart_items, dependent: :destroy
 
   ################################### Validations ##################################
+  validates :user, uniqueness: true
 
   ################################### Hooks #######################################
 

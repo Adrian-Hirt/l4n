@@ -4,6 +4,7 @@ class Product < ApplicationRecord
   ################################### Constants ####################################
 
   ################################### Associations #################################
+  has_many :product_variants, dependent: :destroy
 
   ################################### Validations ##################################
   validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }

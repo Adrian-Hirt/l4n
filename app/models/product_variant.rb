@@ -6,6 +6,8 @@ class ProductVariant < ApplicationRecord
 
   ################################### Associations #################################
   belongs_to :product
+  has_many :cart_items, dependent: :destroy
+  has_many :order_items, dependent: :nullify
 
   ################################### Validations ##################################
 

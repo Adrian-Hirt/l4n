@@ -24,6 +24,8 @@ class User < ApplicationRecord
   ################################### Associations #################################
   # Avatar image
   has_one_attached :avatar
+  has_many :orders, dependent: :destroy
+  has_one :cart, dependent: :destroy
 
   ################################### Validations ##################################
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }, length: { maximum: 255 }
