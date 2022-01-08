@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_08_162747) do
+ActiveRecord::Schema.define(version: 2022_01_08_163017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,6 +111,13 @@ ActiveRecord::Schema.define(version: 2022_01_08_162747) do
     t.index ["user_id"], name: "index_news_posts_on_user_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "pages", force: :cascade do |t|
     t.string "title", null: false
     t.text "content"
@@ -186,5 +193,6 @@ ActiveRecord::Schema.define(version: 2022_01_08_162747) do
   add_foreign_key "carts", "users"
   add_foreign_key "event_dates", "events"
   add_foreign_key "news_posts", "users"
+  add_foreign_key "orders", "users"
   add_foreign_key "product_variants", "products"
 end
