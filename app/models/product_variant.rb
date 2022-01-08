@@ -10,6 +10,8 @@ class ProductVariant < ApplicationRecord
   has_many :order_items, dependent: :nullify
 
   ################################### Validations ##################################
+  validates :name, presence: true, length: { maximum: 255 }
+  validates :inventory, numericality: { min: 0 }, presence: true
 
   ################################### Hooks #######################################
 

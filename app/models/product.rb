@@ -5,6 +5,7 @@ class Product < ApplicationRecord
 
   ################################### Associations #################################
   has_many :product_variants, dependent: :destroy
+  accepts_nested_attributes_for :product_variants, allow_destroy: true
 
   ################################### Validations ##################################
   validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }

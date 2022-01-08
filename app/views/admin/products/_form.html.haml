@@ -1,0 +1,17 @@
+= simple_form_for [:admin, model] do |f|
+  .card-body
+    = f.input :name
+    = f.input :description
+    = f.input :on_sale, input_html: { class: 'no-validation' }
+    #product_variants{data: { controller: 'cocoon' }}
+      = f.label :product_variants
+      = f.error :product_variants, class: 'invalid-feedback d-block'
+      = f.simple_fields_for :product_variants do |product_variant|
+        .nested-fields
+          = render 'product_variant_fields', f: product_variant
+      .links
+        = link_to_add_association f, :product_variants, class: 'btn btn-primary', data: { action: 'click->cocoon#addRow' } do
+          = icon %i[fa fa-plus]
+          =_('Product|Add product variant')
+  .card-footer
+    = f.save
