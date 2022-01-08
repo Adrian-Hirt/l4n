@@ -13,16 +13,16 @@ module AdminSidebarHelper
     'active'
   end
 
-  def sidenav_collapser_classes(name)
-    if name.to_s == controller_name
+  def sidenav_collapser_classes(*names)
+    if names.any? { |name| name.to_s == controller_name }
       'active'
     else
       'collapsed'
     end
   end
 
-  def sidenav_collapse_classes(name)
-    return unless name.to_s == controller_name
+  def sidenav_collapse_classes(*names)
+    return unless names.any? { |name| name.to_s == controller_name }
 
     'show'
   end

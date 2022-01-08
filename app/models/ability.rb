@@ -40,6 +40,15 @@ class Ability
     # User can access system settings
     can :manage, FeatureFlag if user.system_admin_permission?
 
+    # Shop permissions. For now, we group the models related to the shop
+    # together, as we probably don't need a too fine-grained access control
+    # for the shop, i.e. users that can create products can also see orders
+    if user.shop_admin_permission?
+      can :manage, :shop
+      can :manage, Product
+      can :manage, Order
+    end
+
     # User can access admin panel if the user has any
     # admin permission
     can :access, :admin_panel if user.any_admin_permission?

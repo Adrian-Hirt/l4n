@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_08_163129) do
+ActiveRecord::Schema.define(version: 2022_01_08_180213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -193,6 +193,7 @@ ActiveRecord::Schema.define(version: 2022_01_08_163129) do
     t.boolean "system_admin_permission", default: false, null: false
     t.boolean "page_admin_permission", default: false, null: false
     t.boolean "menu_items_admin_permission", default: false, null: false
+    t.boolean "shop_admin_permission", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
