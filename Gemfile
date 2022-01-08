@@ -57,6 +57,9 @@ gem 'figaro', '1.2.0'
 # Attachments
 gem 'image_processing', '~> 1.2'
 
+# Models
+gem 'money-rails', '~>1.12'
+
 # Development gems
 group :development do
   gem 'listen', '~> 3.2'
