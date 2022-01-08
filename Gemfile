@@ -7,9 +7,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'rails', '~> 7.0.1'
 
 # Authentication & Authorization
-gem 'active_model_otp', '~> 2.1.1'
+gem 'active_model_otp', '~> 2.3.1'
 gem 'bcrypt', '~> 3.1.7'
-gem 'cancancan', '~> 3.1.0'
+gem 'cancancan', '~> 3.3.0'
 gem 'hcaptcha', '~> 7.1'
 
 # Session handling
@@ -22,11 +22,11 @@ gem 'puma', '~> 5.0'
 gem 'pg', '~> 1.2.3'
 
 # Assets
-gem 'cssbundling-rails', '~> 0.2.7'
-gem 'importmap-rails', '~> 0.9.2'
+gem 'cssbundling-rails', '~> 1.0.0'
+gem 'importmap-rails', '~> 1.0.0'
 gem 'sprockets-rails', '~> 3.4.1'
-gem 'stimulus-rails', '~> 0.7.3'
-gem 'turbo-rails', '~> 0.9.0'
+gem 'stimulus-rails', '~> 1.0.2'
+gem 'turbo-rails', '~> 1.0.0'
 
 # Application structure
 gem 'active_type', '~> 1.10.1' # Need to lock as 2.0 somehow does not work with rails_ops
@@ -40,7 +40,7 @@ gem 'cocoon', '~> 1.2.15'
 gem 'datagrid', '~> 1.6.3'
 gem 'haml-rails', '~> 2.0'
 gem 'kaminari', '~> 1.2.1'
-gem 'rqrcode', '~> 2.0.0'
+gem 'rqrcode', '~> 2.1.0'
 gem 'simple_form', '~> 5.1.0'
 
 # Translations
@@ -50,9 +50,6 @@ gem 'rails-i18n', '~> 7.0.1'
 
 # Markdown rendering
 gem 'redcarpet', '~> 3.5.1'
-
-# Security
-gem 'bundler-audit', '0.7.0.1'
 
 # Settings
 gem 'figaro', '1.2.0'
@@ -72,6 +69,9 @@ group :development do
   gem 'rubocop', '~> 1.24'
   gem 'rubocop-performance', '~> 1.13'
   gem 'rubocop-rails', '~> 2.13'
+
+  # Security
+  gem 'bundler-audit', '~> 0.9.0'
 end
 
 # Test gems
