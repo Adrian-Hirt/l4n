@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_08_160605) do
+ActiveRecord::Schema.define(version: 2022_01_08_162212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,6 +105,16 @@ ActiveRecord::Schema.define(version: 2022_01_08_160605) do
     t.index ["url"], name: "index_pages_on_url", unique: true
   end
 
+  create_table "product_variants", force: :cascade do |t|
+    t.string "name"
+    t.bigint "product_id", null: false
+    t.integer "price_cents", default: 0, null: false
+    t.integer "inventory", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_product_variants_on_product_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name", null: false
     t.text "description"
@@ -156,4 +166,5 @@ ActiveRecord::Schema.define(version: 2022_01_08_160605) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "event_dates", "events"
   add_foreign_key "news_posts", "users"
+  add_foreign_key "product_variants", "products"
 end
