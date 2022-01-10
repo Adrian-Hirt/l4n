@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_08_180213) do
+ActiveRecord::Schema.define(version: 2022_01_10_201158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 2022_01_08_180213) do
     t.string "title_de", null: false
     t.string "type", default: "MenuLinkItem", null: false
     t.integer "page_id"
+    t.boolean "use_namespace_for_active_detection", default: false, null: false
     t.index ["parent_id"], name: "index_menu_items_on_parent_id"
   end
 

@@ -8,6 +8,7 @@ module Operations::Admin::MenuItem
         str! :sort, format: :integer
         str? :page_attr
         str? :parent_id
+        str? :use_namespace_for_active_detection, format: :boolean
       end
       hsh? :menu_dropdown_item do
         str! :title_en

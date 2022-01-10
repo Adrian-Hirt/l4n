@@ -11,6 +11,7 @@
           %th= _('MenuItem|Title_de')
           %th= _('MenuItem|Type')
           %th= _('MenuItem|Visible')
+          %th= _('MenuItem|Use namespace for active detection')
           %th= _('MenuItem|Page_name')
           %th
         - op.top_items.each do |top_item|
@@ -19,6 +20,7 @@
             %td= top_item.title_de
             %td= top_item.class
             %td= format_boolean(top_item.visible)
+            %td= format_boolean(top_item.use_namespace_for_active_detection)
             %td
               - if top_item.is_a? MenuLinkItem
                 = top_item.linked_page_name
@@ -35,6 +37,7 @@
                   %td{style: 'text-indent: 2em;'}= child_item.title_de
                   %td= child_item.class
                   %td= format_boolean(child_item.visible)
+                  %td= format_boolean(child_item.use_namespace_for_active_detection)
                   %td= child_item.page_name
                   %td.datagrid-actions
                     .datagrid-actions-wrapper
