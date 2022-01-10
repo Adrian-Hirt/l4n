@@ -27,6 +27,7 @@ class ProductVariant < ApplicationRecord
   # == Validations =================================================================
   validates :name, presence: true, length: { maximum: 255 }
   validates :inventory, numericality: { min: 0 }, presence: true
+  validates :availability, numericality: { min: 0 }, presence: true
 
   # == Hooks =======================================================================
 
