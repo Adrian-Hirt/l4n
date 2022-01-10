@@ -1,0 +1,6 @@
+.card
+  .card-body
+    %h1= _('Shop')
+    %ul
+    - op.products.each do |product|
+      %li= link_to product.name, [:shop, product]

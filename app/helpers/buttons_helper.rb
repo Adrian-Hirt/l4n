@@ -9,13 +9,19 @@ module ButtonsHelper
   }.freeze
 
   # rubocop:disable Metrics/ParameterLists
-  def button(title, href, html: {}, btn_icon: nil, method: nil, **opts)
+  def button(title, href, html: {}, btn_icon: nil, method: nil, disable_on_click: false, **opts)
     options = get_options(opts)
     if btn_icon
       button_icon = icon btn_icon
       title = (options[:icon_only] ? button_icon : (button_icon + title))
     end
-    html[:data] = { turbo_method: method } if method
+    data = {}
+    data = { turbo_method: method } if method
+    if disable_on_click
+      data[:controller] = 'button'
+      data[:action] = 'click->button#disable'
+    end
+    html[:data] = data
     _button(title, href, get_btn_class(options), **html)
   end
   # rubocop:enable Metrics/ParameterLists
@@ -59,8 +65,8 @@ module ButtonsHelper
     html_options = {
       data:   {
         confirm:    _("#{model.class.name}|Delete confirmation?"),
-        controller: 'destroy-button',
-        action:     'click->destroy-button#confirm'
+        controller: 'button',
+        action:     'click->button#confirmDestroy'
       },
       method: :delete
     }

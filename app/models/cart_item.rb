@@ -17,6 +17,9 @@ class CartItem < ApplicationRecord
   ################################### Class Methods ################################
 
   ################################### Instance Methods #############################
+  def total
+    product_variant.price * quantity
+  end
 
   ################################### Private Methods ##############################
 end

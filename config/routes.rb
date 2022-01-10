@@ -52,6 +52,26 @@ Rails.application.routes.draw do
   resources :news, only: %i[index show]
   resources :events, only: %i[index show]
 
+  # Shop
+  namespace :shop do
+    get '/', to: 'home#index'
+
+    resources :products, only: %i[show]
+    resources :product_variants, only: [] do
+      member do
+        post :add_to_cart
+      end
+    end
+
+    get :cart, to: 'cart#index'
+    resources :cart_items, only: %i[destroy] do
+      member do
+        post :increase_quantity
+        post :decrease_quantity
+      end
+    end
+  end
+
   # Admin panel stuff
   namespace :admin do
     get '/', to: 'home#dashboard'

@@ -6,7 +6,7 @@ export default class extends Controller {
     this.confirmed = false;
   }
 
-  confirm(event) {
+  confirmDestroy(event) {
     if(this.confirmed) {
       return true
     }
@@ -31,5 +31,9 @@ export default class extends Controller {
         this.element.click();
       }
     });
+  }
+
+  disable() {
+    this.element.classList.add('disabled');
   }
 }
