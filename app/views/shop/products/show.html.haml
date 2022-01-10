@@ -10,4 +10,4 @@
         = product_variant.name
         = humanized_money_with_symbol(product_variant.price)
         = product_variant.inventory
-        = button('Add to cart', add_to_cart_shop_product_variant_path(product_variant), btn_icon: %i[fas fa-cart-arrow-down], method: :post)
+        = button 'Add to cart', add_to_cart_shop_product_variant_path(product_variant), btn_icon: %i[fas fa-cart-arrow-down], method: :post, disabled: product_variant.availability.zero?
