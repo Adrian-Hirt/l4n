@@ -1,25 +1,40 @@
+# {ProductVariant} stores a variant of a product, with an associated price and
+#   availability of that variant.
+#
+# @!attribute inventory
+#   @return [Integer] Number of "physically" present instances, i.e. not sold yet
+#     and available for sale. This is only decreased when a checkout process is
+#     completed
+#
+# @!attribute availability
+#   @return [Integer] The number of product available to enter the checkout process.
+#     When an user enters the checkout process, this is decreased, meaning the items
+#     are on hold for the duration of the checkout. When a checkout comppletes, the
+#     inventory decreases as well. When the checkout does not complete (in a set time),
+#     the availability is restored.
+#
 class ProductVariant < ApplicationRecord
-  ################################### Attributes ###################################
+  # == Attributes ==================================================================
   monetize :price_cents
 
-  ################################### Constants ####################################
+  # == Constants ===================================================================
 
-  ################################### Associations #################################
+  # == Associations ================================================================
   belongs_to :product
   has_many :cart_items, dependent: :destroy
   has_many :order_items, dependent: :nullify
 
-  ################################### Validations ##################################
+  # == Validations =================================================================
   validates :name, presence: true, length: { maximum: 255 }
   validates :inventory, numericality: { min: 0 }, presence: true
 
-  ################################### Hooks #######################################
+  # == Hooks =======================================================================
 
-  ################################### Scopes #######################################
+  # == Scopes ======================================================================
 
-  ################################### Class Methods ################################
+  # == Class Methods ===============================================================
 
-  ################################### Instance Methods #############################
+  # == Instance Methods ============================================================
 
-  ################################### Private Methods ##############################
+  # == Private Methods =============================================================
 end
