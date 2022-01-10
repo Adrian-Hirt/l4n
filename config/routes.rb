@@ -106,6 +106,9 @@ Rails.application.routes.draw do
     # Products
     resources :products, except: %i[show]
 
+    # Orders
+    resources :orders, only: %i[index show]
+
     # Markdown preview endpoint
     post :markdown_preview, to: 'markdown#preview'
   end

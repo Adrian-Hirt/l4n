@@ -1,5 +1,6 @@
 class OrderItem < ApplicationRecord
   ################################### Attributes ###################################
+  monetize :price_cents
 
   ################################### Constants ####################################
 
@@ -16,6 +17,9 @@ class OrderItem < ApplicationRecord
   ################################### Class Methods ################################
 
   ################################### Instance Methods #############################
+  def total
+    price * quantity
+  end
 
   ################################### Private Methods ##############################
 end

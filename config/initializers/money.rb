@@ -1,6 +1,7 @@
 MoneyRails.configure do |config|
   # Set the default currency
   config.default_currency = :chf
+  config.no_cents_if_whole = false
 
   # Handle the inclusion of validations for monetized fields
   config.include_validations = true

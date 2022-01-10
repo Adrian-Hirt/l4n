@@ -1,0 +1,30 @@
+.card
+  .card-body
+    .row.border-bottom.pb-3.mb-2
+      .col-md-4
+        .text-muted= _('Order|Created at')
+        = l(model.created_at, format: :long)
+      .col-md-4
+        .text-muted= _('Order|Order items count')
+        = model.order_items.count
+      .col-md-4
+        .text-muted= _('Order|User')
+        = model.user.username
+
+    .my-3= _('Order|Order items')
+    %table.table.table-bordered
+      %tr
+        %th= _('OrderItem|Item')
+        %th= _('OrderItem|Quantity')
+        %th= _('OrderItem|Price')
+        %th= _('OrderItem|Total')
+      - model.order_items.each do |order_item|
+        %tr
+          %td
+            - if order_item.product_variant
+              = "#{order_item.product_variant.product.name} - #{order_item.product_variant.name}"
+            - else
+              %mark TODO: store product & variant name in order_item
+          %td= order_item.quantity
+          %td= humanized_money_with_symbol order_item.price
+          %td= humanized_money_with_symbol order_item.total
