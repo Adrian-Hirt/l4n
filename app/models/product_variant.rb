@@ -30,6 +30,8 @@ class ProductVariant < ApplicationRecord
   validates :availability, numericality: { min: 0 }, presence: true
 
   # == Hooks =======================================================================
+  before_create :add_availability
+  before_update :update_availability
 
   # == Scopes ======================================================================
 
@@ -38,4 +40,15 @@ class ProductVariant < ApplicationRecord
   # == Instance Methods ============================================================
 
   # == Private Methods =============================================================
+  private
+
+  def add_availability
+    self.availability = inventory
+  end
+
+  def update_availability
+    # TODO: handle case when availability would fall under zero
+    difference = inventory - inventory_was
+    self.availability += difference
+  end
 end
