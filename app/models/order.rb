@@ -1,6 +1,12 @@
 class Order < ApplicationRecord
   ################################### Attributes ###################################
-
+  enum status: {
+    created:         'created',
+    payment_pending: 'payment_pending',
+    paid:            'paid',
+    aborted:         'aborted',
+    completed:       'completed'
+  }
   ################################### Constants ####################################
 
   ################################### Associations #################################

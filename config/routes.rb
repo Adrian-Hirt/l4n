@@ -70,6 +70,10 @@ Rails.application.routes.draw do
         post :decrease_quantity
       end
     end
+
+    get :checkout, to: 'checkout#show'
+    post :checkout, to: 'checkout#start'
+    post :'checkout/callback', to: 'checkout#payment_callback'
   end
 
   # Admin panel stuff

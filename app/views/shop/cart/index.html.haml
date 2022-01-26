@@ -4,6 +4,8 @@
     - if model.cart_items.none?
       = _('Cart|Your cart is empty')
     - else
+      .mb-3
+        = button _('Shop|Checkout'), shop_checkout_path
       %table.table.table-bordered
         %tr
           %th= _('Cart|Product')
