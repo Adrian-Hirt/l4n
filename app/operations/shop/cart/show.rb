@@ -10,6 +10,9 @@ module Operations::Shop::Cart
     end
 
     def perform
+      # Delete other orders for user that have status `created`
+      run_sub! Operations::Shop::Order::CleanupUntouched
+
       @reduced_cart_items = []
       @removed_cart_items = []
 

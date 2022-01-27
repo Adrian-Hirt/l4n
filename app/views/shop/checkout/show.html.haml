@@ -1,1 +1,9 @@
-Checkout :D
+.card
+  .card-body
+    %h1= _('Checkout')
+
+    - Rails.application.config.payment_gateways.each do |gateway|
+      %p.mb-3
+        = gateway.name
+        %br
+        = button 'Pay', gateway.payment_path(order_id: op.order.encrypted_base64_id)

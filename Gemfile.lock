@@ -1,3 +1,9 @@
+PATH
+  remote: payment_gateways/dummy_payment
+  specs:
+    dummy_payment (0.1.0)
+      rails (>= 7.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -347,6 +353,7 @@ DEPENDENCIES
   cocoon (~> 1.2.15)
   cssbundling-rails (~> 1.0.0)
   datagrid (~> 1.6.3)
+  dummy_payment!
   figaro (= 1.2.0)
   gettext (>= 3.0.2)
   gettext_i18n_rails (~> 1.8.1)

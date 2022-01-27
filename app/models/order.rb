@@ -8,6 +8,8 @@ class Order < ApplicationRecord
     completed:       'completed'
   }
   ################################### Constants ####################################
+  TIMEOUT = 15.minutes
+  TIMEOUT_IN_PAYMENT = 30.minutes
 
   ################################### Associations #################################
   belongs_to :user
@@ -22,6 +24,11 @@ class Order < ApplicationRecord
   ################################### Class Methods ################################
 
   ################################### Instance Methods #############################
+  def encrypted_base64_id
+    crypt = ActiveSupport::MessageEncryptor.new(Rails.application.secrets.secret_key_base[0..31])
+    encrypted_id = crypt.encrypt_and_sign(id)
+    Base64.urlsafe_encode64(encrypted_id)
+  end
 
   ################################### Private Methods ##############################
 end

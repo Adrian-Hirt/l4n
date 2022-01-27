@@ -138,5 +138,5 @@ Rails.application.routes.draw do
   end
 
   # Wildcard route for dynamic pages. This **needs** to come last at all times
-  get '*page', to: 'pages#show', page: /((?!rails|admin).)*/
+  get '*page', to: 'pages#show', page: /((?!rails|admin|paymentgateway).)*/
 end

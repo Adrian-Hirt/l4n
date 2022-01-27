@@ -82,3 +82,5 @@ group :test do
   gem 'simplecov', '~> 0.21.2', require: false
   gem 'simplecov-lcov', '~> 0.8.0', require: false
 end
+
+gem 'dummy_payment', path: 'payment_gateways/dummy_payment'

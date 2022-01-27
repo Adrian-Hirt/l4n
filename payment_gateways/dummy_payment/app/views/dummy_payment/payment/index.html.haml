@@ -1,0 +1,6 @@
+%h1 Dummy Payment Gateway
+
+Your total:
+= humanized_money_with_symbol(op.result[:total])
+
+= button_to 'Pay now', complete_payment_path(order_id: op.result[:order_id]), data: { 'turbo-method' => :post }
