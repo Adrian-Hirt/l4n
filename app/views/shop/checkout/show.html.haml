@@ -1,7 +1,8 @@
+- provide :shop_page_title, _('Checkout')
+= render partial: 'shop/shared/header'
+
 .card
   .card-body
-    %h1= _('Checkout')
-
     - Rails.application.config.payment_gateways.each do |gateway|
       %p.mb-3
         = gateway.name

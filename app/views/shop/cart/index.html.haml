@@ -1,26 +1,44 @@
-.card
-  .card-body
-    %h1= _('Cart')
-    - if model.cart_items.none?
+- provide :shop_page_title, _('Cart')
+= render partial: 'shop/shared/header'
+
+- if model.cart_items.none?
+  .card
+    .card-body
       = _('Cart|Your cart is empty')
-    - else
-      .mb-3
-        = button _('Shop|Checkout'), shop_checkout_path
-      %table.table.table-bordered
-        %tr
-          %th= _('Cart|Product')
-          %th= _('Cart|Product variant')
-          %th= _('Cart|Quantity')
-          %th= _('Cart|Price')
-          %th= _('Cart|Total')
-        - model.cart_items.each do |cart_item|
-          %tr
-            %td= link_to cart_item.product_variant.product.name, [:shop, cart_item.product_variant.product]
-            %td= cart_item.product_variant.name
-            %td= cart_item.quantity
-            %td= humanized_money_with_symbol(cart_item.product_variant.price)
-            %td= humanized_money_with_symbol(cart_item.total)
-            %td
-              = delete_button cart_item, namespace: %i[shop], icon_only: true, size: :sm
-              = button nil, increase_quantity_shop_cart_item_path(cart_item), btn_icon: %i[fas fa-plus], method: :post, icon_only: true, size: :sm, disable_on_click: true, disabled: cart_item.quantity >= cart_item.product_variant.availability
-              = button nil, decrease_quantity_shop_cart_item_path(cart_item), btn_icon: %i[fas fa-minus], method: :post, icon_only: true, size: :sm, disable_on_click: true, disabled: cart_item.quantity <= 1
+- else
+  .row
+    .col-md-9
+      .card
+        .card-body
+          %table.table.table-borderless
+            %tr
+              %th= _('Cart|Product')
+              %th= _('Cart|Quantity')
+              %th= _('Cart|Price')
+              %th
+            - model.cart_items.each do |cart_item|
+              %tr
+                %td
+                  = link_to cart_item.product_variant.product.name, [:shop, cart_item.product_variant.product]
+                  %br
+                  %small.text-muted
+                    = cart_item.product_variant.name
+                %td
+                  .btn.pe-none
+                    = cart_item.quantity
+                  = button nil, increase_quantity_shop_cart_item_path(cart_item), btn_icon: %i[fas fa-plus], method: :post, icon_only: true, size: :sm, disable_on_click: true, disabled: cart_item.quantity >= cart_item.product_variant.availability
+                  = button nil, decrease_quantity_shop_cart_item_path(cart_item), btn_icon: %i[fas fa-minus], method: :post, icon_only: true, size: :sm, disable_on_click: true, disabled: cart_item.quantity <= 1
+                %td
+                  = humanized_money_with_symbol(cart_item.total)
+                  %br
+                  %small.text-muted
+                    = _('Product|%{price} each') % { price: humanized_money_with_symbol(cart_item.product_variant.price) }
+                %td
+                  = delete_button cart_item, namespace: %i[shop], icon_only: true, size: :sm
+    .col-md-3
+      .card
+        .card-body
+          .mb-3
+            = _('Cart|Total:')
+            = humanized_money_with_symbol(model.total)
+          = button _('Shop|Checkout'), shop_checkout_path

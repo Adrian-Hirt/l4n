@@ -1,6 +1,15 @@
-.card
-  .card-body
-    %h1= _('Shop')
-    %ul
-    - op.products.each do |product|
-      %li= link_to product.name, [:shop, product]
+= render partial: 'shop/shared/header'
+
+- op.products.in_groups_of(4) do |products|
+  .row
+    - products.each do |product|
+      - next if product.nil?
+      .col-md-3.col-sm-6
+        .card.product-listing-card
+          .card-body
+            %small.product-details
+              TODO: Category
+            %h4.product_title
+              = link_to product.name, [:shop, product]
+            .product-price
+              = _('Product|Starting from %{start_price}') % { start_price: humanized_money_with_symbol(product.starting_price) }

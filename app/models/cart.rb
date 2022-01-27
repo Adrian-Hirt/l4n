@@ -17,6 +17,13 @@ class Cart < ApplicationRecord
   ################################### Class Methods ################################
 
   ################################### Instance Methods #############################
+  def item_count
+    cart_items.sum(:quantity)
+  end
+
+  def total
+    cart_items.sum(&:total)
+  end
 
   ################################### Private Methods ##############################
 end

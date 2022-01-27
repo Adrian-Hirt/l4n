@@ -18,6 +18,9 @@ class Product < ApplicationRecord
   ################################### Class Methods ################################
 
   ################################### Instance Methods #############################
+  def starting_price
+    product_variants.map(&:price).min.presence || Money.zero
+  end
 
   ################################### Private Methods ##############################
 end

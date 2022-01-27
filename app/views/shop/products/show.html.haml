@@ -1,6 +1,8 @@
+- provide :shop_page_title, model.name
+= render partial: 'shop/shared/header'
+
 .card
   .card-body
-    %h1= model.name
     .mb-3
       .text-muted= _('Product|Description')
       = model.description.presence || _('Product|No description')
@@ -10,4 +12,4 @@
         = product_variant.name
         = humanized_money_with_symbol(product_variant.price)
         = product_variant.inventory
-        = button 'Add to cart', add_to_cart_shop_product_variant_path(product_variant), btn_icon: %i[fas fa-cart-arrow-down], method: :post, disabled: product_variant.availability.zero?
+        = button 'Add to cart', add_to_cart_shop_product_variant_path(product_variant), btn_icon: %i[fas fa-cart-arrow-down], method: :post, disabled: product_variant.availability.zero?, size: :sm
