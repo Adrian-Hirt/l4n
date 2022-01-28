@@ -15,6 +15,10 @@ class Ability
     # Anyone can read a page if the feature flag is enabled and it's published
     can :read, Page, &:published? if FeatureFlag.enabled?(:pages)
 
+    can :read, Order do |m|
+      m.user == user
+    end
+
     # Return early if user does not exist
     return if user.nil?
 

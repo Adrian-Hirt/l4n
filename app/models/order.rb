@@ -3,9 +3,7 @@ class Order < ApplicationRecord
   enum status: {
     created:         'created',
     payment_pending: 'payment_pending',
-    paid:            'paid',
-    aborted:         'aborted',
-    completed:       'completed'
+    paid:            'paid'
   }
   ################################### Constants ####################################
   TIMEOUT = 15.minutes

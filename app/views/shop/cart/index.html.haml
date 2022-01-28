@@ -16,7 +16,7 @@
               %th= _('Cart|Quantity')
               %th= _('Cart|Price')
               %th
-            - model.cart_items.each do |cart_item|
+            - model.cart_items.order(:id).each do |cart_item|
               %tr
                 %td
                   = link_to cart_item.product_variant.product.name, [:shop, cart_item.product_variant.product]
