@@ -60,6 +60,9 @@ gem 'image_processing', '~> 1.2'
 # Models
 gem 'money-rails', '~>1.12'
 
+# Background processing
+gem 'whenever', '~> 1.0.0', require: false
+
 # Development gems
 group :development do
   gem 'listen', '~> 3.2'
@@ -83,4 +86,5 @@ group :test do
   gem 'simplecov-lcov', '~> 0.8.0', require: false
 end
 
+# Payment gateways
 gem 'dummy_payment', path: 'payment_gateways/dummy_payment'
