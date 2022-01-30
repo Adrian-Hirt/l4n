@@ -15,7 +15,11 @@ module Operations::PaymentGateway
       decrypted_id = crypt.decrypt_and_verify(encrypted_id)
 
       # Get order
-      order = ::Order.find(decrypted_id)
+      order = ::Order.find_by(id: decrypted_id)
+
+      # TODO: rollback the payment? or at least signal the user that there
+      # was a problem and they should report to the admin?
+      fail 'Order not found' if order.nil?
 
       run_sub Operations::Shop::Order::ProcessPaid, order: order
     end

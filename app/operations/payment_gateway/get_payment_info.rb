@@ -16,9 +16,12 @@ module Operations::PaymentGateway
       order = ::Order.find(decrypted_id)
 
       # Verify that the order is still active and in the correct state
-      fail 'Order has wrong status' unless order.created?
+      fail 'Order has wrong status' unless order.created? || order.payment_pending?
 
-      fail 'Order expired' if order.cleanup_timestamp + ::Order::TIMEOUT_IN_PAYMENT < Time.zone.now
+      fail 'Order expired' if order.cleanup_timestamp + ::Order::TIMEOUT < Time.zone.now
+
+      # Set order as payment pending
+      order.payment_pending!
 
       @result = {}
       @result[:items] = [] # TODO

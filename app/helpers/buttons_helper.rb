@@ -21,7 +21,8 @@ module ButtonsHelper
       data[:controller] = 'button'
       data[:action] = 'click->button#disable'
     end
-    html[:data] = data
+    html[:data] ||= {}
+    html[:data].merge!(data)
     _button(title, href, get_btn_class(options), **html)
   end
   # rubocop:enable Metrics/ParameterLists

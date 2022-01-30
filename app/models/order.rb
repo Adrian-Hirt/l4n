@@ -7,7 +7,7 @@ class Order < ApplicationRecord
   }
   ################################### Constants ####################################
   TIMEOUT = 15.minutes
-  TIMEOUT_IN_PAYMENT = 30.minutes
+  TIMEOUT_PAYMENT_PENDING = 45.minutes
 
   ################################### Associations #################################
   belongs_to :user

@@ -72,8 +72,6 @@ Rails.application.routes.draw do
     end
 
     get :checkout, to: 'checkout#show'
-    post :checkout, to: 'checkout#start'
-    post :'checkout/callback', to: 'checkout#payment_callback'
 
     resources :orders, only: %i[index show]
   end
