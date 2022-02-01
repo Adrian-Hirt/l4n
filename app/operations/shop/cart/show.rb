@@ -1,34 +1,38 @@
 module Operations::Shop::Cart
   class Show < RailsOps::Operation::Model
     without_authorization
-    attr_reader :reduced_cart_items, :removed_cart_items
+    attr_reader :unavailable_products, :products_with_less_availability, :availability_error, :quantity_by_product
 
     model ::Cart
 
     def build_model
-      @model = Cart.find_or_create_by(user: context.user)
+      @model = Cart.includes(cart_items: { product_variant: :product }).find_or_create_by(user: context.user)
     end
 
     def perform
       # Delete other orders for user that have status `created`
       run_sub! Operations::Shop::Order::CleanupUntouched
 
-      @reduced_cart_items = []
-      @removed_cart_items = []
+      @quantity_by_product = {}
+      @unavailable_products = []
+      @products_with_less_availability = {}
+      @availability_error = false
 
       # Sanitize cart_items
       model.cart_items.each do |cart_item|
-        if cart_item.product_variant.availability.zero?
-          @removed_cart_items << "#{cart_item.product_variant.product.name} - #{cart_item.product_variant.name}"
-          run_sub Operations::Shop::CartItem::Destroy, id: cart_item.id
-        elsif cart_item.quantity > cart_item.product_variant.availability
-          cart_item.quantity = cart_item.product_variant.availability
-          @reduced_cart_items << "#{cart_item.product_variant.product.name} - #{cart_item.product_variant.name}"
-          cart_item.save!
-        end
+        @quantity_by_product[cart_item.product] ||= 0
+        @quantity_by_product[cart_item.product] += cart_item.quantity
       end
 
-      model.cart_items.reload
+      @quantity_by_product.each do |product, quantity_requested|
+        if product.availability.zero?
+          @unavailable_products << product.id
+          @availability_error = true
+        elsif quantity_requested > product.availability
+          @products_with_less_availability[product.id] = { availability: product.availability }
+          @availability_error = true
+        end
+      end
     end
   end
 end

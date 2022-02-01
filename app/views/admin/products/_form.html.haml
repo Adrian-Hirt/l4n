@@ -3,6 +3,11 @@
     = f.input :name
     = f.input :description
     = f.input :on_sale, input_html: { class: 'no-validation' }
+    .row
+      .col-md-6
+        = f.input :inventory
+      .col-md-6
+        = f.input :availability, disabled: true
     #product_variants{data: { controller: 'cocoon' }}
       = f.label :product_variants
       = f.error :product_variants, class: 'invalid-feedback d-block'

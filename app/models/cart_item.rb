@@ -7,6 +7,8 @@ class CartItem < ApplicationRecord
   belongs_to :cart
   belongs_to :product_variant
 
+  delegate :product, to: :product_variant
+
   ################################### Validations ##################################
   validates :quantity, numericality: { greater_than: 0 }
 

@@ -11,8 +11,8 @@ module Operations::Shop::Order
 
         # Decrease inventory of items bought
         order.order_items.each do |order_item|
-          order_item.product_variant.inventory -= order_item.quantity
-          order_item.product_variant.save!
+          order_item.product.inventory -= order_item.quantity
+          order_item.product.save!
         end
 
         # Remove the cart to "empty" it

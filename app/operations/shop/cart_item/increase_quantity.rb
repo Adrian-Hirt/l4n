@@ -5,7 +5,7 @@ module Operations::Shop::CartItem
     model ::CartItem
 
     def perform
-      fail MaxQuantityReached if model.product_variant.inventory <= model.quantity
+      fail MaxQuantityReached if model.product.inventory <= model.quantity
 
       model.quantity += 1
       model.save!

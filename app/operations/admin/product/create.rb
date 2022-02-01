@@ -5,6 +5,7 @@ module Operations::Admin::Product
         opt :name
         opt :on_sale
         opt :description
+        opt :inventory
         opt :product_variants_attributes
       end
     end

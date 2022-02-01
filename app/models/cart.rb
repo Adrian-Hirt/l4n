@@ -22,7 +22,7 @@ class Cart < ApplicationRecord
   end
 
   def total
-    cart_items.sum(&:total)
+    cart_items.sum(Money.zero, &:total)
   end
 
   ################################### Private Methods ##############################

@@ -9,12 +9,12 @@ module Operations::Shop::ProductVariant
       present_cart_item = cart.cart_items.find_by(product_variant_id: model.id)
 
       if present_cart_item
-        fail MaxQuantityReached if model.availability <= present_cart_item.quantity
+        fail MaxQuantityReached if model.product.availability <= present_cart_item.quantity
 
         present_cart_item.quantity += 1
         present_cart_item.save!
       else
-        fail MaxQuantityReached if model.availability.zero?
+        fail MaxQuantityReached if model.product.availability.zero?
 
         cart.cart_items.create!(quantity: 1, product_variant_id: model.id)
       end

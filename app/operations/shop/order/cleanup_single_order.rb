@@ -9,8 +9,8 @@ module Operations::Shop::Order
         next if order_item.product_variant.nil?
 
         # increase availability of product_item
-        order_item.product_variant.availability += order_item.quantity
-        order_item.product_variant.save!
+        order_item.product.availability += order_item.quantity
+        order_item.product.save!
       end
 
       order.destroy!

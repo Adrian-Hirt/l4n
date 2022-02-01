@@ -24,7 +24,9 @@ module Operations::Shop::Order
           )
 
           # decrease availability of product_item
-          cart_item.product_variant.availability -= cart_item.quantity
+          cart_item.product.availability -= cart_item.quantity
+          fail MaxQuantityReached if cart_item.product.availability.negative?
+
           cart_item.product_variant.save!
         end
 
@@ -39,5 +41,6 @@ module Operations::Shop::Order
     end
 
     class CartEmpty < StandardError; end
+    class MaxQuantityReached < StandardError; end
   end
 end

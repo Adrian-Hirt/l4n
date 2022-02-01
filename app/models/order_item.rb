@@ -8,6 +8,8 @@ class OrderItem < ApplicationRecord
   belongs_to :order
   belongs_to :product_variant, optional: true
 
+  delegate :product, to: :product_variant
+
   ################################### Validations ##################################
 
   ################################### Hooks ########################################
