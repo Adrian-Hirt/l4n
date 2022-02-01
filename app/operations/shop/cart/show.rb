@@ -1,7 +1,7 @@
 module Operations::Shop::Cart
   class Show < RailsOps::Operation::Model
     without_authorization
-    attr_reader :unavailable_products, :products_with_less_availability, :availability_error, :quantity_by_product
+    attr_reader :unavailable_products, :products_with_less_availability, :availability_error, :quantity_by_product, :availability_by_product
 
     model ::Cart
 
@@ -14,6 +14,7 @@ module Operations::Shop::Cart
       run_sub! Operations::Shop::Order::CleanupUntouched
 
       @quantity_by_product = {}
+      @availability_by_product = {}
       @unavailable_products = []
       @products_with_less_availability = {}
       @availability_error = false
@@ -25,6 +26,7 @@ module Operations::Shop::Cart
       end
 
       @quantity_by_product.each do |product, quantity_requested|
+        @availability_by_product[product] = product.availability
         if product.availability.zero?
           @unavailable_products << product.id
           @availability_error = true

@@ -6,7 +6,7 @@ module Operations::Shop::Order
       # Delete other orders for user that have status `created`
       ActiveRecord::Base.transaction do
         Order.where(user: context.user, status: 'created').each do |order|
-          Operations::Shop::Order::CleanupSingleOrder.run order: order
+          order.destroy!
         end
       end
     end
