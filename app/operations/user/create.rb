@@ -12,7 +12,7 @@ module Operations::User
     end
 
     policy :on_init do
-      fail ::Exceptions::UserException::SignupClosed unless FeatureFlag.enabled?(:user_registration)
+      fail SignupClosed unless FeatureFlag.enabled?(:user_registration)
     end
 
     without_authorization
@@ -26,4 +26,6 @@ module Operations::User
       UserMailer.with(user: model).confirm_signup.deliver_now
     end
   end
+
+  class SignupClosed < StandardError; end
 end

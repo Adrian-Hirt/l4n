@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :require_not_logged_in, only: %i[new create activate]
   layout 'login_register', only: %i[new create]
 
-  rescue_from Exceptions::UserException::SignupClosed do |_exception|
+  rescue_from Operations::User::Create::SignupClosed do |_exception|
     flash[:danger] = _('User|Signup is currently closed')
     redirect_to root_path
   end
