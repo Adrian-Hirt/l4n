@@ -4,13 +4,11 @@ class UsersController < ApplicationController
   before_action :require_not_logged_in, only: %i[new create activate]
   layout 'login_register', only: %i[new create]
 
-  rescue_from Operations::User::Create::SignupClosed do |_exception|
-    flash[:danger] = _('User|Signup is currently closed')
-    redirect_to root_path
-  end
-
   def new
     op Operations::User::Create
+  rescue Operations::User::Create::SignupClosed
+    flash[:danger] = _('User|Signup is currently closed')
+    redirect_to root_path
   end
 
   def create
@@ -20,6 +18,9 @@ class UsersController < ApplicationController
     else
       render :new
     end
+  rescue Operations::User::Create::SignupClosed
+    flash[:danger] = _('User|Signup is currently closed')
+    redirect_to root_path
   end
 
   def show
