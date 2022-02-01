@@ -13,7 +13,10 @@
 #     the availability is restored.
 #
 class Product < ApplicationRecord
+  include ::ProductBehaviours
+
   # == Attributes ==================================================================
+  register_behaviour :event_ticket, ::Operations::Behaviours::EventTicket
 
   # == Constants ===================================================================
 

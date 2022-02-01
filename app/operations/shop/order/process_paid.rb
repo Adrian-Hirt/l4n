@@ -13,6 +13,8 @@ module Operations::Shop::Order
         order.order_items.each do |order_item|
           order_item.product.inventory -= order_item.quantity
           order_item.product.save!
+
+          order_item.product.execute_behaviours(order_item: order_item)
         end
 
         # Remove the cart to "empty" it

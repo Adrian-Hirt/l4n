@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_31_173401) do
+ActiveRecord::Schema.define(version: 2022_02_01_220016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -161,6 +161,7 @@ ActiveRecord::Schema.define(version: 2022_01_31_173401) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "availability", default: 0, null: false
     t.integer "inventory", default: 0, null: false
+    t.string "enabled_product_behaviours"
     t.index ["name"], name: "index_products_on_name", unique: true
   end
 

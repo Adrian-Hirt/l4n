@@ -30,7 +30,7 @@ module Admin
     def update
       if run Operations::Admin::Product::Update
         flash[:success] = _('Product|Successfully updated')
-        redirect_to admin_products_path
+        redirect_to admin_product_path(model)
       else
         add_breadcrumb model.name
         flash[:danger] = _('Product|Edit failed')
