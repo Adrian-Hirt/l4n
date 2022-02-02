@@ -12,6 +12,10 @@
       as: :check_boxes,
       collection: model.available_product_behaviours,
       input_html: { class: 'no-validation' }
+    = f.input :image
+    - if model.image.attached?
+      = image_tag model.image.variant(:thumb).processed
+      = f.input :remove_image, as: :boolean
     #product_variants{data: { controller: 'cocoon' }}
       = f.label :product_variants
       = f.error :product_variants, class: 'invalid-feedback d-block'
