@@ -1,5 +1,7 @@
 module Operations::Shop::Home
   class Index < RailsOps::Operation
+    without_authorization
+
     policy :on_init do
       authorize! :use, :shop
     end

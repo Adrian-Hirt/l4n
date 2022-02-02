@@ -15,6 +15,12 @@ class Ability
     # Anyone can read a page if the feature flag is enabled and it's published
     can :read, Page, &:published? if FeatureFlag.enabled?(:pages)
 
+    # Return early if user does not exist
+    return if user.nil?
+
+    ##############################################################
+    # User Permissions
+    ##############################################################
     # Shop permissions
     if FeatureFlag.enabled?(:shop)
       can :use, :shop
@@ -22,9 +28,6 @@ class Ability
         m.user == user
       end
     end
-
-    # Return early if user does not exist
-    return if user.nil?
 
     ##############################################################
     # Admin Permissions

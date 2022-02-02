@@ -1,5 +1,7 @@
 module Operations::Shop::Cart
   class Show < RailsOps::Operation::Model
+    without_authorization
+
     policy :on_init do
       authorize! :use, :shop
     end

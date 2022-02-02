@@ -1,5 +1,7 @@
 module Operations::Shop::Order
   class PrepareCheckout < RailsOps::Operation
+    without_authorization
+
     policy :on_init do
       authorize! :use, :shop
     end

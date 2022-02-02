@@ -1,5 +1,7 @@
 module Operations::Shop::CartItem
   class IncreaseQuantity < RailsOps::Operation::Model::Load
+    without_authorization
+
     policy :on_init do
       authorize! :use, :shop
     end
