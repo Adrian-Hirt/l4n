@@ -1,7 +1,7 @@
 = simple_form_for [:admin, model] do |f|
   .card-body
     = f.input :name
-    = f.input :description
+    = f.markdown :description, preview_url: admin_markdown_preview_path
     = f.input :on_sale, input_html: { class: 'no-validation' }
     .row
       .col-md-6
