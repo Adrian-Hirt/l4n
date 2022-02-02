@@ -10,8 +10,8 @@
             = icon %i[fas fa-bars]
       .current-user-info
         .current-user-avatar
-          - if current_user.thumb_avatar.present?
-            = image_tag current_user.thumb_avatar
+          - if current_user.avatar.attached?
+            = image_tag current_user.avatar.variant(:thumb).processed
           - else
             = image_tag 'user.svg', class: %i[placeholder-avatar]
         .current-user-details

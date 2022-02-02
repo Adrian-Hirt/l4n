@@ -24,7 +24,11 @@ class User < ApplicationRecord
 
   ################################### Associations #################################
   # Avatar image
-  has_one_attached :avatar
+  has_one_attached :avatar do |attachable|
+    attachable.variant :thumb, resize_to_fill: [100, 100]
+    attachable.variant :medium, resize_to_fill: [300, 300]
+  end
+
   has_many :orders, dependent: :destroy
   has_one :cart, dependent: :destroy
 
@@ -48,14 +52,6 @@ class User < ApplicationRecord
   ################################### Class Methods ################################
 
   ################################### Instance Methods #############################
-  def thumb_avatar
-    avatar.variant(resize_to_fill: [100, 100])&.processed
-  end
-
-  def medium_avatar
-    avatar.variant(resize_to_fill: [300, 300])&.processed
-  end
-
   def destroyable?
     true
   end
