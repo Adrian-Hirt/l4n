@@ -14,10 +14,9 @@
         - model.product_variants.each do |product_variant|
           .mt-3
             = product_variant.name
-            = humanized_money_with_symbol(product_variant.price)
             = button 'Add to cart', add_to_cart_shop_product_variant_path(product_variant),
               btn_icon: %i[fas fa-cart-arrow-down], method: :post,
-              disabled: model.availability.zero?, size: :sm
+              disabled: op.requested_quantity >= model.availability, size: :sm
       .col-md-6
         - if model.image.attached?
           .text-muted= _('Product|Image')

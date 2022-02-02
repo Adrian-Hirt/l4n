@@ -46,7 +46,7 @@
                     icon_only:        true,
                     size:             :sm,
                     disable_on_click: true,
-                    disabled:         cart_item.quantity >= op.availability_by_product[cart_item.product]
+                    disabled:         op.quantity_requested_by_product[cart_item.product] >= op.availability_by_product[cart_item.product]
                   = button nil, decrease_quantity_shop_cart_item_path(cart_item),
                     btn_icon:         %i[fas fa-minus],
                     method:           :post,

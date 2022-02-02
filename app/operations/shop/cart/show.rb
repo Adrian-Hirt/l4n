@@ -6,7 +6,11 @@ module Operations::Shop::Cart
       authorize! :use, :shop
     end
 
-    attr_reader :unavailable_products, :products_with_less_availability, :availability_error, :quantity_by_product, :availability_by_product
+    attr_reader :unavailable_products
+    attr_reader :products_with_less_availability
+    attr_reader :availability_error
+    attr_reader :quantity_requested_by_product
+    attr_reader :availability_by_product
 
     model ::Cart
 
@@ -18,7 +22,7 @@ module Operations::Shop::Cart
       # Delete other orders for user that have status `created`
       run_sub! Operations::Shop::Order::CleanupUntouched
 
-      @quantity_by_product = {}
+      @quantity_requested_by_product = {}
       @availability_by_product = {}
       @unavailable_products = []
       @products_with_less_availability = {}
@@ -26,11 +30,11 @@ module Operations::Shop::Cart
 
       # Sanitize cart_items
       model.cart_items.each do |cart_item|
-        @quantity_by_product[cart_item.product] ||= 0
-        @quantity_by_product[cart_item.product] += cart_item.quantity
+        @quantity_requested_by_product[cart_item.product] ||= 0
+        @quantity_requested_by_product[cart_item.product] += cart_item.quantity
       end
 
-      @quantity_by_product.each do |product, quantity_requested|
+      @quantity_requested_by_product.each do |product, quantity_requested|
         @availability_by_product[product] = product.availability
         if product.availability.zero?
           @unavailable_products << product.id

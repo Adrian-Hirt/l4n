@@ -6,6 +6,16 @@ module Operations::Shop::Product
       authorize! :use, :shop
     end
 
+    attr_reader :requested_quantity
+
     model ::Product
+
+    def perform
+      @requested_quantity = 0
+
+      context.user.cart.cart_items.each do |cart_item|
+        @requested_quantity += cart_item.quantity if cart_item.product == model
+      end
+    end
   end
 end
