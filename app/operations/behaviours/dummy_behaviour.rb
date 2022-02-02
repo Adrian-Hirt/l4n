@@ -1,5 +1,5 @@
 module Operations::Behaviours
-  class EventTicket < RailsOps::Operation
+  class DummyBehaviour < RailsOps::Operation
     schema do
       req :product
       req :order_item
