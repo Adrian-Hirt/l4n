@@ -1,7 +1,7 @@
 module Operations::Shop::Order
   class Index < RailsOps::Operation
     policy :on_init do
-      authorize! :read, ::Order
+      authorize! :use, :shop
     end
 
     def orders

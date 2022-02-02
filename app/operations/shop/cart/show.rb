@@ -1,6 +1,9 @@
 module Operations::Shop::Cart
   class Show < RailsOps::Operation::Model
-    without_authorization
+    policy :on_init do
+      authorize! :use, :shop
+    end
+
     attr_reader :unavailable_products, :products_with_less_availability, :availability_error, :quantity_by_product, :availability_by_product
 
     model ::Cart

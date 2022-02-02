@@ -1,6 +1,8 @@
 module Operations::Shop::ProductVariant
   class AddToCart < RailsOps::Operation::Model::Load
-    without_authorization
+    policy :on_init do
+      authorize! :use, :shop
+    end
 
     model ::ProductVariant
 

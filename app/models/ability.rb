@@ -15,8 +15,12 @@ class Ability
     # Anyone can read a page if the feature flag is enabled and it's published
     can :read, Page, &:published? if FeatureFlag.enabled?(:pages)
 
-    can :read, Order do |m|
-      m.user == user
+    # Shop permissions
+    if FeatureFlag.enabled?(:shop)
+      can :use, :shop
+      can :read, Order do |m|
+        m.user == user
+      end
     end
 
     # Return early if user does not exist
@@ -47,7 +51,7 @@ class Ability
     # Shop permissions. For now, we group the models related to the shop
     # together, as we probably don't need a too fine-grained access control
     # for the shop, i.e. users that can create products can also see orders
-    if user.shop_admin_permission?
+    if user.shop_admin_permission? && FeatureFlag.enabled?(:shop)
       can :manage, :shop
       can :manage, Product
       can :manage, Order

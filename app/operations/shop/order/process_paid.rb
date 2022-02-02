@@ -2,7 +2,9 @@ module Operations::Shop::Order
   class ProcessPaid < RailsOps::Operation
     delegate :order, to: :osparams
 
-    without_authorization
+    policy :on_init do
+      authorize! :use, :shop
+    end
 
     def perform
       ActiveRecord::Base.transaction do
