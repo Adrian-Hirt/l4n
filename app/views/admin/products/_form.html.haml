@@ -12,10 +12,13 @@
       as: :check_boxes,
       collection: model.available_product_behaviours,
       input_html: { class: 'no-validation' }
-    = f.input :image
-    - if model.image.attached?
-      = image_tag model.image.variant(:thumb).processed
-      = f.input :remove_image, as: :boolean
+    = f.input :images, input_html: { multiple: true }
+    - if model.images.attached?
+      - model.images.each do |image|
+        = image_tag image.variant(:thumb).processed
+        .form-check
+          = f.check_box :remove_images, { multiple: true }, image.id, nil
+          = f.label :remove_images, _('Product|Remove this image'), for: "product_remove_images_#{image.id}"
     #product_variants{data: { controller: 'cocoon' }}
       = f.label :product_variants
       = f.error :product_variants, class: 'invalid-feedback d-block'

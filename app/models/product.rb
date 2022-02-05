@@ -24,7 +24,7 @@ class Product < ApplicationRecord
   has_many :product_variants, dependent: :destroy
   accepts_nested_attributes_for :product_variants, allow_destroy: true
 
-  has_one_attached :image do |attachable|
+  has_many_attached :images do |attachable|
     attachable.variant :thumb, resize_and_pad: [100, 100, { background: [255, 255, 255] }]
     attachable.variant :medium, resize_and_pad: [300, 300, { background: [255, 255, 255] }]
   end

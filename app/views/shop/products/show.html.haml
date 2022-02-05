@@ -18,6 +18,7 @@
               btn_icon: %i[fas fa-cart-arrow-down], method: :post,
               disabled: op.requested_quantity >= model.availability, size: :sm
       .col-md-6
-        - if model.image.attached?
-          .text-muted= _('Product|Image')
-          = image_tag model.image.variant(:medium).processed
+        - if model.images.attached?
+          .text-muted= _('Product|Images')
+          - model.images.each do |image|
+            = image_tag image.variant(:medium).processed

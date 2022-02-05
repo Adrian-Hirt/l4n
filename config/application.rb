@@ -34,6 +34,7 @@ module L4n
     config.time_zone = 'Bern'
 
     config.form_with_generates_remote_forms = false
+    config.active_storage.replace_on_assign_to_many = false
 
     config.payment_gateways = []
   end

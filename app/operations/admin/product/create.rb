@@ -7,11 +7,13 @@ module Operations::Admin::Product
         opt :description
         opt :inventory
         opt :enabled_product_behaviours
-        opt :image
+        opt :images
         opt :product_variants_attributes
       end
     end
 
-    model ::Product
+    model ::Product do
+      attribute :remove_image
+    end
   end
 end
