@@ -36,6 +36,10 @@ module Admin
         flash[:danger] = _('Product|Edit failed')
         render :edit, status: :unprocessable_entity
       end
+    rescue ActiveRecord::RecordNotDestroyed
+      add_breadcrumb model.name
+      flash[:danger] = _('Product|Edit failed')
+      render :edit, status: :unprocessable_entity
     end
 
     def destroy

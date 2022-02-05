@@ -15,10 +15,14 @@ module Operations::PaymentGateway
       # Get order
       order = ::Order.find(decrypted_id)
 
+      # TODO: handle these fail states gracefully
       # Verify that the order is still active and in the correct state
       fail 'Order has wrong status' unless order.created? || order.payment_pending?
 
       fail 'Order expired' if order.cleanup_timestamp + ::Order::TIMEOUT < Time.zone.now
+
+      # Check that no product_variant has been deleted while loading the payment gateway
+      fail 'An product variant has been deleted' if order.order_items.any? { |order_item| order_item.product_variant.nil? }
 
       # Set order as payment pending
       order.payment_pending!

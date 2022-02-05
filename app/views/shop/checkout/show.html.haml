@@ -3,6 +3,14 @@
 
 .card
   .card-body
+    = op.order.order_items.count
+    %br
+    - op.order.order_items.each do |order_item|
+      = order_item.product_variant&.name.presence || 'NIL'
+      \|
+      = order_item.product_variant&.id
+      %br
+    %hr
     - Rails.application.config.payment_gateways.each do |gateway|
       %p.mb-3
         = gateway.name

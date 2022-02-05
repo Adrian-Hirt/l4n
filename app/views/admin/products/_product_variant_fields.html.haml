@@ -1,7 +1,8 @@
 .nested-fields
   .row
     .col-md-8
-      = f.input :name
+      = f.input :name, wrapper_html: { class: 'mb-0' }
+      = f.error :base, class: 'invalid-feedback d-block'
     .col-md-3
       = f.input :price
     .col-md-1

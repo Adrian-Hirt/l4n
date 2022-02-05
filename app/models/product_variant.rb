@@ -14,6 +14,7 @@ class ProductVariant < ApplicationRecord
   validates :name, presence: true, length: { maximum: 255 }
 
   # == Hooks =======================================================================
+  before_destroy :check_no_orders_in_payment
 
   # == Scopes ======================================================================
 
@@ -22,4 +23,12 @@ class ProductVariant < ApplicationRecord
   # == Instance Methods ============================================================
 
   # == Private Methods =============================================================
+  private
+
+  def check_no_orders_in_payment
+    return unless order_items.joins(:order).where(orders: { status: Order.statuses[:payment_pending] }).any?
+
+    errors.add(:base, _('ProductVariant|Cannot delete as an order in payment has this variant'))
+    throw :abort
+  end
 end
