@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_06_205427) do
+ActiveRecord::Schema.define(version: 2022_02_06_221924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -135,6 +135,8 @@ ActiveRecord::Schema.define(version: 2022_02_06_205427) do
     t.string "billing_address_street"
     t.string "billing_address_zip_code"
     t.string "billing_address_city"
+    t.string "payment_gateway_name"
+    t.string "payment_gateway_payment_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 

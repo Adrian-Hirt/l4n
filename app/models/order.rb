@@ -21,6 +21,9 @@ class Order < ApplicationRecord
     validates shipping_address_field, presence: true, unless: :created?
   end
 
+  validates :payment_gateway_name, length: { maximum: 255 }
+  validates :payment_gateway_payment_id, length: { maximum: 255 }
+
   # == Hooks =======================================================================
 
   # == Scopes ======================================================================

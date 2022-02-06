@@ -4,6 +4,8 @@ module Operations::PaymentGateway
 
     schema3 do
       str! :order_id
+      str! :gateway_name
+      str? :payment_id
     end
 
     def perform
@@ -21,7 +23,7 @@ module Operations::PaymentGateway
       # was a problem and they should report to the admin?
       fail 'Order not found' if order.nil?
 
-      run_sub Operations::Shop::Order::ProcessPaid, order: order
+      run_sub Operations::Shop::Order::ProcessPaid, order: order, gateway_name: osparams.gateway_name, payment_id: osparams.payment_id
     end
   end
 end

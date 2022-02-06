@@ -13,6 +13,11 @@ module Operations::Shop::Order
         # Mark payment as paid
         order.paid!
 
+        order.payment_gateway_name = osparams.gateway_name
+        order.payment_gateway_payment_id = osparams.payment_id
+
+        order.save!
+
         # Decrease inventory of items bought
         order.order_items.each do |order_item|
           order_item.product.inventory -= order_item.quantity

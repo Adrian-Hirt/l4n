@@ -5,7 +5,7 @@ module DummyPayment
     end
 
     def complete_payment
-      if run Operations::PaymentGateway::SubmitPaymentResult
+      if run Operations::PaymentGateway::SubmitPaymentResult, op_params.merge(gateway_name: 'DummyPayment', payment_id: SecureRandom.hex)
         flash[:success] = _('Order|Successfully paid for the order')
         redirect_to main_app.shop_path
       else
