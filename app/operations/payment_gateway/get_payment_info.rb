@@ -24,8 +24,14 @@ module Operations::PaymentGateway
       # Check that no product_variant has been deleted while loading the payment gateway
       fail 'An product variant has been deleted' if order.order_items.any? { |order_item| order_item.product_variant.nil? }
 
+      fail 'No address present' unless order.address_present?
+
       # Set order as payment pending
-      order.payment_pending!
+      begin
+        order.payment_pending!
+      rescue ActiveRecord::RecordInvalid
+        throw 'Could not set the order as payment pending'
+      end
 
       @result = {}
       @result[:items] = [] # TODO

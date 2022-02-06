@@ -74,6 +74,7 @@ Rails.application.routes.draw do
     end
 
     get :checkout, to: 'checkout#show'
+    patch :'checkout/set_address', to: 'checkout#set_address'
 
     resources :orders, only: %i[index show]
   end
