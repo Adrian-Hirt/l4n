@@ -47,6 +47,8 @@ Rails.application.routes.draw do
       get :destroy, action: :init_destroy_account
       post :destroy, action: :destroy_account
     end
+
+    resources :addresses, except: %i[show], controller: :user_addresses, as: :user_addresses
   end
 
   resources :news, only: %i[index show]

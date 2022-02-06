@@ -31,6 +31,7 @@ class User < ApplicationRecord
 
   has_many :orders, dependent: :destroy
   has_one :cart, dependent: :destroy
+  has_many :user_addresses, dependent: :destroy
 
   ################################### Validations ##################################
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }, length: { maximum: 255 }

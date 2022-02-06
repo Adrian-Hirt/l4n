@@ -29,6 +29,17 @@ class Ability
       end
     end
 
+    # User addresses
+    can :create, UserAddress
+    can %i[read update destroy], UserAddress do |m|
+      m.user == user
+    end
+
+    # User profile
+    can :destroy_my_user, User do |m|
+      m == user
+    end
+
     ##############################################################
     # Admin Permissions
     ##############################################################
@@ -63,12 +74,5 @@ class Ability
     # User can access admin panel if the user has any
     # admin permission
     can :access, :admin_panel if user.any_admin_permission?
-
-    ##############################################################
-    # User profile
-    ##############################################################
-    can :destroy_my_user, User do |m|
-      m == user
-    end
   end
 end
