@@ -29,4 +29,21 @@ button {
   color: white;
   margin-top: 15px;
   cursor: pointer;
+  font-size: 1em;
+}
+
+a.cancel-btn {
+  border: 0;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #e74c3c;
+  color: white;
+  text-decoration: none;
+}
+
+.countdown {
+  background-color: #cff4fc;
+  color: #055160;
+  padding: 15px;
+  margin-bottom: 20px;
 }

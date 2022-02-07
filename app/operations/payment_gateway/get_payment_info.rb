@@ -19,7 +19,11 @@ module Operations::PaymentGateway
       # Verify that the order is still active and in the correct state
       fail 'Order has wrong status' unless order.created? || order.payment_pending?
 
-      fail 'Order expired' if order.cleanup_timestamp + ::Order::TIMEOUT < Time.zone.now
+      if order.created?
+        fail 'Order expired' if order.cleanup_timestamp + ::Order::TIMEOUT < Time.zone.now
+      elsif order.cleanup_timestamp + ::Order::TIMEOUT_PAYMENT_PENDING < Time.zone.now
+        fail 'Order expired'
+      end
 
       # Check that no product_variant has been deleted while loading the payment gateway
       fail 'An product variant has been deleted' if order.order_items.any? { |order_item| order_item.product_variant.nil? }
@@ -36,6 +40,8 @@ module Operations::PaymentGateway
       @result = {}
       @result[:items] = [] # TODO
       @result[:order_id] = osparams.order_id
+      # minus 1 minute to have some "padding" between redirect and cleanup
+      @result[:valid_until] = order.cleanup_timestamp + ::Order::TIMEOUT_PAYMENT_PENDING - 1.minute
       total = Money.zero
 
       order.order_items.each do |order_item|
