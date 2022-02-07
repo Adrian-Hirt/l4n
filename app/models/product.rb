@@ -37,7 +37,6 @@ class Product < ApplicationRecord
 
   # == Hooks =======================================================================
   before_create :add_availability
-  before_update :update_availability
 
   # == Scopes ======================================================================
 
@@ -53,11 +52,5 @@ class Product < ApplicationRecord
 
   def add_availability
     self.availability = inventory
-  end
-
-  def update_availability
-    # TODO: handle case when availability would fall under zero
-    difference = inventory - inventory_was
-    self.availability += difference
   end
 end

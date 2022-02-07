@@ -19,6 +19,10 @@ module Operations::Admin::Product
     end
 
     def perform
+      # TODO: handle case when availability would fall under zero
+      difference = model.inventory - model.inventory_was
+      model.availability += difference
+
       super
 
       osparams.product[:remove_images]&.each do |id_to_remove|

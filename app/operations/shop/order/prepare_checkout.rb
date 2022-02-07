@@ -27,11 +27,12 @@ module Operations::Shop::Order
             price:           cart_item.product_variant.price
           )
 
-          # decrease availability of product_item
-          cart_item.product.availability -= cart_item.quantity
-          fail MaxQuantityReached if cart_item.product.availability.negative?
+          # decrease availability of product
+          product = cart_item.product
+          product.availability -= cart_item.quantity
+          fail MaxQuantityReached if product.availability.negative?
 
-          cart_item.product_variant.save!
+          product.save!
         end
 
         @order.save!

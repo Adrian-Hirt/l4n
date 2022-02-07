@@ -31,7 +31,7 @@ gem 'turbo-rails', '~> 1.0.0'
 # Application structure
 gem 'active_type', '~> 1.10.1' # Need to lock as 2.0 somehow does not work with rails_ops
 gem 'inquery', '~> 1.0.9'
-gem 'rails_ops', '~> 1.1.20'
+gem 'rails_ops', '~> 1.1.26'
 gem 'schemacop', '~> 3.0.11'
 
 # Views
