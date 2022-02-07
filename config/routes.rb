@@ -47,10 +47,37 @@ Rails.application.routes.draw do
       get :destroy, action: :init_destroy_account
       post :destroy, action: :destroy_account
     end
+
+    resources :addresses, except: %i[show], controller: :user_addresses, as: :user_addresses
   end
 
   resources :news, only: %i[index show]
   resources :events, only: %i[index show]
+
+  # Shop
+  namespace :shop do
+    get '/', to: 'home#index'
+
+    resources :products, only: %i[show]
+    resources :product_variants, only: [] do
+      member do
+        post :add_to_cart
+      end
+    end
+
+    get :cart, to: 'cart#index'
+    resources :cart_items, only: %i[destroy] do
+      member do
+        post :increase_quantity
+        post :decrease_quantity
+      end
+    end
+
+    get :checkout, to: 'checkout#show'
+    patch :'checkout/set_address', to: 'checkout#set_address'
+
+    resources :orders, only: %i[index show]
+  end
 
   # Admin panel stuff
   namespace :admin do
@@ -103,10 +130,16 @@ Rails.application.routes.draw do
       end
     end
 
+    # Products
+    resources :products, except: %i[show]
+
+    # Orders
+    resources :orders, only: %i[index show]
+
     # Markdown preview endpoint
     post :markdown_preview, to: 'markdown#preview'
   end
 
   # Wildcard route for dynamic pages. This **needs** to come last at all times
-  get '*page', to: 'pages#show', page: /((?!rails|admin).)*/
+  get '*page', to: 'pages#show', page: /((?!rails|admin|paymentgateway).)*/
 end

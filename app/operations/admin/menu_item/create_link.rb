@@ -7,6 +7,7 @@ module Operations::Admin::MenuItem
         str! :sort, format: :integer
         str? :page_attr
         str? :parent_id
+        str? :use_namespace_for_active_detection, format: :boolean
       end
     end
 

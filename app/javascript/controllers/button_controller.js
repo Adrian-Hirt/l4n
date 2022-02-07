@@ -6,7 +6,7 @@ export default class extends Controller {
     this.confirmed = false;
   }
 
-  confirm(event) {
+  confirmDestroy(event) {
     if(this.confirmed) {
       return true
     }
@@ -21,15 +21,16 @@ export default class extends Controller {
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: i18n._('ConfirmDialog|Confirm'),
-      cancelButtonText: i18n._('ConfirmDialog|Cancel'),
-      customClass: {
-        confirmButton: 'btn btn-primary'
-      },
+      cancelButtonText: i18n._('ConfirmDialog|Cancel')
     }).then(result => {
       if(result.isConfirmed) {
         this.confirmed = true;
         this.element.click();
       }
     });
+  }
+
+  disable() {
+    this.element.classList.add('disabled');
   }
 }

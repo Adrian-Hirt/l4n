@@ -1,7 +1,7 @@
 .card
   .card-body
-    - if model.thumb_avatar.present?
-      = image_tag model.thumb_avatar
+    - if model.avatar.attached?
+      = image_tag model.avatar.variant(:thumb).processed
     ID:
     = model.id
     %br

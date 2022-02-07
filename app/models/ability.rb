@@ -19,6 +19,28 @@ class Ability
     return if user.nil?
 
     ##############################################################
+    # User Permissions
+    ##############################################################
+    # Shop permissions
+    if FeatureFlag.enabled?(:shop)
+      can :use, :shop
+      can :read, Order do |m|
+        m.user == user
+      end
+    end
+
+    # User addresses
+    can :create, UserAddress
+    can %i[read update destroy], UserAddress do |m|
+      m.user == user
+    end
+
+    # User profile
+    can :destroy_my_user, User do |m|
+      m == user
+    end
+
+    ##############################################################
     # Admin Permissions
     ##############################################################
 
@@ -40,15 +62,17 @@ class Ability
     # User can access system settings
     can :manage, FeatureFlag if user.system_admin_permission?
 
+    # Shop permissions. For now, we group the models related to the shop
+    # together, as we probably don't need a too fine-grained access control
+    # for the shop, i.e. users that can create products can also see orders
+    if user.shop_admin_permission? && FeatureFlag.enabled?(:shop)
+      can :manage, :shop
+      can :manage, Product
+      can :manage, Order
+    end
+
     # User can access admin panel if the user has any
     # admin permission
     can :access, :admin_panel if user.any_admin_permission?
-
-    ##############################################################
-    # User profile
-    ##############################################################
-    can :destroy_my_user, User do |m|
-      m == user
-    end
   end
 end

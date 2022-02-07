@@ -13,3 +13,6 @@ N_('MarkdownEditor|Popup|Insert youtube video')
 N_("MarkdownEditor|Popup|Please paste the URL of the youtube video here. The URL needs to be of format 'https://www.youtube.com/watch?v='")
 N_('MarkdownEditor|Popup|Insert Google Maps Map')
 N_("MarkdownEditor|Popup|Please paste the URL of the map you want to share here! The URL needs to be of format 'https://www.google.com/maps/d/embed?mid=' or 'https://www.google.com/maps/embed?pb='")
+
+# Product Behaviours
+N_('ProductBehaviours|Dummy')

@@ -1,0 +1,17 @@
+= turbo_stream.replace 'address' do
+  = turbo_frame_tag 'address' do
+    - if op.no_address_given_error
+      .alert.alert-danger
+        = _('Checkout|Please set an address from the list below')
+    = render partial: 'address_form'
+    - if model.address_present?
+      .mt-3
+        %b= _('Order|Billing address')
+        %br
+        = "#{model.billing_address_first_name} #{model.billing_address_last_name}"
+        %br
+        = model.billing_address_street
+        %br
+        = "#{model.billing_address_zip_code} #{model.billing_address_city}"
+      %hr
+      = render partial: 'payment_gateways'

@@ -5,6 +5,7 @@
       = f.input :title_de
       = f.input :sort
       - if model.is_a? MenuLinkItem
+        = f.input :use_namespace_for_active_detection, input_html: { class: 'no-validation' }
         = f.input :parent_id, as: :select, collection: op.parent_candidates, include_blank: '-'
         = f.input :page_attr, as: :select, collection: op.page_candidates, include_blank: '-'
       - else

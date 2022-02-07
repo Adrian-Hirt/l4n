@@ -1,0 +1,17 @@
+%h1 Dummy Payment Gateway
+
+.countdown{ data: { time: op.result[:valid_until], redirect: main_app.shop_cart_url } }
+  \-- minutes -- seconds left to complete the payment
+
+Your total:
+= humanized_money_with_symbol(op.result[:total])
+
+%div
+  = button_to 'Pay now', complete_payment_path(order_id: op.result[:order_id]), data: { 'turbo-method' => :post }
+%div{ style: 'margin-top: 20px;' }
+  = link_to 'Cancel', main_app.shop_cart_path, class: 'cancel-btn'
+
+:javascript
+  (function() {
+    setupCountdownTimer()
+  })();

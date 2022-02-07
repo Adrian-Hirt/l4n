@@ -1,0 +1,15 @@
+!!!
+%html{lang: FastGettext.locale}
+  %head
+    %title L4n
+    %meta{content: 'width=device-width,initial-scale=1', name: 'viewport'}
+    = csrf_meta_tags
+    = csp_meta_tag
+    = javascript_include_tag 'dummy_payment/application'
+    = stylesheet_link_tag 'dummy_payment/application'
+  %body.d-flex.application
+    .main.container
+      .page-title
+        %h1= yield :page_title
+      .content
+        = yield

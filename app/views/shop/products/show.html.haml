@@ -1,0 +1,24 @@
+- provide :shop_page_title, model.name
+= render partial: 'shop/shared/header'
+
+.card
+  .card-body
+    .row
+      .col-md-6
+        .mb-3
+          .text-muted= _('Product|Description')
+          = markdown(model.description).presence || _('Product|No description')
+          .text-muted.mt-3= _('Product|Availability')
+          = model.inventory
+        .text-muted= _('Product|Product variants')
+        - model.product_variants.each do |product_variant|
+          .mt-3
+            = product_variant.name
+            = button 'Add to cart', add_to_cart_shop_product_variant_path(product_variant),
+              btn_icon: %i[fas fa-cart-arrow-down], method: :post,
+              disabled: op.requested_quantity >= model.availability, size: :sm
+      .col-md-6
+        - if model.images.attached?
+          .text-muted= _('Product|Images')
+          - model.images.each do |image|
+            = image_tag image.variant(:medium).processed

@@ -7,7 +7,7 @@
       %hr
       = f.input :avatar
       - if model.avatar.present?
-        = image_tag model.thumb_avatar
+        = image_tag model.avatar.variant(:thumb).processed
       %hr
       = f.input :website
     .card-footer

@@ -5,7 +5,7 @@
     .card.card-primary.card-outline
       .card-body.box-profile
         .text-center
-          = image_tag model.medium_avatar, class: 'profile-user-img img-fluid img-circle'
+          = image_tag model.avatar.variant(:medium).processed, class: 'profile-user-img img-fluid img-circle'
         %h3.profile-username.text-center
           = model.username
         %p.text-muted.text-center
@@ -30,6 +30,3 @@
             ADD ACHIEVEMENTS HERE
           .tab-pane#game-profiles
             ADD GAME PROFILES HERE
-        
-    
-

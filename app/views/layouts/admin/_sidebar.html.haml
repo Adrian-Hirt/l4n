@@ -10,8 +10,8 @@
             = icon %i[fas fa-bars]
       .current-user-info
         .current-user-avatar
-          - if current_user.thumb_avatar.present?
-            = image_tag current_user.thumb_avatar
+          - if current_user.avatar.attached?
+            = image_tag current_user.avatar.variant(:thumb).processed
           - else
             = image_tag 'user.svg', class: %i[placeholder-avatar]
         .current-user-details
@@ -65,6 +65,25 @@
               %span
                 %i.nav-icon.fas.fa-compass
                 %span.nav-item-text= _('Admin|MenuItems')
+        - if can? :manage, :shop
+          %li.nav-item.dropdown
+            %a.nav-link.collapse-link{data: {'bs-toggle' => 'collapse'}, href: '#shop-collapse', class: sidenav_collapser_classes(:products, :orders)}
+              %span
+                %i.nav-icon.fas.fa-shop
+                %span.nav-item-text= _('Admin|Shop')
+              %i.right.fas.fa-angle-right.dropdown-icon
+            #shop-collapse.collapse{class: sidenav_collapse_classes(:products, :orders), data: { 'bs-parent' => '.sidenav' }}
+              %ul.nav.nav-pills.flex-column
+                %li.nav-item
+                  %a.nav-link{href: admin_products_path, class: active_link_classes(:products)}
+                    %span
+                      %i.nav-icon.fas.fa-tags
+                      %span.nav-item-text= _('Admin|Products')
+                %li.nav-item
+                  %a.nav-link{href: admin_orders_path, class: active_link_classes(:orders)}
+                    %span
+                      %i.nav-icon.fas.fa-cart-shopping
+                      %span.nav-item-text= _('Admin|Orders')
         - if can? :manage, FeatureFlag
           %li.nav-item
             %a.nav-link{href: admin_feature_flags_path, class: active_link_classes(:feature_flags)}

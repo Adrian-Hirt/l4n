@@ -94,9 +94,15 @@ Style/RedundantRegexpEscape:
 Style/SlicingWithRange:
   Enabled: true
 
+Style/FormatStringToken:
+  Enabled: false
+
 # Rails cops
 Rails/BulkChangeTable:
   Enabled: false
 
 Rails/NotNullColumn:
   Enabled: false
+
+Style/AccessorGrouping:
+  EnforcedStyle: separated

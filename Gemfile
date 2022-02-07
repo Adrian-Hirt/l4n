@@ -31,7 +31,7 @@ gem 'turbo-rails', '~> 1.0.0'
 # Application structure
 gem 'active_type', '~> 1.10.1' # Need to lock as 2.0 somehow does not work with rails_ops
 gem 'inquery', '~> 1.0.9'
-gem 'rails_ops', '~> 1.1.20'
+gem 'rails_ops', '~> 1.1.26'
 gem 'schemacop', '~> 3.0.11'
 
 # Views
@@ -57,6 +57,12 @@ gem 'figaro', '1.2.0'
 # Attachments
 gem 'image_processing', '~> 1.2'
 
+# Models
+gem 'money-rails', '~>1.12'
+
+# Background processing
+gem 'whenever', '~> 1.0.0', require: false
+
 # Development gems
 group :development do
   gem 'listen', '~> 3.2'
@@ -79,3 +85,6 @@ group :test do
   gem 'simplecov', '~> 0.21.2', require: false
   gem 'simplecov-lcov', '~> 0.8.0', require: false
 end
+
+# Payment gateways
+gem 'dummy_payment', path: 'payment_gateways/dummy_payment'

@@ -1,0 +1,22 @@
+- provide :shop_page_title, _('Checkout')
+= render partial: 'shop/shared/header'
+
+.card
+  .card-body
+    = op.order.id
+    %hr
+    = op.order.order_items.count
+    %br
+    - op.order.order_items.each do |order_item|
+      = order_item.product_variant&.name.presence || 'NIL'
+      \|
+      = order_item.product_variant&.id
+      %br
+    %hr
+    - if current_user.user_addresses.any?
+      = turbo_frame_tag 'address' do
+        = render partial: 'address_form'
+    - else
+      .alert.alert-warning
+        = _('Checkout|Please add an address to your user profile')
+        = link_to _('Checkout|Click here to add an address'), settings_user_addresses_path, class: 'alert-link'
