@@ -12,7 +12,7 @@ let setupCountdownTimer = function() {
     minutesLeft = Math.trunc((remainingTime % hour) / minute);
     secondsLeft = Math.trunc((remainingTime % minute) / second);
 
-    if (minutesLeft == 0 && secondsLeft == 0) {
+    if (minutesLeft <= 0 && secondsLeft <= 0) {
       window.location.replace(redirectPath);
     }
 
