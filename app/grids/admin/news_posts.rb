@@ -4,7 +4,7 @@ module Grids
       include Datagrid
 
       scope do
-        NewsPost.all
+        NewsPost.order(:title)
       end
 
       model NewsPost

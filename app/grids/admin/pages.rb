@@ -4,7 +4,7 @@ module Grids
       include Datagrid
 
       scope do
-        Page.all
+        Page.order(:title)
       end
 
       model Page

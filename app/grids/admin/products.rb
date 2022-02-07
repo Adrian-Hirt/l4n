@@ -4,7 +4,7 @@ module Grids
       include Datagrid
 
       scope do
-        Product.all
+        Product.order(:name)
       end
 
       model Product

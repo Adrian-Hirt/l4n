@@ -4,12 +4,13 @@ module Grids
       include Datagrid
 
       scope do
-        Order.includes(:order_items)
+        Order.includes(:order_items).order(id: :desc)
       end
 
       model Order
 
       column :id
+      column :status
       column :user, html: ->(user) { user.username }
       column :order_items, html: ->(order_items) { order_items.count }, header: _('Order|Order items count')
       column :'datagrid-actions', html: true, header: false do |order|
