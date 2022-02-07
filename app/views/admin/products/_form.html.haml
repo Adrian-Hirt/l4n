@@ -11,7 +11,9 @@
     = f.input :enabled_product_behaviours,
       as: :check_boxes,
       collection: model.available_product_behaviours,
-      input_html: { class: 'no-validation' }
+      input_html: { class: 'no-validation' },
+      value_method: :first,
+      label_method: :second
     = f.input :images, input_html: { multiple: true }
     - if model.images.attached?
       - model.images.each do |image|

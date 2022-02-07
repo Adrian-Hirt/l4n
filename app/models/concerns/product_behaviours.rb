@@ -22,7 +22,7 @@ module ProductBehaviours
   end
 
   def available_product_behaviours
-    self.class.registered_keys.map(&:to_s)
+    self.class.registered_keys.map { |key| [key.to_s, _("ProductBehaviours|#{key.capitalize}")] }
   end
 
   class_methods do
