@@ -72,6 +72,7 @@ class Ability
     end
 
     can :manage, LanParty
+    can :manage, SeatCategory
 
     # User can access admin panel if the user has any
     # admin permission

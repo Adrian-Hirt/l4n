@@ -1,0 +1,6 @@
+.card
+  = simple_form_for [:admin, :lan_party, model] do |f|
+    .card-body
+      = f.input :name
+    .card-footer
+      = f.save

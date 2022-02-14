@@ -1,7 +1,7 @@
 module Operations::Admin::LanParty
   class Index < RailsOps::Operation
     policy :on_init do
-      authorize! :destroy, LanParty
+      authorize! :manage, LanParty
     end
 
     def grid

@@ -1,3 +1,5 @@
 .card
   .card-body
     = model.name
+    %br
+    = link_to _('Admin|SeatCategory'), admin_lan_party_seat_categories_path(model)
