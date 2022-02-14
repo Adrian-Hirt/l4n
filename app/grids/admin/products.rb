@@ -1,8 +1,6 @@
 module Grids
   module Admin
     class Products < ApplicationGrid
-      include Datagrid
-
       scope do
         Product.order(:name)
       end

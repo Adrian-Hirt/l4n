@@ -1,8 +1,6 @@
 module Grids
   module Admin
     class Orders < ApplicationGrid
-      include Datagrid
-
       scope do
         Order.includes(:order_items).order(id: :desc)
       end

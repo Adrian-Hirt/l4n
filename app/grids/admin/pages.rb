@@ -1,8 +1,6 @@
 module Grids
   module Admin
     class Pages < ApplicationGrid
-      include Datagrid
-
       scope do
         Page.order(:title)
       end

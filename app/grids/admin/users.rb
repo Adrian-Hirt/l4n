@@ -1,8 +1,6 @@
 module Grids
   module Admin
     class Users < ApplicationGrid
-      include Datagrid
-
       scope do
         User.all
       end

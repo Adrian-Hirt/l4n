@@ -1,8 +1,6 @@
 module Grids
   module Admin
     class EventsArchive < ApplicationGrid
-      include Datagrid
-
       scope do
         Queries::Event::FetchPastEvents.run
       end

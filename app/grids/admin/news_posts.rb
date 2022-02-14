@@ -1,8 +1,6 @@
 module Grids
   module Admin
     class NewsPosts < ApplicationGrid
-      include Datagrid
-
       scope do
         NewsPost.order(:title)
       end
