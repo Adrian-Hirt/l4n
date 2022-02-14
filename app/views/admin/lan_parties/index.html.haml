@@ -1,0 +1,6 @@
+- content_for :header_buttons do
+  = new_button LanParty, namespace: %i[admin]
+
+.card
+  .card-body
+    = datagrid_table op.grid, html: { class: 'table' }

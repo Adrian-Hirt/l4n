@@ -71,6 +71,8 @@ class Ability
       can :manage, Order
     end
 
+    can :manage, LanParty
+
     # User can access admin panel if the user has any
     # admin permission
     can :access, :admin_panel if user.any_admin_permission?

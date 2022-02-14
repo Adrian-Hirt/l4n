@@ -136,6 +136,9 @@ Rails.application.routes.draw do
     # Orders
     resources :orders, only: %i[index show]
 
+    # LanParties and related stuff
+    resources :lan_parties
+
     # Markdown preview endpoint
     post :markdown_preview, to: 'markdown#preview'
   end

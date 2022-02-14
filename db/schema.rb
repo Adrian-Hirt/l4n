@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_06_221924) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_02_13_161558) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,7 +19,7 @@ ActiveRecord::Schema.define(version: 2022_02_06_221924) do
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -33,7 +32,7 @@ ActiveRecord::Schema.define(version: 2022_02_06_221924) do
     t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -47,33 +46,33 @@ ActiveRecord::Schema.define(version: 2022_02_06_221924) do
     t.bigint "cart_id", null: false
     t.bigint "product_variant_id", null: false
     t.integer "quantity"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
     t.index ["product_variant_id"], name: "index_cart_items_on_product_variant_id"
   end
 
   create_table "carts", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_carts_on_user_id", unique: true
   end
 
   create_table "event_dates", force: :cascade do |t|
-    t.datetime "start_date", null: false
-    t.datetime "end_date", null: false
+    t.datetime "start_date", precision: nil, null: false
+    t.datetime "end_date", precision: nil, null: false
     t.bigint "event_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_event_dates_on_event_id"
   end
 
   create_table "events", force: :cascade do |t|
     t.string "title", null: false
     t.text "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "location"
     t.boolean "published", default: false, null: false
   end
@@ -81,9 +80,15 @@ ActiveRecord::Schema.define(version: 2022_02_06_221924) do
   create_table "feature_flags", force: :cascade do |t|
     t.string "key"
     t.boolean "enabled", default: false, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["key"], name: "index_feature_flags_on_key", unique: true
+  end
+
+  create_table "lan_parties", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "menu_items", force: :cascade do |t|
@@ -91,8 +96,8 @@ ActiveRecord::Schema.define(version: 2022_02_06_221924) do
     t.bigint "parent_id"
     t.string "static_page_name"
     t.boolean "visible", default: false, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "title_en", null: false
     t.string "title_de", null: false
     t.string "type", default: "MenuLinkItem", null: false
@@ -106,9 +111,9 @@ ActiveRecord::Schema.define(version: 2022_02_06_221924) do
     t.text "content"
     t.bigint "user_id", null: false
     t.boolean "published", default: false, null: false
-    t.datetime "published_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "published_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_news_posts_on_user_id"
   end
 
@@ -117,8 +122,8 @@ ActiveRecord::Schema.define(version: 2022_02_06_221924) do
     t.bigint "product_variant_id"
     t.integer "quantity"
     t.integer "price_cents", default: 0, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "product_name"
     t.index ["order_id"], name: "index_order_items_on_order_id"
     t.index ["product_variant_id"], name: "index_order_items_on_product_variant_id"
@@ -126,9 +131,9 @@ ActiveRecord::Schema.define(version: 2022_02_06_221924) do
 
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.datetime "cleanup_timestamp", precision: 6
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "cleanup_timestamp"
     t.string "status", default: "created", null: false
     t.string "billing_address_first_name"
     t.string "billing_address_last_name"
@@ -145,8 +150,8 @@ ActiveRecord::Schema.define(version: 2022_02_06_221924) do
     t.text "content"
     t.boolean "published", null: false
     t.string "url", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["title"], name: "index_pages_on_title", unique: true
     t.index ["url"], name: "index_pages_on_url", unique: true
   end
@@ -155,8 +160,8 @@ ActiveRecord::Schema.define(version: 2022_02_06_221924) do
     t.string "name"
     t.bigint "product_id", null: false
     t.integer "price_cents", default: 0, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_product_variants_on_product_id"
   end
 
@@ -165,8 +170,8 @@ ActiveRecord::Schema.define(version: 2022_02_06_221924) do
     t.text "description"
     t.boolean "on_sale", default: false, null: false
     t.string "type"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "availability", default: 0, null: false
     t.integer "inventory", default: 0, null: false
     t.string "enabled_product_behaviours"
@@ -176,8 +181,8 @@ ActiveRecord::Schema.define(version: 2022_02_06_221924) do
   create_table "sessions", force: :cascade do |t|
     t.string "session_id", null: false
     t.text "data"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
@@ -189,16 +194,16 @@ ActiveRecord::Schema.define(version: 2022_02_06_221924) do
     t.string "street", null: false
     t.string "zip_code", null: false
     t.string "city", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_user_addresses_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "password_digest", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "username", null: false
     t.string "website"
     t.string "preferred_locale"
@@ -210,8 +215,8 @@ ActiveRecord::Schema.define(version: 2022_02_06_221924) do
     t.string "activation_token"
     t.string "remember_me_token_digest"
     t.string "password_reset_token_digest"
-    t.datetime "password_reset_token_created_at"
-    t.datetime "remember_me_token_created_at"
+    t.datetime "password_reset_token_created_at", precision: nil
+    t.datetime "remember_me_token_created_at", precision: nil
     t.boolean "user_admin_permission", default: false, null: false
     t.boolean "news_admin_permission", default: false, null: false
     t.boolean "event_admin_permission", default: false, null: false
