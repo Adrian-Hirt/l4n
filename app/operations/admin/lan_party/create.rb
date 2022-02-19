@@ -7,5 +7,10 @@ module Operations::Admin::LanParty
     end
 
     model ::LanParty
+
+    def perform
+      model.seat_map = SeatMap.new
+      super
+    end
   end
 end

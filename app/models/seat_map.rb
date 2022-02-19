@@ -1,14 +1,12 @@
-class LanParty < ApplicationRecord
+class SeatMap < ApplicationRecord
   # == Attributes ==================================================================
 
   # == Constants ===================================================================
 
   # == Associations ================================================================
-  has_many :seat_categories, dependent: :destroy
-  has_one :seat_map, dependent: :destroy
+  belongs_to :lan_party
 
   # == Validations =================================================================
-  validates :name, presence: true, length: { maximum: 255 }
 
   # == Hooks =======================================================================
 

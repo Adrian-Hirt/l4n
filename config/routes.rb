@@ -139,6 +139,7 @@ Rails.application.routes.draw do
     # LanParties and related stuff
     resources :lan_parties do
       resources :seat_categories, shallow: true, controller: 'lan_parties/seat_categories'
+      resources :seat_map, shallow: true, controller: 'lan_parties/seat_map', only: %i[index]
     end
 
     # Markdown preview endpoint

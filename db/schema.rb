@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_14_182749) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_19_212448) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -186,6 +186,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_14_182749) do
     t.index ["lan_party_id"], name: "index_seat_categories_on_lan_party_id"
   end
 
+  create_table "seat_maps", force: :cascade do |t|
+    t.bigint "lan_party_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lan_party_id"], name: "index_seat_maps_on_lan_party_id"
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.string "session_id", null: false
     t.text "data"
@@ -248,5 +255,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_14_182749) do
   add_foreign_key "orders", "users"
   add_foreign_key "product_variants", "products"
   add_foreign_key "seat_categories", "lan_parties"
+  add_foreign_key "seat_maps", "lan_parties"
   add_foreign_key "user_addresses", "users"
 end
