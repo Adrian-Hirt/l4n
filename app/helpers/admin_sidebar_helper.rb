@@ -1,7 +1,7 @@
 module AdminSidebarHelper
   def active_link_classes(name, actions: [], excluded_actions: [], include_children: false)
     if include_children
-      names = controller.class.name.split('::').map(&:downcase)
+      names = controller.class.name.split('::').map(&:underscore)
       return unless names.include?(name.to_s) || name == controller_name.to_sym
     else
       return unless name == controller_name.to_sym

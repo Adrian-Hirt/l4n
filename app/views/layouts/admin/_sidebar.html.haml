@@ -84,6 +84,12 @@
                     %span
                       %i.nav-icon.fas.fa-cart-shopping
                       %span.nav-item-text= _('Admin|Orders')
+        - if can? :manage, LanParty
+          .li.nav-item
+            %a.nav-link{href: admin_lan_parties_path, class: active_link_classes(:lan_parties, include_children: true)}
+              %span
+                %i.nav-icon.fas.fa-gamepad
+                %span.nav-item-text= _('Admin|LanParty')
         - if can? :manage, FeatureFlag
           %li.nav-item
             %a.nav-link{href: admin_feature_flags_path, class: active_link_classes(:feature_flags)}
