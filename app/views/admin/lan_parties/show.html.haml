@@ -1,7 +1,9 @@
 .card
   .card-body
     = model.name
-    %br
+    %hr
     = link_to _('Admin|SeatCategory'), admin_lan_party_seat_categories_path(model)
     %br
-    = link_to _('Admin|SeatMap'), admin_lan_party_seat_map_index_path(model)
+    = link_to _('Admin|SeatMap'), admin_lan_party_seat_map_path(model)
+    %br
+    = link_to _('Admin|Ticket'), admin_lan_party_tickets_path(model)

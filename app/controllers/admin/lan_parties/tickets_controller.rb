@@ -1,12 +1,12 @@
 module Admin
   module LanParties
-    class SeatMapController < AdminController
+    class TicketsController < AdminController
       add_breadcrumb _('Admin|LanParty'), :admin_lan_parties_path
 
-      def show
-        op Operations::Admin::SeatMap::LoadForLanParty
+      def index
+        op Operations::Admin::Ticket::LoadForLanParty
         add_breadcrumb op.lan_party.name, admin_lan_party_path(op.lan_party)
-        add_breadcrumb _('Admin|SeatMap')
+        add_breadcrumb _('Admin|Tickets')
       end
     end
   end

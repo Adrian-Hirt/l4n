@@ -74,6 +74,7 @@ class Ability
     can :manage, LanParty
     can :manage, SeatCategory
     can :manage, SeatMap
+    can :manage, Ticket
 
     # User can access admin panel if the user has any
     # admin permission

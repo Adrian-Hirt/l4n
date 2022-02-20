@@ -14,7 +14,7 @@ module Operations::Admin::SeatCategory
     end
 
     def grid
-      grid_params = osparams.grids_admin_lan_parties || {}
+      grid_params = osparams.grids_admin_seat_categories || {}
       grid_params[:lan_party] = lan_party
 
       @grid ||= Grids::Admin::SeatCategories.new(grid_params) do |scope|

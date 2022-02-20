@@ -2,7 +2,7 @@ module Grids
   module Admin
     class SeatCategories < ApplicationGrid
       scope do
-        SeatCategory.all
+        SeatCategory
       end
 
       model SeatCategory
