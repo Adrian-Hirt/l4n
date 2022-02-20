@@ -17,6 +17,7 @@ class Product < ApplicationRecord
 
   # == Attributes ==================================================================
   register_behaviour :dummy, ::Operations::Behaviours::DummyBehaviour
+  register_behaviour :ticket, ::Operations::Behaviours::Ticket # TODO: product needs to have the seat_category set to add this behaviour
 
   # == Constants ===================================================================
 
@@ -28,6 +29,8 @@ class Product < ApplicationRecord
     attachable.variant :thumb, resize_and_pad: [100, 100, { background: [255, 255, 255] }]
     attachable.variant :medium, resize_and_pad: [300, 300, { background: [255, 255, 255] }]
   end
+
+  belongs_to :seat_category, optional: true
 
   # == Validations =================================================================
   validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }

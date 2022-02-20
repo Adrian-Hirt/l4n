@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_20_122639) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_20_124641) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -175,7 +175,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_20_122639) do
     t.integer "availability", default: 0, null: false
     t.integer "inventory", default: 0, null: false
     t.string "enabled_product_behaviours"
+    t.bigint "seat_category_id"
     t.index ["name"], name: "index_products_on_name", unique: true
+    t.index ["seat_category_id"], name: "index_products_on_seat_category_id"
   end
 
   create_table "seat_categories", force: :cascade do |t|

@@ -42,5 +42,9 @@ class Order < ApplicationRecord
     SHIPPING_ADDRESS_FIELDS.all? { |shipping_address_field| public_send(shipping_address_field).present? }
   end
 
+  def formatted_id
+    "#{_('Order')} ##{id}"
+  end
+
   # == Private Methods =============================================================
 end

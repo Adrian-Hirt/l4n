@@ -8,7 +8,7 @@ module Admin
 
     def show
       op Operations::Admin::Order::Load
-      add_breadcrumb "#{_('Order')} ##{model.id}", nil
+      add_breadcrumb model.formatted_id, nil
     end
   end
 end

@@ -5,8 +5,6 @@ module Operations::Behaviours
       req :order_item
     end
 
-    def perform
-      # TODO: implement behaviour to create a ticket here
-    end
+    def perform; end
   end
 end
