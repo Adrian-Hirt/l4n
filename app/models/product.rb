@@ -17,7 +17,7 @@ class Product < ApplicationRecord
 
   # == Attributes ==================================================================
   register_behaviour :dummy, ::Operations::Behaviours::DummyBehaviour
-  register_behaviour :ticket, ::Operations::Behaviours::Ticket # TODO: product needs to have the seat_category set to add this behaviour
+  register_behaviour :ticket, ::Operations::Behaviours::Ticket
 
   # == Constants ===================================================================
 
@@ -37,6 +37,8 @@ class Product < ApplicationRecord
   validates :on_sale, inclusion: [true, false]
   validates :inventory, numericality: { greater_than_or_equal_to: 0 }, presence: true
   validates :availability, numericality: { greater_than_or_equal_to: 0 }, presence: true
+
+  validates :seat_category, presence: true, if: -> { enabled_product_behaviours.include? 'ticket' }
 
   # == Hooks =======================================================================
   before_create :add_availability

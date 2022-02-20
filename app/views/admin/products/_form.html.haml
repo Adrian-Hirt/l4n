@@ -30,8 +30,7 @@
         = f.association :seat_category,
           include_blank: _('Form|Select|Blank'),
           collection: op.initial_available_categories,
-          input_html: { data: { 'admin--product-seat-category-input-target' => 'category' } },
-          disabled: model.seat_category.nil?
+          input_html: { data: { 'admin--product-seat-category-input-target' => 'category' } }
 
     -# -- Images inputs -------------------------------------------------------------
     = f.input :images, input_html: { multiple: true }
