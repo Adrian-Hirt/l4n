@@ -14,3 +14,4 @@ pin 'gettext.js' # @1.1.1
 pin 'easymde', to: 'easymde.min.js' # @2.15.0
 pin 'sweetalert2' # @11.3.0
 pin 'cropperjs', to: 'cropper.esm.js'
+pin 'konva', to: 'konva.min.js'

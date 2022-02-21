@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = ['sidebar'];
 
   collapseSidebar() {
-    console.log('soos');
     if(this.sidebarTarget.classList.contains('sidebar-collapsed')) {
       this.sidebarTarget.classList.remove('sidebar-collapsed');
       Cookies.deleteCookie('_l4n_admin_sidebar_collapsed');
