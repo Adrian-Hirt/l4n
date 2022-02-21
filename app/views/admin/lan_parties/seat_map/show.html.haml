@@ -1,3 +1,13 @@
 .card
-  .card-body
+  .card-body{data: { controller: 'admin--seatmap' }}
     = model.id
+    %hr
+    = button 'Add seat', nil, html: { data: { action: 'click->admin--seatmap#addNewSeat' } }
+    = button 'Save seatmap', nil, html: { data: { action: 'click->admin--seatmap#saveSeatMap' } }
+    %hr
+    #seatMapContainer{data: { 'admin--seatmap-target' => 'container' }}
+
+:css
+  #seatMapContainer canvas {
+    background-color: Gainsboro !important;
+  }
