@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_20_124641) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_24_143949) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -195,6 +195,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_20_124641) do
     t.index ["lan_party_id"], name: "index_seat_maps_on_lan_party_id"
   end
 
+  create_table "seats", force: :cascade do |t|
+    t.bigint "seat_map_id", null: false
+    t.bigint "seat_category_id", null: false
+    t.json "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["seat_category_id"], name: "index_seats_on_seat_category_id"
+    t.index ["seat_map_id"], name: "index_seats_on_seat_map_id"
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.string "session_id", null: false
     t.text "data"
@@ -269,6 +279,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_20_124641) do
   add_foreign_key "product_variants", "products"
   add_foreign_key "seat_categories", "lan_parties"
   add_foreign_key "seat_maps", "lan_parties"
+  add_foreign_key "seats", "seat_categories"
+  add_foreign_key "seats", "seat_maps"
   add_foreign_key "tickets", "lan_parties"
   add_foreign_key "tickets", "orders"
   add_foreign_key "tickets", "seat_categories"

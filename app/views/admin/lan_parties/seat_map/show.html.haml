@@ -5,9 +5,33 @@
     = button 'Add seat', nil, html: { data: { action: 'click->admin--seatmap#addNewSeat' } }
     = button 'Save seatmap', nil, html: { data: { action: 'click->admin--seatmap#saveSeatMap' } }
     %hr
-    #seatMapContainer{data: { 'admin--seatmap-target' => 'container' }}
+    #seatmap-container{data: { 'admin--seatmap-target' => 'container' }}
+    #seatmap-context-menu{data: { 'admin--seatmap-target' => 'contextMenu' }}
+      %div
+        %button#delete-button{data: { 'admin--seatmap-target' => 'deleteButton' }} Delete
 
 :css
-  #seatMapContainer canvas {
+  #seatmap-container canvas {
     background-color: Gainsboro !important;
+  }
+
+  #seatmap-context-menu {
+    display: none;
+    position: fixed;
+    width: 100px;
+    background-color: white;
+    box-shadow: 0 0 5px grey;
+    border-radius: 3px;
+  }
+
+  #seatmap-context-menu button {
+    width: 100%;
+    background-color: white;
+    border: none;
+    margin: 0;
+    padding: 10px;
+  }
+
+  #seatmap-context-menu button:hover {
+    background-color: lightgray;
   }

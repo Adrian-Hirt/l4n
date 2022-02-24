@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import 'konva'
 
 export default class extends Controller {
-  static targets = ['container'];
+  static targets = ['container', 'contextMenu', 'deleteButton'];
 
   connect() {
     // Setup the base
@@ -11,6 +11,10 @@ export default class extends Controller {
     // Setup interactions
     this.#setupZoomFunctionality();
     this.#setupSelectFunctionality();
+    this.#setupContextMenuFunctionality();
+
+    // Load seats from the data
+    this.#loadSeats();
   }
 
   addNewSeat(event) {
@@ -18,21 +22,21 @@ export default class extends Controller {
     event.preventDefault();
 
     // Create the new box. TODO: We'll need to finetune it a bit
-    let newBox = new Konva.Rect({
+    let newSeat = new Konva.Rect({
       x: 50,
       y: 50,
-      width: 100,
-      height: 50,
+      width: 40,
+      height: 40,
       fill: '#00D2FF',
       draggable: true,
       name: 'seatRect'
     });
 
     // Add the new box
-    this.baseLayer.add(newBox);
+    this.baseLayer.add(newSeat);
 
     // Add the seat to the array of seats
-    this.seats.push(newBox);
+    this.seats.push(newSeat);
 
     // And move the transformer to the top again
     this.transformer.moveToTop();
@@ -45,7 +49,10 @@ export default class extends Controller {
     event.preventDefault();
 
     // Data to send to backend
-    let postData = { seats: [] };
+    let postData = {
+      seats: [],
+      removed_seats: this.removedSeats
+    };
 
     // Pick the data we want to send
     for (let seat of this.seats) {
@@ -64,8 +71,56 @@ export default class extends Controller {
     }
 
     // Send the data
+    const csrfToken = document.querySelector("[name='csrf-token']").content;
+
+    fetch("seat_map/update_seats", {
+      method: "POST",
+      headers: {
+        "X-CSRF-Token": csrfToken,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(postData)
+    }).then(response => {
+      // TODO: add success or error handling here
+    }).catch(error => {
+      console.error("error", error);
+    });
 
     return false;
+  }
+
+  #loadSeats() {
+    fetch("seat_map/seats.json")
+      .then(response => response.json())
+      .then((data) => this.#initSeats(data.seats))
+      .catch(error => console.error("error", error));
+  }
+
+  #initSeats(seatData) {
+    for (let seat of seatData) {
+      let newSeat = new Konva.Rect({
+        x: seat.x,
+        y: seat.y,
+        width: seat.width,
+        height: seat.height,
+        backendId: seat.backendId,
+        rotation: seat.rotation,
+        scaleX: seat.scaleX,
+        scaleY: seat.scaleY,
+        fill: '#00D2FF',
+        draggable: true,
+        name: 'seatRect'
+      });
+
+      // Add the new box
+      this.baseLayer.add(newSeat);
+
+      // Add the seat to the array of seats
+      this.seats.push(newSeat);
+
+      // And move the transformer to the top again
+      this.transformer.moveToTop();
+    }
   }
 
   // Setup the base of the seatmap
@@ -93,6 +148,7 @@ export default class extends Controller {
 
     // Add some needed fields
     this.seats = [];
+    this.removedSeats = [];
   }
 
   #setupZoomFunctionality() {
@@ -132,11 +188,6 @@ export default class extends Controller {
   }
 
   #setupSelectFunctionality() {
-    // Disable right click for now
-    this.stage.on('contextmenu', e => {
-      e.evt.preventDefault();
-    });
-
     // Add the selection rectangle
     this.selectionRectangle = new Konva.Rect({
       fill: 'rgba(0,0,255,0.5)',
@@ -270,6 +321,43 @@ export default class extends Controller {
         const nodes = this.transformer.nodes().concat([e.target]);
         this.transformer.nodes(nodes);
       }
+    });
+  }
+
+  #setupContextMenuFunctionality() {
+    // Disable right click for now
+    this.stage.on('contextmenu', e => {
+      e.evt.preventDefault();
+
+      if (e.target === this.stage) {
+        // if we are on empty place of the stage we will do nothing
+        return;
+      }
+
+      // show menu
+      this.contextMenuTarget.style.display = 'initial';
+      let containerRect = this.stage.container().getBoundingClientRect();
+      this.contextMenuTarget.style.top = containerRect.top + this.stage.getPointerPosition().y + 4 + 'px';
+      this.contextMenuTarget.style.left = containerRect.left + this.stage.getPointerPosition().x + 4 + 'px';
+    });
+
+    window.addEventListener('click', () => {
+      // hide menu
+      this.contextMenuTarget.style.display = 'none';
+    });
+
+    this.deleteButtonTarget.addEventListener('click', () => {
+      this.seats = this.seats.filter(seat => !this.transformer.nodes().includes(seat));
+
+      for (let node of this.transformer.nodes()) {
+        if (node.attrs.backendId) {
+          this.removedSeats.push(node.attrs.backendId);
+        }
+
+        node.destroy();
+      }
+
+      this.transformer.nodes([]);
     });
   }
 }

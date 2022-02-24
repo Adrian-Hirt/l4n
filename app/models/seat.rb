@@ -1,11 +1,11 @@
-class SeatMap < ApplicationRecord
+class Seat < ApplicationRecord
   # == Attributes ==================================================================
 
   # == Constants ===================================================================
 
   # == Associations ================================================================
-  belongs_to :lan_party
-  has_many :seats, dependent: :destroy
+  belongs_to :seat_map
+  belongs_to :seat_category
 
   # == Validations =================================================================
 

@@ -139,7 +139,12 @@ Rails.application.routes.draw do
     # LanParties and related stuff
     resources :lan_parties, shallow: true do
       resources :seat_categories, controller: 'lan_parties/seat_categories'
-      resource :seat_map, controller: 'lan_parties/seat_map', only: %i[show]
+      resource :seat_map, controller: 'lan_parties/seat_map', only: %i[show] do
+        member do
+          get :seats
+          post :update_seats
+        end
+      end
       resources :tickets, controller: 'lan_parties/tickets', only: %i[index]
     end
 
