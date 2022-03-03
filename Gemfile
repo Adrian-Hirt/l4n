@@ -55,7 +55,7 @@ gem 'redcarpet', '~> 3.5.1'
 gem 'figaro', '1.2.0'
 
 # Attachments
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.12'
 
 # Models
 gem 'money-rails', '~>1.12'
