@@ -3,6 +3,11 @@
     = model.id
     %hr
     = button 'Add seat', nil, html: { data: { action: 'click->admin--seatmap#addNewSeat' } }
+    %span.select.optional
+      = select_tag 'seat_category',
+        options_from_collection_for_select(SeatCategory.all, :id, :name),
+        include_blank: _('Form|Select|Blank'),
+        class: 'form-select rounded-0 select optional d-inline-block w-auto'
     = button 'Save seatmap', nil, html: { data: { action: 'click->admin--seatmap#saveSeatMap' } }
     %hr
     #seatmap-container{data: { 'admin--seatmap-target' => 'container' }}
