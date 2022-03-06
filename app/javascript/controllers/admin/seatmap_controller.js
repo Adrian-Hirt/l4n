@@ -73,7 +73,11 @@ export default class extends Controller {
     // Send the data
     const csrfToken = document.querySelector("[name='csrf-token']").content;
 
-    fetch("seat_map/update_seats", {
+    let currentLocation = document.URL
+    currentLocation = currentLocation.endsWith('/') ? currentLocation.slice(0, -1) : currentLocation;
+    let url = `${currentLocation}/update_seats`;
+
+    fetch(url, {
       method: "POST",
       headers: {
         "X-CSRF-Token": csrfToken,
@@ -90,7 +94,11 @@ export default class extends Controller {
   }
 
   #loadSeats() {
-    fetch("seat_map/seats.json")
+    let currentLocation = document.URL
+    currentLocation = currentLocation.endsWith('/') ? currentLocation.slice(0, -1) : currentLocation;
+    let url = `${currentLocation}/seats.json`;
+
+    fetch(url)
       .then(response => response.json())
       .then((data) => this.#initSeats(data.seats))
       .catch(error => console.error("error", error));
