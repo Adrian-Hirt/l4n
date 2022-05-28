@@ -15,7 +15,8 @@ module Operations::Admin::SeatMap
 
       seat_map.seats.each do |seat|
         seat_data = {
-          backendId: seat.id
+          backendId:      seat.id,
+          seatCategoryId: seat.seat_category_id
         }.merge(seat.data)
 
         result[:seats] << seat_data

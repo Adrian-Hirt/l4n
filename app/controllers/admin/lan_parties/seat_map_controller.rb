@@ -10,8 +10,11 @@ module Admin
       end
 
       def update_seats
-        run Operations::Admin::SeatMap::UpdateSeats
-        head :ok
+        if run Operations::Admin::SeatMap::UpdateSeats
+          head :ok
+        else
+          head :bad_request
+        end
       end
 
       def seats

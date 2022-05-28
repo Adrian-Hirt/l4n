@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import 'konva'
 
 export default class extends Controller {
-  static targets = ['container', 'contextMenu', 'deleteButton'];
+  static targets = ['container', 'contextMenu', 'deleteButton', 'seatCategorySelector'];
 
   connect() {
     // Setup the base
@@ -21,6 +21,19 @@ export default class extends Controller {
     // Skip the default event handlers
     event.preventDefault();
 
+    // We can only add a seat if we selected a seat category
+    let seatCategoryId = this.seatCategorySelectorTarget.value;
+
+    if(!seatCategoryId) {
+      Sweetalert2.fire({
+        title: i18n._('SeatMap|You need to select a seat category to add a seat!'),
+        icon: 'error',
+        confirmButtonText: i18n._('ConfirmDialog|Confirm')
+      });
+
+      return false;
+    }
+
     // Create the new box. TODO: We'll need to finetune it a bit
     let newSeat = new Konva.Rect({
       x: 50,
@@ -29,7 +42,8 @@ export default class extends Controller {
       height: 40,
       fill: '#00D2FF',
       draggable: true,
-      name: 'seatRect'
+      name: 'seatRect',
+      seatCategoryId: parseInt(seatCategoryId)
     });
 
     // Add the new box
@@ -65,7 +79,8 @@ export default class extends Controller {
         rotation: seatData.rotation,
         scaleX: seatData.scaleX,
         scaleY: seatData.scaleY,
-        backendId: seatData.backendId
+        backendId: seatData.backendId,
+        seatCategoryId: seatData.seatCategoryId
       }
       postData.seats.push(dataToSend);
     }
@@ -85,7 +100,20 @@ export default class extends Controller {
       },
       body: JSON.stringify(postData)
     }).then(response => {
-      // TODO: add success or error handling here
+      if(response.ok) {
+        Sweetalert2.fire({
+          title: i18n._('SeatMap|Saved successfully'),
+          icon: 'success',
+          confirmButtonText: i18n._('ConfirmDialog|Confirm')
+        });
+      }
+      else {
+        Sweetalert2.fire({
+          title: i18n._('SeatMap|An error occured, please try again!'),
+          icon: 'error',
+          confirmButtonText: i18n._('ConfirmDialog|Confirm')
+        });
+      }
     }).catch(error => {
       console.error("error", error);
     });
@@ -117,7 +145,8 @@ export default class extends Controller {
         scaleY: seat.scaleY,
         fill: '#00D2FF',
         draggable: true,
-        name: 'seatRect'
+        name: 'seatRect',
+        seatCategoryId: seat.seatCategoryId
       });
 
       // Add the new box

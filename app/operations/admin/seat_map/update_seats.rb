@@ -3,7 +3,19 @@ module Operations::Admin::SeatMap
     schema3 do
       str! :lan_party_id
       hsh? :seat_map
-      ary? :seats
+      ary? :seats do
+        list :hash do
+          int? :backendId
+          int! :seatCategoryId
+          num? :x
+          num? :y
+          num? :height
+          num? :width
+          num? :scaleX
+          num? :scaleY
+          num? :rotation
+        end
+      end
       ary? :removed_seats
     end
 
@@ -19,15 +31,18 @@ module Operations::Admin::SeatMap
 
       # Update or create seats
       osparams.seats.each do |seat_data|
-        if seat_data['backendId'].present?
-          seat = Seat.find(seat_data['backendId'])
+        seat_id = seat_data.delete(:backendId)
+
+        if seat_id
+          seat = Seat.find(seat_id)
         else
           seat = Seat.new
           seat.seat_map = seat_map
-          seat.seat_category = lan_party.seat_categories.first
+          seat_category_id = seat_data.delete(:seatCategoryId)
+          seat.seat_category = lan_party.seat_categories.find(seat_category_id)
         end
 
-        seat.data = seat_data.except(:backendId)
+        seat.data = seat_data
         seat.save!
       end
     end
