@@ -4,7 +4,7 @@ ruby '3.0.3'
 
 # Rails and rails-y stuff
 gem 'bootsnap', '>= 1.4.4', require: false
-gem 'rails', '~> 7.0.2'
+gem 'rails', '~> 7.0.3'
 
 # Authentication & Authorization
 gem 'active_model_otp', '~> 2.3.1'
