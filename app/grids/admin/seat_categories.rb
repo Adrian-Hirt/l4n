@@ -9,6 +9,9 @@ module Grids
 
       column :id
       column :name
+      column :color, html: true do |seat_category|
+        tag.div style: "background-color: #{seat_category.color}; height: 1rem; width: 100px;"
+      end
       column :'datagrid-actions', html: true, header: false do |seat_category|
         tag.div class: %i[datagrid-actions-wrapper] do
           safe_join([

@@ -2,5 +2,6 @@
   = simple_form_for [:admin, model] do |f|
     .card-body
       = f.input :name
+      = f.input :color, as: :color, input_html: { class: 'form-control-color no-validation p-1' }
     .card-footer
       = f.save

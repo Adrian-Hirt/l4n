@@ -17,5 +17,9 @@ module Operations::Admin::SeatMap
     def model
       @model ||= lan_party.seat_map
     end
+
+    def seat_category_data
+      lan_party.seat_categories.map { |category| [category.name, category.id, { data: { color: category.color } }] }
+    end
   end
 end

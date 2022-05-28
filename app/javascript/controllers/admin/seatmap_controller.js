@@ -166,7 +166,7 @@ export default class extends Controller {
         rotation: seat.rotation,
         scaleX: seat.scaleX,
         scaleY: seat.scaleY,
-        fill: '#00D2FF',
+        fill: seat.color,
         draggable: true,
         name: 'seatRect',
         seatCategoryId: seat.seatCategoryId

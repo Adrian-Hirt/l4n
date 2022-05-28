@@ -4,6 +4,7 @@ module Operations::Admin::SeatCategory
       int! :id, cast_str: true
       hsh? :seat_category do
         str! :name
+        str! :color
       end
     end
 

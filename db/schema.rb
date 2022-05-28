@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_24_143949) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_28_214241) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -185,6 +185,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_24_143949) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "color", default: "#000", null: false
     t.index ["lan_party_id"], name: "index_seat_categories_on_lan_party_id"
   end
 
@@ -242,6 +243,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_24_143949) do
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "remember_me_token_digest"
+    t.boolean "activated", default: false, null: false
+    t.string "activation_token"
+    t.string "password_reset_token_digest"
+    t.datetime "password_reset_token_created_at", precision: nil
     t.string "username", null: false
     t.string "website"
     t.string "preferred_locale"
@@ -249,11 +255,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_24_143949) do
     t.string "otp_secret_key"
     t.boolean "two_factor_enabled", default: false
     t.text "otp_backup_codes"
-    t.boolean "activated", default: false, null: false
-    t.string "activation_token"
-    t.string "remember_me_token_digest"
-    t.string "password_reset_token_digest"
-    t.datetime "password_reset_token_created_at", precision: nil
     t.datetime "remember_me_token_created_at", precision: nil
     t.boolean "user_admin_permission", default: false, null: false
     t.boolean "news_admin_permission", default: false, null: false

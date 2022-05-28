@@ -5,7 +5,7 @@
     = button 'Add seat', nil, html: { data: { action: 'click->admin--seatmap#addNewSeat' } }
     %span.select.optional
       = select_tag 'seat_category',
-        options_from_collection_for_select(SeatCategory.all, :id, :name),
+        options_for_select(op.seat_category_data),
         include_blank: _('Form|Select|Blank'),
         class: 'form-select rounded-0 select optional d-inline-block w-auto',
         data: { 'admin--seatmap-target' => 'seatCategorySelector' }
@@ -19,6 +19,12 @@
           = _('SeatMap|Delete Seat')
         %button#change-category-button{data: { 'admin--seatmap-target' => 'changeCategoryButton' }}
           = _('SeatMap|Change category')
+    %hr
+    %h5= _('SeatCategories')
+    - op.lan_party.seat_categories.each do |seat_category|
+      %div
+        = tag.div style: "background-color: #{seat_category.color}; height: 1rem; width: 50px; display: inline-block;"
+        = seat_category.name
 
 :css
   #seatmap-container canvas {

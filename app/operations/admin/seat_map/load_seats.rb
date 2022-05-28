@@ -13,10 +13,11 @@ module Operations::Admin::SeatMap
         seats: []
       }
 
-      seat_map.seats.each do |seat|
+      seat_map.seats.includes(:seat_category).each do |seat|
         seat_data = {
           backendId:      seat.id,
-          seatCategoryId: seat.seat_category_id
+          seatCategoryId: seat.seat_category_id,
+          color:          seat.seat_category.color
         }.merge(seat.data)
 
         result[:seats] << seat_data
