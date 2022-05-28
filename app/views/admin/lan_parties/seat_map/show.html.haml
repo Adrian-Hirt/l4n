@@ -15,7 +15,10 @@
     #seatmap-container{data: { 'admin--seatmap-target' => 'container' }}
     #seatmap-context-menu{data: { 'admin--seatmap-target' => 'contextMenu' }}
       %div
-        %button#delete-button{data: { 'admin--seatmap-target' => 'deleteButton' }} Delete
+        %button#delete-button{data: { 'admin--seatmap-target' => 'deleteButton' }}
+          = _('SeatMap|Delete Seat')
+        %button#change-category-button{data: { 'admin--seatmap-target' => 'changeCategoryButton' }}
+          = _('SeatMap|Change category')
 
 :css
   #seatmap-container canvas {
@@ -25,7 +28,7 @@
   #seatmap-context-menu {
     display: none;
     position: fixed;
-    width: 100px;
+    width: 250px;
     background-color: white;
     box-shadow: 0 0 5px grey;
     border-radius: 3px;
@@ -37,6 +40,7 @@
     border: none;
     margin: 0;
     padding: 10px;
+    text-align: left;
   }
 
   #seatmap-context-menu button:hover {

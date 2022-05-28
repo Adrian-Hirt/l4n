@@ -38,9 +38,10 @@ module Operations::Admin::SeatMap
         else
           seat = Seat.new
           seat.seat_map = seat_map
-          seat_category_id = seat_data.delete(:seatCategoryId)
-          seat.seat_category = lan_party.seat_categories.find(seat_category_id)
         end
+
+        seat_category_id = seat_data.delete(:seatCategoryId)
+        seat.seat_category = lan_party.seat_categories.find(seat_category_id)
 
         seat.data = seat_data
         seat.save!

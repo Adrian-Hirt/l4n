@@ -2,7 +2,14 @@ import { Controller } from "@hotwired/stimulus"
 import 'konva'
 
 export default class extends Controller {
-  static targets = ['container', 'contextMenu', 'deleteButton', 'seatCategorySelector', 'seatQuantity'];
+  static targets = [
+    'container',
+    'contextMenu',
+    'deleteButton',
+    'seatCategorySelector',
+    'seatQuantity',
+    'changeCategoryButton'
+  ];
 
   connect() {
     // Setup the base
@@ -411,6 +418,37 @@ export default class extends Controller {
       }
 
       this.transformer.nodes([]);
+    });
+
+    this.changeCategoryButtonTarget.addEventListener('click', () => {
+      let options = {};
+      
+      for(let option of this.seatCategorySelectorTarget.options) {
+        // Skip blank option
+        if (!option.value) {
+          continue;
+        }
+
+        options[option.value] = option.text;
+      }
+
+      Sweetalert2.fire({
+        title: i18n._('SeatMap|Change seat category'),
+        text:  i18n._('SeatMap|Please select the new seat category'),
+        input: 'select',
+        inputOptions: options,
+        inputPlaceholder: i18n._('Form|Select|Blank'),
+        showCancelButton: true,
+        confirmButtonText: i18n._('MarkdownEditor|Popup|Confirm'),
+        cancelButtonText: i18n._('MarkdownEditor|Popup|Cancel'),
+      }).then(result => {
+        if (result.isConfirmed) {
+          for (let node of this.transformer.nodes()) {
+            console.log(node);
+            node.setAttr('seatCategoryId', parseInt(result.value));
+          }
+        }
+      })
     });
   }
 }
