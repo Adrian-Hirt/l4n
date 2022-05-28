@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import 'konva'
 
 export default class extends Controller {
-  static targets = ['container', 'contextMenu', 'deleteButton', 'seatCategorySelector'];
+  static targets = ['container', 'contextMenu', 'deleteButton', 'seatCategorySelector', 'seatQuantity'];
 
   connect() {
     // Setup the base
@@ -34,23 +34,39 @@ export default class extends Controller {
       return false;
     }
 
-    // Create the new box. TODO: We'll need to finetune it a bit
-    let newSeat = new Konva.Rect({
-      x: 50,
-      y: 50,
-      width: 40,
-      height: 40,
-      fill: '#00D2FF',
-      draggable: true,
-      name: 'seatRect',
-      seatCategoryId: parseInt(seatCategoryId)
-    });
+    let seatQuantity = this.seatQuantityTarget.value;
 
-    // Add the new box
-    this.baseLayer.add(newSeat);
+    // Check that we add at least 1 seat
+    if (seatQuantity < 1) {
+      Sweetalert2.fire({
+        title: i18n._('SeatMap|You need to create at least 1 seat!'),
+        icon: 'error',
+        confirmButtonText: i18n._('ConfirmDialog|Confirm')
+      });
 
-    // Add the seat to the array of seats
-    this.seats.push(newSeat);
+      return false;
+    }
+
+    // Create the new seats. TODO: Put them somewhere they don'tm overlap with
+    // already existing seats
+    for(let i = 0; i < seatQuantity; i++) {
+      let newSeat = new Konva.Rect({
+        x: 50 * (i + 1),
+        y: 50,
+        width: 40,
+        height: 40,
+        fill: '#00D2FF',
+        draggable: true,
+        name: 'seatRect',
+        seatCategoryId: parseInt(seatCategoryId)
+      });
+  
+      // Add the new box
+      this.baseLayer.add(newSeat);
+  
+      // Add the seat to the array of seats
+      this.seats.push(newSeat);
+    }
 
     // And move the transformer to the top again
     this.transformer.moveToTop();
