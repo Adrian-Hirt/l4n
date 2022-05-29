@@ -57,6 +57,7 @@ export default class extends Controller {
 
     // Create the new seats. TODO: Put them somewhere they don't overlap with
     // already existing seats
+    let newSeats = [];
     seatCategoryId = parseInt(seatCategoryId);
 
     for(let i = 0; i < seatQuantity; i++) {
@@ -76,10 +77,16 @@ export default class extends Controller {
 
       // Add the seat to the array of seats
       this.seats.push(newSeat);
+
+      // Add to the array holding the new seats
+      newSeats.push(newSeat);
     }
 
     // And move the transformer to the top again
     this.transformer.moveToTop();
+
+    // select the newly added seats to move them
+    this.transformer.nodes(newSeats);
 
     return false;
   }
