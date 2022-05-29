@@ -40,6 +40,8 @@ class Ability
       m == user
     end
 
+    can :read, SeatMap if FeatureFlag.enabled?(:lan_party)
+
     ##############################################################
     # Admin Permissions
     ##############################################################
@@ -71,10 +73,12 @@ class Ability
       can :manage, Order
     end
 
-    can :manage, LanParty
-    can :manage, SeatCategory
-    can :manage, SeatMap
-    can :manage, Ticket
+    if FeatureFlag.enabled?(:lan_party)
+      can :manage, LanParty
+      can :manage, SeatCategory
+      can :manage, SeatMap
+      can :manage, Ticket
+    end
 
     # User can access admin panel if the user has any
     # admin permission

@@ -1,0 +1,7 @@
+.card
+  .card-body{data: { controller: 'seatmap' }}
+    #seatmap-container.overflow-auto{data: { 'seatmap-target' => 'container', seatmap_data: op.seat_map_data }}
+    #seatmap-context-menu{data: { 'seatmap-target' => 'contextMenu' }}
+      %div
+        %button#dummy-button{data: { 'seatmap-target' => 'dummyButton' }}
+          = _('SeatMap|DummyButton')

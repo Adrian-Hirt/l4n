@@ -8,6 +8,7 @@ class FeatureFlag < ApplicationRecord
     pages
     user_registration
     shop
+    lan_party
   ].freeze
 
   ################################### Associations #################################

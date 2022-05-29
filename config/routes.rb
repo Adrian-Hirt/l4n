@@ -79,6 +79,15 @@ Rails.application.routes.draw do
     resources :orders, only: %i[index show]
   end
 
+  # Lan related stuff
+  namespace :lan do
+    resources :seatmap, only: %i[index] do
+      collection do
+        get :seats
+      end
+    end
+  end
+
   # Admin panel stuff
   namespace :admin do
     get '/', to: 'home#dashboard'

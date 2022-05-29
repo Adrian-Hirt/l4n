@@ -5,9 +5,10 @@ class MenuItem < ApplicationRecord
 
   ################################### Constants ####################################
   PREDEFINED_PAGES = {
-    'news'   => { title: _('News'), feature_flag: :news_posts },
-    'events' => { title: _('Events'), feature_flag: :events },
-    'shop'   => { title: _('Shop'), feature_flag: :shop }
+    'news'        => { title: _('News'), feature_flag: :news_posts },
+    'events'      => { title: _('Events'), feature_flag: :events },
+    'shop'        => { title: _('Shop'), feature_flag: :shop },
+    'lan/seatmap' => { title: _('LanParty|SeatMap'), feature_flag: :lan_party }
   }.freeze
 
   TYPES = %w[MenuLinkItem MenuDropdownItem].freeze
