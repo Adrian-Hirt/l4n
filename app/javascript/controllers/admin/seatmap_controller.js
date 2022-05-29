@@ -55,18 +55,20 @@ export default class extends Controller {
       return false;
     }
 
-    // Create the new seats. TODO: Put them somewhere they don'tm overlap with
+    // Create the new seats. TODO: Put them somewhere they don't overlap with
     // already existing seats
+    seatCategoryId = parseInt(seatCategoryId);
+
     for(let i = 0; i < seatQuantity; i++) {
       let newSeat = new Konva.Rect({
         x: 50 * (i + 1),
         y: 50,
         width: 40,
         height: 40,
-        fill: '#00D2FF',
+        fill: this.seatCategoryColorMap[seatCategoryId],
         draggable: true,
         name: 'seatRect',
-        seatCategoryId: parseInt(seatCategoryId)
+        seatCategoryId: seatCategoryId
       });
 
       // Add the new box
@@ -237,6 +239,18 @@ export default class extends Controller {
     // Add some needed fields
     this.seats = [];
     this.removedSeats = [];
+
+    // Add map for colors
+    this.seatCategoryColorMap = {};
+
+    for(let seatCategory of this.seatCategorySelectorTarget.options) {
+      // skip blank option
+      if(!seatCategory.value) {
+        continue;
+      }
+
+      this.seatCategoryColorMap[seatCategory.value] = seatCategory.dataset.color;
+    }
   }
 
   #setupZoomFunctionality() {
@@ -472,7 +486,10 @@ export default class extends Controller {
       }).then(result => {
         if (result.isConfirmed) {
           for (let node of this.transformer.nodes()) {
-            node.setAttr('seatCategoryId', parseInt(result.value));
+            let seatCategoryId = parseInt(result.value);
+
+            node.setAttr('seatCategoryId', seatCategoryId);
+            node.setAttr('fill', this.seatCategoryColorMap[seatCategoryId]);
           }
         }
       })
