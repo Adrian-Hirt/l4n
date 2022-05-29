@@ -4,6 +4,8 @@ module Operations::Shop::CartItem
       authorize! :use, :shop
     end
 
+    load_model_authorization_action nil
+
     model ::CartItem
 
     def perform

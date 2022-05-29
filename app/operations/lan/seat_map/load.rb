@@ -29,5 +29,9 @@ module Operations::Lan::SeatMap
         }.to_json
       end
     end
+
+    def available_tickets
+      Queries::Lan::Ticket::LoadForSeatmap.call(user: context.user, lan_party: lan_party)
+    end
   end
 end

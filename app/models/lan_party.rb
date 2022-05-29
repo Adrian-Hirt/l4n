@@ -6,6 +6,7 @@ class LanParty < ApplicationRecord
   # == Associations ================================================================
   has_many :seat_categories, dependent: :destroy
   has_one :seat_map, dependent: :destroy
+  has_many :tickets, dependent: :destroy
 
   # == Validations =================================================================
   validates :name, presence: true, length: { maximum: 255 }

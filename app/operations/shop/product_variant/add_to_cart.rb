@@ -4,6 +4,8 @@ module Operations::Shop::ProductVariant
       authorize! :use, :shop
     end
 
+    load_model_authorization_action nil
+
     model ::ProductVariant
 
     def perform
