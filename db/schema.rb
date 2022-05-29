@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_28_214241) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_29_145248) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -193,6 +193,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_28_214241) do
     t.bigint "lan_party_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "background_height", default: 0, null: false
+    t.integer "background_width", default: 0, null: false
+    t.integer "canvas_height", default: 500, null: false
+    t.integer "canvas_width", default: 800, null: false
     t.index ["lan_party_id"], name: "index_seat_maps_on_lan_party_id"
   end
 

@@ -1,0 +1,13 @@
+= simple_form_for [:admin, :lan_party, model] do |f|
+  .row
+    .col-md-6
+      = f.input :background_height
+    .col-md-6
+      = f.input :background_width
+  .row
+    .col-md-6
+      = f.input :canvas_height
+    .col-md-6
+      = f.input :canvas_width
+  = f.input :background
+  = f.save

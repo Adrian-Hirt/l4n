@@ -1,4 +1,5 @@
 import { Controller } from '@hotwired/stimulus'
+import 'sweetalert2'
 
 export default class extends Controller {
   connect() {

@@ -1,5 +1,6 @@
 import { Controller } from '@hotwired/stimulus';
 import Cropper from 'cropperjs';
+import 'sweetalert2'
 
 export default class extends Controller {
   static targets = ['imageLoader', 'uploadButton', 'canvas', 'fileNameList'];

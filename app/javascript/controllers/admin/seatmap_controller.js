@@ -1,5 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import 'konva'
+import 'sweetalert2'
 
 export default class extends Controller {
   static targets = [
@@ -67,10 +68,10 @@ export default class extends Controller {
         name: 'seatRect',
         seatCategoryId: parseInt(seatCategoryId)
       });
-  
+
       // Add the new box
       this.baseLayer.add(newSeat);
-  
+
       // Add the seat to the array of seats
       this.seats.push(newSeat);
     }
@@ -185,10 +186,14 @@ export default class extends Controller {
 
   // Setup the base of the seatmap
   #setupBase() {
+    // Get the base data
+    this.seatmapData = JSON.parse(this.containerTarget.dataset.seatmapData);
+
+    // Setup the stage
     this.stage = new Konva.Stage({
       container: this.containerTarget,
-      width: '1200',
-      height: '500',
+      width: this.seatmapData.canvasWidth,
+      height: this.seatmapData.canvasHeight,
       draggable: false
     });
 
@@ -205,6 +210,29 @@ export default class extends Controller {
       rotationSnaps: [0, 90, 180, 270]
     });
     this.baseLayer.add(this.transformer);
+
+    // Add background image
+    const image = new window.Image();
+
+    image.onload = () => {
+      this.background = new Konva.Rect({
+        x: 0,
+        y: 0,
+        width: this.seatmapData.backgroundWidth,
+        height: this.seatmapData.backgroundHeight,
+        fillPatternImage: image,
+        fillPatternRepeat: "no-repeat",
+        draggable: false
+      });
+
+      this.baseLayer.add(this.background);
+
+      // And move the transformer to the top again
+      this.background.moveToBottom();
+    }
+
+    // Set source of image
+    image.src = this.seatmapData.backgroundUrl;
 
     // Add some needed fields
     this.seats = [];
@@ -261,7 +289,7 @@ export default class extends Controller {
     // the right mouse button
     this.stage.on('mousedown', (e) => {
       // do nothing if we mousedown on any shape
-      if (e.target !== this.stage) {
+      if (e.target !== this.stage && e.target !== this.background) {
         return;
       }
 
@@ -349,7 +377,7 @@ export default class extends Controller {
       }
 
       // if click on empty area - remove all selections
-      if (e.target === this.stage) {
+      if (e.target === this.stage || e.target === this.background) {
         this.transformer.nodes([]);
         return;
       }
@@ -389,7 +417,7 @@ export default class extends Controller {
     this.stage.on('contextmenu', e => {
       e.evt.preventDefault();
 
-      if (e.target === this.stage) {
+      if (e.target === this.stage || e.target === this.background) {
         // if we are on empty place of the stage we will do nothing
         return;
       }
@@ -422,7 +450,7 @@ export default class extends Controller {
 
     this.changeCategoryButtonTarget.addEventListener('click', () => {
       let options = {};
-      
+
       for(let option of this.seatCategorySelectorTarget.options) {
         // Skip blank option
         if (!option.value) {
@@ -439,12 +467,11 @@ export default class extends Controller {
         inputOptions: options,
         inputPlaceholder: i18n._('Form|Select|Blank'),
         showCancelButton: true,
-        confirmButtonText: i18n._('MarkdownEditor|Popup|Confirm'),
-        cancelButtonText: i18n._('MarkdownEditor|Popup|Cancel'),
+        confirmButtonText: i18n._('SweetAlertForm|Save'),
+        cancelButtonText: i18n._('SweetAlertForm|Cancel'),
       }).then(result => {
         if (result.isConfirmed) {
           for (let node of this.transformer.nodes()) {
-            console.log(node);
             node.setAttr('seatCategoryId', parseInt(result.value));
           }
         }

@@ -9,6 +9,16 @@ module Admin
         add_breadcrumb _('Admin|SeatMap')
       end
 
+      def update
+        if run Operations::Admin::SeatMap::Update
+          flash[:success] = _('Admin|SeatMap|Updated successfully')
+        else
+          flash[:danger] = _('Admin|SeatMap|Edit failed')
+        end
+
+        redirect_to admin_lan_party_seat_map_path(model)
+      end
+
       def update_seats
         if run Operations::Admin::SeatMap::UpdateSeats
           head :ok

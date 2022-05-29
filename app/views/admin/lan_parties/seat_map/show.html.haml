@@ -1,7 +1,5 @@
 .card
   .card-body{data: { controller: 'admin--seatmap' }}
-    = model.id
-    %hr
     = button 'Add seat', nil, html: { data: { action: 'click->admin--seatmap#addNewSeat' } }
     %span.select.optional
       = select_tag 'seat_category',
@@ -12,7 +10,7 @@
     = number_field_tag 'quantity', 1, class: 'form-control d-inline-block w-auto', min: 1, data: { 'admin--seatmap-target' => 'seatQuantity' }
     = button 'Save seatmap', nil, html: { data: { action: 'click->admin--seatmap#saveSeatMap' } }
     %hr
-    #seatmap-container{data: { 'admin--seatmap-target' => 'container' }}
+    #seatmap-container.overflow-auto{data: { 'admin--seatmap-target' => 'container', seatmap_data: op.seat_map_data }}
     #seatmap-context-menu{data: { 'admin--seatmap-target' => 'contextMenu' }}
       %div
         %button#delete-button{data: { 'admin--seatmap-target' => 'deleteButton' }}
@@ -25,30 +23,5 @@
       %div
         = tag.div style: "background-color: #{seat_category.color}; height: 1rem; width: 50px; display: inline-block;"
         = seat_category.name
-
-:css
-  #seatmap-container canvas {
-    background-color: Gainsboro !important;
-  }
-
-  #seatmap-context-menu {
-    display: none;
-    position: fixed;
-    width: 250px;
-    background-color: white;
-    box-shadow: 0 0 5px grey;
-    border-radius: 3px;
-  }
-
-  #seatmap-context-menu button {
-    width: 100%;
-    background-color: white;
-    border: none;
-    margin: 0;
-    padding: 10px;
-    text-align: left;
-  }
-
-  #seatmap-context-menu button:hover {
-    background-color: lightgray;
-  }
+    %hr
+    = render partial: 'form'

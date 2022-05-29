@@ -10,7 +10,7 @@
   %body.d-flex
     = flash_messages
     = render partial: 'layouts/admin/sidebar'
-    .main.d-flex.w-100
+    .main.d-flex.w-100.overflow-hidden
       .header.d-block.d-md-flex.justify-content-between
         .page-title
           %h1= breadcrumbs_on_rails.last.name # yield :page_title
