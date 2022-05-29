@@ -2,12 +2,13 @@ module Grids
   module Admin
     class LanParties < ApplicationGrid
       scope do
-        LanParty.all
+        LanParty.order(id: :desc)
       end
 
       model LanParty
 
       column :id
+      column :active, html: ->(active) { format_boolean(active) }
       column :name
       column :'datagrid-actions', html: true, header: false do |lan_party|
         tag.div class: %i[datagrid-actions-wrapper] do

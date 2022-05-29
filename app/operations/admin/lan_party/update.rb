@@ -4,6 +4,7 @@ module Operations::Admin::LanParty
       int! :id, cast_str: true
       hsh? :lan_party do
         str! :name
+        boo! :active, cast_str: true
       end
     end
 

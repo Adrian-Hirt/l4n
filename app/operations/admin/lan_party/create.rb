@@ -3,6 +3,7 @@ module Operations::Admin::LanParty
     schema3 do
       hsh? :lan_party do
         str! :name
+        boo! :active, cast_str: true
       end
     end
 

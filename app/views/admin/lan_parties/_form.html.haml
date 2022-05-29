@@ -1,5 +1,6 @@
 = simple_form_for [:admin, model] do |f|
   .card-body
     = f.input :name
+    = f.input :active, input_html: { class: 'no-validation' }
   .card-footer
     = f.save

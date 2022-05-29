@@ -9,8 +9,10 @@ class LanParty < ApplicationRecord
 
   # == Validations =================================================================
   validates :name, presence: true, length: { maximum: 255 }
+  validates :active, inclusion: [true, false]
 
   # == Hooks =======================================================================
+  before_save :set_others_to_inactive
 
   # == Scopes ======================================================================
 
@@ -19,4 +21,13 @@ class LanParty < ApplicationRecord
   # == Instance Methods ============================================================
 
   # == Private Methods =============================================================
+  private
+
+  def set_others_to_inactive
+    return unless active?
+
+    # rubocop:disable Rails/SkipsModelValidations
+    self.class.where('id <> ? AND active = true', id).update_all("active = 'false'")
+    # rubocop:enable Rails/SkipsModelValidations
+  end
 end
