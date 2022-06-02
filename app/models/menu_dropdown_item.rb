@@ -7,7 +7,6 @@ class MenuDropdownItem < MenuItem
   has_many :children, class_name: 'MenuLinkItem', foreign_key: 'parent_id', dependent: :destroy, inverse_of: :parent
 
   ################################### Validations ##################################
-  validates :page_name, absence: true
   validates :parent_id, absence: true
 
   ################################### Hooks #######################################
