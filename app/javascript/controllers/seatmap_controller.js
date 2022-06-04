@@ -45,12 +45,14 @@ export default class extends Controller {
         fill: seat.color,
         draggable: false,
         name: 'seatRect',
-        seatCategoryId: seat.seatCategoryId
+        seatCategoryId: seat.seatCategoryId,
+        taken: seat.taken
       });
 
       // Add the new box
       this.baseLayer.add(newSeat);
 
+      // Add newly added seat to array of seats
       this.seats.push(newSeat);
     }
   }
@@ -138,7 +140,7 @@ export default class extends Controller {
   #setupSeatSelectionFunctionality() {
     this.stage.on('mouseup', (e) => {
       if (e.target === this.stage || e.target === this.background) {
-        this.#disableButtons();
+        this.#disableAddButtons();
         this.#unselectSeat();
 
         return;
@@ -155,6 +157,13 @@ export default class extends Controller {
       // Highlight the current selection
       this.currentSelection.setAttr('stroke', 'black');
       this.currentSelection.setAttr('strokeWidth', 10);
+
+      // if the seat is taken, we simply disable all buttons and return early
+      if (this.currentSelection.attrs.taken) {
+        this.#disableAddButtons();
+
+        return;
+      }
 
       // Enable the tickets with which the user can get the current seat
       for(let ticket of this.ticketsTarget.querySelectorAll('.ticket')) {
@@ -219,8 +228,11 @@ export default class extends Controller {
         ticketButton.classList.add('d-none');
         ticketButton.parentElement.querySelector('.remove-seat-btn').classList.remove('d-none');
 
-        // Disable the buttons and reses the current selected seat
-        this.#disableButtons();
+        // Mark the seat as not taken
+        this.currentSelection.setAttr('taken', true);
+
+        // Disable the buttons and reset the current selected seat
+        this.#disableAddButtons();
         this.#unselectSeat();
       }
       else {
@@ -277,10 +289,16 @@ export default class extends Controller {
       ticketButton.classList.add('d-none');
       ticketButton.parentElement.querySelector('.add-seat-btn').classList.remove('d-none');
 
+      // "reset" the color of the seat
       let seat = this.seats.find(element => element.attrs.backendId == seatId);
       let seatColor = this.seatCategoryData[seat.attrs.seatCategoryId].color;
       seat.setAttr('fill', seatColor);
-      this.#disableButtons();
+
+      // Mark the seat as not taken
+      seat.setAttr('taken', false);
+
+      // Finally, disable the buttons
+      this.#disableAddButtons();
       this.#unselectSeat();
     })
     .catch(error => {
@@ -288,7 +306,7 @@ export default class extends Controller {
     });
   }
 
-  #disableButtons() {
+  #disableAddButtons() {
     this.ticketsTarget.querySelectorAll('.ticket > .btn.add-seat-btn').forEach((item) => {
       item.classList.add('disabled');
     });

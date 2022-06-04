@@ -9,11 +9,12 @@ module Operations::Lan::SeatMap
         seats: []
       }
 
-      seat_map.seats.includes(:seat_category).each do |seat|
+      seat_map.seats.includes(:seat_category, :ticket).each do |seat|
         seat_data = {
           backendId:      seat.id,
           seatCategoryId: seat.seat_category_id,
-          color:          seat.color
+          color:          seat.color,
+          taken:          seat.ticket.present?
         }.merge(seat.data)
 
         result[:seats] << seat_data
