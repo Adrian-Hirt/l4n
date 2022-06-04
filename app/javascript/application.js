@@ -2,7 +2,6 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "@popperjs/core"
-import * as bootstrap from "bootstrap"
 import '@fortawesome/fontawesome-free'
 import Translations from 'components/translations'
 import BootstrapTooltips from 'components/bootstrap_tooltips'

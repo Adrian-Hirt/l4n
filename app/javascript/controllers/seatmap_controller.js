@@ -1,6 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 import 'konva'
 import 'sweetalert2'
+import JsAlert from 'utils/js_alert'
 
 export default class extends Controller {
   static targets = ['container', 'dummyButton', 'currentSelectedSeatInfo', 'tickets'];
@@ -17,7 +18,7 @@ export default class extends Controller {
     this.#loadSeats();
   }
 
-  async #loadSeats() {
+  #loadSeats() {
     let currentLocation = window.location.pathname;
     currentLocation = currentLocation.endsWith('/') ? currentLocation.slice(0, -1) : currentLocation;
     let url = `${currentLocation}/seats.json`;
@@ -208,7 +209,7 @@ export default class extends Controller {
     // Send the data
     const csrfToken = document.querySelector("[name='csrf-token']").content;
 
-    let currentLocation = document.URL
+    let currentLocation = window.location.pathname;
     currentLocation = currentLocation.endsWith('/') ? currentLocation.slice(0, -1) : currentLocation;
     let url = `${currentLocation}/get_seat`;
 
@@ -226,6 +227,9 @@ export default class extends Controller {
       body: JSON.stringify(postData)
     }).then(response => {
       if(response.ok) {
+        // Show flash
+        new JsAlert(i18n._('SeatMap|Seat successfully taken'), 'success').show();
+
         // Highlight the seat as "taken"
         this.currentSelection.setAttr('fill', 'red');
 
@@ -262,7 +266,7 @@ export default class extends Controller {
     // Send the data
     const csrfToken = document.querySelector("[name='csrf-token']").content;
 
-    let currentLocation = document.URL
+    let currentLocation = window.location.pathname;
     currentLocation = currentLocation.endsWith('/') ? currentLocation.slice(0, -1) : currentLocation;
     let url = `${currentLocation}/remove_seat`;
 
@@ -292,6 +296,9 @@ export default class extends Controller {
     })
     .then(result => {
       let seatId = result.seatId;
+
+      // Show flash
+      new JsAlert(i18n._('SeatMap|Seat successfully removed'), 'success').show();
 
       // Hide the remove button, show the get button
       ticketButton.classList.add('d-none');
