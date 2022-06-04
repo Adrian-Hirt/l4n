@@ -14,9 +14,13 @@
         - model.product_variants.each do |product_variant|
           .mt-3
             = product_variant.name
-            = button 'Add to cart', add_to_cart_shop_product_variant_path(product_variant),
-              btn_icon: %i[fas fa-cart-arrow-down], method: :post,
-              disabled: op.requested_quantity >= model.availability, size: :sm
+            = humanized_money_with_symbol(product_variant.price)
+            - if current_user
+              = button 'Add to cart', add_to_cart_shop_product_variant_path(product_variant),
+                btn_icon: %i[fas fa-cart-arrow-down], method: :post,
+                disabled: op.requested_quantity >= model.availability, size: :sm
+            - else
+              = button _('Shop|Please log in to purchase this product'), nil, size: :sm, disabled: true
       .col-md-6
         - if model.images.attached?
           .text-muted= _('Product|Images')

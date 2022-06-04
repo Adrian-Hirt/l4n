@@ -18,6 +18,8 @@ class Ability
     # Anyone can look at the seatmap if it's enabled
     can :read, SeatMap if FeatureFlag.enabled?(:lan_party)
 
+    can :read, :shop if FeatureFlag.enabled?(:shop)
+
     # Return early if user does not exist
     return if user.nil?
 

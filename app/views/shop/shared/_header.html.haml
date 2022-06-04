@@ -4,11 +4,12 @@
   %ul.nav.justify-content-end
     %li.nav-item
       = link_to _('Shop'), shop_path, class: 'nav-link'
-    %li.nav-item
-      = link_to _('Orders|My Orders'), shop_orders_path, class: 'nav-link'
-    %li.nav-item
-      = link_to shop_cart_path, class: 'nav-link' do
-        %span.fa-layers.fa-fw.fa-xl
-          = icon %i[fas fa-cart-shopping]
-          %span.fa-layers-counter.custom-counter
-            = current_cart.item_count
+    - if current_user
+      %li.nav-item
+        = link_to _('Orders|My Orders'), shop_orders_path, class: 'nav-link'
+      %li.nav-item
+        = link_to shop_cart_path, class: 'nav-link' do
+          %span.fa-layers.fa-fw.fa-xl
+            = icon %i[fas fa-cart-shopping]
+            %span.fa-layers-counter.custom-counter
+              = current_cart.item_count
