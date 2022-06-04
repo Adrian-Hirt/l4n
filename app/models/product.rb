@@ -37,6 +37,7 @@ class Product < ApplicationRecord
   validates :on_sale, inclusion: [true, false]
   validates :inventory, numericality: { greater_than_or_equal_to: 0 }, presence: true
   validates :availability, numericality: { greater_than_or_equal_to: 0 }, presence: true
+  validates :images, size: { less_than: 5.megabytes, message: format(_('File is too large, max. allowed %{size}'), size: '5MB') }, content_type: %r{\Aimage/.*\z}
 
   validates :seat_category, presence: true, if: -> { enabled_product_behaviours.include? 'ticket' }
 

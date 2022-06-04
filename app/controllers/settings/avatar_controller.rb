@@ -5,8 +5,11 @@ module Settings
     def index
       return unless request.patch?
 
-      current_user.avatar.attach(params[:croppedImage])
-      flash[:success] = _('User|Avatar updated successfully')
+      if current_user.avatar.attach(params[:croppedImage])
+        flash[:success] = _('User|Avatar updated successfully')
+      else
+        flash[:danger] = _('User|Avatar could not be uploaded!')
+      end
     end
 
     def destroy

@@ -55,6 +55,11 @@ GEM
     active_model_otp (2.3.1)
       activemodel
       rotp (~> 6.2.0)
+    active_storage_validations (0.9.8)
+      activejob (>= 5.2.0)
+      activemodel (>= 5.2.0)
+      activestorage (>= 5.2.0)
+      activesupport (>= 5.2.0)
     active_type (1.10.1)
       activerecord (>= 3.2)
     activejob (7.0.3)
@@ -344,6 +349,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_otp (~> 2.3.1)
+  active_storage_validations
   active_type (~> 1.10.1)
   activerecord-session_store (~> 2.0.0)
   bcrypt (~> 3.1.7)

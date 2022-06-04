@@ -39,6 +39,7 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }
   validates :use_dark_mode, inclusion: [true, false]
   validates :website, length: { maximum: 255 }
+  validates :avatar, size: { less_than: 5.megabytes, message: format(_('File is too large, max. allowed %{size}'), size: '5MB') }, content_type: %r{\Aimage/.*\z}
 
   # Permission booleans
   PERMISSION_FIELDS.each do |field|

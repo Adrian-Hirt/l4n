@@ -55,6 +55,7 @@ gem 'redcarpet', '~> 3.5.1'
 gem 'figaro', '1.2.0'
 
 # Attachments
+gem 'active_storage_validations'
 gem 'image_processing', '~> 1.12'
 
 # Models
