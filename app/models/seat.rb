@@ -6,6 +6,7 @@ class Seat < ApplicationRecord
   # == Associations ================================================================
   belongs_to :seat_map
   belongs_to :seat_category
+  belongs_to :ticket, optional: true
 
   # == Validations =================================================================
 
@@ -16,6 +17,13 @@ class Seat < ApplicationRecord
   # == Class Methods ===============================================================
 
   # == Instance Methods ============================================================
+  def color
+    if ticket
+      '#f00'
+    else
+      seat_category.color
+    end
+  end
 
   # == Private Methods =============================================================
 end

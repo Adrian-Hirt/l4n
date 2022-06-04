@@ -3,7 +3,7 @@ import 'konva'
 import 'sweetalert2'
 
 export default class extends Controller {
-  static targets = ['container', 'contextMenu', 'dummyButton'];
+  static targets = ['container', 'dummyButton', 'currentSelectedSeatInfo', 'tickets'];
 
   connect() {
     // Setup the base
@@ -11,12 +11,11 @@ export default class extends Controller {
 
     // Setup interactions
     this.#setupZoomFunctionality();
-    this.#setupContextMenuFunctionality();
+    this.#setupSeatSelectionFunctionality();
 
     // Load seats from the data
     this.#loadSeats();
   }
-
 
   #loadSeats() {
     let currentLocation = document.URL
@@ -30,6 +29,9 @@ export default class extends Controller {
   }
 
   #initSeats(seatData) {
+    // Store all the seats in a field
+    this.seats = [];
+
     for (let seat of seatData) {
       let newSeat = new Konva.Rect({
         x: seat.x,
@@ -48,6 +50,8 @@ export default class extends Controller {
 
       // Add the new box
       this.baseLayer.add(newSeat);
+
+      this.seats.push(newSeat);
     }
   }
 
@@ -55,6 +59,7 @@ export default class extends Controller {
   #setupBase() {
     // Get the base data
     this.seatmapData = JSON.parse(this.containerTarget.dataset.seatmapData);
+    this.seatCategoryData = this.seatmapData.categories;
 
     // Setup the stage
     this.stage = new Konva.Stage({
@@ -130,30 +135,169 @@ export default class extends Controller {
     });
   }
 
-  #setupContextMenuFunctionality() {
-    // Disable right click for now
-    this.stage.on('contextmenu', e => {
-      e.evt.preventDefault();
-
+  #setupSeatSelectionFunctionality() {
+    this.stage.on('mouseup', (e) => {
       if (e.target === this.stage || e.target === this.background) {
-        // if we are on empty place of the stage we will do nothing
+        this.#disableButtons();
+        this.#unselectSeat();
+
         return;
       }
 
-      // show menu
-      this.contextMenuTarget.style.display = 'initial';
-      let containerRect = this.stage.container().getBoundingClientRect();
-      this.contextMenuTarget.style.top = containerRect.top + this.stage.getPointerPosition().y + 4 + 'px';
-      this.contextMenuTarget.style.left = containerRect.left + this.stage.getPointerPosition().x + 4 + 'px';
+      // Reset previous seat
+      if(this.currentSelection) {
+        this.currentSelection.setAttr('strokeWidth', 0);
+      }
+
+      // Store current selection
+      this.currentSelection = e.target;
+
+      // Highlight the current selection
+      this.currentSelection.setAttr('stroke', 'black');
+      this.currentSelection.setAttr('strokeWidth', 10);
+
+      // Enable the tickets with which the user can get the current seat
+      for(let ticket of this.ticketsTarget.querySelectorAll('.ticket')) {
+        let ticketCategory = ticket.dataset.seatCategoryId;
+
+        if(ticketCategory == this.currentSelection.attrs.seatCategoryId) {
+          ticket.querySelector('.btn.add-seat-btn').classList.remove('disabled');
+        }
+        else {
+          ticket.querySelector('.btn.add-seat-btn').classList.add('disabled');
+        }
+      }
+
+      return false;
     });
 
-    window.addEventListener('click', () => {
-      // hide menu
-      this.contextMenuTarget.style.display = 'none';
+    // Enable all the "Get" buttons
+    this.ticketsTarget.querySelectorAll('.ticket > .btn.add-seat-btn').forEach((item) => {
+      item.addEventListener('click', (e) => {
+        this.#getSeat(e.target);
+      });
     });
 
-    this.dummyButtonTarget.addEventListener('click', () => {
-      console.log('hello');
+    // Enable all the "Remove" buttons
+    this.ticketsTarget.querySelectorAll('.ticket > .btn.remove-seat-btn').forEach((item) => {
+      item.addEventListener('click', (e) => {
+        this.#removeSeat(e.target);
+      });
     });
+  }
+
+  // Method to get a seat with a ticket
+  #getSeat(ticketButton) {
+    let ticketId = ticketButton.parentElement.dataset.ticketId;
+    let seatId = this.currentSelection.attrs.backendId;
+
+    // Send the data
+    const csrfToken = document.querySelector("[name='csrf-token']").content;
+
+    let currentLocation = document.URL
+    currentLocation = currentLocation.endsWith('/') ? currentLocation.slice(0, -1) : currentLocation;
+    let url = `${currentLocation}/get_seat`;
+
+    let postData = {
+      seat_id:   seatId,
+      ticket_id: ticketId
+    }
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "X-CSRF-Token": csrfToken,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(postData)
+    }).then(response => {
+      if(response.ok) {
+        // Highlight the seat as "taken"
+        this.currentSelection.setAttr('fill', 'red');
+
+        // Hide the "Get" button and show the "Remove" button
+        ticketButton.classList.add('d-none');
+        ticketButton.parentElement.querySelector('.remove-seat-btn').classList.remove('d-none');
+
+        // Disable the buttons and reses the current selected seat
+        this.#disableButtons();
+        this.#unselectSeat();
+      }
+      else {
+        Sweetalert2.fire({
+          title: i18n._('SeatMap|An error occured, please try again!'),
+          icon: 'error',
+          confirmButtonText: i18n._('ConfirmDialog|Confirm')
+        });
+      }
+    }).catch(error => {
+      console.error("error", error);
+    });
+  }
+
+  // Method to remove a seat with a ticket
+  #removeSeat(ticketButton) {
+    let ticketId = ticketButton.parentElement.dataset.ticketId;
+
+    // Send the data
+    const csrfToken = document.querySelector("[name='csrf-token']").content;
+
+    let currentLocation = document.URL
+    currentLocation = currentLocation.endsWith('/') ? currentLocation.slice(0, -1) : currentLocation;
+    let url = `${currentLocation}/remove_seat`;
+
+    let postData = {
+      ticket_id: ticketId
+    }
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "X-CSRF-Token": csrfToken,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(postData)
+    }).then(response => {
+      if(response.ok) {
+        return response.json();
+      }
+      else {
+        Sweetalert2.fire({
+          title: i18n._('SeatMap|An error occured, please try again!'),
+          icon: 'error',
+          confirmButtonText: i18n._('ConfirmDialog|Confirm')
+        });
+        return Promise.reject(response);
+      }
+    })
+    .then(result => {
+      let seatId = result.seatId;
+
+      // Hide the remove button, show the get button
+      ticketButton.classList.add('d-none');
+      ticketButton.parentElement.querySelector('.add-seat-btn').classList.remove('d-none');
+
+      let seat = this.seats.find(element => element.attrs.backendId == seatId);
+      let seatColor = this.seatCategoryData[seat.attrs.seatCategoryId].color;
+      seat.setAttr('fill', seatColor);
+      this.#disableButtons();
+      this.#unselectSeat();
+    })
+    .catch(error => {
+      console.error("error", error);
+    });
+  }
+
+  #disableButtons() {
+    this.ticketsTarget.querySelectorAll('.ticket > .btn.add-seat-btn').forEach((item) => {
+      item.classList.add('disabled');
+    });
+  }
+
+  #unselectSeat() {
+    if(this.currentSelection) {
+      this.currentSelection.setAttr('strokeWidth', 0);
+      this.currentSelection = null;
+    }
   }
 }

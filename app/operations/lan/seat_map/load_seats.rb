@@ -13,7 +13,7 @@ module Operations::Lan::SeatMap
         seat_data = {
           backendId:      seat.id,
           seatCategoryId: seat.seat_category_id,
-          color:          seat.seat_category.color
+          color:          seat.color
         }.merge(seat.data)
 
         result[:seats] << seat_data

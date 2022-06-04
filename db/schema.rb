@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_29_160645) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_02_192545) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -207,8 +207,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_29_160645) do
     t.json "data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "ticket_id"
     t.index ["seat_category_id"], name: "index_seats_on_seat_category_id"
     t.index ["seat_map_id"], name: "index_seats_on_seat_map_id"
+    t.index ["ticket_id"], name: "index_seats_on_ticket_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -287,6 +289,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_29_160645) do
   add_foreign_key "seat_maps", "lan_parties"
   add_foreign_key "seats", "seat_categories"
   add_foreign_key "seats", "seat_maps"
+  add_foreign_key "seats", "tickets"
   add_foreign_key "tickets", "lan_parties"
   add_foreign_key "tickets", "orders"
   add_foreign_key "tickets", "seat_categories"

@@ -15,7 +15,16 @@ module Operations::Lan::SeatMap
     end
 
     def seat_category_data
-      lan_party.seat_categories.map { |category| [category.name, category.id, { data: { color: category.color } }] }
+      data = {}
+
+      lan_party.seat_categories.each do |category|
+        data[category.id] = {
+          name:  category.name,
+          color: category.color
+        }
+      end
+
+      data
     end
 
     def seat_map_data
@@ -25,7 +34,8 @@ module Operations::Lan::SeatMap
           backgroundWidth:  model.background_width,
           canvasHeight:     model.canvas_height,
           canvasWidth:      model.canvas_width,
-          backgroundUrl:    model.background.url
+          backgroundUrl:    model.background.url,
+          categories:       seat_category_data
         }.to_json
       end
     end

@@ -81,10 +81,11 @@ Rails.application.routes.draw do
 
   # Lan related stuff
   namespace :lan do
-    resources :seatmap, only: %i[index] do
-      collection do
-        get :seats
-      end
+    get :seatmap, to: 'seatmap#index'
+    scope '/seatmap' do
+      get :seats, to: 'seatmap#seats'
+      post :get_seat, to: 'seatmap#get_seat'
+      post :remove_seat, to: 'seatmap#remove_seat'
     end
   end
 

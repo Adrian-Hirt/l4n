@@ -1,14 +1,26 @@
 .card
   .card-body{data: { controller: 'seatmap' }}
     - if current_user
-      = _('Seatmap|Your available tickets')
-      - op.available_tickets.each do |ticket|
-        %div
-          .d-inline-block{style: "width: 10px; height: 1rem; background-color: #{ticket.seat_category.color}"}
-          = ticket.seat_category.name
+      .row
+        .col-md-6
+          = _('Seatmap|Your available tickets')
+          %div{data: { 'seatmap-target' => 'tickets' }}
+            - op.available_tickets.each do |ticket|
+              .ticket{data: { seat_category_id: ticket.seat_category_id, ticket_id: ticket.id }}
+                .d-inline-block{style: "width: 10px; height: 1rem; background-color: #{ticket.seat_category.color}"}
+                = ticket.id
+                = ticket.seat_category.name
+                - if ticket.seat
+                  .btn.btn-sm.btn-primary.disabled.add-seat-btn.d-none
+                    Get
+                  .btn.btn-sm.btn-primary.remove-seat-btn
+                    Remove
+                - else
+                  .btn.btn-sm.btn-primary.disabled.add-seat-btn
+                    Get
+                  .btn.btn-sm.btn-primary.remove-seat-btn.d-none
+                    Remove
+        .col-md-6
+          #current-selected-seat{data: { 'seatmap-target' => 'currentSelectedSeatInfo' }}
     %hr
     #seatmap-container.overflow-auto{data: { 'seatmap-target' => 'container', seatmap_data: op.seat_map_data }}
-    #seatmap-context-menu{data: { 'seatmap-target' => 'contextMenu' }}
-      %div
-        %button#dummy-button{data: { 'seatmap-target' => 'dummyButton' }}
-          = _('SeatMap|DummyButton')

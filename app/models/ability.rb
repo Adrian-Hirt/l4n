@@ -15,6 +15,9 @@ class Ability
     # Anyone can read a page if the feature flag is enabled and it's published
     can :read, Page, &:published? if FeatureFlag.enabled?(:pages)
 
+    # Anyone can look at the seatmap if it's enabled
+    can :read, SeatMap if FeatureFlag.enabled?(:lan_party)
+
     # Return early if user does not exist
     return if user.nil?
 
@@ -40,7 +43,13 @@ class Ability
       m == user
     end
 
-    can :read, SeatMap if FeatureFlag.enabled?(:lan_party)
+    # Any logged in user can use the seatmap
+    can :use, SeatMap if FeatureFlag.enabled?(:lan_party)
+
+    # A user can use their tickets to reserve seats
+    can :use, Ticket do |m|
+      m.order.user == user
+    end
 
     ##############################################################
     # Admin Permissions
@@ -77,7 +86,7 @@ class Ability
       can :manage, LanParty
       can :manage, SeatCategory
       can :manage, SeatMap
-      can :manage, Ticket
+      can %i[view destroy], Ticket
     end
 
     # User can access admin panel if the user has any

@@ -8,6 +8,8 @@ class Ticket < ApplicationRecord
   belongs_to :seat_category
   belongs_to :order
 
+  has_one :seat, dependent: :nullify
+
   # == Validations =================================================================
 
   # == Hooks =======================================================================
