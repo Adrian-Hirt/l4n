@@ -231,6 +231,9 @@ export default class extends Controller {
         // Mark the seat as not taken
         this.currentSelection.setAttr('taken', true);
 
+        // Update the ID in the ticket info
+        ticketButton.parentElement.querySelector('.ticket-seat-id').innerHTML = this.currentSelection.attrs.backendId;
+
         // Disable the buttons and reset the current selected seat
         this.#disableAddButtons();
         this.#unselectSeat();
@@ -296,6 +299,9 @@ export default class extends Controller {
 
       // Mark the seat as not taken
       seat.setAttr('taken', false);
+
+      // Update the ID in the ticket info
+      ticketButton.parentElement.querySelector('.ticket-seat-id').innerHTML = '-';
 
       // Finally, disable the buttons
       this.#disableAddButtons();

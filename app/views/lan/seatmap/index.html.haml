@@ -8,8 +8,9 @@
             - op.available_tickets.each do |ticket|
               .ticket{data: { seat_category_id: ticket.seat_category_id, ticket_id: ticket.id }}
                 .d-inline-block{style: "width: 10px; height: 1rem; background-color: #{ticket.seat_category.color}"}
-                = ticket.id
                 = ticket.seat_category.name
+                .ticket-seat-id.d-inline-block
+                  = ticket.seat&.id.presence || '-'
                 - if ticket.seat
                   .btn.btn-sm.btn-primary.disabled.add-seat-btn.d-none
                     Get
