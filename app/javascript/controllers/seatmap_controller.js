@@ -17,8 +17,8 @@ export default class extends Controller {
     this.#loadSeats();
   }
 
-  #loadSeats() {
-    let currentLocation = document.URL
+  async #loadSeats() {
+    let currentLocation = window.location.pathname;
     currentLocation = currentLocation.endsWith('/') ? currentLocation.slice(0, -1) : currentLocation;
     let url = `${currentLocation}/seats.json`;
 
@@ -31,6 +31,7 @@ export default class extends Controller {
   #initSeats(seatData) {
     // Store all the seats in a field
     this.seats = [];
+    this.seatsById = {};
 
     for (let seat of seatData) {
       let newSeat = new Konva.Rect({
@@ -54,7 +55,11 @@ export default class extends Controller {
 
       // Add newly added seat to array of seats
       this.seats.push(newSeat);
+
+      this.seatsById[seat.backendId] = newSeat;
     }
+
+    this.#highlightSeats();
   }
 
   // Setup the base of the seatmap
@@ -322,6 +327,17 @@ export default class extends Controller {
     if(this.currentSelection) {
       this.currentSelection.setAttr('strokeWidth', 0);
       this.currentSelection = null;
+    }
+  }
+
+  #highlightSeats() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const highlight = urlParams.getAll('highlight');
+
+    if(highlight.length > 0) {
+      for(let id of highlight) {
+        this.seatsById[id]?.setAttr('fill', 'yellow');
+      }
     }
   }
 }
