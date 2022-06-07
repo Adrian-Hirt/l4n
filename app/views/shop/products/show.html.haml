@@ -6,7 +6,9 @@
     .row
       .col-md-6
         .mb-3
-          .text-muted= _('Product|Description')
+          .text-muted= _('Product|Category')
+          = model.product_category.name
+          .text-muted.mt-3= _('Product|Description')
           = markdown(model.description).presence || _('Product|No description')
           .text-muted.mt-3= _('Product|Availability')
           = model.inventory

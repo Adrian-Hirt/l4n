@@ -8,7 +8,7 @@
         .card.product-listing-card
           .card-body
             %small.product-details
-              TODO: Category
+              = product.product_category.name
             %h4.product_title
               = link_to product.name, [:shop, product]
             .product-price

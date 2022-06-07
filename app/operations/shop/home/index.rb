@@ -5,7 +5,7 @@ module Operations::Shop::Home
     end
 
     def products
-      ::Product.where(on_sale: true)
+      ::Product.where(on_sale: true).includes(:product_category)
     end
   end
 end
