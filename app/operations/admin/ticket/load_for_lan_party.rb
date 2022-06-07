@@ -6,7 +6,7 @@ module Operations::Admin::Ticket
     end
 
     policy :on_init do
-      authorize! :manage, Ticket
+      authorize! :view, Ticket
     end
 
     def lan_party

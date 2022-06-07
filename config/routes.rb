@@ -146,6 +146,9 @@ Rails.application.routes.draw do
     # Orders
     resources :orders, only: %i[index show]
 
+    # Product categories
+    resources :product_categories
+
     # LanParties and related stuff
     resources :lan_parties, shallow: true do
       resources :seat_categories, controller: 'lan_parties/seat_categories'

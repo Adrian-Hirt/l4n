@@ -4,6 +4,7 @@
     = f.input :name
     = f.markdown :description, preview_url: admin_markdown_preview_path
     = f.input :on_sale, input_html: { class: 'no-validation' }
+    = f.association :product_category, include_blank: _('Form|Select|Blank')
     .row
       .col-md-6
         = f.input :inventory
@@ -54,7 +55,3 @@
           =_('Product|Add product variant')
   .card-footer
     = f.save
-
-
-
-:javascript

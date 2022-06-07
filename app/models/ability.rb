@@ -81,6 +81,7 @@ class Ability
     if user.shop_admin_permission? && FeatureFlag.enabled?(:shop)
       can :manage, :shop
       can :manage, Product
+      can :manage, ProductCategory
       can :manage, Order
     end
 

@@ -1,6 +1,6 @@
 module Grids
   module Admin
-    class Products < ApplicationGrid
+    class ProductCategoryProducts < ApplicationGrid
       scope do
         Product.order(:name)
       end
@@ -9,7 +9,6 @@ module Grids
 
       column :id
       column :name
-      column :product_category, html: ->(product_category) { product_category.name }
       column :on_sale, html: ->(on_sale) { format_boolean(on_sale) }
       column :product_variants_count, html: true do |product|
         product.product_variants.count
@@ -22,6 +21,8 @@ module Grids
                     ])
         end
       end
+
+      filter(:product_category)
     end
   end
 end

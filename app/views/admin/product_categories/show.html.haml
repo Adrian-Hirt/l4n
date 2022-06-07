@@ -1,0 +1,7 @@
+- content_for :header_buttons do
+  = edit_button model, namespace: %i[admin]
+
+.card
+  .card-body
+    %h4= _('ProductCategory|Products')
+    = datagrid_table op.grid, html: { class: 'table' }

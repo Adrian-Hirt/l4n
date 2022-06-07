@@ -31,6 +31,7 @@ class Product < ApplicationRecord
   end
 
   belongs_to :seat_category, optional: true
+  belongs_to :product_category
 
   # == Validations =================================================================
   validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }

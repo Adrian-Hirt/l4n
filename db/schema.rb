@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_02_192545) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_07_192633) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -157,6 +157,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_02_192545) do
     t.index ["url"], name: "index_pages_on_url", unique: true
   end
 
+  create_table "product_categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "sort", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_product_categories_on_name", unique: true
+  end
+
   create_table "product_variants", force: :cascade do |t|
     t.string "name"
     t.bigint "product_id", null: false
@@ -177,7 +185,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_02_192545) do
     t.integer "inventory", default: 0, null: false
     t.string "enabled_product_behaviours"
     t.bigint "seat_category_id"
+    t.bigint "product_category_id"
     t.index ["name"], name: "index_products_on_name", unique: true
+    t.index ["product_category_id"], name: "index_products_on_product_category_id"
     t.index ["seat_category_id"], name: "index_products_on_seat_category_id"
   end
 
@@ -285,6 +295,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_02_192545) do
   add_foreign_key "order_items", "product_variants"
   add_foreign_key "orders", "users"
   add_foreign_key "product_variants", "products"
+  add_foreign_key "products", "product_categories"
   add_foreign_key "seat_categories", "lan_parties"
   add_foreign_key "seat_maps", "lan_parties"
   add_foreign_key "seats", "seat_categories"
