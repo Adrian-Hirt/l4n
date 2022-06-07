@@ -13,7 +13,7 @@ module Grids
       column :order_items, html: ->(order_items) { order_items.count }, header: _('Order|Order items count')
       column :'datagrid-actions', html: true, header: false do |order|
         tag.div class: %i[datagrid-actions-wrapper] do
-          show_button(order, namespace: %i[admin], size: :sm, icon_only: true)
+          show_button(order, namespace: %i[admin shop], size: :sm, icon_only: true)
         end
       end
     end

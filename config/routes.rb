@@ -140,14 +140,19 @@ Rails.application.routes.draw do
       end
     end
 
-    # Products
-    resources :products, except: %i[show]
+    # Shop
+    namespace :shop do
+      get '/', to: 'dashboard#index', as: :dashboard
 
-    # Orders
-    resources :orders, only: %i[index show]
+      # Products
+      resources :products, except: %i[show]
 
-    # Product categories
-    resources :product_categories
+      # Orders
+      resources :orders, only: %i[index show]
+
+      # Product categories
+      resources :product_categories
+    end
 
     # LanParties and related stuff
     resources :lan_parties, shallow: true do

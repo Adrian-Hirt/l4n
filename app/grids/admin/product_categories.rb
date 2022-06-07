@@ -16,9 +16,9 @@ module Grids
       column :'datagrid-actions', html: true, header: false do |product_category|
         tag.div class: %i[datagrid-actions-wrapper] do
           safe_join([
-                      show_button(product_category, namespace: %i[admin], size: :sm, icon_only: true),
-                      edit_button(product_category, namespace: %i[admin], size: :sm, icon_only: true),
-                      delete_button(product_category, namespace: %i[admin], size: :sm, icon_only: true)
+                      show_button(product_category, namespace: %i[admin shop], size: :sm, icon_only: true),
+                      edit_button(product_category, namespace: %i[admin shop], size: :sm, icon_only: true),
+                      delete_button(product_category, namespace: %i[admin shop], size: :sm, icon_only: true)
                     ])
         end
       end

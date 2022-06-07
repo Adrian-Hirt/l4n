@@ -75,17 +75,17 @@
             #shop-collapse.collapse{class: sidenav_collapse_classes(:products, :orders, :product_categories), data: { 'bs-parent' => '.sidenav' }}
               %ul.nav.nav-pills.flex-column
                 %li.nav-item
-                  %a.nav-link{href: admin_products_path, class: active_link_classes(:products)}
+                  %a.nav-link{href: admin_shop_products_path, class: active_link_classes(:products)}
                     %span
                       %i.nav-icon.fas.fa-box
                       %span.nav-item-text= _('Admin|Products')
                 %li.nav-item
-                  %a.nav-link{href: admin_product_categories_path, class: active_link_classes(:product_categories)}
+                  %a.nav-link{href: admin_shop_product_categories_path, class: active_link_classes(:product_categories)}
                     %span
                       %i.nav-icon.fas.fa-tags
                       %span.nav-item-text= _('Admin|ProductCategories')
                 %li.nav-item
-                  %a.nav-link{href: admin_orders_path, class: active_link_classes(:orders)}
+                  %a.nav-link{href: admin_shop_orders_path, class: active_link_classes(:orders)}
                     %span
                       %i.nav-icon.fas.fa-cart-shopping
                       %span.nav-item-text= _('Admin|Orders')
