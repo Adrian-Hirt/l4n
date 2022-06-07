@@ -9,6 +9,7 @@ module Grids
 
       column :id
       column :name
+      column :sort
       column :on_sale, html: ->(on_sale) { format_boolean(on_sale) }
       column :product_variants_count, html: true do |product|
         product.product_variants.count

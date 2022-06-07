@@ -5,7 +5,10 @@ module Operations::Shop::Home
     end
 
     def products
-      ::Product.where(on_sale: true).includes(:product_category)
+      ::Product.where(on_sale: true)
+               .joins(:product_category)
+               .order('product_categories.sort' => :asc)
+               .order(sort: :asc)
     end
   end
 end

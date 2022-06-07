@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_07_192633) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_07_195308) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -186,6 +186,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_07_192633) do
     t.string "enabled_product_behaviours"
     t.bigint "seat_category_id"
     t.bigint "product_category_id"
+    t.integer "sort", default: 0, null: false
     t.index ["name"], name: "index_products_on_name", unique: true
     t.index ["product_category_id"], name: "index_products_on_product_category_id"
     t.index ["seat_category_id"], name: "index_products_on_seat_category_id"

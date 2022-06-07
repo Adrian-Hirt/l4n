@@ -12,6 +12,7 @@ module Operations::Admin::Product
         opt :product_variants_attributes
         opt :seat_category_id
         opt :product_category_id
+        opt :sort
       end
     end
 
