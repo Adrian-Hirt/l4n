@@ -3,5 +3,6 @@
     .card-body
       = f.input :name
       = f.input :color, as: :color, input_html: { class: 'form-control-color no-validation p-1' }
+      .text-muted=_('Admin|SeatCategory|You should not pick red as a category, as this is used to display reserved seats')
     .card-footer
       = f.save
