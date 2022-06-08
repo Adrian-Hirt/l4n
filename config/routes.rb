@@ -152,6 +152,9 @@ Rails.application.routes.draw do
 
       # Product categories
       resources :product_categories
+
+      # Promitions
+      resources :promotions
     end
 
     # LanParties and related stuff

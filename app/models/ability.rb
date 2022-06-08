@@ -82,6 +82,7 @@ class Ability
       can :manage, :shop
       can :manage, Product
       can :manage, ProductCategory
+      can :manage, Promotion
       can :manage, Order
     end
 

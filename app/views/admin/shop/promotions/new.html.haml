@@ -1,0 +1,10 @@
+.card
+  = simple_form_for [:admin, :shop, model] do |f|
+    .card-body
+      = f.input :name
+      = f.input :active, input_html: { class: 'no-validation' }
+      = f.input :code_type, collection: Promotion.code_types, include_blank: _('Form|Select|Blank')
+      = f.input :reduction
+      = f.input :code_prefix
+    .card-footer
+      = f.save
