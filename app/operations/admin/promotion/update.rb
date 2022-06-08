@@ -5,6 +5,7 @@ module Operations::Admin::Promotion
       hsh? :promotion do
         str! :name
         boo! :active, cast_str: true
+        ary? :product_ids
       end
     end
 

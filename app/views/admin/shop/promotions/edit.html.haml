@@ -6,5 +6,6 @@
       = f.input :code_type, disabled: true, input_html: { class: 'no-validation' }, required: false
       = f.input :reduction, disabled: true, input_html: { class: 'no-validation' }
       = f.input :code_prefix, disabled: true, input_html: { class: 'no-validation' }
+      = f.association :products, as: :check_boxes
     .card-footer
       = f.save

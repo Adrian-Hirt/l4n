@@ -33,6 +33,9 @@ class Product < ApplicationRecord
   belongs_to :seat_category, optional: true
   belongs_to :product_category
 
+  has_many :promotion_products, dependent: :destroy
+  has_many :promotions, through: :promotion_products
+
   # == Validations =================================================================
   validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }
   validates :on_sale, inclusion: [true, false]

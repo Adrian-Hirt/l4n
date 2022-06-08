@@ -7,6 +7,7 @@ module Operations::Admin::Promotion
         str! :code_type
         str? :reduction
         str? :code_prefix
+        ary? :product_ids
       end
     end
 
