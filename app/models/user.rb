@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  ################################### Attributes ###################################
+  # == Attributes ==================================================================
   attr_writer :needs_password_set
 
   has_secure_password
@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_one_time_password one_time_backup_codes: true
   serialize :otp_backup_codes, JSON
 
-  ################################### Constants ####################################
+  # == Constants ===================================================================
   RESET_TOKEN_EXPIRES_AFTER = 6.hours
 
   PERMISSION_FIELDS = %i[
@@ -22,7 +22,7 @@ class User < ApplicationRecord
     system_admin_permission
   ].freeze
 
-  ################################### Associations #################################
+  # == Associations ================================================================
   # Avatar image
   has_one_attached :avatar do |attachable|
     attachable.variant :thumb, resize_to_fill: [100, 100]
@@ -33,7 +33,7 @@ class User < ApplicationRecord
   has_one :cart, dependent: :destroy
   has_many :user_addresses, dependent: :destroy
 
-  ################################### Validations ##################################
+  # == Validations =================================================================
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }, length: { maximum: 255 }
   validates :password, presence: true, length: { minimum: 10, maximum: 72 }, confirmation: true, if: -> { password.present? || new_record? || needs_password_set? }
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }
@@ -46,14 +46,14 @@ class User < ApplicationRecord
     validates field, inclusion: [true, false]
   end
 
-  ################################### Hooks #######################################
+  # == Hooks =======================================================================
   before_save { self.email = email.downcase } # turns email to downcase for uniqueness
 
-  ################################### Scopes #######################################
+  # == Scopes ======================================================================
 
-  ################################### Class Methods ################################
+  # == Class Methods ===============================================================
 
-  ################################### Instance Methods #############################
+  # == Instance Methods ============================================================
   def destroyable?
     true
   end
@@ -62,7 +62,7 @@ class User < ApplicationRecord
     User::PERMISSION_FIELDS.any? { |permission| send(permission) }
   end
 
-  ################################### Private Methods ##############################
+  # == Private Methods =============================================================
   private
 
   def needs_password_set?
