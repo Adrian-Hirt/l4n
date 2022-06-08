@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_08_170034) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_08_170947) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -192,6 +192,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_08_170034) do
     t.index ["seat_category_id"], name: "index_products_on_seat_category_id"
   end
 
+  create_table "promotion_codes", force: :cascade do |t|
+    t.bigint "promotion_id", null: false
+    t.string "code", null: false
+    t.boolean "used", default: false, null: false
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_promotion_codes_on_code", unique: true
+    t.index ["order_id"], name: "index_promotion_codes_on_order_id"
+    t.index ["promotion_id"], name: "index_promotion_codes_on_promotion_id"
+  end
+
   create_table "promotion_products", force: :cascade do |t|
     t.bigint "product_id", null: false
     t.bigint "promotion_id", null: false
@@ -317,6 +329,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_08_170034) do
   add_foreign_key "orders", "users"
   add_foreign_key "product_variants", "products"
   add_foreign_key "products", "product_categories"
+  add_foreign_key "promotion_codes", "orders"
+  add_foreign_key "promotion_codes", "promotions"
   add_foreign_key "promotion_products", "products"
   add_foreign_key "promotion_products", "promotions"
   add_foreign_key "seat_categories", "lan_parties"

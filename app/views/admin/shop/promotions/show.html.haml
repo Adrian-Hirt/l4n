@@ -1,0 +1,19 @@
+- content_for :header_buttons do
+  = edit_button model, namespace: %i[admin shop]
+
+.card
+  .card-body
+    .row.pb-3.mb-2
+      .col-md-4
+        .text-muted= _('Promotion|Code type')
+        = model.code_type
+        - if model.fixed_value?
+          = humanized_money_with_symbol model.reduction
+      .col-md-4
+        .text-muted= _('Promotion|Codes count')
+        = model.promotion_codes.count
+      .col-md-4
+        .text-muted= _('Promotion|Used codes count')
+        = model.promotion_codes.where(used: true).count
+    %hr
+    = datagrid_table op.codes_grid, html: { class: 'table' }
