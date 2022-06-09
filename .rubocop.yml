@@ -11,6 +11,8 @@ AllCops:
     - 'db/schema.rb'
     - 'locale/model_attributes.rb'
     - 'node_modules/**/*'
+    - 'config/initializers/simple_form.rb'
+    - 'config/initializers/simple_form_bootstrap.rb'
   NewCops: enable
   SuggestExtensions: false
 
@@ -106,3 +108,11 @@ Rails/NotNullColumn:
 
 Style/AccessorGrouping:
   EnforcedStyle: separated
+
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+
+# Disable for test files
+Metrics/ClassLength:
+  Exclude:
+    - test/**/*

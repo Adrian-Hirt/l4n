@@ -14,6 +14,7 @@ class Order < ApplicationRecord
   # == Associations ================================================================
   belongs_to :user
   has_many :order_items, dependent: :destroy
+  has_many :promotion_codes, dependent: :nullify
 
   # == Validations =================================================================
   SHIPPING_ADDRESS_FIELDS.each do |shipping_address_field|

@@ -9,7 +9,10 @@ module Operations::Admin::Promotion
     model ::Promotion
 
     def codes_grid
-      @codes_grid ||= Grids::Admin::PromotionCodes.new(osparams.grids_admin_promotion_codes) do |scope|
+      grid_params = osparams.grids_admin_promotion_codes || {}
+      grid_params[:promotion] = model
+
+      @codes_grid ||= Grids::Admin::PromotionCodes.new(grid_params) do |scope|
         scope.page(params[:page])
       end
     end

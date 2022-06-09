@@ -5,13 +5,11 @@
   .card-body
     = op.order.id
     %hr
-    = op.order.order_items.count
-    %br
-    - op.order.order_items.each do |order_item|
-      = order_item.product_variant&.name.presence || 'NIL'
-      \|
-      = order_item.product_variant&.id
-      %br
+    = turbo_frame_tag 'promotion_codes_table' do
+      = render partial: 'order_items', locals: { op: op }
+    = turbo_frame_tag 'promotion_codes_errors'
+    = turbo_frame_tag 'promotion_codes_form' do
+      = render partial: 'promotion_codes_form'
     %hr
     - if current_user.user_addresses.any?
       = turbo_frame_tag 'address' do

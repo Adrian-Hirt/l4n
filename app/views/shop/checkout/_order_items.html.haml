@@ -1,0 +1,26 @@
+%table.table.table-borderless
+  %tr
+    %th= _('Order|Product')
+    %th= _('Order|Quantity')
+    %th= _('Order|Total')
+  - op.order.order_items.each do |order_item|
+    %tr
+      %td
+        = order_item.product_variant_id
+        \|
+        = order_item.product_variant.product.name
+        \|
+        = order_item.product_variant.name
+      %td= order_item.quantity
+      %td= humanized_money_with_symbol(order_item.total)
+  - if op.respond_to?(:matching)
+    - op.matching.each do |code_matching|
+      - promotion_code = code_matching[:promotion_code]
+      %tr
+        %td= "#{_('Order|PromotionCode')} #{promotion_code.promotion.name}"
+        %td= 1
+        %td.text-success= humanized_money_with_symbol(-code_matching[:reduction])
+  %tr.border-top
+    %td= _('Order|Total')
+    %td
+    %td= humanized_money_with_symbol(op.total)

@@ -1,0 +1,10 @@
+- if @code_error
+  = turbo_stream.update 'promotion_codes_errors' do
+    .alert.alert-danger
+      = @code_error
+- else
+  = turbo_stream.update 'promotion_codes_table' do
+    = render partial: 'order_items', locals: { op: op }
+  = turbo_stream.update 'promotion_codes_form' do
+    = render partial: 'promotion_codes_form'
+  = turbo_stream.update 'promotion_codes_errors'

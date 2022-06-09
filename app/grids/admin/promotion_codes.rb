@@ -16,6 +16,8 @@ module Grids
       #               ])
       #   end
       # end
+
+      filter(:promotion)
     end
   end
 end

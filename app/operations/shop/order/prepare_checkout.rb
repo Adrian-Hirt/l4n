@@ -4,6 +4,8 @@ module Operations::Shop::Order
       authorize! :use, :shop
     end
 
+    attr_accessor :total
+
     def perform
       # Delete other orders for user that have status `created`
       run_sub! Operations::Shop::Order::CleanupUntouched
@@ -34,6 +36,7 @@ module Operations::Shop::Order
         end
 
         @order.save!
+        @total = @order.order_items.sum(&:total)
       end
     end
 

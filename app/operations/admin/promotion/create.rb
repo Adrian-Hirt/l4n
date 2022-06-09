@@ -8,7 +8,7 @@ module Operations::Admin::Promotion
         str? :reduction
         str? :code_prefix
         ary? :product_ids
-        str? :codes_to_generate
+        int? :codes_to_generate, cast_str: true
       end
     end
 
