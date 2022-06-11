@@ -86,10 +86,14 @@ module Operations::Shop::Order
       promotion_code.order = order
       promotion_code.save!
 
+      # Reload the promotion codes association
       order.promotion_codes.reload
 
+      # Find the matching for the current order, for convenience and testability we put this in another
+      # operation which we call here
       matching_op = run_sub! Operations::Shop::Order::ComputeTotalWithMatching, order: order
 
+      # Set a few instance variables
       @reduction = matching_op.reduction
       @matching = matching_op.matching
       @total = order.order_items.sum(&:total) - @reduction
