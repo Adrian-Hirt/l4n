@@ -14,7 +14,9 @@ class Order < ApplicationRecord
   # == Associations ================================================================
   belongs_to :user
   has_many :order_items, dependent: :destroy
-  has_many :promotion_codes, dependent: :nullify
+
+  has_many :promotion_code_mappings, dependent: :destroy
+  has_many :promotion_codes, through: :promotion_code_mappings
 
   # == Validations =================================================================
   SHIPPING_ADDRESS_FIELDS.each do |shipping_address_field|
@@ -45,6 +47,13 @@ class Order < ApplicationRecord
 
   def formatted_id
     "#{_('Order')} ##{id}"
+  end
+
+  def total
+    result = Money.zero
+    result += order_items.sum(&:total)
+    result -= promotion_code_mappings.sum(&:applied_reduction)
+    result
   end
 
   # == Private Methods =============================================================

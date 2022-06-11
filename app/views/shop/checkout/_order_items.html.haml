@@ -13,13 +13,12 @@
         = order_item.product_variant.name
       %td= order_item.quantity
       %td= humanized_money_with_symbol(order_item.total)
-  - if op.respond_to?(:matching)
-    - op.matching.each do |code_matching|
-      - promotion_code = code_matching[:promotion_code]
+  - if op.order.respond_to?(:promotion_code_mappings)
+    - op.order.promotion_code_mappings.each do |code_matching|
       %tr
-        %td= "#{_('Order|PromotionCode')} #{promotion_code.promotion.name}"
+        %td= "#{_('Order|PromotionCode')} #{code_matching.promotion_code.promotion.name}"
         %td= 1
-        %td.text-success= humanized_money_with_symbol(-code_matching[:reduction])
+        %td.text-success= humanized_money_with_symbol(-code_matching.applied_reduction)
   %tr.border-top
     %td= _('Order|Total')
     %td

@@ -24,7 +24,8 @@ module Operations::Shop::Order
           @order.order_items.build(
             product_variant: cart_item.product_variant,
             quantity:        cart_item.quantity,
-            price:           cart_item.product_variant.price
+            price:           cart_item.product_variant.price,
+            product_name:    "#{cart_item.product_variant.product.name} - #{cart_item.product_variant.name}"
           )
 
           # decrease availability of product

@@ -27,7 +27,7 @@ module Operations::Shop::Order
       @matching = []
 
       # Do nothing if we have no codes
-      return unless order.promotion_codes.any?
+      return unless order.promotion_codes.reload.any?
 
       # First compute the data we need for the promotion codes
       fixed_value_data = []
@@ -78,10 +78,10 @@ module Operations::Shop::Order
       order.order_items.each do |order_item|
         order_item.quantity.times do
           item = {
-            product_id:         order_item.product_variant.product_id,
-            product_variant_id: order_item.product_variant_id,
-            price:              order_item.price,
-            id:                 counter
+            product_id:    order_item.product_variant.product_id,
+            order_item_id: order_item.id,
+            price:         order_item.price,
+            id:            counter
           }
 
           order_item_data << item
@@ -111,8 +111,8 @@ module Operations::Shop::Order
           # Find entry with highest value and "use" that
           highest_match = current_data.find_all { |d| d[:product_id] == product_id }.max_by { |e| e[:price] }
 
-          # Store the product_variant
-          current_mapping_item[:product_variant_id] = highest_match[:product_variant_id]
+          # Store the order_item_id
+          current_mapping_item[:order_item_id] = highest_match[:order_item_id]
 
           # Remove the highest match
           current_data.delete(highest_match)
@@ -145,9 +145,9 @@ module Operations::Shop::Order
 
       best_mapping.each do |mapping_item|
         @matching << {
-          promotion_code:  PromotionCode.find(mapping_item[:promotion_code_id]),
-          product_variant: ProductVariant.find(mapping_item[:product_variant_id]),
-          reduction:       mapping_item[:reduction]
+          promotion_code: PromotionCode.find(mapping_item[:promotion_code_id]),
+          order_item:     OrderItem.find(mapping_item[:order_item_id]),
+          reduction:      mapping_item[:reduction]
         }
       end
     end

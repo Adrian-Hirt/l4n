@@ -31,11 +31,13 @@ module Operations::Shop::Order
       # Fail if the code does not exist
       fail InvalidPromotionCode if promotion_code.nil?
 
-      # Early return when the code is already applied to the current order
-      fail PromoCodeAlreadyApplied if promotion_code.order_id == order.id
+      if promotion_code.promotion_code_mapping.present?
+        # Fail when the code is already applied to the current order
+        fail PromoCodeAlreadyApplied if promotion_code.promotion_code_mapping.order_id == order.id
 
-      # Check that the code is not used
-      fail InvalidPromotionCode if promotion_code.used?
+        # Fail when the code is already applied to another order
+        fail InvalidPromotionCode if promotion_code.promotion_code_mapping.order_id != order.id
+      end
 
       # Get the promotion the code belongs to
       promotion = promotion_code.promotion
@@ -83,11 +85,22 @@ module Operations::Shop::Order
       fail PromoCodeCannotBeApplied if matching_permutations.empty?
 
       # If it's all good, we add the promotion code to the current order. The total is calculated lated
-      promotion_code.order = order
-      promotion_code.save!
+      if promotion_code.promotion_code_mapping.present?
+        promotion_code.promotion_code_mapping.update(
+          order:             order,
+          applied_reduction: nil
+        )
+      else
+        promotion_code.build_promotion_code_mapping(
+          order:             order,
+          applied_reduction: nil
+        )
+      end
+
+      promotion_code.promotion_code_mapping.save!
 
       # Reload the promotion codes association
-      order.promotion_codes.reload
+      order.promotion_code_mappings.reload
 
       # Find the matching for the current order, for convenience and testability we put this in another
       # operation which we call here
@@ -95,8 +108,18 @@ module Operations::Shop::Order
 
       # Set a few instance variables
       @reduction = matching_op.reduction
-      @matching = matching_op.matching
       @total = order.order_items.sum(&:total) - @reduction
+
+      # Update the mappings
+      order.promotion_code_mappings.each do |mapping|
+        found_matching = matching_op.matching.find { |matching| matching[:promotion_code] == mapping.promotion_code }
+
+        fail if found_matching.nil?
+
+        mapping.applied_reduction = found_matching[:reduction]
+        mapping.order_item = found_matching[:order_item]
+        mapping.save!
+      end
     end
 
     def order

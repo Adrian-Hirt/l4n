@@ -1,16 +1,15 @@
-class PromotionCode < ApplicationRecord
+class PromotionCodeMapping < ApplicationRecord
   # == Attributes ==================================================================
+  monetize :applied_reduction_cents, allow_nil: true
 
   # == Constants ===================================================================
 
   # == Associations ================================================================
-  belongs_to :promotion
-  has_one :promotion_code_mapping, dependent: :destroy
-  has_one :order, through: :promotion_code_mapping
+  belongs_to :order
+  belongs_to :order_item, optional: true
+  belongs_to :promotion_code
 
   # == Validations =================================================================
-  validates :used, inclusion: [true, false]
-  validates :code, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }
 
   # == Hooks =======================================================================
 

@@ -17,7 +17,6 @@ module Operations::Shop::Order
         # Decrease inventory of items bought
         order.order_items.each do |order_item|
           order_item.product.inventory -= order_item.quantity
-          order_item.product_name = "#{order_item.product.name} - #{order_item.product_variant.name}"
           order_item.save!
           order_item.product.save!
 

@@ -41,12 +41,17 @@ module Operations::PaymentGateway
       @result = {}
       @result[:items] = [] # TODO
       @result[:order_id] = osparams.order_id
+
       # minus 1 minute to have some "padding" between redirect and cleanup
       @result[:valid_until] = order.cleanup_timestamp + ::Order::TIMEOUT_PAYMENT_PENDING - 1.minute
       total = Money.zero
 
       order.order_items.each do |order_item|
         total += order_item.total
+      end
+
+      order.promotion_code_mappings.each do |mapping|
+        total -= mapping.applied_reduction
       end
 
       @result[:total] = total

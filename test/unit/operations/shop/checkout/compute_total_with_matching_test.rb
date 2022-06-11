@@ -19,8 +19,8 @@ module Unit
             store :variant_2_1, create_product_variant(fetch(:product_2), price: Money.new(4500))
 
             store :order, create_order_for_checkout(fetch(:user))
-            create_order_item(fetch(:order), fetch(:variant_1_1), quantity: 1)
-            create_order_item(fetch(:order), fetch(:variant_1_2), quantity: 2)
+            store :order_item_1, create_order_item(fetch(:order), fetch(:variant_1_1), quantity: 1)
+            store :order_item_2, create_order_item(fetch(:order), fetch(:variant_1_2), quantity: 2)
 
             store :promotion_1, create_promotion('Fixed', reduction: Money.new(1000), product_ids: [fetch(:product_1).id, fetch(:product_2).id])
             store :promotion_2, create_promotion('Free Item 1 only', code_type: Promotion.code_types[:free_item], product_ids: [fetch(:product_1).id])
@@ -43,12 +43,12 @@ module Unit
             # Run operation
             result = ::Operations::Shop::Order::ComputeTotalWithMatching.run!(order: fetch(:order))
 
-            # Check result. The code is applied to the second variant, as we always pick the result
+            # Check result. The code is applied to the second order item, as we always pick the result
             # with the highest value
             assert_matching [{
-              promotion_code_id:  code_1_1.id,
-              product_variant_id: fetch(:variant_1_2).id,
-              reduction:          Money.new(1000)
+              promotion_code_id: code_1_1.id,
+              order_item_id:     fetch(:order_item_2).id,
+              reduction:         Money.new(1000)
             }], result.matching
 
             # We have a reduction of 10.-
@@ -61,12 +61,12 @@ module Unit
             # Run operation
             result = ::Operations::Shop::Order::ComputeTotalWithMatching.run!(order: fetch(:order))
 
-            # Check result. The code is applied to the second variant, as we always pick the result
+            # Check result. The code is applied to the second order item, as we always pick the result
             # with the highest value
             assert_matching [{
-              promotion_code_id:  code_2_1.id,
-              product_variant_id: fetch(:variant_1_2).id,
-              reduction:          Money.new(2500)
+              promotion_code_id: code_2_1.id,
+              order_item_id:     fetch(:order_item_2).id,
+              reduction:         Money.new(2500)
             }], result.matching
 
             # We have a reduction of 25.-
@@ -90,14 +90,14 @@ module Unit
             # with the highest value
             assert_matching [
               {
-                promotion_code_id:  code_1_1.id,
-                product_variant_id: fetch(:variant_1_2).id,
-                reduction:          Money.new(1000)
+                promotion_code_id: code_1_1.id,
+                order_item_id:     fetch(:order_item_2).id,
+                reduction:         Money.new(1000)
               },
               {
-                promotion_code_id:  code_1_2.id,
-                product_variant_id: fetch(:variant_1_2).id,
-                reduction:          Money.new(1000)
+                promotion_code_id: code_1_2.id,
+                order_item_id:     fetch(:order_item_2).id,
+                reduction:         Money.new(1000)
               }
             ], result.matching
 
@@ -117,14 +117,14 @@ module Unit
             # with the highest value
             assert_matching [
               {
-                promotion_code_id:  code_2_1.id,
-                product_variant_id: fetch(:variant_1_2).id,
-                reduction:          Money.new(2500)
+                promotion_code_id: code_2_1.id,
+                order_item_id:     fetch(:order_item_2).id,
+                reduction:         Money.new(2500)
               },
               {
-                promotion_code_id:  code_2_2.id,
-                product_variant_id: fetch(:variant_1_2).id,
-                reduction:          Money.new(2500)
+                promotion_code_id: code_2_2.id,
+                order_item_id:     fetch(:order_item_2).id,
+                reduction:         Money.new(2500)
               }
             ], result.matching
 
@@ -144,14 +144,14 @@ module Unit
             # with the highest value
             assert_matching [
               {
-                promotion_code_id:  code_1_1.id,
-                product_variant_id: fetch(:variant_1_2).id,
-                reduction:          Money.new(1000)
+                promotion_code_id: code_1_1.id,
+                order_item_id:     fetch(:order_item_2).id,
+                reduction:         Money.new(1000)
               },
               {
-                promotion_code_id:  code_2_1.id,
-                product_variant_id: fetch(:variant_1_2).id,
-                reduction:          Money.new(2500)
+                promotion_code_id: code_2_1.id,
+                order_item_id:     fetch(:order_item_2).id,
+                reduction:         Money.new(2500)
               }
             ], result.matching
 
@@ -179,19 +179,19 @@ module Unit
             # we sort by decreasing value, which inverts the order of the items with the same value
             assert_matching [
               {
-                promotion_code_id:  code_1_1.id,
-                product_variant_id: fetch(:variant_1_1).id,
-                reduction:          Money.new(1000)
+                promotion_code_id: code_1_1.id,
+                order_item_id:     fetch(:order_item_1).id,
+                reduction:         Money.new(1000)
               },
               {
-                promotion_code_id:  code_1_2.id,
-                product_variant_id: fetch(:variant_1_2).id,
-                reduction:          Money.new(1000)
+                promotion_code_id: code_1_2.id,
+                order_item_id:     fetch(:order_item_2).id,
+                reduction:         Money.new(1000)
               },
               {
-                promotion_code_id:  code_1_3.id,
-                product_variant_id: fetch(:variant_1_2).id,
-                reduction:          Money.new(1000)
+                promotion_code_id: code_1_3.id,
+                order_item_id:     fetch(:order_item_2).id,
+                reduction:         Money.new(1000)
               }
             ], result.matching
 
@@ -213,19 +213,19 @@ module Unit
             # with the highest value
             assert_matching [
               {
-                promotion_code_id:  code_2_1.id,
-                product_variant_id: fetch(:variant_1_2).id,
-                reduction:          Money.new(2500)
+                promotion_code_id: code_2_1.id,
+                order_item_id:     fetch(:order_item_2).id,
+                reduction:         Money.new(2500)
               },
               {
-                promotion_code_id:  code_2_2.id,
-                product_variant_id: fetch(:variant_1_2).id,
-                reduction:          Money.new(2500)
+                promotion_code_id: code_2_2.id,
+                order_item_id:     fetch(:order_item_2).id,
+                reduction:         Money.new(2500)
               },
               {
-                promotion_code_id:  code_2_3.id,
-                product_variant_id: fetch(:variant_1_1).id,
-                reduction:          Money.new(1500)
+                promotion_code_id: code_2_3.id,
+                order_item_id:     fetch(:order_item_1).id,
+                reduction:         Money.new(1500)
               }
             ], result.matching
 
@@ -247,19 +247,19 @@ module Unit
             # Check result
             assert_matching [
               {
-                promotion_code_id:  code_2_1.id,
-                product_variant_id: fetch(:variant_1_2).id,
-                reduction:          Money.new(2500)
+                promotion_code_id: code_2_1.id,
+                order_item_id:     fetch(:order_item_2).id,
+                reduction:         Money.new(2500)
               },
               {
-                promotion_code_id:  code_2_2.id,
-                product_variant_id: fetch(:variant_1_2).id,
-                reduction:          Money.new(2500)
+                promotion_code_id: code_2_2.id,
+                order_item_id:     fetch(:order_item_2).id,
+                reduction:         Money.new(2500)
               },
               {
-                promotion_code_id:  code_1_1.id,
-                product_variant_id: fetch(:variant_1_1).id,
-                reduction:          Money.new(1000)
+                promotion_code_id: code_1_1.id,
+                order_item_id:     fetch(:order_item_1).id,
+                reduction:         Money.new(1000)
               }
             ], result.matching
 
@@ -270,28 +270,29 @@ module Unit
           private
 
           def apply_code(code)
-            code.order = fetch(:order)
-            code.save!
+            code.build_promotion_code_mapping(
+              order: fetch(:order)
+            )
+            code.promotion_code_mapping.save!
 
             fetch(:order).promotion_codes.reload
           end
 
           def remove_code(code)
-            code.order = nil
-            code.save!
+            code.promotion_code_mapping.destroy!
 
             fetch(:order).promotion_codes.reload
           end
 
-          # Expected is of the form [{ promotion_code_id: <id>, product_variant_id: <id>, reduction: <Money> }, ...]
+          # Expected is of the form [{ promotion_code_id: <id>, order_item_id: <id>, reduction: <Money> }, ...]
           def assert_matching(expected, result)
             result_array = []
 
             result.each do |result_element|
               result_array << {
-                promotion_code_id:  result_element[:promotion_code].id,
-                product_variant_id: result_element[:product_variant].id,
-                reduction:          result_element[:reduction]
+                promotion_code_id: result_element[:promotion_code].id,
+                order_item_id:     result_element[:order_item].id,
+                reduction:         result_element[:reduction]
               }
             end
 
