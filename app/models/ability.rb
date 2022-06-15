@@ -83,6 +83,7 @@ class Ability
       can :manage, Product
       can :manage, ProductCategory
       can :manage, Promotion
+      can :manage, PromotionCode
       can :manage, Order
     end
 

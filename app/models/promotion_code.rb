@@ -6,13 +6,14 @@ class PromotionCode < ApplicationRecord
   # == Associations ================================================================
   belongs_to :promotion
   has_one :promotion_code_mapping, dependent: :destroy
-  has_one :order, through: :promotion_code_mapping
+  delegate :order, to: :promotion_code_mapping, allow_nil: true
 
   # == Validations =================================================================
   validates :used, inclusion: [true, false]
   validates :code, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }
 
   # == Hooks =======================================================================
+  before_destroy :ensure_not_used
 
   # == Scopes ======================================================================
 
@@ -21,4 +22,11 @@ class PromotionCode < ApplicationRecord
   # == Instance Methods ============================================================
 
   # == Private Methods =============================================================
+  private
+
+  def ensure_not_used
+    return unless promotion_code_mapping.order.present?
+
+    fail ActiveRecord::RecordNotDestroyed, _('PromotionCode|Cannot be deleted, as it has been used')
+  end
 end

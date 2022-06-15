@@ -15,21 +15,24 @@ module Grids
 
       column :code
       column :used, html: true, order: false do |promotion_code|
-        # TODO: this somehow produces many queries, despite the includes
         format_boolean(promotion_code.order.present?)
       end
 
       column :used_for_order, html: true do |promotion_code|
-        # TODO: this somehow produces many queries, despite the includes
         link_to(promotion_code.order.formatted_id, admin_shop_order_path(promotion_code.order)) if promotion_code.order.present?
       end
-      # column :'datagrid-actions', html: true, header: false do |promotion_code|
-      #   tag.div class: %i[datagrid-actions-wrapper] do
-      #     safe_join([
-      #                 delete_button(promotion_code, namespace: %i[admin shop], size: :sm, icon_only: true)
-      #               ])
-      #   end
-      # end
+      column :'datagrid-actions', html: true, header: false do |promotion_code|
+        tag.div class: %i[datagrid-actions-wrapper] do
+          safe_join([
+                      delete_button(promotion_code,
+                                    namespace: %i[admin shop],
+                                    size: :sm,
+                                    icon_only: true,
+                                    disabled: promotion_code.promotion_code_mapping.present?
+                                  )
+                    ])
+        end
+      end
 
       filter(:promotion)
 

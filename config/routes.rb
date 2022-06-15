@@ -156,6 +156,9 @@ Rails.application.routes.draw do
 
       # Promitions
       resources :promotions
+
+      # Promotion codes
+      resources :promotion_codes, only: %i[destroy]
     end
 
     # LanParties and related stuff
