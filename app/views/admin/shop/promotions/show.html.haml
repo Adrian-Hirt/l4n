@@ -1,4 +1,5 @@
 - content_for :header_buttons do
+  = button _('Promotion|Add codes'), add_codes_admin_shop_promotion_path(model), btn_icon: %i[fa fa-fw fa-plus]
   = edit_button model, namespace: %i[admin shop]
 
 .card

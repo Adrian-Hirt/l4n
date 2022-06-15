@@ -155,7 +155,12 @@ Rails.application.routes.draw do
       resources :product_categories
 
       # Promitions
-      resources :promotions
+      resources :promotions do
+        member do
+          get :add_codes
+          patch :generate_additional_codes
+        end
+      end
 
       # Promotion codes
       resources :promotion_codes, only: %i[destroy]

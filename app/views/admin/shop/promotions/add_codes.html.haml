@@ -1,0 +1,7 @@
+.card
+  .card-body
+    = simple_form_for model, url: generate_additional_codes_admin_shop_promotion_path(model) do |f|
+      .card-body
+        = f.input :additional_codes_to_generate
+      .card-footer
+        = f.save _('Promotion|Generate additional codes')

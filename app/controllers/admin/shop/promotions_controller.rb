@@ -52,6 +52,24 @@ module Admin
         end
         redirect_to admin_shop_promotions_path
       end
+
+      def add_codes
+        op Operations::Admin::Promotion::AddCodes
+        add_breadcrumb model.name, admin_shop_promotion_path(model)
+        add_breadcrumb _('Admin|Promotion|Add codes')
+      end
+
+      def generate_additional_codes
+        if run Operations::Admin::Promotion::AddCodes
+          flash[:success] = _('Admin|Promotion|Codes added')
+          redirect_to admin_shop_promotion_path(model)
+        else
+          add_breadcrumb model.name, admin_shop_promotion_path(model)
+          add_breadcrumb _('Admin|Promotion|Add codes')
+          flash[:danger] = _('Admin|Promotion|Codes could not be added')
+          render :add_codes, status: :unprocessable_entity
+        end
+      end
     end
   end
 end
