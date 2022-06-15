@@ -67,12 +67,19 @@
                 %span.nav-item-text= _('Admin|MenuItems')
         - if can? :manage, :shop
           %li.nav-item.dropdown
-            %a.nav-link.collapse-link{data: {'bs-toggle' => 'collapse'}, href: '#shop-collapse', class: sidenav_collapser_classes(:products, :orders, :product_categories, :dashboard)}
+            %a.nav-link.collapse-link{
+                                        data: {'bs-toggle' => 'collapse'},
+                                        href: '#shop-collapse',
+                                        class: sidenav_collapser_classes(:products, :orders, :product_categories, :dashboard, :promotions)
+                                      }
               %span
                 %i.nav-icon.fas.fa-shop
                 %span.nav-item-text= _('Admin|Shop')
               %i.right.fas.fa-angle-right.dropdown-icon
-            #shop-collapse.collapse{class: sidenav_collapse_classes(:products, :orders, :product_categories, :dashboard, :promotions), data: { 'bs-parent' => '.sidenav' }}
+            #shop-collapse.collapse{
+                                      class: sidenav_collapse_classes(:products, :orders, :product_categories, :dashboard, :promotions),
+                                      data: { 'bs-parent' => '.sidenav' }
+                                    }
               %ul.nav.nav-pills.flex-column
                 %li.nav-item
                   %a.nav-link{href: admin_shop_dashboard_path, class: active_link_classes(:dashboard)}
