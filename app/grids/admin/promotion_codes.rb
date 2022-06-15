@@ -11,7 +11,7 @@ module Grids
         [_('PromotionCodes|Show only used'), true],
         [_('PromotionCodes|Show only unused'), false],
         [_('PromotionCodes|Show all'), nil]
-      ]
+      ].freeze
 
       column :code
       column :used, html: true, order: false do |promotion_code|
@@ -26,10 +26,9 @@ module Grids
           safe_join([
                       delete_button(promotion_code,
                                     namespace: %i[admin shop],
-                                    size: :sm,
+                                    size:      :sm,
                                     icon_only: true,
-                                    disabled: promotion_code.promotion_code_mapping.present?
-                                  )
+                                    disabled:  promotion_code.promotion_code_mapping.present?)
                     ])
         end
       end
@@ -42,10 +41,12 @@ module Grids
         value = value.blank? ? nil : ::Datagrid::Utils.booleanize(value)
 
         if value
-          scope = scope.where('promotion_code_mappings.id IS NOT NULL')
+          scope = scope.where.not(promotion_code_mappings: { id: nil })
         else
-          scope = scope.where('promotion_code_mappings.id IS NULL')
+          scope = scope.where(promotion_code_mappings: { id: nil })
         end
+
+        scope
       end
     end
   end

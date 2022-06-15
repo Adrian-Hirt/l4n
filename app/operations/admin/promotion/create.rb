@@ -23,8 +23,7 @@ module Operations::Admin::Promotion
 
       model.codes_to_generate.to_i.times do
         model.promotion_codes.create!(
-          code: create_token,
-          used: false
+          code: create_token
         )
       end
     end

@@ -9,7 +9,6 @@ class PromotionCode < ApplicationRecord
   delegate :order, to: :promotion_code_mapping, allow_nil: true
 
   # == Validations =================================================================
-  validates :used, inclusion: [true, false]
   validates :code, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }
 
   # == Hooks =======================================================================
@@ -25,7 +24,7 @@ class PromotionCode < ApplicationRecord
   private
 
   def ensure_not_used
-    return unless promotion_code_mapping.order.present?
+    return if promotion_code_mapping.order.blank?
 
     fail ActiveRecord::RecordNotDestroyed, _('PromotionCode|Cannot be deleted, as it has been used')
   end
