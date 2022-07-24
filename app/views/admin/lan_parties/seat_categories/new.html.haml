@@ -2,7 +2,10 @@
   = simple_form_for [:admin, :lan_party, model] do |f|
     .card-body
       = f.input :name
-      = f.input :color, as: :color, input_html: { class: 'form-control-color no-validation p-1' }
-      .text-muted=_('Admin|SeatCategory|You should not pick red as a category, as this is used to display reserved seats')
+      = f.input :color, as: :select,
+                        collection: SeatCategory::PREDEFINED_SEATCATEGORY_COLORS,
+                        value_method: :first,
+                        label_method: ->(color) { color.second[:title] },
+                        include_blank: _('Form|Select|Blank')
     .card-footer
       = f.save

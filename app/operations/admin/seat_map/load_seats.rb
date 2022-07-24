@@ -17,7 +17,7 @@ module Operations::Admin::SeatMap
         seat_data = {
           backendId:      seat.id,
           seatCategoryId: seat.seat_category_id,
-          color:          seat.seat_category.color
+          color:          seat.seat_category.color_for_view
         }.merge(seat.data)
 
         result[:seats] << seat_data

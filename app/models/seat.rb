@@ -21,7 +21,7 @@ class Seat < ApplicationRecord
     if ticket
       '#f00'
     else
-      seat_category.color
+      seat_category.color_for_view
     end
   end
 

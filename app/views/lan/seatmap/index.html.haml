@@ -7,7 +7,7 @@
           %div{data: { 'seatmap-target' => 'tickets' }}
             - op.available_tickets.each do |ticket|
               .ticket{data: { seat_category_id: ticket.seat_category_id, ticket_id: ticket.id }}
-                .d-inline-block{style: "width: 10px; height: 1rem; background-color: #{ticket.seat_category.color}"}
+                .d-inline-block{style: "width: 10px; height: 1rem; background-color: #{ticket.seat_category.color_for_view}"}
                 = ticket.seat_category.name
                 .ticket-seat-id.d-inline-block
                   = ticket.seat&.id.presence || '-'

@@ -21,7 +21,7 @@
     %h5= _('SeatCategories')
     - op.lan_party.seat_categories.each do |seat_category|
       %div
-        = tag.div style: "background-color: #{seat_category.color}; height: 1rem; width: 50px; display: inline-block;"
+        = tag.div style: "background-color: #{seat_category.color_for_view}; height: 1rem; width: 50px; display: inline-block;"
         = seat_category.name
     %hr
     = render partial: 'form'
