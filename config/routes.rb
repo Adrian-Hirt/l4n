@@ -87,6 +87,9 @@ Rails.application.routes.draw do
       get :seats, to: 'seatmap#seats'
       post :get_seat, to: 'seatmap#get_seat'
       post :remove_seat, to: 'seatmap#remove_seat'
+      get :user_by_username, to: 'seatmap#user_by_username'
+      post :assign_ticket, to: 'seatmap#assign_ticket'
+      delete :remove_assignee, to: 'seatmap#remove_assignee'
     end
   end
 

@@ -5,7 +5,7 @@
         .col-md-6
           = _('Seatmap|Your available tickets')
           %div{data: { 'seatmap-target' => 'tickets' }}
-            - op.available_tickets.each do |ticket|
+            - op.available_tickets.order(:id).each do |ticket|
               .ticket{data: { seat_category_id: ticket.seat_category_id, ticket_id: ticket.id }}
                 .d-inline-block{style: "width: 10px; height: 1rem; background-color: #{ticket.seat_category.color_for_view}"}
                 = ticket.seat_category.name
@@ -21,7 +21,19 @@
                     Get
                   .btn.btn-sm.btn-primary.remove-seat-btn.d-none
                     Remove
+                - if ticket.assignee.present?
+                  Assigned to:
+                  = ticket.assignee.username
+                  .btn.btn-sm.btn-primary.remove-assigned-seat-btn
+                    Remove assignation
+                - else
+                  .btn.btn-sm.btn-primary.assign-seat-btn
+                    Assign
         .col-md-6
           #current-selected-seat{data: { 'seatmap-target' => 'currentSelectedSeatInfo' }}
+    - else
+      .row
+        .col-md-6
+          %div{data: { 'seatmap-target' => 'tickets' }}
     %hr
     #seatmap-container.overflow-auto{data: { 'seatmap-target' => 'container', seatmap_data: op.seat_map_data }}

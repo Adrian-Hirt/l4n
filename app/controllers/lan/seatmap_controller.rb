@@ -28,5 +28,34 @@ module Lan
         head :bad_request
       end
     end
+
+    def user_by_username
+      if run Operations::User::FindByUsername
+        render json: op.result.as_json
+      else
+        head :bad_request
+      end
+    end
+
+    def assign_ticket
+      if run Operations::Ticket::AssignToUser
+        head :ok
+      else
+        head :bad_request
+      end
+    rescue Operations::Ticket::TicketNotFound,
+           Operations::Ticket::UserNotFound,
+           Operations::Ticket::TicketHasUserAssigned,
+           Operations::Ticket::UserHasTicketAssigned
+      head :bad_request
+    end
+
+    def remove_assignee
+      if run Operations::Ticket::RemoveAssignee
+        head :ok
+      else
+        head :bad_request
+      end
+    end
   end
 end

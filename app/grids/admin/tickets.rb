@@ -8,6 +8,7 @@ module Grids
       model Ticket
 
       column :id
+      column :assignee
       column :order, html: ->(order) { link_to order.formatted_id, admin_shop_order_path(order) }
 
       filter(:lan_party)

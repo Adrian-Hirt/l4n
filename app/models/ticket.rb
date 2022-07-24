@@ -7,6 +7,7 @@ class Ticket < ApplicationRecord
   belongs_to :lan_party
   belongs_to :seat_category
   belongs_to :order
+  belongs_to :assignee, class_name: 'User', optional: true
 
   has_one :seat, dependent: :nullify
 

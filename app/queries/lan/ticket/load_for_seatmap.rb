@@ -6,10 +6,13 @@ module Queries::Lan::Ticket
     end
 
     def call
-      ::Ticket.joins(:order)
+      ::Ticket.where(lan_party: osparams.lan_party)
+              .joins(:order)
               .where(order: { user: osparams.user })
-              .where(lan_party: osparams.lan_party)
-              .includes(:seat_category)
+              .or(
+                ::Ticket.where(lan_party: osparams.lan_party).where(assignee: osparams.user)
+              ).includes(:seat_category)
+              .distinct
     end
   end
 end

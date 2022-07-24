@@ -50,7 +50,7 @@ class Ability
 
     # A user can use their tickets to reserve seats
     can :use, Ticket do |m|
-      m.order.user == user
+      m.order.user == user || m.assignee == user
     end
 
     ##############################################################

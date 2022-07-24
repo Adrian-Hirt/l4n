@@ -199,6 +199,20 @@ export default class extends Controller {
         this.#removeSeat(e.target);
       });
     });
+
+    // Enable all the "Change assignee" buttons
+    this.ticketsTarget.querySelectorAll('.ticket > .btn.assign-seat-btn').forEach((item) => {
+      item.addEventListener('click', (e) => {
+        this.#openAssigningPopup(e.target);
+      });
+    });
+
+        // Enable all the "Remove assignee" buttons
+        this.ticketsTarget.querySelectorAll('.ticket > .btn.remove-assigned-seat-btn').forEach((item) => {
+          item.addEventListener('click', (e) => {
+            this.#removeAssignee(e.target);
+          });
+        });
   }
 
   // Method to get a seat with a ticket
@@ -321,6 +335,108 @@ export default class extends Controller {
     })
     .catch(error => {
       console.error("error", error);
+    });
+  }
+
+  #openAssigningPopup(ticketButton) {
+    let ticketId = ticketButton.parentElement.dataset.ticketId;
+
+    const csrfToken = document.querySelector("[name='csrf-token']").content;
+    let currentLocation = window.location.pathname;
+    currentLocation = currentLocation.endsWith('/') ? currentLocation.slice(0, -1) : currentLocation;
+
+    Sweetalert2.fire({
+      title: i18n._('SeatMap|Change assignee of seat'),
+      text:  i18n._('SeatMap|Please input the username of the user you want to assign the seat to'),
+      input: 'text',
+      inputAttributes: {
+        autocapitalize: 'off'
+      },
+      showCancelButton: true,
+      confirmButtonText: i18n._('SweetAlertForm|Save'),
+      cancelButtonText: i18n._('SweetAlertForm|Cancel'),
+      showLoaderOnConfirm: true,
+      preConfirm: (search_string) => {
+        let url = `${currentLocation}/user_by_username?username=${search_string}`;
+
+        // Do lookup of user by username, return ID if ok.
+        return fetch(url, {
+          method: "GET"
+        }).then(response => {
+          if(response.ok) {
+            return response.json();
+          }
+          else {
+            throw new Error(response.statusText);
+          }
+        })
+        .catch(_error => {
+          Sweetalert2.showValidationMessage(i18n._('Seatmap|User not found'));
+        });
+      }
+    }).then((result) => {
+      if (result.isConfirmed && result.value.id) {
+        let user_id = result.value.id;
+
+        Sweetalert2.fire({
+          title: i18n._('SeatMap|Change assignee of seat'),
+          text:  i18n._('SeatMap|Do you want to assign the seat to ') + result.value.username + '?',
+          showCancelButton: true,
+          confirmButtonText: i18n._('SweetAlertForm|Assign seat'),
+          cancelButtonText: i18n._('SweetAlertForm|Cancel'),
+        }).then(result => {
+          if (result.isConfirmed) {
+
+            let postData = {
+              ticket_id: ticketId,
+              user_id:   user_id
+            }
+
+            let url = `${currentLocation}/assign_ticket`;
+
+            fetch(url, {
+              method: "POST",
+              headers: {
+                "X-CSRF-Token": csrfToken,
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(postData)
+            }).then(response => {
+              if(response.ok) {
+                new JsAlert(i18n._('SeatMap|Ticket successfully assigned'), 'success').show();
+              }
+              else {
+                new JsAlert(i18n._('SeatMap|Ticket could not be assigned'), 'danger').show();
+              }
+            });
+          }
+        });
+      }
+    });
+  }
+
+  #removeAssignee(ticketButton) {
+    let ticketId = ticketButton.parentElement.dataset.ticketId;
+
+    const csrfToken = document.querySelector("[name='csrf-token']").content;
+    let currentLocation = window.location.pathname;
+    currentLocation = currentLocation.endsWith('/') ? currentLocation.slice(0, -1) : currentLocation;
+
+    let url = `${currentLocation}/remove_assignee?id=${ticketId}`;
+
+    // Do lookup of user by username, return ID if ok.
+    return fetch(url, {
+      method: "DELETE",
+      headers: {
+        "X-CSRF-Token": csrfToken
+      }
+    }).then(response => {
+      if(response.ok) {
+        new JsAlert(i18n._('SeatMap|Assignee successfully removed'), 'success').show();
+      }
+      else {
+        new JsAlert(i18n._('SeatMap|Assignee could not be removed'), 'danger').show();
+      }
     });
   }
 
