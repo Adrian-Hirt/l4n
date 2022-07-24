@@ -162,6 +162,7 @@ Rails.application.routes.draw do
         member do
           get :add_codes
           patch :generate_additional_codes
+          get :export_codes
         end
       end
 

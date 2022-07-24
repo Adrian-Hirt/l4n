@@ -70,6 +70,11 @@ module Admin
           render :add_codes, status: :unprocessable_entity
         end
       end
+
+      def export_codes
+        run Operations::Admin::Promotion::ExportCodes
+        send_data op.data, filename: "promotion-codes-#{model.name}.csv"
+      end
     end
   end
 end
