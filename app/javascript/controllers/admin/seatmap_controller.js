@@ -1,6 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 import 'konva'
 import 'sweetalert2'
+import JsAlert from 'utils/js_alert'
 
 export default class extends Controller {
   static targets = [
@@ -33,11 +34,7 @@ export default class extends Controller {
     let seatCategoryId = this.seatCategorySelectorTarget.value;
 
     if(!seatCategoryId) {
-      Sweetalert2.fire({
-        title: i18n._('SeatMap|You need to select a seat category to add a seat!'),
-        icon: 'error',
-        confirmButtonText: i18n._('ConfirmDialog|Confirm')
-      });
+      new JsAlert(i18n._('SeatMap|You need to select a seat category to add a seat!'), 'danger').show();
 
       return false;
     }
@@ -46,11 +43,7 @@ export default class extends Controller {
 
     // Check that we add at least 1 seat
     if (seatQuantity < 1) {
-      Sweetalert2.fire({
-        title: i18n._('SeatMap|You need to create at least 1 seat!'),
-        icon: 'error',
-        confirmButtonText: i18n._('ConfirmDialog|Confirm')
-      });
+      new JsAlert(i18n._('SeatMap|You need to create at least 1 seat!'), 'danger').show();
 
       return false;
     }
@@ -134,18 +127,10 @@ export default class extends Controller {
       body: JSON.stringify(postData)
     }).then(response => {
       if(response.ok) {
-        Sweetalert2.fire({
-          title: i18n._('SeatMap|Saved successfully'),
-          icon: 'success',
-          confirmButtonText: i18n._('ConfirmDialog|Confirm')
-        });
+        new JsAlert(i18n._('SeatMap|Saved successfully'), 'success').show();
       }
       else {
-        Sweetalert2.fire({
-          title: i18n._('SeatMap|An error occured, please try again!'),
-          icon: 'error',
-          confirmButtonText: i18n._('ConfirmDialog|Confirm')
-        });
+        new JsAlert(i18n._('SeatMap|An error occured, please try again!'), 'danger').show();
       }
     }).catch(error => {
       console.error("error", error);
