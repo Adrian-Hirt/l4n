@@ -3,8 +3,6 @@
 
 .card
   .card-body
-    = op.order.id
-    %hr
     = turbo_frame_tag 'promotion_codes_table' do
       = render partial: 'order_items', locals: { op: op }
     = turbo_frame_tag 'promotion_codes_errors'
