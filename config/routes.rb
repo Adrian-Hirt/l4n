@@ -77,7 +77,11 @@ Rails.application.routes.draw do
     patch :'checkout/set_address', to: 'checkout#set_address'
     post :'checkout/use_promotion_code', to: 'checkout#use_promotion_code'
 
-    resources :orders, only: %i[index show]
+    resources :orders, only: %i[index show] do
+      member do
+        delete :cancel_delayed_payment_pending
+      end
+    end
   end
 
   # Lan related stuff
@@ -152,7 +156,11 @@ Rails.application.routes.draw do
       resources :products, except: %i[show]
 
       # Orders
-      resources :orders, only: %i[index show]
+      resources :orders, only: %i[index show] do
+        member do
+          delete :cancel_delayed_payment_pending
+        end
+      end
 
       # Product categories
       resources :product_categories

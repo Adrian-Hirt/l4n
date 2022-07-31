@@ -1,5 +1,5 @@
 module Operations::Shop::Order
-  class ProcessMarkedForLaterPayment < RailsOps::Operation
+  class ProcessMarkedForDelayedPayment < RailsOps::Operation
     delegate :order, to: :osparams
 
     without_authorization

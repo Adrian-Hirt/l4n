@@ -21,7 +21,7 @@ module Operations::PaymentGateway
 
       fail 'Order not found' if order.nil?
 
-      run_sub Operations::Shop::Order::ProcessMarkedForLaterPayment, order: order, gateway_name: osparams.gateway_name
+      run_sub Operations::Shop::Order::ProcessMarkedForDelayedPayment, order: order, gateway_name: osparams.gateway_name
     end
   end
 end

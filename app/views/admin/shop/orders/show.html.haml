@@ -45,3 +45,5 @@
       %tr.border-top
         %td{colspan: 3}= _('Order|Total')
         %td= humanized_money_with_symbol(model.total)
+    .roww.border-top.pt-3
+      = delete_button model, href: cancel_delayed_payment_pending_admin_shop_order_path(model)

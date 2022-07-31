@@ -4,10 +4,11 @@
 .card
   .card-body
     - if model.delayed_payment_pending?
-      .row.border-bottom.mb-2
+      .row.border-bottom.mb-2.pb-3
         .col-md-12
           .alert.alert-info
             = _('Order|Delayed payment required hint')
+          = delete_button model, href: cancel_delayed_payment_pending_shop_order_path(model)
 
     .row.border-bottom.pb-3.mb-2
       .col-md-4
