@@ -3,6 +3,12 @@
 
 .card
   .card-body
+    - if model.delayed_payment_pending?
+      .row.border-bottom.mb-2
+        .col-md-12
+          .alert.alert-info
+            = _('Order|Delayed payment required hint')
+
     .row.border-bottom.pb-3.mb-2
       .col-md-4
         .text-muted= _('Order|Created at')

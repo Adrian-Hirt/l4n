@@ -39,6 +39,7 @@ module Operations::PaymentGateway
 
       @result = {}
       @result[:order_id] = osparams.order_id
+      @result[:real_order_id] = decrypted_id
 
       items = []
 

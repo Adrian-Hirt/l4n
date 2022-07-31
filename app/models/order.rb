@@ -1,14 +1,16 @@
 class Order < ApplicationRecord
   # == Attributes ==================================================================
   enum status: {
-    created:         'created',
-    payment_pending: 'payment_pending',
-    paid:            'paid'
+    created:                 'created',
+    payment_pending:         'payment_pending',
+    delayed_payment_pending: 'delayed_payment_pending',
+    paid:                    'paid'
   }
 
   # == Constants ===================================================================
   TIMEOUT = 15.minutes
   TIMEOUT_PAYMENT_PENDING = 45.minutes
+  TIMEOUT_DELAYED_PAYMENT_PENDING = 4.days
   SHIPPING_ADDRESS_FIELDS = %i[billing_address_first_name billing_address_last_name billing_address_street billing_address_zip_code billing_address_city].freeze
 
   # == Associations ================================================================

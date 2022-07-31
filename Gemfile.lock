@@ -4,6 +4,12 @@ PATH
     dummy_payment (0.1.0)
       rails (>= 7.0.1)
 
+PATH
+  remote: payment_gateways/seki_payment
+  specs:
+    seki_payment (0.1.0)
+      rails (>= 7.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -394,6 +400,7 @@ DEPENDENCIES
   rubocop-rails (~> 2.13)
   ruby_parser
   schemacop (~> 3.0.11)
+  seki_payment!
   simple_form (~> 5.1.0)
   simplecov (~> 0.21.2)
   simplecov-lcov (~> 0.8.0)

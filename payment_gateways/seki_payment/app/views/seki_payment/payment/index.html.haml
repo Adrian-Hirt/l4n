@@ -1,0 +1,32 @@
+%h1 Seki Payment Gateway
+
+.countdown{ data: { time: op.result[:valid_until], redirect: main_app.shop_cart_url } }
+  \-- minutes -- seconds left to submit the order
+
+Your total:
+= humanized_money_with_symbol(op.result[:total])
+%br
+%br
+After submitting the order, you will have 4 days to visit the VSETH Sekretariat and
+complete the payment.
+%br
+%br
+You will be able to either use the order ID to find the payment, or your username.
+%br
+%br
+The order ID is:
+= op.result[:real_order_id]
+%br
+%br
+You can also find the order in the orders tab in the shop.
+
+.buttons
+  %div{ style: 'display: inline-block;' }
+    = button_to 'Submit order', submit_order_path(order_id: op.result[:order_id]), data: { 'turbo-method' => :post }
+  %div{ style: 'display: inline-block;' }
+    = link_to 'Cancel', main_app.shop_cart_path, class: 'cancel-btn'
+
+:javascript
+  (function() {
+    setupCountdownTimer()
+  })();

@@ -14,6 +14,11 @@ module Operations::Shop::Order
         Queries::Order::FetchPaymentPendingExpired.run.each do |order|
           Operations::Shop::Order::CleanupSingleOrder.run order: order
         end
+
+        # Remove expired delayed payment pending orders
+        Queries::Order::FetchDelayedPaymentPendingExpired.run.each do |order|
+          Operations::Shop::Order::CleanupSingleOrder.run order: order
+        end
       end
     end
   end
