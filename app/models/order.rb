@@ -30,6 +30,7 @@ class Order < ApplicationRecord
   validates :payment_gateway_payment_id, length: { maximum: 255 }
 
   # == Hooks =======================================================================
+  before_destroy :check_if_deletable, prepend: true
 
   # == Scopes ======================================================================
 
@@ -59,4 +60,12 @@ class Order < ApplicationRecord
   end
 
   # == Private Methods =============================================================
+  private
+
+  def check_if_deletable
+    unless created? || payment_pending? || delayed_payment_pending?
+      errors.add(:base, _('Order|Cannot delete order with that status'))
+      throw :abort
+    end
+  end
 end
