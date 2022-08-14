@@ -64,6 +64,9 @@ gem 'money-rails', '~>1.12'
 # Background processing
 gem 'whenever', '~> 1.0.0', require: false
 
+# Tournaments
+gem 'tournament-system', '~> 2', require: 'tournament_system'
+
 # Development gems
 group :development do
   gem 'listen', '~> 3.2'
