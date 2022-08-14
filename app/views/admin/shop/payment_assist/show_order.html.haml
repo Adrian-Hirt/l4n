@@ -1,29 +1,20 @@
 .card
   .card-body
-    .row.pb-3.mb-2
-      .col-md-4
-        .text-muted= _('Order|Created at')
-        = l(model.created_at, format: :long)
-      .col-md-4
-        .text-muted= _('Order|Order items count')
-        = model.order_items.count
+    .row.pb-3.mb-2.border-bottom
       .col-md-4
         .text-muted= _('Order|User')
-        = model.user.username
+        = op.order.user.username
+      .col-md-4
+        .text-muted= _('Order|Total to pay')
+        %b= humanized_money_with_symbol(op.order.total)
+    .my-3= _('Order|Order details')
     .row.border-bottom.pb-3.mb-2
       .col-md-4
-        .text-muted= _('Order|Shipping address')
-        = "#{model.billing_address_first_name} #{model.billing_address_last_name}"
-        %br
-        = model.billing_address_street
-        %br
-        = "#{model.billing_address_zip_code} #{model.billing_address_city}"
-      .col-md-4
         .text-muted= _('Order|Payment gateway name')
-        = model.payment_gateway_name
+        = op.order.payment_gateway_name
       .col-md-4
         .text-muted= _('Order|Payment gateway payment id')
-        = model.payment_gateway_payment_id.presence || '-'
+        = op.order.payment_gateway_payment_id.presence || '-'
 
     .my-3= _('Order|Order items')
     %table.table.table-bordered
@@ -32,18 +23,20 @@
         %th= _('OrderItem|Quantity')
         %th= _('OrderItem|Price')
         %th= _('OrderItem|Total')
-      - model.order_items.each do |order_item|
+      - op.order.order_items.each do |order_item|
         %tr
           %td= order_item.product_name
           %td= order_item.quantity
           %td= humanized_money_with_symbol order_item.price
           %td= humanized_money_with_symbol order_item.total
-      - model.promotion_code_mappings.each do |code_matching|
+      - op.order.promotion_code_mappings.each do |code_matching|
         %tr
           %td{colspan: 3}= "#{_('Order|PromotionCode')} #{code_matching.promotion_code.promotion.name}"
           %td.text-success= humanized_money_with_symbol(-code_matching.applied_reduction)
       %tr.border-top
         %td{colspan: 3}= _('Order|Total')
-        %td= humanized_money_with_symbol(model.total)
+        %td= humanized_money_with_symbol(op.order.total)
     .border-top.pt-3
-      = delete_button model, href: cancel_delayed_payment_pending_admin_shop_order_path(model)
+      = simple_form_for op.order, url: admin_shop_payment_assist_order_paid_path(op.order), wrapper: :input_group do |f|
+        = f.input :payment_gateway_payment_id, label: _('PaymentAssist|Optional payment id'), placeholder: _('PaymentAssist|Optional payment id placeholder')
+        = f.save _('PaymentAssist|Order paid button')

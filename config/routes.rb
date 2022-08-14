@@ -176,6 +176,12 @@ Rails.application.routes.draw do
 
       # Promotion codes
       resources :promotion_codes, only: %i[destroy]
+
+      namespace :payment_assist do
+        get :/, action: :index
+        get '/:order_id', action: :show_order, as: :show_order
+        patch '/:order_id/order_paid', action: :order_paid, as: :order_paid
+      end
     end
 
     # LanParties and related stuff

@@ -9,6 +9,7 @@ module Operations::Admin::User
         opt :page_admin_permission
         opt :menu_items_admin_permission
         opt :shop_admin_permission
+        opt :payment_assist_admin_permission
         opt :system_admin_permission
       end
     end

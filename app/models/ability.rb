@@ -75,6 +75,9 @@ class Ability
     # User can access system settings
     can :manage, FeatureFlag if user.system_admin_permission?
 
+    # User can use the payment assist
+    can :use, :payment_assist
+
     # Shop permissions. For now, we group the models related to the shop
     # together, as we probably don't need a too fine-grained access control
     # for the shop, i.e. users that can create products can also see orders

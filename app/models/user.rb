@@ -19,6 +19,7 @@ class User < ApplicationRecord
     page_admin_permission
     menu_items_admin_permission
     shop_admin_permission
+    payment_assist_admin_permission
     system_admin_permission
   ].freeze
 

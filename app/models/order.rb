@@ -63,9 +63,9 @@ class Order < ApplicationRecord
   private
 
   def check_if_deletable
-    unless created? || payment_pending? || delayed_payment_pending?
-      errors.add(:base, _('Order|Cannot delete order with that status'))
-      throw :abort
-    end
+    return if created? || payment_pending? || delayed_payment_pending?
+
+    errors.add(:base, _('Order|Cannot delete order with that status'))
+    throw :abort
   end
 end
