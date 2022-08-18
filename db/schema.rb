@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_14_105725) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_18_181052) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -300,6 +300,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_14_105725) do
     t.index ["winner_id"], name: "index_tournament_matches_on_winner_id"
   end
 
+  create_table "tournament_phase_teams", force: :cascade do |t|
+    t.bigint "tournament_phase_id", null: false
+    t.bigint "tournament_team_id", null: false
+    t.integer "seed", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tournament_phase_id"], name: "index_tournament_phase_teams_on_tournament_phase_id"
+    t.index ["tournament_team_id"], name: "index_tournament_phase_teams_on_tournament_team_id"
+  end
+
   create_table "tournament_phases", force: :cascade do |t|
     t.bigint "tournament_id", null: false
     t.string "name", null: false
@@ -322,6 +332,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_14_105725) do
     t.bigint "tournament_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", null: false
+    t.string "name", null: false
     t.index ["tournament_id"], name: "index_tournament_teams_on_tournament_id"
   end
 
@@ -403,6 +415,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_14_105725) do
   add_foreign_key "tournament_matches", "tournament_teams", column: "away_team_id"
   add_foreign_key "tournament_matches", "tournament_teams", column: "home_team_id"
   add_foreign_key "tournament_matches", "tournament_teams", column: "winner_id"
+  add_foreign_key "tournament_phase_teams", "tournament_phases"
+  add_foreign_key "tournament_phase_teams", "tournament_teams"
   add_foreign_key "tournament_phases", "tournaments"
   add_foreign_key "tournament_rounds", "tournament_phases"
   add_foreign_key "tournament_teams", "tournaments"

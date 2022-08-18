@@ -5,6 +5,7 @@ class Tournament < ApplicationRecord
 
   # == Associations ================================================================
   has_many :phases, class_name: 'Tournament::Phase', dependent: :destroy
+  has_many :teams, dependent: :destroy
 
   # == Validations =================================================================
   validates :name, presence: true, length: { maximum: 255 }
