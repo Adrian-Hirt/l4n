@@ -1,0 +1,10 @@
+- if model.new_record?
+  - url = [:admin, model]
+- else
+  - url = admin_team_path(model)
+
+= simple_form_for model, url: url do |f|
+  .card-body
+    = f.input :name
+  .card-footer
+    = f.save

@@ -200,7 +200,12 @@ Rails.application.routes.draw do
     resources :tournaments, shallow: true do
       scope module: :tournaments do
         resources :phases
-        resources :teams, only: %i[show]
+        resources :teams, except: %i[show] do
+          member do
+            post :register_for_tournament
+            post :unregister_from_tournament
+          end
+        end
         resources :placements, only: %i[index]
         resources :matches, only: []
       end

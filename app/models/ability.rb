@@ -101,6 +101,7 @@ class Ability
     if FeatureFlag.enabled?(:lan_party)
       can :manage, Tournament
       can :manage, Tournament::Phase
+      can :manage, Tournament::Team
     end
 
     # User can access admin panel if the user has any

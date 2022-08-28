@@ -14,7 +14,7 @@ module Operations::Admin::Tournament::Team
           seed:             osparams.seed
         )
 
-        team.accepted!
+        team.seeded!
       end
     end
 

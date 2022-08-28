@@ -1,4 +1,4 @@
-module Operations::Tournament::Team
+module Operations::Admin::Tournament::Team
   class RegisterForTournament < RailsOps::Operation::Model::Load
     schema3 do
       int! :id, cast_str: true

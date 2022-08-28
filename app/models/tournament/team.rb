@@ -3,7 +3,7 @@ class Tournament::Team < ApplicationRecord
   enum status: {
     created:    'created',
     registered: 'registered',
-    accepted:   'accepted'
+    seeded:     'seeded'
   }
 
   # == Constants ===================================================================
