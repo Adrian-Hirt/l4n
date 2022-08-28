@@ -1,5 +1,5 @@
 module Operations::Tournament::Team
-  class RegisterForTournament < RailsOps::Operation::Model::Load
+  class UnregisterFromTournament < RailsOps::Operation::Model::Load
     schema3 do
       int! :id, cast_str: true
     end

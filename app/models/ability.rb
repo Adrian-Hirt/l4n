@@ -75,7 +75,7 @@ class Ability
     # User can access system settings
     can :manage, FeatureFlag if user.system_admin_permission?
 
-    # User can use the payment assist
+    # User can use the payment assist TODO: add permission check
     can :use, :payment_assist
 
     # Shop permissions. For now, we group the models related to the shop
@@ -95,6 +95,12 @@ class Ability
       can :manage, SeatCategory
       can :manage, SeatMap
       can %i[view destroy], Ticket
+    end
+
+    # For now, users can always use the tournament system
+    if FeatureFlag.enabled?(:lan_party)
+      can :manage, Tournament
+      can :manage, Tournament::Phase
     end
 
     # User can access admin panel if the user has any

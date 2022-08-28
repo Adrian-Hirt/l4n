@@ -3,8 +3,7 @@ class Tournament::Phase < ApplicationRecord
   enum tournament_mode: {
     swiss:              'swiss',
     single_elimination: 'single_elimination',
-    double_elimination: 'double_elimination',
-    round_robin:        'round_robin'
+    double_elimination: 'double_elimination'
   }
 
   # == Constants ===================================================================

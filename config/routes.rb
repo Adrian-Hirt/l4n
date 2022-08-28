@@ -196,6 +196,16 @@ Rails.application.routes.draw do
       resources :tickets, controller: 'lan_parties/tickets', only: %i[index]
     end
 
+    # Tournament system
+    resources :tournaments, shallow: true do
+      scope module: :tournaments do
+        resources :phases
+        resources :teams, only: %i[show]
+        resources :placements, only: %i[index]
+        resources :matches, only: []
+      end
+    end
+
     # Markdown preview endpoint
     post :markdown_preview, to: 'markdown#preview'
   end

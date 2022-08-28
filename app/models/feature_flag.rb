@@ -9,6 +9,7 @@ class FeatureFlag < ApplicationRecord
     user_registration
     shop
     lan_party
+    tournaments
   ].freeze
 
   # == Associations ================================================================

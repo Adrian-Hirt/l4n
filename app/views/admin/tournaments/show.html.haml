@@ -1,0 +1,28 @@
+.row
+  .col-md-6.mb-4.mb-md-0
+    .card.mb-4
+      .card-header
+        = model.name
+      .card-body
+        TODO: General infos
+
+    .card
+      .card-header.d-flex.justify-content-between.align-items-center
+        = _('Tournament|Structure')
+        = new_button Tournament::Phase, href: new_admin_tournament_phase_path(model), size: :sm, icon_only: true, color: :light
+      .card-body
+        - model.phases.order(:phase_number).each do |phase|
+          .d-flex.justify-content-between.align-items-center
+            %div
+              = phase.name
+              .small.text-muted= phase.tournament_mode
+            %div
+              = show_button phase, size: :sm, icon_only: true, href: admin_phase_path(phase)
+              = edit_button phase, size: :sm, icon_only: true, href: edit_admin_phase_path(phase)
+
+  .col-md-6
+    .card
+      .card-header
+        = _('Tournament|Participants')
+      .card-body
+        todo: participants

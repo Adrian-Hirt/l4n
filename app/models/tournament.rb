@@ -9,7 +9,7 @@ class Tournament < ApplicationRecord
 
   # == Validations =================================================================
   validates :name, presence: true, length: { maximum: 255 }
-  validates :team_size, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :team_size, presence: true, numericality: { greater_than: 0 }
 
   # == Hooks =======================================================================
 
