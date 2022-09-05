@@ -1,0 +1,15 @@
+.col-md-6.mb-4.mb-md-0
+  .card.mb-4
+    .card-header
+      = _('Phase|Standings')
+    .card-body
+      - if model.swiss?
+        .d-flex.align-items-center.py-1.justify-content-between
+          %div.fw-bold= _('Team|Name')
+          %div.fw-bold= _('Team|Score')
+        - model.teams.order(score: :desc, name: :asc).each do |team|
+          .d-flex.align-items-center.py-1.justify-content-between.border-top
+            %div= team.name
+            %div= team.score
+      - else
+        Other standings

@@ -7,7 +7,7 @@ export default class extends Controller {
     this.confirmed = false;
   }
 
-  confirmDestroy(event) {
+  confirmAction(event) {
     if(this.confirmed) {
       return true
     }

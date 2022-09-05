@@ -25,7 +25,7 @@ module TournamentDrivers
     # teams. We probably need to rank the teams by their score for
     # the swiss system.
     def ranked_teams
-      seeded_teams.to_a
+      @tournament_phase.teams.order(:score).to_a
     end
 
     def get_match_winner(match)
@@ -39,15 +39,8 @@ module TournamentDrivers
     # Here, we get the score for a team, which usually is needed
     # for swiss systems, as we want the stronger teams to play against
     # stronger teams, and weaker teams agains weaker teams
-    def get_team_score(_team)
-      # TODO: For swiss-system, we need to add the scores of teams.
-      # The scores are as follows:
-      #   * Win => 2 points
-      #   * Draw => 1 Point
-      #   * Loss => 0 Point
-      #   * Bye => 1 point
-      #   * Forfeited => 0 Points
-      0
+    def get_team_score(team)
+      team.score
     end
 
     def get_team_matches(team)
@@ -55,17 +48,26 @@ module TournamentDrivers
     end
 
     def build_match(home_team, away_team)
-      params = {
-        home_team: home_team,
-        away_team: away_team
-      }
+      ActiveRecord::Base.transaction do
+        params = {
+          home_team: home_team,
+          away_team: away_team
+        }
 
-      # If the away_team is nil, we have a bye match and
-      # the winner is automatically set to the home team.
-      # TODO: add bye points to the home_team for swiss.
-      params[:winner] = home_team if away_team.nil?
+        # If the away_team is nil, we have a bye match and
+        # the winner is automatically set to the home team.
+        if away_team.nil?
+          params[:winner] = home_team
 
-      @tournament_phase_round.matches.create!(params)
+          # We also add bye points to the home_team for swiss.
+          if @tournament_phase.swiss?
+            home_team.score += Tournament::Match::BYE_SCORE
+            home_team.save!
+          end
+        end
+
+        @tournament_phase_round.matches.create!(params)
+      end
     end
   end
 end

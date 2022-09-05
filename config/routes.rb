@@ -199,14 +199,20 @@ Rails.application.routes.draw do
     # Tournament system
     resources :tournaments, shallow: true do
       scope module: :tournaments do
-        resources :phases
+        resources :phases, except: %i[index] do
+          member do
+            post :generate_rounds
+            post :update_seeding
+            post :confirm_seeding
+            post :generate_next_round_matches
+          end
+        end
         resources :teams, except: %i[show] do
           member do
             post :register_for_tournament
             post :unregister_from_tournament
           end
         end
-        resources :placements, only: %i[index]
         resources :matches, only: []
       end
     end

@@ -3,6 +3,18 @@ class Tournament::Match < ApplicationRecord
 
   # == Constants ===================================================================
 
+  # Awarded scores for match results, the scores are as follows:
+  #   * Win => 2 points
+  #   * Draw => 1 Point
+  #   * Loss => 0 Point
+  #   * Bye => 1 point
+  #   * Forfeited => 0 Points
+  WIN_SCORE = 2
+  DRAW_SCORE = 1
+  LOSS_SCORE = 0
+  BYE_SCORE = 1
+  FORFEITED_SCORE = 0
+
   # == Associations ================================================================
 
   # == Validations =================================================================
@@ -18,6 +30,9 @@ class Tournament::Match < ApplicationRecord
   # == Class Methods ===============================================================
 
   # == Instance Methods ============================================================
+  def bye?
+    winner.present && away_team.blank?
+  end
 
   # == Private Methods =============================================================
 end

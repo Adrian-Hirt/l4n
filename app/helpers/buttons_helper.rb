@@ -9,7 +9,7 @@ module ButtonsHelper
   }.freeze
 
   # rubocop:disable Metrics/ParameterLists
-  def button(title, href, html: {}, btn_icon: nil, method: nil, disable_on_click: false, **opts)
+  def button(title, href, html: {}, btn_icon: nil, method: nil, disable_on_click: false, confirm: nil, **opts)
     options = get_options(opts)
     if btn_icon
       button_icon = icon btn_icon
@@ -20,6 +20,15 @@ module ButtonsHelper
     if disable_on_click
       data[:controller] = 'button'
       data[:action] = 'click->button#disable'
+    end
+    if confirm.present?
+      if confirm.is_a? String
+        data[:confirm] = confirm
+      else
+        data[:confirm] = _('Buttons|Confirm message')
+      end
+      data[:controller] = 'button'
+      data[:action] = 'click->button#confirmAction'
     end
     html[:data] ||= {}
     html[:data].merge!(data)
@@ -67,7 +76,7 @@ module ButtonsHelper
       data:   {
         confirm:    _("#{model.class.name}|Delete confirmation?"),
         controller: 'button',
-        action:     'click->button#confirmDestroy'
+        action:     'click->button#confirmAction'
       },
       method: :delete
     }

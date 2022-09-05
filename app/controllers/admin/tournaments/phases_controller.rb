@@ -3,7 +3,11 @@ module Admin
     class PhasesController < AdminController
       add_breadcrumb _('Admin|Tournaments'), :admin_tournaments_path
 
-      def index; end
+      def show
+        op Operations::Admin::Tournament::Phase::Load
+        add_breadcrumb model.tournament.name, admin_tournament_path(model.tournament)
+        add_breadcrumb "#{model.phase_number}. #{model.name}"
+      end
 
       def new
         op Operations::Admin::Tournament::Phase::CreateForTournament
@@ -50,6 +54,50 @@ module Admin
         # else
         #   # handle error case
         # end
+      end
+
+      def generate_rounds
+        if run Operations::Admin::Tournament::Phase::GenerateRounds
+          flash[:success] = _('Admin|Tournaments|Phase|Successfully generated rounds')
+        else
+          flash[:danger] = _('Admin|Tournaments|Phase|Generating rounds failed')
+        end
+      rescue NoTeamsPresent
+        flash[:danger] = _('Admin|Tournaments|Phase|Cannot generate rounds without any seedable teams')
+      rescue RoundsAlreadyGenerated
+        flash[:danger] = _('Admin|Tournaments|Phase|Rounds have already been generated')
+      ensure
+        redirect_to admin_phase_path(model)
+      end
+
+      def update_seeding
+        if run Operations::Admin::Tournament::Phase::UpdateSeeding
+          flash[:success] = _('Admin|Tournaments|Phase|Successfully updated seeding')
+        else
+          flash[:danger] = _('Admin|Tournaments|Phase|Failed to update seeding')
+        end
+        redirect_to admin_phase_path(model)
+      end
+
+      def confirm_seeding
+        if run Operations::Admin::Tournament::Phase::ConfirmSeeding
+          flash[:success] = _('Admin|Tournaments|Phase|Successfully confirmed seeding')
+        else
+          flash[:danger] = _('Admin|Tournaments|Phase|Failed to confirm seeding')
+        end
+        redirect_to admin_phase_path(model)
+      end
+
+      def generate_next_round_matches
+        if run Operations::Admin::Tournament::Phase::GenerateNextRoundMatches
+          flash[:success] = _('Admin|Tournaments|Phase|Successfully generated next round matches')
+        else
+          flash[:danger] = _('Admin|Tournaments|Phase|Failed to generate next round matches')
+        end
+      rescue Operations::Admin::Tournament::Phase::NotAllMatchesFinished
+        flash[:danger] = _('Admin|Tournaments|Phase|Please first finish all the matches of the current round')
+      ensure
+        redirect_to admin_phase_path(model)
       end
     end
   end

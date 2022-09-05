@@ -14,8 +14,13 @@
         - model.phases.order(:phase_number).each do |phase|
           .d-flex.justify-content-between.align-items-center
             %div
+              = phase.phase_number
+              \.
               = phase.name
-              .small.text-muted= phase.tournament_mode
+              .small.text-muted
+                = phase.tournament_mode
+                \|
+                = phase.status
             %div
               = show_button phase, size: :sm, icon_only: true, href: admin_phase_path(phase)
               = edit_button phase, size: :sm, icon_only: true, href: edit_admin_phase_path(phase)
