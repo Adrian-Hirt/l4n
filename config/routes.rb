@@ -213,7 +213,7 @@ Rails.application.routes.draw do
             post :unregister_from_tournament
           end
         end
-        resources :matches, only: []
+        resources :matches, only: %i[show update]
       end
     end
 

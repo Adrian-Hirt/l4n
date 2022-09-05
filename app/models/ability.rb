@@ -102,6 +102,7 @@ class Ability
       can :manage, Tournament
       can :manage, Tournament::Phase
       can :manage, Tournament::Team
+      can :manage, Tournament::Match
     end
 
     # User can access admin panel if the user has any
