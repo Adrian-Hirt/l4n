@@ -16,9 +16,9 @@ module Admin
         else
           flash[:danger] = _('Admin|Tournamens|Match|Update failed')
         end
-      rescue MatchNotInRunningPhase
+      rescue Operations::Admin::Tournament::Match::MatchNotInRunningPhase
         flash[:danger] = _('Admin|Tournamens|Match|Not in running phase')
-      rescue MatchNotInCurrentRound
+      rescue Operations::Admin::Tournament::Match::MatchNotInCurrentRound
         flash[:danger] = _('Admin|Tournamens|Match|Not in current round')
       ensure
         redirect_to admin_match_path(model)

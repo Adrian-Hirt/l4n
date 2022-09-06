@@ -35,7 +35,7 @@ module Operations::Admin::Tournament::Match
 
         super
 
-        new_winner = model.reload.winner
+        new_winner = model.reload.winner&.phase_teams&.find_by(tournament_phase_id: model.phase)
 
         if new_winner.present?
           new_winner.score += Tournament::Match::WIN_SCORE
@@ -47,7 +47,7 @@ module Operations::Admin::Tournament::Match
     private
 
     def previous_winner_from_db
-      @previous_winner_from_db ||= ::Tournament::Match.find_by(id: osparams.id).winner
+      @previous_winner_from_db ||= ::Tournament::Match.find_by(id: osparams.id).winner&.phase_teams&.find_by(tournament_phase_id: model.phase)
     end
   end
 

@@ -62,9 +62,9 @@ module Admin
         else
           flash[:danger] = _('Admin|Tournaments|Phase|Generating rounds failed')
         end
-      rescue NoTeamsPresent
+      rescue Operations::Admin::Tournament::Phase::NoTeamsPresent
         flash[:danger] = _('Admin|Tournaments|Phase|Cannot generate rounds without any seedable teams')
-      rescue RoundsAlreadyGenerated
+      rescue Operations::Admin::Tournament::Phase::RoundsAlreadyGenerated
         flash[:danger] = _('Admin|Tournaments|Phase|Rounds have already been generated')
       ensure
         redirect_to admin_phase_path(model)

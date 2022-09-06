@@ -40,7 +40,7 @@ module TournamentDrivers
     # for swiss systems, as we want the stronger teams to play against
     # stronger teams, and weaker teams agains weaker teams
     def get_team_score(team)
-      team.score
+      team.phase_teams.find_by(tournament_phase_id: @tournament_phase).score
     end
 
     def get_team_matches(team)
@@ -61,8 +61,9 @@ module TournamentDrivers
 
           # We also add bye points to the home_team for swiss.
           if @tournament_phase.swiss?
-            home_team.score += Tournament::Match::BYE_SCORE
-            home_team.save!
+            home_team_phase_team = home_team.phase_teams.find_by(tournament_phase_id: @tournament_phase)
+            home_team_phase_team.score += Tournament::Match::BYE_SCORE
+            home_team_phase_team.save!
           end
         end
 

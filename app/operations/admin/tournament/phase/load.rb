@@ -7,6 +7,8 @@ module Operations::Admin::Tournament::Phase
     model ::Tournament::Phase
 
     def min_swiss_rounds
+      return 0 if model.seedable_teams.none?
+
       TournamentSystem::Algorithm::Swiss.minimum_rounds(model.seedable_teams.count)
     end
   end

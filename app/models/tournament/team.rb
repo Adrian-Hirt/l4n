@@ -10,7 +10,7 @@ class Tournament::Team < ApplicationRecord
 
   # == Associations ================================================================
   belongs_to :tournament
-  has_many :phase_teams, class_name: 'Tournament::PhaseTeam', foreign_key: :tournament_phase_id, dependent: :destroy, inverse_of: :team
+  has_many :phase_teams, class_name: 'Tournament::PhaseTeam', foreign_key: :tournament_team_id, dependent: :destroy, inverse_of: :team
   has_many :phases, through: :phase_teams
 
   # == Validations =================================================================

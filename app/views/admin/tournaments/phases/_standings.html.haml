@@ -7,9 +7,9 @@
         .d-flex.align-items-center.py-1.justify-content-between
           %div.fw-bold= _('Team|Name')
           %div.fw-bold= _('Team|Score')
-        - model.teams.order(score: :desc, name: :asc).each do |team|
+        - model.phase_teams.order(score: :desc).includes(:team).each do |phase_team|
           .d-flex.align-items-center.py-1.justify-content-between.border-top
-            %div= team.name
-            %div= team.score
+            %div= phase_team.team.name
+            %div= phase_team.score
       - else
         Other standings
