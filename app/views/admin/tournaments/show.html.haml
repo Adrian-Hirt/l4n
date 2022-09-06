@@ -11,8 +11,8 @@
         = _('Tournament|Structure')
         = new_button Tournament::Phase, href: new_admin_tournament_phase_path(model), size: :sm, icon_only: true, color: :light
       .card-body
-        - model.phases.order(:phase_number).each do |phase|
-          .d-flex.justify-content-between.align-items-center
+        - model.phases.order(:phase_number).each_with_index do |phase, idx|
+          .d-flex.justify-content-between.align-items-center.py-1{ class: ('border-top' unless idx == 0) }
             %div
               = phase.phase_number
               \.

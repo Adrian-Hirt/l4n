@@ -29,6 +29,7 @@ class Tournament::Phase < ApplicationRecord
   validates :phase_number, presence: true, numericality: { greater_than: 0 }
   validates :tournament_mode, presence: true, inclusion: tournament_modes.keys
   validates :status, presence: true, inclusion: statuses.keys
+  validates :size, presence: true, numericality: { greater_than: 0 }, unless: :first_phase?
 
   # == Hooks =======================================================================
 
@@ -40,8 +41,8 @@ class Tournament::Phase < ApplicationRecord
   def generator_class
     if swiss?
       TournamentSystem::Swiss
-    elsif round_robin?
-      TournamentSystem::RoundRobin
+    # elsif round_robin?
+    #   TournamentSystem::RoundRobin
     elsif single_elimination?
       TournamentSystem::SingleElimination
     elsif double_elimination?
@@ -52,14 +53,13 @@ class Tournament::Phase < ApplicationRecord
   end
 
   def first_phase?
-    tournament.phases.order(:phase_number).first == self
+    tournament.phases.none? || tournament.phases.order(:phase_number).first == self
   end
 
   def previous_phase
     tournament.phases.where('phase_number < ?', phase_number).order(phase_number: :desc).first
   end
 
-  # rubocop:disable Style/EmptyElse
   def seedable_teams
     if first_phase?
       # If we're the first phase, we get all teams from the tournament which are in
@@ -68,11 +68,10 @@ class Tournament::Phase < ApplicationRecord
       tournament.teams.where(status: 'registered')
     else
       # Otherwise, we get all teams from the previous phase that qualified themselfes
-      # to move on to the next round.
-      # TODO
+      # to move on to the next round, and remove the already seeded teams from that
+      Queries::Team::FetchRankedWithScoreForPhaseFromPrevious.call(phase: self)
     end
   end
-  # rubocop:enable Style/EmptyElse
 
   def participating_teams
     seedable_teams + teams
@@ -88,6 +87,29 @@ class Tournament::Phase < ApplicationRecord
     return nil if completed?
 
     rounds.order(:round_number).find { |r| r.matches.none? }
+  end
+
+  def playing_and_dropped_out_teams
+    playing = []
+
+    if running?
+      relevant_matches = current_round.matches
+    else
+      relevant_matches = rounds.order(:round_number).last.matches
+    end
+
+    relevant_matches.each do |match|
+      if match.winner.present?
+        playing << match.winner
+      else
+        playing << match.home_team
+        playing << match.away_team
+      end
+    end
+
+    dropped_out = teams.to_a - playing.compact
+
+    [playing.compact.sort_by(&:name), dropped_out.sort_by(&:name)]
   end
 
   # == Private Methods =============================================================

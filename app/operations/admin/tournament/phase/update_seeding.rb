@@ -29,7 +29,7 @@ module Operations::Admin::Tournament::Phase
             seed:  osparams.seeding[:seed]
           )
 
-          team.seeded!
+          team.seeded! if model.first_phase?
         end
       else
         # Check if there is a team with the given seed, and if yes,
@@ -44,7 +44,7 @@ module Operations::Admin::Tournament::Phase
 
           found_phase_team.destroy!
 
-          team.registered!
+          team.registered! if model.first_phase?
         end
       end
     end
@@ -52,7 +52,7 @@ module Operations::Admin::Tournament::Phase
     private
 
     def team
-      model.seedable_teams.find_by(id: osparams.seeding[:team])
+      @team ||= model.seedable_teams.find_by(id: osparams.seeding[:team])
     end
   end
 end

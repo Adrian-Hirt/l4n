@@ -42,15 +42,15 @@ module Operations::Admin::Tournament::Phase
         # if the user entered any value.
         # If the user entered no value, just return the
         # min needed rounds.
-        calculated = TournamentSystem::Algorithm::Swiss.minimum_rounds(model.seedable_teams.count)
+        calculated = TournamentSystem::Algorithm::Swiss.minimum_rounds(model.seedable_teams.count(:all))
 
         if osparams.phase[:swiss_rounds].present?
           [calculated, osparams.phase[:swiss_rounds]].max
         else
           calculated
         end
-      elsif model.round_robin?
-        TournamentSystem::Algorithm::RoundRobin.total_rounds(model.seedable_teams.count)
+      # elsif model.round_robin?
+      #   TournamentSystem::Algorithm::RoundRobin.total_rounds(model.seedable_teams.count)
       elsif model.single_elimination?
         TournamentSystem::Algorithm::SingleBracket.total_rounds(model.seedable_teams.count)
       elsif model.double_elimination?

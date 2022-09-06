@@ -104,9 +104,9 @@ module Admin
 
       def complete
         if run Operations::Admin::Tournament::Phase::Complete
-          flash[:success] = _('Admin|Tournaments|Phase|Successfully generated next round matches')
+          flash[:success] = _('Admin|Tournaments|Phase|Successfully completed the phase')
         else
-          flash[:danger] = _('Admin|Tournaments|Phase|Failed to generate next round matches')
+          flash[:danger] = _('Admin|Tournaments|Phase|Failed to complete the phase')
         end
       rescue Operations::Admin::Tournament::Phase::WrongStatus
         flash[:danger] = _('Admin|Tournaments|Phase|Wrong status to complete the phase')

@@ -20,7 +20,7 @@
               = f.save _('Phase|Generate phases')
           - else
             -# Otherwise we just display the button to generate the phases
-            = button _('Phase|Generate phases'), generate_rounds_admin_phase_path(model), method: :post
+            = button _('Phase|Generate rounds'), generate_rounds_admin_phase_path(model), method: :post
         - elsif model.seeding?
           .small.text-muted= _('Phase|Number of rounds')
           = model.rounds.count
@@ -55,5 +55,5 @@
 - if model.confirmed? || model.running? || model.completed?
   - if model.swiss?
     = render partial: 'swiss_rounds'
-  - else
-    = render partial: 'tournament_tree'
+  - elsif model.single_elimination?
+    = render partial: 'single_elimination_tree'

@@ -10,7 +10,7 @@ module TournamentDrivers
     # Here we should return all the matches, such that we can calculate
     # the next rounds
     def matches
-      @tournament_phase.matches
+      @tournament_phase.matches.order(:id)
     end
 
     # Just return all teams, usually this is just the teams that are

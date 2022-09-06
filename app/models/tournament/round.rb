@@ -21,5 +21,9 @@ class Tournament::Round < ApplicationRecord
     matches.all? { |match| match.winner.present? }
   end
 
+  def first_round?
+    self == phase.rounds.order(:round_number).first
+  end
+
   # == Private Methods =============================================================
 end

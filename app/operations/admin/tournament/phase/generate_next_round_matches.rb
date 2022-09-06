@@ -12,7 +12,7 @@ module Operations::Admin::Tournament::Phase
       # Ensure that we can only generate matches for the first round
       # if the status of the phase is "confirmed".
       # Otherwise, ensure that we're in the running status
-      if model.next_round == model.rounds.order(:round_number).first
+      if model.next_round.first_round?
         fail WrongStatus unless model.confirmed?
       else
         fail WrongStatus unless model.running?

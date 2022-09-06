@@ -30,4 +30,23 @@ module TournamentHelper
       _('Match|Tbd')
     end
   end
+
+  def round_matches_to_inverse_round_index_word(number_of_matches)
+    case number_of_matches
+    when 2
+      'one'
+    when 4
+      'two'
+    when 8
+      'three'
+    when 16
+      'four'
+    when 32
+      'five'
+    when 64
+      'six'
+    else
+      ''
+    end
+  end
 end

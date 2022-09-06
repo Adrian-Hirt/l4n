@@ -9,5 +9,7 @@
     = f.input :tournament_mode, as: :select,
                                 collection: Tournament::Phase::tournament_modes,
                                 include_blank: _('Form|Select|Blank')
+    - unless model.first_phase?
+      = f.input :size, required: true
   .card-footer
     = f.save

@@ -5,13 +5,13 @@ module Operations::Admin::Tournament::Phase
       hsh? :tournament_phase do
         str? :name
         str? :tournament_mode
+        int? :size, cast_str: true
       end
     end
 
     model ::Tournament::Phase
 
     def perform
-      model.tournament = tournament
       max_phase_number = tournament.phases.maximum(:phase_number) || 0
       model.phase_number = max_phase_number + 1
       super
@@ -19,6 +19,11 @@ module Operations::Admin::Tournament::Phase
 
     def tournament
       @tournament ||= ::Tournament.find(osparams.tournament_id)
+    end
+
+    def build_model
+      super
+      model.tournament = tournament
     end
   end
 end
