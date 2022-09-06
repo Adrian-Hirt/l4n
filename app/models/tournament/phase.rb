@@ -79,10 +79,14 @@ class Tournament::Phase < ApplicationRecord
   end
 
   def current_round
+    return nil if completed?
+
     rounds.order(round_number: :desc).find { |r| r.matches.any? }
   end
 
   def next_round
+    return nil if completed?
+
     rounds.order(:round_number).find { |r| r.matches.none? }
   end
 

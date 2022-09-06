@@ -21,7 +21,7 @@ module ButtonsHelper
       data[:controller] = 'button'
       data[:action] = 'click->button#disable'
     end
-    if confirm.present?
+    if confirm
       if confirm.is_a? String
         data[:confirm] = confirm
       else

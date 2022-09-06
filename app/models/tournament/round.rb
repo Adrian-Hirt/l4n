@@ -17,6 +17,9 @@ class Tournament::Round < ApplicationRecord
   # == Class Methods ===============================================================
 
   # == Instance Methods ============================================================
+  def completed?
+    matches.all? { |match| match.winner.present? }
+  end
 
   # == Private Methods =============================================================
 end

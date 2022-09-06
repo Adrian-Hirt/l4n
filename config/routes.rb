@@ -205,6 +205,7 @@ Rails.application.routes.draw do
             post :update_seeding
             post :confirm_seeding
             post :generate_next_round_matches
+            post :complete
           end
         end
         resources :teams, except: %i[show] do

@@ -20,9 +20,11 @@
             = _('Match|Tbd')
     .pt-3
       - if op.result_updateable?
+        - teams = [model.home_team]
+        - teams << model.away_team if model.away_team.present?
         = simple_form_for model, url: admin_match_path(model) do |f|
           = f.input :winner_id, as: :select,
-                                collection: [model.home_team, model.away_team],
+                                collection: teams,
                                 include_blank: _('Form|Select|Blank'),
                                 label: false
           = f.save _('Admin|Match|Submit result')
