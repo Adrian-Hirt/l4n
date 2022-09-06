@@ -5,11 +5,13 @@
 
 = simple_form_for model, url: url do |f|
   .card-body
+    = f.error :base, class: 'text-danger mb-3'
     = f.input :name
     = f.input :tournament_mode, as: :select,
                                 collection: Tournament::Phase::tournament_modes,
-                                include_blank: _('Form|Select|Blank')
+                                include_blank: _('Form|Select|Blank'),
+                                disabled: !model.created?
     - unless model.first_phase?
-      = f.input :size, required: true
+      = f.input :size, required: true, disabled: !model.created?
   .card-footer
     = f.save

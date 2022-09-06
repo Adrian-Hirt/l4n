@@ -5,6 +5,7 @@ module Operations::Admin::Tournament::Phase
       hsh? :tournament_phase do
         str? :name
         str? :tournament_mode
+        int? :size, cast_str: true
       end
     end
 

@@ -30,6 +30,8 @@ class Tournament::Phase < ApplicationRecord
   validates :tournament_mode, presence: true, inclusion: tournament_modes.keys
   validates :status, presence: true, inclusion: statuses.keys
   validates :size, presence: true, numericality: { greater_than: 0 }, unless: :first_phase?
+  validate :tournament_must_allow_another_phase, on: :create
+  validate :disallow_changes_when_not_created
 
   # == Hooks =======================================================================
 
@@ -53,7 +55,7 @@ class Tournament::Phase < ApplicationRecord
   end
 
   def first_phase?
-    tournament.phases.none? || tournament.phases.order(:phase_number).first == self
+    tournament.phases.none? || tournament.phases.order(:phase_number).first.id == id
   end
 
   def previous_phase
@@ -113,4 +115,19 @@ class Tournament::Phase < ApplicationRecord
   end
 
   # == Private Methods =============================================================
+  private
+
+  def tournament_must_allow_another_phase
+    return if tournament.blank? || tournament.another_phase_possible?
+
+    errors.add(:base, _('Phase|Tournament cannot have another phase'))
+  end
+
+  def disallow_changes_when_not_created
+    return if created?
+
+    errors.add(:tournament_mode, _('Phase|Cannot change mode when phase is in another state than created')) if tournament_mode_changed?
+
+    errors.add(:size, _('Phase|Cannot change size when phase is in another state than created')) if size_changed?
+  end
 end

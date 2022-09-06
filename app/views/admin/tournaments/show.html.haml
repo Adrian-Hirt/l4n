@@ -9,7 +9,10 @@
     .card
       .card-header.d-flex.justify-content-between.align-items-center
         = _('Tournament|Structure')
-        = new_button Tournament::Phase, href: new_admin_tournament_phase_path(model), size: :sm, icon_only: true, color: :light
+        - if model.another_phase_possible?
+          = new_button Tournament::Phase, href: new_admin_tournament_phase_path(model), size: :sm, icon_only: true, color: :light
+        - else
+          = button nil, nil, size: :sm, icon_only: true, color: :light, btn_icon: %i[fas fa-ban], disabled: true
       .card-body
         - model.phases.order(:phase_number).each_with_index do |phase, idx|
           .d-flex.justify-content-between.align-items-center.py-1{ class: ('border-top' unless idx == 0) }
