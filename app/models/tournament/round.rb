@@ -25,5 +25,21 @@ class Tournament::Round < ApplicationRecord
     self == phase.rounds.order(:round_number).first
   end
 
+  def last_round?
+    self == phase.rounds.order(:round_number).last
+  end
+
+  # A lower bracket only round only has matches in the lower
+  # bracket. This is the case if the round_number is odd and
+  # not 1 (the first round always only has matches in the upper
+  # bracket).
+  def lower_bracket_only?
+    round_number != 1 && round_number.odd?
+  end
+
+  def upper_bracket_only?
+    round_number == 1 || self == phase.rounds.order(:round_number).last
+  end
+
   # == Private Methods =============================================================
 end
