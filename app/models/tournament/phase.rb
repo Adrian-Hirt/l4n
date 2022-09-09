@@ -19,9 +19,11 @@ class Tournament::Phase < ApplicationRecord
   # == Associations ================================================================
   belongs_to :tournament
   has_many :rounds, class_name: 'Tournament::Round', foreign_key: :tournament_phase_id, dependent: :destroy, inverse_of: :phase
-  has_many :phase_teams, class_name: 'Tournament::PhaseTeam', foreign_key: :tournament_phase_id, dependent: :destroy, inverse_of: :phase
+  has_many :phase_teams, class_name:  'Tournament::PhaseTeam',
+                         foreign_key: :tournament_phase_id,
+                         dependent:   :destroy,
+                         inverse_of:  :phase
   has_many :teams, through: :phase_teams
-  has_many :seeded_teams, -> { order('tournament_phase_teams.seed') }, through: :phase_teams, source: :team
   has_many :matches, through: :rounds
 
   # == Validations =================================================================
@@ -105,12 +107,12 @@ class Tournament::Phase < ApplicationRecord
       if match.winner.present?
         playing << match.winner
       else
-        playing << match.home_team
-        playing << match.away_team
+        playing << match.home
+        playing << match.away
       end
     end
 
-    dropped_out = teams.to_a - playing.compact
+    dropped_out = phase_teams.to_a - playing.compact
 
     [playing.compact.sort_by(&:name), dropped_out.sort_by(&:name)]
   end

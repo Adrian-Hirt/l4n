@@ -3,9 +3,9 @@
     .card-header
       = _('Phase|Seeds')
     .card-body
-      - model.seeded_teams.each_with_index do |team, seed|
+      - model.phase_teams.includes(:team).each_with_index do |phase_team, seed|
         - seed += 1
         .d-flex.align-items-center.py-1{ class: ('border-top' unless seed == 1) }
           = seed
           \.
-          = team.name
+          = phase_team.team.name

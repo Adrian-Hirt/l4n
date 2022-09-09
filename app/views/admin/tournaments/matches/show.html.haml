@@ -2,26 +2,26 @@
   .card-body
     .match.d-flex.justify-content-around.align-items-center.border-bottom.py-3
       .opponent
-        %h2= model.home_team&.name.presence || _('Match|Tbd')
+        %h2= model.home&.team&.name.presence || _('Match|Tbd')
       .versus
         - if model.winner.present?
-          = format_match_score_large(model, model.home_team)
-          = format_match_score_large(model, model.away_team)
+          = format_match_score_large(model, model.home)
+          = format_match_score_large(model, model.away)
         - else
           = format_tbd_match_score_large
           = format_tbd_match_score_large
       .opponent
         %h2
-          - if model.away_team
-            =  model.away_team.name
+          - if model.away
+            =  model.away.team.name
           - elsif model.winner.present?
             = _('Match|Bye')
           - else
             = _('Match|Tbd')
     .pt-3
       - if op.result_updateable?
-        - teams = [model.home_team]
-        - teams << model.away_team if model.away_team.present?
+        - teams = [model.home]
+        - teams << model.away if model.away.present?
         = simple_form_for model, url: admin_match_path(model) do |f|
           = f.input :winner_id, as: :select,
                                 collection: teams,

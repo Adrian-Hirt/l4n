@@ -28,14 +28,14 @@ module Operations::Admin::Tournament::Match
       # winner (if present), and add them to the new winner (if present).
       # As such, we get the desired behaviour.
       ActiveRecord::Base.transaction do
-        if previous_winner_from_db.present?
-          previous_winner_from_db.score -= Tournament::Match::WIN_SCORE
-          previous_winner_from_db.save!
+        if previous_winner.present?
+          previous_winner.score -= Tournament::Match::WIN_SCORE
+          previous_winner.save!
         end
 
         super
 
-        new_winner = model.reload.winner&.phase_teams&.find_by(tournament_phase_id: model.phase)
+        new_winner = model.winner
 
         if new_winner.present?
           new_winner.score += Tournament::Match::WIN_SCORE
@@ -46,8 +46,8 @@ module Operations::Admin::Tournament::Match
 
     private
 
-    def previous_winner_from_db
-      @previous_winner_from_db ||= ::Tournament::Match.find_by(id: osparams.id).winner&.phase_teams&.find_by(tournament_phase_id: model.phase)
+    def previous_winner
+      @previous_winner ||= ::Tournament::PhaseTeam.find_by(id: model.winner_id_was)
     end
   end
 

@@ -36,7 +36,7 @@ module Operations::Admin::Tournament::Phase
         # un-seed the team
         found_phase_team = model.phase_teams.find_by(seed: osparams.seeding[:seed])
 
-        fail 'No team with that seed found' if found_phase_team.nil?
+        return if found_phase_team.blank?
 
         # Un-seed the team
         ActiveRecord::Base.transaction do
