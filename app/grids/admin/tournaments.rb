@@ -12,8 +12,7 @@ module Grids
       column :'datagrid-actions', html: true, header: false do |tournament|
         tag.div class: %i[datagrid-actions-wrapper] do
           safe_join([
-                      show_button(tournament, namespace: %i[admin], size: :sm, icon_only: true),
-                      edit_button(tournament, namespace: %i[admin], size: :sm, icon_only: true)
+                      show_button(tournament, namespace: %i[admin], size: :sm, icon_only: true)
                     ])
         end
       end

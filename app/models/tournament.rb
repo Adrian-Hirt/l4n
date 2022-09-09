@@ -10,6 +10,7 @@ class Tournament < ApplicationRecord
   # == Validations =================================================================
   validates :name, presence: true, length: { maximum: 255 }
   validates :team_size, presence: true, numericality: { greater_than: 0 }
+  validate :disallow_changes_when_teams_present
 
   # == Hooks =======================================================================
 
@@ -31,4 +32,11 @@ class Tournament < ApplicationRecord
   end
 
   # == Private Methods =============================================================
+  private
+
+  def disallow_changes_when_teams_present
+    return if teams.none?
+
+    errors.add(:team_size, _('Tournament|Cannot change the team size if teams are created')) if team_size_changed?
+  end
 end

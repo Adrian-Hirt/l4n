@@ -1,6 +1,6 @@
 = simple_form_for [:admin, model] do |f|
   .card-body
     = f.input :name
-    = f.input :team_size
+    = f.input :team_size, disabled: model.teams.any?
   .card-footer
     = f.save
