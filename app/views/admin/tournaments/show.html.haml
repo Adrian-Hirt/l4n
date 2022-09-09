@@ -27,6 +27,7 @@
             %div
               = show_button phase, size: :sm, icon_only: true, href: admin_phase_path(phase)
               = edit_button phase, size: :sm, icon_only: true, href: edit_admin_phase_path(phase)
+              = delete_button phase, size: :sm, icon_only: true, href: admin_phase_path(phase), disabled: !phase.deletable?
 
   .col-md-6
     .card

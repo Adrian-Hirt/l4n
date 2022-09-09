@@ -34,6 +34,7 @@ class Tournament::Phase < ApplicationRecord
   validate :disallow_changes_when_not_created
 
   # == Hooks =======================================================================
+  before_destroy :check_if_deletable
 
   # == Scopes ======================================================================
 
@@ -114,6 +115,10 @@ class Tournament::Phase < ApplicationRecord
     [playing.compact.sort_by(&:name), dropped_out.sort_by(&:name)]
   end
 
+  def deletable?
+    created? && first_phase?
+  end
+
   # == Private Methods =============================================================
   private
 
@@ -129,5 +134,9 @@ class Tournament::Phase < ApplicationRecord
     errors.add(:tournament_mode, _('Phase|Cannot change mode when phase is in another state than created')) if tournament_mode_changed?
 
     errors.add(:size, _('Phase|Cannot change size when phase is in another state than created')) if size_changed?
+  end
+
+  def check_if_deletable
+    throw :abort unless deletable?
   end
 end

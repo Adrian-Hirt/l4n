@@ -116,3 +116,4 @@ Naming/VariableNumber:
 Metrics/ClassLength:
   Exclude:
     - test/**/*
+  Max: 150
