@@ -19,7 +19,7 @@ module Admin
     def create
       if run Operations::Admin::Tournament::Create
         flash[:success] = _('Admin|Tournament|Successfully created')
-        redirect_to admin_tournaments_path
+        redirect_to admin_tournament_path(model)
       else
         add_breadcrumb _('Admin|Tournament|New')
         flash[:danger] = _('Admin|Tournament|Create failed')
