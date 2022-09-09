@@ -22,8 +22,11 @@ class Tournament::Match < ApplicationRecord
   belongs_to :winner, class_name: 'Tournament::PhaseTeam', optional: true
 
   delegate :phase, to: :round
+  delegate :tournament, to: :phase
 
   # == Validations =================================================================
+  validates :draw, inclusion: [true, false]
+  validates :draw, absence: true, if: -> { winner.present? }
 
   # == Hooks =======================================================================
 
@@ -33,7 +36,11 @@ class Tournament::Match < ApplicationRecord
 
   # == Instance Methods ============================================================
   def bye?
-    winner.present && away_team.blank?
+    winner.present && away.blank?
+  end
+
+  def result_updateable?
+    round == phase.current_round && away.present?
   end
 
   # == Private Methods =============================================================

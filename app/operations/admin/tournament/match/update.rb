@@ -3,7 +3,8 @@ module Operations::Admin::Tournament::Match
     schema3 do
       int? :id, cast_str: true
       hsh? :tournament_match do
-        str? :winner_id
+        int? :winner_id, cast_str: true
+        boo? :draw, cast_str: true
       end
     end
 
@@ -28,7 +29,13 @@ module Operations::Admin::Tournament::Match
       # winner (if present), and add them to the new winner (if present).
       # As such, we get the desired behaviour.
       ActiveRecord::Base.transaction do
-        if previous_winner.present?
+        if model.draw_was
+          previous_home.score -= Tournament::Match::DRAW_SCORE
+          previous_home.save!
+
+          previous_away.score -= Tournament::Match::DRAW_SCORE
+          previous_away.save!
+        elsif previous_winner.present?
           previous_winner.score -= Tournament::Match::WIN_SCORE
           previous_winner.save!
         end
@@ -37,7 +44,13 @@ module Operations::Admin::Tournament::Match
 
         new_winner = model.winner
 
-        if new_winner.present?
+        if model.draw?
+          model.home.score += Tournament::Match::DRAW_SCORE
+          model.home.save!
+
+          model.away.score += Tournament::Match::DRAW_SCORE
+          model.away.save!
+        elsif new_winner.present?
           new_winner.score += Tournament::Match::WIN_SCORE
           new_winner.save!
         end
@@ -48,6 +61,14 @@ module Operations::Admin::Tournament::Match
 
     def previous_winner
       @previous_winner ||= ::Tournament::PhaseTeam.find_by(id: model.winner_id_was)
+    end
+
+    def previous_home
+      @previous_home ||= ::Tournament::PhaseTeam.find_by(id: model.home_id_was)
+    end
+
+    def previous_away
+      @previous_away ||= ::Tournament::PhaseTeam.find_by(id: model.away_id_was)
     end
   end
 

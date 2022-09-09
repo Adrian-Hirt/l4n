@@ -4,12 +4,8 @@
       .opponent
         %h2= model.home&.team&.name.presence || _('Match|Tbd')
       .versus
-        - if model.winner.present?
-          = format_match_score_large(model, model.home)
-          = format_match_score_large(model, model.away)
-        - else
-          = format_tbd_match_score_large
-          = format_tbd_match_score_large
+        = format_match_score_large(model, model.home)
+        = format_match_score_large(model, model.away)
       .opponent
         %h2
           - if model.away
@@ -19,14 +15,16 @@
           - else
             = _('Match|Tbd')
     .pt-3
-      - if op.result_updateable?
-        - teams = [model.home]
-        - teams << model.away if model.away.present?
+      - if model.result_updateable?
+        - teams = [model.home, model.away]
+
         = simple_form_for model, url: admin_match_path(model) do |f|
           = f.input :winner_id, as: :select,
                                 collection: teams,
                                 include_blank: _('Form|Select|Blank'),
                                 label: false
+          - if model.phase.swiss?
+            = f.input :draw, input_html: { class: 'no-validation' }
           = f.save _('Admin|Match|Submit result')
       - else
         = _('Admin|Match|Not updateable hint')

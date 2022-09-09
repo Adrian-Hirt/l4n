@@ -20,7 +20,7 @@ module Operations::Admin::Tournament::Phase
 
       # Ensure we can only generate matches for the next round if
       # all matches of the current round are finished
-      fail NotAllMatchesFinished if model.current_round&.matches&.any? { |match| match.winner.nil? }
+      fail NotAllMatchesFinished unless model.current_round.completed?
     end
 
     def perform

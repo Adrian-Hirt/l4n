@@ -5,9 +5,5 @@ module Operations::Admin::Tournament::Match
     end
 
     model ::Tournament::Match
-
-    def result_updateable?
-      model.round == model.phase.current_round && model.away.present?
-    end
   end
 end
