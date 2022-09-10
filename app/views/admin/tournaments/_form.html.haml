@@ -13,5 +13,6 @@
                               collection: [[_('Tournament|Team participants'), false], [_('Tournament|Singleplayer participants'), true]],
                               input_html: { class: 'no-validation' }
     = f.input :team_size, disabled: model.teams.any?
+    = f.input :status, collection: Tournament::statuses, include_blank: false
   .card-footer
     = f.save

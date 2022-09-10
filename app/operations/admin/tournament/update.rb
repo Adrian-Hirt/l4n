@@ -7,6 +7,7 @@ module Operations::Admin::Tournament
         obj? :team_size
         obj? :max_number_of_participants
         obj? :singleplayer
+        obj? :status
       end
     end
 
