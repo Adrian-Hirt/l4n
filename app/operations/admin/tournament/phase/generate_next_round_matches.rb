@@ -16,11 +16,11 @@ module Operations::Admin::Tournament::Phase
         fail WrongStatus unless model.confirmed?
       else
         fail WrongStatus unless model.running?
-      end
 
-      # Ensure we can only generate matches for the next round if
-      # all matches of the current round are finished
-      fail NotAllMatchesFinished unless model.current_round.completed?
+        # Ensure we can only generate matches for the next round if
+        # all matches of the current round are finished
+        fail NotAllMatchesFinished unless model.current_round.completed?
+      end
     end
 
     def perform

@@ -22,7 +22,8 @@ class Tournament::Team < ApplicationRecord
   # == Hooks =======================================================================
 
   # == Scopes ======================================================================
-  scope :participating, -> { where.not(status: 'created') }
+  scope :in_tournament, -> { where.not(status: 'created') }
+  scope :not_in_tournament, -> { where(status: 'created') }
 
   # == Class Methods ===============================================================
 

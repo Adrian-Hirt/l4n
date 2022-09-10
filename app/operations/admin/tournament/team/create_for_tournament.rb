@@ -7,6 +7,13 @@ module Operations::Admin::Tournament::Team
       end
     end
 
+    policy do
+      # We need to check that there are no phases which are in
+      # another state than "created", if yes, we cannot register the
+      # team anymore.
+      fail TournamentHasOngoingPhases if tournament.ongoing_phases?
+    end
+
     model ::Tournament::Team
 
     def perform
@@ -19,4 +26,6 @@ module Operations::Admin::Tournament::Team
       @tournament ||= ::Tournament.find(osparams.tournament_id)
     end
   end
+
+  class TournamentHasOngoingPhases < StandardError; end
 end

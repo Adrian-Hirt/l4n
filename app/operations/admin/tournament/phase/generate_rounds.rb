@@ -18,6 +18,9 @@ module Operations::Admin::Tournament::Phase
 
       # We can only generate rounds if the phase is in the "created" status
       fail WrongStatus unless model.created?
+
+      # We cannot do this if the registration is open
+      fail RegistrationStillOpen if model.tournament.registration_open?
     end
 
     def perform
@@ -64,4 +67,5 @@ module Operations::Admin::Tournament::Phase
   class NoTeamsPresent < StandardError; end
   class RoundsAlreadyGenerated < StandardError; end
   class WrongStatus < StandardError; end
+  class RegistrationStillOpen < StandardError; end
 end

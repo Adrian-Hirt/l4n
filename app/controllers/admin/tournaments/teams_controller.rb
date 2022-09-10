@@ -21,6 +21,9 @@ module Admin
           flash[:danger] = _('Admin|Tournamens|Team|Create failed')
           render :new, status: :unprocessable_entity
         end
+      rescue Operations::Admin::Tournament::Team::TournamentHasOngoingPhases
+        flash[:danger] = _('Admin|Tournaments|Team|No new teams can be created')
+        redirect_to admin_tournament_path(op.tournament)
       end
 
       def edit
@@ -47,8 +50,12 @@ module Admin
         else
           flash[:danger] = _('Admin|Tournamens|Team|Registering for the tournament failed')
         end
-      rescue Operations::Admin::Tournament::Team::AlreadyRegistered
-        flash[:danger] = _('Admin|Tournamens|Team|Team is already registered for the tournament')
+      rescue Operations::Admin::Tournament::Team::CannotBeRegistered
+        flash[:danger] = _('Admin|Tournamens|Team|Team cannot be registered as it has the wrong status')
+      rescue Operations::Admin::Tournament::Team::TournamentIsFull
+        flash[:danger] = _('Admin|Tournamens|The tournament is full')
+      rescue Operations::Admin::Tournament::Team::TournamentHasOngoingPhases
+        flash[:danger] = _('Admin|Tournamens|The tournament has ongoing phases')
       ensure
         redirect_to admin_tournament_path(model.tournament)
       end
@@ -63,6 +70,8 @@ module Admin
         flash[:danger] = _('Admin|Tournamens|Team|Team is not registered for the tournament')
       rescue Operations::Admin::Tournament::Team::AlreadySeeded
         flash[:danger] = _('Admin|Tournamens|Team|Team is already seeded')
+      rescue Operations::Admin::Tournament::Team::TournamentHasOngoingPhases
+        flash[:danger] = _('Admin|Tournamens|The tournament has ongoing phases')
       ensure
         redirect_to admin_tournament_path(model.tournament)
       end

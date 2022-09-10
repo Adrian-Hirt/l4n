@@ -53,5 +53,15 @@ module Admin
       #   # handle error case
       # end
     end
+
+    def toggle_registration
+      if run Operations::Admin::Tournament::ToggleRegistration
+        flash[:success] = _('Admin|Tournament|Successfully toggled registration')
+      else
+        flash[:danger] = _('Admin|Tournament|Could not toggle registration')
+      end
+
+      redirect_to admin_tournament_path(model)
+    end
   end
 end

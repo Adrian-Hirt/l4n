@@ -65,6 +65,8 @@ module Admin
         flash[:danger] = _('Admin|Tournaments|Phase|Cannot generate rounds without any seedable teams')
       rescue Operations::Admin::Tournament::Phase::RoundsAlreadyGenerated
         flash[:danger] = _('Admin|Tournaments|Phase|Rounds have already been generated')
+      rescue Operations::Admin::Tournament::Phase::RegistrationStillOpen
+        flash[:danger] = _('Admin|Tournaments|Phase|Please close the registration before generating rounds')
       ensure
         redirect_to admin_phase_path(model)
       end

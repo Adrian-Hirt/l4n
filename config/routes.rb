@@ -198,6 +198,9 @@ Rails.application.routes.draw do
 
     # Tournament system
     resources :tournaments, shallow: true do
+      member do
+        post :toggle_registration
+      end
       scope module: :tournaments do
         resources :phases, except: %i[index] do
           member do

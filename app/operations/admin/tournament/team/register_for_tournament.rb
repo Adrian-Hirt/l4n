@@ -7,7 +7,14 @@ module Operations::Admin::Tournament::Team
     model ::Tournament::Team
 
     policy do
-      fail AlreadyRegistered if model.registered?
+      fail CannotBeRegistered unless model.created?
+
+      # We need to check that there are no phases which are in
+      # another state than "created", if yes, we cannot register the
+      # team anymore.
+      fail TournamentHasOngoingPhases if model.tournament.ongoing_phases?
+
+      fail TournamentIsFull if model.tournament.teams_full?
 
       # TODO: check that enough players registered
     end
@@ -17,5 +24,7 @@ module Operations::Admin::Tournament::Team
     end
   end
 
-  class AlreadyRegistered < StandardError; end
+  class CannotBeRegistered < StandardError; end
+  class TournamentIsFull < StandardError; end
+  class TournamentHasOngoingPhases < StandardError; end
 end

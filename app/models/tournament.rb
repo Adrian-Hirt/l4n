@@ -1,9 +1,9 @@
 class Tournament < ApplicationRecord
   # == Attributes ==================================================================
   enum status: {
-    draft: 'draft',
+    draft:     'draft',
     published: 'published',
-    archived: 'archived'
+    archived:  'archived'
   }
 
   # == Constants ===================================================================
@@ -21,7 +21,7 @@ class Tournament < ApplicationRecord
   validates_boolean :singleplayer
   validates :max_number_of_participants, presence: true
   validate :disallow_changes_when_teams_present
-  validate :max_number_of_participants_larger_than_participating_teams
+  validate :max_number_of_participants_larger_than_in_tournament_teams
   # validate :disallow_changes_unless_created
 
   # == Hooks =======================================================================
@@ -43,6 +43,14 @@ class Tournament < ApplicationRecord
     previous_round.swiss? # || previous_round.round_robin?
   end
 
+  def teams_full?
+    teams.in_tournament.count >= max_number_of_participants
+  end
+
+  def ongoing_phases?
+    phases.any? { |phase| !phase.created? }
+  end
+
   # == Private Methods =============================================================
   private
 
@@ -54,13 +62,13 @@ class Tournament < ApplicationRecord
     errors.add(:singleplayer, _('Tournament|Cannot be changed if teams are present')) if singleplayer_changed?
   end
 
-  def max_number_of_participants_larger_than_participating_teams
+  def max_number_of_participants_larger_than_in_tournament_teams
     # If we have some teams, the number must be larger than the current number of
-    # participating teams. Otherwise, it just needs to be larger than 0.
-    if teams.participating.none? && max_number_of_participants <= 0
+    # in_tournament teams. Otherwise, it just needs to be larger than 0.
+    if teams.in_tournament.none? && max_number_of_participants <= 0
       errors.add(:max_number_of_participants, _('must be larger than 0'))
-    elsif max_number_of_participants < teams.participating.count
-      errors.add(:max_number_of_participants, _('must be larger or equal than the number of teams (currently %{number})') % { number: teams.participating.count })
+    elsif max_number_of_participants < teams.in_tournament.count
+      errors.add(:max_number_of_participants, format(_('must be larger or equal than the number of teams (currently %{number})'), number: teams.in_tournament.count))
     end
   end
 end
