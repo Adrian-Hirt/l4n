@@ -20,7 +20,7 @@
           = _('Tournament|Team size')
           .small.text-muted= model.team_size
 
-    .card
+    .card.mb-4
       .card-header.d-flex.justify-content-between.align-items-center
         = _('Tournament|Structure')
         - if model.another_phase_possible?
@@ -28,20 +28,36 @@
         - else
           = button nil, nil, size: :sm, icon_only: true, color: :light, btn_icon: %i[fas fa-ban], disabled: true
       .card-body
-        - model.phases.order(:phase_number).each_with_index do |phase, idx|
-          .d-flex.justify-content-between.align-items-center.py-1{ class: ('border-top' unless idx == 0) }
-            %div
-              = phase.phase_number
-              \.
-              = phase.name
-              .small.text-muted
-                = phase.tournament_mode
-                \|
-                = phase.status
-            %div
-              = show_button phase, size: :sm, icon_only: true, href: admin_phase_path(phase)
-              = edit_button phase, size: :sm, icon_only: true, href: edit_admin_phase_path(phase)
-              = delete_button phase, size: :sm, icon_only: true, href: admin_phase_path(phase), disabled: !phase.deletable?
+        - if model.phases.any?
+          - model.phases.order(:phase_number).each_with_index do |phase, idx|
+            .d-flex.justify-content-between.align-items-center.py-1{ class: ('border-top' unless idx == 0) }
+              %div
+                = phase.phase_number
+                \.
+                = phase.name
+                .small.text-muted
+                  = phase.tournament_mode
+                  \|
+                  = phase.status
+              %div
+                = show_button phase, size: :sm, icon_only: true, href: admin_phase_path(phase)
+                = edit_button phase, size: :sm, icon_only: true, href: edit_admin_phase_path(phase)
+                = delete_button phase, size: :sm, icon_only: true, href: admin_phase_path(phase), disabled: !phase.deletable?
+        - else
+          = _('Tournament|No phases')
+    .card.mb-0.mb-md-4
+      .card-header
+        = _('Tournament|Files')
+      .card-body.p-0
+        %table.table.table-hover.mb-0
+          - if model.files.any?
+            - model.files.each do |file|
+              %tr
+                %td.ps-3= link_to file.filename, rails_blob_path(file, disposition: "inline"), target: :_blank
+                %td= number_to_human_size(file.blob.byte_size)
+          - else
+            %tr
+              %td.ps-3= _('Tournament|No files')
 
   .col-md-6
     = render partial: 'participants'

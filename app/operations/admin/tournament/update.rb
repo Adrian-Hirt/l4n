@@ -8,9 +8,21 @@ module Operations::Admin::Tournament
         obj? :max_number_of_participants
         obj? :singleplayer
         obj? :status
+        obj? :files
+        obj? :remove_files
       end
     end
 
-    model ::Tournament
+    model ::Tournament do
+      attribute :remove_files
+    end
+
+    def perform
+      super
+
+      osparams.tournament[:remove_files]&.each do |id_to_remove|
+        model.files.find(id_to_remove).purge
+      end
+    end
   end
 end

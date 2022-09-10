@@ -29,7 +29,7 @@ module Admin
 
     def edit
       op Operations::Admin::Tournament::Update
-      add_breadcrumb model.name
+      add_breadcrumb model.name, admin_tournament_path(model)
     end
 
     def update
@@ -37,7 +37,7 @@ module Admin
         flash[:success] = _('Admin|Tournament|Successfully updated')
         redirect_to admin_tournament_path(model)
       else
-        add_breadcrumb model.name
+        add_breadcrumb model.name, admin_tournament_path(model)
         flash[:danger] = _('Admin|Tournament|Update failed')
         render :new, status: :unprocessable_entity
       end
