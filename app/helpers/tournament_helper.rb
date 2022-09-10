@@ -37,6 +37,18 @@ module TournamentHelper
     end
   end
 
+  def format_registration_status(tournament)
+    if tournament.registration_open?
+      tag.div(class: 'd-inline-block bg-success text-white px-2') do
+        _('Tournament|Registration open')
+      end
+    else
+      tag.div(class: 'd-inline-block bg-danger text-white px-2') do
+        _('Tournament|Registration closed')
+      end
+    end
+  end
+
   def round_matches_to_inverse_round_index_word(number_of_matches)
     case number_of_matches
     when 2

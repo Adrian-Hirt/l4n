@@ -11,13 +11,8 @@
   .card-body
     - unless model.ongoing_phases?
       .d-flex.justify-content-between.align-items-center
-        - if model.registration_open?
-          .d-inline-block.bg-success.text-white.py-1.px-2= _('Tournament|Registration open')
-        - else
-          .d-inline-block.bg-danger.text-white.py-1.px-2= _('Tournament|Registration closed')
-
-        %div
-          = button _('Tournament|Toggle registration'), toggle_registration_admin_tournament_path(model), size: :sm, method: :post
+        = format_registration_status(model)
+        %div= button _('Tournament|Toggle registration'), toggle_registration_admin_tournament_path(model), size: :sm, method: :post
       %hr
     - if model.ongoing_phases?
       = _('Tournament|In tournament teams')
