@@ -16,7 +16,7 @@ class FeatureFlag < ApplicationRecord
 
   # == Validations ================================================================
   validates :key, presence: true, uniqueness: { case_sensitive: true }, inclusion: { in: AVAILABLE_FLAGS }
-  validates :enabled, inclusion: [true, false]
+  validates_boolean :enabled
 
   # == Hooks =======================================================================
 

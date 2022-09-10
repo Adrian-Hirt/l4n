@@ -6,4 +6,8 @@ class ApplicationRecord < ActiveRecord::Base
       validates "#{attribute}_#{locale}", validations
     end
   end
+
+  def self.validates_boolean(attribute, **options)
+    validates attribute, inclusion: [true, false], **options
+  end
 end

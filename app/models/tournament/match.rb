@@ -25,7 +25,7 @@ class Tournament::Match < ApplicationRecord
   delegate :tournament, to: :phase
 
   # == Validations =================================================================
-  validates :draw, inclusion: [true, false]
+  validates_boolean :draw
   validates :draw, absence: true, if: -> { winner.present? }
 
   # == Hooks =======================================================================

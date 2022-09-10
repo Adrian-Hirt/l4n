@@ -9,7 +9,7 @@ class Event < ApplicationRecord
 
   # == Validations =================================================================
   validates :title, presence: true, length: { maximum: 255 }
-  validates :published, inclusion: [true, false]
+  validates_boolean :published
   validates :location, length: { maximum: 255 }
   validate :minimum_one_date
 

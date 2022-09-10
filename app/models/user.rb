@@ -38,13 +38,13 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }, length: { maximum: 255 }
   validates :password, presence: true, length: { minimum: 10, maximum: 72 }, confirmation: true, if: -> { password.present? || new_record? || needs_password_set? }
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }
-  validates :use_dark_mode, inclusion: [true, false]
+  validates_boolean :use_dark_mode
   validates :website, length: { maximum: 255 }
   validates :avatar, size: { less_than: 5.megabytes, message: format(_('File is too large, max. allowed %{size}'), size: '5MB') }, content_type: %r{\Aimage/.*\z}
 
   # Permission booleans
   PERMISSION_FIELDS.each do |field|
-    validates field, inclusion: [true, false]
+    validates_boolean field
   end
 
   # == Hooks =======================================================================
