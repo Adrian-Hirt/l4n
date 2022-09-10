@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_10_130453) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_10_134528) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -352,6 +352,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_10_130453) do
     t.boolean "registration_open", default: false, null: false
     t.integer "max_number_of_participants", default: 0, null: false
     t.boolean "singleplayer", default: false, null: false
+    t.bigint "lan_party_id"
+    t.text "description"
+    t.index ["lan_party_id"], name: "index_tournaments_on_lan_party_id"
   end
 
   create_table "user_addresses", force: :cascade do |t|

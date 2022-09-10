@@ -10,6 +10,8 @@ module Operations::Admin::Tournament
         obj? :status
         obj? :files
         obj? :remove_files
+        obj? :lan_party_id
+        obj? :description
       end
     end
 

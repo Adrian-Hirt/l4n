@@ -8,6 +8,8 @@ module Operations::Admin::Tournament
         obj? :singleplayer
         obj? :status
         obj? :files
+        obj? :lan_party_id
+        obj? :description
       end
     end
 

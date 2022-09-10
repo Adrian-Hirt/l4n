@@ -12,6 +12,7 @@ class Tournament < ApplicationRecord
   has_many :phases, class_name: 'Tournament::Phase', dependent: :destroy
   has_many :teams, dependent: :destroy
   has_many_attached :files
+  belongs_to :lan_party, optional: true
 
   # == Validations =================================================================
   validates :name, presence: true, length: { maximum: 255 }
@@ -23,7 +24,6 @@ class Tournament < ApplicationRecord
   validates :max_number_of_participants, presence: true
   validate :disallow_changes_when_teams_present
   validate :max_number_of_participants_larger_than_in_tournament_teams
-  # validate :disallow_changes_unless_created
 
   # == Hooks =======================================================================
 

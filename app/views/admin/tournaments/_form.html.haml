@@ -1,7 +1,10 @@
 = simple_form_for [:admin, model] do |f|
   .card-body
-    = f.input :name
-    = f.input :max_number_of_participants
+    .row
+      .col-md-6
+        = f.input :name
+      .col-md-6
+        = f.input :max_number_of_participants
     - if model.teams.any?
       .mb-3
         = f.label :singleplayer, label: _('Tournament|Participant type')
@@ -13,7 +16,12 @@
                               collection: [[_('Tournament|Team participants'), false], [_('Tournament|Singleplayer participants'), true]],
                               input_html: { class: 'no-validation' }
     = f.input :team_size, disabled: model.teams.any?
-    = f.input :status, collection: Tournament::statuses, include_blank: false
+
+    .row
+      .col-md-6
+        = f.input :status, collection: Tournament::statuses, include_blank: false
+      .col-md-6
+        = f.input :lan_party_id, collection: LanParty.order(:name), include_blank: _('Form|Select|Blank')
 
 
     -# -- Files inputs -------------------------------------------------------------
@@ -35,5 +43,8 @@
               .form-check
                 = f.check_box :remove_files, { multiple: true }, file.id, nil
                 = f.label :remove_files, _('Tournament|Remove this file'), for: "tournament_remove_files_#{file.id}"
+
+    -# -- Description input --------------------------------------------------------
+    = f.markdown :description, preview_url: admin_markdown_preview_path
   .card-footer
     = f.save
