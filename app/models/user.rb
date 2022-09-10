@@ -20,6 +20,8 @@ class User < ApplicationRecord
     menu_items_admin_permission
     shop_admin_permission
     payment_assist_admin_permission
+    lan_party_admin_permission
+    tournament_admin_permission
     system_admin_permission
   ].freeze
 

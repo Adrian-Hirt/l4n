@@ -90,15 +90,18 @@ class Ability
       can :manage, Order
     end
 
-    if FeatureFlag.enabled?(:lan_party)
+    # Lan party permissions. For now we don't use fine-grained permissions,
+    # and just allow a lan party admin to do everything.
+    if user.lan_party_admin_permission && FeatureFlag.enabled?(:lan_party)
       can :manage, LanParty
       can :manage, SeatCategory
       can :manage, SeatMap
       can %i[view destroy], Ticket
     end
 
-    # For now, users can always use the tournament system
-    if FeatureFlag.enabled?(:lan_party)
+    # Tournament system permissions. For now we don't use fine-grained permissions,
+    # and just allow a tournament admin to do everything.
+    if user.tournament_admin_permission? && FeatureFlag.enabled?(:tournaments)
       can :manage, Tournament
       can :manage, Tournament::Phase
       can :manage, Tournament::Team
