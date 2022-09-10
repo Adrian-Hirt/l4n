@@ -4,8 +4,8 @@
       .opponent
         %h2= model.home&.team&.name.presence || _('Match|Tbd')
       .versus
-        = format_match_score_large(model, model.home)
-        = format_match_score_large(model, model.away)
+        = format_match_score_large(model, :home)
+        = format_match_score_large(model, :away)
       .opponent
         %h2
           - if model.away

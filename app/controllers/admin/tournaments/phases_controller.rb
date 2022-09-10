@@ -67,6 +67,8 @@ module Admin
         flash[:danger] = _('Admin|Tournaments|Phase|Rounds have already been generated')
       rescue Operations::Admin::Tournament::Phase::RegistrationStillOpen
         flash[:danger] = _('Admin|Tournaments|Phase|Please close the registration before generating rounds')
+      rescue Operations::Admin::Tournament::Phase::PreviousRoundStillOngoing
+        flash[:danger] = _('Admin|Tournaments|Phase|The previous round is still ongoing!')
       ensure
         redirect_to admin_phase_path(model)
       end

@@ -10,7 +10,6 @@
         .mb-1= model.tournament_mode
         .small.text-muted= _('Phase|Number of participating teams')
         .mb-1= model.participating_teams.count
-        %hr
         - if model.created?
           - if model.tournament.registration_open?
             = _('Admin|Tournaments|Phase|Please close the registration before generating rounds')
@@ -20,7 +19,7 @@
             = simple_form_for :phase, url: generate_rounds_admin_phase_path(model) do |f|
               = f.input :swiss_rounds, placeholder: _('Phase|Swiss Rounds|Leave blank to use minimum of %{rounds} rounds') % { rounds: op.min_swiss_rounds }
               = f.save _('Phase|Generate phases')
-          - else
+          - elsif model.first_phase? || model.previous_phase.completed?
             -# Otherwise we just display the button to generate the phases
             = button _('Phase|Generate rounds'), generate_rounds_admin_phase_path(model), method: :post
         - elsif model.seeding?

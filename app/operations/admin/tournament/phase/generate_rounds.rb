@@ -21,6 +21,9 @@ module Operations::Admin::Tournament::Phase
 
       # We cannot do this if the registration is open
       fail RegistrationStillOpen if model.tournament.registration_open?
+
+      # We can only do this if the previous round is completed
+      fail PreviousRoundStillOngoing unless model.first_phase? || model.previous_phase.completed?
     end
 
     def perform
@@ -68,4 +71,5 @@ module Operations::Admin::Tournament::Phase
   class RoundsAlreadyGenerated < StandardError; end
   class WrongStatus < StandardError; end
   class RegistrationStillOpen < StandardError; end
+  class PreviousRoundStillOngoing < StandardError; end
 end
