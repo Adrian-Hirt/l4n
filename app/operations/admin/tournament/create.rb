@@ -4,6 +4,8 @@ module Operations::Admin::Tournament
       hsh? :tournament do
         str? :name
         obj? :team_size
+        obj? :max_number_of_participants
+        obj? :singleplayer
       end
     end
 

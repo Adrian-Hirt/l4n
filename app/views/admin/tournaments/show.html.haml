@@ -7,7 +7,18 @@
       .card-header
         = model.name
       .card-body
-        TODO: General infos
+        .mb-2
+          = _('Tournament|Status')
+          .small.text-muted= model.status
+        .mb-2
+          = _('Tournament|Max number of participants')
+          .small.text-muted= model.max_number_of_participants
+        .mb-2
+          = _('Tournament|Participant type')
+          .small.text-muted= model.singleplayer? ? _('Tournament|Singleplayer participants') : _('Tournament|Team participants')
+        .mb-2
+          = _('Tournament|Team size')
+          .small.text-muted= model.team_size
 
     .card
       .card-header.d-flex.justify-content-between.align-items-center
@@ -39,6 +50,9 @@
         = new_button Tournament::Team, href: new_admin_tournament_team_path(model), size: :sm, icon_only: true, color: :light
       .card-body
         = _('Tournament|%{participants} participants') % { participants: model.teams.count }
+        %br
+        = _('Tournament|Registration open')
+        = model.registration_open?
         %hr
         - model.teams.order(:name).each do |team|
           .d-flex.justify-content-between.align-items-center.py-1{ class: ('border-top' unless team == model.teams.order(:name).first) }

@@ -1,6 +1,17 @@
 = simple_form_for [:admin, model] do |f|
   .card-body
     = f.input :name
+    = f.input :max_number_of_participants
+    - if model.teams.any?
+      .mb-3
+        = f.label :singleplayer, label: _('Tournament|Participant type')
+        %br
+        .text-muted= model.singleplayer? ? _('Tournament|Singleplayer participants') : _('Tournament|Team participants')
+    - else
+      = f.input :singleplayer, as: :radio_buttons,
+                              label: _('Tournament|Participant type'),
+                              collection: [[_('Tournament|Team participants'), false], [_('Tournament|Singleplayer participants'), true]],
+                              input_html: { class: 'no-validation' }
     = f.input :team_size, disabled: model.teams.any?
   .card-footer
     = f.save
