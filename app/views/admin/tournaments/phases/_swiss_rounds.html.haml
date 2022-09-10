@@ -20,12 +20,12 @@
                       .matchteam
                         = match.home.team.name
                       .matchscore
-                        = format_match_score(match,  match.home)
+                        = format_match_score(match,  :home)
                     .d-flex.justify-content-between
                       .matchteam
                         = match.away&.team&.name || _('Match|Bye')
                       .matchscore
-                        = format_match_score(match, match.away)
+                        = format_match_score(match, :away)
               - else
                 -# If we have not yet generated the matches for the round, we just take
                 -# the number of rounds from the first round and add "TBD" everywhere

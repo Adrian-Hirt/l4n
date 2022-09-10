@@ -27,6 +27,8 @@ class Tournament::Match < ApplicationRecord
   # == Validations =================================================================
   validates_boolean :draw
   validates :draw, absence: true, if: -> { winner.present? }
+  validates :home_score, presence: true, numericality: { greater_or_equal_to: 0 }
+  validates :away_score, presence: true, numericality: { greater_or_equal_to: 0 }
 
   # == Hooks =======================================================================
 

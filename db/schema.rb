@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_10_092714) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_10_122958) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -295,6 +295,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_10_092714) do
     t.bigint "away_id"
     t.bigint "winner_id"
     t.boolean "draw", default: false, null: false
+    t.integer "home_score", default: 0, null: false
+    t.integer "away_score", default: 0, null: false
     t.index ["away_id"], name: "index_tournament_matches_on_away_id"
     t.index ["home_id"], name: "index_tournament_matches_on_home_id"
     t.index ["tournament_round_id"], name: "index_tournament_matches_on_tournament_round_id"

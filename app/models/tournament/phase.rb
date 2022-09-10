@@ -34,6 +34,7 @@ class Tournament::Phase < ApplicationRecord
   validates :size, presence: true, numericality: { greater_than: 0 }, unless: :first_phase?
   validate :tournament_must_allow_another_phase, on: :create
   validate :disallow_changes_when_not_created
+  validate :size_smaller_than_previous_teams
 
   # == Hooks =======================================================================
   before_destroy :check_if_deletable
@@ -63,6 +64,10 @@ class Tournament::Phase < ApplicationRecord
 
   def previous_phase
     tournament.phases.where('phase_number < ?', phase_number).order(phase_number: :desc).first
+  end
+
+  def last_phase?
+    tournament.phases.order(:phase_number).last.id == id
   end
 
   def seedable_teams
@@ -118,7 +123,7 @@ class Tournament::Phase < ApplicationRecord
   end
 
   def deletable?
-    created? && first_phase?
+    created? && last_phase?
   end
 
   # == Private Methods =============================================================
@@ -140,5 +145,13 @@ class Tournament::Phase < ApplicationRecord
 
   def check_if_deletable
     throw :abort unless deletable?
+  end
+
+  def size_smaller_than_previous_teams
+    return if first_phase?
+
+    return if size.blank?
+
+    errors.add(:size, _('Phase|Size must be smaller or equal to the number of teams in the previous stage')) if size > previous_phase.teams.count
   end
 end

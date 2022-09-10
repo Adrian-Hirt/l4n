@@ -23,12 +23,12 @@
                       .matchteam
                         = match.home.name
                       .matchscore
-                        = format_match_score(match,  match.home)
+                        = format_match_score(match,  :home)
                     .d-flex.justify-content-between
                       .matchteam
                         = match.away&.name || _('Match|Bye')
                       .matchscore
-                        = format_match_score(match, match.away)
+                        = format_match_score(match, :away)
               - else
                 - number_of_matches.times do
                   .match

@@ -1,24 +1,34 @@
 module TournamentHelper
   def format_match_score(match, relevant_team)
+    show_score = match.away_score != 0 || match.home_score != 0
+
+    team = match.send(relevant_team)
+    score = match.send("#{relevant_team}_score").to_s
+
     if match.draw?
       tag.span(class: 'text-warning') do
-        'D'
+        show_score ? score : _('Match|Draw short')
       end
     elsif match.winner.blank?
       '&mdash;'.html_safe
-    elsif match.winner_id == relevant_team&.id
+    elsif match.winner_id == team&.id
       tag.span(class: 'text-success') do
-        'W'
+        show_score ? score : _('Match|Win short')
       end
     else
       tag.span(class: 'text-danger') do
-        'L'
+        show_score ? score : _('Match|Loss short')
       end
     end
   end
 
   def format_match_score_large(match, relevant_team)
-    if match.draw?
+    # rubocop:disable Lint/DuplicateBranch
+    if match.invalid?
+      tag.div(class: 'bg-secondary text-white result-score-box') do
+        _('Match|Tbd')
+      end
+    elsif match.draw?
       tag.div(class: 'bg-warning text-white result-score-box') do
         _('Match|Draw')
       end
@@ -35,6 +45,7 @@ module TournamentHelper
         _('Match|Loser')
       end
     end
+    # rubocop:enable Lint/DuplicateBranch
   end
 
   def format_registration_status(tournament)

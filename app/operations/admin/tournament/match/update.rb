@@ -5,6 +5,8 @@ module Operations::Admin::Tournament::Match
       hsh? :tournament_match do
         int? :winner_id, cast_str: true
         boo? :draw, cast_str: true
+        obj? :home_score
+        obj? :away_score
       end
     end
 

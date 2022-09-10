@@ -28,22 +28,22 @@
             .tournament-round
               - if round.matches.any?
                 - if round.upper_bracket_only?
-                  - relevant_matches = round.matches.order(:id).includes(:away_team, :home_team)
+                  - relevant_matches = round.matches.order(:id).includes(away: :team, home: :team)
                 - else
-                  - relevant_matches = round.matches.order(:id).includes(:away_team, :home_team).first(number_of_matches)
+                  - relevant_matches = round.matches.order(:id).includes(away: :team, home: :team).first(number_of_matches)
 
                 - relevant_matches.each do |match|
                   %a.match{href: admin_match_path(match)}
                     .d-flex.justify-content-between
                       .matchteam
-                        = match.home_team.name
+                        = match.home.name
                       .matchscore
-                        = format_match_score(match,  match.home_team)
+                        = format_match_score(match, :home)
                     .d-flex.justify-content-between
                       .matchteam
-                        = match.away_team&.name || _('Match|Bye')
+                        = match.away&.name || _('Match|Bye')
                       .matchscore
-                        = format_match_score(match, match.away_team)
+                        = format_match_score(match, :away)
               - else
                 - number_of_matches.times do
                   .match
@@ -88,22 +88,22 @@
             .tournament-round
               - if round.matches.any?
                 - if round.lower_bracket_only?
-                  - relevant_matches = round.matches.order(:id).includes(:away_team, :home_team)
+                  - relevant_matches = round.matches.order(:id).includes(away: :team, home: :team)
                 - else
-                  - relevant_matches = round.matches.order(:id).includes(:away_team, :home_team).last(number_of_matches)
+                  - relevant_matches = round.matches.order(:id).includes(away: :team, home: :team).last(number_of_matches)
 
                 - relevant_matches.each do |match|
                   %a.match{href: admin_match_path(match)}
                     .d-flex.justify-content-between
                       .matchteam
-                        = match.home_team.name
+                        = match.home.name
                       .matchscore
-                        = format_match_score(match,  match.home_team)
+                        = format_match_score(match,  :home)
                     .d-flex.justify-content-between
                       .matchteam
-                        = match.away_team&.name || _('Match|Bye')
+                        = match.away&.name || _('Match|Bye')
                       .matchscore
-                        = format_match_score(match, match.away_team)
+                        = format_match_score(match, :away)
               - else
                 - number_of_matches.times do
                   .match

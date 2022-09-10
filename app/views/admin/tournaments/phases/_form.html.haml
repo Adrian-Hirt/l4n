@@ -5,7 +5,8 @@
 
 = simple_form_for model, url: url do |f|
   .card-body
-    = f.error :base, class: 'text-danger mb-3'
+    - if model.errors[:base].present?
+      = f.error :base, class: 'text-danger mb-3'
     = f.input :name
     = f.input :tournament_mode, as: :select,
                                 collection: Tournament::Phase::tournament_modes,

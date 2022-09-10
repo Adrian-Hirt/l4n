@@ -10,8 +10,7 @@
     min-width: 250px
     max-width: 400px
     .matchscore
-      width: 2rem
-      text-align: center
+      text-align: right
 
 // Single elimination trees
 .single-elimination-tournament-tree,
@@ -31,6 +30,8 @@
       @extend .p-2
       @extend .border-dark
       display: inline-block
+      .matchscore
+        text-align: right
   .round-connectors-horizontal
     display: flex
     flex-direction: column
