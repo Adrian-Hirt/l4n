@@ -36,6 +36,14 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def by_username
+    if run Operations::User::FindByUsername
+      render json: op.result.as_json
+    else
+      head :bad_request
+    end
+  end
+
   private
 
   def check_captcha

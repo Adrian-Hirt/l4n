@@ -14,6 +14,8 @@ class Tournament::Team < ApplicationRecord
   belongs_to :tournament
   has_many :phase_teams, class_name: 'Tournament::PhaseTeam', foreign_key: :tournament_team_id, dependent: :destroy, inverse_of: :team
   has_many :phases, through: :phase_teams
+  has_many :team_members, class_name: 'Tournament::TeamMember', foreign_key: :tournament_team_id, dependent: :destroy, inverse_of: :team
+  has_many :users, through: :team_members
 
   # == Validations =================================================================
   validates :status, presence: true, inclusion: statuses.keys
@@ -28,6 +30,9 @@ class Tournament::Team < ApplicationRecord
   # == Class Methods ===============================================================
 
   # == Instance Methods ============================================================
+  def full?
+    users.count >= tournament.team_size
+  end
 
   # == Private Methods =============================================================
 end

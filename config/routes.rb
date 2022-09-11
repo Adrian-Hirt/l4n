@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :users, only: %i[show] do
     collection do
       get :activate
+      get :by_username
     end
   end
 
@@ -91,7 +92,6 @@ Rails.application.routes.draw do
       get :seats, to: 'seatmap#seats'
       post :get_seat, to: 'seatmap#get_seat'
       post :remove_seat, to: 'seatmap#remove_seat'
-      get :user_by_username, to: 'seatmap#user_by_username'
       post :assign_ticket, to: 'seatmap#assign_ticket'
       delete :remove_assignee, to: 'seatmap#remove_assignee'
     end
@@ -215,9 +215,11 @@ Rails.application.routes.draw do
           member do
             post :register_for_tournament
             post :unregister_from_tournament
+            post :add_user
           end
         end
         resources :matches, only: %i[show update]
+        resources :team_members, only: %i[destroy]
       end
     end
 

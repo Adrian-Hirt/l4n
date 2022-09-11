@@ -40,7 +40,7 @@ module Admin
           add_breadcrumb model.tournament.name, admin_tournament_path(model.tournament)
           add_breadcrumb model.name
           flash[:danger] = _('Admin|Tournamens|Team|Update failed')
-          render :new, status: :unprocessable_entity
+          render :edit, status: :unprocessable_entity
         end
       end
 
@@ -74,6 +74,23 @@ module Admin
         flash[:danger] = _('Admin|Tournamens|The tournament has ongoing phases')
       ensure
         redirect_to admin_tournament_path(model.tournament)
+      end
+
+      def add_user
+        run Operations::Admin::Tournament::Team::AddUser
+        flash[:success] = _('Admin|Team|User added to team')
+      rescue Operations::Admin::Tournament::Team::UserNotFound
+        flash[:danger] = _('Admin|Team|User not found')
+      rescue Operations::Admin::Tournament::Team::UserNotActivated
+        flash[:danger] = _('Admin|Team|User not activated')
+      rescue Operations::Admin::Tournament::Team::TeamIsFull
+        flash[:danger] = _('Admin|Team|Team is full')
+      rescue Operations::Admin::Tournament::Team::UserInThisTeamAlready
+        flash[:danger] = _('Admin|Team|User is in this team already')
+      rescue Operations::Admin::Tournament::Team::UserInAnotherTeamAlready
+        flash[:danger] = _('Admin|Team|User is in another team already')
+      ensure
+        redirect_to admin_team_path(model)
       end
 
       def destroy

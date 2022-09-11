@@ -18,6 +18,7 @@ class Tournament < ApplicationRecord
   validates :name, presence: true, length: { maximum: 255 }
   validates :team_size, presence: true, numericality: { greater_than: 0 }
   validates :team_size, numericality: { equal_to: 1 }, if: :singleplayer
+  validates :team_size, numericality: { greater_than: 1 }, unless: :singleplayer
   validates :status, presence: true, inclusion: statuses.keys
   validates_boolean :registration_open
   validates_boolean :singleplayer

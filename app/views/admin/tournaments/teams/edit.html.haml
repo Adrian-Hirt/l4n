@@ -1,2 +1,24 @@
-.card
-  = render partial: 'form'
+.row
+  .col-md-6.mb-3.mb-md-0
+    .card
+      .card-header
+        = _('Team|Edit details')
+      = render partial: 'form'
+  .col-md-6
+    .card{data: { controller: 'admin--tournament-team' }}
+      .card-header.d-flex.justify-content-between.align-items-center
+        = _('Team|Team members: %{count} of %{needed}') % { count: model.users.count, needed: model.tournament.team_size }
+        - if model.full?
+          = button nil, nil, size: :sm, icon_only: true, btn_icon: %i[fas fa-ban], disabled: true
+        - else
+          = simple_form_for :team_member, url: add_user_admin_team_path(model), wrapper: :input_group do |f|
+            = f.input :name, label: false,
+                              wrapper_html: { style: 'margin-bottom: 0 !important;' },
+                              append: f.save('+', style: 'border-radius: 0;', class: %i[rounded-end]),
+                              append_options: { class: '' },
+                              placeholder: _('Admin|Team|Username of user to add to team')
+      .card-body.p-0
+        - model.team_members.includes(:user).each do |team_member|
+          .card-header.d-flex.justify-content-between.align-items-center
+            %div= team_member.user.username
+            = delete_button team_member, href: admin_team_member_path(team_member), icon_only: true, size: :sm
