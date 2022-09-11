@@ -19,7 +19,7 @@ class Tournament::Team < ApplicationRecord
 
   # == Validations =================================================================
   validates :status, presence: true, inclusion: statuses.keys
-  validates :name, presence: true, length: { maximum: 255 }
+  validates :name, presence: true, length: { maximum: 255 }, uniqueness: { scope: :tournament, case_insensitive: true }
 
   # == Hooks =======================================================================
 
