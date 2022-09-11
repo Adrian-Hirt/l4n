@@ -78,14 +78,13 @@ module Admin
       end
 
       def destroy
-        # TODO: Make sure tournaments are in a deletable state & all dependent
-        # models get cleaned up properly
-        fail NotImplementedError
-        # if run Operations::Admin::Tournament::Team::Destroy
-        #   # handle successful case
-        # else
-        #   # handle error case
-        # end
+        if run Operations::Admin::Tournament::Team::Destroy
+          flash[:success] = _('Admin|Team|Successfully destroyed')
+        else
+          flash[:danger] = _('Admin|Team|Destroying failed')
+        end
+
+        redirect_to admin_tournament_path(model.tournament)
       end
     end
   end

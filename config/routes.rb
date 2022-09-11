@@ -197,7 +197,7 @@ Rails.application.routes.draw do
     end
 
     # Tournament system
-    resources :tournaments, shallow: true do
+    resources :tournaments, shallow: true, except: %i[destroy] do
       member do
         post :toggle_registration
       end

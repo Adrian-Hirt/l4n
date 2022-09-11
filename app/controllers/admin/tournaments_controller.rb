@@ -43,17 +43,6 @@ module Admin
       end
     end
 
-    def destroy
-      # TODO: Make sure tournaments are in a deletable state & all dependent
-      # models get cleaned up properly
-      fail NotImplementedError
-      # if run Operations::Admin::Tournament::Destroy
-      #   # handle successful case
-      # else
-      #   # handle error case
-      # end
-    end
-
     def toggle_registration
       if run Operations::Admin::Tournament::ToggleRegistration
         flash[:success] = _('Admin|Tournament|Successfully toggled registration')

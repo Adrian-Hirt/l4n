@@ -41,7 +41,7 @@
                                                                             btn_icon: %i[fas fa-plus],
                                                                             size: :sm,
                                                                             method: :post,
-                                                                            color: :success,
+                                                                            color: :primary,
                                                                             disabled: tournament_full || !team.full? || team.captain_missing?,
                                                                             html: {title: _('Admin|Teams|Register for tournament'), data: { 'bs-toggle' => :tooltip } }
             - elsif team.registered?
@@ -49,6 +49,7 @@
                                                                               btn_icon: %i[fas fa-minus],
                                                                               size: :sm,
                                                                               method: :post,
-                                                                              color: :danger,
+                                                                              color: :secondary,
                                                                               html: { title: _('Admin|Teams|Unregister from tournament'), data: { 'bs-toggle' => :tooltip } }
             = edit_button team, size: :sm, icon_only: true, href: edit_admin_team_path(team)
+            = delete_button team, size: :sm, icon_only: true, href: admin_team_path(team), disabled: !team.deletable?

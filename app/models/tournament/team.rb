@@ -22,6 +22,7 @@ class Tournament::Team < ApplicationRecord
   validates :name, presence: true, length: { maximum: 255 }, uniqueness: { scope: :tournament, case_insensitive: true }
 
   # == Hooks =======================================================================
+  before_destroy :check_deletable?
 
   # == Scopes ======================================================================
   scope :in_tournament, -> { where.not(status: 'created') }
@@ -38,5 +39,16 @@ class Tournament::Team < ApplicationRecord
     team_members.none?(&:captain?)
   end
 
+  def deletable?
+    created?
+  end
+
   # == Private Methods =============================================================
+  private
+
+  def check_deletable?
+    return if deletable?
+
+    throw :abort
+  end
 end
