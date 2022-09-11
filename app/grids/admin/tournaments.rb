@@ -2,7 +2,7 @@ module Grids
   module Admin
     class Tournaments < ApplicationGrid
       scope do
-        Tournament.order(:id)
+        Tournament.order(id: :desc)
       end
 
       model Tournament
