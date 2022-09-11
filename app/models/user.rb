@@ -53,6 +53,7 @@ class User < ApplicationRecord
 
   # == Hooks =======================================================================
   before_save { self.email = email.downcase } # turns email to downcase for uniqueness
+  after_update :update_singleplayer_teams
 
   # == Scopes ======================================================================
 
@@ -72,5 +73,14 @@ class User < ApplicationRecord
 
   def needs_password_set?
     @needs_password_set.is_a?(TrueClass)
+  end
+
+  def update_singleplayer_teams
+    return unless saved_change_to_attribute? :username
+
+    teams.singleplayer.each do |team|
+      team.name = username
+      team.save!
+    end
   end
 end

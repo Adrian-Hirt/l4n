@@ -7,9 +7,10 @@ module Grids
 
       model Tournament
 
-      column :id
       column :name
-      column :status
+      column :status, html: true do |tournament|
+        format_tournament_status(tournament)
+      end
       column :registration_open, html: true do |tournament|
         format_registration_status(tournament)
       end

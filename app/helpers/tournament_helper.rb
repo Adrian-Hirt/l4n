@@ -55,12 +55,28 @@ module TournamentHelper
 
   def format_registration_status(tournament)
     if tournament.registration_open?
-      tag.div(class: 'd-inline-block bg-success text-white px-2') do
+      tag.div(class: 'badge bg-success text-white') do
         _('Tournament|Registration open')
       end
     else
-      tag.div(class: 'd-inline-block bg-danger text-white px-2') do
+      tag.div(class: 'badge bg-danger text-white') do
         _('Tournament|Registration closed')
+      end
+    end
+  end
+
+  def format_tournament_status(tournament)
+    if tournament.draft?
+      tag.div(class: 'badge bg-secondary text-white') do
+        _('Tournament|Draft')
+      end
+    elsif tournament.published?
+      tag.div(class: 'badge bg-success text-white') do
+        _('Tournament|Published')
+      end
+    else
+      tag.div(class: 'badge bg-info text-dark') do
+        _('Tournament|Archived')
       end
     end
   end

@@ -20,6 +20,8 @@ module Operations::Admin::Tournament
     end
 
     def perform
+      model.team_size = 1 if model.singleplayer?
+
       super
 
       osparams.tournament[:remove_files]&.each do |id_to_remove|

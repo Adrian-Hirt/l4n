@@ -4,8 +4,9 @@
 .row
   .col-md-6.mb-4.mb-md-0
     .card.mb-4
-      .card-header
+      .card-header.d-flex.justify-content-between.align-items-center
         = model.name
+        = format_tournament_status(model)
       .card-body
         .mb-2
           = _('Tournament|Status')
@@ -14,19 +15,22 @@
           = _('Tournament|Max number of participants')
           .small.text-muted= model.max_number_of_participants
         .mb-2
-          = _('Tournament|Participant type')
-          .small.text-muted= model.singleplayer? ? _('Tournament|Singleplayer participants') : _('Tournament|Team participants')
-        .mb-2
-          = _('Tournament|Team size')
-          .small.text-muted= model.team_size
+          = _('Tournament|Team types')
+          .small.text-muted
+            - if model.singleplayer?
+              = icon %i[fas fa-user]
+              = _('Team|1 player')
+            - else
+              = icon %i[fas fa-users]
+              = _('Team|%{count} players') % { count: model.team_size }
 
     .card.mb-4
       .card-header.d-flex.justify-content-between.align-items-center
         = _('Tournament|Structure')
         - if model.another_phase_possible?
-          = new_button Tournament::Phase, href: new_admin_tournament_phase_path(model), size: :sm, icon_only: true, color: :light
+          = new_button Tournament::Phase, href: new_admin_tournament_phase_path(model), size: :sm, icon_only: true, color: :primary
         - else
-          = button nil, nil, size: :sm, icon_only: true, color: :light, btn_icon: %i[fas fa-ban], disabled: true
+          = button nil, nil, size: :sm, icon_only: true, color: :primary, btn_icon: %i[fas fa-ban], disabled: true
       .card-body
         - if model.phases.any?
           - model.phases.order(:phase_number).each_with_index do |phase, idx|

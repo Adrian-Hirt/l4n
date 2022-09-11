@@ -24,6 +24,11 @@ module Admin
       rescue Operations::Admin::Tournament::Team::TournamentHasOngoingPhases
         flash[:danger] = _('Admin|Tournaments|Team|No new teams can be created')
         redirect_to admin_tournament_path(op.tournament)
+      rescue Operations::Admin::Tournament::Team::UserError
+        add_breadcrumb op.tournament.name, admin_tournament_path(op.tournament)
+        add_breadcrumb _('Admin|Tournaments|Team|New')
+        flash[:danger] = _('Admin|Tournamens|Team|Create failed')
+        render :new, status: :unprocessable_entity
       end
 
       def edit

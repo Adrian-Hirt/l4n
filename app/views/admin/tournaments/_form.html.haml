@@ -1,5 +1,5 @@
 = simple_form_for [:admin, model] do |f|
-  .card-body
+  .card-body{data: { controller: 'admin--tournament-form' }}
     .row
       .col-md-6
         = f.input :name
@@ -14,8 +14,12 @@
       = f.input :singleplayer, as: :radio_buttons,
                               label: _('Tournament|Participant type'),
                               collection: [[_('Tournament|Team participants'), false], [_('Tournament|Singleplayer participants'), true]],
-                              input_html: { class: 'no-validation' }
-    = f.input :team_size, disabled: model.teams.any?
+                              input_html: { class: 'no-validation' },
+                              wrapper_html: { data: { 'admin--tournament-form-target' => 'participantType' } }
+    - team_size_classes = model.singleplayer? ? %w[d-none] : []
+    = f.input :team_size, disabled: model.teams.any?,
+                          input_html: { class: 'no-validation' },
+                          wrapper_html: { class: team_size_classes, data: { 'admin--tournament-form-target' => 'teamSize' } }
 
     .row
       .col-md-6

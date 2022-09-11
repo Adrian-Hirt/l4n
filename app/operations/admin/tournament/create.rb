@@ -14,5 +14,11 @@ module Operations::Admin::Tournament
     end
 
     model ::Tournament
+
+    def perform
+      model.team_size = 1 if model.singleplayer?
+
+      super
+    end
   end
 end

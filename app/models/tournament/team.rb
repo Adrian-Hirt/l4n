@@ -27,6 +27,7 @@ class Tournament::Team < ApplicationRecord
   # == Scopes ======================================================================
   scope :in_tournament, -> { where.not(status: 'created') }
   scope :not_in_tournament, -> { where(status: 'created') }
+  scope :singleplayer, -> { joins(:tournament).where(tournament: { singleplayer: true }) }
 
   # == Class Methods ===============================================================
 
