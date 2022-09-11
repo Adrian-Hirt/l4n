@@ -31,7 +31,11 @@ class Tournament::Team < ApplicationRecord
 
   # == Instance Methods ============================================================
   def full?
-    users.count >= tournament.team_size
+    team_members.count >= tournament.team_size
+  end
+
+  def captain_missing?
+    team_members.none?(&:captain?)
   end
 
   # == Private Methods =============================================================

@@ -83,4 +83,12 @@ module TournamentHelper
       ''
     end
   end
+
+  def team_member_icon(team_member)
+    if team_member.captain?
+      icon %i[fas fa-crown]
+    else
+      icon %i[fas fa-person]
+    end
+  end
 end

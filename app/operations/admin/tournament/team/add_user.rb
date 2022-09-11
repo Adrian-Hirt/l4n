@@ -30,7 +30,16 @@ module Operations::Admin::Tournament::Team
     end
 
     def perform
-      model.users << user
+      # If there are users in the team already, we simply add the user. If there are no
+      # users yet, we set the newly added user to be the teamcaptain
+      if model.team_members.any?
+        model.users << user
+      else
+        model.team_members.create!(
+          user:    user,
+          captain: true
+        )
+      end
     end
 
     private

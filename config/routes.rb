@@ -219,7 +219,11 @@ Rails.application.routes.draw do
           end
         end
         resources :matches, only: %i[show update]
-        resources :team_members, only: %i[destroy]
+        resources :team_members, only: %i[destroy] do
+          member do
+            post :promote
+          end
+        end
       end
     end
 

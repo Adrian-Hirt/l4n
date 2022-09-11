@@ -7,26 +7,24 @@ module Operations::Admin::Tournament::Team
     model ::Tournament::Team
 
     policy do
-      fail CannotBeRegistered unless model.created?
+      fail Operations::Exceptions::OpFailed, _('Admin|Tournamens|Team|Team cannot be registered as it has the wrong status') unless model.created?
 
       # We need to check that there are no phases which are in
       # another state than "created", if yes, we cannot register the
       # team anymore.
-      fail TournamentHasOngoingPhases if model.tournament.ongoing_phases?
+      fail Operations::Exceptions::OpFailed, _('Admin|Tournamens|The tournament has ongoing phases') if model.tournament.ongoing_phases?
 
-      fail TournamentIsFull if model.tournament.teams_full?
+      fail Operations::Exceptions::OpFailed, _('Admin|Tournamens|The tournament is full') if model.tournament.teams_full?
 
       # Check that enough players registered
-      fail NotEnoughTeamMembers unless model.full?
+      fail Operations::Exceptions::OpFailed, _('Admin|Tournamens|The team does not have enough players') unless model.full?
+
+      # Check that the team has a captain
+      fail Operations::Exceptions::OpFailed, _('Admin|Team|Captain missing') if model.captain_missing?
     end
 
     def perform
       model.registered!
     end
   end
-
-  class CannotBeRegistered < StandardError; end
-  class TournamentIsFull < StandardError; end
-  class TournamentHasOngoingPhases < StandardError; end
-  class NotEnoughTeamMembers < StandardError; end
 end

@@ -50,14 +50,8 @@ module Admin
         else
           flash[:danger] = _('Admin|Tournamens|Team|Registering for the tournament failed')
         end
-      rescue Operations::Admin::Tournament::Team::CannotBeRegistered
-        flash[:danger] = _('Admin|Tournamens|Team|Team cannot be registered as it has the wrong status')
-      rescue Operations::Admin::Tournament::Team::TournamentIsFull
-        flash[:danger] = _('Admin|Tournamens|The tournament is full')
-      rescue Operations::Admin::Tournament::Team::TournamentHasOngoingPhases
-        flash[:danger] = _('Admin|Tournamens|The tournament has ongoing phases')
-      rescue Operations::Admin::Tournament::Team::NotEnoughTeamMembers
-        flash[:danger] = _('Admin|Tournamens|The team does not have enough players')
+      rescue Operations::Exceptions::OpFailed => e
+        flash[:danger] = e.message
       ensure
         redirect_to admin_tournament_path(model.tournament)
       end

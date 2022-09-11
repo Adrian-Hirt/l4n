@@ -12,6 +12,16 @@ module Admin
       ensure
         redirect_to admin_team_path(model)
       end
+
+      def promote
+        if run Operations::Admin::Tournament::TeamMember::Promote
+          flash[:success] = _('Admin|TeamMember|Successfully promoted')
+        else
+          flash[:danger] = _('Admin|TeamMember|Promoting failed')
+        end
+
+        redirect_to admin_team_path(model)
+      end
     end
   end
 end
