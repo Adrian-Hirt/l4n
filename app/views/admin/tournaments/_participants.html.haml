@@ -32,7 +32,9 @@
         .d-flex.justify-content-between.align-items-center.py-1{ class: ('border-top' unless team == model.teams.order(:name).first) }
           %div
             = team.name
-            .small.text-muted= team.status
+            .small.text-muted
+              = team.status
+              = "(#{team.team_members.count} / #{model.team_size} #{_('Team|Team members')})"
           %div
             - if team.created?
               = button nil, register_for_tournament_admin_team_path(team), icon_only: true,
@@ -40,7 +42,7 @@
                                                                             size: :sm,
                                                                             method: :post,
                                                                             color: :success,
-                                                                            disabled: tournament_full,
+                                                                            disabled: tournament_full || !team.full?,
                                                                             html: {title: _('Admin|Teams|Register for tournament'), data: { 'bs-toggle' => :tooltip } }
             - elsif team.registered?
               = button nil, unregister_from_tournament_admin_team_path(team), icon_only: true,

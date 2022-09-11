@@ -21,4 +21,7 @@
         - model.team_members.includes(:user).each do |team_member|
           .card-header.d-flex.justify-content-between.align-items-center
             %div= team_member.user.username
-            = delete_button team_member, href: admin_team_member_path(team_member), icon_only: true, size: :sm
+            = delete_button team_member, href: admin_team_member_path(team_member),
+                                         icon_only: true,
+                                         size: :sm,
+                                         disabled: !model.created?

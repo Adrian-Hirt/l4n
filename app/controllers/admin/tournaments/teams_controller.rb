@@ -56,6 +56,8 @@ module Admin
         flash[:danger] = _('Admin|Tournamens|The tournament is full')
       rescue Operations::Admin::Tournament::Team::TournamentHasOngoingPhases
         flash[:danger] = _('Admin|Tournamens|The tournament has ongoing phases')
+      rescue Operations::Admin::Tournament::Team::NotEnoughTeamMembers
+        flash[:danger] = _('Admin|Tournamens|The team does not have enough players')
       ensure
         redirect_to admin_tournament_path(model.tournament)
       end

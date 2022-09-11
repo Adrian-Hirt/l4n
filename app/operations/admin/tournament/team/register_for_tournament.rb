@@ -16,7 +16,8 @@ module Operations::Admin::Tournament::Team
 
       fail TournamentIsFull if model.tournament.teams_full?
 
-      # TODO: check that enough players registered
+      # Check that enough players registered
+      fail NotEnoughTeamMembers unless model.full?
     end
 
     def perform
@@ -27,4 +28,5 @@ module Operations::Admin::Tournament::Team
   class CannotBeRegistered < StandardError; end
   class TournamentIsFull < StandardError; end
   class TournamentHasOngoingPhases < StandardError; end
+  class NotEnoughTeamMembers < StandardError; end
 end
