@@ -9,12 +9,6 @@
         = format_tournament_status(model)
       .card-body
         .mb-2
-          = _('Tournament|Status')
-          .small.text-muted= model.status
-        .mb-2
-          = _('Tournament|Max number of participants')
-          .small.text-muted= model.max_number_of_participants
-        .mb-2
           = _('Tournament|Team types')
           .small.text-muted
             - if model.singleplayer?
@@ -23,6 +17,9 @@
             - else
               = icon %i[fas fa-users]
               = _('Team|%{count} players') % { count: model.team_size }
+        %div
+          = _('Tournament|Max number of participants')
+          .small.text-muted= model.max_number_of_participants
 
     .card.mb-4
       .card-header.d-flex.justify-content-between.align-items-center
