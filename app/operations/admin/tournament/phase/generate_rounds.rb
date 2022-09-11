@@ -11,19 +11,19 @@ module Operations::Admin::Tournament::Phase
 
     policy do
       # Can't generate the rounds without any teams
-      fail NoTeamsPresent if model.seedable_teams.none?
+      fail Operations::Exceptions::OpFailed, _('Admin|Tournaments|Phase|Cannot generate rounds without any seedable teams') if model.seedable_teams.none?
 
       # We should only run this once for a phase.
-      fail RoundsAlreadyGenerated if model.rounds.any?
+      fail Operations::Exceptions::OpFailed, _('Admin|Tournaments|Phase|Rounds have already been generated') if model.rounds.any?
 
       # We can only generate rounds if the phase is in the "created" status
-      fail WrongStatus unless model.created?
+      fail Operations::Exceptions::OpFailed, _('Admin|Tournaments|Phase|Phase has wrong status') unless model.created?
 
       # We cannot do this if the registration is open
-      fail RegistrationStillOpen if model.tournament.registration_open?
+      fail Operations::Exceptions::OpFailed, _('Admin|Tournaments|Phase|Please close the registration before generating rounds') if model.tournament.registration_open?
 
       # We can only do this if the previous round is completed
-      fail PreviousRoundStillOngoing unless model.first_phase? || model.previous_phase.completed?
+      fail Operations::Exceptions::OpFailed, _('Admin|Tournaments|Phase|The previous round is still ongoing!') unless model.first_phase? || model.previous_phase.completed?
     end
 
     def perform
@@ -66,10 +66,4 @@ module Operations::Admin::Tournament::Phase
       end
     end
   end
-
-  class NoTeamsPresent < StandardError; end
-  class RoundsAlreadyGenerated < StandardError; end
-  class WrongStatus < StandardError; end
-  class RegistrationStillOpen < StandardError; end
-  class PreviousRoundStillOngoing < StandardError; end
 end

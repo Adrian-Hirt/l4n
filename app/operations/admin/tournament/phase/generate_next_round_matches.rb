@@ -7,19 +7,19 @@ module Operations::Admin::Tournament::Phase
     model ::Tournament::Phase
 
     policy do
-      fail NoNextRound unless model.next_round
+      fail Operations::Exceptions::OpFailed, _('Admin|Tournaments|Phase|No next round to generate the matches for') unless model.next_round
 
       # Ensure that we can only generate matches for the first round
       # if the status of the phase is "confirmed".
       # Otherwise, ensure that we're in the running status
       if model.next_round.first_round?
-        fail WrongStatus unless model.confirmed?
+        fail Operations::Exceptions::OpFailed, _('Admin|Tournaments|Phase|Phase has wrong status') unless model.confirmed?
       else
-        fail WrongStatus unless model.running?
+        fail Operations::Exceptions::OpFailed, _('Admin|Tournaments|Phase|Phase has wrong status') unless model.running?
 
         # Ensure we can only generate matches for the next round if
         # all matches of the current round are finished
-        fail NotAllMatchesFinished unless model.current_round.completed?
+        fail Operations::Exceptions::OpFailed, _('Admin|Tournaments|Phase|Please first finish all the matches of the current round') unless model.current_round.completed?
       end
     end
 
@@ -32,8 +32,4 @@ module Operations::Admin::Tournament::Phase
       end
     end
   end
-
-  class NoNextRound < StandardError; end
-  class WrongStatus < StandardError; end
-  class NotAllMatchesFinished < StandardError; end
 end

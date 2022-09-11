@@ -62,12 +62,8 @@ module Admin
         else
           flash[:danger] = _('Admin|Tournamens|Team|Unregistering from the tournament failed')
         end
-      rescue Operations::Admin::Tournament::Team::NotRegistered
-        flash[:danger] = _('Admin|Tournamens|Team|Team is not registered for the tournament')
-      rescue Operations::Admin::Tournament::Team::AlreadySeeded
-        flash[:danger] = _('Admin|Tournamens|Team|Team is already seeded')
-      rescue Operations::Admin::Tournament::Team::TournamentHasOngoingPhases
-        flash[:danger] = _('Admin|Tournamens|The tournament has ongoing phases')
+      rescue Operations::Exceptions::OpFailed => e
+        flash[:danger] = e.message
       ensure
         redirect_to admin_tournament_path(model.tournament)
       end
@@ -75,16 +71,8 @@ module Admin
       def add_user
         run Operations::Admin::Tournament::Team::AddUser
         flash[:success] = _('Admin|Team|User added to team')
-      rescue Operations::Admin::Tournament::Team::UserNotFound
-        flash[:danger] = _('Admin|Team|User not found')
-      rescue Operations::Admin::Tournament::Team::UserNotActivated
-        flash[:danger] = _('Admin|Team|User not activated')
-      rescue Operations::Admin::Tournament::Team::TeamIsFull
-        flash[:danger] = _('Admin|Team|Team is full')
-      rescue Operations::Admin::Tournament::Team::UserInThisTeamAlready
-        flash[:danger] = _('Admin|Team|User is in this team already')
-      rescue Operations::Admin::Tournament::Team::UserInAnotherTeamAlready
-        flash[:danger] = _('Admin|Team|User is in another team already')
+      rescue Operations::Exceptions::OpFailed => e
+        flash[:danger] = e.message
       ensure
         redirect_to admin_team_path(model)
       end

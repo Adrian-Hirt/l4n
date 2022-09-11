@@ -61,14 +61,8 @@ module Admin
         else
           flash[:danger] = _('Admin|Tournaments|Phase|Generating rounds failed')
         end
-      rescue Operations::Admin::Tournament::Phase::NoTeamsPresent
-        flash[:danger] = _('Admin|Tournaments|Phase|Cannot generate rounds without any seedable teams')
-      rescue Operations::Admin::Tournament::Phase::RoundsAlreadyGenerated
-        flash[:danger] = _('Admin|Tournaments|Phase|Rounds have already been generated')
-      rescue Operations::Admin::Tournament::Phase::RegistrationStillOpen
-        flash[:danger] = _('Admin|Tournaments|Phase|Please close the registration before generating rounds')
-      rescue Operations::Admin::Tournament::Phase::PreviousRoundStillOngoing
-        flash[:danger] = _('Admin|Tournaments|Phase|The previous round is still ongoing!')
+      rescue Operations::Exceptions::OpFailed => e
+        flash[:danger] = e.message
       ensure
         redirect_to admin_phase_path(model)
       end
@@ -97,10 +91,8 @@ module Admin
         else
           flash[:danger] = _('Admin|Tournaments|Phase|Failed to generate next round matches')
         end
-      rescue Operations::Admin::Tournament::Phase::NotAllMatchesFinished
-        flash[:danger] = _('Admin|Tournaments|Phase|Please first finish all the matches of the current round')
-      rescue Operations::Admin::Tournament::Phase::NoNextRound
-        flash[:danger] = _('Admin|Tournaments|Phase|No next round to generate the matches for')
+      rescue Operations::Exceptions::OpFailed => e
+        flash[:danger] = e.message
       ensure
         redirect_to admin_phase_path(model)
       end
@@ -111,10 +103,8 @@ module Admin
         else
           flash[:danger] = _('Admin|Tournaments|Phase|Failed to complete the phase')
         end
-      rescue Operations::Admin::Tournament::Phase::WrongStatus
-        flash[:danger] = _('Admin|Tournaments|Phase|Wrong status to complete the phase')
-      rescue Operations::Admin::Tournament::Phase::UncompletedMatches
-        flash[:danger] = _('Admin|Tournaments|Phase|Not all matches are completed')
+      rescue Operations::Exceptions::OpFailed => e
+        flash[:danger] = e.message
       ensure
         redirect_to admin_phase_path(model)
       end

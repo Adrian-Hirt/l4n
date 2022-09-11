@@ -11,18 +11,18 @@ module Operations::Admin::Tournament::Team
 
     policy do
       # Check that we have an user
-      fail UserNotFound if user.nil?
+      fail Operations::Exceptions::OpFailed, _('Admin|Team|User not found') if user.nil?
 
       # Check that the user is activated
-      fail UserNotActivated unless user.activated?
+      fail Operations::Exceptions::OpFailed, _('Admin|Team|User not activated') unless user.activated?
 
       # Check that there is still space in the team
-      fail TeamIsFull if model.full?
+      fail Operations::Exceptions::OpFailed, _('Admin|Team|Team is full') if model.full?
 
-      fail UserInThisTeamAlready if model.users.include?(user)
+      fail Operations::Exceptions::OpFailed, _('Admin|Team|User is in this team already') if model.users.include?(user)
 
       # Check that the user is not in another team for this tournament
-      fail UserInAnotherTeamAlready if user.teams.where(tournament: model.tournament).any?
+      fail Operations::Exceptions::OpFailed, _('Admin|Team|User is in another team already') if user.teams.where(tournament: model.tournament).any?
 
       # Check that the user has a ticket (only if the tournament is
       # connected to a lanparty).
@@ -48,10 +48,4 @@ module Operations::Admin::Tournament::Team
       @user ||= ::User.find_by('LOWER(username) = ?', osparams.team_member[:name].downcase)
     end
   end
-
-  class UserNotFound < StandardError; end
-  class UserNotActivated < StandardError; end
-  class TeamIsFull < StandardError; end
-  class UserInThisTeamAlready < StandardError; end
-  class UserInAnotherTeamAlready < StandardError; end
 end

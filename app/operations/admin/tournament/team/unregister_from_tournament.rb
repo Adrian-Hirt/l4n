@@ -7,22 +7,18 @@ module Operations::Admin::Tournament::Team
     model ::Tournament::Team
 
     policy do
-      fail AlreadySeeded if model.seeded?
+      fail Operations::Exceptions::OpFailed, _('Admin|Tournamens|Team|Team is already seeded') if model.seeded?
 
-      fail NotRegistered unless model.registered?
+      fail Operations::Exceptions::OpFailed, _('Admin|Tournamens|Team|Team is not registered for the tournament') unless model.registered?
 
       # We need to check that there are no phases which are in
       # another state than "created", if yes, we cannot register the
       # team anymore.
-      fail TournamentHasOngoingPhases if model.tournament.ongoing_phases?
+      fail Operations::Exceptions::OpFailed, _('Admin|Tournamens|The tournament has ongoing phases') if model.tournament.ongoing_phases?
     end
 
     def perform
       model.created!
     end
   end
-
-  class AlreadySeeded < StandardError; end
-  class NotRegistered < StandardError; end
-  class TournamentHasOngoingPhases < StandardError; end
 end
