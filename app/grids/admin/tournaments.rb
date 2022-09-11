@@ -19,6 +19,8 @@ module Grids
           show_button(tournament, namespace: %i[admin], size: :sm, icon_only: true)
         end
       end
+
+      filter(:status, :enum, select: Tournament.statuses.keys, include_blank: _('Form|Select|Show all'))
     end
   end
 end
