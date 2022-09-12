@@ -9,8 +9,9 @@
         .swiss-tournament-tree
           - model.rounds.order(:round_number).includes(:matches).each do |round|
             .round.py-2.mb-3
-              %h4
-                = _('Round number %{number}') % { number: round.round_number }
+              .mb-3
+                %h4.d-inline
+                  = _('Round number %{number}') % { number: round.round_number }
                 - if model.current_round == round
                   %span.badge.bg-secondary.fw-normal= _('Phase|Current round')
               - if round.matches.any?

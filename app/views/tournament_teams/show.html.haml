@@ -72,7 +72,9 @@
               = button _('TournamentTeam|Team is full'), nil, disabled: true
           - elsif !model.tournament.singleplayer?
             .d-grid.gap-2
-              = button _('TournamentTeam|Join'), join_tournament_team_path(model), method: :post
+              = simple_form_for :join_data, wrapper: :input_group, url: join_tournament_team_path(model) do |f|
+                = f.password :password, placeholder: _('TournamentTeam|Join password')
+                = f.save _('TournamentTeam|Join'), class: %i[w-100]
         - else
           = _('TournamentTeam|Please sign in to see actions')
 

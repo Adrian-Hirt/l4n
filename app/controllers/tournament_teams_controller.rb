@@ -20,17 +20,18 @@ class TournamentTeamsController < ApplicationController
     redirect_back(fallback_location: tournament_path(op.tournament))
   end
 
-  # def edit
-  #   op Operations::Tournament::Team::Update
-  # end
+  def update
+    if run Operations::Tournament::Team::Update
+      flash[:success] = _('Team|Successfully updated')
+    else
+      flash[:danger] = model.errors.full_messages.to_sentence
+    end
 
-  # def update
-  #   if run Operations::Tournament::Team::Update
-  #     # handle successful case
-  #   else
-  #     # handle error case
-  #   end
-  # end
+    redirect_to tournament_path(model)
+  rescue Operations::Exceptions::OpFailed => e
+    flash[:danger] = e.message
+    redirect_to tournament_path(model)
+  end
 
   def destroy
     if run Operations::Tournament::Team::Destroy

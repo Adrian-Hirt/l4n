@@ -2,6 +2,9 @@ module Operations::Tournament::Team
   class Join < RailsOps::Operation::Model::Load
     schema3 do
       int! :id, cast_str: true
+      hsh? :join_data do
+        str? :password
+      end
     end
 
     policy do
@@ -32,6 +35,8 @@ module Operations::Tournament::Team
     model ::Tournament::Team
 
     def perform
+      fail Operations::Exceptions::OpFailed, _('Team|Password is incorrect') unless model.authenticate(osparams.join_data[:password])
+
       model.users << context.user
     end
   end

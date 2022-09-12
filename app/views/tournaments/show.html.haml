@@ -18,7 +18,7 @@
         .mb-2
           = _('Tournament|Number of Participants')
           .small.text-muted
-            = "#{model.teams.registered.count} / #{model.max_number_of_participants}"
+            = "#{model.teams.in_tournament.count} / #{model.max_number_of_participants}"
         %hr
         = markdown model.description
   .col-md-4

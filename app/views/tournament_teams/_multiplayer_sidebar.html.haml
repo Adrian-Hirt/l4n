@@ -12,6 +12,13 @@
               tag: :button,
               html: { method: :delete },
               classes: 'w-100'
+    %hr
+    -# Display form to change the name & password of the form
+    = simple_form_for model, wrapper: :input_group do |f|
+      = f.input :name
+      = f.password :password, placeholder: _('TournamentTeam|Password|Leave blank to leave')
+      = f.save class: %i[w-100]
+
   - elsif model.registered?
     .d-grid.gap-2
       = button _('Tournament|Remove team from tournament'),

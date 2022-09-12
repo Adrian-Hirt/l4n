@@ -4,6 +4,7 @@ module Operations::Admin::Tournament::Team
       int! :tournament_id, cast_str: true
       hsh? :tournament_team do
         str? :name
+        str? :password
         str? :single_user_name
       end
     end

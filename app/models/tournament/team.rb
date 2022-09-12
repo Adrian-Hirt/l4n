@@ -8,6 +8,8 @@ class Tournament::Team < ApplicationRecord
     dropped_out: 'dropped_out'
   }
 
+  has_secure_password validations: false
+
   # == Constants ===================================================================
 
   # == Associations ================================================================
@@ -20,6 +22,9 @@ class Tournament::Team < ApplicationRecord
   # == Validations =================================================================
   validates :status, presence: true, inclusion: statuses.keys
   validates :name, presence: true, length: { maximum: 255 }, uniqueness: { scope: :tournament, case_insensitive: true }
+
+  # Password validations only relevant for multiplayer games
+  validates :password, presence: true, length: { minimum: 6, maximum: 72 }, if: -> { !tournament.singleplayer? && (password.present? || new_record?) }
 
   # == Hooks =======================================================================
   before_destroy :check_deletable?
