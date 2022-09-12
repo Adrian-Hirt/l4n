@@ -1,7 +1,7 @@
 module Queries::Tournament::Match
   class FetchAccessibleBy < Inquery::Query
     schema3 do
-      obj! :user
+      obj? :user
     end
 
     def call

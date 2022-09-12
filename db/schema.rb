@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_12_173415) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_12_190631) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -297,8 +297,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_173415) do
     t.boolean "draw", default: false, null: false
     t.integer "home_score", default: 0, null: false
     t.integer "away_score", default: 0, null: false
+    t.string "result_status", default: "missing", null: false
+    t.bigint "reporter_id"
     t.index ["away_id"], name: "index_tournament_matches_on_away_id"
     t.index ["home_id"], name: "index_tournament_matches_on_home_id"
+    t.index ["reporter_id"], name: "index_tournament_matches_on_reporter_id"
     t.index ["tournament_round_id"], name: "index_tournament_matches_on_tournament_round_id"
     t.index ["winner_id"], name: "index_tournament_matches_on_winner_id"
   end
@@ -441,6 +444,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_173415) do
   add_foreign_key "tickets", "seat_categories"
   add_foreign_key "tournament_matches", "tournament_phase_teams", column: "away_id"
   add_foreign_key "tournament_matches", "tournament_phase_teams", column: "home_id"
+  add_foreign_key "tournament_matches", "tournament_phase_teams", column: "reporter_id"
   add_foreign_key "tournament_matches", "tournament_phase_teams", column: "winner_id"
   add_foreign_key "tournament_matches", "tournament_rounds"
   add_foreign_key "tournament_phase_teams", "tournament_phases"

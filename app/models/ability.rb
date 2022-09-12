@@ -94,6 +94,11 @@ class Ability
       can %i[read update destroy], Tournament::TeamMember do |m|
         m.user == user || m.team.captain?(user)
       end
+
+      # Can update a match if captain of either teams
+      can :update, Tournament::Match do |m|
+        m.home.team.captain?(user) || m.away.team.captain?(user)
+      end
     end
 
     ##############################################################

@@ -6,7 +6,7 @@
       .card-body
         .single-elimination-tournament-tree
           - total_rounds = model.rounds.count
-          - model.rounds.order(:round_number).each do |round|
+          - model.rounds.order(:round_number).includes(matches: %i[away home winner]).each do |round|
             -# Calculate the number of matches, which is 2 to the power of
             -# "current_round index", where the final has index 0 and earlier
             -# rounds have higher indices

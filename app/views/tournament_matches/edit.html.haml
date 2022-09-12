@@ -1,0 +1,71 @@
+%h1.mb-3= model.tournament.name
+.row
+  .col-md-12
+    .card.mb-3
+      .card-body
+        %ul.nav.nav-pills
+          %li.nav-item
+            = link_to _('Tournament|Info'), tournament_path(model.tournament), class: 'nav-link'
+          %li.nav-item
+            = link_to _('Tournament|Teams'), tournament_teams_path(model.tournament), class: 'nav-link'
+          %li.nav-item
+            = link_to _('Tournament|Standings'), tournament_standings_path(model.tournament), class: 'nav-link'
+  .col-md-12
+    .card
+      .card-header
+        = _('TournamentMatch|Submit result')
+        = model.result_status
+      .card-body
+        .match.d-flex.justify-content-around.align-items-center.py-3
+          .opponent
+            %h2= model.home&.team&.name.presence || _('Match|Tbd')
+          .versus
+            = format_match_score_large(model, :home)
+            = format_match_score_large(model, :away)
+          .opponent
+            %h2
+              - if model.away
+                =  model.away.team.name
+              - elsif model.winner.present?
+                = _('Match|Bye')
+              - else
+                = _('Match|Tbd')
+        .pt-3
+          - if model.result_updateable?
+            - if model.result_missing?
+              .border-top.pt-3
+                - teams = [model.home, model.away]
+
+                = simple_form_for model, url: match_path(model) do |f|
+                  .row
+                    .col-md-6
+                      = f.input :home_score
+                    .col-md-6
+                      = f.input :away_score
+                  = f.input :winner_id, as: :select,
+                                        collection: teams,
+                                        include_blank: _('Form|Select|Blank')
+
+                  - if model.errors[:winner].present?
+                    = f.error :winner
+                  - if model.phase.swiss?
+                    = f.input :draw, input_html: { class: 'no-validation' }
+                  = f.save _('Match|Submit result')
+            - elsif model.result_reported?
+              .border-top.pt-3
+                - if model.reporter.team.captain?(current_user)
+                  .alert.alert-info.text-dark
+                    = _('Match|Please wait for the other team to confirm the result')
+                - else
+                  = simple_form_for model, url: match_path(model) do |f|
+                    = f.input :confirmation, as: :radio_buttons,
+                                            label: _('Match|Result is the result correct?'),
+                                            input_html: { class: 'no-validation' }
+                    = f.save _('Match|Submit confirmation status')
+            - elsif model.result_disputed?
+              .border-top.pt-3
+                .alert.alert-warning
+                  = _('Match|Please contact an admin to resolve the dispute')
+          - else
+            .border-top.pt-3
+              = _('Match|Not updateable hint')

@@ -11,9 +11,9 @@ module Queries::Tournament::Match
 
       phase_team_ids = ::Tournament::PhaseTeam.where(team: team).pluck(:id)
 
-      rel = ::Tournament::Match.where('away_id IN (?) OR home_id IN (?)', phase_team_ids, phase_team_ids)
+      rel = ::Tournament::Match.where('away_id IN (?) OR home_id IN (?)', phase_team_ids, phase_team_ids).order(:id)
 
-      rel.includes(round: :phase).group_by(&:phase)
+      rel.includes(:winner, round: :phase, away: :team, home: :team).group_by(&:phase)
     end
   end
 end

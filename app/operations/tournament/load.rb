@@ -10,7 +10,6 @@ module Operations::Tournament
       @user_team ||= if context.user.nil?
                        nil
                      else
-
                        context.user.teams.find_by(tournament: model)
                      end
     end

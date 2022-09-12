@@ -7,7 +7,7 @@
         - round_matches_count = model.rounds.first.matches.count
 
         .swiss-tournament-tree
-          - model.rounds.order(:round_number).includes(:matches).each do |round|
+          - model.rounds.order(:round_number).includes(matches: %i[away home winner]).each do |round|
             .round.py-2.mb-3
               .mb-3
                 %h4.d-inline

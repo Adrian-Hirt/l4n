@@ -42,6 +42,15 @@ module Operations::Admin::Tournament::Match
           previous_winner.save!
         end
 
+        # Update the status, if winner is set or it's a draw
+        # we set it to confirmed, otherwise it's missing
+        if model.draw? || model.winner.present?
+          # Update the status
+          model.result_status = Tournament::Match.result_statuses[:confirmed]
+        else
+          model.result_status = Tournament::Match.result_statuses[:missing]
+        end
+
         super
 
         new_winner = model.winner

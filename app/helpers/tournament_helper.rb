@@ -29,7 +29,7 @@ module TournamentHelper
     score = match.send("#{relevant_team}_score").to_s
 
     # rubocop:disable Lint/DuplicateBranch
-    if match.invalid?
+    if match.errors.any?
       tag.div(class: 'bg-secondary text-white result-score-box') do
         _('Match|Tbd')
       end
@@ -104,5 +104,9 @@ module TournamentHelper
     else
       icon %i[fas fa-person]
     end
+  end
+
+  def can_update_result?(match)
+    match.result_updateable? && (match.home.team.captain?(current_user) || match.away.team.captain?(current_user))
   end
 end

@@ -84,6 +84,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :matches, only: %i[edit update], controller: :tournament_matches
+
   # == Shop =============================================================================
   namespace :shop do
     get '/', to: 'home#index'

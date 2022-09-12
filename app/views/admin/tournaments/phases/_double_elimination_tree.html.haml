@@ -9,7 +9,7 @@
 
         %h4= _('Phase|Double elimination upper bracket')
         .double-elimination-tournament-tree.mb-4
-          - model.rounds.order(:round_number).each do |round|
+          - model.rounds.order(:round_number).includes(matches: %i[away home winner]).each do |round|
             - next if round.lower_bracket_only?
 
             -# Calculate the number of matches, which is 2 to the power of
@@ -79,7 +79,7 @@
 
         %h4= _('Phase|Double elimination lower bracket')
         .double-elimination-tournament-tree
-          - model.rounds.order(:round_number).each_with_index do |round, index|
+          - model.rounds.order(:round_number).includes(matches: %i[away home winner]).each_with_index do |round, index|
             - next if round.upper_bracket_only?
 
             - number_of_matches = (2 ** ((round.round_number / 2) - total_visible_rounds).abs) / 2

@@ -1,4 +1,7 @@
-%h1.mb-3= model.name
+%h1.mb-3
+  = model.tournament.name
+  \-
+  = model.name
 
 .row
   .col-md-12
@@ -66,7 +69,7 @@
           .phase
             .mb-3= "#{phase.phase_number}. #{phase.name}"
             - matches.each do |match|
-              .single-match-card
+              - content_for :match, flush: true do
                 .d-flex.justify-content-between
                   .matchteam
                     = match.home.team.name
@@ -77,6 +80,13 @@
                     = match.away&.team&.name || _('Match|Bye')
                   .matchscore
                     = format_match_score(match, :away)
+
+              - if can_update_result?(match)
+                %a.single-match-card{href: edit_match_path(match)}
+                  = yield :match
+              - else
+                .single-match-card
+                  = yield :match
 
   .col-md-4
     .card
