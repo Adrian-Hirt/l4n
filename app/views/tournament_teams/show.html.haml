@@ -11,11 +11,8 @@
       .card-header
         = _('TournamentTeam|Team details')
       .card-body
-        - if model.tournament.singleplayer?
-          .fw-bold.d-inline= _('TournamentTeam|Single Player')
-          \:
-          = model.captain.user.username
-        - else
+        -# -- Roster ------------------------------------------------------------------------------
+        - if !model.tournament.singleplayer?
           .mb-2.fw-bold= _('TournamentTeam|Team members')
           -# Display the captain first
           .d-flex.justify-content-between.align-items-center.border-bottom.py-2
@@ -55,6 +52,22 @@
                                                icon_only: true,
                                                size: :sm,
                                                disabled: !model.created? || !model.tournament.registration_open?
+        -# -- Matches -----------------------------------------------------------------------------
+        - op.grouped_matches.each do |phase, matches|
+          .phase
+            .mb-3= "#{phase.phase_number}. #{phase.name}"
+            - matches.each do |match|
+              .single-match-card
+                .d-flex.justify-content-between
+                  .matchteam
+                    = match.home.team.name
+                  .matchscore
+                    = format_match_score(match,  :home)
+                .d-flex.justify-content-between
+                  .matchteam
+                    = match.away&.team&.name || _('Match|Bye')
+                  .matchscore
+                    = format_match_score(match, :away)
 
   .col-md-4
     .card

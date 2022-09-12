@@ -23,7 +23,12 @@ class Ability
 
     if FeatureFlag.enabled?(:tournaments)
       can :read, Tournament, status: Tournament.statuses[:published]
-      can :read, Tournament::Team
+      can :read, Tournament::Team, Queries::Tournament::Team::FetchAccessibleBy.call(user: user) do |m|
+        m.tournament.published?
+      end
+      can :read, Tournament::Match, Queries::Tournament::Match::FetchAccessibleBy.call(user: user) do |m|
+        m.tournament.published?
+      end
     end
 
     # Return early if user does not exist

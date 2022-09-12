@@ -13,5 +13,21 @@ module Operations::Tournament::Team
                                   model.team_members.find_by(user: context.user)
                                 end
     end
+
+    def grouped_matches
+      @grouped_matches ||= begin
+        data = Queries::Tournament::Match::FetchForTeamGroupedByPhases.call(team: model)
+
+        sorted_keys = data.keys.sort_by(&:phase_number)
+
+        result = []
+
+        sorted_keys.each do |key|
+          result << [key, data[key]]
+        end
+
+        result
+      end
+    end
   end
 end

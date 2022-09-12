@@ -60,6 +60,19 @@
       div
         height: 50%
 
+// Single match cards to display a single match (or multiple, unconnected matches)
+.single-match-card
+  @extend .border
+  @extend .border-dark
+  @extend .rounded
+  @extend .p-2
+  @extend .mb-2
+  display: inline-block
+  min-width: 250px
+  max-width: 400px
+  .matchscore
+    text-align: right
+
 .result-score-box
   @extend .py-3
   @extend .fw-bold
