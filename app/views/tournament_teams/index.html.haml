@@ -27,7 +27,7 @@
                 - unless op.tournament.singleplayer?
                   %small.d-block.text-muted.text-small
                     = team.users.to_a.sort_by(&:username).map(&:username).join(', ')
-              %td= team.status
+              %td= team.humanized_status
 
   .col-md-4
     = render partial: 'tournaments/actions_sidebar', locals: { tournament: op.tournament, op: op }

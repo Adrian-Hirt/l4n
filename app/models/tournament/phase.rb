@@ -14,6 +14,8 @@ class Tournament::Phase < ApplicationRecord
     completed: 'completed'  # All matches have been played and results can be calculated
   }
 
+  translate_enums
+
   # == Constants ===================================================================
 
   # == Associations ================================================================

@@ -8,6 +8,8 @@ class Tournament::Team < ApplicationRecord
     dropped_out: 'dropped_out'
   }
 
+  translate_enums
+
   has_secure_password validations: false
 
   # == Constants ===================================================================

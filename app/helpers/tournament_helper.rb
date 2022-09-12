@@ -67,17 +67,15 @@ module TournamentHelper
 
   def format_tournament_status(tournament)
     if tournament.draft?
-      tag.div(class: 'badge bg-secondary text-white') do
-        _('Tournament|Draft')
-      end
+      classes = 'badge bg-secondary text-white'
     elsif tournament.published?
-      tag.div(class: 'badge bg-success text-white') do
-        _('Tournament|Published')
-      end
+      classes = 'badge bg-success text-white'
     else
-      tag.div(class: 'badge bg-info text-dark') do
-        _('Tournament|Archived')
-      end
+      classes = 'badge bg-info text-dark'
+    end
+
+    tag.div(class: classes) do
+      tournament.humanized_status
     end
   end
 

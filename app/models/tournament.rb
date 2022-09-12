@@ -6,6 +6,8 @@ class Tournament < ApplicationRecord
     archived:  'archived'
   }
 
+  translate_enums
+
   # == Constants ===================================================================
 
   # == Associations ================================================================
