@@ -9,6 +9,7 @@ module Operations::Admin::Tournament
         obj? :status
         obj? :files
         obj? :lan_party_id
+        obj? :frontend_order
         obj? :description
       end
     end

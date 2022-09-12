@@ -8,6 +8,7 @@ module Grids
       model Tournament
 
       column :name
+      column :frontend_order
       column :status, html: true do |tournament|
         format_tournament_status(tournament)
       end

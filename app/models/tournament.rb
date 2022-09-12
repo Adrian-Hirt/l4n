@@ -25,6 +25,7 @@ class Tournament < ApplicationRecord
   validates :max_number_of_participants, presence: true
   validate :disallow_changes_when_teams_present
   validate :max_number_of_participants_larger_than_in_tournament_teams
+  validates :frontend_order, presence: true, numericality: true
 
   # == Hooks =======================================================================
 

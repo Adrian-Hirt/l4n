@@ -7,7 +7,7 @@ module Operations::Tournament
     def tournaments
       @tournaments ||= ::Tournament.accessible_by(context.ability)
                                    .where(status: Tournament.statuses[:published])
-                                   .order(:name)
+                                   .order(frontend_order: :desc, name: :asc)
     end
   end
 end

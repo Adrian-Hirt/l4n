@@ -11,6 +11,7 @@ module Operations::Admin::Tournament
         obj? :files
         obj? :remove_files
         obj? :lan_party_id
+        obj? :frontend_order
         obj? :description
       end
     end

@@ -22,10 +22,12 @@
                           wrapper_html: { class: team_size_classes, data: { 'admin--tournament-form-target' => 'teamSize' } }
 
     .row
-      .col-md-6
+      .col-md-4
         = f.input :status, collection: Tournament::statuses, include_blank: false
-      .col-md-6
+      .col-md-4
         = f.input :lan_party_id, collection: LanParty.order(:name), include_blank: _('Form|Select|Blank')
+      .col-md-4
+        = f.input :frontend_order
 
 
     -# -- Files inputs -------------------------------------------------------------
