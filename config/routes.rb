@@ -63,7 +63,7 @@ Rails.application.routes.draw do
 
   # == Tournaments ======================================================================
   resources :tournaments, only: %i[index show], shallow: true do
-    resources :tournament_teams, except: %i[index] do
+    resources :tournament_teams, except: %i[index show] do
       member do
         post :register_for_tournament
         post :unregister_from_tournament
@@ -72,7 +72,11 @@ Rails.application.routes.draw do
     end
 
     get :teams, to: 'tournament_teams#index'
+
+    resources :standings, only: %i[index], controller: :tournament_phases
   end
+
+  get 'teams/:id', to: 'tournament_teams#show', as: :team
 
   resources :tournament_team_members, only: %i[destroy] do
     member do

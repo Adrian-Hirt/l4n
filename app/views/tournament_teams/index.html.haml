@@ -1,9 +1,16 @@
-%h1.mb-3
-  = link_to op.tournament.name, op.tournament
-  \-
-  =  _('Tournament|Teams')
+%h1.mb-3= op.tournament.name
 
 .row
+  .col-md-12
+    .card.mb-3
+      .card-body
+        %ul.nav.nav-pills
+          %li.nav-item
+            = link_to _('Tournament|Info'), tournament_path(op.tournament), class: 'nav-link'
+          %li.nav-item
+            %a.nav-link.active{href: '#'}= _('Tournament|Teams')
+          %li.nav-item
+            = link_to _('Tournament|Standings'), tournament_standings_path(op.tournament), class: 'nav-link'
   .col-md-8
     .card
       .card-header
@@ -16,7 +23,7 @@
           - op.teams.includes(:users).each do |team|
             %tr
               %td
-                = link_to team.name, team
+                = link_to team.name, team_path(team)
                 - unless op.tournament.singleplayer?
                   %small.d-block.text-muted.text-small
                     = team.users.to_a.sort_by(&:username).map(&:username).join(', ')

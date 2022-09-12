@@ -1,11 +1,16 @@
-%h1.mb-3
-  = link_to model.tournament.name, model.tournament
-  \-
-  = link_to _('Tournament|Teams'), tournament_teams_path(model.tournament)
-  \-
-  = model.name
+%h1.mb-3= model.name
 
 .row
+  .col-md-12
+    .card.mb-3
+      .card-body
+        %ul.nav.nav-pills
+          %li.nav-item
+            = link_to _('Tournament|Info'), tournament_path(model.tournament), class: 'nav-link'
+          %li.nav-item
+            = link_to _('Tournament|Teams'), tournament_teams_path(model.tournament), class: 'nav-link'
+          %li.nav-item
+            = link_to _('Tournament|Standings'), tournament_standings_path(model.tournament), class: 'nav-link'
   .col-md-8
     .card
       .card-header

@@ -19,7 +19,7 @@
           .mb-2
             = _('Tournament|Number of Participants')
             .small.text-muted
-              = "#{tournament.teams.registered.count} / #{tournament.max_number_of_participants}"
+              = "#{tournament.teams.in_tournament.count} / #{tournament.max_number_of_participants}"
           %hr
             = format_registration_status(tournament)
         .card-footer

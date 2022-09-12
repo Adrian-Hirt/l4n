@@ -1,0 +1,55 @@
+.single-elimination-tournament-tree.mb-3
+  - total_rounds = phase.rounds.count
+  - phase.rounds.order(:round_number).each do |round|
+    -# Calculate the number of matches, which is 2 to the power of
+    -# "current_round index", where the final has index 0 and earlier
+    -# rounds have higher indices
+    - number_of_matches = 2 ** (round.round_number - total_rounds).abs
+
+    .tournament-round
+      -# Create the boxes for the matches. If we have matches,
+      -# we directly render these, otherwise we render the calculated
+      -# number of matches for the current round
+      - if round.matches.any?
+        - round.matches.order(:id).includes(away: :team, home: :team).each do |match|
+          .match
+            .d-flex.justify-content-between
+              .matchteam
+                = match.home.name
+              .matchscore
+                = format_match_score(match,  :home)
+            .d-flex.justify-content-between
+              .matchteam
+                = match.away&.name || _('Match|Bye')
+              .matchscore
+                = format_match_score(match, :away)
+      - else
+        - number_of_matches.times do
+          .match
+            .d-flex.justify-content-between
+              .matchteam
+                = _('Match|Tbd')
+              .matchscore
+                &mdash;
+            .d-flex.justify-content-between
+              .matchteam
+                = _('Match|Tbd')
+              .matchscore
+                &mdash;
+
+    -# We don't need to do this after the last match
+    - unless number_of_matches == 1
+      -# Generate the outgoing horizontal connectors
+      .round-connectors-horizontal
+        - number_of_matches.times do
+          %div
+
+      -# Generate the vertical connectors
+      .round-connectors-vertical{class: round_matches_to_inverse_round_index_word(number_of_matches)}
+        - (number_of_matches / 2).times do
+          %div
+
+      -# Finally, generate the incoming horizontal connectors
+      .round-connectors-horizontal
+        - (number_of_matches / 2).times do
+          %div
