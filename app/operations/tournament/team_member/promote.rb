@@ -1,5 +1,5 @@
 module Operations::Tournament::TeamMember
-  class Promote < RailsOps::Operation::Model::Load
+  class Promote < RailsOps::Operation::Model::Update
     schema3 do
       int! :id, cast_str: true
     end

@@ -21,11 +21,18 @@ class Ability
 
     can :read, :shop if FeatureFlag.enabled?(:shop)
 
+    # Tournament permissions. No permissions if the feature flag is
+    # not enabled.
     if FeatureFlag.enabled?(:tournaments)
+      # Anyone can view all published tournaments
       can :read, Tournament, status: Tournament.statuses[:published]
+
+      # Anyone can view any team that participates in a published tournament
       can :read, Tournament::Team, Queries::Tournament::Team::FetchAccessibleBy.call(user: user) do |m|
         m.tournament.published?
       end
+
+      # Anyone can view any match that is in a published tournament
       can :read, Tournament::Match, Queries::Tournament::Match::FetchAccessibleBy.call(user: user) do |m|
         m.tournament.published?
       end
@@ -66,11 +73,27 @@ class Ability
 
     # Tournament permissions
     if FeatureFlag.enabled?(:tournaments)
-      # Can join any team
+      # A registered user can create a team
+      can :create, Tournament::Team
 
-      # can leave tournaments where member
+      # A user can update a team if they are the captain of the team
+      can :update, Tournament::Team do |m|
+        m.captain?(user)
+      end
 
-      # can edit tournaments where captain
+      # A user can destroy a team if it's deletable and they are the captain
+      can :destroy, Tournament::Team do |m|
+        m.captain?(user) && m.deletable?
+      end
+
+      # A user can always join a Team
+      can :create, Tournament::TeamMember
+
+      # A user can update a TeamMember if it's in a team they are
+      # the captain or if it's their own membership.
+      can %i[read update destroy], Tournament::TeamMember do |m|
+        m.user == user || m.team.captain?(user)
+      end
     end
 
     ##############################################################

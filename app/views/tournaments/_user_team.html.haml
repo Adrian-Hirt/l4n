@@ -5,9 +5,9 @@
       %b= _('Team|Create a team')
     = simple_form_for :tournament_team, url: tournament_tournament_teams_path(tournament), wrapper: :input_group do |f|
       = f.input :name, label: false,
-                        placeholder: _('Team|Name placeholder'),
-                        append: f.save('+', style: 'border-radius: 0;', class: %i[rounded-end]),
-                        append_options: { class: '' }
+                        placeholder: _('Team|Name placeholder')
+      = f.password :password, placeholder: _('TournamentTeam|Password')
+      = f.save class: %i[w-100]
   - else
     -# Case: Registration open & team present
     = op.user_team.name

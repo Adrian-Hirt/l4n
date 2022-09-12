@@ -1,5 +1,5 @@
 module Operations::Tournament::Team
-  class RegisterForTournament < RailsOps::Operation::Model::Load
+  class RegisterForTournament < RailsOps::Operation::Model::Update
     schema3 do
       int! :id, cast_str: true
     end
