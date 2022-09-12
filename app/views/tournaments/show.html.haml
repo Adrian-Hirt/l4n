@@ -30,6 +30,7 @@
           .small.text-muted
             = "#{model.teams.in_tournament.count} / #{model.max_number_of_participants}"
         %hr
+        .mb-2.fw-bold= _('Tournament|Description')
         = markdown model.description
   .col-md-4
     = render partial: 'actions_sidebar', locals: { tournament: model, op: op }

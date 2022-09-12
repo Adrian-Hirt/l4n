@@ -10,8 +10,10 @@
       = f.save class: %i[w-100]
   - else
     -# Case: Registration open & team present
-    = op.user_team.name
-    = op.user_team.status
+    .mb-2.fw-bold= _('Tournament|Your team')
+    .mb-3
+      = link_to op.user_team.name, team_path(op.user_team)
+      .text-muted= op.user_team.status
 
     -# If the team is in status "CREATED", we display either a "LEAVE TEAM"
     -# button for non-captains, or a "Participate" and a "Delete team" button

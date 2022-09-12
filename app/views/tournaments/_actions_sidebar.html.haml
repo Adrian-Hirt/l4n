@@ -2,6 +2,7 @@
   .card-header
     = _('Tournament|Tournament actions')
   .card-body
+    .mb-2.fw-bold= _('Tournament|Registration status')
     = format_registration_status(tournament)
     %hr
     - if logged_in?
