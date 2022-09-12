@@ -1,19 +1,21 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  # Login / Logout
+  # == Login / Logout ===================================================================
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   match 'login/two_factor', to: 'sessions#two_factor', via: %i[get post]
   delete 'logout', to: 'sessions#destroy'
 
+  # == Settings =========================================================================
   post 'locale/:locale', to: 'application#set_locale', as: :set_locale
   post 'toggle_dark_mode', to: 'application#toggle_dark_mode'
 
-  # Password resetting
+  # == Password resetting ===============================================================
   match '/request_password_reset', to: 'password_resets#request_password_reset', via: %i[get post]
   match '/reset_password', to: 'password_resets#reset_password', via: %i[get patch]
 
+  # == Users ============================================================================
   resources :users, only: %i[show] do
     collection do
       get :activate
@@ -21,10 +23,11 @@ Rails.application.routes.draw do
     end
   end
 
-  # User registration
+  # == User registration ================================================================
   get 'signup', to: 'users#new'
   post 'signup', to: 'users#create'
 
+  # == User settings ====================================================================
   namespace :settings do
     namespace :two_factor do
       get :/, action: :index
@@ -52,10 +55,32 @@ Rails.application.routes.draw do
     resources :addresses, except: %i[show], controller: :user_addresses, as: :user_addresses
   end
 
+  # == News =============================================================================
   resources :news, only: %i[index show]
+
+  # == Events ===========================================================================
   resources :events, only: %i[index show]
 
-  # Shop
+  # == Tournaments ======================================================================
+  resources :tournaments, only: %i[index show], shallow: true do
+    resources :tournament_teams, except: %i[index] do
+      member do
+        post :register_for_tournament
+        post :unregister_from_tournament
+        post :join
+      end
+    end
+
+    get :teams, to: 'tournament_teams#index'
+  end
+
+  resources :tournament_team_members, only: %i[destroy] do
+    member do
+      post :promote
+    end
+  end
+
+  # == Shop =============================================================================
   namespace :shop do
     get '/', to: 'home#index'
 
@@ -85,7 +110,7 @@ Rails.application.routes.draw do
     end
   end
 
-  # Lan related stuff
+  # == Lan related ======================================================================
   namespace :lan do
     get :seatmap, to: 'seatmap#index'
     scope '/seatmap' do
@@ -97,7 +122,7 @@ Rails.application.routes.draw do
     end
   end
 
-  # Admin panel stuff
+  # == Admin panel ======================================================================
   namespace :admin do
     get '/', to: 'home#dashboard'
 
@@ -231,6 +256,7 @@ Rails.application.routes.draw do
     post :markdown_preview, to: 'markdown#preview'
   end
 
+  # == Dynamic pages ====================================================================
   # Wildcard route for dynamic pages. This **needs** to come last at all times
   get '*page', to: 'pages#show', page: /((?!rails|admin|paymentgateway).)*/
 end

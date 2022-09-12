@@ -8,7 +8,8 @@ class MenuItem < ApplicationRecord
     'news'        => { title: _('News'), feature_flag: :news_posts },
     'events'      => { title: _('Events'), feature_flag: :events },
     'shop'        => { title: _('Shop'), feature_flag: :shop },
-    'lan/seatmap' => { title: _('LanParty|SeatMap'), feature_flag: :lan_party }
+    'lan/seatmap' => { title: _('LanParty|SeatMap'), feature_flag: :lan_party },
+    'tournaments' => { title: _('Tournaments'), feature_flag: :tournaments }
   }.freeze
 
   TYPES = %w[MenuLinkItem MenuDropdownItem].freeze

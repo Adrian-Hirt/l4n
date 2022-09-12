@@ -44,6 +44,14 @@ class Tournament::Team < ApplicationRecord
     created?
   end
 
+  def captain
+    team_members.find_by(captain: true)
+  end
+
+  def captain?(user)
+    captain.present? && user.present? && captain.user_id == user.id
+  end
+
   # == Private Methods =============================================================
   private
 

@@ -22,7 +22,7 @@ module Admin
         else
           add_breadcrumb op.tournament.name, admin_tournament_path(op.tournament)
           add_breadcrumb _('Admin|Tournaments|Phase|New')
-          flash[:danger] = _('Admin|Tournamens|Phase|Create failed')
+          flash[:danger] = _('Admin|Tournament|Phase|Create failed')
           render :new, status: :unprocessable_entity
         end
       end
@@ -40,7 +40,7 @@ module Admin
         else
           add_breadcrumb model.tournament.name, admin_tournament_path(model.tournament)
           add_breadcrumb model.name
-          flash[:danger] = _('Admin|Tournamens|Phase|Update failed')
+          flash[:danger] = _('Admin|Tournament|Phase|Update failed')
           render :new, status: :unprocessable_entity
         end
       end

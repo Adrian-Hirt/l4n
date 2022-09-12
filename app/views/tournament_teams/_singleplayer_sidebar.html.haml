@@ -1,0 +1,20 @@
+- if model.tournament.registration_open?
+  - if model.created?
+    .d-grid.gap-2
+      = button _('Tournament|Participate in tournament'),
+              register_for_tournament_tournament_team_path(model),
+              method: :post
+      = button _('Tournament|Remove listing'),
+              model,
+              color: :danger,
+              confirm: _('Tournament|Leave tournament?'),
+              tag: :button,
+              html: { method: :delete },
+              classes: 'w-100'
+  - elsif model.registered?
+    .d-grid.gap-2
+      = button _('Tournament|Remove my participation from tournament'),
+              unregister_from_tournament_tournament_team_path(model),
+              method: :post
+  - else
+    = _('Team|No actions possible')

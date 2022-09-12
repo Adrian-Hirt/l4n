@@ -1,0 +1,57 @@
+- if tournament.registration_open?
+  -# Case: Registration open & no team created yet => can create new team
+  - if op.user_team.nil?
+    .mb-1
+      %b= _('Team|Create a team')
+    = simple_form_for :tournament_team, url: tournament_tournament_teams_path(tournament), wrapper: :input_group do |f|
+      = f.input :name, label: false,
+                        placeholder: _('Team|Name placeholder'),
+                        append: f.save('+', style: 'border-radius: 0;', class: %i[rounded-end]),
+                        append_options: { class: '' }
+  - else
+    -# Case: Registration open & team present
+    = op.user_team.name
+    = op.user_team.status
+
+    -# If the team is in status "CREATED", we display either a "LEAVE TEAM"
+    -# button for non-captains, or a "Participate" and a "Delete team" button
+    -# for captains.
+    -# If the team is in status "REGISTERED", we display a "unregister" button
+    -# for captains.
+    - if op.user_team.captain?(current_user)
+      -# Case: Captain
+      - if op.user_team.created?
+        .d-grid.gap-2
+          = button _('Tournament|Participate in tournament'),
+                  register_for_tournament_tournament_team_path(op.user_team),
+                  method: :post
+          = button _('Tournament|Delete team'),
+                  op.user_team,
+                  color: :danger,
+                  confirm: _('Tournament|Leave tournament?'),
+                  tag: :button,
+                  html: { method: :delete },
+                  classes: 'w-100'
+      - elsif op.user_team.registered?
+        .d-grid.gap-2
+          = button _('Tournament|Remove team from tournament'),
+                  unregister_from_tournament_tournament_team_path(op.user_team),
+                  method: :post
+      - else
+        = _('Team|No actions possible')
+    - else
+      -# Case: Normal teammember with correct state
+      - if op.user_team.created?
+        = button _('Tournament|Leave team'),
+                op.user_team_membership,
+                color: :danger,
+                confirm: _('Tournament|Leave team?'),
+                tag: :button,
+                html: { method: :delete },
+                classes: 'w-100'
+- else
+  - if op.user_team.nil?
+    = _('Tournament|You are not in the tournament')
+  - else
+    = op.user_team.name
+    = op.user_team.status

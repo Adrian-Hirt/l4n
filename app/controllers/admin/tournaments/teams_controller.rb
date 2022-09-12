@@ -18,7 +18,7 @@ module Admin
         else
           add_breadcrumb op.tournament.name, admin_tournament_path(op.tournament)
           add_breadcrumb _('Admin|Tournaments|Team|New')
-          flash[:danger] = _('Admin|Tournamens|Team|Create failed')
+          flash[:danger] = _('Admin|Tournament|Team|Create failed')
           render :new, status: :unprocessable_entity
         end
       rescue Operations::Admin::Tournament::Team::TournamentHasOngoingPhases
@@ -27,7 +27,7 @@ module Admin
       rescue Operations::Admin::Tournament::Team::UserError
         add_breadcrumb op.tournament.name, admin_tournament_path(op.tournament)
         add_breadcrumb _('Admin|Tournaments|Team|New')
-        flash[:danger] = _('Admin|Tournamens|Team|Create failed')
+        flash[:danger] = _('Admin|Tournament|Team|Create failed')
         render :new, status: :unprocessable_entity
       end
 
@@ -44,7 +44,7 @@ module Admin
         else
           add_breadcrumb model.tournament.name, admin_tournament_path(model.tournament)
           add_breadcrumb model.name
-          flash[:danger] = _('Admin|Tournamens|Team|Update failed')
+          flash[:danger] = _('Admin|Tournament|Team|Update failed')
           render :edit, status: :unprocessable_entity
         end
       end
@@ -53,7 +53,7 @@ module Admin
         if run Operations::Admin::Tournament::Team::RegisterForTournament
           flash[:success] = _('Admin|Tournaments|Team|Successfully registered for the tournament')
         else
-          flash[:danger] = _('Admin|Tournamens|Team|Registering for the tournament failed')
+          flash[:danger] = _('Admin|Tournament|Team|Registering for the tournament failed')
         end
       rescue Operations::Exceptions::OpFailed => e
         flash[:danger] = e.message
@@ -65,7 +65,7 @@ module Admin
         if run Operations::Admin::Tournament::Team::UnregisterFromTournament
           flash[:success] = _('Admin|Tournaments|Team|Successfully unregistered from the tournament')
         else
-          flash[:danger] = _('Admin|Tournamens|Team|Unregistering from the tournament failed')
+          flash[:danger] = _('Admin|Tournament|Team|Unregistering from the tournament failed')
         end
       rescue Operations::Exceptions::OpFailed => e
         flash[:danger] = e.message

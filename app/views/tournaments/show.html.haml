@@ -1,0 +1,25 @@
+%h1.mb-3= model.name
+
+.row
+  .col-md-8
+    .card
+      .card-header
+        = _('Tournament|Tournament details')
+      .card-body
+        .mb-2
+          = _('Tournament|Team types')
+          .small.text-muted
+            - if model.singleplayer?
+              = icon %i[fas fa-user]
+              = _('Team|1 player')
+            - else
+              = icon %i[fas fa-users]
+              = _('Team|%{count} players') % { count: model.team_size }
+        .mb-2
+          = _('Tournament|Number of Participants')
+          .small.text-muted
+            = "#{model.teams.registered.count} / #{model.max_number_of_participants}"
+        %hr
+        = markdown model.description
+  .col-md-4
+    = render partial: 'actions_sidebar', locals: { tournament: model, op: op }

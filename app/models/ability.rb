@@ -1,3 +1,4 @@
+# rubocop:disable Style/GuardClause
 class Ability
   include CanCan::Ability
 
@@ -19,6 +20,11 @@ class Ability
     can :read, SeatMap if FeatureFlag.enabled?(:lan_party)
 
     can :read, :shop if FeatureFlag.enabled?(:shop)
+
+    if FeatureFlag.enabled?(:tournaments)
+      can :read, Tournament, status: Tournament.statuses[:published]
+      can :read, Tournament::Team
+    end
 
     # Return early if user does not exist
     return if user.nil?
@@ -53,9 +59,25 @@ class Ability
       m.order.user == user || m.assignee == user
     end
 
+    # Tournament permissions
+    if FeatureFlag.enabled?(:tournaments)
+      # Can join any team
+
+      # can leave tournaments where member
+
+      # can edit tournaments where captain
+    end
+
     ##############################################################
     # Admin Permissions
     ##############################################################
+
+    # Return early if the user doesn't have any admin permission
+    return unless user.any_admin_permission?
+
+    # User can access admin panel if the user has any
+    # admin permission
+    can :access, :admin_panel
 
     # NewsPost admin permission
     can :manage, NewsPost if user.news_admin_permission? && FeatureFlag.enabled?(:news_posts)
@@ -108,9 +130,6 @@ class Ability
       can :manage, Tournament::Match
       can :manage, Tournament::TeamMember
     end
-
-    # User can access admin panel if the user has any
-    # admin permission
-    can :access, :admin_panel if user.any_admin_permission?
   end
 end
+# rubocop:enable Style/GuardClause

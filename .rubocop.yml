@@ -117,3 +117,8 @@ Metrics/ClassLength:
   Exclude:
     - test/**/*
   Max: 150
+
+Metrics/ModuleLength:
+  Exclude:
+    - test/**/*
+  Max: 150

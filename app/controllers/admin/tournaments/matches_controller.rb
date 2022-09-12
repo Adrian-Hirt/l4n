@@ -15,17 +15,17 @@ module Admin
           flash[:success] = _('Admin|Tournaments|Match|Successfully updated')
           redirect_to admin_phase_path(model.phase)
         else
-          flash[:danger] = _('Admin|Tournamens|Match|Update failed')
+          flash[:danger] = _('Admin|Tournament|Match|Update failed')
           add_breadcrumb model.phase.tournament.name, admin_tournament_path(model.phase.tournament)
           add_breadcrumb "#{model.phase.phase_number}. #{model.phase.name}", admin_phase_path(model.phase)
           add_breadcrumb _('Admin|Match')
           render :show, status: :unprocessable_entity
         end
       rescue Operations::Admin::Tournament::Match::MatchNotInRunningPhase
-        flash[:danger] = _('Admin|Tournamens|Match|Not in running phase')
+        flash[:danger] = _('Admin|Tournament|Match|Not in running phase')
         redirect_to admin_phase_path(model.phase)
       rescue Operations::Admin::Tournament::Match::MatchNotInCurrentRound
-        flash[:danger] = _('Admin|Tournamens|Match|Not in current round')
+        flash[:danger] = _('Admin|Tournament|Match|Not in current round')
         redirect_to admin_phase_path(model.phase)
       end
     end

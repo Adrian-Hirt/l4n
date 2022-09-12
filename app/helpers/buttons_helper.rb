@@ -9,7 +9,7 @@ module ButtonsHelper
   }.freeze
 
   # rubocop:disable Metrics/ParameterLists
-  def button(title, href, html: {}, btn_icon: nil, method: nil, disable_on_click: false, confirm: nil, **opts)
+  def button(title, href, html: {}, btn_icon: nil, method: nil, disable_on_click: false, confirm: nil, tag: :a, **opts)
     options = get_options(opts)
     if btn_icon
       button_icon = icon btn_icon
@@ -32,7 +32,7 @@ module ButtonsHelper
     end
     html[:data] ||= {}
     html[:data].merge!(data)
-    _button(title, href, get_btn_class(options), **html)
+    _button(title, href, get_btn_class(options), tag: tag, **html)
   end
   # rubocop:enable Metrics/ParameterLists
 
@@ -81,16 +81,20 @@ module ButtonsHelper
       method: :delete
     }
     html_options.merge!(html)
-    button_to href, class: get_btn_class(options), **html_options do
-      title
-    end
+    _button(title, href, get_btn_class(options), tag: :button, **html_options)
   end
 
   private
 
-  def _button(title, href, classes, **link_opts)
-    link_to href, class: classes, **link_opts do
-      title
+  def _button(title, href, classes, tag: :a, **link_opts)
+    if tag == :button
+      button_to href, class: classes, **link_opts do
+        title
+      end
+    else
+      link_to href, class: classes, **link_opts do
+        title
+      end
     end
   end
 
@@ -100,6 +104,7 @@ module ButtonsHelper
     classes << "btn-#{opts[:size]}" if opts[:size]
     classes << 'icon-only-btn' if opts[:icon_only]
     classes << 'disabled' if opts[:disabled]
+    classes << opts[:classes] if opts[:classes]
     classes
   end
 

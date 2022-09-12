@@ -1,0 +1,26 @@
+%h1= _('Tournaments')
+
+.row
+  - op.tournaments.each do |tournament|
+    .col-md-4.mb-3
+      .card
+        .card-header
+          %b= tournament.name
+        .card-body
+          .mb-2
+            = _('Tournament|Team types')
+            .small.text-muted
+              - if tournament.singleplayer?
+                = icon %i[fas fa-user]
+                = _('Team|1 player')
+              - else
+                = icon %i[fas fa-users]
+                = _('Team|%{count} players') % { count: tournament.team_size }
+          .mb-2
+            = _('Tournament|Number of Participants')
+            .small.text-muted
+              = "#{tournament.teams.registered.count} / #{tournament.max_number_of_participants}"
+          %hr
+            = format_registration_status(tournament)
+        .card-footer
+          = show_button tournament, size: :sm

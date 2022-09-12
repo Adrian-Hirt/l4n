@@ -1,0 +1,13 @@
+.card
+  .card-header
+    = _('Tournament|Tournament actions')
+  .card-body
+    = format_registration_status(tournament)
+    %hr
+    - if logged_in?
+      - if tournament.singleplayer?
+        = render partial: 'tournaments/user_singleplayer', locals: { tournament: tournament, op: op }
+      - else
+        = render partial: 'tournaments/user_team', locals: { tournament: tournament, op: op }
+    - else
+      = _('Tournament|Please login to see the available actions')

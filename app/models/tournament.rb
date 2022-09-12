@@ -11,6 +11,7 @@ class Tournament < ApplicationRecord
   # == Associations ================================================================
   has_many :phases, class_name: 'Tournament::Phase', dependent: :destroy
   has_many :teams, dependent: :destroy
+  has_many :registered_teams, -> { registered }, class_name: 'Tournament::Team', dependent: :destroy, inverse_of: :tournament
   has_many_attached :files
   belongs_to :lan_party, optional: true
 
