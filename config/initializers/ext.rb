@@ -1,3 +1,5 @@
-Rails.root.join('lib/ext/**/*.rb').glob.each do |filename|
+# rubocop:disable Rails/RootPathnameMethods
+Dir.glob(Rails.root.join('lib/ext/**/*.rb')).each do |filename|
   require filename
 end
+# rubocop:enable Rails/RootPathnameMethods
