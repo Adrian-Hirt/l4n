@@ -113,11 +113,11 @@ class Tournament::Phase < ApplicationRecord
     if single_elimination?
       relevant_match = matches.order(:id).last
 
-      return [relevant_match.winner.team.name, relevant_match.loser.team.name]
+      [relevant_match.winner.team.name, relevant_match.loser.team.name]
     elsif double_elimination?
       second_last_match, final_match = matches.order(:id).last(2)
 
-      return [final_match.winner.team.name, final_match.loser.team.name, second_last_match.loser.team.name]
+      [final_match.winner.team.name, final_match.loser.team.name, second_last_match.loser.team.name]
     end
   end
 

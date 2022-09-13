@@ -57,11 +57,9 @@ class Tournament::Match < ApplicationRecord
   end
 
   def loser
-    if winner.present?
-      return winner == away ? home : away
-    else
-      nil
-    end
+    return if winner.blank?
+
+    winner == away ? home : away
   end
 
   # == Private Methods =============================================================

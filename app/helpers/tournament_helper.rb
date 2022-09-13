@@ -112,11 +112,12 @@ module TournamentHelper
 
   def format_medal(rank)
     classes = %i[medal]
-    if rank == 1
+    case rank
+    when 1
       classes << :'bg-gold'
-    elsif rank == 2
+    when 2
       classes << :'bg-silver'
-    elsif rank == 3
+    when 3
       classes << :'bg-bronze'
     end
 
