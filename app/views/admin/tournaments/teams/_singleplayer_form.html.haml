@@ -1,0 +1,5 @@
+= simple_form_for model, url: [:admin, model] do |f|
+  .card-body
+    = f.input :single_user_name, autocomplete: :false
+  .card-footer
+    = f.save

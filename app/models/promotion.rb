@@ -16,8 +16,8 @@ class Promotion < ApplicationRecord
 
   # == Validations =================================================================
   validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }
-  validates :active, inclusion: [true, false]
-  validates :code_type, presence: true
+  validates_boolean :active
+  validates :code_type, presence: true, inclusion: code_types.keys
   validates :code_prefix, length: { maximum: 20 }
   validates :reduction, presence: true, if: -> { fixed_value? }
   validates :reduction, absence: true, if: -> { free_item? }

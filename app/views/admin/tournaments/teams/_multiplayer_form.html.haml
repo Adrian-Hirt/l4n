@@ -1,0 +1,14 @@
+- if model.new_record?
+  - url = [:admin, model]
+- else
+  - url = admin_team_path(model)
+
+= simple_form_for model, url: url do |f|
+  .card-body
+    = f.input :name
+    - if model.new_record?
+      = f.password :password
+    - else
+      = f.password :password, placeholder: _('TournamentTeam|Password|Leave blank to leave')
+  .card-footer
+    = f.save

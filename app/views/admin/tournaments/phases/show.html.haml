@@ -1,0 +1,62 @@
+.row
+  .col-md-6.mb-4.mb-md-0
+    .card.mb-4
+      .card-header
+        = model.phase_number
+        \.
+        = model.name
+      .card-body
+        .small.text-muted= _('Phase|Tournament mode')
+        .mb-1= model.tournament_mode
+        .small.text-muted= _('Phase|Number of participating teams')
+        .mb-1= model.participating_teams.count
+        - if model.created?
+          - if model.tournament.registration_open?
+            = _('Admin|Tournaments|Phase|Please close the registration before generating rounds')
+          - elsif model.swiss?
+            -# For Swiss tournaments, we can optionally set a number of rounds, which must
+            -# be higher than the minimum calculated number of rounds
+            = simple_form_for :phase, url: generate_rounds_admin_phase_path(model) do |f|
+              = f.input :swiss_rounds, placeholder: _('Phase|Swiss Rounds|Leave blank to use minimum of %{rounds} rounds') % { rounds: op.min_swiss_rounds }
+              = f.save _('Phase|Generate phases')
+          - elsif model.first_phase? || model.previous_phase.completed?
+            -# Otherwise we just display the button to generate the phases
+            = button _('Phase|Generate rounds'), generate_rounds_admin_phase_path(model), method: :post
+        - elsif model.seeding?
+          .small.text-muted= _('Phase|Number of rounds')
+          = model.rounds.count
+        - elsif model.confirmed?
+          = button _('Phase|Generate first round matches'), generate_next_round_matches_admin_phase_path(model), method: :post
+        - elsif model.running?
+          - if model.current_round.completed?
+            - if model.next_round.present?
+              = button _('Phase|Generate next round matches'), generate_next_round_matches_admin_phase_path(model), method: :post
+            - else
+              = button _('Phase|Complete phase'), complete_admin_phase_path(model), method: :post, confirm: true
+          - else
+            = button _('Phase|Matches being played, please wait'), nil, disabled: true
+        - elsif model.completed?
+          = _('Phase|Phase completed')
+
+  - if model.created?
+    .col-md-6.mb-4.mb-md-0
+      .card.mb-4
+        .card-header
+          = _('Seeding')
+        .card-body
+          = _('Phase|Create rounds for seeding')
+    .card-body
+  - elsif model.seeding?
+    = render partial: 'seeding'
+  - elsif model.confirmed?
+    = render partial: 'seeds'
+  - elsif model.running? || model.completed?
+    = render partial: 'standings'
+
+- if model.confirmed? || model.running? || model.completed?
+  - if model.swiss?
+    = render partial: 'swiss_rounds'
+  - elsif model.single_elimination?
+    = render partial: 'single_elimination_tree'
+  - elsif model.double_elimination?
+    = render partial: 'double_elimination_tree'

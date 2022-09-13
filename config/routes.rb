@@ -1,29 +1,33 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  # Login / Logout
+  # == Login / Logout ===================================================================
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   match 'login/two_factor', to: 'sessions#two_factor', via: %i[get post]
   delete 'logout', to: 'sessions#destroy'
 
+  # == Settings =========================================================================
   post 'locale/:locale', to: 'application#set_locale', as: :set_locale
   post 'toggle_dark_mode', to: 'application#toggle_dark_mode'
 
-  # Password resetting
+  # == Password resetting ===============================================================
   match '/request_password_reset', to: 'password_resets#request_password_reset', via: %i[get post]
   match '/reset_password', to: 'password_resets#reset_password', via: %i[get patch]
 
+  # == Users ============================================================================
   resources :users, only: %i[show] do
     collection do
       get :activate
+      get :by_username
     end
   end
 
-  # User registration
+  # == User registration ================================================================
   get 'signup', to: 'users#new'
   post 'signup', to: 'users#create'
 
+  # == User settings ====================================================================
   namespace :settings do
     namespace :two_factor do
       get :/, action: :index
@@ -51,10 +55,38 @@ Rails.application.routes.draw do
     resources :addresses, except: %i[show], controller: :user_addresses, as: :user_addresses
   end
 
+  # == News =============================================================================
   resources :news, only: %i[index show]
+
+  # == Events ===========================================================================
   resources :events, only: %i[index show]
 
-  # Shop
+  # == Tournaments ======================================================================
+  resources :tournaments, only: %i[index show], shallow: true do
+    resources :tournament_teams, except: %i[index show] do
+      member do
+        post :register_for_tournament
+        post :unregister_from_tournament
+        post :join
+      end
+    end
+
+    get :teams, to: 'tournament_teams#index'
+
+    resources :standings, only: %i[index], controller: :tournament_phases
+  end
+
+  get 'teams/:id', to: 'tournament_teams#show', as: :team
+
+  resources :tournament_team_members, only: %i[destroy] do
+    member do
+      post :promote
+    end
+  end
+
+  resources :matches, only: %i[edit update], controller: :tournament_matches
+
+  # == Shop =============================================================================
   namespace :shop do
     get '/', to: 'home#index'
 
@@ -84,20 +116,19 @@ Rails.application.routes.draw do
     end
   end
 
-  # Lan related stuff
+  # == Lan related ======================================================================
   namespace :lan do
     get :seatmap, to: 'seatmap#index'
     scope '/seatmap' do
       get :seats, to: 'seatmap#seats'
       post :get_seat, to: 'seatmap#get_seat'
       post :remove_seat, to: 'seatmap#remove_seat'
-      get :user_by_username, to: 'seatmap#user_by_username'
       post :assign_ticket, to: 'seatmap#assign_ticket'
       delete :remove_assignee, to: 'seatmap#remove_assignee'
     end
   end
 
-  # Admin panel stuff
+  # == Admin panel ======================================================================
   namespace :admin do
     get '/', to: 'home#dashboard'
 
@@ -196,10 +227,42 @@ Rails.application.routes.draw do
       resources :tickets, controller: 'lan_parties/tickets', only: %i[index]
     end
 
+    # Tournament system
+    resources :tournaments, shallow: true, except: %i[destroy] do
+      member do
+        post :toggle_registration
+      end
+      scope module: :tournaments do
+        resources :phases, except: %i[index] do
+          member do
+            post :generate_rounds
+            post :update_seeding
+            post :confirm_seeding
+            post :generate_next_round_matches
+            post :complete
+          end
+        end
+        resources :teams, except: %i[show] do
+          member do
+            post :register_for_tournament
+            post :unregister_from_tournament
+            post :add_user
+          end
+        end
+        resources :matches, only: %i[show update]
+        resources :team_members, only: %i[destroy] do
+          member do
+            post :promote
+          end
+        end
+      end
+    end
+
     # Markdown preview endpoint
     post :markdown_preview, to: 'markdown#preview'
   end
 
+  # == Dynamic pages ====================================================================
   # Wildcard route for dynamic pages. This **needs** to come last at all times
   get '*page', to: 'pages#show', page: /((?!rails|admin|paymentgateway).)*/
 end

@@ -38,7 +38,7 @@ class Product < ApplicationRecord
 
   # == Validations =================================================================
   validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }
-  validates :on_sale, inclusion: [true, false]
+  validates_boolean :on_sale
   validates :inventory, numericality: { greater_than_or_equal_to: 0 }, presence: true
   validates :availability, numericality: { greater_than_or_equal_to: 0 }, presence: true
   validates :images, size: { less_than: 5.megabytes, message: format(_('File is too large, max. allowed %{size}'), size: '5MB') }, content_type: %r{\Aimage/.*\z}

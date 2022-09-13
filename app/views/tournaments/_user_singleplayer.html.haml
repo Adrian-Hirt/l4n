@@ -1,0 +1,68 @@
+- if tournament.registration_open?
+  - if op.user_team.nil?
+    .d-grid.gap-2
+      = button _('Tournament|Sign up for tournaments'), tournament_tournament_teams_path(tournament),
+              method: :post
+  - elsif op.user_team.created?
+    .d-grid.gap-2
+      = button _('Tournament|Participate in tournament'),
+              register_for_tournament_tournament_team_path(op.user_team),
+              method: :post
+      = button _('Tournament|Remove listing'),
+              op.user_team,
+              color: :danger,
+              confirm: _('Tournament|Leave tournament?'),
+              tag: :button,
+              html: { method: :delete },
+              classes: 'w-100'
+  - elsif op.user_team.registered?
+    .d-grid.gap-2
+      = button _('Tournament|Remove my participation from tournament'),
+              unregister_from_tournament_tournament_team_path(op.user_team),
+              method: :post
+  - else
+    = _('Team|No actions possible')
+- else
+  - if op.user_team.present?
+    .mb-2.fw-bold= _('Tournament|Your participation page')
+    .mb-3
+      = link_to op.user_team.name, team_path(op.user_team)
+      .text-muted
+        - if op.user_team.created?
+          = _('Tournament|You are not in the tournament')
+        - else
+          = _('Tournament|You are participating in the tournament')
+    %hr
+    .mb-2.fw-bold= _('Tournament|Your next match')
+    - match = Queries::Tournament::Match::FetchNextForTeam.call(team: op.user_team)
+    - if match.present?
+      - content_for :match, flush: true do
+        .d-flex.justify-content-between
+          .matchteam
+            = match.home.team.name
+          .matchscore
+            = format_match_score(match,  :home)
+        .d-flex.justify-content-between
+          .matchteam
+            = match.away&.team&.name || _('Match|Bye')
+          .matchscore
+            = format_match_score(match, :away)
+
+      - if can_update_result?(match)
+        %a.single-match-card.w-100{href: edit_match_path(match)}
+          = yield :match
+
+        - if match.result_reported?
+          - if match.reporter&.team == op.user_team
+            = _('Tournament|Result needs to be confirmed by other team')
+          - else
+            = _('Tournament|Please review the result of the match')
+      - else
+        .single-match-card.w-100
+          = yield :match
+    - elsif tournament.running_phases?
+      = _('Tournament|No next match yet')
+    - else
+      = _('Tournament|No next match available')
+
+

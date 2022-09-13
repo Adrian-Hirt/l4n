@@ -1,0 +1,34 @@
+%h1.mb-3= op.tournament.name
+
+.row
+  .col-md-12
+    .card.mb-3
+      .card-body
+        %ul.nav.nav-pills
+          %li.nav-item
+            = link_to _('Tournament|Info'), tournament_path(op.tournament), class: 'nav-link'
+          %li.nav-item
+            = link_to _('Tournament|Teams'), tournament_teams_path(op.tournament), class: 'nav-link'
+          %li.nav-item
+            %a.nav-link.active{href: '#'}= _('Tournament|Standings')
+  .col-md-12
+    .card
+      .card-header
+        = _('Tournament|Tournament phases')
+      .card-body
+        - any_relevant_phase = false
+        - op.phases.each do |phase|
+          - next unless phase.confirmed? || phase.running? || phase.completed?
+
+          - any_relevant_phase = true
+          .phase.border-bottom.mb-3
+            %h4= "#{phase.phase_number}. #{phase.name}"
+            - if phase.swiss?
+              = render partial: 'swiss_rounds', locals: { phase: phase }
+            - elsif phase.single_elimination?
+              = render partial: 'single_elimination_tree', locals: { phase: phase }
+            - elsif phase.double_elimination?
+              = render partial: 'double_elimination_tree', locals: { phase: phase }
+
+        - unless any_relevant_phase
+          = _('Tournament|No phases yet')

@@ -1,7 +1,8 @@
 module Buttons
   def save(*args, &block)
     options = args.extract_options!
-    options[:class] = %i[btn btn-primary]
+    options[:class] ||= []
+    options[:class] += %i[btn btn-primary]
     options[:name] = nil
     args << options
     submit(*args, &block)

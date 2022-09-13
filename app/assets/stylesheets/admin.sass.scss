@@ -7,7 +7,6 @@
 // General stuff
 @import 'utils';
 @import 'base';
-@import 'seatmap';
 
 // Components
 @import 'components/alerts';
@@ -18,6 +17,8 @@
 @import 'components/loading_animations';
 @import 'components/markdown_editor';
 @import 'components/radio_checkbox_input';
+@import 'components/tournaments.sass';
+@import 'components/seatmap';
 
 // Admin CSS stuff
 @import 'admin/body';

@@ -1,0 +1,81 @@
+// Swiss tournaments
+.swiss-tournament-tree
+  .swiss-match-card
+    @extend .border
+    @extend .border-dark
+    @extend .rounded
+    @extend .p-2
+    @extend .mb-2
+    display: inline-block
+    min-width: 250px
+    max-width: 400px
+    .matchscore
+      text-align: right
+
+// Single elimination trees
+.single-elimination-tournament-tree,
+.double-elimination-tournament-tree
+  display: flex
+  overflow-x: auto
+  .tournament-round
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+    min-width: 250px
+    max-width: 400px
+    gap: 1rem
+    .match
+      @extend .border
+      @extend .rounded
+      @extend .p-2
+      @extend .border-dark
+      display: inline-block
+      .matchscore
+        text-align: right
+  .round-connectors-horizontal
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+    div
+      @extend .border-bottom
+      @extend .border-dark
+      width: 30px
+  .round-connectors-vertical
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+    div
+      @extend .border-start
+      @extend .border-dark
+    &.four
+      div
+        height: 6.3%
+    &.three
+      div
+        height: 12.6%
+    &.two
+      div
+        height: 25%
+    &.one
+      div
+        height: 50%
+
+// Single match cards to display a single match (or multiple, unconnected matches)
+.single-match-card
+  @extend .border
+  @extend .border-dark
+  @extend .rounded
+  @extend .p-2
+  @extend .mb-2
+  display: inline-block
+  min-width: 250px
+  max-width: 400px
+  .matchscore
+    text-align: right
+
+.result-score-box
+  @extend .py-3
+  @extend .fw-bold
+  display: inline-block
+  width: 8rem
+  text-align: center

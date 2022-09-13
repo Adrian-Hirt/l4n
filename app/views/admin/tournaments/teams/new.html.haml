@@ -1,0 +1,5 @@
+.card
+  - if op.tournament.singleplayer?
+    = render partial: 'singleplayer_form'
+  - else
+    = render partial: 'multiplayer_form'

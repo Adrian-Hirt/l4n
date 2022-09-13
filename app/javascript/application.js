@@ -7,7 +7,9 @@ import Translations from 'components/translations'
 import BootstrapTooltips from 'components/bootstrap_tooltips'
 
 // https://fontawesome.com/v5.15/how-to-use/on-the-web/using-with/turbolinks
-FontAwesome.config.mutateApproach = 'sync'
+FontAwesome.config.mutateApproach = 'sync';
 
-Translations.setup();
-BootstrapTooltips.setup();
+document.addEventListener('turbo:load', function () {
+  Translations.setup();
+  BootstrapTooltips.setup();
+});

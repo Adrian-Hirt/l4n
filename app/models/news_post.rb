@@ -8,7 +8,7 @@ class NewsPost < ApplicationRecord
 
   # == Validations =================================================================
   validates :title, presence: true, length: { maximum: 255 }
-  validates :published, inclusion: [true, false]
+  validates_boolean :published
 
   # == Hooks =======================================================================
 

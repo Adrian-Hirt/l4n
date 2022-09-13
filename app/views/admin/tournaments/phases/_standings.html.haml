@@ -1,0 +1,30 @@
+.col-md-6.mb-4.mb-md-0
+  .card.mb-4
+    .card-header
+      = _('Phase|Standings')
+    .card-body
+      - if model.swiss?
+        .d-flex.align-items-center.py-1.justify-content-between
+          .fw-bold= _('Team|Name')
+          .fw-bold= _('Team|Score')
+        - model.phase_teams.order(score: :desc).includes(:team).each do |phase_team|
+          .d-flex.align-items-center.py-1.justify-content-between.border-top
+            %div= phase_team.team.name
+            %div= phase_team.score
+      - elsif model.single_elimination?
+        - playing_teams, dropped_out_teams = model.playing_and_dropped_out_teams
+
+        - if model.completed?
+          .fw-bold= _('Phase|Winner')
+        - else
+          .fw-bold= _('Team|Playing')
+        - playing_teams.each do |team|
+          .py-1.border-top.text-success
+            = team.name
+
+        .fw-bold= _('Team|Dropped out')
+        - dropped_out_teams.each do |team|
+          .py-1.border-top.text-danger
+            = team.name
+      - else
+        Double elim standings

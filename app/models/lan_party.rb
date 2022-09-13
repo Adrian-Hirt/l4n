@@ -10,7 +10,7 @@ class LanParty < ApplicationRecord
 
   # == Validations =================================================================
   validates :name, presence: true, length: { maximum: 255 }
-  validates :active, inclusion: [true, false]
+  validates_boolean :active
 
   # == Hooks =======================================================================
   before_save :set_others_to_inactive

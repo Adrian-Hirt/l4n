@@ -119,6 +119,12 @@
               %span
                 %i.nav-icon.fas.fa-gamepad
                 %span.nav-item-text= _('Admin|LanParty')
+        - if can? :manage, Tournament
+          .li.nav-item
+            %a.nav-link{href: admin_tournaments_path, class: active_link_classes(:tournaments, include_children: true)}
+              %span
+                %i.nav-icon.fas.fa-trophy
+                %span.nav-item-text= _('Admin|Tournaments')
         - if can? :manage, FeatureFlag
           %li.nav-item
             %a.nav-link{href: admin_feature_flags_path, class: active_link_classes(:feature_flags)}

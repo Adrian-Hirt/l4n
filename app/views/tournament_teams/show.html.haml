@@ -1,0 +1,114 @@
+%h1.mb-3
+  = model.tournament.name
+  \-
+  = model.name
+
+.row
+  .col-md-12
+    .card.mb-3
+      .card-body
+        %ul.nav.nav-pills
+          %li.nav-item
+            = link_to _('Tournament|Info'), tournament_path(model.tournament), class: 'nav-link'
+          %li.nav-item
+            = link_to _('Tournament|Teams'), tournament_teams_path(model.tournament), class: 'nav-link'
+          %li.nav-item
+            = link_to _('Tournament|Standings'), tournament_standings_path(model.tournament), class: 'nav-link'
+  .col-md-8
+    .card
+      .card-header
+        = _('TournamentTeam|Team details')
+      .card-body
+        -# -- Roster ------------------------------------------------------------------------------
+        - if !model.tournament.singleplayer?
+          .mb-4
+            .mb-2.fw-bold= _('TournamentTeam|Team members')
+            -# Display the captain first
+            .d-flex.justify-content-between.align-items-center.border-bottom.py-2
+              %div
+                = team_member_icon(model.captain)
+                = model.captain.user.username
+              - if model.captain?(current_user)
+                %div
+                  = button nil, nil, btn_icon: %i[fas fa-chevron-up fa-fw],
+                                    icon_only: true,
+                                    size: :sm,
+                                    disabled: true
+                  = button nil, nil, btn_icon: %i[fas fa-trash fa-fw],
+                                    icon_only: true,
+                                    size: :sm,
+                                    disabled: true,
+                                    color: :danger
+
+            -# Then the other users
+            - model.team_members.includes(:user).each do |team_member|
+              - next if team_member.captain?
+
+              .d-flex.justify-content-between.align-items-center.border-bottom.py-2
+                %div
+                  = team_member_icon(team_member)
+                  = team_member.user.username
+                - if model.captain?(current_user)
+                  %div
+                    = button nil, promote_tournament_team_member_path(team_member), btn_icon: %i[fas fa-chevron-up fa-fw],
+                                                                        icon_only: true,
+                                                                        size: :sm,
+                                                                        html: {title: _('TeamMember|Promote to captain'), data: { 'bs-toggle' => :tooltip } },
+                                                                        method: :post,
+                                                                        disabled: !model.tournament.registration_open?,
+                                                                        confirm: _('Team|Promote to captain?')
+                    = delete_button team_member, href: tournament_team_member_path(team_member),
+                                                icon_only: true,
+                                                size: :sm,
+                                                disabled: !model.created? || !model.tournament.registration_open?
+        -# -- Matches -----------------------------------------------------------------------------
+        .mb-2.fw-bold= _('Team|Matches')
+        - if op.grouped_matches.none?
+          = _('Team|No matches played so far')
+        - op.grouped_matches.each do |phase, matches|
+          .phase
+            .mb-3= "#{phase.phase_number}. #{phase.name}"
+            - matches.each do |match|
+              - content_for :match, flush: true do
+                .d-flex.justify-content-between
+                  .matchteam
+                    = match.home.team.name
+                  .matchscore
+                    = format_match_score(match,  :home)
+                .d-flex.justify-content-between
+                  .matchteam
+                    = match.away&.team&.name || _('Match|Bye')
+                  .matchscore
+                    = format_match_score(match, :away)
+
+              - if can_update_result?(match)
+                %a.single-match-card{href: edit_match_path(match)}
+                  = yield :match
+              - else
+                .single-match-card
+                  = yield :match
+
+  .col-md-4
+    .card
+      .card-header
+        = _('TournamentTeam|Team actions')
+      .card-body
+        - if logged_in?
+          - if model.users.include?(current_user)
+            - if model.tournament.singleplayer?
+              = render partial: 'singleplayer_sidebar'
+            - else
+              = render partial: 'multiplayer_sidebar'
+          - elsif model.full? && !model.tournament.singleplayer?
+            .d-grid.gap-2
+              = button _('TournamentTeam|Team is full'), nil, disabled: true
+          - elsif !model.tournament.singleplayer?
+            .d-grid.gap-2
+              = simple_form_for :join_data, wrapper: :input_group, url: join_tournament_team_path(model) do |f|
+                = f.password :password, placeholder: _('TournamentTeam|Join password')
+                = f.save _('TournamentTeam|Join'), class: %i[w-100]
+          - else
+            = _('Team|No actions possible')
+        - else
+          = _('TournamentTeam|Please sign in to see actions')
+

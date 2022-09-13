@@ -29,14 +29,6 @@ module Lan
       end
     end
 
-    def user_by_username
-      if run Operations::User::FindByUsername
-        render json: op.result.as_json
-      else
-        head :bad_request
-      end
-    end
-
     def assign_ticket
       if run Operations::Ticket::AssignToUser
         head :ok

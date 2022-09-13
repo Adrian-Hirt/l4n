@@ -1,0 +1,12 @@
+- content_for :header_buttons do
+  = new_button Tournament, namespace: %i[admin]
+
+.card
+  .card-body
+    = simple_form_for op.grid, url: admin_tournaments_path, method: :get do |f|
+      .d-flex.mb-3
+        .select.optional.me-2
+          = f.datagrid_filter :status, class: 'form-select rounded-0 select optional'
+        %div
+          = f.save _('Tournaments|Apply filter')
+    = datagrid_table op.grid, html: { class: 'table' }

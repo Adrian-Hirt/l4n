@@ -1,0 +1,45 @@
+- round_matches_count = phase.rounds.first.matches.count
+
+.swiss-tournament-tree
+  - phase.rounds.order(:round_number).each do |round|
+    .round.py-2
+      .mb-1
+        = _('Round number %{number}') % { number: round.round_number }
+        - if phase.current_round == round
+          %span.badge.bg-secondary.fw-normal= _('Phase|Current round')
+      - if round.matches.any?
+        - round.matches.order(:id).includes(away: :team, home: :team).each do |match|
+          - content_for :match, flush: true do
+            .d-flex.justify-content-between
+              .matchteam
+                = match.home.team.name
+              .matchscore
+                = format_match_score(match,  :home)
+            .d-flex.justify-content-between
+              .matchteam
+                = match.away&.team&.name || _('Match|Bye')
+              .matchscore
+                = format_match_score(match, :away)
+
+          - if can_update_result?(match)
+            %a.swiss-match-card{href: edit_match_path(match)}
+              = yield :match
+          - else
+            .swiss-match-card
+              = yield :match
+
+      - else
+        -# If we have not yet generated the matches for the round, we just take
+        -# the number of rounds from the first round and add "TBD" everywhere
+        - round_matches_count.times do |index|
+          .swiss-match-card
+            .d-flex.justify-content-between
+              .matchteam
+                = _('Match|Tbd')
+              .matchscore
+                &mdash;
+            .d-flex.justify-content-between
+              .matchteam
+                = _('Match|Tbd')
+              .matchscore
+                &mdash;

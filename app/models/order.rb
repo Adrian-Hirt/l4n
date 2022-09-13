@@ -28,6 +28,7 @@ class Order < ApplicationRecord
 
   validates :payment_gateway_name, length: { maximum: 255 }
   validates :payment_gateway_payment_id, length: { maximum: 255 }
+  validates :status, presence: true, inclusion: statuses.keys
 
   # == Hooks =======================================================================
   before_destroy :check_if_deletable, prepend: true

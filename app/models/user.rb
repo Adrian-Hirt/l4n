@@ -20,6 +20,8 @@ class User < ApplicationRecord
     menu_items_admin_permission
     shop_admin_permission
     payment_assist_admin_permission
+    lan_party_admin_permission
+    tournament_admin_permission
     system_admin_permission
   ].freeze
 
@@ -33,22 +35,25 @@ class User < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_one :cart, dependent: :destroy
   has_many :user_addresses, dependent: :destroy
+  has_many :team_memberships, class_name: 'Tournament::TeamMember', dependent: :destroy, inverse_of: :user
+  has_many :teams, through: :team_memberships
 
   # == Validations =================================================================
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }, length: { maximum: 255 }
   validates :password, presence: true, length: { minimum: 10, maximum: 72 }, confirmation: true, if: -> { password.present? || new_record? || needs_password_set? }
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }
-  validates :use_dark_mode, inclusion: [true, false]
+  validates_boolean :use_dark_mode
   validates :website, length: { maximum: 255 }
   validates :avatar, size: { less_than: 5.megabytes, message: format(_('File is too large, max. allowed %{size}'), size: '5MB') }, content_type: %r{\Aimage/.*\z}
 
   # Permission booleans
   PERMISSION_FIELDS.each do |field|
-    validates field, inclusion: [true, false]
+    validates_boolean field
   end
 
   # == Hooks =======================================================================
   before_save { self.email = email.downcase } # turns email to downcase for uniqueness
+  after_update :update_singleplayer_teams
 
   # == Scopes ======================================================================
 
@@ -68,5 +73,14 @@ class User < ApplicationRecord
 
   def needs_password_set?
     @needs_password_set.is_a?(TrueClass)
+  end
+
+  def update_singleplayer_teams
+    return unless saved_change_to_attribute? :username
+
+    teams.singleplayer.each do |team|
+      team.name = username
+      team.save!
+    end
   end
 end

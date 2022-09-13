@@ -1,0 +1,36 @@
+%h1.mb-3= model.name
+
+.row
+  .col-md-12
+    .card.mb-3
+      .card-body
+        %ul.nav.nav-pills
+          %li.nav-item
+            %a.nav-link.active{href: '#'}= _('Tournament|Info')
+          %li.nav-item
+            = link_to _('Tournament|Teams'), tournament_teams_path(model), class: 'nav-link'
+          %li.nav-item
+            = link_to _('Tournament|Standings'), tournament_standings_path(model), class: 'nav-link'
+  .col-md-8
+    .card
+      .card-header
+        = _('Tournament|Tournament details')
+      .card-body
+        .mb-2
+          = _('Tournament|Team types')
+          .small.text-muted
+            - if model.singleplayer?
+              = icon %i[fas fa-user]
+              = _('Team|1 player')
+            - else
+              = icon %i[fas fa-users]
+              = _('Team|%{count} players') % { count: model.team_size }
+        .mb-2
+          = _('Tournament|Number of Participants')
+          .small.text-muted
+            = "#{model.teams.in_tournament.count} / #{model.max_number_of_participants}"
+        %hr
+        .mb-2.fw-bold= _('Tournament|Description')
+        = markdown model.description
+  .col-md-4
+    = render partial: 'actions_sidebar', locals: { tournament: model, op: op }

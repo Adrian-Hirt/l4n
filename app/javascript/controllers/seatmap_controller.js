@@ -357,7 +357,7 @@ export default class extends Controller {
       cancelButtonText: i18n._('SweetAlertForm|Cancel'),
       showLoaderOnConfirm: true,
       preConfirm: (search_string) => {
-        let url = `${currentLocation}/user_by_username?username=${search_string}`;
+        let url = `${window.location.origin}/users/by_username?username=${search_string}`;
 
         // Do lookup of user by username, return ID if ok.
         return fetch(url, {
@@ -371,7 +371,7 @@ export default class extends Controller {
           }
         })
         .catch(_error => {
-          Sweetalert2.showValidationMessage(i18n._('Seatmap|User not found'));
+          Sweetalert2.showValidationMessage(i18n._('User|User not found'));
         });
       }
     }).then((result) => {
