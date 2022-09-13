@@ -109,4 +109,19 @@ module TournamentHelper
   def can_update_result?(match)
     match.result_updateable? && (match.home.team.captain?(current_user) || match.away.team.captain?(current_user))
   end
+
+  def format_medal(rank)
+    classes = %i[medal]
+    if rank == 1
+      classes << :'bg-gold'
+    elsif rank == 2
+      classes << :'bg-silver'
+    elsif rank == 3
+      classes << :'bg-bronze'
+    end
+
+    tag.div(class: classes) do
+      rank.to_s
+    end
+  end
 end

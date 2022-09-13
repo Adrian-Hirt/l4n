@@ -11,20 +11,11 @@
           .d-flex.align-items-center.py-1.justify-content-between.border-top
             %div= phase_team.team.name
             %div= phase_team.score
-      - elsif model.single_elimination?
-        - playing_teams, dropped_out_teams = model.playing_and_dropped_out_teams
-
-        - if model.completed?
-          .fw-bold= _('Phase|Winner')
-        - else
-          .fw-bold= _('Team|Playing')
-        - playing_teams.each do |team|
-          .py-1.border-top.text-success
-            = team.name
-
-        .fw-bold= _('Team|Dropped out')
-        - dropped_out_teams.each do |team|
-          .py-1.border-top.text-danger
-            = team.name
+      - elsif model.completed?
+        - model.final_standings.each_with_index do |teamname, index|
+          .d-flex.align-items-center.py-1{ class: ('border-top' unless index == 0) }
+            .me-2{style: 'width: 15px;'}
+              = "#{index + 1}."
+            = teamname
       - else
-        Double elim standings
+        = _('Tournament|Please see the tree for the current standings')

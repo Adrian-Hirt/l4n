@@ -1,11 +1,9 @@
 class Tournament::Team < ApplicationRecord
   # == Attributes ==================================================================
   enum status: {
-    created:     'created',
-    registered:  'registered',
-    seeded:      'seeded',
-    playing:     'playing',
-    dropped_out: 'dropped_out'
+    created:    'created',
+    registered: 'registered',
+    seeded:     'seeded'
   }
 
   translate_enums

@@ -56,5 +56,13 @@ class Tournament::Match < ApplicationRecord
     round == phase.current_round && away.present?
   end
 
+  def loser
+    if winner.present?
+      return winner == away ? home : away
+    else
+      nil
+    end
+  end
+
   # == Private Methods =============================================================
 end

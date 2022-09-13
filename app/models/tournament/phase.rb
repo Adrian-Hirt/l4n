@@ -101,31 +101,24 @@ class Tournament::Phase < ApplicationRecord
     rounds.order(:round_number).find { |r| r.matches.none? }
   end
 
-  def playing_and_dropped_out_teams
-    playing = []
-
-    if running?
-      relevant_matches = current_round.matches
-    else
-      relevant_matches = rounds.order(:round_number).last.matches
-    end
-
-    relevant_matches.each do |match|
-      if match.winner.present?
-        playing << match.winner
-      else
-        playing << match.home
-        playing << match.away
-      end
-    end
-
-    dropped_out = phase_teams.to_a - playing.compact
-
-    [playing.compact.sort_by(&:name), dropped_out.sort_by(&:name)]
-  end
-
   def deletable?
     created? && last_phase?
+  end
+
+  def final_standings
+    return nil if swiss?
+
+    return nil unless completed?
+
+    if single_elimination?
+      relevant_match = matches.order(:id).last
+
+      return [relevant_match.winner.team.name, relevant_match.loser.team.name]
+    elsif double_elimination?
+      second_last_match, final_match = matches.order(:id).last(2)
+
+      return [final_match.winner.team.name, final_match.loser.team.name, second_last_match.loser.team.name]
+    end
   end
 
   # == Private Methods =============================================================
