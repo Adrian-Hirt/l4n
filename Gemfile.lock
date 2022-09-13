@@ -423,7 +423,7 @@ DEPENDENCIES
   whenever (~> 1.0.0)
 
 RUBY VERSION
-   ruby 3.0.3p157
+   ruby 3.1.2p20
 
 BUNDLED WITH
-   2.2.33
+   2.3.22
