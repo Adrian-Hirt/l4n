@@ -9,10 +9,6 @@ module Admin
         add_breadcrumb _('Admin|SeatCategory')
       end
 
-      def show
-        op Operations::Admin::SeatCategory::Load
-      end
-
       def new
         op Operations::Admin::SeatCategory::Create
         add_create_breadcrumbs

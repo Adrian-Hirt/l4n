@@ -1,9 +1,29 @@
-.card
-  .card-body
-    = model.name
-    %hr
-    = link_to _('Admin|SeatCategory'), admin_lan_party_seat_categories_path(model)
-    %br
-    = link_to _('Admin|SeatMap'), admin_lan_party_seat_map_path(model)
-    %br
-    = link_to _('Admin|Ticket'), admin_lan_party_tickets_path(model)
+- content_for :header_buttons do
+  = edit_button model, namespace: %i[admin]
+  = delete_button model, namespace: %i[admin]
+
+.row
+  .col-md-8.mb-3.mb-md-3
+    .card
+      .card-header
+        = _('LanParty|Stats')
+      .card-body
+        .row
+          .col-md-6
+            = _('LanParty|Total seats')
+            .small.text-muted
+              = model.seat_map.seats.count
+          .col-md-6
+            = _('LanParty|Sold tickets')
+            .small.text-muted
+              = model.tickets.count
+
+  .col.md-4
+    .card
+      .card-header
+        = _('LanParty|Actions & Links')
+      .card-body
+        .d-grid.gap-2
+          = button _('Admin|SeatCategories'), admin_lan_party_seat_categories_path(model)
+          = button _('Admin|SeatMap'), admin_lan_party_seat_map_path(model)
+          = button _('Admin|Tickets'), admin_lan_party_tickets_path(model)

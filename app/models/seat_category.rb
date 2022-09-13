@@ -15,6 +15,7 @@ class SeatCategory < ApplicationRecord
 
   # == Associations ================================================================
   belongs_to :lan_party
+  has_many :seats, dependent: :destroy
 
   # == Validations =================================================================
   validates :name, presence: true, length: { maximum: 255 }
