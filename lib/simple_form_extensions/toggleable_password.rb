@@ -1,5 +1,5 @@
 module ToggleablePassword
-  def password(*args, **kwargs, &block)
+  def password(*args, **kwargs, &)
     kwargs[:append] = '<i class="fa fa-eye-slash fa-fw"></i>'.html_safe
     kwargs[:append_options] = {
       data: {
@@ -15,7 +15,7 @@ module ToggleablePassword
     kwargs[:input_html][:data] = {
       'toggleable-password-target' => 'input'
     }
-    input(*args, **kwargs, &block)
+    input(*args, **kwargs, &)
   end
 end
 

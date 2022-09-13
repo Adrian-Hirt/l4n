@@ -122,3 +122,6 @@ Metrics/ModuleLength:
   Exclude:
     - test/**/*
   Max: 150
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: either
