@@ -15,7 +15,7 @@ class PasswordResetsController < ApplicationController
         flash[:success] = _('PasswordResetRequest|Password changed successfully')
         redirect_to root_path
       else
-        flash[:danger] = _('PasswordResetRequest|Failed to change password')
+        flash.now[:danger] = _('PasswordResetRequest|Failed to change password')
         render 'reset_password'
       end
     end

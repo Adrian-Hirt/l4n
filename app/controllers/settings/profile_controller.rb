@@ -13,7 +13,7 @@ module Settings
         flash[:success] = _('User|Profile updated successfully')
         redirect_to settings_profile_path
       else
-        flash[:danger] = _('User|Profile could not be updated')
+        flash.now[:danger] = _('User|Profile could not be updated')
         render :edit, status: :unprocessable_entity
       end
     end

@@ -13,7 +13,7 @@ module Settings
         flash[:success] = _('UserAddress|Successfully created')
         redirect_to settings_user_addresses_path
       else
-        flash[:danger] = _('UserAddress|Create failed')
+        flash.now[:danger] = _('UserAddress|Create failed')
         render :new, status: :unprocessable_entity
       end
     end
@@ -27,7 +27,7 @@ module Settings
         flash[:success] = _('UserAddress|Successfully updated')
         redirect_to settings_user_addresses_path
       else
-        flash[:danger] = _('UserAddress|Update failed')
+        flash.now[:danger] = _('UserAddress|Update failed')
         render :new, status: :unprocessable_entity
       end
     end

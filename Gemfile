@@ -9,7 +9,7 @@ gem 'rails', '~> 7.0.4'
 # Authentication & Authorization
 gem 'active_model_otp', '~> 2.3.1'
 gem 'bcrypt', '~> 3.1.7'
-gem 'cancancan', '~> 3.3.0'
+gem 'cancancan', '~> 3.4.0'
 gem 'hcaptcha', '~> 7.1'
 
 # Session handling
@@ -19,17 +19,17 @@ gem 'activerecord-session_store', '~> 2.0.0'
 gem 'puma', '~> 5.6'
 
 # Database
-gem 'pg', '~> 1.2.3'
+gem 'pg', '~> 1.4.3'
 
 # Assets
-gem 'cssbundling-rails', '~> 1.0.0'
-gem 'importmap-rails', '~> 1.0.0'
+gem 'cssbundling-rails', '~> 1.1.1'
+gem 'importmap-rails', '~> 1.1.5'
 gem 'sprockets-rails', '~> 3.4.1'
-gem 'stimulus-rails', '~> 1.0.2'
-gem 'turbo-rails', '~> 1.0.0'
+gem 'stimulus-rails', '~> 1.1.0'
+gem 'turbo-rails', '~> 1.1.1'
 
 # Application structure
-gem 'active_type', '~> 1.10.1' # Need to lock as 2.0 somehow does not work with rails_ops
+gem 'active_type', '~> 2.3.0' # Need to lock as 2.0 somehow does not work with rails_ops
 gem 'inquery', '~> 1.0.9'
 gem 'rails_ops', '~> 1.2.0'
 gem 'schemacop', '~> 3.0.11'
