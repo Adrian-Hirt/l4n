@@ -27,7 +27,7 @@
           - relevant_matches = round.matches.order(:id).includes(away: :team, home: :team).first(number_of_matches)
 
         - relevant_matches.each do |match|
-          .match
+          - content_for :match, flush: true do
             .d-flex.justify-content-between
               .matchteam
                 = match.home.name
@@ -38,6 +38,14 @@
                 = match.away&.name || _('Match|Bye')
               .matchscore
                 = format_match_score(match, :away)
+
+          - if can_update_result?(match)
+            %a.match{href: edit_match_path(match)}
+              = yield :match
+          - else
+            .match
+              = yield :match
+
       - else
         - number_of_matches.times do
           .match
@@ -87,7 +95,7 @@
           - relevant_matches = round.matches.order(:id).includes(away: :team, home: :team).last(number_of_matches)
 
         - relevant_matches.each do |match|
-          .match
+          - content_for :match, flush: true do
             .d-flex.justify-content-between
               .matchteam
                 = match.home.name
@@ -98,6 +106,13 @@
                 = match.away&.name || _('Match|Bye')
               .matchscore
                 = format_match_score(match, :away)
+
+          - if can_update_result?(match)
+            %a.match{href: edit_match_path(match)}
+              = yield :match
+          - else
+            .match
+              = yield :match
       - else
         - number_of_matches.times do
           .match

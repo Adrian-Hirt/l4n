@@ -1,6 +1,9 @@
 class TournamentMatchesController < ApplicationController
   def edit
     op Operations::Tournament::Match::Update
+  rescue Operations::Exceptions::OpFailed => e
+    flash[:danger] = e.message
+    redirect_to tournaments_path
   end
 
   def update

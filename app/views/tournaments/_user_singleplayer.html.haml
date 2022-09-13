@@ -23,7 +23,12 @@
   - else
     = _('Team|No actions possible')
 - else
-  - if op.user_team.nil? || op.user_team.created?
-    = _('Tournament|You are not in the tournament')
-  - else
-    = _('Tournament|You are participating in the tournament')
+  - if op.user_team.present?
+    .mb-2.fw-bold= _('Tournament|Your participation page')
+    .mb-3
+      = link_to op.user_team.name, team_path(op.user_team)
+      .text-muted
+        - if op.user_team.created?
+          = _('Tournament|You are not in the tournament')
+        - else
+          = _('Tournament|You are participating in the tournament')
