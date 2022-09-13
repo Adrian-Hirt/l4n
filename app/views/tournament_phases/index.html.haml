@@ -13,7 +13,7 @@
             %a.nav-link.active{href: '#'}= _('Tournament|Standings')
   .col-md-12
     - last_phase = op.phases.first
-    - if last_phase.completed? && (last_phase.single_elimination? || last_phase.double_elimination?)
+    - if last_phase&.completed? && (last_phase.single_elimination? || last_phase.double_elimination?)
       .card.mb-3
         .card-header.d-flex.justify-content-between.align-items-center
           %h4.mb-0= _('Tournament|Final Standings')
@@ -37,4 +37,6 @@
           = render partial: 'double_elimination_tree', locals: { phase: phase }
 
     - unless any_relevant_phase
-      = _('Tournament|No phases yet')
+      .card.mb-3
+        .card-body
+          = _('Tournament|No phases yet')

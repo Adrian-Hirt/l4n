@@ -73,7 +73,7 @@ module Operations::Tournament::Match
         end
 
         # If the confirmation is true, we can set the result as confirmed
-        # and update the scores.
+        # and update the scores.Operations::Admin::Tournament::Phase
         # Otherwise we need to set it to disputed, which will be resolved
         # by an admin.
         if osparams.tournament_match[:confirmation] == true
@@ -100,6 +100,11 @@ module Operations::Tournament::Match
 
       end
       model.save!
+
+      # Finally, if the match is now confirmed and all other matches are confirmed
+      # as well, we can generate the next round if auto_progress is enabled on the
+      # phase.
+      Operations::Admin::Tournament::Phase::GenerateNextRoundMatches.run!(id: model.phase.id) if model.result_confirmed? && model.round.completed? && model.phase.auto_progress?
     end
 
     private

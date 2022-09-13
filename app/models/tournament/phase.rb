@@ -37,6 +37,7 @@ class Tournament::Phase < ApplicationRecord
   validate :tournament_must_allow_another_phase, on: :create
   validate :disallow_changes_when_not_created
   validate :size_smaller_than_previous_teams
+  validates_boolean :auto_progress
 
   # == Hooks =======================================================================
   before_destroy :check_if_deletable

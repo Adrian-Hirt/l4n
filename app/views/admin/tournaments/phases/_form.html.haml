@@ -14,5 +14,6 @@
                                 disabled: !model.created?
     - unless model.first_phase?
       = f.input :size, required: true, disabled: !model.created?
+    = f.input :auto_progress, input_html: { class: 'no-validation' }
   .card-footer
     = f.save

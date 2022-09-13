@@ -18,7 +18,7 @@ class Tournament::Round < ApplicationRecord
 
   # == Instance Methods ============================================================
   def completed?
-    matches.all? { |match| match.winner.present? || match.draw? }
+    matches.all?(&:result_confirmed?)
   end
 
   def first_round?
