@@ -14,11 +14,13 @@
   .col-md-12
     .card
       .card-header
-        = _('Tournament|Tournament details')
+        = _('Tournament|Tournament phases')
       .card-body
+        - any_relevant_phase = false
         - op.phases.each do |phase|
           - next unless phase.confirmed? || phase.running? || phase.completed?
 
+          - any_relevant_phase = true
           .phase.border-bottom.mb-3
             %h4= "#{phase.phase_number}. #{phase.name}"
             - if phase.swiss?
@@ -27,3 +29,6 @@
               = render partial: 'single_elimination_tree', locals: { phase: phase }
             - elsif phase.double_elimination?
               = render partial: 'double_elimination_tree', locals: { phase: phase }
+
+        - unless any_relevant_phase
+          = _('Tournament|No phases yet')

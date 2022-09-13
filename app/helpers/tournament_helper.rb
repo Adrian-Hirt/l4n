@@ -100,9 +100,9 @@ module TournamentHelper
 
   def team_member_icon(team_member)
     if team_member.captain?
-      icon %i[fas fa-crown]
+      icon %i[fas fa-crown fa-fw]
     else
-      icon %i[fas fa-person]
+      icon %i[fas fa-person fa-fw]
     end
   end
 
