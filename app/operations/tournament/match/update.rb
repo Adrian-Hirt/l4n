@@ -79,15 +79,20 @@ module Operations::Tournament::Match
         if osparams.tournament_match[:confirmation] == true
           model.result_status = Tournament::Match.result_statuses[:confirmed]
 
-          if model.draw?
-            model.home.score += Tournament::Match::DRAW_SCORE
-            model.home.save!
+          # Add points if swiss system
+          if model.phase.swiss?
+            # rubocop: disable Metrics/BlockNesting
+            if model.draw?
+              model.home.score += Tournament::Match::DRAW_SCORE
+              model.home.save!
 
-            model.away.score += Tournament::Match::DRAW_SCORE
-            model.away.save!
-          else
-            model.winner.score += Tournament::Match::WIN_SCORE
-            model.winner.save!
+              model.away.score += Tournament::Match::DRAW_SCORE
+              model.away.save!
+            else
+              model.winner.score += Tournament::Match::WIN_SCORE
+              model.winner.save!
+            end
+            # rubocop: enable Metrics/BlockNesting
           end
         else
           model.result_status = Tournament::Match.result_statuses[:disputed]

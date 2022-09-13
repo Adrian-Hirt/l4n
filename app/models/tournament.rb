@@ -56,6 +56,10 @@ class Tournament < ApplicationRecord
     phases.any? { |phase| !phase.created? }
   end
 
+  def running_phases?
+    phases.any?(&:running?)
+  end
+
   # == Private Methods =============================================================
   private
 

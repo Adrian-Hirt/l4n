@@ -54,7 +54,7 @@
           - elsif model.result_reported?
             .border-top.pt-3
               - if model.reporter.team.captain?(current_user)
-                .alert.alert-info.text-dark
+                .alert.alert-info.text-dark.mb-0
                   = _('Match|Please wait for the other team to confirm the result')
               - else
                 = simple_form_for model, url: match_path(model) do |f|
@@ -64,7 +64,7 @@
                   = f.save _('Match|Submit confirmation status')
           - elsif model.result_disputed?
             .border-top.pt-3
-              .alert.alert-warning
+              .alert.alert-warning.mb-0
                 = _('Match|Please contact an admin to resolve the dispute')
         - else
           .border-top.pt-3

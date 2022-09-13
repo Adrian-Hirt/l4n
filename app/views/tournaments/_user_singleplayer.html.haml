@@ -32,3 +32,37 @@
           = _('Tournament|You are not in the tournament')
         - else
           = _('Tournament|You are participating in the tournament')
+    %hr
+    .mb-2.fw-bold= _('Tournament|Your next match')
+    - match = Queries::Tournament::Match::FetchNextForTeam.call(team: op.user_team)
+    - if match.present?
+      - content_for :match, flush: true do
+        .d-flex.justify-content-between
+          .matchteam
+            = match.home.team.name
+          .matchscore
+            = format_match_score(match,  :home)
+        .d-flex.justify-content-between
+          .matchteam
+            = match.away&.team&.name || _('Match|Bye')
+          .matchscore
+            = format_match_score(match, :away)
+
+      - if can_update_result?(match)
+        %a.single-match-card.w-100{href: edit_match_path(match)}
+          = yield :match
+
+        - if match.result_reported?
+          - if match.reporter&.team == op.user_team
+            = _('Tournament|Result needs to be confirmed by other team')
+          - else
+            = _('Tournament|Please review the result of the match')
+      - else
+        .single-match-card.w-100
+          = yield :match
+    - elsif tournament.running_phases?
+      = _('Tournament|No next match yet')
+    - else
+      = _('Tournament|No next match available')
+
+

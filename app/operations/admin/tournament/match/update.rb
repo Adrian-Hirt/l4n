@@ -31,15 +31,18 @@ module Operations::Admin::Tournament::Match
       # winner (if present), and add them to the new winner (if present).
       # As such, we get the desired behaviour.
       ActiveRecord::Base.transaction do
-        if model.draw_was
-          previous_home.score -= Tournament::Match::DRAW_SCORE
-          previous_home.save!
+        # Remove points if swiss system
+        if model.phase.swiss?
+          if model.draw_was
+            previous_home.score -= Tournament::Match::DRAW_SCORE
+            previous_home.save!
 
-          previous_away.score -= Tournament::Match::DRAW_SCORE
-          previous_away.save!
-        elsif previous_winner.present?
-          previous_winner.score -= Tournament::Match::WIN_SCORE
-          previous_winner.save!
+            previous_away.score -= Tournament::Match::DRAW_SCORE
+            previous_away.save!
+          elsif previous_winner.present?
+            previous_winner.score -= Tournament::Match::WIN_SCORE
+            previous_winner.save!
+          end
         end
 
         # Update the status, if winner is set or it's a draw
@@ -55,15 +58,18 @@ module Operations::Admin::Tournament::Match
 
         new_winner = model.winner
 
-        if model.draw?
-          model.home.score += Tournament::Match::DRAW_SCORE
-          model.home.save!
+        # Add points if swiss system
+        if model.phase.swiss?
+          if model.draw?
+            model.home.score += Tournament::Match::DRAW_SCORE
+            model.home.save!
 
-          model.away.score += Tournament::Match::DRAW_SCORE
-          model.away.save!
-        elsif new_winner.present?
-          new_winner.score += Tournament::Match::WIN_SCORE
-          new_winner.save!
+            model.away.score += Tournament::Match::DRAW_SCORE
+            model.away.save!
+          elsif new_winner.present?
+            new_winner.score += Tournament::Match::WIN_SCORE
+            new_winner.save!
+          end
         end
       end
     end

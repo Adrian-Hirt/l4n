@@ -64,6 +64,8 @@ module TournamentDrivers
             home_phase_team.score += Tournament::Match::BYE_SCORE
             home_phase_team.save!
           end
+
+          params[:result_status] = Tournament::Match.result_statuses[:confirmed]
         end
 
         @tournament_phase_round.matches.create!(params)
