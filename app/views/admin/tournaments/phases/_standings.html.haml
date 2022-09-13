@@ -14,8 +14,7 @@
       - elsif model.completed?
         - model.final_standings.each_with_index do |teamname, index|
           .d-flex.align-items-center.py-1{ class: ('border-top' unless index == 0) }
-            .me-2{style: 'width: 15px;'}
-              = "#{index + 1}."
+            = format_medal(index + 1)
             = teamname
       - else
         = _('Tournament|Please see the tree for the current standings')
