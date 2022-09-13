@@ -1,0 +1,5 @@
+= turbo_frame_tag :flashes do
+  - flash.each do |msg_type, message|
+    .alert.alert-dismissible.fade.show.notification-flash{class: "alert-#{msg_type}", data: { controller: 'alert' }}
+      %button.btn-close{data: { 'bs-dismiss': 'alert' }}
+      = message

@@ -9,7 +9,7 @@
     = javascript_importmap_tags
   %body.d-flex.application
     = render partial: 'layouts/application/header'
-    = flash_messages
+    = render partial: 'layouts/shared/flashes'
     .main.container
       .page-title
         %h1= yield :page_title

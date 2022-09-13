@@ -1,8 +1,11 @@
 module Operations::Ticket
   class AssignToUser < RailsOps::Operation
     schema3 do
-      int! :ticket_id, cast_str: true
-      int! :user_id, cast_str: true
+      int! :id, cast_str: true
+      int? :user_id, cast_str: true
+      hsh? :assignee do
+        str? :username
+      end
     end
 
     attr_accessor :result
@@ -11,36 +14,54 @@ module Operations::Ticket
     without_authorization
 
     def perform
-      # Lookup the ticket
-      ticket = ::Ticket.find(osparams.ticket_id)
-
       # Throw exception if the ticket is nil
-      fail TicketNotFound if ticket.nil?
+      fail Operations::Exceptions::OpFailed, _('Ticket|Not found') if ticket.nil?
 
       # Check that the current user can assign the ticket
       fail CanCan::AccessDenied unless context.user == ticket.order.user
 
       # Throw exception if the ticket already has an user assigned
-      fail TicketHasUserAssigned if ticket.assignee.present?
+      fail Operations::Exceptions::OpFailed, _('Ticket|Already assigned') if ticket.assignee.present?
 
       # Find the user to assign the ticket to
-      user = ::User.find(osparams.user_id)
+      user = user_to_assign
 
       # Throw exception if the user is nil
-      fail UserNotFound if user.nil?
+      fail Operations::Exceptions::OpFailed, _('Ticket|User not found') if user.nil?
+
+      # Throw exception if the user is not activated
+      fail Operations::Exceptions::OpFailed, _('Ticket|User not activated') unless user.activated?
 
       # Throw exception if the user already has an assigned ticket for
       # the current event
-      fail UserHasTicketAssigned if ::Ticket.where(lan_party: ticket.lan_party, assignee: user).any?
+      fail Operations::Exceptions::OpFailed, _('Ticket|User already has assigned ticket') if ::Ticket.where(lan_party: lan_party, assignee: user).any?
 
       # Finally, if all good, assign the ticket
       ticket.assignee = user
+      ticket.status = Ticket.statuses[:assigned]
       ticket.save!
     end
-  end
 
-  class TicketNotFound < StandardError; end
-  class UserNotFound < StandardError; end
-  class TicketHasUserAssigned < StandardError; end
-  class UserHasTicketAssigned < StandardError; end
+    def available_tickets
+      Queries::Lan::Ticket::LoadForSeatmap.call(user: context.user, lan_party: ticket.lan_party)
+    end
+
+    def lan_party
+      @lan_party ||= ticket.lan_party
+    end
+
+    private
+
+    def ticket
+      @ticket ||= ::Ticket.find_by(id: osparams.id)
+    end
+
+    def user_to_assign
+      if osparams.user_id.present?
+        ::User.find_by(id: osparams.user_id)
+      else
+        ::User.find_by('LOWER(username) = ?', osparams.assignee[:username].downcase)
+      end
+    end
+  end
 end

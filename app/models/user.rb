@@ -37,6 +37,7 @@ class User < ApplicationRecord
   has_many :user_addresses, dependent: :destroy
   has_many :team_memberships, class_name: 'Tournament::TeamMember', dependent: :destroy, inverse_of: :user
   has_many :teams, through: :team_memberships
+  has_many :tickets, foreign_key: :assignee_id, dependent: :nullify, inverse_of: :assignee
 
   # == Validations =================================================================
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }, length: { maximum: 255 }
@@ -66,6 +67,10 @@ class User < ApplicationRecord
 
   def any_admin_permission?
     User::PERMISSION_FIELDS.any? { |permission| send(permission) }
+  end
+
+  def ticket_for(lan_party)
+    tickets.find_by(lan_party: lan_party)
   end
 
   # == Private Methods =============================================================

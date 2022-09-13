@@ -10,9 +10,24 @@ module Operations::Ticket
 
     load_model_authorization_action :use
 
+    policy :on_init do
+      # TODO: check that the ticket is not checked in
+
+      # TODO: check permissions?
+    end
+
     def perform
       model.assignee = nil
+      model.status = Ticket.statuses[:created]
       model.save!
+    end
+
+    def lan_party
+      @lan_party ||= model.lan_party
+    end
+
+    def available_tickets
+      Queries::Lan::Ticket::LoadForSeatmap.call(user: context.user, lan_party: model.lan_party)
     end
   end
 end

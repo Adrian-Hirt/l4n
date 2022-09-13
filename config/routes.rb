@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   resources :users, only: %i[show] do
     collection do
       get :activate
-      get :by_username
     end
   end
 
@@ -123,8 +122,18 @@ Rails.application.routes.draw do
       get :seats, to: 'seatmap#seats'
       post :get_seat, to: 'seatmap#get_seat'
       post :remove_seat, to: 'seatmap#remove_seat'
-      post :assign_ticket, to: 'seatmap#assign_ticket'
-      delete :remove_assignee, to: 'seatmap#remove_assignee'
+    end
+
+    resources :tickets, only: [] do
+      member do
+        # Assign and remove assignation of tickets
+        post :assign
+        post :remove_assignee
+
+        # Taking and removing a seat with a ticket
+        post :take_seat
+        post :remove_seat
+      end
     end
   end
 

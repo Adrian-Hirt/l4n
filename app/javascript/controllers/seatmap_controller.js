@@ -1,10 +1,8 @@
 import { Controller } from "@hotwired/stimulus"
 import 'konva'
-import 'sweetalert2'
-import JsAlert from 'utils/js_alert'
 
 export default class extends Controller {
-  static targets = ['container', 'dummyButton', 'currentSelectedSeatInfo', 'tickets'];
+  static targets = ['container', 'tickets'];
 
   connect() {
     // Setup the base
@@ -16,6 +14,35 @@ export default class extends Controller {
 
     // Load seats from the data
     this.#loadSeats();
+
+    document.addEventListener('l4n:seatmap-possibly-changed', () => {
+      this.#updateSeatMap();
+    });
+  }
+
+  #updateSeatMap() {
+    let removedId = document.querySelector('#removedSeat')?.dataset?.id;
+    let takenId = document.querySelector('#takenSeat')?.dataset?.id;
+
+    if(removedId) {
+      // "reset" the color of the seat
+      let seat = this.seats.find(element => element.attrs.backendId == removedId);
+      let seatColor = this.seatCategoryData[seat.attrs.seatCategoryId].color;
+      seat.setAttr('fill', seatColor);
+
+      // Mark the seat as not taken
+      seat.setAttr('taken', false);
+    }
+    else if(takenId) {
+      // Highlight the seat as "taken"
+      let seat = this.seats.find(element => element.attrs.backendId == takenId);
+      seat.setAttr('fill', 'red');
+
+      // Mark the seat as taken
+      seat.setAttr('taken', true);
+    }
+
+    this.#unselectSeat();
   }
 
   #loadSeats() {
@@ -171,279 +198,40 @@ export default class extends Controller {
         return;
       }
 
+      // Update the seatId in all selectedSeatInputs
+      for(let input of this.ticketsTarget.querySelectorAll('input.selected-seat-input')) {
+        input.value = this.currentSelection.attrs.backendId;
+      }
+
       // Enable the tickets with which the user can get the current seat
-      for(let ticket of this.ticketsTarget.querySelectorAll('.ticket')) {
+      for(let ticket of this.ticketsTarget.querySelectorAll('.ticket-container')) {
+        if(ticket.querySelector('.take-seat-button') == undefined) {
+          continue;
+        }
+
         let ticketCategory = ticket.dataset.seatCategoryId;
 
         if(ticketCategory == this.currentSelection.attrs.seatCategoryId) {
-          ticket.querySelector('.btn.add-seat-btn').classList.remove('disabled');
+          ticket.querySelector('.take-seat-button').classList.remove('disabled');
         }
         else {
-          ticket.querySelector('.btn.add-seat-btn').classList.add('disabled');
+          ticket.querySelector('.take-seat-button').classList.add('disabled');
         }
       }
 
       return false;
     });
-
-    // Enable all the "Get" buttons
-    this.ticketsTarget.querySelectorAll('.ticket > .btn.add-seat-btn').forEach((item) => {
-      item.addEventListener('click', (e) => {
-        this.#getSeat(e.target);
-      });
-    });
-
-    // Enable all the "Remove" buttons
-    this.ticketsTarget.querySelectorAll('.ticket > .btn.remove-seat-btn').forEach((item) => {
-      item.addEventListener('click', (e) => {
-        this.#removeSeat(e.target);
-      });
-    });
-
-    // Enable all the "Change assignee" buttons
-    this.ticketsTarget.querySelectorAll('.ticket > .btn.assign-seat-btn').forEach((item) => {
-      item.addEventListener('click', (e) => {
-        this.#openAssigningPopup(e.target);
-      });
-    });
-
-        // Enable all the "Remove assignee" buttons
-        this.ticketsTarget.querySelectorAll('.ticket > .btn.remove-assigned-seat-btn').forEach((item) => {
-          item.addEventListener('click', (e) => {
-            this.#removeAssignee(e.target);
-          });
-        });
-  }
-
-  // Method to get a seat with a ticket
-  #getSeat(ticketButton) {
-    let ticketId = ticketButton.parentElement.dataset.ticketId;
-    let seatId = this.currentSelection.attrs.backendId;
-
-    // Send the data
-    const csrfToken = document.querySelector("[name='csrf-token']").content;
-
-    let currentLocation = window.location.pathname;
-    currentLocation = currentLocation.endsWith('/') ? currentLocation.slice(0, -1) : currentLocation;
-    let url = `${currentLocation}/get_seat`;
-
-    let postData = {
-      seat_id:   seatId,
-      ticket_id: ticketId
-    }
-
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "X-CSRF-Token": csrfToken,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(postData)
-    }).then(response => {
-      if(response.ok) {
-        // Show flash
-        new JsAlert(i18n._('SeatMap|Seat successfully taken'), 'success').show();
-
-        // Highlight the seat as "taken"
-        this.currentSelection.setAttr('fill', 'red');
-
-        // Hide the "Get" button and show the "Remove" button
-        ticketButton.classList.add('d-none');
-        ticketButton.parentElement.querySelector('.remove-seat-btn').classList.remove('d-none');
-
-        // Mark the seat as not taken
-        this.currentSelection.setAttr('taken', true);
-
-        // Update the ID in the ticket info
-        ticketButton.parentElement.querySelector('.ticket-seat-id').innerHTML = this.currentSelection.attrs.backendId;
-
-        // Disable the buttons and reset the current selected seat
-        this.#disableAddButtons();
-        this.#unselectSeat();
-      }
-      else {
-        Sweetalert2.fire({
-          title: i18n._('SeatMap|An error occured, please try again!'),
-          icon: 'error',
-          confirmButtonText: i18n._('ConfirmDialog|Confirm')
-        });
-      }
-    }).catch(error => {
-      console.error("error", error);
-    });
-  }
-
-  // Method to remove a seat with a ticket
-  #removeSeat(ticketButton) {
-    let ticketId = ticketButton.parentElement.dataset.ticketId;
-
-    // Send the data
-    const csrfToken = document.querySelector("[name='csrf-token']").content;
-
-    let currentLocation = window.location.pathname;
-    currentLocation = currentLocation.endsWith('/') ? currentLocation.slice(0, -1) : currentLocation;
-    let url = `${currentLocation}/remove_seat`;
-
-    let postData = {
-      ticket_id: ticketId
-    }
-
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "X-CSRF-Token": csrfToken,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(postData)
-    }).then(response => {
-      if(response.ok) {
-        return response.json();
-      }
-      else {
-        Sweetalert2.fire({
-          title: i18n._('SeatMap|An error occured, please try again!'),
-          icon: 'error',
-          confirmButtonText: i18n._('ConfirmDialog|Confirm')
-        });
-        return Promise.reject(response);
-      }
-    })
-    .then(result => {
-      let seatId = result.seatId;
-
-      // Show flash
-      new JsAlert(i18n._('SeatMap|Seat successfully removed'), 'success').show();
-
-      // Hide the remove button, show the get button
-      ticketButton.classList.add('d-none');
-      ticketButton.parentElement.querySelector('.add-seat-btn').classList.remove('d-none');
-
-      // "reset" the color of the seat
-      let seat = this.seats.find(element => element.attrs.backendId == seatId);
-      let seatColor = this.seatCategoryData[seat.attrs.seatCategoryId].color;
-      seat.setAttr('fill', seatColor);
-
-      // Mark the seat as not taken
-      seat.setAttr('taken', false);
-
-      // Update the ID in the ticket info
-      ticketButton.parentElement.querySelector('.ticket-seat-id').innerHTML = '-';
-
-      // Finally, disable the buttons
-      this.#disableAddButtons();
-      this.#unselectSeat();
-    })
-    .catch(error => {
-      console.error("error", error);
-    });
-  }
-
-  #openAssigningPopup(ticketButton) {
-    let ticketId = ticketButton.parentElement.dataset.ticketId;
-
-    const csrfToken = document.querySelector("[name='csrf-token']").content;
-    let currentLocation = window.location.pathname;
-    currentLocation = currentLocation.endsWith('/') ? currentLocation.slice(0, -1) : currentLocation;
-
-    Sweetalert2.fire({
-      title: i18n._('SeatMap|Change assignee of seat'),
-      text:  i18n._('SeatMap|Please input the username of the user you want to assign the seat to'),
-      input: 'text',
-      inputAttributes: {
-        autocapitalize: 'off'
-      },
-      showCancelButton: true,
-      confirmButtonText: i18n._('SweetAlertForm|Save'),
-      cancelButtonText: i18n._('SweetAlertForm|Cancel'),
-      showLoaderOnConfirm: true,
-      preConfirm: (search_string) => {
-        let url = `${window.location.origin}/users/by_username?username=${search_string}`;
-
-        // Do lookup of user by username, return ID if ok.
-        return fetch(url, {
-          method: "GET"
-        }).then(response => {
-          if(response.ok) {
-            return response.json();
-          }
-          else {
-            throw new Error(response.statusText);
-          }
-        })
-        .catch(_error => {
-          Sweetalert2.showValidationMessage(i18n._('User|User not found'));
-        });
-      }
-    }).then((result) => {
-      if (result.isConfirmed && result.value.id) {
-        let user_id = result.value.id;
-
-        Sweetalert2.fire({
-          title: i18n._('SeatMap|Change assignee of seat'),
-          text:  i18n._('SeatMap|Do you want to assign the seat to ') + result.value.username + '?',
-          showCancelButton: true,
-          confirmButtonText: i18n._('SweetAlertForm|Assign seat'),
-          cancelButtonText: i18n._('SweetAlertForm|Cancel'),
-        }).then(result => {
-          if (result.isConfirmed) {
-
-            let postData = {
-              ticket_id: ticketId,
-              user_id:   user_id
-            }
-
-            let url = `${currentLocation}/assign_ticket`;
-
-            fetch(url, {
-              method: "POST",
-              headers: {
-                "X-CSRF-Token": csrfToken,
-                "Content-Type": "application/json"
-              },
-              body: JSON.stringify(postData)
-            }).then(response => {
-              if(response.ok) {
-                new JsAlert(i18n._('SeatMap|Ticket successfully assigned'), 'success').show();
-              }
-              else {
-                new JsAlert(i18n._('SeatMap|Ticket could not be assigned'), 'danger').show();
-              }
-            });
-          }
-        });
-      }
-    });
-  }
-
-  #removeAssignee(ticketButton) {
-    let ticketId = ticketButton.parentElement.dataset.ticketId;
-
-    const csrfToken = document.querySelector("[name='csrf-token']").content;
-    let currentLocation = window.location.pathname;
-    currentLocation = currentLocation.endsWith('/') ? currentLocation.slice(0, -1) : currentLocation;
-
-    let url = `${currentLocation}/remove_assignee?id=${ticketId}`;
-
-    // Do lookup of user by username, return ID if ok.
-    return fetch(url, {
-      method: "DELETE",
-      headers: {
-        "X-CSRF-Token": csrfToken
-      }
-    }).then(response => {
-      if(response.ok) {
-        new JsAlert(i18n._('SeatMap|Assignee successfully removed'), 'success').show();
-      }
-      else {
-        new JsAlert(i18n._('SeatMap|Assignee could not be removed'), 'danger').show();
-      }
-    });
   }
 
   #disableAddButtons() {
-    this.ticketsTarget.querySelectorAll('.ticket > .btn.add-seat-btn').forEach((item) => {
+    this.ticketsTarget.querySelectorAll('.ticket-container .take-seat-button').forEach((item) => {
       item.classList.add('disabled');
     });
+
+    // Update the seatId in all selectedSeatInputs
+    for(let input of this.ticketsTarget.querySelectorAll('input.selected-seat-input')) {
+      input.value = null;
+    }
   }
 
   #unselectSeat() {

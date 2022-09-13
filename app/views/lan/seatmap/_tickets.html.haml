@@ -1,0 +1,48 @@
+%div{data: { controller: 'seatmap-mutations' }}
+  - if op.respond_to?(:removed_seat_id)
+    #removedSeat{data: { id: op.removed_seat_id }}
+
+  - if op.respond_to?(:taken_seat)
+    #takenSeat{data: { id: op.taken_seat.id }}
+
+%div{data: { 'seatmap-target' => 'tickets' }}
+  - op.available_tickets.order(:id).each do |ticket|
+    .d-flex.align-items-center.ticket-container{data: { seat_category_id: ticket.seat_category_id, ticket_id: ticket.id }}
+      .me-2
+        .badge{style: "background-color: #{ticket.seat_category.color_for_view}"}
+          = ticket.seat_category.name
+        .ticket-seat-id.d-inline-block
+          = ticket.seat&.id.presence || '-'
+
+      - if ticket.assignee.present?
+        .me-2
+          = ticket.assignee.username
+        = button _('Ticket|Remove assignation'),
+                  remove_assignee_lan_ticket_path(id: ticket.id),
+                  size: :sm,
+                  method: :post
+      - else
+        = simple_form_for :assignee, url: assign_lan_ticket_path(ticket), wrapper: :input_group do |f|
+          = f.input :username, label: false,
+                              wrapper_html: { style: 'margin-bottom: 0 !important;' },
+                              append: f.save('>', style: 'border-radius: 0;', class: %i[rounded-end btn-sm]),
+                              append_options: { class: '' },
+                              placeholder: _('Seatmap|Username of user to assign to'),
+                              input_html: { class: %i[py-0] }
+
+
+        - if current_user.ticket_for(op.lan_party).nil?
+          .ms-2
+            = button _('Ticket|Assign to myself'),
+                    assign_lan_ticket_path(id: ticket.id, user_id: current_user.id),
+                    size: :sm,
+                    method: :post
+      .ms-2
+        - if ticket.seat.present?
+          = button _('Ticket|Remove seat'), remove_seat_lan_ticket_path(ticket), size: :sm, method: :post
+        - else
+          = simple_form_for :ticket, url: take_seat_lan_ticket_path(ticket) do |f|
+            = f.input :selected_seat_id, input_html: { class: 'selected-seat-input' },
+                                         as: :hidden,
+                                         wrapper_html: { style: 'margin-bottom: 0 !important;' }
+            = f.save _('Ticket|Take seat'), class: %i[btn-sm disabled take-seat-button]

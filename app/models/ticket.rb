@@ -1,5 +1,10 @@
 class Ticket < ApplicationRecord
   # == Attributes ==================================================================
+  enum status: {
+    created:    'created',
+    assigned:   'assigned',
+    checked_in: 'checked_in'
+  }
 
   # == Constants ===================================================================
 
@@ -12,6 +17,7 @@ class Ticket < ApplicationRecord
   has_one :seat, dependent: :nullify
 
   # == Validations =================================================================
+  validates :status, presence: true, inclusion: statuses.keys
 
   # == Hooks =======================================================================
 

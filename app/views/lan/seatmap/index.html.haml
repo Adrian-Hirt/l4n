@@ -2,38 +2,15 @@
   .card-body{data: { controller: 'seatmap' }}
     - if current_user
       .row
-        .col-md-6
+        .col-md-12
           = _('Seatmap|Your available tickets')
-          %div{data: { 'seatmap-target' => 'tickets' }}
-            - op.available_tickets.order(:id).each do |ticket|
-              .ticket{data: { seat_category_id: ticket.seat_category_id, ticket_id: ticket.id }}
-                .d-inline-block{style: "width: 10px; height: 1rem; background-color: #{ticket.seat_category.color_for_view}"}
-                = ticket.seat_category.name
-                .ticket-seat-id.d-inline-block
-                  = ticket.seat&.id.presence || '-'
-                - if ticket.seat
-                  .btn.btn-sm.btn-primary.disabled.add-seat-btn.d-none
-                    Get
-                  .btn.btn-sm.btn-primary.remove-seat-btn
-                    Remove
-                - else
-                  .btn.btn-sm.btn-primary.disabled.add-seat-btn
-                    Get
-                  .btn.btn-sm.btn-primary.remove-seat-btn.d-none
-                    Remove
-                - if ticket.assignee.present?
-                  Assigned to:
-                  = ticket.assignee.username
-                  .btn.btn-sm.btn-primary.remove-assigned-seat-btn
-                    Remove assignation
-                - else
-                  .btn.btn-sm.btn-primary.assign-seat-btn
-                    Assign
+          = turbo_frame_tag :tickets do
+            = render partial: 'tickets', locals: { tickets: op.available_tickets }
         .col-md-6
           #current-selected-seat{data: { 'seatmap-target' => 'currentSelectedSeatInfo' }}
     - else
       .row
-        .col-md-6
+        .col-md-12
           %div{data: { 'seatmap-target' => 'tickets' }}
     %hr
     #seatmap-container.overflow-auto{data: { 'seatmap-target' => 'container', seatmap_data: op.seat_map_data }}
