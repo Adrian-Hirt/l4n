@@ -1,11 +1,17 @@
 .row{data: { controller: 'seatmap' }}
-  .col-md-8
+  .col-xl-8.mb-3.mb-xl-0{data: { 'seatmap-target' => 'mainColumn'}}
     .card
-      .card-header
+      .card-header.d-flex.align-items-center.py-1.justify-content-between
         = _('Seatmap')
-      #seatmap-container.overflow-auto{data: { 'seatmap-target' => 'container', seatmap_data: op.seat_map_data }}
+        .d-none.d-xl-block
+          = button _('Seatmap|Toggle sidebar'), nil, btn_icon: %i[fas fa-bars],
+                                                     color: :secondary,
+                                                     html: { data: { 'seatmap-target' => 'sidebarToggle' } },
+                                                     size: :sm
+      .d-flex.justify-content-center
+        #seatmap-container.overflow-auto{data: { 'seatmap-target' => 'container', seatmap_data: op.seat_map_data }}
 
-  .col-md-4
+  .col-xl-4{data: { 'seatmap-target' => 'sidebar' }}
     - if logged_in?
       .card.mb-3
         .card-header

@@ -13,6 +13,8 @@
 
 
 %div{data: { 'seatmap-target' => 'tickets' }}
+  - if op.available_tickets.none?
+    = _('Seatmap|You don\'t have any tickets for this event')
   - op.available_tickets.order(:id).each do |ticket|
     .d-flex.align-items-center.ticket-container.mb-2{data: { seat_category_id: ticket.seat_category_id, ticket_id: ticket.id }}
       .me-2

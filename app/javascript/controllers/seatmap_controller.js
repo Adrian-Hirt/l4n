@@ -2,7 +2,14 @@ import { Controller } from "@hotwired/stimulus"
 import 'konva'
 
 export default class extends Controller {
-  static targets = ['container', 'tickets', 'currentSelectedSeatInfo'];
+  static targets = [
+                    'container',
+                    'tickets',
+                    'currentSelectedSeatInfo',
+                    'sidebarToggle',
+                    'sidebar',
+                    'mainColumn'
+                  ];
 
   connect() {
     // Setup the base
@@ -18,6 +25,10 @@ export default class extends Controller {
     document.addEventListener('l4n:seatmap-possibly-changed', () => {
       this.#updateSeatMap();
     });
+
+    // Setup sidebar toggler
+    this.sidebarVisible = true;
+    this.sidebarToggleTarget.addEventListener('click', (e) => this.#toggleSidebar(e));
   }
 
   #updateSeatMap() {
@@ -296,5 +307,24 @@ export default class extends Controller {
     }
 
     this.currentSelectedSeatInfoTarget.innerHTML = infoString;
+  }
+
+  #toggleSidebar(e) {
+    // Toggle the visibility of the sidebar and the size of the
+    // main container.
+    if(this.sidebarVisible) {
+      this.sidebarTarget.classList.add('d-xl-none');
+      this.mainColumnTarget.classList.add('w-100');
+    }
+    else {
+      this.sidebarTarget.classList.remove('d-xl-none');
+      this.mainColumnTarget.classList.remove('w-100');
+    }
+
+    // Toggle state
+    this.sidebarVisible = !this.sidebarVisible;
+
+    e.preventDefault();
+    return false;
   }
 }
