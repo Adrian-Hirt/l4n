@@ -29,7 +29,8 @@
               .badge{style: "background-color: #{category.color_for_view}"}
                 &nbsp;
             = category.name
-        .me-2
-          .badge{style: "background-color: red"}
-            &nbsp;
-          = _('Seatmap|Taken seat')
+        .d-flex.align-items-center.mb-2
+          .me-2
+            .badge{style: "background-color: red"}
+              &nbsp;
+            = _('Seatmap|Taken seat')
