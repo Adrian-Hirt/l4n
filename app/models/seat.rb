@@ -19,7 +19,7 @@ class Seat < ApplicationRecord
   # == Instance Methods ============================================================
   def color
     if ticket
-      '#f00'
+      'red'
     else
       seat_category.color_for_view
     end

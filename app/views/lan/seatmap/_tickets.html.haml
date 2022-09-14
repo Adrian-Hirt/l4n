@@ -5,22 +5,40 @@
   - if op.respond_to?(:taken_seat)
     #takenSeat{data: { id: op.taken_seat.id }}
 
+  - if op.respond_to?(:assigned_seat)
+    #assignedSeat{data: { id: op.assigned_seat&.id, username: op.assigned_user.username, userid: op.assigned_user.id }}
+
+  - if op.respond_to?(:unassigned_seat)
+    #unassignedSeat{data: { id: op.unassigned_seat&.id }}
+
+
 %div{data: { 'seatmap-target' => 'tickets' }}
   - op.available_tickets.order(:id).each do |ticket|
-    .d-flex.align-items-center.ticket-container{data: { seat_category_id: ticket.seat_category_id, ticket_id: ticket.id }}
+    .d-flex.align-items-center.ticket-container.mb-2{data: { seat_category_id: ticket.seat_category_id, ticket_id: ticket.id }}
       .me-2
-        .badge{style: "background-color: #{ticket.seat_category.color_for_view}"}
-          = ticket.seat_category.name
-        .ticket-seat-id.d-inline-block
-          = ticket.seat&.id.presence || '-'
-
+        .badge{style: "background-color: #{ticket.seat_category.color_for_view};"}
+          = ticket.seat&.id.presence || '&nbsp;'.html_safe
       - if ticket.assignee.present?
         .me-2
           = ticket.assignee.username
-        = button _('Ticket|Remove assignation'),
+        - if current_user == ticket.order.user
+          = button nil,
                   remove_assignee_lan_ticket_path(id: ticket.id),
                   size: :sm,
-                  method: :post
+                  method: :post,
+                  btn_icon: %i[fas fa-user-slash fa-fw],
+                  icon_only: true,
+                  html: { title: _('Ticket|Remove assignation') }
+        - else
+          = button nil,
+                   remove_assignee_lan_ticket_path(id: ticket.id),
+                   size: :sm,
+                   method: :post,
+                   btn_icon: %i[fas fa-user-slash fa-fw],
+                   icon_only: true,
+                   html: { title: _('Ticket|Remove ticket from myself') },
+                   color: :danger,
+                   confirm: _('Ticket|Really remove ticket from myself?')
       - else
         = simple_form_for :assignee, url: assign_lan_ticket_path(ticket), wrapper: :input_group do |f|
           = f.input :username, label: false,
@@ -28,21 +46,28 @@
                               append: f.save('>', style: 'border-radius: 0;', class: %i[rounded-end btn-sm]),
                               append_options: { class: '' },
                               placeholder: _('Seatmap|Username of user to assign to'),
-                              input_html: { class: %i[py-0] }
+                              input_html: { class: %i[py-0 seatmap-username-input] }
 
 
         - if current_user.ticket_for(op.lan_party).nil?
           .ms-2
-            = button _('Ticket|Assign to myself'),
-                    assign_lan_ticket_path(id: ticket.id, user_id: current_user.id),
-                    size: :sm,
-                    method: :post
+            = button nil,
+                     assign_lan_ticket_path(id: ticket.id, user_id: current_user.id),
+                     size: :sm,
+                     method: :post,
+                     btn_icon: %i[fas fa-user-plus fa-fw],
+                     icon_only: true,
+                     html: { title: _('Ticket|Assign to myself') }
       .ms-2
         - if ticket.seat.present?
-          = button _('Ticket|Remove seat'), remove_seat_lan_ticket_path(ticket), size: :sm, method: :post
+          = button nil, remove_seat_lan_ticket_path(ticket), size: :sm, method: :post, color: :danger, html: { title: _('Ticket|Remove seat') }  do
+            %span.fa-stack.stacked-icons
+              %i.fa-solid.fa-chair.fa-stack-1x.mx-0
+              %i.fa-solid.fa-x.fa-stack-1x.mx-0{color: 'black'}
         - else
           = simple_form_for :ticket, url: take_seat_lan_ticket_path(ticket) do |f|
             = f.input :selected_seat_id, input_html: { class: 'selected-seat-input' },
                                          as: :hidden,
                                          wrapper_html: { style: 'margin-bottom: 0 !important;' }
-            = f.save _('Ticket|Take seat'), class: %i[btn-sm disabled take-seat-button]
+            = button_tag class: %i[btn btn-primary btn-sm icon-only-btn take-seat-button disabled] do
+              = icon %i[fas fa-chair fa-fw]

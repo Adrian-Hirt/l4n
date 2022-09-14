@@ -8,20 +8,21 @@ module ButtonsHelper
     disabled:  false
   }.freeze
 
-  # rubocop:disable Metrics/ParameterLists
-  def button(title, href, html: {}, btn_icon: nil, method: nil, disable_on_click: false, confirm: nil, tag: :a, **opts)
+  def button(title, href, html: {}, tag: :a, **opts, &block)
     options = get_options(opts)
-    if btn_icon
-      button_icon = icon btn_icon
+    if opts[:btn_icon]
+      button_icon = icon opts[:btn_icon]
       title = (options[:icon_only] ? button_icon : (button_icon + title))
     end
     data = {}
-    data = { turbo_method: method } if method
-    if disable_on_click
+    data = { turbo_method: opts.delete(:method) } if opts[:method]
+    if opts.delete(:disable_on_click)
       data[:controller] = 'button'
       data[:action] = 'click->button#disable'
     end
-    if confirm
+    if opts[:confirm]
+      confirm = opts.delete(:confirm)
+
       if confirm.is_a? String
         data[:confirm] = confirm
       else
@@ -30,11 +31,17 @@ module ButtonsHelper
       data[:controller] = 'button'
       data[:action] = 'click->button#confirmAction'
     end
+
+    tooltip = opts.delete(:tooltip)
+    if tooltip
+      html[:title] = tooltip
+      data['bs-toggle'] = :tooltip
+    end
+
     html[:data] ||= {}
     html[:data].merge!(data)
-    _button(title, href, get_btn_class(options), tag: tag, **html)
+    _button(title, href, get_btn_class(options), tag: tag, **html, &block)
   end
-  # rubocop:enable Metrics/ParameterLists
 
   def show_button(model, html: {}, **opts)
     options = get_options(opts)
@@ -86,14 +93,22 @@ module ButtonsHelper
 
   private
 
-  def _button(title, href, classes, tag: :a, **link_opts)
+  def _button(title, href, classes, tag: :a, **link_opts, &block)
     if tag == :button
       button_to href, class: classes, **link_opts do
-        title
+        if block
+          yield
+        else
+          title
+        end
       end
     else
       link_to href, class: classes, **link_opts do
-        title
+        if block
+          yield
+        else
+          title
+        end
       end
     end
   end

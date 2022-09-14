@@ -50,11 +50,15 @@ module Operations::Ticket
       @lan_party ||= ticket.lan_party
     end
 
-    private
-
-    def ticket
-      @ticket ||= ::Ticket.find_by(id: osparams.id)
+    def assigned_seat
+      ticket.seat
     end
+
+    def assigned_user
+      @assigned_user ||= user_to_assign
+    end
+
+    private
 
     def user_to_assign
       if osparams.user_id.present?
@@ -62,6 +66,10 @@ module Operations::Ticket
       else
         ::User.find_by('LOWER(username) = ?', osparams.assignee[:username].downcase)
       end
+    end
+
+    def ticket
+      @ticket ||= ::Ticket.find_by(id: osparams.id)
     end
   end
 end

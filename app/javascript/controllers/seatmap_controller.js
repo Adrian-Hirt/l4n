@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import 'konva'
 
 export default class extends Controller {
-  static targets = ['container', 'tickets'];
+  static targets = ['container', 'tickets', 'currentSelectedSeatInfo'];
 
   connect() {
     // Setup the base
@@ -23,6 +23,8 @@ export default class extends Controller {
   #updateSeatMap() {
     let removedId = document.querySelector('#removedSeat')?.dataset?.id;
     let takenId = document.querySelector('#takenSeat')?.dataset?.id;
+    let assignedSeatDataset = document.querySelector('#assignedSeat')?.dataset;
+    let unassignedSeatId = document.querySelector('#unassignedSeat')?.dataset?.id;
 
     if(removedId) {
       // "reset" the color of the seat
@@ -40,6 +42,18 @@ export default class extends Controller {
 
       // Mark the seat as taken
       seat.setAttr('taken', true);
+    }
+
+    if(assignedSeatDataset?.id) {
+      let seat = this.seats.find(element => element.attrs.backendId == assignedSeatDataset.id);
+      seat.setAttr('userName', assignedSeatDataset.username);
+      seat.setAttr('userId', assignedSeatDataset.userid);
+    }
+
+    if(unassignedSeatId) {
+      let seat = this.seats.find(element => element.attrs.backendId == unassignedSeatId);
+      seat.setAttr('userName', null);
+      seat.setAttr('userId', null);
     }
 
     this.#unselectSeat();
@@ -75,7 +89,9 @@ export default class extends Controller {
         draggable: false,
         name: 'seatRect',
         seatCategoryId: seat.seatCategoryId,
-        taken: seat.taken
+        taken: seat.taken,
+        userName: seat.userName,
+        userId: seat.userId
       });
 
       // Add the new box
@@ -191,6 +207,8 @@ export default class extends Controller {
       this.currentSelection.setAttr('stroke', 'black');
       this.currentSelection.setAttr('strokeWidth', 10);
 
+      this.#updateSelectedSeatInfo();
+
       // if the seat is taken, we simply disable all buttons and return early
       if (this.currentSelection.attrs.taken) {
         this.#disableAddButtons();
@@ -239,6 +257,8 @@ export default class extends Controller {
       this.currentSelection.setAttr('strokeWidth', 0);
       this.currentSelection = null;
     }
+
+    this.currentSelectedSeatInfoTarget.innerHTML = i18n._('Seatmap|Please select a seat');
   }
 
   #highlightSeats() {
@@ -250,5 +270,31 @@ export default class extends Controller {
         this.seatsById[id]?.setAttr('fill', 'yellow');
       }
     }
+  }
+
+  #updateSelectedSeatInfo() {
+    let attributes = this.currentSelection.attrs;
+    let categoryData = this.seatCategoryData[attributes.seatCategoryId];
+    let infoString = '';
+
+    infoString += `<span class="badge bg-secondary">${attributes.backendId}</span>`;
+    infoString += `<span class="badge ms-2" style="background-color: ${categoryData.color}">${categoryData.name}</span><hr>`
+
+    if(attributes.taken) {
+      let username = attributes.userName;
+
+      if(username) {
+        infoString += `${i18n._('Seat|Seat is taken by')}: `;
+        infoString += `<a href="/users/${attributes.userId}" target="_blank">${username}</a>`
+      }
+      else {
+        infoString += i18n._('Seat|Seat is taken');
+      }
+    }
+    else {
+      infoString += i18n._('Seatmap|Seat is free');
+    }
+
+    this.currentSelectedSeatInfoTarget.innerHTML = infoString;
   }
 }

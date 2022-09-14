@@ -5,7 +5,10 @@
     .card.card-primary.card-outline
       .card-body.box-profile
         .text-center
-          = image_tag model.avatar.variant(:medium).processed, class: 'profile-user-img img-fluid img-circle'
+          - if model.avatar.attached?
+            = image_tag model.avatar.variant(:medium).processed, class: 'profile-user-img img-fluid img-circle'
+          - else
+            .avatar-medium-placeholder
         %h3.profile-username.text-center
           = model.username
         %p.text-muted.text-center

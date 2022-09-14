@@ -32,9 +32,9 @@ module Lan
 
     def take_seat
       if run Operations::Ticket::TakeSeat
-        flash[:success] = _('Ticket|Successfully removed seat')
+        flash[:success] = _('Ticket|Successfully taken seat')
       else
-        flash[:danger] = _('Ticket|Seat could not be removed')
+        flash[:danger] = _('Ticket|Seat could not be taken')
       end
 
       respond_to do |format|

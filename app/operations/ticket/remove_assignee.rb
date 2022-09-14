@@ -29,5 +29,9 @@ module Operations::Ticket
     def available_tickets
       Queries::Lan::Ticket::LoadForSeatmap.call(user: context.user, lan_party: model.lan_party)
     end
+
+    def unassigned_seat
+      model.seat
+    end
   end
 end

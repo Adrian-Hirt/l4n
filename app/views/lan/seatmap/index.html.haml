@@ -1,16 +1,35 @@
-.card
-  .card-body{data: { controller: 'seatmap' }}
-    - if current_user
-      .row
-        .col-md-12
+.row{data: { controller: 'seatmap' }}
+  .col-md-8
+    .card
+      .card-header
+        = _('Seatmap')
+      #seatmap-container.overflow-auto{data: { 'seatmap-target' => 'container', seatmap_data: op.seat_map_data }}
+
+  .col-md-4
+    - if logged_in?
+      .card.mb-3
+        .card-header
           = _('Seatmap|Your available tickets')
+        .card-body
           = turbo_frame_tag :tickets do
             = render partial: 'tickets', locals: { tickets: op.available_tickets }
-        .col-md-6
-          #current-selected-seat{data: { 'seatmap-target' => 'currentSelectedSeatInfo' }}
-    - else
-      .row
-        .col-md-12
-          %div{data: { 'seatmap-target' => 'tickets' }}
-    %hr
-    #seatmap-container.overflow-auto{data: { 'seatmap-target' => 'container', seatmap_data: op.seat_map_data }}
+    .card.mb-3
+      .card-header
+        = _('Seatmap|Selected seat')
+      .card-body
+        #current-selected-seat{data: { 'seatmap-target' => 'currentSelectedSeatInfo' }}
+          = _('Seatmap|Please select a seat')
+    .card
+      .card-header
+        = _('Seatmap|Seat categories')
+      .card-body
+        - op.lan_party.seat_categories.each do |category|
+          .d-flex.align-items-center.mb-2
+            .me-2
+              .badge{style: "background-color: #{category.color_for_view}"}
+                &nbsp;
+            = category.name
+        .me-2
+          .badge{style: "background-color: red"}
+            &nbsp;
+          = _('Seatmap|Taken seat')
