@@ -14,7 +14,6 @@ export default class extends Controller {
       let optStr = `<option value="">${ i18n._('Form|Select|Blank') }</option>`;
 
       for (let opt of this.options[selectedOption]) {
-        console.log(opt);
         optStr += `<option value="${opt.id}">${opt.name}</option>`
       }
 

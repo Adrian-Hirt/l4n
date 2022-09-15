@@ -7,8 +7,6 @@ export default class extends Controller {
     var radios = this.participantTypeTarget.querySelectorAll('input[type=radio]');
     this.teamSizeInput = this.teamSizeTarget.querySelector('input');
 
-    console.log(this.teamSizeInput);
-
     for(let radio of radios) {
       radio.addEventListener('change', (e) => {
         if(e.target.value == 'true') {

@@ -1,0 +1,5 @@
+= turbo_stream.replace :flashes, partial: 'layouts/shared/flashes'
+
+- if model.paid?
+  = turbo_stream.replace :payment_gateways do
+    %div{data: { controller: 'redirect', url: shop_url }}

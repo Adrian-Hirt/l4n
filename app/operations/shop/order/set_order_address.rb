@@ -1,5 +1,5 @@
 module Operations::Shop::Order
-  class SetOrderAddress < RailsOps::Operation::Model::Update
+  class SetOrderAddress < RailsOps::Operation::Model::Load
     model ::Order
 
     attr_reader :no_address_given_error

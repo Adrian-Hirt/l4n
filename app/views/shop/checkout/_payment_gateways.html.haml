@@ -1,5 +1,9 @@
-- Rails.application.config.payment_gateways.each do |gateway|
-  %p.mb-3
-    = gateway.name
-    %br
-    = button 'Pay', gateway.payment_path(order_id: op.order.encrypted_base64_id), html: { data: { turbo: 'false' } }
+= turbo_frame_tag 'payment_gateways', target: "_top" do
+  - if model.total.zero?
+    = button _('Order|Complete without payment'), process_free_shop_order_path(op.order), method: :post
+  - else
+    - Rails.application.config.payment_gateways.each do |gateway|
+      %p.mb-3
+        = gateway.name
+        %br
+        = button 'Pay', gateway.payment_path(order_id: op.order.encrypted_base64_id), html: { data: { turbo: 'false' } }

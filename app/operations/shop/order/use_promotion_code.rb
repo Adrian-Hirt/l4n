@@ -1,5 +1,5 @@
 module Operations::Shop::Order
-  class UsePromotionCode < RailsOps::Operation::Model::Update
+  class UsePromotionCode < RailsOps::Operation::Model::Load
     model ::Order
 
     schema3 do

@@ -1,5 +1,7 @@
 = render partial: 'shop/shared/header'
 
+= turbo_frame_tag 'payment_gateways'
+
 - op.products.in_groups_of(4) do |products|
   .row
     - products.each do |product|
