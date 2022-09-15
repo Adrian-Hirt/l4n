@@ -1,30 +1,23 @@
-%h1 Seki Payment Gateway
+- content_for :page_title do
+  Seki Payment Gateway
 
-.countdown{ data: { time: op.result[:valid_until], redirect: main_app.shop_cart_url } }
-  \-- minutes -- seconds left to submit the order
+.alert.alert-warning.countdown{ data: { time: op.result[:valid_until], redirect: main_app.shop_cart_url } }
+  \-- minutes -- seconds left to complete the payment
 
-Your total:
-= humanized_money_with_symbol(op.result[:total])
-%br
-%br
-After submitting the order, you will have 4 days to visit the VSETH Sekretariat and
-complete the payment.
-%br
-%br
-You will be able to either use the order ID to find the payment, or your username.
-%br
-%br
-The order ID is:
-= op.result[:real_order_id]
-%br
-%br
-You can also find the order in the orders tab in the shop.
+.card
+  .card-header
+    = _('PamentGateway|Payment')
+  .card-body
+    = _('PamentGateway|Your total')
+    = humanized_money_with_symbol(op.result[:total])
+    %hr
+    = _('PaymentGateway|Seki|Description, order_id: %{order_id}') % { order_id: op.result[:real_order_id] }
 
-.buttons
-  %div{ style: 'display: inline-block;' }
-    = button_to 'Submit order', submit_order_path(order_id: op.result[:order_id]), data: { 'turbo-method' => :post }
-  %div{ style: 'display: inline-block;' }
-    = link_to 'Cancel', main_app.shop_cart_path, class: 'cancel-btn'
+  .card-footer
+    = button_to _('PamentGateway|Submit order'), submit_order_path(order_id: op.result[:order_id]), data: { 'turbo-method' => :post }, class: %i[btn btn-primary]
+    = link_to _('PamentGateway|Cancel'), main_app.shop_cart_path, class: 'btn btn-danger'
+
+
 
 :javascript
   (function() {
