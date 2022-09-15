@@ -29,6 +29,10 @@ export default class extends Controller {
     // Setup sidebar toggler
     this.sidebarVisible = true;
     this.sidebarToggleTarget.addEventListener('click', (e) => this.#toggleSidebar(e));
+
+    for(let ticketIdBadge of this.ticketsTarget.querySelectorAll('.seat-id-badge')) {
+      ticketIdBadge.addEventListener('click', (e) => this.#highlightSeatOfBadge(e));
+    }
   }
 
   #updateSeatMap() {
@@ -271,8 +275,14 @@ export default class extends Controller {
 
     for(let id of this.highlightedSeats) {
       let seat = this.seatsById[id];
-      let seatColor = this.seatCategoryData[seat.attrs.seatCategoryId].color;
-      seat.setAttr('fill', seatColor);
+
+      if(seat.attrs.taken) {
+        seat.setAttr('fill', 'red');
+      }
+      else {
+        let seatColor = this.seatCategoryData[seat.attrs.seatCategoryId].color;
+        seat.setAttr('fill', seatColor);
+      }
     }
 
     this.currentSelectedSeatInfoTarget.innerHTML = i18n._('Seatmap|Please select a seat');
@@ -287,6 +297,19 @@ export default class extends Controller {
       for(let id of highlight) {
         this.highlightedSeats.push(id);
         this.seatsById[id]?.setAttr('fill', 'purple');
+      }
+
+      // If it's a single seat, we also set the selected seat info and
+      // select the seat
+      if(highlight.length == 1) {
+        // Store current selection
+        this.currentSelection = this.seatsById[highlight[0]];
+
+        // Highlight the current selection
+        this.currentSelection.setAttr('stroke', 'black');
+        this.currentSelection.setAttr('strokeWidth', 10);
+
+        this.#updateSelectedSeatInfo();
       }
     }
   }
@@ -334,5 +357,20 @@ export default class extends Controller {
 
     e.preventDefault();
     return false;
+  }
+
+  #highlightSeatOfBadge(e) {
+    let seatID = e.target.dataset.seatId;
+
+    if(seatID) {
+      // Store current selection
+      this.currentSelection = this.seatsById[seatID];
+
+      // Highlight the current selection
+      this.currentSelection.setAttr('stroke', 'black');
+      this.currentSelection.setAttr('strokeWidth', 10);
+
+      this.#updateSelectedSeatInfo();
+    }
   }
 }
