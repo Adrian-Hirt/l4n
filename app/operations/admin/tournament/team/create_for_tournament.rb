@@ -13,7 +13,7 @@ module Operations::Admin::Tournament::Team
       # We need to check that there are no phases which are in
       # another state than "created", if yes, we cannot register the
       # team anymore.
-      fail TournamentHasOngoingPhases if tournament.ongoing_phases?
+      fail Operations::Exceptions::OpFailed, _('Admin|Tournaments|Team|No new teams can be created') if tournament.ongoing_phases?
 
       # If we're playing a singleplayer game, we need the user to be
       # present, otherwise it won't work.
@@ -28,6 +28,14 @@ module Operations::Admin::Tournament::Team
           model.errors.add(:single_user_name, _('Team|User is already in tournament'))
           fail UserError
         end
+
+        # Check that the user has a ticket (only if the tournament is
+        # connected to a lanparty).
+        # rubocop:disable Style/SoleNestedConditional
+        if tournament.lan_party.present?
+          fail Operations::Exceptions::OpFailed, _('Admin|Team|User needs to be checked in to do this') if singleplayer_user.ticket_for(tournament.lan_party).nil? || !singleplayer_user.ticket_for(tournament.lan_party).checked_in?
+        end
+        # rubocop:enable Style/SoleNestedConditional
       end
     end
 

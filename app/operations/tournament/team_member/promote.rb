@@ -13,13 +13,23 @@ module Operations::Tournament::TeamMember
       # Check that the team is not seeded
       fail Operations::Exceptions::OpFailed, _('Tournament|Team|Team is already seeded') if model.team.seeded?
 
+      tournament = model.team.tournament
+
       # Check that the registration of the tournament is open
-      fail Operations::Exceptions::OpFailed, _('Tournament|Registration is closed') unless model.team.tournament.registration_open?
+      fail Operations::Exceptions::OpFailed, _('Tournament|Registration is closed') unless tournament.registration_open?
 
       # We need to check that there are no phases which are in
       # another state than "created", if yes, we cannot register the
       # team anymore.
-      fail Operations::Exceptions::OpFailed, _('Tournament|The tournament has ongoing phases') if model.team.tournament.ongoing_phases?
+      fail Operations::Exceptions::OpFailed, _('Tournament|The tournament has ongoing phases') if tournament.ongoing_phases?
+
+      # Check that the user has a ticket (only if the tournament is
+      # connected to a lanparty).
+      # rubocop:disable Style/SoleNestedConditional
+      if tournament.lan_party.present?
+        fail Operations::Exceptions::OpFailed, _('Tournament|You need to be checked in to do this') if context.user.ticket_for(tournament.lan_party).nil? || !context.user.ticket_for(tournament.lan_party).checked_in?
+      end
+      # rubocop:enable Style/SoleNestedConditional
     end
 
     def perform

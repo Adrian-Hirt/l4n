@@ -5,10 +5,17 @@
     .mb-2.fw-bold= _('Tournament|Registration status')
     = format_registration_status(tournament)
     %hr
+    -# Only display to logged-in users
     - if logged_in?
-      - if tournament.singleplayer?
-        = render partial: 'tournaments/user_singleplayer', locals: { tournament: tournament, op: op }
+      -# User can only crate a team if the lan_party is not present or the user
+      -# has a checked_in ticket for this lan_party
+      - if tournament.lan_party.blank? || current_user.ticket_for(tournament.lan_party)&.checked_in?
+        -# Display the correct sidebar depending on if it's a singleplayer game or not
+        - if tournament.singleplayer?
+          = render partial: 'tournaments/user_singleplayer', locals: { tournament: tournament, op: op }
+        - else
+          = render partial: 'tournaments/user_team', locals: { tournament: tournament, op: op }
       - else
-        = render partial: 'tournaments/user_team', locals: { tournament: tournament, op: op }
+        = _('Tournament|Please check-in at the event to see the available actions')
     - else
       = _('Tournament|Please login to see the available actions')

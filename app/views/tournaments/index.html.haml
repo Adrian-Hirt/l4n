@@ -4,8 +4,11 @@
   - op.tournaments.each do |tournament|
     .col-md-4.mb-3
       .card
-        .card-header
+        .card-header.d-flex.justify-content-between.align-items-center
           %b= tournament.name
+          - if tournament.lan_party.present?
+            .text-muted
+              = tournament.lan_party.name
         .card-body
           .mb-2
             = _('Tournament|Team types')

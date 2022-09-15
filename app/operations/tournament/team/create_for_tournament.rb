@@ -18,6 +18,14 @@ module Operations::Tournament::Team
       fail Operations::Exceptions::OpFailed, _('Tournament|The tournament has ongoing phases') if tournament.ongoing_phases?
 
       fail Operations::Exceptions::OpFailed, _('Tournament|You are already in the tournament') if context.user.teams.where(tournament: tournament).any?
+
+      # If the tournament is linked to a lan_party, the current_user needs to have a ticket
+      # in "checked_in" status to create a team.
+      # rubocop:disable Style/SoleNestedConditional
+      if tournament.lan_party.present?
+        fail Operations::Exceptions::OpFailed, _('Tournament|You need to be checked in to do this') if context.user.ticket_for(tournament.lan_party).nil? || !context.user.ticket_for(tournament.lan_party).checked_in?
+      end
+      # rubocop:enable Style/SoleNestedConditional
     end
 
     model ::Tournament::Team

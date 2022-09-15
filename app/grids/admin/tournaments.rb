@@ -8,6 +8,9 @@ module Grids
       model Tournament
 
       column :name
+      column :lan_party, html: true do |tournament|
+        link_to tournament.lan_party.name, admin_lan_party_path(tournament.lan_party) if tournament.lan_party.present?
+      end
       column :frontend_order
       column :status, html: true do |tournament|
         format_tournament_status(tournament)
@@ -22,6 +25,8 @@ module Grids
       end
 
       filter(:status, :enum, select: Tournament.statuses.keys, include_blank: _('Form|Select|Show all'))
+      filter(:lan_party, :enum, select:        LanParty.all.order(:name).map { |lan_party| [lan_party.name, lan_party.id] },
+                                include_blank: _('Form|Select|Show all'))
     end
   end
 end

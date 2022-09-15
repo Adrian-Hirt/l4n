@@ -22,6 +22,10 @@
             = _('LanParty|Checked in users')
             .small.text-muted
               = model.tickets.checked_in.count
+          .col-md-6
+            = _('LanParty|Tournaments')
+            .small.text-muted
+              = model.tournaments.count
 
   .col.md-4
     .card
@@ -29,6 +33,7 @@
         = _('LanParty|Actions & Links')
       .card-body
         .d-grid.gap-2
-          = button _('Admin|SeatCategories'), admin_lan_party_seat_categories_path(model)
-          = button _('Admin|SeatMap'), admin_lan_party_seat_map_path(model)
-          = button _('Admin|Tickets'), admin_lan_party_tickets_path(model)
+          = button _('Admin|LanParty|SeatCategories'), admin_lan_party_seat_categories_path(model)
+          = button _('Admin|LanParty|SeatMap'), admin_lan_party_seat_map_path(model)
+          = button _('Admin|LanParty|Tickets'), admin_lan_party_tickets_path(model)
+          = button _('Admin|LanParty|Tournaments'), admin_tournaments_path(grids_admin_tournaments: { lan_party: model.id })

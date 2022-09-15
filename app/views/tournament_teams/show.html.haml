@@ -94,21 +94,24 @@
         = _('TournamentTeam|Team actions')
       .card-body
         - if logged_in?
-          - if model.users.include?(current_user)
-            - if model.tournament.singleplayer?
-              = render partial: 'singleplayer_sidebar'
+          - if model.tournament.lan_party.blank? || current_user.ticket_for(model.tournament.lan_party)&.checked_in?
+            - if model.users.include?(current_user)
+              - if model.tournament.singleplayer?
+                = render partial: 'singleplayer_sidebar'
+              - else
+                = render partial: 'multiplayer_sidebar'
+            - elsif model.full? && !model.tournament.singleplayer?
+              .d-grid.gap-2
+                = button _('TournamentTeam|Team is full'), nil, disabled: true
+            - elsif !model.tournament.singleplayer?
+              .d-grid.gap-2
+                = simple_form_for :join_data, wrapper: :input_group, url: join_tournament_team_path(model) do |f|
+                  = f.password :password, placeholder: _('TournamentTeam|Join password')
+                  = f.save _('TournamentTeam|Join'), class: %i[w-100]
             - else
-              = render partial: 'multiplayer_sidebar'
-          - elsif model.full? && !model.tournament.singleplayer?
-            .d-grid.gap-2
-              = button _('TournamentTeam|Team is full'), nil, disabled: true
-          - elsif !model.tournament.singleplayer?
-            .d-grid.gap-2
-              = simple_form_for :join_data, wrapper: :input_group, url: join_tournament_team_path(model) do |f|
-                = f.password :password, placeholder: _('TournamentTeam|Join password')
-                = f.save _('TournamentTeam|Join'), class: %i[w-100]
+              = _('Team|No actions possible')
           - else
-            = _('Team|No actions possible')
+            = _('Tournament|Please check-in at the event to see the available actions')
         - else
           = _('TournamentTeam|Please sign in to see actions')
 
