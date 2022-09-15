@@ -233,7 +233,21 @@ Rails.application.routes.draw do
           post :update_seats
         end
       end
-      resources :tickets, controller: 'lan_parties/tickets', only: %i[index]
+      resources :tickets, controller: 'lan_parties/tickets', only: %i[index show] do
+        member do
+          # Assign and remove assignation of tickets
+          post :assign_user
+          post :remove_assignee
+
+          # Taking and removing a seat with a ticket
+          post :assign_seat
+          post :remove_seat
+
+          # Checking in and reverting the check-in
+          post :check_in
+          post :revert_check_in
+        end
+      end
     end
 
     # Tournament system

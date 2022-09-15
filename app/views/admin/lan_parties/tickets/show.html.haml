@@ -1,0 +1,77 @@
+.row
+  .col-md-8.mb-3.mb-md-3
+    .card
+      .card-header
+        = _('Ticket|Info')
+      .card-body
+        .mb-2
+          = _('Ticket|Seat category')
+          .small.text-muted
+            .badge{style: "background-color: #{model.seat_category.color_for_view};"}
+              = model.seat_category.name
+        .mb-2
+          = _('Ticket|Status')
+          .small.text-muted
+            = model.humanized_status
+        .mb-2
+          = _('Ticket|Order')
+          .small.text-muted
+            = link_to model.order.formatted_id, admin_shop_order_path(model.order)
+        .mb-2
+          = _('Ticket|Assignee')
+          .small.text-muted
+            - if model.assignee.present?
+              = link_to user_path(model.assignee), target: :_blank do
+                = model.assignee.username
+                = icon %i[fas fa-arrow-up-right-from-square]
+            - else
+              \-
+        .mb-2
+          = _('Ticket|Seat')
+          .small.text-muted
+            - if model.seat.present?
+              = link_to lan_seatmap_path(highlight: model.seat.id), target: :_blank do
+                = model.seat.id
+                = icon %i[fas fa-arrow-up-right-from-square]
+            - else
+              \-
+
+  .col-md-4
+    .card
+      .card-header
+        = _('Ticket|Actions')
+      .card-body
+        .d-grid.gap-2
+          - if model.checked_in?
+            = button _('Ticket|Revert check in'), revert_check_in_admin_ticket_path(model), method: :post
+          - else
+            - if model.assigned? && model.seat.present?
+              = button _('Ticket|Check in'), check_in_admin_ticket_path(model), method: :post
+
+            - if model.assigned?
+              = button _('Admin|Ticket|Remove user'),
+                      remove_assignee_admin_ticket_path(model),
+                      method: :post,
+                      color: :danger
+            - else
+              %b= _('Admin|Ticket|Assign to user')
+              = simple_form_for :assignee, url: assign_user_admin_ticket_path(model), wrapper: :input_group do |f|
+                = f.input :username, label: false,
+                                    wrapper_html: { style: 'margin-bottom: 0 !important;' },
+                                    append: f.save('>', style: 'border-radius: 0;', class: %i[rounded-end btn-sm]),
+                                    append_options: { class: '' },
+                                    placeholder: _('Admin|Ticket|Username of user to assign to'),
+                                    input_html: { class: %i[py-0] }
+            - unless model.assigned? && model.seat.present?
+              %hr
+            - if model.seat.present?
+              = button _('Admin|Ticket|Remove seat'), remove_seat_admin_ticket_path(model), method: :post, color: :danger
+            - else
+              %b= _('Admin|Ticket|Assign seat')
+              = simple_form_for :seat, url: assign_seat_admin_ticket_path(model), wrapper: :input_group do |f|
+                = f.input :seat_id, label: false,
+                                    wrapper_html: { style: 'margin-bottom: 0 !important;' },
+                                    append: f.save('>', style: 'border-radius: 0;', class: %i[rounded-end btn-sm]),
+                                    append_options: { class: '' },
+                                    placeholder: _('Admin|Ticket|Seat id to assign to'),
+                                    input_html: { class: %i[py-0] }

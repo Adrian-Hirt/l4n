@@ -12,9 +12,7 @@ module Shop
     def set_address
       run Operations::Shop::Order::SetOrderAddress
 
-      respond_to do |format|
-        format.turbo_stream
-      end
+      respond_to :turbo_stream
     end
 
     def use_promotion_code
@@ -28,9 +26,7 @@ module Shop
     rescue Operations::Shop::Order::PromoCodeAlreadyApplied
       @code_error = _('Checkout|The promotion code is already applied to this order!')
     ensure
-      respond_to do |format|
-        format.turbo_stream
-      end
+      respond_to :turbo_stream
     end
   end
 end

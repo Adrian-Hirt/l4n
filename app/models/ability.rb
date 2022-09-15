@@ -151,7 +151,7 @@ class Ability
       can :manage, LanParty
       can :manage, SeatCategory
       can :manage, SeatMap
-      can %i[view destroy], Ticket
+      can %i[read update], Ticket
     end
 
     # Tournament system permissions. For now we don't use fine-grained permissions,

@@ -269,16 +269,24 @@ export default class extends Controller {
       this.currentSelection = null;
     }
 
+    for(let id of this.highlightedSeats) {
+      let seat = this.seatsById[id];
+      let seatColor = this.seatCategoryData[seat.attrs.seatCategoryId].color;
+      seat.setAttr('fill', seatColor);
+    }
+
     this.currentSelectedSeatInfoTarget.innerHTML = i18n._('Seatmap|Please select a seat');
   }
 
   #highlightSeats() {
     const urlParams = new URLSearchParams(window.location.search);
     const highlight = urlParams.getAll('highlight');
+    this.highlightedSeats = [];
 
     if(highlight.length > 0) {
       for(let id of highlight) {
-        this.seatsById[id]?.setAttr('fill', 'yellow');
+        this.highlightedSeats.push(id);
+        this.seatsById[id]?.setAttr('fill', 'purple');
       }
     }
   }

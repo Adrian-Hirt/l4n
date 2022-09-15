@@ -8,8 +8,6 @@ module Operations::Ticket
       end
     end
 
-    attr_accessor :result
-
     # No special auth needed
     without_authorization
 

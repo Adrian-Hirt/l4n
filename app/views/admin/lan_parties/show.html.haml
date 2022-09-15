@@ -8,7 +8,7 @@
       .card-header
         = _('LanParty|Stats')
       .card-body
-        .row
+        .row.mb-0.mb-md-3
           .col-md-6
             = _('LanParty|Total seats')
             .small.text-muted
@@ -17,6 +17,11 @@
             = _('LanParty|Sold tickets')
             .small.text-muted
               = model.tickets.count
+        .row
+          .col-md-6
+            = _('LanParty|Checked in users')
+            .small.text-muted
+              = model.tickets.checked_in.count
 
   .col.md-4
     .card

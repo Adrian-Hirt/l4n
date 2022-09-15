@@ -17,7 +17,8 @@ module Operations::Ticket
       # Check that the ticket actually has a seat assigned
       fail Operations::Exceptions::OpFailed, _('Ticket|Not assigned to a seat') if ticket.seat.blank?
 
-      # TODO: check that the ticket is not checked-in
+      # Check that the ticket is not checked-in
+      fail Operations::Exceptions::OpFailed, _('Ticket|Ticket is already checked in') if ticket.checked_in?
 
       # If all good, we can assign remove the ticket from the
       # seat

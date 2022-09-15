@@ -7,12 +7,10 @@ module Lan
         flash[:danger] = _('Ticket|Could not be assigned')
       end
 
-      respond_to do |format|
-        format.turbo_stream
-      end
+      respond_to :turbo_stream
     rescue Operations::Exceptions::OpFailed => e
       flash[:danger] = e.message
-      redirect_to lan_seatmap_path
+      respond_to :turbo_stream
     end
 
     def remove_assignee
@@ -22,12 +20,10 @@ module Lan
         flash[:danger] = _('Ticket|Assignee could not be removed')
       end
 
-      respond_to do |format|
-        format.turbo_stream
-      end
+      respond_to :turbo_stream
     rescue Operations::Exceptions::OpFailed => e
       flash[:danger] = e.message
-      redirect_to lan_seatmap_path
+      respond_to :turbo_stream
     end
 
     def take_seat
@@ -37,12 +33,10 @@ module Lan
         flash[:danger] = _('Ticket|Seat could not be taken')
       end
 
-      respond_to do |format|
-        format.turbo_stream
-      end
+      respond_to :turbo_stream
     rescue Operations::Exceptions::OpFailed => e
       flash[:danger] = e.message
-      redirect_to lan_seatmap_path
+      respond_to :turbo_stream
     end
 
     def remove_seat
@@ -52,12 +46,10 @@ module Lan
         flash[:danger] = _('Ticket|Seat could not be removed')
       end
 
-      respond_to do |format|
-        format.turbo_stream
-      end
+      respond_to :turbo_stream
     rescue Operations::Exceptions::OpFailed => e
       flash[:danger] = e.message
-      redirect_to lan_seatmap_path
+      respond_to :turbo_stream
     end
   end
 end
