@@ -125,6 +125,8 @@ Rails.application.routes.draw do
       post :remove_seat, to: 'seatmap#remove_seat'
     end
 
+    get :ticket, to: 'tickets#my_ticket'
+
     resources :tickets, only: [] do
       member do
         # Assign and remove assignation of tickets

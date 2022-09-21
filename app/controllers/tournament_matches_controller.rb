@@ -1,4 +1,6 @@
 class TournamentMatchesController < ApplicationController
+  before_action :require_logged_in_user
+
   def edit
     op Operations::Tournament::Match::Update
   rescue Operations::Exceptions::OpFailed => e

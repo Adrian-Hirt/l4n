@@ -1,4 +1,6 @@
 class TournamentTeamMembersController < ApplicationController
+  before_action :require_logged_in_user
+
   def destroy
     if run Operations::Tournament::TeamMember::Destroy
       flash[:success] = _('Team|Successfully deleted')

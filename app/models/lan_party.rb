@@ -19,6 +19,9 @@ class LanParty < ApplicationRecord
   # == Scopes ======================================================================
 
   # == Class Methods ===============================================================
+  def self.active
+    LanParty.find_by(active: true)
+  end
 
   # == Instance Methods ============================================================
 

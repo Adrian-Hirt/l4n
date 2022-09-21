@@ -6,6 +6,7 @@ module Lan
     # it's way cleaner that way
     before_action :check_lan_feature_flag
     before_action :check_lan_active
+    before_action :require_logged_in_user
 
     private
 

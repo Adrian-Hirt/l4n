@@ -11,8 +11,9 @@
     = render partial: 'layouts/application/header'
     = render partial: 'layouts/shared/flashes'
     .main.container
-      .page-title
-        %h1= yield :page_title
+      - if content_for?(:page_title)
+        .page-title
+          %h1= yield :page_title
       .content
         = yield
     = render partial: 'layouts/application/footer'

@@ -1,0 +1,44 @@
+- if ticket.assignee.present?
+  -# If assignee is present, we display the name of the assignee
+  .me-2
+    = ticket.assignee.username
+
+  -# If the user is the user that ordered the ticket, we display a simple
+  -# button to remove the assignation. If the user is the assigned user,
+  -# we add some warning messages
+  - if current_user == ticket.order.user
+    - additional_options = { html: { title: _('Ticket|Remove assignation') } }
+  - else
+    - additional_options = { html: { title: _('Ticket|Remove ticket from myself') }, confirm: _('Ticket|Really remove ticket from myself?') }
+
+  -# Render the button
+  = button nil,
+           remove_assignee_lan_ticket_path(id: ticket.id),
+           size: :sm,
+           method: :post,
+           btn_icon: %i[fas fa-user-slash fa-fw],
+           icon_only: true,
+           **additional_options
+
+- else
+  -# Otherwise we display the form to assign the ticket
+  = simple_form_for :assignee, url: assign_lan_ticket_path(ticket), wrapper: :input_group do |f|
+    = f.input :username, label: false,
+                        wrapper_html: { style: 'margin-bottom: 0 !important;' },
+                        append: f.save('>', style: 'border-radius: 0;', class: %i[rounded-end btn-sm]),
+                        append_options: { class: '' },
+                        placeholder: _('Seatmap|Username of user to assign to'),
+                        input_html: { class: %i[py-0 seatmap-username-input] }
+
+
+  -# Also, if the current user does not have a ticket assigned yet for this lan,
+  -# we display a "assign to myself" button
+  - if current_user.ticket_for(op.lan_party).nil?
+    .ms-2
+      = button nil,
+              assign_lan_ticket_path(id: ticket.id, user_id: current_user.id),
+              size: :sm,
+              method: :post,
+              btn_icon: %i[fas fa-user-plus fa-fw],
+              icon_only: true,
+              html: { title: _('Ticket|Assign to myself') }

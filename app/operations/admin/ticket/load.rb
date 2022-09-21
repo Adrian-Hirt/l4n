@@ -5,5 +5,17 @@ module Operations::Admin::Ticket
     end
 
     model ::Ticket
+
+    def qr_code
+      data = { qr_id: model.encrypted_qr_id }
+
+      qrcode = RQRCode::QRCode.new(data.to_json, size: 10, level: :h)
+      qrcode.as_svg(
+        offset:          0,
+        color:           '000',
+        shape_rendering: 'crispEdges',
+        module_size:     4
+      )
+    end
   end
 end

@@ -37,7 +37,7 @@
               \-
 
   .col-md-4
-    .card
+    .card.mb-3
       .card-header
         = _('Ticket|Actions')
       .card-body
@@ -75,3 +75,15 @@
                                     append_options: { class: '' },
                                     placeholder: _('Admin|Ticket|Seat id to assign to'),
                                     input_html: { class: %i[py-0] }
+    .card.mb-3
+      .card-header
+        = _('Ticket|Show QR')
+      .card-body
+        - if model.assignee.present?
+          .d-grid
+            %a.btn.btn-primary{'data-bs-toggle' => 'collapse', href: "#qrTicket"}
+              = _('Ticket|Toggle QR')
+          #qrTicket.collapse.mt-3.text-center
+            = op.qr_code.html_safe
+        - else
+          = _('Ticket|QR code only available when user is assigned')

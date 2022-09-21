@@ -1,6 +1,6 @@
 module Lan
   class SeatmapController < LanController
-    wrap_parameters false
+    skip_before_action :require_logged_in_user
 
     def index
       op Operations::Lan::SeatMap::Load

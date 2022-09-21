@@ -1,0 +1,26 @@
+- provide :page_title, _('My Ticket')
+
+.card
+  .card-header
+    = _('Ticket|Ticket for %{lan_name}') % { lan_name: op.lan_party.name }
+  .card-body
+    .row
+      .col-md-6.text-center
+        = op.qr_code.html_safe
+
+      .col-md-6
+        %table.table.table-striped.table-borderless
+          %tr
+            %td= _('Ticket|Username')
+            %td= current_user.username
+          %tr
+            %td= _('Ticket|Seat')
+            %td= op.ticket.seat.id
+          %tr
+            %td= _('Ticket|Seat category')
+            %td
+              .badge{style: "background-color: #{op.ticket.seat_category.color_for_view};"}
+                = op.ticket.seat_category.name
+          %tr
+            %td= _('Ticket|Status')
+            %td= op.ticket.humanized_status

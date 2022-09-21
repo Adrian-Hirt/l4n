@@ -1,4 +1,6 @@
 class Ticket < ApplicationRecord
+  include Encryptable
+
   # == Attributes ==================================================================
   enum status: {
     created:    'created',
@@ -7,6 +9,8 @@ class Ticket < ApplicationRecord
   }
 
   translate_enums
+
+  encryptable_attribute :qr_id, %i[id assignee_id]
 
   # == Constants ===================================================================
 

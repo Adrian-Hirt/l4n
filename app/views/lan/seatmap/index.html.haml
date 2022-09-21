@@ -1,3 +1,5 @@
+- provide :page_title, _('Seatmap')
+
 .row{data: { controller: 'seatmap' }}
   .col-xl-8.mb-3.mb-xl-0{data: { 'seatmap-target' => 'mainColumn'}}
     .card
@@ -13,6 +15,9 @@
 
   .col-xl-4{data: { 'seatmap-target' => 'sidebar' }}
     - if logged_in?
+      = turbo_frame_tag :user_ticket do
+        = render partial: 'lan/seatmap/user_ticket'
+
       .card.mb-3
         .card-header
           = _('Seatmap|Your available tickets')

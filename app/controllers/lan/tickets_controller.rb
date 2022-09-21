@@ -51,5 +51,12 @@ module Lan
       flash[:danger] = e.message
       respond_to :turbo_stream
     end
+
+    def my_ticket
+      op Operations::Ticket::LoadMyTicket
+    rescue Operations::Exceptions::OpFailed => e
+      flash[:danger] = e.message
+      redirect_to lan_seatmap_path
+    end
   end
 end
