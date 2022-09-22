@@ -16,6 +16,7 @@ gem 'hcaptcha', '~> 7.1'
 gem 'activerecord-session_store', '~> 2.0.0'
 
 # Puma
+gem 'localhost', require: false
 gem 'puma', '~> 5.6'
 
 # Database

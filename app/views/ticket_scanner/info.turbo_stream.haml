@@ -1,0 +1,30 @@
+= turbo_stream.replace :flashes, partial: 'layouts/shared/flashes'
+
+- if op.success
+  = turbo_stream.update :ticket_scanner_scan
+  = turbo_stream.replace :ticket_scanner_actions do
+    .col-md-6
+      %table.table.table-striped.table-borderless
+        %tr
+          %td= _('Ticket|Username')
+          %td= op.user.username
+        %tr
+          %td= _('Ticket|Seat')
+          %td= op.ticket.seat.id
+        %tr
+          %td= _('Ticket|Seat category')
+          %td
+            .badge{style: "background-color: #{op.ticket.seat_category.color_for_view};"}
+              = op.ticket.seat_category.name
+        %tr
+          %td= _('Ticket|Status')
+          %td= op.ticket.humanized_status
+    .col-md-6
+      = form_with url: ticket_scanner_checkin_path do |f|
+        = f.hidden_field :qr_id, value: op.qr_id
+        = f.submit _('TicketScanner|Check ticket in'), name: nil, class: 'btn btn-primary', disabled: op.ticket.checked_in?
+        = button _('TicketScanner|Cancel check in'), ticket_scanner_path, color: :secondary
+- else
+  = turbo_stream.update :ticket_scanner_actions do
+    = form_with url: ticket_scanner_info_path do |f|
+      = f.text_field :qr_id

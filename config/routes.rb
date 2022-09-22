@@ -140,6 +140,13 @@ Rails.application.routes.draw do
     end
   end
 
+  # == Ticket Scanner ===================================================================
+  namespace :ticket_scanner do
+    get :/, action: :scanner
+    post :info
+    post :checkin
+  end
+
   # == Admin panel ======================================================================
   namespace :admin do
     get '/', to: 'home#dashboard'

@@ -13,7 +13,7 @@ module Operations::Ticket
     end
 
     def qr_code
-      data = { qr_id: ticket.encrypted_qr_id }
+      data = { qr_id: Base64.urlsafe_encode64(ticket.encrypted_qr_id) }
 
       qrcode = RQRCode::QRCode.new(data.to_json)
       qrcode.as_svg(

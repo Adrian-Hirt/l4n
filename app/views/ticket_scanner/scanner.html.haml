@@ -1,0 +1,18 @@
+- provide :page_title, _('TicketScanner')
+
+.card
+  .card-body{data: { controller: 'ticket-scanner' }}
+    = turbo_frame_tag 'ticket_scanner_scan' do
+      .border-bottom.pb-3.mb-3
+        = select_tag 'camera', options_for_select([], nil),
+                              include_blank: _('TicketScanner|No camera found'),
+                              data: { 'ticket-scanner-target' => 'cameraSelector' },
+                              class: 'form-select d-inline-block w-auto'
+        = button _('TicketScanner|Start'), nil, html: { data: { action: 'click->ticket-scanner#startScanning' } }
+        = button _('TicketScanner|Stop'), nil, html: { data: { action: 'click->ticket-scanner#stopScanning' } }
+        = button _('TicketScanner|Toggle flash'), nil, html: { data: { action: 'click->ticket-scanner#toggleFlash' } }
+      .text-center
+        %video
+    = turbo_frame_tag 'ticket_scanner_actions' do
+      = form_with url: ticket_scanner_info_path do |f|
+        = f.hidden_field :qr_id

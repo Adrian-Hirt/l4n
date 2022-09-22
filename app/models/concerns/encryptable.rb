@@ -14,22 +14,22 @@ module Encryptable
           fail "Unknown attribute #{attributes}"
         end
 
-        return encrypt_data(data)
+        return self.class.encrypt_data(data)
       end
     end
-  end
 
-  def encrypt_data(plaintext)
-    len = ActiveSupport::MessageEncryptor.key_len
-    secret = ENV['SECRET_KEY_BASE'] || Rails.application.secrets.secret_key_base
-    crypt = ActiveSupport::MessageEncryptor.new(secret.first(len))
-    crypt.encrypt_and_sign(plaintext)
-  end
+    def encrypt_data(plaintext)
+      len = ActiveSupport::MessageEncryptor.key_len
+      secret = ENV['SECRET_KEY_BASE'] || Rails.application.secrets.secret_key_base
+      crypt = ActiveSupport::MessageEncryptor.new(secret.first(len))
+      crypt.encrypt_and_sign(plaintext)
+    end
 
-  def decrypt_data(ciphertext)
-    len = ActiveSupport::MessageEncryptor.key_len
-    secret = ENV['SECRET_KEY_BASE'] || Rails.application.secrets.secret_key_base
-    crypt = ActiveSupport::MessageEncryptor.new(secret.first(len))
-    crypt.decrypt_and_verify(ciphertext)
+    def decrypt_data(ciphertext)
+      len = ActiveSupport::MessageEncryptor.key_len
+      secret = ENV['SECRET_KEY_BASE'] || Rails.application.secrets.secret_key_base
+      crypt = ActiveSupport::MessageEncryptor.new(secret.first(len))
+      crypt.decrypt_and_verify(ciphertext)
+    end
   end
 end
