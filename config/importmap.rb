@@ -16,3 +16,4 @@ pin 'sweetalert2' # @11.3.0
 pin 'cropperjs', to: 'cropper.esm.js'
 pin 'konva', to: 'konva.min.js'
 pin 'qr-scanner' # @1.4.1
+pin 'qr-scanner-worker'
