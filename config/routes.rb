@@ -2,11 +2,14 @@ Rails.application.routes.draw do
   root 'home#index'
 
   # == Login / Logout ===================================================================
-  # match 'login/two_factor', to: 'sessions#two_factor', via: %i[get post]
-
   devise_for :users, path:        '',
                      path_names:  { sign_in: :login, sign_out: :logout, password: :reset_password },
                      controllers: { sessions: :sessions }
+
+  # == Login / Logout for ScannerUser ===================================================
+  devise_for :scanner_users, path: 'ticket_scanner',
+                             path_names: { sign_in: :login, sign_out: :logout },
+                             controllers: { sessions: :scanner_user_sessions }
 
   # == Settings =========================================================================
   post 'locale/:locale', to: 'application#set_locale', as: :set_locale

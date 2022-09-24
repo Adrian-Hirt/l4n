@@ -1,8 +1,15 @@
 class SessionsController < Devise::SessionsController
   prepend_before_action :authenticate_with_otp_two_factor, if: -> { action_name == 'create' && otp_two_factor_enabled? }
   protect_from_forgery with: :exception, prepend: true, except: :destroy
+  skip_before_action :require_no_authentication, only: %i[new]
 
   def new
+    if user_signed_in?
+      flash[:danger] = _('User|Already logged in')
+      redirect_to root_path
+      return
+    end
+
     session[:otp_user_id] = nil
     super
   end
@@ -13,6 +20,7 @@ class SessionsController < Devise::SessionsController
     if user_params.key?(:otp_attempt) && session[:otp_user_id] && session[:otp_user_id_set_at] > 5.minutes.ago
       authenticate_user_with_otp_two_factor(user)
     elsif user&.valid_password?(user_params[:password])
+      session[:remember_me] = user_params[:remember_me]
       prompt_for_otp_two_factor(user)
     end
   end
@@ -49,8 +57,7 @@ class SessionsController < Devise::SessionsController
       # Remove any lingering user data from login
       session.delete(:otp_user_id)
 
-      remember_me(user) if user_params[:remember_me] == '1'
-      user.save!
+      user.remember_me = true if session[:remember_me] == '1'
       sign_in(user, event: :authentication)
       flash[:success] = _('Sessions|Successfully logged in')
     else

@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_gettext_locale
-  before_action :update_flash_colors, if: :devise_controller?
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   include RailsOps::ControllerMixin
@@ -48,25 +47,7 @@ class ApplicationController < ActionController::Base
     I18n.locale = locale # some weird overwriting in action-controller makes this necessary ... see I18nProxy
   end
 
-  def update_flash_colors
-    # rubocop:disable Lint/UselessAssignment
-    # rubocop:disable Style/GuardClause
-    return if alert.blank? && notice.blank?
-
-    if alert
-      flash.now[:danger] = alert
-      alert = nil
-    end
-
-    if notice
-      flash.now[:success] = notice
-      notice = nil
-    end
-    # rubocop:enable Style/GuardClause
-    # rubocop:enable Lint/UselessAssignment
-  end
-
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:otp_attempt])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :otp_attempt])
   end
 end

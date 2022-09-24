@@ -1,11 +1,7 @@
 class User < ApplicationRecord
   # == Attributes ==================================================================
-  attr_writer :needs_password_set
-
-  # has_secure_password
-  # has_secure_password :remember_me_token, validations: false
-  # has_secure_password :password_reset_token, validations: false
-  devise :two_factor_authenticatable, :two_factor_backupable, :rememberable, :recoverable, :validatable
+  devise :two_factor_backupable, :rememberable, :recoverable, :validatable
+  devise :two_factor_authenticatable, authentication_keys: %i[name]
 
   serialize :otp_backup_codes, JSON
 
@@ -41,7 +37,7 @@ class User < ApplicationRecord
 
   # == Validations =================================================================
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }, length: { maximum: 255 }
-  validates :password, presence: true, length: { minimum: 10, maximum: 72 }, confirmation: true, if: -> { password.present? || new_record? || needs_password_set? }
+  validates :password, presence: true, length: { minimum: 10, maximum: 72 }, if: -> { password.present? || new_record? }
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }
   validates_boolean :use_dark_mode
   validates :website, length: { maximum: 255 }
@@ -75,10 +71,6 @@ class User < ApplicationRecord
 
   # == Private Methods =============================================================
   private
-
-  def needs_password_set?
-    @needs_password_set.is_a?(TrueClass)
-  end
 
   def update_singleplayer_teams
     return unless saved_change_to_attribute? :username

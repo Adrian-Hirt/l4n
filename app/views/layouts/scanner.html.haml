@@ -1,0 +1,16 @@
+!!!
+%html{lang: FastGettext.locale}
+  %head
+    %title= _('L4N Ticket Scanner')
+    %meta{content: 'width=device-width,initial-scale=1', name: 'viewport'}
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
+    = javascript_importmap_tags
+  %body.d-flex.application.ticket-scanner
+    = render partial: 'layouts/scanner/header'
+    = render partial: 'layouts/shared/flashes'
+    .main.container
+      .content
+        = yield
+    = render partial: 'layouts/scanner/footer'

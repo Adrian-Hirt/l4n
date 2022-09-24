@@ -1,0 +1,20 @@
+.ticket-scanner
+  .scanner-action-buttons
+    display: inline-block
+
+  @include media-breakpoint-down(md)
+    select
+      width: 100% !important
+    .scanner-action-buttons
+      margin-top: 0.5em
+      display: grid
+      grid-gap: 0.5em
+
+@include media-breakpoint-down(md)
+  body
+    .main
+      padding-top: 4rem !important
+    .footer
+      .text-muted
+        margin-left: auto
+        margin-right: auto

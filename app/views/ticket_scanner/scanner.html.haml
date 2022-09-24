@@ -1,5 +1,3 @@
-- provide :page_title, _('TicketScanner')
-
 .card
   .card-body{data: { controller: 'ticket-scanner' }}
     = turbo_frame_tag 'ticket_scanner_scan' do
@@ -8,9 +6,10 @@
                               include_blank: _('TicketScanner|No camera found'),
                               data: { 'ticket-scanner-target' => 'cameraSelector' },
                               class: 'form-select d-inline-block w-auto'
-        = button _('TicketScanner|Start'), nil, html: { data: { action: 'click->ticket-scanner#startScanning' } }
-        = button _('TicketScanner|Stop'), nil, html: { data: { action: 'click->ticket-scanner#stopScanning' } }
-        = button _('TicketScanner|Toggle flash'), nil, html: { data: { action: 'click->ticket-scanner#toggleFlash' } }
+        .scanner-action-buttons
+          = button _('TicketScanner|Start'), nil, html: { data: { action: 'click->ticket-scanner#startScanning' } }
+          = button _('TicketScanner|Stop'), nil, html: { data: { action: 'click->ticket-scanner#stopScanning' } }
+          = button _('TicketScanner|Toggle flash'), nil, html: { data: { action: 'click->ticket-scanner#toggleFlash' } }
       .text-center
         %video
     = turbo_frame_tag 'ticket_scanner_actions' do

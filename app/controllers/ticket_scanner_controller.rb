@@ -1,4 +1,7 @@
 class TicketScannerController < ApplicationController
+  layout 'scanner'
+  before_action :authenticate_scanner_user!
+
   def scanner; end
 
   def info
