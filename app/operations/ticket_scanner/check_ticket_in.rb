@@ -4,10 +4,9 @@ module Operations::TicketScanner
       str? :qr_id
     end
 
-    # TODO: add auth
-    without_authorization
-
     policy :before_perform do
+      authorize! :use, :ticket_scanner
+
       # Check that the qr_id param is given
       fail Operations::Exceptions::OpFailed, _('TicketScanner|Id missing') if osparams.qr_id.blank?
     end

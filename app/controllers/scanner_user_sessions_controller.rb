@@ -31,8 +31,8 @@ class ScannerUserSessionsController < Devise::SessionsController
 
     if options[:now]
       flash.now[key] = message if message.present?
-    else
-      flash[key] = message if message.present?
+    elsif message.present?
+      flash[key] = message
     end
   end
 end

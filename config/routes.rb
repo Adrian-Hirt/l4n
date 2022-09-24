@@ -7,8 +7,8 @@ Rails.application.routes.draw do
                      controllers: { sessions: :sessions }
 
   # == Login / Logout for ScannerUser ===================================================
-  devise_for :scanner_users, path: 'ticket_scanner',
-                             path_names: { sign_in: :login, sign_out: :logout },
+  devise_for :scanner_users, path:        'ticket_scanner',
+                             path_names:  { sign_in: :login, sign_out: :logout },
                              controllers: { sessions: :scanner_user_sessions }
 
   # == Settings =========================================================================
