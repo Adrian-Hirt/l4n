@@ -19,7 +19,7 @@ module Unit
             # Assert the user was correctly created
             assert_equal 'Testuser', user.username
             assert_equal 'testuser@example.com', user.email
-            assert user.authenticate('Password123')
+            assert user.valid_password?('Password123')
             assert user.activation_token.present?
             assert_not user.activated?
           end

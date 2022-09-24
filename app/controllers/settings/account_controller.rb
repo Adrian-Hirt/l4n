@@ -1,7 +1,7 @@
 module Settings
   class AccountController < ApplicationController
-    layout 'login_register', only: %i[init_destroy_account]
-    before_action :require_logged_in_user
+    layout 'devise', only: %i[init_destroy_account]
+    before_action :authenticate_user!
 
     def index; end
 

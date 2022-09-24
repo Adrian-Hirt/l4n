@@ -6,7 +6,7 @@
     = format_registration_status(tournament)
     %hr
     -# Only display to logged-in users
-    - if logged_in?
+    - if user_signed_in?
       -# User can only crate a team if the lan_party is not present or the user
       -# has a checked_in ticket for this lan_party
       - if tournament.lan_party.blank? || current_user.ticket_for(tournament.lan_party)&.checked_in?

@@ -93,7 +93,7 @@
       .card-header
         = _('TournamentTeam|Team actions')
       .card-body
-        - if logged_in?
+        - if user_signed_in?
           - if model.tournament.lan_party.blank? || current_user.ticket_for(model.tournament.lan_party)&.checked_in?
             - if model.users.include?(current_user)
               - if model.tournament.singleplayer?

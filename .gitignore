@@ -36,6 +36,9 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+# Also ignore encrypted credentials for now
+/config/credentials.yml.enc
+
 /public/packs
 /public/packs-test
 /node_modules

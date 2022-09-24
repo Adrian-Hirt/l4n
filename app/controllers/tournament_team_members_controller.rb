@@ -1,5 +1,5 @@
 class TournamentTeamMembersController < ApplicationController
-  before_action :require_logged_in_user
+  before_action :authenticate_user!
 
   def destroy
     if run Operations::Tournament::TeamMember::Destroy

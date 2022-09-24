@@ -13,14 +13,14 @@ module Operations::TwoFactor
 
     def perform
       fail BackupCodesNotConfirmed unless params.dig(:two_factor, :backup_codes_saved) == 1
-      fail InvalidOtpCodeError unless user.authenticate_otp(params.dig(:two_factor, :otp_response_code), drift: 15)
+      fail InvalidOtpCodeError unless user.validate_and_consume_otp!(params.dig(:two_factor, :otp_response_code))
 
-      user.two_factor_enabled = true
-      user.save
+      user.otp_required_for_login = true
+      user.save!
     end
 
     def qr_code
-      qrcode = RQRCode::QRCode.new(user.provisioning_uri(nil, issuer: 'l4n.ch'), size: 10, level: :h)
+      qrcode = RQRCode::QRCode.new(user.otp_provisioning_uri('L4N', issuer: 'l4n.ch'), level: :h)
       qrcode.as_svg(
         offset:          0,
         color:           '000',
@@ -30,9 +30,14 @@ module Operations::TwoFactor
     end
 
     def setup_2fa
-      user.otp_regenerate_secret
-      user.otp_regenerate_backup_codes
+      user.otp_secret = ::User.generate_otp_secret
+      # Generate the backup codes
+      otp_backup_codes
       user.save
+    end
+
+    def otp_backup_codes
+      @otp_backup_codes ||= user.generate_otp_backup_codes!
     end
   end
 

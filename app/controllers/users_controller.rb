@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   before_action :check_captcha, only: %i[create]
-  before_action :require_logged_in_user, only: %i[show]
-  before_action :require_not_logged_in, only: %i[new create activate]
-  layout 'login_register', only: %i[new create]
+  before_action :authenticate_user!, only: %i[show]
+  # before_action :require_not_logged_in, only: %i[new create activate]
+  layout 'devise', only: %i[new create]
 
   def new
     op Operations::User::Create

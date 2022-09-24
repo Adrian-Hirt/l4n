@@ -1,6 +1,6 @@
 module Settings
   class TwoFactorController < ApplicationController
-    before_action :require_logged_in_user
+    before_action :authenticate_user!
     before_action :two_factor_not_enabled, only: %i[activate activate_save]
 
     def index; end
@@ -35,7 +35,7 @@ module Settings
     private
 
     def two_factor_not_enabled
-      return unless  current_user.two_factor_enabled?
+      return unless  current_user.otp_required_for_login?
 
       flash[:danger] = _('User|2FA already activated')
       redirect_to settings_two_factor_path

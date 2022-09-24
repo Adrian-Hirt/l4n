@@ -10,12 +10,16 @@
           .row
             .col-md-6
               %h5= _('TwoFactor|Scan code with auth app')
-              = op.qr_code.html_safe
+              .text-center.border-top.border-bottom.py-3.my-3
+                = op.qr_code.html_safe
+              .text-muted
+                = _('TwoFactor|If you cannot scan, please enter the following code manually:')
+                %code= current_user.otp_secret
             .col-md-6
               %h5= _('TwoFactor|Save the backup codes')
               .bg-light.p-2
                 .row
-                  - current_user.otp_backup_codes.each do |code|
+                  - op.otp_backup_codes.each do |code|
                     .col-md-6= code
 
           %hr

@@ -1,68 +1,78 @@
-class SessionsController < ApplicationController
-  layout 'login_register'
-  skip_before_action :remove_tmp_login_hash
+class SessionsController < Devise::SessionsController
+  prepend_before_action :authenticate_with_otp_two_factor, if: -> { action_name == 'create' && otp_two_factor_enabled? }
+  protect_from_forgery with: :exception, prepend: true, except: :destroy
 
-  def new; end
+  def new
+    session[:otp_user_id] = nil
+    super
+  end
 
-  def create
-    # Check if password is correct
-    auth_op = Operations::SessionHandler::AuthenticateUser.new(op_params.slice(:login))
-    if auth_op.run
-      remember_me = ActiveModel::Type::Boolean.new.cast(op_params.dig(:login, :remember_me))
-      if auth_op.user.two_factor_enabled?
-        # if 2FA is enabled, store user in session and redirect to 2FA path
-        session[:tmp_login] = {}
-        session[:tmp_login][:user_id] = auth_op.user.id
-        session[:tmp_login][:remember_me] = remember_me
-        session[:tmp_login][:timestamp] = Time.zone.now
-        redirect_to login_two_factor_path
-      else
-        # else, log in directly
-        continue_login(auth_op.user, remember_me)
-      end
-    else
-      # if not, re-render form
-      flash.now[:danger] = _('Session|Login failed')
-      render :new, status: :unprocessable_entity
+  def authenticate_with_otp_two_factor
+    user = self.resource = find_user
+
+    if user_params.key?(:otp_attempt) && session[:otp_user_id] && session[:otp_user_id_set_at] > 5.minutes.ago
+      authenticate_user_with_otp_two_factor(user)
+    elsif user&.valid_password?(user_params[:password])
+      prompt_for_otp_two_factor(user)
     end
+  end
+
+  def set_flash_message(key, kind, options = {})
+    return if kind == 'already_authenticated'
+
+    super
   end
 
   def destroy
-    run Operations::SessionHandler::UserLogout, user: current_user
-    flash[:success] = _('Session|Successful logout')
-    redirect_to root_path
-  end
+    super
 
-  def two_factor
-    if session[:tmp_login].nil?
-      flash[:danger] = _('Session|You first need to enter your password')
-      redirect_to login_path
-      return
-    end
-
-    # Check if the session already expired
-    if session[:tmp_login][:timestamp] < 5.minutes.ago
-      session.delete(:tmp_login)
-      flash[:danger] = _('Session|Your login expired')
-      redirect_to login_path
-      return
-    end
-
-    return unless request.post?
-
-    two_factor_op = Operations::SessionHandler::AuthenticateTwoFactor.new(op_context, op_params)
-    if two_factor_op.run
-      continue_login(two_factor_op.user, two_factor_op.remember_me)
-    else
-      flash.now[:danger] = _('Session|Login failed')
-    end
+    flash[:success] = _('Sessions|Successfully logged out')
   end
 
   private
 
-  def continue_login(user, remember_me)
-    run Operations::SessionHandler::CreateSession, user: user, remember_me: remember_me
-    flash[:success] = _('Session|Successful login')
-    redirect_to root_path
+  def valid_otp_attempt?(user)
+    user.validate_and_consume_otp!(user_params[:otp_attempt]) || user.invalidate_otp_backup_code!(user_params[:otp_attempt])
+  end
+
+  def prompt_for_otp_two_factor(user)
+    @user = user
+
+    session[:otp_user_id] = user.id
+    session[:otp_user_id_set_at] = Time.zone.now
+
+    render 'devise/sessions/two_factor'
+  end
+
+  def authenticate_user_with_otp_two_factor(user)
+    if valid_otp_attempt?(user)
+      # Remove any lingering user data from login
+      session.delete(:otp_user_id)
+
+      remember_me(user) if user_params[:remember_me] == '1'
+      user.save!
+      sign_in(user, event: :authentication)
+      flash[:success] = _('Sessions|Successfully logged in')
+    else
+      flash.now[:danger] = _('TwoFactor|Invalid two factor code')
+      prompt_for_otp_two_factor(user)
+    end
+  end
+
+  def user_params
+    params.require(:user).permit(:email, :password, :remember_me, :otp_attempt)
+  end
+
+  def find_user
+    if session[:otp_user_id] && session[:otp_user_id_set_at] > 5.minutes.ago
+      ::User.find(session[:otp_user_id])
+    elsif user_params[:email]
+      session[:otp_user_id] = nil
+      ::User.find_by(email: user_params[:email])
+    end
+  end
+
+  def otp_two_factor_enabled?
+    find_user&.otp_required_for_login
   end
 end

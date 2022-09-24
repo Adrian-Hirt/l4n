@@ -1,6 +1,6 @@
 module Settings
   class AvatarController < ApplicationController
-    before_action :require_logged_in_user
+    before_action :authenticate_user!
 
     def index
       return unless request.patch?

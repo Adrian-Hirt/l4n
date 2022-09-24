@@ -1,5 +1,5 @@
 class TournamentTeamsController < ApplicationController
-  before_action :require_logged_in_user, except: %i[index show]
+  before_action :authenticate_user!, except: %i[index show]
 
   def index
     op Operations::Tournament::Team::Index

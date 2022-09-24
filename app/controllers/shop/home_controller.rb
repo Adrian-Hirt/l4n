@@ -1,6 +1,6 @@
 module Shop
   class HomeController < ShopController
-    skip_before_action :require_logged_in_user
+    skip_before_action :authenticate_user!
 
     def index
       op Operations::Shop::Home::Index
