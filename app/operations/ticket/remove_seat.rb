@@ -37,7 +37,11 @@ module Operations::Ticket
     end
 
     def available_tickets
-      Queries::Lan::Ticket::LoadForSeatmap.call(user: context.user, lan_party: ticket.lan_party)
+      Queries::Lan::Ticket::LoadForSeatmap.call(user: context.user, lan_party: ticket.lan_party).includes(:seat_category, :seat)
+    end
+
+    def ticket_for_lan_party
+      @ticket_for_lan_party ||= context.user.ticket_for(lan_party)
     end
 
     attr_reader :removed_seat_id
