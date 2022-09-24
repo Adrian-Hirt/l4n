@@ -73,6 +73,7 @@ group :development do
   gem 'listen', '~> 3.2'
   gem 'pry-byebug', '~> 3.9'
 
+  # Translations
   gem 'gettext', '>=3.0.2', require: false
   gem 'ruby_parser', require: false
 
@@ -83,6 +84,9 @@ group :development do
 
   # Security
   gem 'bundler-audit', '~> 0.9.0'
+
+  # Optimizations
+  gem 'bullet', '~> 7.0.3'
 end
 
 # Test gems
