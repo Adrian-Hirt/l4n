@@ -5,9 +5,8 @@ class User < ApplicationRecord
   # has_secure_password
   # has_secure_password :remember_me_token, validations: false
   # has_secure_password :password_reset_token, validations: false
-  devise :database_authenticatable, :rememberable, :recoverable, :validatable
+  devise :two_factor_authenticatable, :two_factor_backupable, :rememberable, :recoverable, :validatable
 
-  has_one_time_password one_time_backup_codes: true
   serialize :otp_backup_codes, JSON
 
   # == Constants ===================================================================

@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   # == Login / Logout ===================================================================
   # match 'login/two_factor', to: 'sessions#two_factor', via: %i[get post]
 
-  devise_for :users, path: '', path_names: { sign_in: :login, sign_out: :logout, password: :reset_password }
+  devise_for :users, path:        '',
+                     path_names:  { sign_in: :login, sign_out: :logout, password: :reset_password },
+                     controllers: { sessions: :sessions }
 
   # == Settings =========================================================================
   post 'locale/:locale', to: 'application#set_locale', as: :set_locale

@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_gettext_locale
-  before_action :update_flash_colors
+  before_action :update_flash_colors, if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   include RailsOps::ControllerMixin
 
@@ -63,5 +64,9 @@ class ApplicationController < ActionController::Base
     end
     # rubocop:enable Style/GuardClause
     # rubocop:enable Lint/UselessAssignment
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:otp_attempt])
   end
 end

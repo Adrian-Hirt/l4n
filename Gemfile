@@ -7,10 +7,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'rails', '~> 7.0.4'
 
 # Authentication & Authorization
-gem 'active_model_otp', '~> 2.3.1'
-gem 'bcrypt', '~> 3.1.7'
 gem 'cancancan', '~> 3.4.0'
 gem 'devise', '~> 4.8'
+gem 'devise-two-factor', '~> 5.0.0'
 gem 'hcaptcha', '~> 7.1'
 
 # Session handling

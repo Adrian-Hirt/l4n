@@ -58,9 +58,6 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    active_model_otp (2.3.1)
-      activemodel
-      rotp (~> 6.2.0)
     active_storage_validations (0.9.8)
       activejob (>= 5.2.0)
       activemodel (>= 5.2.0)
@@ -122,6 +119,11 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-two-factor (5.0.0)
+      activesupport (~> 7.0)
+      devise (~> 4.0)
+      railties (~> 7.0)
+      rotp (~> 6.0)
     digest (3.1.0)
     docile (1.4.0)
     erubi (1.11.0)
@@ -386,11 +388,9 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  active_model_otp (~> 2.3.1)
   active_storage_validations
   active_type (~> 2.3.0)
   activerecord-session_store (~> 2.0.0)
-  bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.4)
   breadcrumbs_on_rails (~> 4.1.0)
   bundler-audit (~> 0.9.0)
@@ -399,6 +399,7 @@ DEPENDENCIES
   cssbundling-rails (~> 1.1.1)
   datagrid (~> 1.6.3)
   devise (~> 4.8)
+  devise-two-factor (~> 5.0.0)
   dummy_payment!
   figaro (= 1.2.0)
   gettext (>= 3.0.2)

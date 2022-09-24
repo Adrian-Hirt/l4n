@@ -5,8 +5,8 @@ module Operations::TwoFactor
     delegate :user, to: :context
 
     def perform
-      user.two_factor_enabled = false
-      user.otp_secret_key = nil
+      user.otp_required_for_login = false
+      user.otp_secret = nil
       user.otp_backup_codes = nil
       user.save
     end

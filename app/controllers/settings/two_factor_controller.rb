@@ -35,7 +35,7 @@ module Settings
     private
 
     def two_factor_not_enabled
-      return unless  current_user.two_factor_enabled?
+      return unless  current_user.otp_required_for_login?
 
       flash[:danger] = _('User|2FA already activated')
       redirect_to settings_two_factor_path

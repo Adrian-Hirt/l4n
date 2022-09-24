@@ -5,7 +5,7 @@
     = render partial: 'settings/sidebar'
   .col-md-9
     .card
-      - if current_user.two_factor_enabled?
+      - if current_user.otp_required_for_login?
         .card-body
           Enabled!
         .card-footer
