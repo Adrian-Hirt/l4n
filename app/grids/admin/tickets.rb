@@ -2,7 +2,7 @@ module Grids
   module Admin
     class Tickets < ApplicationGrid
       scope do
-        Ticket.order(:id)
+        Ticket.order(:id).includes(:seat, :seat_category, :assignee, :order)
       end
 
       model Ticket

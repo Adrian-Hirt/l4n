@@ -8,6 +8,7 @@ module Operations::Tournament
       @tournaments ||= ::Tournament.accessible_by(context.ability)
                                    .where(status: Tournament.statuses[:published])
                                    .order(frontend_order: :desc, name: :asc)
+                                   .includes(:lan_party)
     end
   end
 end

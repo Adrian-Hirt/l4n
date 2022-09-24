@@ -2,7 +2,7 @@ module Grids
   module Admin
     class PaymentAssistOrders < ApplicationGrid
       scope do
-        Order.where(status: Order.statuses[:delayed_payment_pending]).includes(:order_items).order(id: :desc)
+        Order.where(status: Order.statuses[:delayed_payment_pending]).includes(:user).order(id: :desc)
       end
 
       model Order

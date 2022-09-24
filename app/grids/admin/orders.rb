@@ -2,7 +2,7 @@ module Grids
   module Admin
     class Orders < ApplicationGrid
       scope do
-        Order.includes(:order_items).order(id: :desc)
+        Order.includes(:user).order(id: :desc)
       end
 
       model Order

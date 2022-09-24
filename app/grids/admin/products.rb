@@ -2,7 +2,7 @@ module Grids
   module Admin
     class Products < ApplicationGrid
       scope do
-        Product.order(:name)
+        Product.order(:name).includes(:product_category)
       end
 
       model Product

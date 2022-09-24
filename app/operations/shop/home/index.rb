@@ -9,6 +9,7 @@ module Operations::Shop::Home
                .joins(:product_category)
                .order('product_categories.sort' => :asc)
                .order(sort: :asc)
+               .includes(:product_category, :product_variants)
     end
   end
 end

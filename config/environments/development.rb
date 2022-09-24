@@ -4,6 +4,9 @@ Rails.application.configure do
   config.after_initialize do
     Bullet.enable = true
     Bullet.add_footer = true
+
+    Bullet.add_safelist type: :n_plus_one_query, class_name: 'MenuLinkItem', association: :page
+    Bullet.add_safelist type: :n_plus_one_query, class_name: 'MenuDropdownItem', association: :children
   end
 
   # Settings specified here will take precedence over those in config/application.rb.
