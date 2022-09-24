@@ -119,6 +119,11 @@
               %span
                 %i.nav-icon.fas.fa-gamepad
                 %span.nav-item-text= _('Admin|LanParty')
+          .li.nav-item
+            %a.nav-link{href: admin_scanner_users_path, class: active_link_classes(:scanner_users, include_children: true)}
+              %span
+                %i.nav-icon.fas.fa-barcode
+                %span.nav-item-text= _('Admin|ScannerUsers')
         - if can? :manage, Tournament
           .li.nav-item
             %a.nav-link{href: admin_tournaments_path, class: active_link_classes(:tournaments, include_children: true)}

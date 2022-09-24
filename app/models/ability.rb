@@ -151,6 +151,7 @@ class Ability
       can :manage, LanParty
       can :manage, SeatCategory
       can :manage, SeatMap
+      can :manage, ScannerUser
       can %i[read update], Ticket
     end
 

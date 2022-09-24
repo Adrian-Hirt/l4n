@@ -295,6 +295,9 @@ Rails.application.routes.draw do
       end
     end
 
+    # ScannerUser management
+    resources :scanner_users, except: %i[show]
+
     # Markdown preview endpoint
     post :markdown_preview, to: 'markdown#preview'
   end
