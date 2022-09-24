@@ -9,7 +9,7 @@
 
         %h4= _('Phase|Double elimination upper bracket')
         .double-elimination-tournament-tree.mb-4
-          - model.rounds.order(:round_number).includes(matches: %i[away home winner]).each do |round|
+          - model.rounds.order(:round_number).includes(matches: %i[away home]).each do |round|
             - next if round.lower_bracket_only?
 
             -# Calculate the number of matches, which is 2 to the power of
@@ -20,28 +20,30 @@
             - number_of_matches = (2 ** ((round.round_number / 2) - total_visible_rounds).abs) / 2
             - number_of_matches = [1, number_of_matches].max
 
+            - round_is_last_round = round.round_number == total_rounds
+
             -# Add one horizontal line when we're in the last round
-            - if round.last_round?
+            - if round_is_last_round
               .round-connectors-horizontal
                 %div
 
             .tournament-round
               - if round.matches.any?
-                - if round.upper_bracket_only?
-                  - relevant_matches = round.matches.order(:id).includes(away: :team, home: :team)
+                - if round.first_round? || round_is_last_round
+                  - relevant_matches = round.matches.order(:id).includes(:winner, away: :team, home: :team)
                 - else
-                  - relevant_matches = round.matches.order(:id).includes(away: :team, home: :team).first(number_of_matches)
+                  - relevant_matches = round.matches.order(:id).includes(:winner, away: :team, home: :team).first(number_of_matches)
 
                 - relevant_matches.each do |match|
                   %a.match{href: admin_match_path(match)}
                     .d-flex.justify-content-between
                       .matchteam
-                        = match.home.name
+                        = match.home.team.name
                       .matchscore
                         = format_match_score(match, :home)
                     .d-flex.justify-content-between
                       .matchteam
-                        = match.away&.name || _('Match|Bye')
+                        = match.away&.team&.name || _('Match|Bye')
                       .matchscore
                         = format_match_score(match, :away)
               - else
@@ -59,7 +61,7 @@
                         &mdash;
 
             -# We don't need to do this after the last match
-            - next if round.last_round?
+            - next if round_is_last_round
 
             -# Generate the outgoing horizontal connectors
             .round-connectors-horizontal
@@ -79,8 +81,10 @@
 
         %h4= _('Phase|Double elimination lower bracket')
         .double-elimination-tournament-tree
-          - model.rounds.order(:round_number).includes(matches: %i[away home winner]).each_with_index do |round, index|
-            - next if round.upper_bracket_only?
+          - model.rounds.order(:round_number).includes(matches: %i[away home]).each_with_index do |round, index|
+            - round_is_last_round = round.round_number == total_rounds
+
+            - next if round.first_round? || round_is_last_round
 
             - number_of_matches = (2 ** ((round.round_number / 2) - total_visible_rounds).abs) / 2
             - number_of_matches = [1, number_of_matches].max
@@ -88,20 +92,20 @@
             .tournament-round
               - if round.matches.any?
                 - if round.lower_bracket_only?
-                  - relevant_matches = round.matches.order(:id).includes(away: :team, home: :team)
+                  - relevant_matches = round.matches.order(:id).includes(:winner, away: :team, home: :team)
                 - else
-                  - relevant_matches = round.matches.order(:id).includes(away: :team, home: :team).last(number_of_matches)
+                  - relevant_matches = round.matches.order(:id).includes(:winner, away: :team, home: :team).last(number_of_matches)
 
                 - relevant_matches.each do |match|
                   %a.match{href: admin_match_path(match)}
                     .d-flex.justify-content-between
                       .matchteam
-                        = match.home.name
+                        = match.home.team.name
                       .matchscore
                         = format_match_score(match,  :home)
                     .d-flex.justify-content-between
                       .matchteam
-                        = match.away&.name || _('Match|Bye')
+                        = match.away&.team&.name || _('Match|Bye')
                       .matchscore
                         = format_match_score(match, :away)
               - else

@@ -22,7 +22,7 @@ class Tournament::Round < ApplicationRecord
   end
 
   def first_round?
-    self == phase.rounds.order(:round_number).first
+    round_number == 1
   end
 
   def last_round?
@@ -35,10 +35,6 @@ class Tournament::Round < ApplicationRecord
   # bracket).
   def lower_bracket_only?
     round_number != 1 && round_number.odd?
-  end
-
-  def upper_bracket_only?
-    round_number == 1 || self == phase.rounds.order(:round_number).last
   end
 
   # == Private Methods =============================================================

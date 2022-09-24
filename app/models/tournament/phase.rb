@@ -62,7 +62,7 @@ class Tournament::Phase < ApplicationRecord
   end
 
   def first_phase?
-    tournament.phases.none? || tournament.phases.order(:phase_number).first.id == id
+    phase_number == 1
   end
 
   def previous_phase
@@ -112,11 +112,11 @@ class Tournament::Phase < ApplicationRecord
     return nil unless completed?
 
     if single_elimination?
-      relevant_match = matches.order(:id).last
+      relevant_match = matches.order(:id).includes(:home, :away, :winner).last
 
       [relevant_match.winner.team.name, relevant_match.loser.team.name]
     elsif double_elimination?
-      second_last_match, final_match = matches.order(:id).last(2)
+      second_last_match, final_match = matches.order(:id).includes(:home, :away, :winner).last(2)
 
       [final_match.winner.team.name, final_match.loser.team.name, second_last_match.loser.team.name]
     end

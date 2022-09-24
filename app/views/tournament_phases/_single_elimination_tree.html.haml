@@ -20,12 +20,12 @@
               - content_for :match, flush: true do
                 .d-flex.justify-content-between
                   .matchteam
-                    = match.home.name
+                    = match.home.team.name
                   .matchscore
                     = format_match_score(match,  :home)
                 .d-flex.justify-content-between
                   .matchteam
-                    = match.away&.name || _('Match|Bye')
+                    = match.away&.team&.name || _('Match|Bye')
                   .matchscore
                     = format_match_score(match, :away)
 
