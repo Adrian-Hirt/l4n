@@ -10,6 +10,7 @@ gem 'rails', '~> 7.0.4'
 gem 'active_model_otp', '~> 2.3.1'
 gem 'bcrypt', '~> 3.1.7'
 gem 'cancancan', '~> 3.4.0'
+gem 'devise', '~> 4.8'
 gem 'hcaptcha', '~> 7.1'
 
 # Session handling

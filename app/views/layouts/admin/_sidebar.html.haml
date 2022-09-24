@@ -147,7 +147,7 @@
           = link_to set_locale_path(locale: :de), data: { turbo_method: :post }, class: 'dropdown-item' + active_locale_class(:de) do
             = _('Language|German')
       .sidebar-footer-button
-        = button_to logout_path, method: :delete do
+        = button_to destroy_user_session_path, method: :delete, html: { turbo: false } do
           = icon %i[fas fa-power-off]
       .sidebar-footer-more-dots
         = icon %i[fas fa-ellipsis-h]

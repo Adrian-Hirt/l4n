@@ -4,6 +4,6 @@ module Shop
     # Do not put controller actions in here, but rather inherit from
     # this controller and add seperate controllers for each resource,
     # it's way cleaner that way
-    before_action :require_logged_in_user
+    before_action :authenticate_user!
   end
 end

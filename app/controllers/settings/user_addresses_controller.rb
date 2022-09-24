@@ -1,6 +1,6 @@
 module Settings
   class UserAddressesController < ApplicationController
-    before_action :require_logged_in_user
+    before_action :authenticate_user!
 
     def index; end
 

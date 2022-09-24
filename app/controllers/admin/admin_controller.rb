@@ -6,7 +6,7 @@ module Admin
     # it's way cleaner that way
     layout 'admin'
 
-    before_action :require_logged_in_user
+    before_action :authenticate_user!
     before_action :check_admin_panel_access
 
     add_breadcrumb _('Admin Panel'), :admin_path
