@@ -14,6 +14,14 @@ class SessionsController < Devise::SessionsController
     super
   end
 
+  # Wrong flash message...
+  def create
+    super
+
+    flash[:notice] = nil
+    flash[:success] = _('Sessions|Successfully logged in')
+  end
+
   def authenticate_with_otp_two_factor
     user = self.resource = find_user
 

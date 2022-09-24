@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # == Attributes ==================================================================
   devise :two_factor_backupable, :rememberable, :recoverable, :validatable
-  devise :two_factor_authenticatable, authentication_keys: %i[name]
+  devise :two_factor_authenticatable, authentication_keys: %i[email]
 
   serialize :otp_backup_codes, JSON
 
