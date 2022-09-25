@@ -4,7 +4,7 @@ class Tournament::Round < ApplicationRecord
   # == Constants ===================================================================
 
   # == Associations ================================================================
-  belongs_to :phase, class_name: 'Tournament::Phase', foreign_key: :tournament_phase_id, inverse_of: :rounds
+  belongs_to :phase, class_name: 'Tournament::Phase', foreign_key: :tournament_phase_id, inverse_of: :rounds, touch: true
   has_many :matches, class_name: 'Tournament::Match', foreign_key: :tournament_round_id, dependent: :destroy, inverse_of: :round
 
   # == Validations =================================================================

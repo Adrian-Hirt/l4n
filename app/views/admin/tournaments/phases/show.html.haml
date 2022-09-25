@@ -51,12 +51,14 @@
   - elsif model.confirmed?
     = render partial: 'seeds'
   - elsif model.running? || model.completed?
-    = render partial: 'standings'
+    - cache [model, I18n.locale, :standings] do
+      = render partial: 'standings'
 
 - if model.confirmed? || model.running? || model.completed?
-  - if model.swiss?
-    = render partial: 'swiss_rounds'
-  - elsif model.single_elimination?
-    = render partial: 'single_elimination_tree'
-  - elsif model.double_elimination?
-    = render partial: 'double_elimination_tree'
+  - cache [model, I18n.locale, :rounds] do
+    - if model.swiss?
+      = render partial: 'swiss_rounds'
+    - elsif model.single_elimination?
+      = render partial: 'single_elimination_tree'
+    - elsif model.double_elimination?
+      = render partial: 'double_elimination_tree'

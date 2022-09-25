@@ -1,0 +1,67 @@
+- round_is_last_round = round.round_number == total_rounds
+
+- unless round.first_round? || round_is_last_round
+  - number_of_matches = (2 ** ((round.round_number / 2) - total_visible_rounds).abs) / 2
+  - number_of_matches = [1, number_of_matches].max
+
+  .tournament-round
+    - if round.matches.any?
+      - if round.lower_bracket_only?
+        - relevant_matches = round.matches.order(:id).includes(:winner, away: :team, home: :team)
+      - else
+        - relevant_matches = round.matches.order(:id).includes(:winner, away: :team, home: :team).last(number_of_matches)
+
+      - relevant_matches.each do |match|
+        %a.match{href: admin_match_path(match)}
+          .d-flex.justify-content-between
+            .matchteam
+              = match.home.team.name
+            .matchscore
+              = format_match_score(match,  :home)
+          .d-flex.justify-content-between
+            .matchteam
+              = match.away&.team&.name || _('Match|Bye')
+            .matchscore
+              = format_match_score(match, :away)
+    - else
+      - number_of_matches.times do
+        .match
+          .d-flex.justify-content-between
+            .matchteam
+              = _('Match|Tbd')
+            .matchscore
+              &mdash;
+          .d-flex.justify-content-between
+            .matchteam
+              = _('Match|Tbd')
+            .matchscore
+              &mdash;
+
+  -# We don't need to do this after the last match
+
+
+  -# If we're in a "lower bracket only" round, we draw the
+  -# connectors as usual, otherwise we only draw the horizontal
+  -# lines.
+  - if round.lower_bracket_only?
+    -# Generate the outgoing horizontal connectors
+    .round-connectors-horizontal
+      - number_of_matches.times do
+        %div
+    -# Generate the vertical connectors
+    .round-connectors-vertical{class: round_matches_to_inverse_round_index_word(number_of_matches)}
+      - (number_of_matches / 2).times do
+        %div
+
+    -# Finally, generate the incoming horizontal connectors
+    .round-connectors-horizontal
+      - (number_of_matches / 2).times do
+        %div
+  - else
+    -# Generate the outgoing horizontal connectors
+    .round-connectors-horizontal
+      - number_of_matches.times do
+        %div
+    .round-connectors-horizontal
+      - number_of_matches.times do
+        %div

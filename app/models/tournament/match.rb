@@ -25,7 +25,7 @@ class Tournament::Match < ApplicationRecord
   translate_enums
 
   # == Associations ================================================================
-  belongs_to :round, class_name: 'Tournament::Round', foreign_key: :tournament_round_id, inverse_of: :matches
+  belongs_to :round, class_name: 'Tournament::Round', foreign_key: :tournament_round_id, inverse_of: :matches, touch: true
   belongs_to :home, class_name: 'Tournament::PhaseTeam', optional: true
   belongs_to :away, class_name: 'Tournament::PhaseTeam', optional: true
   belongs_to :winner, class_name: 'Tournament::PhaseTeam', optional: true
