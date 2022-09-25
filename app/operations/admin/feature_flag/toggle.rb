@@ -7,8 +7,12 @@ module Operations::Admin::FeatureFlag
     model ::FeatureFlag
 
     def perform
+      # Update the db value
       model.toggle(:enabled)
       model.save
+
+      # Update the cache
+      Rails.cache.write("feature_flag/#{model.key}", model.reload.enabled?)
     end
   end
 end

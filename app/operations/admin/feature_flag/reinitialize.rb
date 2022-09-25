@@ -12,7 +12,13 @@ module Operations::Admin::FeatureFlag
 
       # Delete flags which are not in available flags anymore
       FeatureFlag.find_each do |flag|
-        flag.destroy unless FeatureFlag::AVAILABLE_FLAGS.include?(flag.key)
+        next if FeatureFlag::AVAILABLE_FLAGS.include?(flag.key)
+
+        # Delete the flag
+        flag.destroy
+
+        # Delete the cache entry
+        Rails.cache.delete("feature_flag/#{model.key}")
       end
     end
   end

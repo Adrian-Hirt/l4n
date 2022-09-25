@@ -24,7 +24,9 @@ class FeatureFlag < ApplicationRecord
 
   # == Class Methods ===============================================================
   def self.enabled?(key)
-    !!find_by(key: key)&.enabled?
+    Rails.cache.fetch("feature_flag/#{key}") do
+      !!find_by(key: key)&.enabled?
+    end
   end
 
   # == Instance Methods ============================================================

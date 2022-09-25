@@ -131,7 +131,7 @@ class Ability
     can :manage, FeatureFlag if user.system_admin_permission?
 
     # User can use the payment assist TODO: add permission check
-    can :use, :payment_assist
+    can :use, :payment_assist if FeatureFlag.enabled?(:shop)
 
     # Shop permissions. For now, we group the models related to the shop
     # together, as we probably don't need a too fine-grained access control
