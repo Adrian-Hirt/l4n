@@ -28,9 +28,6 @@
                 = menu_item.title
       -# Right menu
       %ul.order-1.order-md-3.navbar-nav.ml-auto
-        %li.nav-item
-          = link_to toggle_dark_mode_path, class: %i[nav-link], data: { turbo_method: :post } do
-            = icon %i[fa fa-adjust]
         %li.nav-item.dropdown
           %a.nav-link{data: { 'bs-toggle' => :dropdown}, href: '#'}
             = icon %i[fa fa-lg fa-language]
