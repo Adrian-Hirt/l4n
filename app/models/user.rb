@@ -3,8 +3,6 @@ class User < ApplicationRecord
   devise :two_factor_backupable, :rememberable, :recoverable, :validatable
   devise :two_factor_authenticatable, authentication_keys: %i[email]
 
-  serialize :otp_backup_codes, JSON
-
   # == Constants ===================================================================
   RESET_TOKEN_EXPIRES_AFTER = 6.hours
 

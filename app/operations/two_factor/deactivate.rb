@@ -8,7 +8,7 @@ module Operations::TwoFactor
       user.otp_required_for_login = false
       user.otp_secret = nil
       user.otp_backup_codes = nil
-      user.save
+      user.save!
     end
   end
 end

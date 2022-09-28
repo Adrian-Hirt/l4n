@@ -12,8 +12,8 @@ module Operations::TwoFactor
     delegate :user, to: :context
 
     def perform
-      fail BackupCodesNotConfirmed unless params.dig(:two_factor, :backup_codes_saved) == 1
-      fail InvalidOtpCodeError unless user.validate_and_consume_otp!(params.dig(:two_factor, :otp_response_code))
+      fail Operations::Exceptions::OpFailed, _('TwoFactor|Please confirm that you saved the backup codes') unless params.dig(:two_factor, :backup_codes_saved) == 1
+      fail Operations::Exceptions::OpFailed, _('TwoFactor|2FA code was wrong, please try again') unless user.validate_and_consume_otp!(params.dig(:two_factor, :otp_response_code))
 
       user.otp_required_for_login = true
       user.save!
@@ -31,13 +31,10 @@ module Operations::TwoFactor
 
     def setup_2fa
       user.otp_secret = ::User.generate_otp_secret
-      # Generate the backup codes
-      otp_backup_codes
-      user.save
-    end
 
-    def otp_backup_codes
-      @otp_backup_codes ||= user.generate_otp_backup_codes!
+      # Generate the backup codes
+      user.otp_backup_codes = user.generate_otp_backup_codes!
+      user.save
     end
   end
 

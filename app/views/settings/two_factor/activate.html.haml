@@ -19,7 +19,7 @@
               %h5= _('TwoFactor|Save the backup codes')
               .bg-light.p-2
                 .row
-                  - op.otp_backup_codes.each do |code|
+                  - current_user.otp_backup_codes.each do |code|
                     .col-md-6= code
 
           %hr
