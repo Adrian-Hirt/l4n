@@ -4,6 +4,24 @@
 
 .row
   .col-md-8.mb-3.mb-md-3
+    .card.mb-3
+      .card-header
+        = _('LanParty|Details')
+      .card-body
+        .row.mb-0.mb-md-3
+          .col-md-6
+            = _('LanParty|Event start')
+            .small.text-muted
+              = l model.event_start
+          .col-md-6
+            = _('LanParty|Event end')
+            .small.text-muted
+              = l model.event_end
+        .row.mb-0.mb-md-3
+          .col-md-6
+            = _('LanParty|Location')
+            .small.text-muted
+              = model.location.presence || '-'
     .card
       .card-header
         = _('LanParty|Stats')

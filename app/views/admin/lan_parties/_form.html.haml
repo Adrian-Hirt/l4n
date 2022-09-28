@@ -1,6 +1,15 @@
 = simple_form_for [:admin, model] do |f|
   .card-body
-    = f.input :name
+    .row
+      .col-md-6
+        = f.input :name
+      .col-md-6
+        = f.input :location
     = f.input :active, input_html: { class: 'no-validation' }
+    .row
+      .col-md-6
+        = f.input :event_start, as: :datetime, html5: true
+      .col-md-6
+        = f.input :event_end, as: :datetime, html5: true
   .card-footer
     = f.save
