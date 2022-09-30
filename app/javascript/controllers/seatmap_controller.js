@@ -361,6 +361,8 @@ export default class extends Controller {
   }
 
   #highlightSeatOfBadge(e) {
+    this.#unselectSeat();
+
     let seatID = e.target.dataset.seatId;
 
     if(seatID) {
@@ -372,9 +374,6 @@ export default class extends Controller {
       this.currentSelection.setAttr('strokeWidth', 10);
 
       this.#updateSelectedSeatInfo();
-    }
-    else {
-      this.currentSelectedSeatInfoTarget.innerHTML = i18n._('Seatmap|Please select a seat');
     }
   }
 }
