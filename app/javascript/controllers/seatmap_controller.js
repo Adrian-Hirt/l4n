@@ -106,7 +106,8 @@ export default class extends Controller {
         seatCategoryId: seat.seatCategoryId,
         taken: seat.taken,
         userName: seat.userName,
-        userId: seat.userId
+        userId: seat.userId,
+        seatName: seat.seatName
       });
 
       // Add the new box
@@ -319,7 +320,7 @@ export default class extends Controller {
     let categoryData = this.seatCategoryData[attributes.seatCategoryId];
     let infoString = '';
 
-    infoString += `<span class="badge bg-secondary">${attributes.backendId}</span>`;
+    infoString += `<span class="badge bg-secondary">${attributes.seatName}</span>`;
     infoString += `<span class="badge ms-2" style="background-color: ${categoryData.color}">${categoryData.name}</span><hr>`
 
     if(attributes.taken) {
@@ -371,6 +372,9 @@ export default class extends Controller {
       this.currentSelection.setAttr('strokeWidth', 10);
 
       this.#updateSelectedSeatInfo();
+    }
+    else {
+      this.currentSelectedSeatInfoTarget.innerHTML = i18n._('Seatmap|Please select a seat');
     }
   }
 }

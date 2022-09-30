@@ -15,7 +15,7 @@
             %td= current_user.username
           %tr
             %td= _('Ticket|Seat')
-            %td= op.ticket.seat.id
+            %td=link_to op.ticket.seat.name_or_id, lan_seatmap_path(highlight: op.ticket.seat.id)
           %tr
             %td= _('Ticket|Seat category')
             %td

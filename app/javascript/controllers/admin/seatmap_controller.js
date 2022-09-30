@@ -7,10 +7,9 @@ export default class extends Controller {
   static targets = [
     'container',
     'contextMenu',
-    'deleteButton',
     'seatCategorySelector',
     'seatQuantity',
-    'changeCategoryButton'
+    'currentSelectedSeatInfo'
   ];
 
   connect() {
@@ -106,7 +105,8 @@ export default class extends Controller {
         scaleX: seatData.scaleX,
         scaleY: seatData.scaleY,
         backendId: seatData.backendId,
-        seatCategoryId: seatData.seatCategoryId
+        seatCategoryId: seatData.seatCategoryId,
+        seatName: seatData.seatName
       }
       postData.seats.push(dataToSend);
     }
@@ -164,7 +164,11 @@ export default class extends Controller {
         fill: seat.color,
         draggable: true,
         name: 'seatRect',
-        seatCategoryId: seat.seatCategoryId
+        seatCategoryId: seat.seatCategoryId,
+        seatName: seat.seatName,
+        taken: seat.taken,
+        userName: seat.userName,
+        ticketId: seat.ticketId
       });
 
       // Add the new box
@@ -379,12 +383,15 @@ export default class extends Controller {
     this.stage.on('click', (e) => {
       // if we are selecting with rect, do nothing
       if (this.selectionRectangle.visible()) {
+        this.currentSelectedSeatInfoTarget.innerHTML = i18n._('Admin|Seatmap|Please select a seat');
         return;
       }
 
       // if click on empty area - remove all selections
       if (e.target === this.stage || e.target === this.background) {
         this.transformer.nodes([]);
+
+        this.currentSelectedSeatInfoTarget.innerHTML = i18n._('Admin|Seatmap|Please select a seat');
         return;
       }
 
@@ -401,6 +408,9 @@ export default class extends Controller {
         // if no key pressed and the node is not selected
         // select just one
         this.transformer.nodes([e.target]);
+
+        // Update the seat info box
+        this.#updateSelectedSeatInfo(e.target);
       }
       else if (metaPressed && isSelected) {
         // if we pressed keys and node was selected
@@ -416,6 +426,107 @@ export default class extends Controller {
         this.transformer.nodes(nodes);
       }
     });
+  }
+
+  deleteSeats() {
+    // Get all selected seats
+    this.seats = this.seats.filter(seat => !this.transformer.nodes().includes(seat));
+
+    // Remove the selected seats
+    for (let node of this.transformer.nodes()) {
+      if (node.attrs.backendId) {
+        this.removedSeats.push(node.attrs.backendId);
+      }
+
+      node.destroy();
+    }
+
+    // Unselect the (not removed) seats
+    this.transformer.nodes([]);
+  }
+
+  openCategoryChangePopup() {
+    let options = {};
+
+    for(let option of this.seatCategorySelectorTarget.options) {
+      // Skip blank option
+      if (!option.value) {
+        continue;
+      }
+
+      options[option.value] = option.text;
+    }
+
+    Sweetalert2.fire({
+      title: i18n._('SeatMap|Change seat category'),
+      text:  i18n._('SeatMap|Please select the new seat category'),
+      input: 'select',
+      inputOptions: options,
+      inputPlaceholder: i18n._('Form|Select|Blank'),
+      showCancelButton: true,
+      confirmButtonText: i18n._('SweetAlertForm|Save'),
+      cancelButtonText: i18n._('SweetAlertForm|Cancel'),
+    }).then(result => {
+      if (result.isConfirmed) {
+        for (let node of this.transformer.nodes()) {
+          let seatCategoryId = parseInt(result.value);
+
+          node.setAttr('seatCategoryId', seatCategoryId);
+          node.setAttr('fill', this.seatCategoryColorMap[seatCategoryId]);
+        }
+      }
+    })
+  }
+
+  openNamingPopup() {
+    Sweetalert2.fire({
+      title: i18n._('SeatMap|Change seat naming'),
+      html: `
+        <div class="mb-3">
+          ${i18n._('SeatMap|Enter placeholder and offset for the seat naming. A $ in the placeholder will be replaced by an increasing number, starting at the given offset.')}
+        </div>
+        <input id="pattern-input" class="swal2-input" placeholder="${i18n._('Seatmap|Seat name placeholder')}">
+        <input id="start-offset-input" class="swal2-input mb-2" placeholder="${i18n._('Seatmap|Seat name start offset')}">
+      `,
+      showCancelButton: true,
+      confirmButtonText: i18n._('SweetAlertForm|Save'),
+      cancelButtonText: i18n._('SweetAlertForm|Cancel'),
+    }).then(result => {
+      if (result.isConfirmed) {
+        // Get the placeholder and offset
+        let placeholder = document.getElementById('pattern-input').value;
+        let offset = document.getElementById('start-offset-input').value;
+
+        // Exit if the placeholder is empty
+        if (!placeholder || placeholder === "") {
+          new JsAlert(i18n._('SeatMap|Placeholder needs to be given!'), 'danger').show();
+          return;
+        }
+
+        // Check if offset is a number (if given)
+        if (offset) {
+          offset = parseInt(offset);
+          if (isNaN(offset)) {
+            new JsAlert(i18n._('SeatMap|Offset must be a number!'), 'danger').show();
+            return;
+          }
+        }
+
+        // Iterate over the selected seats and set the values
+        for (let node of this.transformer.nodes()) {
+          let currentSeatName;
+
+          if (offset) {
+            currentSeatName = placeholder.replace('$', offset++);
+          }
+          else {
+            currentSeatName = placeholder;
+          }
+
+          node.setAttr('seatName', currentSeatName);
+        }
+      }
+    })
   }
 
   #setupContextMenuFunctionality() {
@@ -439,52 +550,37 @@ export default class extends Controller {
       // hide menu
       this.contextMenuTarget.style.display = 'none';
     });
+  }
 
-    this.deleteButtonTarget.addEventListener('click', () => {
-      this.seats = this.seats.filter(seat => !this.transformer.nodes().includes(seat));
+  #updateSelectedSeatInfo(seat) {
+    let attributes = seat.attrs;
 
-      for (let node of this.transformer.nodes()) {
-        if (node.attrs.backendId) {
-          this.removedSeats.push(node.attrs.backendId);
+    let categoryOption = this.seatCategorySelectorTarget.querySelector(`option[value="${attributes.seatCategoryId}"]`);
+
+    if(categoryOption) {
+      let infoString = '';
+      infoString += `<span class="badge bg-secondary">${attributes.seatName}</span>`;
+      infoString += `<span class="badge mx-2" style="background-color: ${categoryOption.dataset.color}">${categoryOption.innerHTML}</span>`
+
+      if(attributes.taken) {
+        if(attributes.userName) {
+          infoString += `${i18n._('Seat|Seat is taken by')}: `;
+          infoString += `${attributes.userName}.`
+        }
+        else {
+          infoString += i18n._('Admin|Seat|Seat is taken.');
         }
 
-        node.destroy();
+        infoString += ` <a href="/admin/tickets/${attributes.ticketId}" target="_blank">${i18n._('Admin|Show ticket')}</a>`
+      }
+      else {
+        infoString += i18n._('Seatmap|Seat is free');
       }
 
-      this.transformer.nodes([]);
-    });
-
-    this.changeCategoryButtonTarget.addEventListener('click', () => {
-      let options = {};
-
-      for(let option of this.seatCategorySelectorTarget.options) {
-        // Skip blank option
-        if (!option.value) {
-          continue;
-        }
-
-        options[option.value] = option.text;
-      }
-
-      Sweetalert2.fire({
-        title: i18n._('SeatMap|Change seat category'),
-        text:  i18n._('SeatMap|Please select the new seat category'),
-        input: 'select',
-        inputOptions: options,
-        inputPlaceholder: i18n._('Form|Select|Blank'),
-        showCancelButton: true,
-        confirmButtonText: i18n._('SweetAlertForm|Save'),
-        cancelButtonText: i18n._('SweetAlertForm|Cancel'),
-      }).then(result => {
-        if (result.isConfirmed) {
-          for (let node of this.transformer.nodes()) {
-            let seatCategoryId = parseInt(result.value);
-
-            node.setAttr('seatCategoryId', seatCategoryId);
-            node.setAttr('fill', this.seatCategoryColorMap[seatCategoryId]);
-          }
-        }
-      })
-    });
+      this.currentSelectedSeatInfoTarget.innerHTML = infoString;
+    }
+    else {
+      this.currentSelectedSeatInfoTarget.innerHTML = i18n._('Admin|Seatmap|Please select a seat');
+    }
   }
 }

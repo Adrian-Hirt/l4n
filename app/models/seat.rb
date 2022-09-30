@@ -25,5 +25,9 @@ class Seat < ApplicationRecord
     end
   end
 
+  def name_or_id
+    name.presence || id
+  end
+
   # == Private Methods =============================================================
 end

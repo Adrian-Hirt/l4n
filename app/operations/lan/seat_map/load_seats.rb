@@ -16,7 +16,8 @@ module Operations::Lan::SeatMap
           color:          seat.color,
           taken:          seat.ticket.present?,
           userName:       seat.ticket&.assignee&.username,
-          userId:         seat.ticket&.assignee_id
+          userId:         seat.ticket&.assignee_id,
+          seatName:       seat.name_or_id
         }.merge(seat.data)
 
         result[:seats] << seat_data

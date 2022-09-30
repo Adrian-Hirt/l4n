@@ -14,6 +14,7 @@ module Operations::Admin::SeatMap
           num? :scaleX
           num? :scaleY
           num? :rotation
+          str? :seatName
         end
       end
       ary? :removed_seats
@@ -42,6 +43,8 @@ module Operations::Admin::SeatMap
 
         seat_category_id = seat_data.delete(:seatCategoryId)
         seat.seat_category = lan_party.seat_categories.find(seat_category_id)
+
+        seat.name = seat_data.delete(:seatName)
 
         seat.data = seat_data
         seat.save!

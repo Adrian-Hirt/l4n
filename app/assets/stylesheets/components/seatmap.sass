@@ -1,10 +1,14 @@
-#seatmap-container canvas
-  background-color: Gainsboro !important
+#seatmap-container
+  canvas
+    background-color: Gainsboro !important
+  &.admin-seatmap
+    canvas
+      border: 1px solid black !important
 
 #seatmap-context-menu
   display: none
   position: fixed
-  width: 250px
+  width: 300px
   background-color: white
   box-shadow: 0 0 5px grey
   border-radius: 3px
@@ -24,5 +28,5 @@
   width: 10rem !important
   flex: unset
 
-.seat-badge
-  width: 4rem
+.seat-id-badge
+  cursor: pointer
