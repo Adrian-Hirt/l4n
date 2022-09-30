@@ -1,5 +1,4 @@
 import { Controller } from "@hotwired/stimulus";
-import { debounce } from 'utils/debounce';
 import 'konva';
 
 export default class extends Controller {
@@ -11,8 +10,6 @@ export default class extends Controller {
                     'sidebar',
                     'mainColumn'
                   ];
-
-  static resizeThreshold = 1200;
 
   connect() {
     // Setup the base
@@ -33,14 +30,7 @@ export default class extends Controller {
     this.sidebarVisible = true;
     this.sidebarToggleTarget.addEventListener('click', (e) => this.#toggleSidebar(e));
 
-    for(let ticketIdBadge of this.ticketsTarget.querySelectorAll('.seat-id-badge')) {
-      ticketIdBadge.addEventListener('click', (e) => this.#highlightSeatOfBadge(e));
-    }
-
-    // If we're on a small screen, we resize the view
-    if(document.body.clientWidth < this.constructor.resizeThreshold) {
-      this.#resizeToFit();
-    }
+    this.#resizeToFit();
 
     // Also setup the widow resize listener (debounced)
     let resizeTimeout;
@@ -439,11 +429,14 @@ export default class extends Controller {
     // Toggle state
     this.sidebarVisible = !this.sidebarVisible;
 
+    // Resize the map
+    this.#resizeToFit();
+
     e.preventDefault();
     return false;
   }
 
-  #highlightSeatOfBadge(e) {
+  highlightSeatOfBadge(e) {
     this.#unselectSeat();
 
     let seatID = e.target.dataset.seatId;
@@ -461,8 +454,9 @@ export default class extends Controller {
   }
 
   #resizeToFit() {
-    if(document.body.clientWidth < this.constructor.resizeThreshold) {
-      let containerWidth = this.containerTarget.offsetWidth;
+    let containerWidth = this.containerTarget.offsetWidth;
+
+    if(containerWidth < this.seatmapData.canvasWidth) {
       let scale = containerWidth / this.seatmapData.canvasWidth;
 
       this.stage.width(this.seatmapData.canvasWidth * scale);

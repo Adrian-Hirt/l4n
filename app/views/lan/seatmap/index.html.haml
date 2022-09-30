@@ -11,7 +11,7 @@
                                                      html: { data: { 'seatmap-target' => 'sidebarToggle' } },
                                                      size: :sm
       .d-flex.justify-content-center
-        #seatmap-container.frontend-seatmap.overflow-auto{data: { 'seatmap-target' => 'container', seatmap_data: op.seat_map_data }}
+        #seatmap-container.frontend-seatmap{data: { 'seatmap-target' => 'container', seatmap_data: op.seat_map_data }}
 
   .col-xl-4{data: { 'seatmap-target' => 'sidebar' }}
     - if user_signed_in?

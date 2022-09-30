@@ -18,7 +18,7 @@
   - op.available_tickets.order(:id).each do |ticket|
     .d-flex.align-items-center.ticket-container.mb-2{data: { seat_category_id: ticket.seat_category_id, ticket_id: ticket.id }}
       .me-2
-        .badge.seat-id-badge{style: "background-color: #{ticket.seat_category.color_for_view};", data: { seat_id: ticket.seat&.id }}
+        .badge.seat-id-badge{style: "background-color: #{ticket.seat_category.color_for_view};", data: { seat_id: ticket.seat&.id, action: 'click->seatmap#highlightSeatOfBadge' }}
           = ticket.seat&.name_or_id.presence || '&nbsp;'.html_safe
       - if ticket.checked_in?
         .me-2
