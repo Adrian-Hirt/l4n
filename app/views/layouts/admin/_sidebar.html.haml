@@ -20,25 +20,25 @@
         %li.nav-item
           %a.nav-link{href: admin_path, class: active_link_classes(:home)}
             %span
-              %i.nav-icon.fas.fa-tachometer-alt
+              %i.nav-icon.fas.fa-tachometer-alt.fa-fw
               %span.nav-item-text= _('Admin|Dashboard')
         - if can? :manage, User
           %li.nav-item
             %a.nav-link{href: admin_users_path, class: active_link_classes(:users, include_children: true)}
               %span
-                %i.nav-icon.fas.fa-users
+                %i.nav-icon.fas.fa-users.fa-fw
                 %span.nav-item-text= _('Admin|Users')
         - if can? :manage, NewsPost
           %li.nav-item
             %a.nav-link{href: admin_news_posts_path, class: active_link_classes(:news_posts)}
               %span
-                %i.nav-icon.fas.fa-newspaper
+                %i.nav-icon.fas.fa-newspaper.fa-fw
                 %span.nav-item-text= _('Admin|NewsPosts')
         - if can? :manage, Event
           %li.nav-item.dropdown
             %a.nav-link.collapse-link{data: {'bs-toggle' => 'collapse'}, href: '#events-collapse', class: sidenav_collapser_classes(:events)}
               %span
-                %i.nav-icon.fas.fa-calendar-alt
+                %i.nav-icon.fas.fa-calendar-alt.fa-fw
                 %span.nav-item-text= _('Admin|Events')
               %i.right.fas.fa-angle-right.dropdown-icon
             #events-collapse.collapse{class: sidenav_collapse_classes(:events), data: { 'bs-parent' => '.sidenav' }}
@@ -46,24 +46,24 @@
                 %li.nav-item
                   %a.nav-link{href: admin_events_path, class: active_link_classes(:events, excluded_actions: %i[archive])}
                     %span
-                      %i.nav-icon.far.fa-circle
+                      %i.nav-icon.far.fa-circle.fa-fw
                       %span.nav-item-text= _('Admin|Events|Events')
                 %li.nav-item
                   %a.nav-link{href: archive_admin_events_path, class: active_link_classes(:events, actions: %i[archive])}
                     %span
-                      %i.nav-icon.far.fa-circle
+                      %i.nav-icon.far.fa-circle.fa-fw
                       %span.nav-item-text= _('Admin|Events|Archive')
         - if can? :manage, Page
           %li.nav-item
             %a.nav-link{href: admin_pages_path, class: active_link_classes(:pages)}
               %span
-                %i.nav-icon.fas.fa-book
+                %i.nav-icon.fas.fa-book.fa-fw
                 %span.nav-item-text= _('Admin|Pages')
         - if can? :manage, MenuItem
           %li.nav-item
             %a.nav-link{href: admin_menu_items_path, class: active_link_classes(:menu_items)}
               %span
-                %i.nav-icon.fas.fa-compass
+                %i.nav-icon.fas.fa-compass.fa-fw
                 %span.nav-item-text= _('Admin|MenuItems')
         - if can?(:manage, :shop) || can?(:use, :payment_assist)
           %li.nav-item.dropdown
@@ -73,7 +73,7 @@
                                         class: sidenav_collapser_classes(:products, :orders, :product_categories, :dashboard, :promotions)
                                       }
               %span
-                %i.nav-icon.fas.fa-shop
+                %i.nav-icon.fas.fa-shop.fa-fw
                 %span.nav-item-text= _('Admin|Shop')
               %i.right.fas.fa-angle-right.dropdown-icon
             #shop-collapse.collapse{
@@ -85,56 +85,56 @@
                   %li.nav-item
                     %a.nav-link{href: admin_shop_dashboard_path, class: active_link_classes(:dashboard)}
                       %span
-                        %i.nav-icon.fas.fa-tachometer-alt
+                        %i.nav-icon.fas.fa-tachometer-alt.fa-fw
                         %span.nav-item-text= _('Admin|Shop|Dashboard')
                   %li.nav-item
                     %a.nav-link{href: admin_shop_products_path, class: active_link_classes(:products)}
                       %span
-                        %i.nav-icon.fas.fa-box
+                        %i.nav-icon.fas.fa-box.fa-fw
                         %span.nav-item-text= _('Admin|Products')
                   %li.nav-item
                     %a.nav-link{href: admin_shop_product_categories_path, class: active_link_classes(:product_categories)}
                       %span
-                        %i.nav-icon.fas.fa-tags
+                        %i.nav-icon.fas.fa-tags.fa-fw
                         %span.nav-item-text= _('Admin|ProductCategories')
                   %li.nav-item
                     %a.nav-link{href: admin_shop_orders_path, class: active_link_classes(:orders)}
                       %span
-                        %i.nav-icon.fas.fa-cart-shopping
+                        %i.nav-icon.fas.fa-cart-shopping.fa-fw
                         %span.nav-item-text= _('Admin|Orders')
                   %li.nav-item
                     %a.nav-link{href: admin_shop_promotions_path, class: active_link_classes(:promotions)}
                       %span
-                        %i.nav-icon.fas.fa-percent
+                        %i.nav-icon.fas.fa-percent.fa-fw
                         %span.nav-item-text= _('Admin|Promotions')
                 - if can?(:use, :payment_assist)
                   %li.nav-item
                     %a.nav-link{href: admin_shop_payment_assist_path, class: active_link_classes(:payment_assist)}
                       %span
-                        %i.nav-icon.fas.fa-cash-register
+                        %i.nav-icon.fas.fa-cash-register.fa-fw
                         %span.nav-item-text= _('Admin|Payment Assist')
         - if can? :manage, LanParty
           .li.nav-item
             %a.nav-link{href: admin_lan_parties_path, class: active_link_classes(:lan_parties, include_children: true)}
               %span
-                %i.nav-icon.fas.fa-gamepad
+                %i.nav-icon.fas.fa-gamepad.fa-fw
                 %span.nav-item-text= _('Admin|LanParty')
           .li.nav-item
             %a.nav-link{href: admin_scanner_users_path, class: active_link_classes(:scanner_users, include_children: true)}
               %span
-                %i.nav-icon.fas.fa-barcode
+                %i.nav-icon.fas.fa-barcode.fa-fw
                 %span.nav-item-text= _('Admin|ScannerUsers')
         - if can? :manage, Tournament
           .li.nav-item
             %a.nav-link{href: admin_tournaments_path, class: active_link_classes(:tournaments, include_children: true)}
               %span
-                %i.nav-icon.fas.fa-trophy
+                %i.nav-icon.fas.fa-trophy.fa-fw
                 %span.nav-item-text= _('Admin|Tournaments')
         - if can? :manage, FeatureFlag
           %li.nav-item
             %a.nav-link{href: admin_feature_flags_path, class: active_link_classes(:feature_flags)}
               %span
-                %i.nav-icon.fas.fa-flag
+                %i.nav-icon.fas.fa-flag.fa-fw
                 %span.nav-item-text= _('Admin|Feature Flags')
     .sidebar-footer
       .sidebar-footer-button
