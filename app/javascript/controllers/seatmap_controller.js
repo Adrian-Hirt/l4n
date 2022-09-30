@@ -1,5 +1,6 @@
-import { Controller } from "@hotwired/stimulus"
-import 'konva'
+import { Controller } from "@hotwired/stimulus";
+import { debounce } from 'utils/debounce';
+import 'konva';
 
 export default class extends Controller {
   static targets = [
@@ -10,6 +11,8 @@ export default class extends Controller {
                     'sidebar',
                     'mainColumn'
                   ];
+
+  static resizeThreshold = 1200;
 
   connect() {
     // Setup the base
@@ -33,6 +36,19 @@ export default class extends Controller {
     for(let ticketIdBadge of this.ticketsTarget.querySelectorAll('.seat-id-badge')) {
       ticketIdBadge.addEventListener('click', (e) => this.#highlightSeatOfBadge(e));
     }
+
+    // If we're on a small screen, we resize the view
+    if(document.body.clientWidth < this.constructor.resizeThreshold) {
+      this.#resizeToFit();
+    }
+
+    // Also setup the widow resize listener (debounced)
+    let resizeTimeout;
+
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(this.#resizeToFit.bind(this), 250);
+    });
   }
 
   #updateSeatMap() {
@@ -168,6 +184,7 @@ export default class extends Controller {
   #setupZoomFunctionality() {
     let scaleBy = 1.1;
 
+    // For desktop usage with mousewheel
     this.stage.on('wheel', (e) => {
       // stop default scrolling
       e.evt.preventDefault();
@@ -200,10 +217,76 @@ export default class extends Controller {
 
       this.stage.position(newPos);
     });
+
+    // For mobile usage with pinch zoom
+    this.stage.on('touchmove', (e) => {
+      e.evt.preventDefault();
+
+      let touch1 = e.evt.touches[0];
+      let touch2 = e.evt.touches[1];
+
+      if (touch1 && touch2) {
+        if (this.stage.isDragging()) {
+          this.stage.stopDrag();
+        }
+
+        let p1 = {
+          x: touch1.clientX,
+          y: touch1.clientY,
+        };
+
+        let p2 = {
+          x: touch2.clientX,
+          y: touch2.clientY,
+        };
+
+        if (!this.lastCenter) {
+          this.lastCenter = this.#getCenter(p1, p2);
+          return;
+        }
+
+        let newCenter = this.#getCenter(p1, p2);
+        let dist = this.#getDistance(p1, p2);
+
+        if (!this.lastDist) {
+          this.lastDist = dist;
+        }
+
+        // local coordinates of center point
+        let pointTo = {
+          x: (newCenter.x - this.stage.x()) / this.stage.scaleX(),
+          y: (newCenter.y - this.stage.y()) / this.stage.scaleX(),
+        };
+
+        let scale = this.stage.scaleX() * (dist / this.lastDist);
+
+        this.stage.scaleX(scale);
+        this.stage.scaleY(scale);
+
+        // calculate new position of the stage
+        let dx = newCenter.x - this.lastCenter.x;
+        let dy = newCenter.y - this.lastCenter.y;
+
+        let newPos = {
+          x: newCenter.x - pointTo.x * scale + dx,
+          y: newCenter.y - pointTo.y * scale + dy,
+        };
+
+        this.stage.position(newPos);
+
+        this.lastDist = dist;
+        this.lastCenter = newCenter;
+      }
+    });
+
+    this.stage.on('touchend', function () {
+      this.lastDist = 0;
+      this.lastCenter = null;
+    });
   }
 
   #setupSeatSelectionFunctionality() {
-    this.stage.on('mouseup', (e) => {
+    this.stage.on('mouseup touchend', (e) => {
       if (e.target === this.stage || e.target === this.background) {
         this.#disableAddButtons();
         this.#unselectSeat();
@@ -375,5 +458,32 @@ export default class extends Controller {
 
       this.#updateSelectedSeatInfo();
     }
+  }
+
+  #resizeToFit() {
+    if(document.body.clientWidth < this.constructor.resizeThreshold) {
+      let containerWidth = this.containerTarget.offsetWidth;
+      let scale = containerWidth / this.seatmapData.canvasWidth;
+
+      this.stage.width(this.seatmapData.canvasWidth * scale);
+      this.stage.height(this.seatmapData.canvasHeight * scale);
+      this.stage.scale({ x: scale, y: scale });
+    }
+    else {
+      this.stage.width(this.seatmapData.canvasWidth);
+      this.stage.height(this.seatmapData.canvasHeight);
+      this.stage.scale({ x: 1, y: 1 });
+    }
+  }
+
+  #getDistance(p1, p2) {
+    return Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
+  }
+
+  #getCenter(p1, p2) {
+    return {
+      x: (p1.x + p2.x) / 2,
+      y: (p1.y + p2.y) / 2,
+    };
   }
 }
