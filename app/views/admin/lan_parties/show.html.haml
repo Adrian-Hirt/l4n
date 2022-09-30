@@ -12,11 +12,17 @@
           .col-md-6
             = _('LanParty|Event start')
             .small.text-muted
-              = l model.event_start
+              - if model.event_start.present?
+                = l model.event_start
+              - else
+                \-
           .col-md-6
             = _('LanParty|Event end')
             .small.text-muted
-              = l model.event_end
+              - if model.event_end.present?
+                = l model.event_end
+              - else
+                \-
         .row.mb-0.mb-md-3
           .col-md-6
             = _('LanParty|Location')
