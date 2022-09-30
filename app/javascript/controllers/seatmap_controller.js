@@ -15,6 +15,9 @@ export default class extends Controller {
     // Setup the base
     this.#setupBase();
 
+    // Needs to be enabled for pinch zoom
+    Konva.hitOnDragEnabled = true;
+
     // Setup interactions
     this.#setupZoomFunctionality();
     this.#setupSeatSelectionFunctionality();
