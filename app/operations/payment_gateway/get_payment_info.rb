@@ -47,7 +47,8 @@ module Operations::PaymentGateway
         items << {
           product:  order_item.product_name,
           quantity: order_item.quantity,
-          price:    order_item.price_cents
+          price:    order_item.price,
+          total:    order_item.price * order_item.quantity
         }
       end
 
@@ -61,9 +62,17 @@ module Operations::PaymentGateway
         total += order_item.total
       end
 
+      promotion_codes = []
+
       order.promotion_code_mappings.each do |mapping|
         total -= mapping.applied_reduction
+        promotion_codes << {
+          name:      mapping.promotion_code.promotion.name,
+          reduction: mapping.applied_reduction
+        }
       end
+
+      @result[:promotion_codes] = promotion_codes
 
       @result[:total] = total
     end

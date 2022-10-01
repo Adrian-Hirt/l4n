@@ -4,20 +4,40 @@
 .alert.alert-warning.countdown{ data: { time: op.result[:valid_until], redirect: main_app.shop_cart_url } }
   \-- minutes -- seconds left to complete the payment
 
-.card
-  .card-header
-    = _('PamentGateway|Payment')
-  .card-body
-    = _('PamentGateway|Your total')
-    = humanized_money_with_symbol(op.result[:total])
-    %hr
-    = _('PaymentGateway|Seki|Description, order_id: %{order_id}') % { order_id: op.result[:real_order_id] }
-
-  .card-footer
-    = button_to _('PamentGateway|Submit order'), submit_order_path(order_id: op.result[:order_id]), data: { 'turbo-method' => :post }, class: %i[btn btn-primary]
-    = link_to _('PamentGateway|Cancel'), main_app.shop_cart_path, class: 'btn btn-danger'
-
-
+.row
+  .col-md-6
+    .card
+      .card-header
+        = _('PamentGateway|Payment details')
+      .card-body
+        = _('PaymentGateway|Seki|Description, order_id: %{order_id}') % { order_id: op.result[:real_order_id] }
+      .card-footer
+        = button_to _('PamentGateway|Submit order'), submit_order_path(order_id: op.result[:order_id]), data: { 'turbo-method' => :post }, class: %i[btn btn-primary]
+        = link_to _('PamentGateway|Cancel'), main_app.shop_cart_path, class: 'btn btn-danger'
+  .col-md-6
+    .card
+      .card-header
+        = _('PamentGateway|Order details')
+      .card-body.p-0
+        %table.table.table-borderless.mb-0
+          %tr
+            %th= _('Order|Product')
+            %th= _('Order|Quantity')
+            %th= _('Order|Total')
+          - op.result[:items].each do |item|
+            %tr
+              %td= item[:product]
+              %td= item[:quantity]
+              %td= humanized_money_with_symbol(item[:total])
+          - op.result[:promotion_codes].each do |promotion_code|
+            %tr
+              %td= "#{_('Order|PromotionCode')} #{promotion_code[:name]}"
+              %td= 1
+              %td.text-success= humanized_money_with_symbol(-promotion_code[:reduction])
+          %tr.border-top
+            %td= _('Order|Total')
+            %td
+            %td= humanized_money_with_symbol(op.result[:total])
 
 :javascript
   (function() {

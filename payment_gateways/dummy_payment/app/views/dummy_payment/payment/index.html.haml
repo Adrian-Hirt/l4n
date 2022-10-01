@@ -8,8 +8,25 @@
   .card-header
     = _('PamentGateway|Payment')
   .card-body
-    = _('PamentGateway|Your total')
-    = humanized_money_with_symbol(op.result[:total])
+    %table.table.table-borderless
+      %tr
+        %th= _('Order|Product')
+        %th= _('Order|Quantity')
+        %th= _('Order|Total')
+      - op.result[:items].each do |item|
+        %tr
+          %td= item[:product]
+          %td= item[:quantity]
+          %td= humanized_money_with_symbol(item[:total])
+      - op.result[:promotion_codes].each do |promotion_code|
+        %tr
+          %td= "#{_('Order|PromotionCode')} #{promotion_code[:name]}"
+          %td= 1
+          %td.text-success= humanized_money_with_symbol(-promotion_code[:reduction])
+      %tr.border-top
+        %td= _('Order|Total')
+        %td
+        %td= humanized_money_with_symbol(op.result[:total])
 
   .card-footer
     = button_to _('PamentGateway|Pay now'), complete_payment_path(order_id: op.result[:order_id]), data: { 'turbo-method' => :post }, class: %i[btn btn-primary]
