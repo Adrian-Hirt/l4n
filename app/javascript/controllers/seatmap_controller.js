@@ -15,9 +15,6 @@ export default class extends Controller {
     // Setup the base
     this.#setupBase();
 
-    // Needs to be enabled for pinch zoom
-    Konva.hitOnDragEnabled = true;
-
     // Setup interactions
     this.#setupZoomFunctionality();
     this.#setupSeatSelectionFunctionality();
@@ -149,32 +146,37 @@ export default class extends Controller {
     this.baseLayer = new Konva.Layer();
     this.stage.add(this.baseLayer);
 
-    // Add background image
+    // Add background image if the url is given
+    if (this.seatmapData.backgroundUrl) {
     const image = new window.Image();
 
-    image.onload = () => {
-      this.background = new Konva.Rect({
-        x: 0,
-        y: 0,
-        width: this.seatmapData.backgroundWidth,
-        height: this.seatmapData.backgroundHeight,
-        fillPatternImage: image,
-        fillPatternRepeat: "no-repeat",
-        draggable: false
-      });
+      image.onload = () => {
+        this.background = new Konva.Rect({
+          x: 0,
+          y: 0,
+          width: this.seatmapData.backgroundWidth,
+          height: this.seatmapData.backgroundHeight,
+          fillPatternImage: image,
+          fillPatternRepeat: "no-repeat",
+          draggable: false
+        });
 
-      // Add the background to the base layer
-      this.baseLayer.add(this.background);
+        // Add the background to the base layer
+        this.baseLayer.add(this.background);
 
-      // And move the background to the bottom of the stack
-      this.background.moveToBottom();
+        // And move the background to the bottom of the stack
+        this.background.moveToBottom();
+      }
+
+      // Set source of image
+      image.src = this.seatmapData.backgroundUrl;
     }
-
-    // Set source of image
-    image.src = this.seatmapData.backgroundUrl;
   }
 
   #setupZoomFunctionality() {
+    ///////////////////////////////////////
+    // Desktop mouse scroll zoom
+    ///////////////////////////////////////
     let scaleBy = 1.1;
 
     // For desktop usage with mousewheel
@@ -211,14 +213,24 @@ export default class extends Controller {
       this.stage.position(newPos);
     });
 
-    // For mobile usage with pinch zoom
-    this.stage.on('touchmove', (e) => {
+    ///////////////////////////////////////
+    // Mobile pinch zoom
+    ///////////////////////////////////////
+    // Needs to be enabled for pinch zoom
+    Konva.hitOnDragEnabled = true;
+
+    this.lastCenter = null;
+    this.lastDist = 0;
+
+    this.stage.on('touchmove', function (e) {
       e.evt.preventDefault();
 
       let touch1 = e.evt.touches[0];
       let touch2 = e.evt.touches[1];
 
       if (touch1 && touch2) {
+        // if the stage was under Konva's drag&drop
+        // we need to stop it, and implement our own pan logic with two pointers
         if (this.stage.isDragging()) {
           this.stage.stopDrag();
         }
@@ -270,12 +282,12 @@ export default class extends Controller {
         this.lastDist = dist;
         this.lastCenter = newCenter;
       }
-    });
+    }.bind(this));
 
     this.stage.on('touchend', function () {
       this.lastDist = 0;
       this.lastCenter = null;
-    });
+    }.bind(this));
   }
 
   #setupSeatSelectionFunctionality() {
