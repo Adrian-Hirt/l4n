@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_02_144343) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_02_190336) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -303,6 +303,33 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_02_144343) do
     t.index ["seat_category_id"], name: "index_tickets_on_seat_category_id"
   end
 
+  create_table "timetable_categories", force: :cascade do |t|
+    t.bigint "timetable_id", null: false
+    t.string "name", null: false
+    t.integer "order", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["timetable_id"], name: "index_timetable_categories_on_timetable_id"
+  end
+
+  create_table "timetable_entries", force: :cascade do |t|
+    t.bigint "timetable_category_id", null: false
+    t.string "title", null: false
+    t.datetime "entry_start", null: false
+    t.datetime "entry_end", null: false
+    t.string "link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["timetable_category_id"], name: "index_timetable_entries_on_timetable_category_id"
+  end
+
+  create_table "timetables", force: :cascade do |t|
+    t.bigint "lan_party_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lan_party_id"], name: "index_timetables_on_lan_party_id", unique: true
+  end
+
   create_table "tournament_matches", force: :cascade do |t|
     t.bigint "tournament_round_id", null: false
     t.datetime "created_at", null: false
@@ -460,6 +487,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_02_144343) do
   add_foreign_key "tickets", "lan_parties"
   add_foreign_key "tickets", "orders"
   add_foreign_key "tickets", "seat_categories"
+  add_foreign_key "timetable_categories", "timetables"
+  add_foreign_key "timetable_entries", "timetable_categories"
+  add_foreign_key "timetables", "lan_parties"
   add_foreign_key "tournament_matches", "tournament_phase_teams", column: "away_id"
   add_foreign_key "tournament_matches", "tournament_phase_teams", column: "home_id"
   add_foreign_key "tournament_matches", "tournament_phase_teams", column: "reporter_id"

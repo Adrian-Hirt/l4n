@@ -153,6 +153,9 @@ class Ability
       can :manage, SeatMap
       can :manage, ScannerUser
       can %i[read update], Ticket
+      can :manage, Timetable
+      can :manage, TimetableCategory
+      can :manage, TimetableEntry
     end
 
     # Tournament system permissions. For now we don't use fine-grained permissions,

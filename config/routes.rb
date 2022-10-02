@@ -250,6 +250,10 @@ Rails.application.routes.draw do
           post :update_seats
         end
       end
+      resource :timetable, controller: 'lan_parties/timetable', only: %i[show]
+      resources :timetable_categories, controller: 'lan_parties/timetable_categories', only: %i[new create edit update destroy]
+      resources :timetable_entries, controller: 'lan_parties/timetable_entries', only: %i[new create edit update destroy]
+
       resources :tickets, controller: 'lan_parties/tickets', only: %i[index show] do
         member do
           # Assign and remove assignation of tickets

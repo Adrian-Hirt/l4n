@@ -14,6 +14,7 @@ module Operations::Admin::LanParty
 
     def perform
       model.seat_map = SeatMap.new
+      model.timetable = Timetable.new
       super
     end
   end

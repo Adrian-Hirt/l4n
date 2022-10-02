@@ -1,0 +1,18 @@
+.card
+  = simple_form_for [:admin, model] do |f|
+    .card-body
+      .row
+        .col-md-6
+          = f.input :title
+        .col-md-6
+          = f.input :link
+      .row
+        .col-md-6
+          = f.input :entry_start, as: :datetime, html5: true
+        .col-md-6
+          = f.input :entry_end, as: :datetime, html5: true
+      = f.association :timetable_category, as: :select,
+                                           include_blank: _('Form|Select|Blank'),
+                                           collection: op.category_candidates
+    .card-footer
+      = f.save

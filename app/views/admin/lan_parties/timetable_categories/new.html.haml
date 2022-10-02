@@ -1,0 +1,10 @@
+.card
+  = simple_form_for model, url: admin_lan_party_timetable_categories_path(op.lan_party) do |f|
+    .card-body
+      .row
+        .col-md-6
+          = f.input :name
+        .col-md-6
+          = f.input :order
+    .card-footer
+      = f.save
