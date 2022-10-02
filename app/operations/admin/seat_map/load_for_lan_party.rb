@@ -19,7 +19,7 @@ module Operations::Admin::SeatMap
     end
 
     def seat_category_data
-      lan_party.seat_categories.map { |category| [category.name, category.id, { data: { color: category.color_for_view } }] }
+      lan_party.seat_categories.map { |category| [category.name, category.id, { data: { color: category.color_for_view, fontColor: category.font_color_for_view } }] }
     end
 
     def seat_map_data

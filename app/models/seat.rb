@@ -11,6 +11,7 @@ class Seat < ApplicationRecord
   # == Validations =================================================================
 
   # == Hooks =======================================================================
+  before_destroy :check_if_deletable
 
   # == Scopes ======================================================================
 
@@ -29,5 +30,14 @@ class Seat < ApplicationRecord
     name.presence || id
   end
 
+  def deletable?
+    ticket.nil?
+  end
+
   # == Private Methods =============================================================
+  private
+
+  def check_if_deletable
+    throw :abort unless deletable?
+  end
 end

@@ -130,7 +130,7 @@ export default class extends Controller {
         new JsAlert(i18n._('SeatMap|Saved successfully'), 'success').show();
       }
       else {
-        new JsAlert(i18n._('SeatMap|An error occured, please try again!'), 'danger').show();
+        window.location.reload();
       }
     }).catch(error => {
       console.error("error", error);
@@ -170,6 +170,11 @@ export default class extends Controller {
         userName: seat.userName,
         ticketId: seat.ticketId
       });
+
+      if(seat.taken) {
+        newSeat.setAttr('stroke', 'red');
+        newSeat.setAttr('strokeWidth', 4);
+      }
 
       // Add the new box
       this.baseLayer.add(newSeat);
@@ -539,6 +544,10 @@ export default class extends Controller {
         return;
       }
 
+      // Disable the delete button if at least one seat is taken
+      let deleteButton = this.contextMenuTarget.querySelector('#delete-button');
+      deleteButton.disabled = this.transformer.nodes().filter(n => n.attrs.taken).length > 0;
+
       // show menu
       this.contextMenuTarget.style.display = 'initial';
       let containerRect = this.stage.container().getBoundingClientRect();
@@ -560,7 +569,9 @@ export default class extends Controller {
     if(categoryOption) {
       let infoString = '';
       infoString += `<span class="badge bg-secondary">${attributes.seatName}</span>`;
-      infoString += `<span class="badge mx-2" style="background-color: ${categoryOption.dataset.color}">${categoryOption.innerHTML}</span>`
+      infoString += `<span class="badge mx-2" style="background-color: ${categoryOption.dataset.color}; color: ${categoryOption.dataset.fontcolor};">
+                      ${categoryOption.innerHTML}
+                    </span>`
 
       if(attributes.taken) {
         if(attributes.userName) {

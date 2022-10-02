@@ -23,8 +23,12 @@ module Admin
         if run Operations::Admin::SeatMap::UpdateSeats
           head :ok
         else
+          flash[:danger] = _('Admin|SeatMap|Something went wrong, please try again')
           head :bad_request
         end
+      rescue ActiveRecord::RecordNotDestroyed
+        flash[:danger] = _('Admin|SeatMap|Cannot delete some of the seats you wanted to delete')
+        head :bad_request
       end
 
       def seats

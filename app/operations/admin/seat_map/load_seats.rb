@@ -18,7 +18,7 @@ module Operations::Admin::SeatMap
           backendId:      seat.id,
           seatCategoryId: seat.seat_category_id,
           color:          seat.seat_category.color_for_view,
-          seatName:       seat.name,
+          seatName:       seat.name_or_id,
           taken:          seat.ticket.present?,
           userName:       seat.ticket&.assignee&.username,
           ticketId:       seat.ticket_id
