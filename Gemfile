@@ -97,4 +97,5 @@ end
 
 # Payment gateways
 gem 'dummy_payment', path: 'payment_gateways/dummy_payment'
+gem 'paypal_payment', path: 'payment_gateways/paypal_payment'
 gem 'seki_payment', path: 'payment_gateways/seki_payment'

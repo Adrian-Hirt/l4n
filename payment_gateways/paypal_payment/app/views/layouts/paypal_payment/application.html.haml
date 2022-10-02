@@ -1,0 +1,17 @@
+!!!
+%html{lang: FastGettext.locale}
+  %head
+    %title= _('PaypalPaymentGateway|Page title')
+    %meta{content: 'width=device-width,initial-scale=1', name: 'viewport'}
+    %script{src: 'https://www.paypalobjects.com/api/checkout.js'}
+    = csrf_meta_tags
+    = csp_meta_tag
+    = javascript_include_tag 'paypal_payment/application'
+    = stylesheet_link_tag 'application'
+    = stylesheet_link_tag 'paypal_payment/application'
+  %body.d-flex.application
+    .main.container
+      .page-title
+        %h1= yield :page_title
+      .content
+        = yield
