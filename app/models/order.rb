@@ -50,7 +50,7 @@ class Order < ApplicationRecord
   end
 
   def formatted_id
-    "#{_('Order')} ##{id}"
+    "#{_('Order')} ##{uuid}"
   end
 
   def total

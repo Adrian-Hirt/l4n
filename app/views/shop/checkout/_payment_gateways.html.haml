@@ -6,4 +6,4 @@
       %p.mb-3
         = gateway.name
         %br
-        = button 'Pay', gateway.payment_path(order_id: op.order.encrypted_base64_id), html: { data: { turbo: 'false' } }
+        = button 'Pay', gateway.payment_path(order_id: op.order.uuid), html: { data: { turbo: 'false' } }

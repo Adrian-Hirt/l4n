@@ -7,14 +7,8 @@ module Operations::PaymentGateway
     def perform
       fail InvalidOrder, 'No order_id given' if osparams.order_id.blank?
 
-      # Decrypt the order id
-      secret = ENV['SECRET_KEY_BASE'] || Rails.application.secrets.secret_key_base
-      crypt = ActiveSupport::MessageEncryptor.new(secret[0..31])
-      encrypted_id = Base64.urlsafe_decode64(osparams.order_id)
-      decrypted_id = crypt.decrypt_and_verify(encrypted_id)
-
       # Get order
-      order = ::Order.find(decrypted_id)
+      order = ::Order.find_by(uuid: osparams.order_id)
 
       # Verify that the order is still active and in the correct state
       fail InvalidOrder, 'Order has wrong status' unless order.created? || order.payment_pending?
@@ -34,8 +28,7 @@ module Operations::PaymentGateway
       end
 
       @result = {}
-      @result[:order_id] = osparams.order_id
-      @result[:real_order_id] = decrypted_id
+      @result[:order_id] = order.uuid
 
       items = []
 

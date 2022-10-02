@@ -5,10 +5,10 @@
 %table.table
   - op.delayed_payment_pending_orders.each do |order|
     %tr
-      %td= _('Order #%{order_id}') % { order_id: order.id }
+      %td= order.uuid
       %td= l(order.created_at, format: :long)
       %td.text-center= order.order_items.sum(&:quantity)
-      %td.text-end= show_button order, namespace: %i[shop], size: :sm, icon_only: true
+      %td.text-end= show_button order, href: shop_order_path(id: order.uuid), size: :sm, icon_only: true
 
 %hr
 
@@ -16,7 +16,7 @@
 %table.table
   - op.completed_orders.each do |order|
     %tr
-      %td= _('Order #%{order_id}') % { order_id: order.id }
+      %td= order.uuid
       %td= l(order.created_at, format: :long)
       %td.text-center= order.order_items.sum(&:quantity)
-      %td.text-end= show_button order, namespace: %i[shop], size: :sm, icon_only: true
+      %td.text-end= show_button order, href: shop_order_path(id: order.uuid), size: :sm, icon_only: true

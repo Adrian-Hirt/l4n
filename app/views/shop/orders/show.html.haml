@@ -1,7 +1,9 @@
-- provide :shop_page_title, _('Order #%{order_id}') % { order_id: model.id }
+- provide :shop_page_title, _('Your Order')
 = render partial: 'shop/shared/header'
 
 .card
+  .card-header
+    = model.uuid
   .card-body
     - if model.delayed_payment_pending?
       .row.border-bottom.mb-2.pb-3
@@ -12,18 +14,18 @@
 
     .row.border-bottom.pb-3.mb-2
       .col-md-4
-        .text-muted= _('Order|Created at')
-        = l(model.created_at, format: :long)
-      .col-md-4
-        .text-muted= _('Order|Order items count')
-        = model.order_items.count
-      .col-md-4
         .text-muted= _('Order|Shipping address')
         = "#{model.billing_address_first_name} #{model.billing_address_last_name}"
         %br
         = model.billing_address_street
         %br
         = "#{model.billing_address_zip_code} #{model.billing_address_city}"
+      .col-md-4
+        .text-muted= _('Order|Created at')
+        = l(model.created_at, format: :long)
+      .col-md-4
+        .text-muted= _('Order|Order items count')
+        = model.order_items.count
 
     .my-3= _('Order|Order items')
     %table.table.table-bordered

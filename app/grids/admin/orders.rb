@@ -8,6 +8,7 @@ module Grids
       model Order
 
       column :id
+      column :uuid
       column :status
       column :expired, html: true do |order|
         format_boolean(order.expired?)

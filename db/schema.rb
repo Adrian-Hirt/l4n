@@ -10,8 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_30_125923) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_02_144343) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -146,7 +147,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_30_125923) do
     t.string "billing_address_city"
     t.string "payment_gateway_name"
     t.string "payment_gateway_payment_id"
+    t.uuid "uuid", default: -> { "gen_random_uuid()" }
     t.index ["user_id"], name: "index_orders_on_user_id"
+    t.index ["uuid"], name: "index_orders_on_uuid", unique: true
   end
 
   create_table "pages", force: :cascade do |t|
