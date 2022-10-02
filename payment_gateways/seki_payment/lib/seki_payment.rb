@@ -7,6 +7,6 @@ module SekiPayment
   end
 
   def self.name
-    'Seki payment gateway'
+    _('SekiPaymentGateway')
   end
 end

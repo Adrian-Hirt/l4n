@@ -6,19 +6,18 @@
   %span#time-left= _('PaypalPaymentGateway|Countdown loading...')
 
 .row
-  .col-md-6
+  .col-xl-6.mb-3.mb-xl-0
     .card
       .card-header
         = _('PaypalPaymentGateway|Payment details')
       .card-body
         = _('PaypalPaymentGateway|Description')
-      .card-footer.d-flex
+      .card-footer.d-flex.flex-wrap.gap-2
         #paypal-button-container.d-inline{data: { production: Rails.env.production?.to_s,
                                          payment_create_url: create_payment_path(order_id: op.result[:order_id]),
                                          payment_execute_url: execute_payment_path(order_id: op.result[:order_id]) }}
-        .ms-2
-          = link_to _('PaypalPaymentGateway|Cancel'), main_app.shop_cart_path, class: 'btn btn-danger paypal-cancel-btn'
-  .col-md-6
+        = link_to _('PaypalPaymentGateway|Cancel'), main_app.shop_cart_path, class: 'btn btn-danger paypal-cancel-btn'
+  .col-xl-6
     .card
       .card-header
         = _('PaypalPaymentGateway|Order details')

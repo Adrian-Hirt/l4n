@@ -2,6 +2,7 @@ let setupCountdownTimer = function() {
   let countdownElement = document.getElementsByClassName('countdown')[0];
   let endDatetime = new Date(countdownElement.dataset.time).getTime();
   let redirectPath = countdownElement.dataset.redirect;
+  let timerElement = document.getElementById('time-left');
 
   setInterval(() => {
     let now = new Date().getTime();
@@ -16,7 +17,7 @@ let setupCountdownTimer = function() {
       window.location.replace(redirectPath);
     }
 
-    let domString = `${minutesLeft} minutes ${secondsLeft} seconds left to submit the order`
-    countdownElement.innerHTML = domString;
+    let domString = `${minutesLeft}:${String(secondsLeft).padStart(2, '0')}`;
+    timerElement.innerHTML = domString;
   }, 1000)
-}
+};

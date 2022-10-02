@@ -7,6 +7,6 @@ module DummyPayment
   end
 
   def self.name
-    'Dummy payment gateway'
+    _('DummyPaymentGateway')
   end
 end

@@ -1,23 +1,24 @@
 - content_for :page_title do
-  Seki Payment Gateway
+  = _('SekiPaymentGateway|Title')
 
 .alert.alert-warning.countdown{ data: { time: op.result[:valid_until], redirect: main_app.shop_cart_url } }
-  \-- minutes -- seconds left to complete the payment
+  = _('SekiPaymentGateway|Time left:')
+  %span#time-left= _('SekiPaymentGateway|Countdown loading...')
 
 .row
-  .col-md-6
+  .col-xl-6.mb-3.mb-xl-0
     .card
       .card-header
-        = _('PamentGateway|Payment details')
+        = _('SekiPaymentGateway|Payment details')
       .card-body
-        = _('PaymentGateway|Seki|Description, order_id: %{order_id}') % { order_id: op.result[:real_order_id] }
-      .card-footer
-        = button_to _('PamentGateway|Submit order'), submit_order_path(order_id: op.result[:order_id]), data: { 'turbo-method' => :post }, class: %i[btn btn-primary]
-        = link_to _('PamentGateway|Cancel'), main_app.shop_cart_path, class: 'btn btn-danger'
-  .col-md-6
+        = _('SekiPaymentGateway|Description, order_id: %{order_id}') % { order_id: op.result[:real_order_id] }
+      .card-footer.d-flex.flex-wrap.gap-2
+        = button_to _('SekiPaymentGateway|Submit order'), submit_order_path(order_id: op.result[:order_id]), data: { 'turbo-method' => :post }, class: %i[btn btn-primary]
+        = link_to _('SekiPaymentGateway|Cancel'), main_app.shop_cart_path, class: 'btn btn-danger'
+  .col-xl-6
     .card
       .card-header
-        = _('PamentGateway|Order details')
+        = _('SekiPaymentGateway|Order details')
       .card-body.p-0
         %table.table.table-borderless.mb-0
           %tr
