@@ -13,7 +13,6 @@ module Grids
         format_boolean(order.expired?)
       end
       column :user, html: ->(user) { user.username }
-      column :order_items, html: ->(order_items) { order_items.count }, header: _('Order|Order items count')
       column :'datagrid-actions', html: true, header: false do |order|
         tag.div class: %i[datagrid-actions-wrapper] do
           show_button(order, namespace: %i[admin shop], size: :sm, icon_only: true)
