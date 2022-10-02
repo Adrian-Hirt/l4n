@@ -409,7 +409,7 @@ export default class extends Controller {
     let infoString = '';
 
     infoString += `<span class="badge bg-secondary">${attributes.seatName}</span>`;
-    infoString += `<span class="badge ms-2" style="background-color: ${categoryData.color}">${categoryData.name}</span><hr>`
+    infoString += `<span class="badge ms-2" style="background-color: ${categoryData.color}; color: ${categoryData.fontColor}">${categoryData.name}</span><hr>`
 
     if(attributes.taken) {
       let username = attributes.userName;

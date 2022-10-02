@@ -19,8 +19,9 @@ module Operations::Lan::SeatMap
 
       lan_party.seat_categories.each do |category|
         data[category.id] = {
-          name:  category.name,
-          color: category.color_for_view
+          name:      category.name,
+          color:     category.color_for_view,
+          fontColor: category.font_color_for_view
         }
       end
 
