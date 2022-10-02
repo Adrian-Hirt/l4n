@@ -14,3 +14,17 @@
             = entry.title
             = edit_button entry, namespace: %i[admin]
             = delete_button entry, namespace: %i[admin]
+
+.card
+  .card-body
+    - datetime = op.lan_party.event_start.beginning_of_hour - 4.hours
+    = l(datetime.to_date, format: :long)
+    %br
+    - while datetime <= (op.lan_party.event_end.beginning_of_hour + 4.hours)
+      - if datetime.hour.zero?
+        %hr
+        = l(datetime.to_date, format: :long)
+        %br
+      = datetime.strftime("%H:%M")
+      %br
+      - datetime += 1.hour
