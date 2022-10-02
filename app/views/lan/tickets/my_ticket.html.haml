@@ -15,11 +15,15 @@
             %td= current_user.username
           %tr
             %td= _('Ticket|Seat')
-            %td=link_to op.ticket.seat.name_or_id, lan_seatmap_path(highlight: op.ticket.seat.id)
+            %td
+              - if op.ticket.seat.present?
+                = link_to op.ticket.seat.name_or_id, lan_seatmap_path(highlight: op.ticket.seat.id)
+              - else
+                \-
           %tr
             %td= _('Ticket|Seat category')
             %td
-              .badge{style: "background-color: #{op.ticket.seat_category.color_for_view};"}
+              .badge{style: "background-color: #{op.ticket.seat_category.color_for_view}; color: #{op.ticket.seat_category.font_color_for_view}"}
                 = op.ticket.seat_category.name
           %tr
             %td= _('Ticket|Status')
