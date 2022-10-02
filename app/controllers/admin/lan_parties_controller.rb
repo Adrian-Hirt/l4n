@@ -46,10 +46,14 @@ module Admin
     def destroy
       if run Operations::Admin::LanParty::Destroy
         flash[:success] = _('LanParty|Successfully deleted')
+        redirect_to admin_lan_parties_path
       else
         flash[:danger] = _('LanParty|Cannot be deleted')
+        redirect_to admin_lan_party_path(model)
       end
-      redirect_to admin_lan_parties_path
+    rescue ActiveRecord::RecordNotDestroyed
+      flash[:danger] = _('LanParty|Cannot be deleted')
+      redirect_to admin_lan_party_path(model)
     end
   end
 end
