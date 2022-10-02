@@ -1,6 +1,8 @@
-module Operations::Shop::Order
+module Operations::Admin::Order
   class CleanupExpired < RailsOps::Operation
-    without_authorization
+    policy :on_init do
+      authorize! :manage, Order
+    end
 
     def perform
       # Delete exired orders

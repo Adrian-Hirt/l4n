@@ -19,11 +19,7 @@ module Operations::PaymentGateway
       # Verify that the order is still active and in the correct state
       fail InvalidOrder, 'Order has wrong status' unless order.created? || order.payment_pending?
 
-      if order.created?
-        fail InvalidOrder, 'Order expired' if order.cleanup_timestamp + ::Order::TIMEOUT < Time.zone.now
-      elsif order.cleanup_timestamp + ::Order::TIMEOUT_PAYMENT_PENDING < Time.zone.now
-        fail InvalidOrder, 'Order expired'
-      end
+      fail InvalidOrder, 'Order expired' if order.expired?
 
       # Check that no product_variant has been deleted while loading the payment gateway
       fail InvalidOrder, 'An product variant has been deleted' if order.order_items.any? { |order_item| order_item.product_variant.nil? }

@@ -6,9 +6,12 @@ class ApplicationController < ActionController::Base
   include RailsOps::ControllerMixin
 
   # Fail with a 404 as we don't want to expose possible existing,
-  # but not accessible entities
-  rescue_from CanCan::AccessDenied do |_exception|
-    fail ActiveRecord::RecordNotFound
+  # but not accessible entities. However, we skip this in development
+  # environment.
+  unless Rails.env.development?
+    rescue_from CanCan::AccessDenied do |_exception|
+      fail ActiveRecord::RecordNotFound
+    end
   end
 
   def set_locale

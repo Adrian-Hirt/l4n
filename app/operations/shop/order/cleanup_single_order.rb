@@ -5,6 +5,8 @@ module Operations::Shop::Order
     delegate :order, to: :osparams
 
     def perform
+      fail 'Not possible to cleanup this order' unless order.expired?
+
       order.order_items.each do |order_item|
         next if order_item.product_variant.nil?
 

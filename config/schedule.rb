@@ -8,5 +8,5 @@
 set :output, "#{Whenever.path}/log/cron.log"
 
 every 5.minutes do
-  runner 'Operations::Shop::Order::CleanupExpired.run'
+  runner 'Operations::Admin::Order::CleanupExpired.run'
 end

@@ -9,6 +9,9 @@ module Grids
 
       column :id
       column :status
+      column :expired, html: true do |order|
+        format_boolean(order.expired?)
+      end
       column :user, html: ->(user) { user.username }
       column :order_items, html: ->(order_items) { order_items.count }, header: _('Order|Order items count')
       column :'datagrid-actions', html: true, header: false do |order|

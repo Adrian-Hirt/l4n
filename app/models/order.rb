@@ -60,6 +60,21 @@ class Order < ApplicationRecord
     result
   end
 
+  def expired?
+    # A paid order can never expire
+    return false if paid?
+
+    if created?
+      cleanup_timestamp + ::Order::TIMEOUT < Time.zone.now
+    elsif payment_pending?
+      cleanup_timestamp + ::Order::TIMEOUT_PAYMENT_PENDING < Time.zone.now
+    elsif delayed_payment_pending?
+      cleanup_timestamp + ::Order::TIMEOUT_DELAYED_PAYMENT_PENDING < Time.zone.now
+    else
+      fail 'Unknown status'
+    end
+  end
+
   # == Private Methods =============================================================
   private
 
