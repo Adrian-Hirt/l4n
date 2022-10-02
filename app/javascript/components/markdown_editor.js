@@ -1,6 +1,7 @@
 import 'easymde';
 import { debounce } from 'utils/debounce';
 import { rectanglesLoader } from 'components/loading_animations';
+import Translations from 'components/translations';
 import 'sweetalert2'
 
 export default class MarkdownEditor extends EasyMDE {

@@ -2,7 +2,6 @@
   .card-body
     = f.input :title
     = f.input :location
-    = f.label :published
     = f.input :published, input_html: { class: 'no-validation' }
     = f.markdown :description, preview_url: admin_markdown_preview_path
     #event_dates{data: { controller: 'cocoon' }}
