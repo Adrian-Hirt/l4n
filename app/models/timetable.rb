@@ -6,6 +6,7 @@ class Timetable < ApplicationRecord
   # == Associations ================================================================
   belongs_to :lan_party
   has_many :timetable_categories, dependent: :destroy
+  has_many :timetable_entries, through: :timetable_categories
 
   # == Validations =================================================================
   validates :lan_party, uniqueness: true

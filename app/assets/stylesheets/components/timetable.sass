@@ -1,0 +1,51 @@
+@include media-breakpoint-up(md)
+  .schedule
+    display: grid
+
+  .time-line,
+  .time-slot,
+  .category-slot
+    display: block !important
+
+.time-slot
+  grid-column: times
+  min-height: 1rem
+
+.time-line
+  grid-column: 1 / -1
+  height: 1px
+  border-bottom: 1px solid grey
+  width: 100%
+  display: none
+
+.column-line
+  grid-row: 1 / -1
+  width: 1px
+  border-left: 1px solid grey
+  height: 100%
+
+.category-slot,
+.time-slot
+  display: none
+
+.category-slot
+  padding-left: 10px
+
+.entry
+  padding: .5em
+  font-size: 14px
+  background-color: red
+  color: white
+  margin-top: 1px
+
+.entry-title,
+.entry-time
+  display: block
+
+.entry-title,
+.time-slot
+  margin: 0
+  font-size: 1em
+
+.time-slot 
+  font-size: 0.75em

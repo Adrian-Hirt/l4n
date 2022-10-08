@@ -5,7 +5,7 @@
 
 .card.mb-3
   .card-body
-    - model.timetable_categories.each do |category|
+    - model.timetable_categories.includes(:timetable_entries).each do |category|
       .mb-3
         = category.name
         = edit_button category, namespace: %i[admin]
@@ -16,20 +16,43 @@
             = edit_button entry, namespace: %i[admin]
             = delete_button entry, namespace: %i[admin]
 
+- data_str = ""
+- column_str = ""
+
 .card
   .card-body
     - if model.times_set?
-      - datetime = model.start_datetime.beginning_of_hour
-      - loop_end = model.end_datetime.beginning_of_hour
-      = l(datetime.to_date, format: :long)
-      %br
-      - while datetime <= loop_end
-        - if datetime.hour.zero?
-          %hr
-          = l(datetime.to_date, format: :long)
-          %br
-        = datetime.strftime("%H:%M")
-        %br
-        - datetime += 1.hour
+      .schedule
+        - datetime = model.start_datetime.beginning_of_hour
+        - loop_end = model.end_datetime.beginning_of_hour
+        - while datetime <= loop_end
+          - data_str += "[time-#{datetime.to_i}] 1fr "
+
+          - if datetime.min.zero?
+            %span.time-slot{style: "grid-row: time-#{datetime.to_i};"}
+              = datetime.strftime("%H:%M")
+            .time-line{style: "grid-row: time-#{datetime.to_i};"}
+
+          - datetime += 15.minutes
+
+        - model.timetable_categories.each do |category|
+          %span.category-slot{style: "grid-column: category-#{category.id}; grid-row: categories;"}
+            = category.name
+            - column_str += "[category-#{category.id}] 1fr "
+          .column-line{style: "grid-column: category-#{category.id};"}
+
+        - model.timetable_entries.order(:entry_start).each do |entry|
+          .entry{style: "grid-column: category-#{entry.timetable_category.id}; grid-row: time-#{entry.entry_start.to_i} / time-#{entry.entry_end.to_i};"}
+            .entry-title= entry.title
+            .entry-time= "#{entry.entry_start.strftime("%H:%M")} - #{entry.entry_end.strftime("%H:%M")}"
     - else
       .alert.alert-warning= _('Admin|Timetable|Times are not set')
+
+-# Generated sass for columns & rows
+:css
+  @media screen and (min-width: 768px) {
+    .schedule {
+      grid-template-rows: [categories] auto #{data_str};
+      grid-template-columns: [times] 4em #{column_str};
+    }
+  }
