@@ -250,7 +250,7 @@ Rails.application.routes.draw do
           post :update_seats
         end
       end
-      resource :timetable, controller: 'lan_parties/timetable', only: %i[show]
+      resource :timetable, controller: 'lan_parties/timetable', only: %i[show edit update]
       resources :timetable_categories, controller: 'lan_parties/timetable_categories', only: %i[new create edit update destroy]
       resources :timetable_entries, controller: 'lan_parties/timetable_entries', only: %i[new create edit update destroy]
 

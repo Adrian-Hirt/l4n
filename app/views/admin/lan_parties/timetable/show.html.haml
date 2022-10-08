@@ -1,8 +1,9 @@
 - content_for :header_buttons do
   = new_button TimetableCategory, href: new_admin_lan_party_timetable_category_path(model)
   = new_button TimetableEntry, href: new_admin_lan_party_timetable_entry_path(model)
+  = edit_button model, namespace: %i[admin lan_party]
 
-.card
+.card.mb-3
   .card-body
     - model.timetable_categories.each do |category|
       .mb-3
@@ -17,14 +18,18 @@
 
 .card
   .card-body
-    - datetime = op.lan_party.event_start.beginning_of_hour - 4.hours
-    = l(datetime.to_date, format: :long)
-    %br
-    - while datetime <= (op.lan_party.event_end.beginning_of_hour + 4.hours)
-      - if datetime.hour.zero?
-        %hr
-        = l(datetime.to_date, format: :long)
-        %br
-      = datetime.strftime("%H:%M")
+    - if model.times_set?
+      - datetime = model.start_datetime.beginning_of_hour
+      - loop_end = model.end_datetime.beginning_of_hour
+      = l(datetime.to_date, format: :long)
       %br
-      - datetime += 1.hour
+      - while datetime <= loop_end
+        - if datetime.hour.zero?
+          %hr
+          = l(datetime.to_date, format: :long)
+          %br
+        = datetime.strftime("%H:%M")
+        %br
+        - datetime += 1.hour
+    - else
+      .alert.alert-warning= _('Admin|Timetable|Times are not set')

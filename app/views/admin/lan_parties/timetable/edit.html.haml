@@ -1,0 +1,10 @@
+.card
+  = simple_form_for [:admin, :lan_party, model] do |f|
+    .card-body
+      .row
+        .col-md-6
+          = f.input :start_datetime, as: :datetime, html5: true
+        .col-md-6
+          = f.input :end_datetime, as: :datetime, html5: true
+    .card-footer
+      = f.save
