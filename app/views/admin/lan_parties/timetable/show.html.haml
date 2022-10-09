@@ -42,7 +42,7 @@
           .column-line{style: "grid-column: category-#{category.id};"}
 
         - model.timetable_entries.order(:entry_start).each do |entry|
-          .entry{style: "grid-column: category-#{entry.timetable_category.id}; grid-row: time-#{entry.entry_start.to_i} / time-#{entry.entry_end.to_i};"}
+          .entry{style: "grid-column: category-#{entry.timetable_category.id}; grid-row: time-#{entry.entry_start.round_nearest(900).to_i} / time-#{entry.entry_end.round_nearest(900).to_i};"}
             .entry-title= entry.title
             .entry-time= "#{entry.entry_start.strftime("%H:%M")} - #{entry.entry_end.strftime("%H:%M")}"
     - else
@@ -56,3 +56,4 @@
       grid-template-columns: [times] 4em #{column_str};
     }
   }
+
