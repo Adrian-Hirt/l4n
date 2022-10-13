@@ -4,7 +4,7 @@ class TimetableEntry < ApplicationRecord
   # == Constants ===================================================================
 
   # == Associations ================================================================
-  belongs_to :timetable_category
+  belongs_to :timetable_category, touch: true
   delegate :timetable, to: :timetable_category
 
   # == Validations =================================================================
