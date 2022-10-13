@@ -8,9 +8,9 @@
           = f.input :link
       .row
         .col-md-6
-          = f.input :entry_start, as: :datetime, html5: true
+          = f.input :entry_start, as: :datetime, html5: true, hint: _('Admin|TimetableEntry|Timetable start: %{start}') % { start: l(op.lan_party.timetable.start_datetime) }
         .col-md-6
-          = f.input :entry_end, as: :datetime, html5: true
+          = f.input :entry_end, as: :datetime, html5: true, hint: _('Admin|TimetableEntry|Timetable end: %{start}') % { start: l(op.lan_party.timetable.end_datetime) }
       = f.association :timetable_category, as: :select,
                                            include_blank: _('Form|Select|Blank'),
                                            collection: op.category_candidates
