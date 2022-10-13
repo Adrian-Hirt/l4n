@@ -19,7 +19,7 @@ module Admin
     def create
       if run Operations::Admin::LanParty::Create
         flash[:success] = _('LanParty|Successfully created')
-        redirect_to admin_lan_parties_path
+        redirect_to admin_lan_party_path(model)
       else
         add_breadcrumb _('Admin|LanParty|New')
         flash[:danger] = _('LanParty|Create failed')
@@ -35,7 +35,7 @@ module Admin
     def update
       if run Operations::Admin::LanParty::Update
         flash[:success] = _('LanParty|Successfully updated')
-        redirect_to admin_lan_parties_path
+        redirect_to admin_lan_party_path(model)
       else
         add_breadcrumb model.name
         flash[:danger] = _('LanParty|Edit failed')

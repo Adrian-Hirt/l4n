@@ -1,0 +1,55 @@
+- provide :page_title, _('Timetable')
+
+- cache [I18n.locale, model] do
+  .card
+    .card-body
+      - if model.times_set?
+        - css_row_data= ""
+        - css_column_data = ""
+
+        .schedule
+          - datetime = model.start_datetime.beginning_of_hour
+          - loop_end = model.end_datetime.beginning_of_hour
+
+          %span.initial-date-slot{style: "grid-row: categories; grid-column: times;"}
+            = l(datetime, format: "%d. %b")
+
+          - while datetime <= loop_end
+            - css_row_data += "[time-#{datetime.to_i}] 0.5fr "
+
+            - if datetime.min.zero?
+              %span.time-slot{style: "grid-row: time-#{datetime.to_i} / time-#{datetime.to_i + 1800};"}
+                = datetime.strftime("%H:%M")
+              .time-line{style: "grid-row: time-#{datetime.to_i};"}
+
+            - if datetime.hour.zero? && datetime.min == 30
+              %span.date-slot{style: "grid-row: time-#{datetime.to_i} / time-#{datetime.to_i + 1800}; grid-column: times;"}
+                = l(datetime, format: "%d. %b")
+
+            - datetime += 15.minutes
+
+          - model.timetable_categories.each do |category|
+            .category-slot{style: "grid-column: category-#{category.id}; grid-row: categories;"}
+              = category.name
+            - css_column_data += "[category-#{category.id}] 1fr "
+            .column-line{style: "grid-column: category-#{category.id};"}
+
+          - model.timetable_entries.order(:entry_start).each do |entry|
+            .entry{style: "grid-column: category-#{entry.timetable_category.id}; grid-row: time-#{entry.entry_start.round_nearest(900).to_i} / time-#{entry.entry_end.round_nearest(900).to_i};"}
+              .entry-title
+                - if entry.link.present?
+                  = icon %i[fas fa-arrow-up-right-from-square]
+                  = link_to entry.title, entry.link, target: :_blank
+                - else
+                  = entry.title
+              .entry-time= "#{entry.entry_start.strftime("%H:%M")} - #{entry.entry_end.strftime("%H:%M")}"
+      - else
+        .alert.alert-primary.mb-0= _('Timetable|No timetable available')
+
+  - if model.times_set?
+    -# Generated sass for columns & rows
+    :css
+      .schedule {
+        grid-template-rows: [categories] auto #{css_row_data};
+        grid-template-columns: [times] 6em #{css_column_data};
+      }

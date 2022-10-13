@@ -1,0 +1,59 @@
+- content_for :header_buttons do
+  = new_button TimetableCategory, href: new_admin_lan_party_timetable_category_path(model)
+  = new_button TimetableEntry, href: new_admin_lan_party_timetable_entry_path(model)
+  = edit_button model, namespace: %i[admin lan_party]
+
+- css_row_data= ""
+- css_column_data = ""
+
+.card
+  .card-body
+    - if model.times_set?
+      .schedule
+        - datetime = model.start_datetime.beginning_of_hour
+        - loop_end = model.end_datetime.beginning_of_hour
+        - while datetime <= loop_end
+          - css_row_data += "[time-#{datetime.to_i}] 0.5fr "
+
+          - if datetime.min.zero?
+            %span.time-slot{style: "grid-row: time-#{datetime.to_i} / time-#{datetime.to_i + 1800};"}
+              = datetime.strftime("%H:%M")
+            .time-line{style: "grid-row: time-#{datetime.to_i};"}
+
+          - datetime += 15.minutes
+
+        - model.timetable_categories.each do |category|
+          .category-slot{style: "grid-column: category-#{category.id}; grid-row: categories;"}
+            .category-name
+              = category.name
+            .category-actions
+              = edit_button category, namespace: %i[admin], icon_only: true, size: :sm
+              = delete_button category, namespace: %i[admin], icon_only: true, size: :sm
+          - css_column_data += "[category-#{category.id}] 1fr "
+          .column-line{style: "grid-column: category-#{category.id};"}
+
+        - model.timetable_entries.order(:entry_start).each do |entry|
+          .entry{style: "grid-column: category-#{entry.timetable_category.id}; grid-row: time-#{entry.entry_start.round_nearest(900).to_i} / time-#{entry.entry_end.round_nearest(900).to_i};"}
+            .entry-data
+              .entry-title
+              - if entry.link.present?
+                = icon %i[fas fa-link]
+                = entry.title
+              - else
+                = entry.title
+              .entry-time= "#{entry.entry_start.strftime("%H:%M")} - #{entry.entry_end.strftime("%H:%M")}"
+            .entry-actions
+              = edit_button entry, namespace: %i[admin], icon_only: true, size: :sm
+              = delete_button entry, namespace: %i[admin], icon_only: true, size: :sm
+    - else
+      .alert.alert-warning= _('Admin|Timetable|Times are not set')
+
+-# Generated sass for columns & rows
+:css
+  @media screen and (min-width: 768px) {
+    .schedule {
+      grid-template-rows: [categories] auto #{css_row_data};
+      grid-template-columns: [times] 6em #{css_column_data};
+    }
+  }
+

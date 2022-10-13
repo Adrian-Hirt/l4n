@@ -1,0 +1,86 @@
+.schedule
+  display: grid
+
+.time-line,
+.time-slot
+  display: block !important
+
+.category-slot
+  position: sticky
+  background-color: $white
+  border-bottom: 1px solid grey
+  border-left: 1px solid grey
+
+.initial-date-slot
+  position: sticky
+  background-color: $white
+  border-bottom: 1px solid grey
+  display: flex
+  align-items: flex-end
+
+.date-slot
+  position: sticky
+  background-color: white
+
+@include media-breakpoint-up(md)
+  .initial-date-slot,
+  .category-slot
+    top: 56px
+
+  .date-slot
+    top: 70px
+
+@include media-breakpoint-down(md)
+  .initial-date-slot,
+  .category-slot,
+  .date-slot
+    position: relative
+
+  .category-slot
+    min-width: 150px
+
+  .card
+    overflow-x: auto
+
+.time-slot
+  grid-column: times
+  min-height: 1rem
+
+.time-line
+  grid-column: 1 / -1
+  height: 1px
+  border-bottom: 1px solid grey
+  width: 100%
+  display: none
+
+.column-line
+  grid-row: 1 / -1
+  width: 1px
+  border-left: 1px solid grey
+  height: 100%
+
+.category-slot
+  @extend .px-3
+  @extend .py-1
+  font-size: 1.25rem
+  display: flex
+  justify-content: space-between
+
+.entry
+  @extend .px-3
+  @extend .py-2
+  background-color: $secondary
+  color: white
+  margin-top: 1px
+  display: flex
+  justify-content: space-between
+
+.entry-title,
+.entry-time
+  display: block
+
+.entry-title
+  a
+    color: white
+    text-decoration-style: dotted
+    text-decoration-line: underline

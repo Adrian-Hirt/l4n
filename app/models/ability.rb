@@ -16,8 +16,11 @@ class Ability
     # Anyone can read a page if the feature flag is enabled and it's published
     can :read, Page, &:published? if FeatureFlag.enabled?(:pages)
 
-    # Anyone can look at the seatmap if it's enabled
-    can :read, SeatMap if FeatureFlag.enabled?(:lan_party)
+    # Anyone can look at the seatmap and the timetable if it's enabled
+    if FeatureFlag.enabled?(:lan_party)
+      can :read, SeatMap
+      can :read, Timetable
+    end
 
     can :read, :shop if FeatureFlag.enabled?(:shop)
 
@@ -153,6 +156,9 @@ class Ability
       can :manage, SeatMap
       can :manage, ScannerUser
       can %i[read update], Ticket
+      can :manage, Timetable
+      can :manage, TimetableCategory
+      can :manage, TimetableEntry
     end
 
     # Tournament system permissions. For now we don't use fine-grained permissions,

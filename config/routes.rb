@@ -129,6 +129,8 @@ Rails.application.routes.draw do
       post :remove_seat, to: 'seatmap#remove_seat'
     end
 
+    get :timetable, to: 'timetable#index'
+
     get :ticket, to: 'tickets#my_ticket'
 
     resources :tickets, only: [] do
@@ -250,6 +252,10 @@ Rails.application.routes.draw do
           post :update_seats
         end
       end
+      resource :timetable, controller: 'lan_parties/timetable', only: %i[show edit update]
+      resources :timetable_categories, controller: 'lan_parties/timetable_categories', only: %i[new create edit update destroy]
+      resources :timetable_entries, controller: 'lan_parties/timetable_entries', only: %i[new create edit update destroy]
+
       resources :tickets, controller: 'lan_parties/tickets', only: %i[index show] do
         member do
           # Assign and remove assignation of tickets
