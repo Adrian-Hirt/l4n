@@ -129,6 +129,8 @@ Rails.application.routes.draw do
       post :remove_seat, to: 'seatmap#remove_seat'
     end
 
+    get :timetable, to: 'timetable#index'
+
     get :ticket, to: 'tickets#my_ticket'
 
     resources :tickets, only: [] do

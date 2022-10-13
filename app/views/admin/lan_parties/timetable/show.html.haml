@@ -13,10 +13,10 @@
         - datetime = model.start_datetime.beginning_of_hour
         - loop_end = model.end_datetime.beginning_of_hour
         - while datetime <= loop_end
-          - css_row_data += "[time-#{datetime.to_i}] 1fr "
+          - css_row_data += "[time-#{datetime.to_i}] 0.5fr "
 
           - if datetime.min.zero?
-            %span.time-slot{style: "grid-row: time-#{datetime.to_i};"}
+            %span.time-slot{style: "grid-row: time-#{datetime.to_i} / time-#{datetime.to_i + 1800};"}
               = datetime.strftime("%H:%M")
             .time-line{style: "grid-row: time-#{datetime.to_i};"}
 
@@ -35,7 +35,12 @@
         - model.timetable_entries.order(:entry_start).each do |entry|
           .entry{style: "grid-column: category-#{entry.timetable_category.id}; grid-row: time-#{entry.entry_start.round_nearest(900).to_i} / time-#{entry.entry_end.round_nearest(900).to_i};"}
             .entry-data
-              .entry-title= entry.title
+              .entry-title
+              - if entry.link.present?
+                = icon %i[fas fa-link]
+                = entry.title
+              - else
+                = entry.title
               .entry-time= "#{entry.entry_start.strftime("%H:%M")} - #{entry.entry_end.strftime("%H:%M")}"
             .entry-actions
               = edit_button entry, namespace: %i[admin], icon_only: true, size: :sm
@@ -48,7 +53,7 @@
   @media screen and (min-width: 768px) {
     .schedule {
       grid-template-rows: [categories] auto #{css_row_data};
-      grid-template-columns: [times] 4em #{css_column_data};
+      grid-template-columns: [times] 6em #{css_column_data};
     }
   }
 

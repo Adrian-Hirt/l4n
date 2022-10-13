@@ -8,6 +8,24 @@
 
   .category-slot
     display: flex
+    position: sticky
+    top: 56px
+    background-color: $white
+    border-bottom: 1px solid grey
+    border-left: 1px solid grey
+
+  .initial-date-slot
+    position: sticky
+    top: 56px
+    background-color: $white
+    border-bottom: 1px solid grey
+    display: flex
+    align-items: flex-end
+
+  .date-slot
+    position: sticky
+    top: 70px
+    background-color: white
 
 .time-slot
   grid-column: times
@@ -50,10 +68,8 @@
 .entry-time
   display: block
 
-.entry-title,
-.time-slot
-  margin: 0
-  font-size: 1em
-
-.time-slot
-  font-size: 0.75em
+.entry-title
+  a
+    color: white
+    text-decoration-style: dotted
+    text-decoration-line: underline
