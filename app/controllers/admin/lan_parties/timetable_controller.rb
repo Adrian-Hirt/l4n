@@ -11,6 +11,8 @@ module Admin
 
       def edit
         op Operations::Admin::Timetable::Update
+        add_breadcrumb model.lan_party.name, admin_lan_party_path(model.lan_party)
+        add_breadcrumb _('Admin|Timetable')
       end
 
       def update
@@ -18,6 +20,8 @@ module Admin
           flash[:success] = _('Admin|Timetable|Successfully updated')
           redirect_to admin_lan_party_timetable_path(model)
         else
+          add_breadcrumb model.lan_party.name, admin_lan_party_path(model.lan_party)
+          add_breadcrumb _('Admin|Timetable')
           flash[:danger] = _('Admin|Timetable|Could not be updated')
           render :edit, status: :unprocessable_entity
         end

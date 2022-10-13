@@ -3,9 +3,11 @@
     display: grid
 
   .time-line,
-  .time-slot,
-  .category-slot
+  .time-slot
     display: block !important
+
+  .category-slot
+    display: flex
 
 .time-slot
   grid-column: times
@@ -29,14 +31,20 @@
   display: none
 
 .category-slot
-  padding-left: 10px
+  @extend .px-3
+  @extend .py-1
+  font-size: 1.25rem
+  display: flex
+  justify-content: space-between
 
 .entry
-  padding: .5em
-  font-size: 14px
-  background-color: red
+  @extend .px-3
+  @extend .py-2
+  background-color: $secondary
   color: white
   margin-top: 1px
+  display: flex
+  justify-content: space-between
 
 .entry-title,
 .entry-time
@@ -47,5 +55,5 @@
   margin: 0
   font-size: 1em
 
-.time-slot 
+.time-slot
   font-size: 0.75em
