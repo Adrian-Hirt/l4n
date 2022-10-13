@@ -1,31 +1,46 @@
+.schedule
+  display: grid
+
+.time-line,
+.time-slot
+  display: block !important
+
+.category-slot
+  position: sticky
+  background-color: $white
+  border-bottom: 1px solid grey
+  border-left: 1px solid grey
+
+.initial-date-slot
+  position: sticky
+  background-color: $white
+  border-bottom: 1px solid grey
+  display: flex
+  align-items: flex-end
+
+.date-slot
+  position: sticky
+  background-color: white
+
 @include media-breakpoint-up(md)
-  .schedule
-    display: grid
-
-  .time-line,
-  .time-slot
-    display: block !important
-
+  .initial-date-slot,
   .category-slot
-    display: flex
-    position: sticky
     top: 56px
-    background-color: $white
-    border-bottom: 1px solid grey
-    border-left: 1px solid grey
-
-  .initial-date-slot
-    position: sticky
-    top: 56px
-    background-color: $white
-    border-bottom: 1px solid grey
-    display: flex
-    align-items: flex-end
 
   .date-slot
-    position: sticky
     top: 70px
-    background-color: white
+
+@include media-breakpoint-down(md)
+  .initial-date-slot,
+  .category-slot,
+  .date-slot
+    position: relative
+
+  .category-slot
+    min-width: 150px
+
+  .card
+    overflow-x: auto
 
 .time-slot
   grid-column: times
@@ -43,10 +58,6 @@
   width: 1px
   border-left: 1px solid grey
   height: 100%
-
-.category-slot,
-.time-slot
-  display: none
 
 .category-slot
   @extend .px-3

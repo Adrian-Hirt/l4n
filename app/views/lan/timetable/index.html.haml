@@ -48,9 +48,7 @@
 - if model.times_set?
   -# Generated sass for columns & rows
   :css
-    @media screen and (min-width: 768px) {
-      .schedule {
-        grid-template-rows: [categories] auto #{css_row_data};
-        grid-template-columns: [times] 6em #{css_column_data};
-      }
+    .schedule {
+      grid-template-rows: [categories] auto #{css_row_data};
+      grid-template-columns: [times] 6em #{css_column_data};
     }
