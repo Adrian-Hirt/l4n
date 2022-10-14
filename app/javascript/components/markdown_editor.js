@@ -11,7 +11,8 @@ export default class MarkdownEditor extends EasyMDE {
       toolbar: MarkdownEditor.constructToolbar(),
       promptURLs: true,
       spellChecker: false,
-      previewRender: MarkdownEditor.previewRender
+      previewRender: MarkdownEditor.previewRender,
+      minHeight: '150px'
     });
 
     this.previewUrl = domElement.dataset.previewUrl;
