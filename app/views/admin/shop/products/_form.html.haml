@@ -1,58 +1,77 @@
 = simple_form_for [:admin, :shop, model] do |f|
-  .card-body
-    -# -- Basic inputs --------------------------------------------------------------
-    = f.input :name
-    = f.markdown :description, preview_url: admin_markdown_preview_path
-    = f.input :on_sale, input_html: { class: 'no-validation' }
-    = f.input :sort
-    = f.association :product_category, include_blank: _('Form|Select|Blank')
-    .row
-      .col-md-6
-        = f.input :inventory
-      .col-md-6
-        = f.input :availability, disabled: true
-    -# -- Product behaviours inputs -------------------------------------------------
-    = f.input :enabled_product_behaviours,
-      as: :check_boxes,
-      collection: model.available_product_behaviours,
-      input_html: { class: 'no-validation' },
-      value_method: :first,
-      label_method: :second
+  -# -- Basic inputs --------------------------------------------------------------
+  .card.mb-3
+    .card-header
+      = _('Admin|Product|Basics')
+    .card-body
+      = f.input :name
+      = f.markdown :description, preview_url: admin_markdown_preview_path
+      .row
+        .col-md-2
+          = f.input :on_sale, input_html: { class: 'no-validation' }, as: :select, include_blank: false
+        .col-md-5
+          = f.input :sort
+        .col-md-5
+          = f.association :product_category, include_blank: _('Form|Select|Blank')
+      .row
+        .col-md-6
+          = f.input :inventory
+        .col-md-6
+          = f.input :availability, disabled: true
 
-    .row{data: { controller: 'admin--product-seat-category-input', options: op.grouped_seat_categories.to_json }}
-      .col-md-6
-        .mb-3.select.optional
-          = f.label :lan_party, class: 'form-label select optional'
-          = select_tag :lan_party,
-            options_from_collection_for_select(LanParty.all, "id", "name", model.seat_category&.lan_party_id),
-            class: 'form-select rounded-0 select optional',
+  -# -- Product behaviours inputs -------------------------------------------------
+  .card.mb-3
+    .card-header
+      = _('Admin|Product|Product behaviours')
+    .card-body
+      = f.input :enabled_product_behaviours,
+        as: :check_boxes,
+        collection: model.available_product_behaviours,
+        input_html: { class: 'no-validation' },
+        value_method: :first,
+        label_method: :second
+
+      .row{data: { controller: 'admin--product-seat-category-input', options: op.grouped_seat_categories.to_json }}
+        .col-md-6
+          .mb-3.select.optional
+            = f.label :lan_party, class: 'form-label select optional'
+            = select_tag :lan_party,
+              options_from_collection_for_select(LanParty.all, "id", "name", model.seat_category&.lan_party_id),
+              class: 'form-select rounded-0 select optional',
+              include_blank: _('Form|Select|Blank'),
+              data: { action: 'change->admin--product-seat-category-input#changeAvailableOptions' }
+        .col-md-6
+          = f.association :seat_category,
             include_blank: _('Form|Select|Blank'),
-            data: { action: 'change->admin--product-seat-category-input#changeAvailableOptions' }
-      .col-md-6
-        = f.association :seat_category,
-          include_blank: _('Form|Select|Blank'),
-          collection: op.initial_available_categories,
-          input_html: { data: { 'admin--product-seat-category-input-target' => 'category' } }
+            collection: op.initial_available_categories,
+            input_html: { data: { 'admin--product-seat-category-input-target' => 'category' } }
 
-    -# -- Images inputs -------------------------------------------------------------
-    = f.input :images, input_html: { multiple: true }
-    - if model.images.attached?
-      - model.images.each do |image|
-        = image_tag image.variant(:thumb).processed
-        .form-check
-          = f.check_box :remove_images, { multiple: true }, image.id, nil
-          = f.label :remove_images, _('Product|Remove this image'), for: "product_remove_images_#{image.id}"
+  -# -- Images inputs -------------------------------------------------------------
+  .card.mb-3
+    .card-header
+      = _('Admin|Product|Images')
+    .card-body
+      = f.input :images, input_html: { multiple: true }, label: false
+      - if model.images.attached?
+        - model.images.each do |image|
+          = image_tag image.variant(:thumb).processed
+          .form-check
+            = f.check_box :remove_images, { multiple: true }, image.id, nil
+            = f.label :remove_images, _('Product|Remove this image'), for: "product_remove_images_#{image.id}"
 
-    -# -- Variants inputs -----------------------------------------------------------
-    #product_variants{data: { controller: 'cocoon' }}
-      = f.label :product_variants
-      = f.error :product_variants, class: 'invalid-feedback d-block'
-      = f.simple_fields_for :product_variants do |product_variant|
-        .nested-fields
-          = render 'product_variant_fields', f: product_variant
-      .links
-        = link_to_add_association f, :product_variants, class: 'btn btn-primary', data: { action: 'click->cocoon#addRow' } do
-          = icon %i[fa fa-plus]
-          =_('Product|Add product variant')
-  .card-footer
-    = f.save
+  -# -- Variants inputs -----------------------------------------------------------
+  .card.mb-3
+    .card-header
+      = _('Admin|Product|Product variants')
+    .card-body
+      #product_variants{data: { controller: 'cocoon' }}
+        = f.error :product_variants, class: 'invalid-feedback d-block'
+        = f.simple_fields_for :product_variants do |product_variant|
+          .nested-fields
+            = render 'product_variant_fields', f: product_variant
+        .links
+          = link_to_add_association f, :product_variants, class: 'btn btn-primary', data: { action: 'click->cocoon#addRow' } do
+            = icon %i[fa fa-plus]
+            =_('Product|Add product variant')
+    .card-footer
+      = f.save
