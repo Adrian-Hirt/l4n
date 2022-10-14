@@ -27,25 +27,13 @@ module Operations::Admin::Product
       difference = model.inventory - model.inventory_was
       model.availability += difference
 
+      # Remove the seat_category_id if it was not given
+      model.seat_category_id = osparams.product[:seat_category_id]
+
       super
 
       osparams.product[:remove_images]&.each do |id_to_remove|
         model.images.find(id_to_remove).purge
-      end
-    end
-
-    def grouped_seat_categories
-      grouped = SeatCategory.all.group_by(&:lan_party_id)
-      grouped.each do |k, v|
-        grouped[k] = v.map { |category| { id: category.id, name: category.name } }
-      end
-    end
-
-    def initial_available_categories
-      if model.seat_category
-        model.seat_category.lan_party.seat_categories.all
-      else
-        []
       end
     end
   end

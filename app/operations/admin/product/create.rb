@@ -19,20 +19,5 @@ module Operations::Admin::Product
     model ::Product do
       attribute :remove_image
     end
-
-    def grouped_seat_categories
-      grouped = SeatCategory.all.group_by(&:lan_party_id)
-      grouped.each do |k, v|
-        grouped[k] = v.map { |category| { id: category.id, name: category.name } }
-      end
-    end
-
-    def initial_available_categories
-      if model.seat_category
-        model.seat_category.lan_party.seat_categories.all
-      else
-        []
-      end
-    end
   end
 end

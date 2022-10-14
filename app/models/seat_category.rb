@@ -26,6 +26,14 @@ class SeatCategory < ApplicationRecord
   # == Scopes ======================================================================
 
   # == Class Methods ===============================================================
+  def self.grouped_by_lan
+    grouped = SeatCategory.all.group_by(&:lan_party_id)
+    grouped.each do |k, v|
+      grouped[k] = v.map { |category| { id: category.id, name: category.name } }
+    end
+
+    grouped
+  end
 
   # == Instance Methods ============================================================
   def color_for_view

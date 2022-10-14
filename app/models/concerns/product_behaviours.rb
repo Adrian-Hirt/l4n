@@ -31,6 +31,10 @@ module ProductBehaviours
     self.class.registered_keys.map { |key| [key.to_s, _("ProductBehaviours|#{key.capitalize}")] }
   end
 
+  def available_product_behaviour_classes
+    self.class.registry.values
+  end
+
   class_methods do
     def register_behaviour(key, behaviour_class)
       registry[key] = behaviour_class

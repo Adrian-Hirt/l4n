@@ -43,8 +43,6 @@ class Product < ApplicationRecord
   validates :images, size: { less_than: 5.megabytes, message: format(_('File is too large, max. allowed %{size}'), size: '5MB') }, content_type: %r{\Aimage/.*\z}
   validates :sort, numericality: { min: 0 }, presence: true
 
-  validates :seat_category, presence: true, if: -> { enabled_product_behaviours.include? 'ticket' }
-
   # == Hooks =======================================================================
   before_create :add_availability
 

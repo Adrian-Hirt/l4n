@@ -16,5 +16,9 @@ module Operations::Behaviours
 
       product.errors.add(:seat_category, _('Product|TicketBehaviour|Seat category needs to be set'))
     end
+
+    def self.render_view(form, product, enabled)
+      ApplicationController.render partial: 'behaviours/ticket', locals: { f: form, op: self, product: product, enabled: enabled }
+    end
   end
 end
