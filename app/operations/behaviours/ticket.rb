@@ -1,10 +1,5 @@
 module Operations::Behaviours
-  class Ticket < RailsOps::Operation
-    schema do
-      req :product
-      req :order_item
-    end
-
+  class Ticket < Base
     def perform
       osparams.order_item.quantity.times do
         ::Ticket.create!({
@@ -13,6 +8,13 @@ module Operations::Behaviours
                            order:         osparams.order_item.order
                          })
       end
+    end
+
+    def self.run_validations(product)
+      # Need to have the seat_category set for this behaviour to make sense
+      return if product.seat_category.present?
+
+      product.errors.add(:seat_category, _('Product|TicketBehaviour|Seat category needs to be set'))
     end
   end
 end

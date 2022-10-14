@@ -16,7 +16,6 @@ class Product < ApplicationRecord
   include ::ProductBehaviours
 
   # == Attributes ==================================================================
-  register_behaviour :dummy, ::Operations::Behaviours::DummyBehaviour
   register_behaviour :ticket, ::Operations::Behaviours::Ticket
 
   # == Constants ===================================================================
