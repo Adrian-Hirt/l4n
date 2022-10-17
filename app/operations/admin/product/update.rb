@@ -22,6 +22,27 @@ module Operations::Admin::Product
 
     model ::Product do
       attribute :remove_images
+
+      validate :not_used_as_from_or_to
+
+      private
+
+      def not_used_as_from_or_to
+        used_as_to_or_from = Product.where('to_product_id = ? OR from_product_id = ?', id, id).any?
+
+        # Early return if not used
+        return unless used_as_to_or_from
+
+        # Check that the seat category has not changed if it's used as the TO or FROM product elsewhere
+        if seat_category_changed?
+          errors.add(:seat_category, _('Product|TicketBehaviour|Cannot be changed as this product is used as the to or from product elsewhere!'))
+        end
+
+        # Check that the enabled product behaviours have not changed if it's used as the TO or FROM product elsewhere
+        if enabled_product_behaviours_changed?
+          errors.add(:enabled_product_behaviours, _('Product|TicketBehaviour|Cannot be changed as this product is used as the to or from product elsewhere!'))
+        end
+      end
     end
 
     def perform

@@ -50,6 +50,7 @@ class Product < ApplicationRecord
 
   # == Hooks =======================================================================
   before_create :add_availability
+  before_destroy :check_deletable?
 
   # == Scopes ======================================================================
 
@@ -70,10 +71,20 @@ class Product < ApplicationRecord
     product_variants.map(&:price).min.presence || Money.zero
   end
 
+  def deletable?
+    Product.where('to_product_id = ? OR from_product_id = ?', id, id).none?
+  end
+
   # == Private Methods =============================================================
   private
 
   def add_availability
     self.availability = inventory
+  end
+
+  def check_deletable?
+    return if deletable?
+
+    throw :abort
   end
 end

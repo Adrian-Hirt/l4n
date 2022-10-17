@@ -50,6 +50,9 @@ module Admin
           flash[:danger] = _('Product|Cannot be deleted')
         end
         redirect_to admin_shop_products_path
+      rescue ActiveRecord::RecordNotDestroyed
+        flash[:danger] = _('Product|Cannot be deleted')
+        redirect_to admin_shop_products_path
       end
     end
   end
