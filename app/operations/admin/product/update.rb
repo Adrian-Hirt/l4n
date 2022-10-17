@@ -34,14 +34,10 @@ module Operations::Admin::Product
         return unless used_as_to_or_from
 
         # Check that the seat category has not changed if it's used as the TO or FROM product elsewhere
-        if seat_category_changed?
-          errors.add(:seat_category, _('Product|TicketBehaviour|Cannot be changed as this product is used as the to or from product elsewhere!'))
-        end
+        errors.add(:seat_category, _('Product|TicketBehaviour|Cannot be changed as this product is used as the to or from product elsewhere!')) if seat_category_changed?
 
         # Check that the enabled product behaviours have not changed if it's used as the TO or FROM product elsewhere
-        if enabled_product_behaviours_changed?
-          errors.add(:enabled_product_behaviours, _('Product|TicketBehaviour|Cannot be changed as this product is used as the to or from product elsewhere!'))
-        end
+        errors.add(:enabled_product_behaviours, _('Product|TicketBehaviour|Cannot be changed as this product is used as the to or from product elsewhere!')) if enabled_product_behaviours_changed?
       end
     end
 
