@@ -17,6 +17,7 @@ class Product < ApplicationRecord
 
   # == Attributes ==================================================================
   register_behaviour :ticket, ::Operations::Behaviours::Ticket
+  register_behaviour :ticket_upgrade, ::Operations::Behaviours::TicketUpgrade
 
   # == Constants ===================================================================
 
@@ -29,7 +30,11 @@ class Product < ApplicationRecord
     attachable.variant :medium, resize_and_pad: [300, 300, { background: [255, 255, 255] }]
   end
 
+  # For product behaviours
   belongs_to :seat_category, optional: true
+  belongs_to :to_product, optional: true, class_name: 'Product'
+  belongs_to :from_product, optional: true, class_name: 'Product'
+
   belongs_to :product_category
 
   has_many :promotion_products, dependent: :destroy
@@ -49,6 +54,16 @@ class Product < ApplicationRecord
   # == Scopes ======================================================================
 
   # == Class Methods ===============================================================
+  def self.grouped_by_lan
+    grouped = SeatCategory.all.group_by(&:lan_party_id)
+    grouped.each do |k, v|
+      grouped[k] = v.map do |category|
+        category.products.map { |product| { id: product.id, name: product.name } }
+      end.compact_blank.flatten
+    end
+
+    grouped
+  end
 
   # == Instance Methods ============================================================
   def starting_price

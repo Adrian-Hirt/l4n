@@ -271,6 +271,8 @@ Rails.application.routes.draw do
           post :revert_check_in
         end
       end
+
+      resources :ticket_upgrades, controller: 'lan_parties/ticket_upgrades', only: %i[index]
     end
 
     # Tournament system

@@ -33,6 +33,9 @@ module Operations::Shop::Order
           product.availability -= cart_item.quantity
           fail MaxQuantityReached if product.availability.negative?
 
+          # Run any behaviour before_checkout actions we might have
+          product.before_checkout_behaviour_actions(cart_item)
+
           product.save!
         end
 

@@ -13,6 +13,8 @@ module Operations::Admin::Product
         opt :remove_images
         opt :product_variants_attributes
         opt :seat_category_id
+        opt :to_product_id
+        opt :from_product_id
         opt :product_category_id
         opt :sort
       end
@@ -31,10 +33,10 @@ module Operations::Admin::Product
 
       super
 
-      if model.valid?
-        osparams.product[:remove_images]&.each do |id_to_remove|
-          model.images.find(id_to_remove).purge
-        end
+      return unless model.valid?
+
+      osparams.product[:remove_images]&.each do |id_to_remove|
+        model.images.find(id_to_remove).purge
       end
     end
   end
