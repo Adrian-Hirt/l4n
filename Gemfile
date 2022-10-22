@@ -27,7 +27,7 @@ gem 'cssbundling-rails', '~> 1.1.1'
 gem 'importmap-rails', '~> 1.1.5'
 gem 'sprockets-rails', '~> 3.4.1'
 gem 'stimulus-rails', '~> 1.1.0'
-gem 'turbo-rails', '~> 1.1.1'
+gem 'turbo-rails', '~> 1.3.2'
 
 # Application structure
 gem 'active_type', '~> 2.3.0' # Need to lock as 2.0 somehow does not work with rails_ops
@@ -45,7 +45,7 @@ gem 'rqrcode', '~> 2.1.0'
 gem 'simple_form', '~> 5.1.0'
 
 # Translations
-gem 'gettext_i18n_rails', '~> 1.8.1'
+gem 'gettext_i18n_rails', '~> 1.9.0'
 gem 'mobility', '~> 1.2.5'
 gem 'rails-i18n', '~> 7.0.1'
 
@@ -56,7 +56,7 @@ gem 'redcarpet', '~> 3.5.1'
 gem 'figaro', '1.2.0'
 
 # Attachments
-gem 'active_storage_validations'
+gem 'active_storage_validations', '~> 1.0.2'
 gem 'image_processing', '~> 1.12'
 
 # Models

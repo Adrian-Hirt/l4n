@@ -125,3 +125,9 @@ Metrics/ModuleLength:
 
 Style/HashSyntax:
   EnforcedShorthandSyntax: either
+
+Rails/ActionControllerFlashBeforeRender:
+  Enabled: false
+
+Rails/ActionOrder:
+  Enabled: false

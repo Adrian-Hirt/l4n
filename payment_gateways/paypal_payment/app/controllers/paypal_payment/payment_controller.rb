@@ -19,10 +19,8 @@ module PaypalPayment
 
     def execute_payment
       if run PaypalPayment::ExecutePayment
-        # rubocop:disable Rails/ActionControllerFlashBeforeRender
         flash[:success] = _('Order|Successfully paid for the order')
         render json: { status: 'ok', path: main_app.shop_path }
-        # rubocop:enable Rails/ActionControllerFlashBeforeRender
       else
         render json: { status: 'error', message: _('PaypalPaymentGateway|Something went wrong, please try again') }
       end
