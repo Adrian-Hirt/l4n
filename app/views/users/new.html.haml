@@ -6,12 +6,10 @@
           %b> L4N
           Dev
       .card-body
-        %p.login-box-msg= _('User|Sign up')
         = simple_form_for model, wrapper: :input_group, url: signup_path, data: { turbo: 'false' } do |f|
           = f.input :username, label: false, placeholder: _('User|Username')
           = f.input :email, label: false, placeholder: _('User|Email')
           = f.password :password, label: false, placeholder: _('User|Password')
-          = f.password :password_confirmation, label: false, placeholder: _('User|Password confirmation')
           .mb-3
             = hcaptcha_tags theme: :light
           .input-group.mb-3

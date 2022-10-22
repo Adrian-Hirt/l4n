@@ -18,7 +18,7 @@ class SessionsController < Devise::SessionsController
   def create
     super
 
-    flash[:notice] = nil
+    flash.delete :notice
     flash[:success] = _('Sessions|Successfully logged in')
   end
 

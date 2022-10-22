@@ -5,7 +5,6 @@ module Operations::User
         str! :username
         str! :email
         str! :password
-        str! :password_confirmation
       end
       str? :'g-recaptcha-response'
       str? :'h-captcha-response'
