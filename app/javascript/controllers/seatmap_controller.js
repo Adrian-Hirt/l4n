@@ -113,7 +113,8 @@ export default class extends Controller {
         taken: seat.taken,
         userName: seat.userName,
         userId: seat.userId,
-        seatName: seat.seatName
+        seatName: seat.seatName,
+        strokeScaleEnabled: false
       });
 
       // Add the new box
@@ -309,7 +310,7 @@ export default class extends Controller {
 
       // Highlight the current selection
       this.currentSelection.setAttr('stroke', 'black');
-      this.currentSelection.setAttr('strokeWidth', 10);
+      this.currentSelection.setAttr('strokeWidth', 5);
 
       this.#updateSelectedSeatInfo();
 
@@ -396,7 +397,7 @@ export default class extends Controller {
 
         // Highlight the current selection
         this.currentSelection.setAttr('stroke', 'black');
-        this.currentSelection.setAttr('strokeWidth', 10);
+        this.currentSelection.setAttr('strokeWidth', 5);
 
         this.#updateSelectedSeatInfo();
       }
@@ -462,7 +463,7 @@ export default class extends Controller {
 
       // Highlight the current selection
       this.currentSelection.setAttr('stroke', 'black');
-      this.currentSelection.setAttr('strokeWidth', 10);
+      this.currentSelection.setAttr('strokeWidth', 5);
 
       this.#updateSelectedSeatInfo();
     }
