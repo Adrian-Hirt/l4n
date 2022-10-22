@@ -6,7 +6,7 @@
           %b> L4N
           Dev
       .card-body
-        = simple_form_for model, wrapper: :input_group, url: signup_path, data: { turbo: 'false' } do |f|
+        = simple_form_for model, wrapper: :input_group, url: signup_path do |f|
           = f.input :username, label: false, placeholder: _('User|Username')
           = f.input :email, label: false, placeholder: _('User|Email')
           = f.password :password, label: false, placeholder: _('User|Password')

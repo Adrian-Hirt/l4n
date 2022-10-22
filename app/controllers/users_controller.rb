@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       flash[:success] = _('User|Successfully created, check your mail for activation')
       redirect_to root_path
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   rescue Operations::User::Create::SignupClosed
     flash[:danger] = _('User|Signup is currently closed')
@@ -45,6 +45,6 @@ class UsersController < ApplicationController
     model.validate
     flash.delete(:hcaptcha_error)
     flash.now[:danger] = _('Session|Hcaptcha failed, please try again')
-    render :new
+    render :new, status: :unprocessable_entity
   end
 end
