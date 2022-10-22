@@ -17,6 +17,7 @@ class Product < ApplicationRecord
 
   # == Attributes ==================================================================
   register_behaviour :ticket, ::Operations::Behaviours::Ticket
+  register_behaviour :ticket_upgrade, ::Operations::Behaviours::TicketUpgrade
 
   # == Constants ===================================================================
 
@@ -29,7 +30,11 @@ class Product < ApplicationRecord
     attachable.variant :medium, resize_and_pad: [300, 300, { background: [255, 255, 255] }]
   end
 
+  # For product behaviours
   belongs_to :seat_category, optional: true
+  belongs_to :to_product, optional: true, class_name: 'Product'
+  belongs_to :from_product, optional: true, class_name: 'Product'
+
   belongs_to :product_category
 
   has_many :promotion_products, dependent: :destroy
@@ -42,17 +47,33 @@ class Product < ApplicationRecord
   validates :availability, numericality: { greater_than_or_equal_to: 0 }, presence: true
   validates :images, size: { less_than: 5.megabytes, message: format(_('File is too large, max. allowed %{size}'), size: '5MB') }, content_type: %r{\Aimage/.*\z}
   validates :sort, numericality: { min: 0 }, presence: true
+  validates :seat_category, uniqueness: true, if: :seat_category
 
   # == Hooks =======================================================================
   before_create :add_availability
+  before_destroy :check_deletable?
 
   # == Scopes ======================================================================
 
   # == Class Methods ===============================================================
+  def self.grouped_by_lan
+    grouped = SeatCategory.all.group_by(&:lan_party_id)
+    grouped.each do |k, v|
+      grouped[k] = v.map do |category|
+        category.products.map { |product| { id: product.id, name: product.name } }
+      end.compact_blank.flatten
+    end
+
+    grouped
+  end
 
   # == Instance Methods ============================================================
   def starting_price
     product_variants.map(&:price).min.presence || Money.zero
+  end
+
+  def deletable?
+    Product.where('to_product_id = ? OR from_product_id = ?', id, id).none?
   end
 
   # == Private Methods =============================================================
@@ -60,5 +81,11 @@ class Product < ApplicationRecord
 
   def add_availability
     self.availability = inventory
+  end
+
+  def check_deletable?
+    return if deletable?
+
+    throw :abort
   end
 end

@@ -1,0 +1,40 @@
+#product-behaviour-ticket_upgrade{class: ('d-none' unless enabled)}
+  .row{data: { controller: 'admin--product-to-and-from-product-input', options: Product.grouped_by_lan.to_json }}
+    .col-md-4
+      .select.optional
+        - lan_party = product.from_product&.seat_category&.lan_party_id || product.to_product&.seat_category&.lan_party_id
+        - if lan_party
+          - initially_available = Product.where(seat_category: SeatCategory.where(lan_party_id: lan_party))
+        - else
+          - initially_available = []
+
+        = f.label :lan_party, class: 'form-label select optional'
+        = select_tag :lan_party,
+          options_from_collection_for_select(LanParty.all, "id", "name", lan_party),
+          class: 'form-select rounded-0 select optional mb-0',
+          include_blank: _('Form|Select|Blank'),
+          data: { action: 'change->admin--product-to-and-from-product-input#changeAvailableOptions' },
+          disabled: !enabled
+
+    .col-md-4
+      = f.association :from_product,
+        include_blank: _('Form|Select|Blank'),
+        collection: initially_available,
+        wrapper_html: { style: 'margin-bottom: 0 !important;' },
+        input_html: { data: { 'admin--product-to-and-from-product-input-target' => 'fromProduct' } },
+        disabled: !enabled,
+        label: _('Product|From Product')
+
+    .col-md-4
+      = f.association :to_product,
+        include_blank: _('Form|Select|Blank'),
+        collection: initially_available,
+        wrapper_html: { style: 'margin-bottom: 0 !important;' },
+        input_html: { data: { 'admin--product-to-and-from-product-input-target' => 'toProduct' } },
+        disabled: !enabled,
+        label: _('Product|To Product')
+
+  - if product.to_product.present?
+    .row.mt-3
+      .col-md-12
+        = ('Product|TicketBehaviour|Virtual availability from to_product is: %{availability}') % { availability: product.to_product.availability }

@@ -27,6 +27,18 @@ module ProductBehaviours
     end
   end
 
+  def before_checkout_behaviour_actions(cart_item)
+    enabled_product_behaviour_classes.each do |behaviour|
+      behaviour.run_before_checkout(cart_item)
+    end
+  end
+
+  def on_cleanup_behaviour_actions(order_item)
+    enabled_product_behaviour_classes.each do |behaviour|
+      behaviour.run_on_cleanup(order_item)
+    end
+  end
+
   def available_product_behaviours
     self.class.registered_keys.map { |key| [key.to_s, _("ProductBehaviours|#{key.capitalize}")] }
   end

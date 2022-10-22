@@ -11,10 +11,11 @@ module Operations::Behaviours
     end
 
     def self.run_validations(product)
-      # Need to have the seat_category set for this behaviour to make sense
-      return if product.seat_category.present?
+      # Cannot use this when the ticket_upgrade is enabled as well
+      product.errors.add(:enabled_product_behaviours, _('Product|TicketBehaviour|Invalid combination')) if product.enabled_product_behaviours.include?('ticket_upgrade')
 
-      product.errors.add(:seat_category, _('Product|TicketBehaviour|Seat category needs to be set'))
+      # Need to have the seat_category set for this behaviour to make sense
+      product.errors.add(:seat_category, _('Product|TicketBehaviour|Seat category needs to be set')) if product.seat_category.blank?
     end
 
     def self.render_view(form, product, enabled)

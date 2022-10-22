@@ -11,6 +11,8 @@ module Operations::Admin::Product
         opt :images
         opt :product_variants_attributes
         opt :seat_category_id
+        opt :to_product_id
+        opt :from_product_id
         opt :product_category_id
         opt :sort
       end

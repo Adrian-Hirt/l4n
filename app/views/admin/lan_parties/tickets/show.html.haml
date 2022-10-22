@@ -7,8 +7,7 @@
         .mb-2
           = _('Ticket|Seat category')
           .small.text-muted
-            .badge{style: "background-color: #{model.seat_category.color_for_view};"}
-              = model.seat_category.name
+            = ticket_seat_category_badge(model)
         .mb-2
           = _('Ticket|Status')
           .small.text-muted
@@ -75,6 +74,18 @@
                                     append_options: { class: '' },
                                     placeholder: _('Admin|Ticket|Seat id to assign to'),
                                     input_html: { class: %i[py-0] }
+              %hr
+              %b= _('Admin|Ticket|Change category')
+              = simple_form_for :ticket_upgrade, url: change_category_admin_ticket_path(model) do |f|
+                .d-flex
+                  = f.input :category_id, as: :select,
+                                          collection: op.seat_categories.reject { |category| category == model.seat_category },
+                                          include_blank: _('Form|Select|Blank'),
+                                          label_method: :name,
+                                          label: false,
+                                          wrapper_html: { style: 'margin-bottom: 0 !important;', class: 'flex-grow-1' },
+                                          input_html: { class: %i[py-1] }
+                  = f.save '>', class: %i[btn-sm rounded-end], style: 'border-radius: 0;'
     .card.mb-3
       .card-header
         = _('Ticket|Show QR')

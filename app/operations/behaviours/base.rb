@@ -17,5 +17,15 @@ module Operations::Behaviours
     def self.run_validations(product)
       fail NotImplementedError
     end
+
+    def self.run_before_checkout(cart_item)
+      # By default, this does nothing, but can be
+      # overwritten
+    end
+
+    def self.run_on_cleanup(order_item)
+      # By default, this does nothing, but can be
+      # overwritten
+    end
   end
 end

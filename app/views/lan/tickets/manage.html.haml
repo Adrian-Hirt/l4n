@@ -1,0 +1,60 @@
+- provide :page_title, _('Tickets|Manage')
+
+
+.card.mb-3
+  .card-header
+    = _('Tickets|Manage my tickets')
+  .card-body
+    = _('Tickets|Ticket manage view hint')
+    %hr
+    - if op.tickets.none?
+      = _('Tickets|You don\'t have any tickets for this event')
+    - else
+      %table.table
+        %tr
+          %th= _('Ticket|Category')
+          %th= _('Ticket|Seat')
+          %th= _('Ticket|Assignee')
+          %th= _('Ticket|Apply upgrade')
+        - op.tickets.order(:id).each do |ticket|
+          %tr
+            %td.align-middle
+              = ticket_seat_category_badge(ticket)
+            %td.align-middle
+              = ticket.seat&.name_or_id.presence || '&nbsp;'.html_safe
+            %td.align-middle
+              = ticket.assignee&.username || _('Ticket|Unassigned')
+            %td.align-middle
+              = simple_form_for :ticket_upgrade, url: apply_upgrade_lan_tickets_path(ticket) do |f|
+                .d-flex
+                  = f.input :ticket_id, input_html: { value: ticket.id }, as: :hidden
+                  = f.input :upgrade_id, as: :select,
+                                          collection: op.ticket_upgrades.reject(&:used).filter { |upgrade| upgrade.from_product.seat_category == ticket.seat_category },
+                                          include_blank: _('Form|Select|Blank'),
+                                          label_method: :name,
+                                          label: false,
+                                          wrapper_html: { style: 'margin-bottom: 0 !important;', class: 'me-1' }
+                  = f.save _('TicketUpgrade|Upgrade')
+.card
+  .card-header
+    = _('TicketUpgrades|Manage my ticket upgrades')
+  .card-body
+    - if op.ticket_upgrades.none?
+      = _('TicketUpgrades|You don\'t have any upgrades for this event')
+    - else
+      %table.table
+        %tr
+          %th= _('TicketUpgrade|From category')
+          %th= _('TicketUpgrade|To category')
+          %th= _('TicketUpgrade|Used')
+        - op.ticket_upgrades.order(:id).each do |ticket_upgrade|
+          %tr
+            %td
+              - category = ticket_upgrade.from_product.seat_category
+              .badge{style: "background-color: #{category.color_for_view}; color: #{category.font_color_for_view};"}
+                = category.name
+            %td
+              - category = ticket_upgrade.to_product.seat_category
+              .badge{style: "background-color: #{category.color_for_view}; color: #{category.font_color_for_view};"}
+                = category.name
+            %td= format_boolean ticket_upgrade.used?

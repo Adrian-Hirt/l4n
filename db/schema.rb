@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_08_123957) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_14_191140) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -114,7 +114,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_08_123957) do
   create_table "news_posts", force: :cascade do |t|
     t.string "title", null: false
     t.text "content"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.boolean "published", default: false, null: false
     t.datetime "published_at", precision: nil
     t.datetime "created_at", null: false
@@ -193,9 +193,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_08_123957) do
     t.bigint "seat_category_id"
     t.bigint "product_category_id"
     t.integer "sort", default: 0, null: false
+    t.bigint "from_product_id"
+    t.bigint "to_product_id"
+    t.index ["from_product_id"], name: "index_products_on_from_product_id"
     t.index ["name"], name: "index_products_on_name", unique: true
     t.index ["product_category_id"], name: "index_products_on_product_category_id"
     t.index ["seat_category_id"], name: "index_products_on_seat_category_id"
+    t.index ["to_product_id"], name: "index_products_on_to_product_id"
   end
 
   create_table "promotion_code_mappings", force: :cascade do |t|
@@ -287,6 +291,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_08_123957) do
     t.datetime "updated_at", null: false
     t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
+  end
+
+  create_table "ticket_upgrades", force: :cascade do |t|
+    t.bigint "lan_party_id", null: false
+    t.bigint "from_product_id", null: false
+    t.bigint "to_product_id", null: false
+    t.bigint "order_id", null: false
+    t.boolean "used", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["from_product_id"], name: "index_ticket_upgrades_on_from_product_id"
+    t.index ["lan_party_id"], name: "index_ticket_upgrades_on_lan_party_id"
+    t.index ["order_id"], name: "index_ticket_upgrades_on_order_id"
+    t.index ["to_product_id"], name: "index_ticket_upgrades_on_to_product_id"
   end
 
   create_table "tickets", force: :cascade do |t|
@@ -476,6 +494,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_08_123957) do
   add_foreign_key "orders", "users"
   add_foreign_key "product_variants", "products"
   add_foreign_key "products", "product_categories"
+  add_foreign_key "products", "products", column: "from_product_id"
+  add_foreign_key "products", "products", column: "to_product_id"
   add_foreign_key "promotion_code_mappings", "orders"
   add_foreign_key "promotion_code_mappings", "promotion_codes"
   add_foreign_key "promotion_codes", "promotions"
@@ -486,6 +506,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_08_123957) do
   add_foreign_key "seats", "seat_categories"
   add_foreign_key "seats", "seat_maps"
   add_foreign_key "seats", "tickets"
+  add_foreign_key "ticket_upgrades", "lan_parties"
+  add_foreign_key "ticket_upgrades", "orders"
+  add_foreign_key "ticket_upgrades", "products", column: "from_product_id"
+  add_foreign_key "ticket_upgrades", "products", column: "to_product_id"
   add_foreign_key "tickets", "lan_parties"
   add_foreign_key "tickets", "orders"
   add_foreign_key "tickets", "seat_categories"

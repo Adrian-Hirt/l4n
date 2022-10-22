@@ -143,6 +143,11 @@ Rails.application.routes.draw do
         post :take_seat
         post :remove_seat
       end
+
+      collection do
+        get :manage
+        post :apply_upgrade
+      end
     end
   end
 
@@ -269,8 +274,13 @@ Rails.application.routes.draw do
           # Checking in and reverting the check-in
           post :check_in
           post :revert_check_in
+
+          # Changing ticket category
+          post :change_category
         end
       end
+
+      resources :ticket_upgrades, controller: 'lan_parties/ticket_upgrades', only: %i[index]
     end
 
     # Tournament system

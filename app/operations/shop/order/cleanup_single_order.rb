@@ -13,6 +13,9 @@ module Operations::Shop::Order
         # increase availability of product_item
         order_item.product.availability += order_item.quantity
         order_item.product.save!
+
+        # Run any behaviour on_cleanup actions we might have
+        order_item.product.on_cleanup_behaviour_actions(order_item)
       end
 
       order.destroy!
