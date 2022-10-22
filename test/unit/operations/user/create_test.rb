@@ -9,10 +9,9 @@ module Unit
           assert_difference '::User.count', 1 do
             user = ::Operations::User::Create.run!(
               user: {
-                username:              'Testuser',
-                email:                 'testuser@example.com',
-                password:              'Password123',
-                password_confirmation: 'Password123'
+                username: 'Testuser',
+                email:    'testuser@example.com',
+                password: 'Password123'
               }
             ).model.reload
 
@@ -35,10 +34,9 @@ module Unit
             assert_raises ActiveRecord::RecordInvalid do
               ::Operations::User::Create.run!(
                 user: {
-                  username:              '',
-                  email:                 'testuser@example.com',
-                  password:              'Password123',
-                  password_confirmation: 'Password123'
+                  username: '',
+                  email:    'testuser@example.com',
+                  password: 'Password123'
                 }
               )
             end
@@ -48,10 +46,9 @@ module Unit
             assert_raises ActiveRecord::RecordInvalid do
               ::Operations::User::Create.run!(
                 user: {
-                  username:              'Testuser',
-                  email:                 '',
-                  password:              'Password123',
-                  password_confirmation: 'Password123'
+                  username: 'Testuser',
+                  email:    '',
+                  password: 'Password123'
                 }
               )
             end
@@ -61,10 +58,9 @@ module Unit
             assert_raises ActiveRecord::RecordInvalid do
               ::Operations::User::Create.run!(
                 user: {
-                  username:              'Testuser',
-                  email:                 'testuser@example.com',
-                  password:              '',
-                  password_confirmation: ''
+                  username: 'Testuser',
+                  email:    'testuser@example.com',
+                  password: ''
                 }
               )
             end
