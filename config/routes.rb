@@ -158,6 +158,14 @@ Rails.application.routes.draw do
     post :checkin
   end
 
+  # == API ==============================================================================
+  namespace :api do
+    namespace :v1 do # rubocop:disable Naming/VariableNumber
+      resources :news, only: %i[index show]
+      resources :events, only: %i[index show]
+    end
+  end
+
   # == Admin panel ======================================================================
   namespace :admin do
     get '/', to: 'home#dashboard'
