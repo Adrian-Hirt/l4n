@@ -30,7 +30,7 @@
                 .d-flex
                   = f.input :ticket_id, input_html: { value: ticket.id }, as: :hidden
                   = f.input :upgrade_id, as: :select,
-                                          collection: op.ticket_upgrades.filter { |upgrade| upgrade.from_product.seat_category == ticket.seat_category },
+                                          collection: op.ticket_upgrades.reject(&:used).filter { |upgrade| upgrade.from_product.seat_category == ticket.seat_category },
                                           include_blank: _('Form|Select|Blank'),
                                           label_method: :name,
                                           label: false,

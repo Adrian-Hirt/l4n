@@ -8,14 +8,14 @@ module Operations::Ticket
       @tickets ||= ::Ticket.where(lan_party: lan_party)
                            .joins(:order)
                            .where(order: { user: context.user })
-                           .includes(:seat_category)
-                           .distinct
+                           .includes(:seat_category, :seat, :assignee)
     end
 
     def ticket_upgrades
       @ticket_upgrades ||= ::TicketUpgrade.where(lan_party: lan_party)
                                           .joins(:order)
                                           .where(order: { user: context.user })
+                                          .includes(:from_product, :to_product)
     end
 
     def lan_party

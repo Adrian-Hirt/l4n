@@ -31,6 +31,16 @@ module Operations::Behaviours
     end
 
     def self.run_before_checkout(cart_item)
+      # Check that the user has at least as many tickets with the same seat_category
+      # as the from seat category
+      user = cart_item.cart.user
+      from_seat_category = cart_item.product_variant.product.from_product.seat_category
+      lan_party = from_seat_category.lan_party
+
+      user_tickets = ::Ticket.where(lan_party: lan_party).joins(:order).where(order: { user: user }).where(seat_category: from_seat_category)
+
+      fail Operations::Exceptions::OpFailed, _('TicketUpgrade|You can only buy as many upgrades as the number of upgradeable tickets you own') if user_tickets.count < cart_item.quantity
+
       # decrease availability of to_product
       to_product = cart_item.product.to_product
 
