@@ -11,5 +11,5 @@
       = f.input :selected_seat_id, input_html: { class: 'selected-seat-input' },
                                   as: :hidden,
                                   wrapper_html: { style: 'margin-bottom: 0 !important;' }
-      = button_tag class: %i[btn btn-primary btn-sm icon-only-btn take-seat-button disabled] do
+      = button_tag class: %i[btn btn-primary btn-sm icon-only-btn take-seat-button disabled], name: '' do
         = icon %i[fas fa-chair fa-fw]
