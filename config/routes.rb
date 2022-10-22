@@ -317,6 +317,12 @@ Rails.application.routes.draw do
     # ScannerUser management
     resources :scanner_users, except: %i[show]
 
+    # System management
+    namespace :system do
+      get :/, action: :index
+      post :cleanup_cache
+    end
+
     # Markdown preview endpoint
     post :markdown_preview, to: 'markdown#preview'
   end

@@ -135,9 +135,6 @@ class Ability
     # Menu items permission
     can :manage, MenuItem if user.menu_items_admin_permission?
 
-    # User can access system settings
-    can :manage, FeatureFlag if user.system_admin_permission?
-
     # User can use the payment assist TODO: add permission check
     can :use, :payment_assist if FeatureFlag.enabled?(:shop)
 
@@ -175,6 +172,14 @@ class Ability
       can :manage, Tournament::Team
       can :manage, Tournament::Match
       can :manage, Tournament::TeamMember
+    end
+
+    # System admin permission, for actions such as clearing the cache and
+    # feature flags. This permission should only be given very carefully
+    if user.system_admin_permission?
+      can :manage, :system
+      can :manage, FeatureFlag
+      # Probably as well: API
     end
   end
 end
