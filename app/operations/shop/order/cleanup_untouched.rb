@@ -1,5 +1,7 @@
 module Operations::Shop::Order
   class CleanupUntouched < RailsOps::Operation
+    schema3 {} # No params allowed for now
+
     without_authorization
 
     def perform

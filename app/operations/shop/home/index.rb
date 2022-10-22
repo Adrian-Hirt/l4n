@@ -1,5 +1,7 @@
 module Operations::Shop::Home
   class Index < RailsOps::Operation
+    schema3 {} # No params allowed for now
+
     policy :on_init do
       authorize! :read, :shop
     end

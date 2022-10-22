@@ -2,6 +2,7 @@ module Operations::Admin::SeatCategory
   class Index < RailsOps::Operation
     schema3 do
       int! :lan_party_id, cast_str: true
+      str? :page
       hsh? :grids_admin_seat_categories, additional_properties: true
     end
 

@@ -1,14 +1,14 @@
 module Operations::Admin::PaymentAssist
   class OrderPaid < RailsOps::Operation
-    policy :on_init do
-      authorize! :use, :payment_assist
-    end
-
     schema3 do
       int! :order_id, cast_str: true
       hsh? :order do
         str? :payment_gateway_payment_id
       end
+    end
+
+    policy :on_init do
+      authorize! :use, :payment_assist
     end
 
     def order

@@ -1,7 +1,7 @@
 module Operations::Admin::FeatureFlag
   class Toggle < RailsOps::Operation::Model::Update
-    schema do
-      req :id
+    schema3 do
+      int! :id, cast_str: true
     end
 
     model ::FeatureFlag

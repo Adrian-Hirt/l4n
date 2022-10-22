@@ -1,12 +1,12 @@
 module Operations::Shop::Order
   class ProcessPaid < RailsOps::Operation
-    delegate :order, to: :osparams
-
     schema3 do
-      obj! :order
+      obj! :order, classes: [Order], strict: false
       str? :gateway_name
       str? :payment_id
     end
+
+    delegate :order, to: :osparams
 
     without_authorization
 

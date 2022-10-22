@@ -1,5 +1,9 @@
 module Operations::Shop::Order
   class SetOrderAddress < RailsOps::Operation::Model::Load
+    schema3 do
+      str? :selected_address_id
+    end
+
     model ::Order
 
     attr_reader :no_address_given_error

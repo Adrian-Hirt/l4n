@@ -1,5 +1,7 @@
 module Operations::TwoFactor
   class Deactivate < RailsOps::Operation
+    schema3 {} # No params allowed for now
+
     without_authorization
 
     delegate :user, to: :context

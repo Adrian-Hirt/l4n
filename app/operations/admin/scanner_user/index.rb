@@ -1,6 +1,7 @@
 module Operations::Admin::ScannerUser
   class Index < RailsOps::Operation
     schema3 do
+      str? :page
       hsh? :grids_admin_scanner_users, additional_properties: true
     end
 

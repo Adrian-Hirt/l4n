@@ -1,6 +1,7 @@
 module Operations::Admin::Tournament
   class Index < RailsOps::Operation
     schema3 do
+      str? :page
       hsh? :grids_admin_tournaments, additional_properties: true
     end
 

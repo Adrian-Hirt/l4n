@@ -1,5 +1,7 @@
 module Operations::Ticket
   class Manage < RailsOps::Operation
+    schema3 {} # No params allowed for now
+
     policy :on_init do
       authorize! :use, Ticket
     end

@@ -1,5 +1,11 @@
 module Operations::Shop::Order
   class ProcessMarkedForDelayedPayment < RailsOps::Operation
+    schema3 do
+      obj! :order, classes: [Order], strict: false
+      str? :gateway_name
+      str? :payment_id
+    end
+
     delegate :order, to: :osparams
 
     without_authorization

@@ -10,7 +10,7 @@
         .col-md-12
           .alert.alert-info
             = _('Order|Delayed payment required hint')
-          = delete_button model, href: cancel_delayed_payment_pending_shop_order_path(model)
+          = delete_button model, href: cancel_delayed_payment_pending_shop_order_path(model.uuid)
 
     .row.border-bottom.pb-3.mb-2
       .col-md-4

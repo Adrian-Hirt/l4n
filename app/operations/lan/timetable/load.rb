@@ -1,5 +1,7 @@
 module Operations::Lan::Timetable
   class Load < RailsOps::Operation::Model
+    schema3 {} # No params allowed for now
+
     policy :on_init do
       authorize! :read, Timetable
     end

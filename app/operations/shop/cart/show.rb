@@ -1,5 +1,7 @@
 module Operations::Shop::Cart
   class Show < RailsOps::Operation::Model
+    schema3 {} # No params allowed for now
+
     policy :on_init do
       authorize! :use, :shop
     end

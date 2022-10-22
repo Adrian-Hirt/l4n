@@ -1,5 +1,7 @@
 module Operations::Ticket
   class LoadMyTicket < RailsOps::Operation
+    schema3 {} # No params allowed for now
+
     policy :on_init do
       # Fail if ticket not found
       fail Operations::Exceptions::OpFailed, _('Ticket|No ticket found') if ticket.nil?

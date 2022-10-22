@@ -1,5 +1,9 @@
 module Operations::PaymentGateway
   class GetPaymentInfo < RailsOps::Operation
+    schema3 do
+      str? :order_id
+    end
+
     without_authorization
 
     attr_accessor :result
