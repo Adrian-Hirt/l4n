@@ -74,6 +74,11 @@ class Ability
       m.order.user == user || m.assignee == user
     end
 
+    # A user can only use the ticket_upgrades they own
+    can :use, TicketUpgrade do |m|
+      m.order.user == user
+    end
+
     # Tournament permissions
     if FeatureFlag.enabled?(:tournaments)
       # A registered user can create a team

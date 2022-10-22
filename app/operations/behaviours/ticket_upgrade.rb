@@ -21,13 +21,12 @@ module Operations::Behaviours
       end
 
       # Afterwards, decrease the inventory of the to_product (availability was
-      # already decreased earlier) and increase availability & inventory of the
-      # from_product
+      # already decreased earlier). We only increase the inventory of the from_product,
+      # the availability is only increased when the upgrade is used.
       to_product.inventory -= counter
       to_product.save!
 
       from_product.inventory += counter
-      from_product.availability += counter
       from_product.save!
     end
 

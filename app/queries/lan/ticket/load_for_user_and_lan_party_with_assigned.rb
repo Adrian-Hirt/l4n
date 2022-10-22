@@ -1,5 +1,5 @@
 module Queries::Lan::Ticket
-  class LoadForSeatmap < Inquery::Query
+  class LoadForUserAndLanPartyWithAssigned < Inquery::Query
     schema3 do
       obj! :user, classes: [User]
       obj! :lan_party, classes: [LanParty]

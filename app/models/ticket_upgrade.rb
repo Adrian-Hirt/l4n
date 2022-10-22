@@ -19,6 +19,9 @@ class TicketUpgrade < ApplicationRecord
   # == Class Methods ===============================================================
 
   # == Instance Methods ============================================================
+  def name
+    "#{from_product.seat_category.name} -> #{to_product.seat_category.name}"
+  end
 
   # == Private Methods =============================================================
 end

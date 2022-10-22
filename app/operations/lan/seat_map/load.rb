@@ -42,7 +42,7 @@ module Operations::Lan::SeatMap
     end
 
     def available_tickets
-      Queries::Lan::Ticket::LoadForSeatmap.call(user: context.user, lan_party: lan_party).includes(:seat_category, :seat, :assignee)
+      Queries::Lan::Ticket::LoadForUserAndLanPartyWithAssigned.call(user: context.user, lan_party: lan_party).includes(:seat_category, :seat, :assignee)
     end
 
     def ticket_for_lan_party

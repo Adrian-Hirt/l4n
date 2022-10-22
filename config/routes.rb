@@ -143,6 +143,11 @@ Rails.application.routes.draw do
         post :take_seat
         post :remove_seat
       end
+
+      collection do
+        get :manage
+        post :apply_upgrade
+      end
     end
   end
 

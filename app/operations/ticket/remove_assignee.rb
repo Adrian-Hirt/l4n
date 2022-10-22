@@ -27,7 +27,7 @@ module Operations::Ticket
     end
 
     def available_tickets
-      Queries::Lan::Ticket::LoadForSeatmap.call(user: context.user, lan_party: model.lan_party).includes(:seat_category, :seat)
+      Queries::Lan::Ticket::LoadForUserAndLanPartyWithAssigned.call(user: context.user, lan_party: model.lan_party).includes(:seat_category, :seat)
     end
 
     def ticket_for_lan_party

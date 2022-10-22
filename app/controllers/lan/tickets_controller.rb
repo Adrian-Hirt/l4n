@@ -58,5 +58,25 @@ module Lan
       flash[:danger] = e.message
       redirect_to lan_seatmap_path
     end
+
+    def manage
+      op Operations::Ticket::Manage
+    rescue Operations::Exceptions::OpFailed => e
+      flash[:danger] = e.message
+      redirect_to lan_seatmap_path
+    end
+
+    def apply_upgrade
+      if run Operations::TicketUpgrade::Apply
+        flash[:success] = _('TicketUpgrade|Applied successfully')
+      else
+        flash[:danger] = _('TicketUpgrade|Could not be applied')
+      end
+
+      redirect_to manage_lan_tickets_path
+    rescue Operations::Exceptions::OpFailed => e
+      flash[:danger] = e.message
+      redirect_to manage_lan_tickets_path
+    end
   end
 end
