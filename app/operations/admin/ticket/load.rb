@@ -17,5 +17,9 @@ module Operations::Admin::Ticket
         module_size:     4
       )
     end
+
+    def seat_categories
+      @seat_categories ||= model.lan_party.seat_categories.order(:name)
+    end
   end
 end

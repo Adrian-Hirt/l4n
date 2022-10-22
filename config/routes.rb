@@ -274,6 +274,9 @@ Rails.application.routes.draw do
           # Checking in and reverting the check-in
           post :check_in
           post :revert_check_in
+
+          # Changing ticket category
+          post :change_category
         end
       end
 

@@ -19,14 +19,13 @@
         - op.tickets.order(:id).each do |ticket|
           %tr
             %td.align-middle
-              .badge{style: "background-color: #{ticket.seat_category.color_for_view}; color: #{ticket.seat_category.font_color_for_view};"}
-                = ticket.seat_category.name
+              = ticket_seat_category_badge(ticket)
             %td.align-middle
               = ticket.seat&.name_or_id.presence || '&nbsp;'.html_safe
             %td.align-middle
               = ticket.assignee&.username || _('Ticket|Unassigned')
             %td.align-middle
-              = simple_form_for :ticket_upgrade, url: apply_upgrade_lan_tickets_path do |f|
+              = simple_form_for :ticket_upgrade, url: apply_upgrade_lan_tickets_path(ticket) do |f|
                 .d-flex
                   = f.input :ticket_id, input_html: { value: ticket.id }, as: :hidden
                   = f.input :upgrade_id, as: :select,

@@ -10,10 +10,10 @@ module Grids
       column :id
       column :used, html: ->(used) { format_boolean(used) }
       column :from_product, html: true do |ticket|
-        ticket.from_product.name
+        seat_category_badge(ticket.from_product.seat_category)
       end
       column :to_product, html: true do |ticket|
-        ticket.to_product.name
+        seat_category_badge(ticket.to_product.seat_category)
       end
 
       column :order, html: ->(order) { link_to order.formatted_id, admin_shop_order_path(order) }

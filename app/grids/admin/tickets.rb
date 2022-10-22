@@ -9,7 +9,7 @@ module Grids
 
       column :id
       column :seat_category, html: true do |ticket|
-        ticket.seat_category.name
+        ticket_seat_category_badge(ticket)
       end
 
       column :assignee, html: ->(assignee) { assignee&.username }

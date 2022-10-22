@@ -79,7 +79,19 @@ module Admin
         if run Operations::Admin::Ticket::RevertCheckIn
           flash[:success] = _('Admin|Ticket|Successfully reverted the check in')
         else
-          flash[:danger] = _('Admin|Ticket|Check in could not check-in')
+          flash[:danger] = _('Admin|Ticket|Could not check-in')
+        end
+        redirect_to admin_ticket_path(model)
+      rescue Operations::Exceptions::OpFailed => e
+        flash[:danger] = e.message
+        redirect_to admin_ticket_path(model)
+      end
+
+      def change_category
+        if run Operations::Admin::Ticket::ChangeCategory
+          flash[:success] = _('Admin|Ticket|Successfully changed the category')
+        else
+          flash[:danger] = _('Admin|Ticket|Category could not be changed')
         end
         redirect_to admin_ticket_path(model)
       rescue Operations::Exceptions::OpFailed => e
