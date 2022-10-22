@@ -24,6 +24,8 @@
         .card-body
           = turbo_frame_tag :tickets do
             = render partial: 'tickets', locals: { tickets: op.available_tickets }
+        .card-footer
+          = button _('Tickets|Manage & upgrade tickets'), manage_lan_tickets_path, size: :sm
     .card.mb-3
       .card-header
         = _('Seatmap|Selected seat')
@@ -40,7 +42,7 @@
               .badge{style: "background-color: #{category.color_for_view};"}
                 &nbsp;
             = category.name
-        .d-flex.align-items-center.mb-2
+        .d-flex.align-items-center
           .me-2
             .badge{style: "background-color: red"}
               &nbsp;
