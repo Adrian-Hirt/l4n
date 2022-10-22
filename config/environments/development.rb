@@ -31,7 +31,12 @@ Rails.application.configure do
     config.action_controller.perform_caching = true
     config.action_controller.enable_fragment_cache_logging = true
 
-    config.cache_store = :memory_store
+    # Use same cache as in prod env
+    config.cache_store = :file_store, Rails.root.join('tmp/cache/'), {
+      expires_in:         1.month,
+      race_condition_ttl: 5.seconds
+    }
+
     config.public_file_server.headers = {
       'Cache-Control' => "public, max-age=#{2.days.to_i}"
     }

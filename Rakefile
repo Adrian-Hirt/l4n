@@ -4,3 +4,6 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
+
+# Clear the cache before the asset:precompile task
+Rake::Task['assets:precompile'].enhance ['tmp:cache:clear']

@@ -10,3 +10,11 @@ set :output, "#{Whenever.path}/log/cron.log"
 every 5.minutes do
   runner 'Operations::Admin::Order::CleanupExpired.run'
 end
+
+every 15.minutes do
+  runner 'Operations::Session::ExpireOld.run'
+end
+
+every 4.hours do
+  runner 'Rails.cache.cleanup'
+end

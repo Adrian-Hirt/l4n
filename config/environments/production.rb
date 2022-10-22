@@ -56,7 +56,10 @@ Rails.application.configure do
   config.log_tags = [:request_id]
 
   # Use file_store cache store in production.
-  config.cache_store = :file_store, Rails.root.join('tmp/cache/')
+  config.cache_store = :file_store, Rails.root.join('tmp/cache/'), {
+    expires_in:         1.month,
+    race_condition_ttl: 5.seconds
+  }
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
