@@ -179,7 +179,7 @@ class Ability
     if user.system_admin_permission?
       can :manage, :system
       can :manage, FeatureFlag
-      # Probably as well: API
+      can :manage, ApiApplication
     end
   end
 end

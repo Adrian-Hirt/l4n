@@ -332,6 +332,9 @@ Rails.application.routes.draw do
       post :cleanup_cache
     end
 
+    # Api Applications management
+    resources :api_applications, except: %i[show]
+
     # Markdown preview endpoint
     post :markdown_preview, to: 'markdown#preview'
   end
