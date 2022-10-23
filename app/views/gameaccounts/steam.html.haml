@@ -1,0 +1,22 @@
+= turbo_frame_tag 'steam_profile' do
+  - if op.successful
+    .d-flex
+      .flex-shrink-0
+        %img.gameaccount-image{src: op.data[:steam_avatar]}
+      .flex-grow-1.ms-3
+        %h4= link_to op.data[:steam_name], op.data[:steam_url], target: :_blank
+        .d-block
+          = icon %i[fas fa-circle], classes:"steam-status-#{op.data[:steam_status_id]}"
+          = op.data[:steam_status]
+        - if op.data[:steam_game].present?
+          .d-block.mt-1
+            = _('GameAccounts|Steam currently playing %{game}') % { game: op.data[:steam_game] }
+        - if op.data[:steam_ip].present?
+          .d-block.mt-1
+            = link_to _('GameAccounts|Join steam server'), "steam://connect/#{op.data[:steam_ip]}"
+  - else
+    .d-flex
+      .flex-shrink-0
+        .placeholder.gameaccount-image
+      .flex-grow-1.ms-3
+        %h4= _('GameAccounts|Steam api error')

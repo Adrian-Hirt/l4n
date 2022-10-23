@@ -26,6 +26,12 @@ Rails.application.routes.draw do
     end
   end
 
+  # == Gameaccount frames for users =====================================================
+  namespace :gameaccounts do
+    get :steam
+    get :discord
+  end
+
   # == User registration ================================================================
   get 'signup', to: 'users#new'
   post 'signup', to: 'users#create'
@@ -53,6 +59,12 @@ Rails.application.routes.draw do
       get :/, action: :index
       get :destroy, action: :init_destroy_account
       post :destroy, action: :destroy_account
+    end
+
+    namespace :gameaccounts do
+      get :/, action: :index
+      delete :discord, action: :remove_discord
+      delete :steam, action: :remove_steam
     end
 
     resources :addresses, except: %i[show], controller: :user_addresses, as: :user_addresses
@@ -149,6 +161,12 @@ Rails.application.routes.draw do
         post :apply_upgrade
       end
     end
+  end
+
+  # == Omniauth callbacks ===============================================================
+  scope :auth do
+    post 'steam/callback', controller: :omniauth, action: :steam_callback
+    match 'discord/callback', controller: :omniauth, action: :discord_callback, via: %i[get post]
   end
 
   # == Ticket Scanner ===================================================================

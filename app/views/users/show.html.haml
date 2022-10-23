@@ -22,14 +22,35 @@
       .card-header.p2
         %ul.nav.nav-pills
           %li.nav-item
-            %a.nav-link.active{href: '#achievements', data: { toggle: 'tab' }}
-              = _('User|Achievements')
-          %li.nav-item
-            %a.nav-link{href: '#game-profiles', data: { toggle: 'tab' }}
+            %a.nav-link.active{href: '#game-profiles', data: { 'bs-toggle' => 'tab' }}
               = _('User|Game Profiles')
+          %li.nav-item
+            %a.nav-link{href: '#achievements', data: { 'bs-toggle' => 'tab' }}
+              = _('User|Achievements')
       .card-body
         .tab-content
-          .tab-pane.active#achievements
+          .tab-pane.active#game-profiles
+            .mb-3
+              %h4 Steam
+              = turbo_frame_tag 'steam_profile', src: gameaccounts_steam_path do
+                .d-flex
+                  .flex-shrink-0
+                    .placeholder-glow
+                      .placeholder.gameaccount-image
+                  .flex-grow-1.ms-3
+                    .placeholder-glow
+                      %h4.d-block.placeholder.col-4 &nbsp;
+                      .d-block.placeholder.col-4
+            .mb-0
+              %h4 Discord
+              = turbo_frame_tag 'discord_profile', src: gameaccounts_discord_path do
+                .d-flex
+                  .flex-shrink-0
+                    .placeholder-glow
+                      .placeholder.gameaccount-image
+                  .flex-grow-1.ms-3
+                    .placeholder-glow
+                      %h4.d-block.placeholder.col-4 &nbsp;
+                      .d-block.placeholder.col-4
+          .tab-pane#achievements
             ADD ACHIEVEMENTS HERE
-          .tab-pane#game-profiles
-            ADD GAME PROFILES HERE

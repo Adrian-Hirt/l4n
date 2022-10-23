@@ -1,0 +1,16 @@
+= turbo_frame_tag 'discord_profile' do
+  - if op.successful
+    .d-flex
+      .flex-shrink-0
+        - if op.data[:discord_avatar].present?
+          %img.gameaccount-image{src: op.data[:discord_avatar]}
+        - else
+          .placeholder.gameaccount-image
+      .flex-grow-1.ms-3
+        %h4= op.data[:discord_name]
+  - else
+    .d-flex
+      .flex-shrink-0
+        .placeholder.gameaccount-image
+      .flex-grow-1.ms-3
+        %h4= _('GameAccounts|Discord api error')

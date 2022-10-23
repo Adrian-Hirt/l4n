@@ -68,6 +68,12 @@ gem 'whenever', '~> 1.0.0', require: false
 # Tournaments
 gem 'tournament-system', '~> 2', require: 'tournament_system'
 
+# OAuth
+gem 'omniauth', '~> 2.0.4'
+gem 'omniauth-discord', '~> 1.0.2'
+gem 'omniauth-rails_csrf_protection', '~> 1.0.1'
+gem 'omniauth-steam', '~> 1.0.6'
+
 # Development gems
 group :development do
   gem 'listen', '~> 3.2'

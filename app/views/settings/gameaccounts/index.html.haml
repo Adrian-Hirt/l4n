@@ -1,0 +1,20 @@
+- provide :page_title, _('Settings|Edit gameaccounts')
+
+.row
+  .col-md-3
+    = render partial: 'settings/sidebar'
+  .col-md-9
+    .card
+      .card-body
+        %h4 Discord
+        - if current_user.discord_id.present?
+          = delete_button nil, title: _('Gameaccounts|Remove discord'), href: settings_gameaccounts_discord_path
+        - else
+          = button_to _('Gameaccounts|Add discord'), '/auth/discord', data: { turbo: false }, class: %i[btn btn-primary]
+
+        %hr
+        %h4 Steam
+        - if current_user.steam_id.present?
+          = delete_button nil, title: _('Gameaccounts|Remove steam'), href: settings_gameaccounts_steam_path
+        - else
+          = button_to _('Gameaccounts|Add steam'), '/auth/steam', data: { turbo: false }, class: %i[btn btn-primary]
