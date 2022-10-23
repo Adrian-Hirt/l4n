@@ -9,6 +9,10 @@ module Api
         not_found!
       end
 
+      rescue_from Schemacop::Exceptions::ValidationError do |_exception|
+        bad_request!
+      end
+
       # Docs for the v1 api
       def docs; end
 
@@ -37,6 +41,11 @@ module Api
       # 404 response
       def not_found!
         render plain: 'Not found', status: :not_found
+      end
+
+      # 400 response
+      def bad_request!
+        render plain: 'Bad request', status: :bad_request
       end
 
       # Custom rails_ops context
