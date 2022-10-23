@@ -1,0 +1,246 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "L4N Web API",
+    "description": "Used to process data from the L4N lan-party CMS",
+    "version": "v1"
+  },
+  "servers": [],
+  "paths": {
+    "/api/v1/news/{id}": {
+      "get": {
+        "summary": "Get infos about a single news entry",
+        "description": "This endpoint returns detailed info about one news entry identified by the id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of the news post",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "tags": [
+          "News"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A JSON object containing a single news entry",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/News"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authorization information is missing or invalid."
+          },
+          "404": {
+            "description": "Data with the submitted id was not found"
+          }
+        }
+      }
+    },
+    "/api/v1/news": {
+      "get": {
+        "summary": "Get infos about a multiple news entries",
+        "description": "This endpoint returns detailed info about multiple news entries",
+        "tags": [
+          "News"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A JSON object containing an array of news entries",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/News"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authorization information is missing or invalid."
+          }
+        }
+      }
+    },
+    "/api/v1/events/{id}": {
+      "get": {
+        "summary": "Get infos about a single event",
+        "description": "This endpoint returns detailed info about one event identified by the id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of the event",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "tags": [
+          "Events"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A JSON object containing a single news entry",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authorization information is missing or invalid."
+          },
+          "404": {
+            "description": "Data with the submitted id was not found"
+          }
+        }
+      }
+    },
+    "/api/v1/events": {
+      "get": {
+        "summary": "Get infos about a multiple upcoming events",
+        "description": "This endpoint returns detailed info about multiple upcoming events",
+        "tags": [
+          "Events"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A JSON object containing an array of events",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Event"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authorization information is missing or invalid."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-KEY"
+      }
+    },
+    "schemas": {
+      "Event": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "The title of the event",
+            "example": "League of Legends Public Viewing"
+          },
+          "description": {
+            "type": "string",
+            "description": "The description text of the event, markdown",
+            "example": "**Date: Someday**\\n**Location: Somewhere**\\n\\nJoin us for the first ..."
+          },
+          "location": {
+            "type": "string",
+            "description": "The location of the event",
+            "example": "**Date: Someday**\\n**Location: Somewhere**\\n\\nJoin us for the first ..."
+          },
+          "url": {
+            "type": "string",
+            "description": "The url of the event",
+            "example": "l4n.ch/events/1"
+          },
+          "dates": {
+            "type": "array",
+            "description": "All the dates of this event",
+            "items": {
+              "type": "object",
+              "description": "Object holding start & end datetime, formatted in ISO 8601",
+              "properties": {
+                "start": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "end": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            }
+          }
+        }
+      },
+      "News": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "New board member!",
+            "description": "The title of the newspsot"
+          },
+          "content": {
+            "type": "string",
+            "example": "A new board member joined us today ...",
+            "description": "Content of the news post, markdown"
+          },
+          "url": {
+            "type": "string",
+            "example": "l4n.ch/news/1"
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the post was published, formatted in ISO 8601"
+          },
+          "author": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "example": "Testuser"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

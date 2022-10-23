@@ -1,11 +1,16 @@
 module Api
   module V1
     class ApiController < ActionController::Base # rubocop:disable Rails/ApplicationController
-      before_action :authenticate_with_api_key
+      before_action :authenticate_with_api_key, except: %i[docs]
+
+      wrap_parameters false
 
       rescue_from ActiveRecord::RecordNotFound do |_exception|
         not_found!
       end
+
+      # Docs for the v1 api
+      def docs; end
 
       private
 

@@ -161,6 +161,7 @@ Rails.application.routes.draw do
   # == API ==============================================================================
   namespace :api do
     namespace :v1 do # rubocop:disable Naming/VariableNumber
+      get :/, action: :docs, controller: :api
       resources :news, only: %i[index show]
       resources :events, only: %i[index show]
     end

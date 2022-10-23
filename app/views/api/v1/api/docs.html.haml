@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %title L4n API
+    %meta{content: 'width=device-width,initial-scale=1', name: 'viewport'}
+    %script{src: 'https://unpkg.com/@stoplight/elements@7.7.2/web-components.min.js'}
+    %link{href: 'https://unpkg.com/@stoplight/elements@7.7.2/styles.min.css', rel: 'stylesheet'}
+    :css
+      body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+
+      main {
+        flex: 1 0 0;
+        overflow: hidden;
+      }
+  %body
+    %header
+    %main
+      %elements-api{apidescriptionurl: '/api_definitions/v1.json', router: 'hash'}
