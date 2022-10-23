@@ -24,7 +24,7 @@ module Admin
 
     def edit
       op Operations::Admin::ScannerUser::Update
-      add_breadcrumb model.name, admin_tournament_path(model)
+      add_breadcrumb model.name
     end
 
     def update
@@ -45,7 +45,7 @@ module Admin
         flash[:danger] = _('Admin|ScannerUser|Cannot be deleted')
       end
 
-      redirect_to admin_scanner_users_path(model)
+      redirect_to admin_scanner_users_path
     end
   end
 end
