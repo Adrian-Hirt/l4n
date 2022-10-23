@@ -130,14 +130,14 @@
               %span
                 %i.nav-icon.fas.fa-trophy.fa-fw
                 %span.nav-item-text= _('Admin|Tournaments')
-        - if can?(:manage, :system) || can?(:manage, FeatureFlag)
+        - if can?(:manage, :system) || can?(:manage, FeatureFlag) || can?(:manage, ApiApplication)
           %li.nav-item.dropdown
             %a.nav-link.collapse-link{data: {'bs-toggle' => 'collapse'}, href: '#system-collapse', class: sidenav_collapser_classes(:system, :feature_flags)}
               %span
                 %i.nav-icon.fas.fa-server.fa-fw
                 %span.nav-item-text= _('Admin|System')
               %i.right.fas.fa-angle-right.dropdown-icon
-            #system-collapse.collapse{class: sidenav_collapse_classes(:system, :feature_flags), data: { 'bs-parent' => '.sidenav' }}
+            #system-collapse.collapse{class: sidenav_collapse_classes(:system, :feature_flags, :api_applications), data: { 'bs-parent' => '.sidenav' }}
               %ul.nav.nav-pills.flex-column
                 - if can?(:manage, :system)
                   %li.nav-item
@@ -151,6 +151,12 @@
                       %span
                         %i.nav-icon.fas.fa-flag.fa-fw
                         %span.nav-item-text= _('Admin|Feature Flags')
+                - if can?(:manage, ApiApplication)
+                  %li.nav-item
+                    %a.nav-link{href: admin_api_applications_path, class: active_link_classes(:api_applications)}
+                      %span
+                        %i.nav-icon.fas.fa-key.fa-fw
+                        %span.nav-item-text= _('Admin|API applications')
     .sidebar-footer
       .sidebar-footer-button
         = link_to root_path do

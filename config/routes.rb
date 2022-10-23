@@ -158,6 +158,15 @@ Rails.application.routes.draw do
     post :checkin
   end
 
+  # == API ==============================================================================
+  namespace :api do
+    namespace :v1 do # rubocop:disable Naming/VariableNumber
+      get :/, action: :docs, controller: :api
+      resources :news, only: %i[index show]
+      resources :events, only: %i[index show]
+    end
+  end
+
   # == Admin panel ======================================================================
   namespace :admin do
     get '/', to: 'home#dashboard'
@@ -322,6 +331,9 @@ Rails.application.routes.draw do
       get :/, action: :index
       post :cleanup_cache
     end
+
+    # Api Applications management
+    resources :api_applications, except: %i[show]
 
     # Markdown preview endpoint
     post :markdown_preview, to: 'markdown#preview'

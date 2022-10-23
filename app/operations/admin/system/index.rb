@@ -5,6 +5,8 @@ module Operations::Admin::System
     end
 
     def cache_space_usage
+      return _('Admin|System|Cache size cannot be fetched') unless Rails.cache.is_a? ActiveSupport::Cache::FileStore
+
       result = `du -sh #{Rails.cache.cache_path}`
       if result.blank?
         _('Admin|System|Cache size cannot be fetched')
