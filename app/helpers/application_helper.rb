@@ -29,4 +29,8 @@ module ApplicationHelper
   def dark_mode_classes
     'dark' if dark_mode_active?
   end
+
+  def admin_page_title
+    breadcrumbs_on_rails.map {|bc| bc.name}.join(' > ')
+  end
 end

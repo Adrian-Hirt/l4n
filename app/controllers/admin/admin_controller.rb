@@ -9,7 +9,7 @@ module Admin
     before_action :authenticate_user!
     before_action :check_admin_panel_access
 
-    add_breadcrumb _('Admin Panel'), :admin_path
+    add_breadcrumb _('L4N Admin'), :admin_path
 
     private
 
