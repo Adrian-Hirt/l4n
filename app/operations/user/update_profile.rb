@@ -5,8 +5,8 @@ module Operations::User
         opt :username
         opt :email
         opt :password
-        opt :password_confirmation
         opt :website
+        opt :bio
         opt :avatar
       end
     end

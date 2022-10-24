@@ -7,6 +7,7 @@ module Operations::Admin::User
         opt :password
         opt :avatar
         opt :website
+        opt :bio
       end
     end
 

@@ -7,6 +7,7 @@ module Operations::Admin::User
         opt :email
         opt :password
         opt :website
+        opt :bio
       end
     end
 
