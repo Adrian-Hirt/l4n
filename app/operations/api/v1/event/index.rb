@@ -7,7 +7,7 @@ module Operations::Api::V1::Event
     def result
       result = []
 
-      :: Event.where(published: true).each do |event|
+      Queries::Event::FetchFutureEvents.run.where(published: true).each do |event|
         result << {
           title:       event.title,
           description: event.description,
