@@ -1,6 +1,5 @@
 // Libraries
 @import 'bootstrap/bootstrap.scss';
-// @import 'easymde/dist/easymde.min';
 @import 'cropperjs/cropper.scss';
 
 // General stuff
@@ -10,6 +9,7 @@
 // Components
 @import 'components/alerts';
 @import 'components/buttons';
+@import 'components/datagrid';
 @import 'components/forms';
 @import 'components/image_cropper';
 @import 'components/loading_animations';

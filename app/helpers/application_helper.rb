@@ -31,6 +31,6 @@ module ApplicationHelper
   end
 
   def admin_page_title
-    breadcrumbs_on_rails.map {|bc| bc.name}.join(' > ')
+    breadcrumbs_on_rails.map { |bc| bc.name }.join(' > ')
   end
 end
