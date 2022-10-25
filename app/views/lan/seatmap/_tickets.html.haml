@@ -6,7 +6,7 @@
     #takenSeat{data: { id: op.taken_seat.id }}
 
   - if op.respond_to?(:assigned_seat)
-    #assignedSeat{data: { id: op.assigned_seat&.id, username: op.assigned_user.username, userid: op.assigned_user.id }}
+    #assignedSeat{data: { id: op.assigned_seat&.id, username: op.assigned_user&.username, userid: op.assigned_user&.id }}
 
   - if op.respond_to?(:unassigned_seat)
     #unassignedSeat{data: { id: op.unassigned_seat&.id }}

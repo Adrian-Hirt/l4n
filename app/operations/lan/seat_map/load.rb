@@ -1,6 +1,8 @@
 module Operations::Lan::SeatMap
   class Load < RailsOps::Operation::Model
-    schema3 {} # No params allowed for now
+    schema3 do
+      obj? :highlight
+    end
 
     policy :on_init do
       authorize! :read, SeatMap
