@@ -1,9 +1,15 @@
 .card
   = simple_form_for model, url: new_dropdown_admin_menu_items_path do |f|
     .card-body
-      = f.input :title_en
-      = f.input :title_de
-      = f.input :sort
-      = f.input :visible, input_html: { class: 'no-validation' }
+      .row
+        .col-md-6
+          = f.input :title_en
+        .col-md-6
+          = f.input :title_de
+      .row
+        .col-md-6
+          = f.input :sort
+        .col-md-6
+          = f.input :visible, input_html: { class: 'no-validation' }, as: :select, include_blank: false
     .card-footer
       = f.save

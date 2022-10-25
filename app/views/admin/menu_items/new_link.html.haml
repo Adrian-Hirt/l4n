@@ -1,11 +1,26 @@
 .card
   = simple_form_for model, url: new_link_admin_menu_items_path do |f|
     .card-body
-      = f.input :title_en
-      = f.input :title_de
-      = f.input :sort
+      .row
+        .col-md-6
+          = f.input :title_en
+        .col-md-6
+          = f.input :title_de
+      .row
+        .col-md-6
+          = f.input :sort
+        .col-md-6
+          = f.input :parent_id, as: :select, collection: op.parent_candidates, include_blank: _('Form|Select|Blank')
       = f.input :use_namespace_for_active_detection, input_html: { class: 'no-validation' }
-      = f.input :parent_id, as: :select, collection: op.parent_candidates, include_blank: '-'
-      = f.input :page_attr, as: :select, collection: op.page_candidates, include_blank: '-'
+      .row
+        .col-md-6
+          = f.input :page_attr, as: :select,
+                                collection: op.page_candidates,
+                                include_blank: _('Form|Select|Blank'),
+                                wrapper_html: { style: 'margin-bottom: 0 !important;' }
+          = f.hint _('Admin|MenuLinkItem|Either select a page or enter a link hint')
+        .col-md-6
+          = f.input :external_link, wrapper_html: { style: 'margin-bottom: 0 !important;' }
+          = f.hint _('Admin|MenuLinkItem|Either select a page or enter a link hint')
     .card-footer
       = f.save

@@ -14,7 +14,8 @@ class MenuLinkItem < MenuItem
 
   # == Validations =================================================================
   validates :static_page_name, length: { maximum: 255 }
-  validate :static_page_name_or_id_set
+  validates :external_link, length: { maximum: 255 }
+  validate :only_valid_combination
 
   # == Hooks =======================================================================
 
@@ -23,20 +24,28 @@ class MenuLinkItem < MenuItem
   # == Class Methods ===============================================================
 
   # == Instance Methods ============================================================
-  def linked_page_name
+  def link_destination
     if page
       page.title
-    else
+    elsif static_page_name.present?
       PREDEFINED_PAGES.dig(static_page_name, :title)
+    else
+      external_link
     end
   end
 
   def linked_page_url
     if page
       page.url
-    else
+    elsif static_page_name.present?
       static_page_name
+    else
+      external_link
     end
+  end
+
+  def to_external?
+    external_link.present?
   end
 
   def visible?
@@ -55,11 +64,20 @@ class MenuLinkItem < MenuItem
   # == Private Methods =============================================================
   private
 
-  def static_page_name_or_id_set
-    if static_page_name.blank? && page_id.blank?
-      errors.add(:page_attr, I18n.t('errors.messages.empty'))
-    elsif static_page_name.present? && page_id.present?
-      errors.add(:page_attr, _('MenuLinkItem|Can only set static page name or page id'))
+  def only_valid_combination
+    # We only allow to have either the `static_page_name`, the `page_id`
+    # or the `external_link` to be set, but at least one needs to be set.
+    if static_page_name.blank? && page_id.blank? && external_link.blank?
+      errors.add(:page_attr, _('MenuLinkItem|Please either select a page or set an external link'))
+      errors.add(:external_link, _('MenuLinkItem|Please either select a page or set an external link'))
+      return
     end
+
+    errors.add(:page_attr, _('MenuLinkItem|Can only set static page name or page id')) if static_page_name.present? && page_id.present?
+
+    return unless page_attr.present? && external_link.present?
+
+    errors.add(:page_attr, _('MenuLinkItem|Can only select a page or enter an external link but not both'))
+    errors.add(:external_link, _('MenuLinkItem|Can only select a page or enter an external link but not both'))
   end
 end

@@ -20,12 +20,22 @@
               %ul.dropdown-menu.dropdown-menu-dark
                 - menu_item.children.each do |child_menu_item|
                   - next unless child_menu_item.visible?
-                  %a.dropdown-item{href: "/#{child_menu_item.linked_page_url}", class: menu_item_active_classes(child_menu_item)}
-                    = child_menu_item.title
+                  - if child_menu_item.to_external?
+                    %a.dropdown-item{href: child_menu_item.linked_page_url, target: :_blank}
+                      = child_menu_item.title
+                      = icon %i[fas fa-arrow-up-right-from-square]
+                  - else
+                    %a.dropdown-item{href: "/#{child_menu_item.linked_page_url}", class: menu_item_active_classes(child_menu_item)}
+                      = child_menu_item.title
           - else
             %li.nav-item
-              %a.nav-link{href: "/#{menu_item.linked_page_url}", class: menu_item_active_classes(menu_item)}
-                = menu_item.title
+              - if menu_item.to_external?
+                %a.nav-link{href: menu_item.linked_page_url, target: :_blank}
+                  = menu_item.title
+                  = icon %i[fas fa-arrow-up-right-from-square]
+              - else
+                %a.nav-link{href: "/#{menu_item.linked_page_url}", class: menu_item_active_classes(menu_item)}
+                  = menu_item.title
       -# Right menu
       %ul.order-1.order-md-3.navbar-nav.ml-auto
         %li.nav-item.dropdown
