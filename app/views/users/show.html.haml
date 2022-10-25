@@ -1,22 +1,21 @@
 - provide :page_title, _('User|Profile')
 
 .row
-  .col-md-3
-    .card.card-primary.card-outline
+  .col-md-3.mb-3.mb-md-0
+    .card.mb-3
       .card-body.box-profile
         .text-center
           - if model.avatar.attached?
             = image_tag model.avatar.variant(:medium).processed, class: 'profile-user-img img-fluid img-circle'
           - else
             .avatar-medium-placeholder
-        %h3.profile-username.text-center
+        %h3.profile-username.text-center.mt-3
           = model.username
-        %p.text-muted.text-center
-          Admin
-    .card.card-primary
+    .card
       .card-header
         = _('User|About me')
       .card-body
+        = simple_format model.bio
   .col-md-9
     .card
       .card-header.p2
