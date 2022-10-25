@@ -1,3 +1,26 @@
-.card
-  .card-body
-    = datagrid_table op.grid, html: { class: 'table' }
+- content_for :page_title, _('Users')
+
+.row.mb-3
+  .col-12
+    .card
+      .card-body.d-flex.users-table-header
+        - op.grid.html_columns.each do |column|
+          - next unless column.supports_order?
+
+          .d-flex{class: datagrid_column_classes(op.grid, column)}
+            .me-2= column.header
+            = datagrid_order_for(op.grid, column)
+
+.row.mb-3
+  = datagrid_rows(op.grid) do |row|
+    .col-md-6
+      .card
+        .card-body
+          .d-flex
+            .flex-shrink-0
+              .placeholder-glow
+                = row.avatar
+            .flex-grow-1.ms-3
+              %h4= link_to row.username, row.asset
+
+= paginate op.grid.assets, theme: 'bootstrap'
