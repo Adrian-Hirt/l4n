@@ -44,6 +44,8 @@ class MenuLinkItem < MenuItem
       FeatureFlag.enabled?(:pages) && page.published?
     else
       flag = PREDEFINED_PAGES.dig(static_page_name, :feature_flag)
+      return true if flag.nil?
+
       FeatureFlag.enabled?(flag)
     end
   end
