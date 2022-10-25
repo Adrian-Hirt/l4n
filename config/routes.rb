@@ -28,8 +28,8 @@ Rails.application.routes.draw do
 
   # == Gameaccount frames for users =====================================================
   namespace :gameaccounts do
-    get :steam
-    get :discord
+    get ':id/steam', action: :steam, as: :steam
+    get ':id/discord', action: :discord, as: :discord
   end
 
   # == User registration ================================================================

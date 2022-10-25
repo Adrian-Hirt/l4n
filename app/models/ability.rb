@@ -41,6 +41,9 @@ class Ability
       end
     end
 
+    # Anyone can read user list and profiles
+    can :read, User
+
     # Return early if user does not exist
     return if user.nil?
 

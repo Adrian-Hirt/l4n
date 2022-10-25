@@ -5,8 +5,9 @@ module Operations::User
       hsh? :grids_users, additional_properties: true
     end
 
-    # No special auth needed
-    without_authorization
+    policy :on_init do
+      authorize! :read, ::User
+    end
 
     def grid
       @grid ||= Grids::Users.new(osparams.grids_users) do |scope|

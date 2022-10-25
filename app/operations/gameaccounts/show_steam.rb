@@ -2,21 +2,24 @@ require 'httparty'
 
 module Operations::Gameaccounts
   class ShowSteam < RailsOps::Operation
-    schema3 {} # No params
+    schema3 do
+      int! :id, cast_str: true
+    end
 
-    # Uses context user, so no need to authorize
-    without_authorization
+    policy :on_init do
+      authorize! :read, user
+    end
 
     attr_accessor :data
     attr_accessor :successful
 
     def perform
-      if context.user.steam_id.blank?
+      if user.steam_id.blank?
         @successful = false
         return
       end
 
-      steam_url = "https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=#{Figaro.env.steam_web_api_key}&steamids=#{context.user.steam_id}"
+      steam_url = "https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=#{Figaro.env.steam_web_api_key}&steamids=#{user.steam_id}"
       response = HTTParty.get(steam_url)
 
       if response.code == 200
@@ -49,6 +52,12 @@ module Operations::Gameaccounts
       else
         @successful = false
       end
+    end
+
+    private
+
+    def user
+      @user ||= ::User.find(osparams.id)
     end
   end
 end
