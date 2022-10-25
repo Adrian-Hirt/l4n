@@ -35,6 +35,39 @@ class ApplicationTest < ActiveSupport::TestCase
     test_data[key]
   end
 
+  # Usage of the below methods:
+  #
+  # as_user ::User.first do
+  #   op = build_op ::Operations::Event::Index
+  #   assert op.respond_to?(:events)
+  # end
+  #
+  # The cases for the run_op and run_op! are similar
+  def as_user(user)
+    @context = RailsOps::Context.new(user: user, ability: Ability.new(user))
+    yield
+  ensure
+    @context = nil
+  end
+
+  def run_op(operation, *args)
+    fail 'Can only be used within the `as_user` block' if @context.nil?
+
+    @context.run operation, *args
+  end
+
+  def run_op!(operation, *args)
+    fail 'Can only be used within the `as_user` block' if @context.nil?
+
+    @context.run! operation, *args
+  end
+
+  def build_op(operation, *args)
+    fail 'Can only be used within the `as_user` block' if @context.nil?
+
+    operation.new(@context, *args)
+  end
+
   private
 
   def test_data
