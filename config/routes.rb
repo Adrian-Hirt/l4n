@@ -190,7 +190,7 @@ Rails.application.routes.draw do
     get '/', to: 'home#dashboard'
 
     # User management
-    resources :users, only: %i[index new create show destroy] do
+    resources :users, only: %i[index new create destroy] do
       member do
         get :profile, action: :edit, controller: 'users/profile'
         patch :profile, action: :update, controller: 'users/profile'

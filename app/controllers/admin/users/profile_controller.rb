@@ -5,7 +5,7 @@ module Admin
 
       def edit
         op Operations::Admin::User::UpdateProfile
-        add_breadcrumb model.username, admin_user_path(model)
+        add_breadcrumb model.username
         add_breadcrumb _('Admin|Users|Profile'), profile_admin_user_path(model)
       end
 
@@ -14,7 +14,7 @@ module Admin
           flash[:success] = _('Admin|Users|Profile|Successfully updated')
           redirect_to profile_admin_user_path
         else
-          add_breadcrumb model.username, admin_user_path(model)
+          add_breadcrumb model.username
           add_breadcrumb _('Admin|Users|Profile'), profile_admin_user_path(model)
           flash[:danger] = _('Admin|Users|Profile|Update failed')
           render :edit, status: :unprocessable_entity

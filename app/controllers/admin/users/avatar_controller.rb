@@ -5,7 +5,7 @@ module Admin
 
       def edit
         op Operations::Admin::User::UpdateAvatar
-        add_breadcrumb model.username, admin_user_path(model)
+        add_breadcrumb model.username
         add_breadcrumb _('Admin|Users|Avatar'), avatar_admin_user_path(model)
 
         return unless request.patch?

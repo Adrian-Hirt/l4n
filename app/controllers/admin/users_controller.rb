@@ -6,11 +6,6 @@ module Admin
       op Operations::Admin::User::Index
     end
 
-    def show
-      op Operations::Admin::User::Load
-      add_breadcrumb model.username, admin_user_path(model)
-    end
-
     def new
       add_breadcrumb _('Admin|Users|New')
       op Operations::Admin::User::Create
