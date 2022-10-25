@@ -9,4 +9,7 @@ MoneyRails.configure do |config|
   # If you would like to use I18n localization (formatting depends on the
   # locale):
   config.locale_backend = :i18n
+
+  # Use banker's rounding
+  config.rounding_mode = BigDecimal::ROUND_HALF_EVEN
 end
