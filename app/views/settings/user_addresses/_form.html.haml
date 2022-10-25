@@ -1,7 +1,13 @@
 = simple_form_for [:settings, model] do |f|
-  = f.input :first_name
-  = f.input :last_name
+  .row
+    .col-md-6
+      = f.input :first_name
+    .col-md-6
+      = f.input :last_name
   = f.input :street
-  = f.input :zip_code
-  = f.input :city
+  .row
+    .col-md-4
+      = f.input :zip_code
+    .col-md-8
+      = f.input :city
   = f.save
