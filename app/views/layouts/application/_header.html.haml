@@ -59,6 +59,9 @@
                 = icon %i[fa fa-chevron-down]
             %ul.dropdown-menu.dropdown-menu-end.dropdown-menu-dark
               %li
+                = link_to _('User|My profile'), current_user, class: %i[dropdown-item]
+              %li.dropdown-divider
+              %li
                 = link_to _('Settings|Edit profile'), settings_profile_path, class: %i[dropdown-item]
               %li.dropdown-divider
               - if can? :access, :admin_panel
