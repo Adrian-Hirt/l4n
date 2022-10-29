@@ -56,7 +56,7 @@ class User < ApplicationRecord
 
   # == Instance Methods ============================================================
   def destroyable?
-    true
+    false
   end
 
   def any_admin_permission?
