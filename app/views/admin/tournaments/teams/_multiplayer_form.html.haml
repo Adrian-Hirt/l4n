@@ -3,9 +3,13 @@
 - else
   - url = admin_team_path(model)
 
-= simple_form_for model, url: url do |f|
+= simple_form_for model, url: url, wrapper: :input_group do |f|
   .card-body
-    = f.input :name
+    .row
+      .col-md-6
+        = f.input :name
+      .col-md-6
+        = f.association :tournament_team_rank, as: :select, collection: op.ranks, include_blank: _('Form|Select|Blank')
     - if model.new_record?
       = f.password :password
     - else

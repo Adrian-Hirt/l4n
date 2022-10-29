@@ -5,9 +5,14 @@ module Operations::Admin::Tournament::Team
       hsh? :tournament_team do
         str? :name
         str? :password
+        str? :tournament_team_rank_id
       end
     end
 
     model ::Tournament::Team
+
+    def ranks
+      @ranks ||= model.tournament.tournament_team_ranks.order(:sort)
+    end
   end
 end

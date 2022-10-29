@@ -7,6 +7,8 @@
       = f.input :name, label: false,
                         placeholder: _('Team|Name placeholder')
       = f.password :password, placeholder: _('TournamentTeam|Password')
+      - if tournament.teams_need_rank?
+        = f.input :tournament_team_rank_id, as: :select, collection: tournament.tournament_team_ranks.order(:sort), include_blank: _('Form|Select|Blank')
       = f.save class: %i[w-100]
   - else
     -# Case: Registration open & team present

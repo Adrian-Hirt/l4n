@@ -5,6 +5,7 @@ module Operations::Tournament::Team
       hsh? :tournament_team do
         str? :name
         str? :password
+        str? :tournament_team_rank_id
       end
     end
 
@@ -18,7 +19,7 @@ module Operations::Tournament::Team
       fail Operations::Exceptions::OpFailed, _('Tournament|Team|Team is already seeded') if model.seeded?
 
       # Check that the team is in the correct state
-      fail Operations::Exceptions::OpFailed, _('Tournament|Team|Team is not registered for the tournament') unless model.registered?
+      fail Operations::Exceptions::OpFailed, _('Tournament|Team|Team has wrong state') unless model.created?
     end
   end
 end

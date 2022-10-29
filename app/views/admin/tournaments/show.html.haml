@@ -17,9 +17,12 @@
             - else
               = icon %i[fas fa-users]
               = _('Team|%{count} players') % { count: model.team_size }
-        %div
+        .mb-2
           = _('Tournament|Max number of participants')
           .small.text-muted= model.max_number_of_participants
+        %div
+          = _('Tournament|Number of ranks')
+          .small.text-muted= model.tournament_team_ranks.count
 
     .card.mb-4
       .card-header.d-flex.justify-content-between.align-items-center

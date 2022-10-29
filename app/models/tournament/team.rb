@@ -14,7 +14,7 @@ class Tournament::Team < ApplicationRecord
 
   # == Associations ================================================================
   belongs_to :tournament, touch: true
-  belongs_to :team_rank, class_name: 'Tournament::TeamRank', optional: true
+  belongs_to :tournament_team_rank, class_name: 'Tournament::TeamRank', optional: true
   has_many :phase_teams, class_name: 'Tournament::PhaseTeam', foreign_key: :tournament_team_id, dependent: :destroy, inverse_of: :team
   has_many :phases, through: :phase_teams
   has_many :team_members, class_name: 'Tournament::TeamMember', foreign_key: :tournament_team_id, dependent: :destroy, inverse_of: :team
@@ -23,6 +23,9 @@ class Tournament::Team < ApplicationRecord
   # == Validations =================================================================
   validates :status, presence: true, inclusion: statuses.keys
   validates :name, presence: true, length: { maximum: 255 }, uniqueness: { scope: :tournament, case_insensitive: true }
+
+  # Validate that the ranks is set if the tournament wants the rank to be set
+  validates :tournament_team_rank, presence: true, if: -> { tournament&.teams_need_rank? }
 
   # Password validations only relevant for multiplayer games
   validates :password, presence: true, length: { minimum: 6, maximum: 72 }, if: -> { !tournament.singleplayer? && (password.present? || new_record?) }
@@ -56,6 +59,14 @@ class Tournament::Team < ApplicationRecord
 
   def captain?(user)
     captain.present? && user.present? && captain.user_id == user.id
+  end
+
+  def name_with_optional_rank
+    if tournament_team_rank.blank?
+      name
+    else
+      "#{name} - #{tournament_team_rank.name}"
+    end
   end
 
   # == Private Methods =============================================================

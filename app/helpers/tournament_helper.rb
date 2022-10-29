@@ -99,6 +99,8 @@ module TournamentHelper
   end
 
   def team_member_icon(team_member)
+    return nil if team_member.nil?
+
     if team_member.captain?
       icon %i[fas fa-crown fa-fw]
     else

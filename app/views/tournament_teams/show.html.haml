@@ -19,6 +19,12 @@
       .card-header
         = _('TournamentTeam|Team details')
       .card-body
+        -# -- Rank --------------------------------------------------------------------------------
+        - if model.tournament_team_rank.present?
+          .mb-2.border-bottom
+            .mb-2
+              .mb-2.fw-bold= _('TournamentTeam|Rank')
+              = model.tournament_team_rank.name
         -# -- Roster ------------------------------------------------------------------------------
         - if !model.tournament.singleplayer?
           .mb-4
@@ -27,7 +33,7 @@
             .d-flex.justify-content-between.align-items-center.border-bottom.py-2
               %div
                 = team_member_icon(model.captain)
-                = model.captain.user.username
+                = model.captain&.user&.username
               - if model.captain?(current_user)
                 %div
                   = button nil, nil, btn_icon: %i[fas fa-chevron-up fa-fw],

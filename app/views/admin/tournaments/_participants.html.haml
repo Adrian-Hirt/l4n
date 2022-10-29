@@ -16,13 +16,19 @@
       - model.teams.in_tournament.order(:name).each do |team|
         %div
           = team.name
-          .small.text-muted= team.humanized_status
+          .small.text-muted
+            = team.humanized_status
+            \|
+            = team.tournament_team_rank.name
       %hr
       = _('Tournament|Not in tournament teams')
       - model.teams.not_in_tournament.order(:name).each do |team|
         %div
           = team.name
-          .small.text-muted= team.humanized_status
+          .small.text-muted
+            = team.humanized_status
+            \|
+            = team.tournament_team_rank.name
     - else
       - tournament_full = model.teams_full?
       - model.teams.order(:name).each do |team|
@@ -31,7 +37,10 @@
             = team.name
             .small.text-muted
               = team.humanized_status
+              \|
+              = team.tournament_team_rank.name
               - unless model.singleplayer?
+                \|
                 = "(#{team.team_members.count} / #{model.team_size} #{_('Team|Team members')})"
           %div
             - if team.created?

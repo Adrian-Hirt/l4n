@@ -6,6 +6,7 @@ module Operations::Admin::Tournament::Team
         str? :name
         str? :password
         str? :single_user_name
+        str? :tournament_team_rank_id
       end
     end
 
@@ -63,6 +64,10 @@ module Operations::Admin::Tournament::Team
 
     def tournament
       @tournament ||= ::Tournament.find(osparams.tournament_id)
+    end
+
+    def ranks
+      @ranks ||= tournament.tournament_team_ranks.order(:sort)
     end
 
     private

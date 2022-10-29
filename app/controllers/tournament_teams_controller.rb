@@ -42,10 +42,10 @@ class TournamentTeamsController < ApplicationController
       flash[:danger] = _('Team|Could not be deleted')
     end
 
-    redirect_to tournament_path(model)
+    redirect_to tournament_path(model.tournament)
   rescue Operations::Exceptions::OpFailed => e
     flash[:danger] = e.message
-    redirect_to tournament_path(model)
+    redirect_to tournament_path(model.tournament)
   end
 
   def register_for_tournament
