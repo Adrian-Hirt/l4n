@@ -1,7 +1,10 @@
 .card
   = simple_form_for model, url: admin_scanner_user_path(model), wrapper: :input_group do |f|
     .card-body
-      = f.input :name
-      = f.password :password, placeholder: _('ScannerUser|Leave password blank to keep current password')
+      .row
+        .col-md-6
+          = f.input :name
+        .col-md-6
+          = f.password :password, placeholder: _('ScannerUser|Leave password blank to keep current password')
     .card-footer
       = f.save

@@ -1,7 +1,6 @@
 = simple_form_for [:admin, model] do |f|
   .card-body
     = f.input :title
-    = f.label :published
     = f.input :published, input_html: { class: 'no-validation' }
     = f.input :url, hint: _('Page|Url may only contain: [a-z 0-9 - _] and needs to start with a letter')
     = f.markdown :content, preview_url: admin_markdown_preview_path

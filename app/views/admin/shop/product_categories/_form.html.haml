@@ -1,6 +1,9 @@
 = simple_form_for [:admin, :shop, model] do |f|
   .card-body
-    = f.input :name
-    = f.input :sort
+    .row
+      .col-md-6
+        = f.input :name
+      .col-md-6
+        = f.input :sort
   .card-footer
     = f.save

@@ -1,7 +1,10 @@
 .card
   = simple_form_for [:admin, model] do |f|
     .card-body
-      = f.input :name
-      = f.input :api_key, disabled: true
+      .row
+        .col-md-6
+          = f.input :name
+        .col-md-6
+          = f.input :api_key, disabled: true
     .card-footer
       = f.save

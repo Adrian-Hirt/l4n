@@ -3,10 +3,16 @@
     .card-body
       = f.input :name
       = f.input :active, input_html: { class: 'no-validation' }
-      = f.input :code_type, collection: Promotion.code_types, include_blank: _('Form|Select|Blank')
-      = f.input :reduction
-      = f.input :code_prefix
+      .row
+        .col-md-6
+          = f.input :code_type, collection: Promotion.code_types, include_blank: _('Form|Select|Blank')
+        .col-md-6
+          = f.input :reduction
       = f.association :products, as: :check_boxes
-      = f.input :codes_to_generate
+      .row
+        .col-md-6
+          = f.input :code_prefix
+        .col-md-6
+          = f.input :codes_to_generate
     .card-footer
       = f.save
