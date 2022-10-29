@@ -13,11 +13,11 @@ module Admin
 
     def create
       if run Operations::Admin::Pages::Create
-        flash[:success] = _('Page|Successfully created')
+        flash[:success] = _('Admin|Page|Successfully created')
         redirect_to admin_pages_path
       else
         add_breadcrumb _('Admin|Page|New')
-        flash[:danger] = _('Page|Create failed')
+        flash[:danger] = _('Admin|Page|Create failed')
         render :new, status: :unprocessable_entity
       end
     end
@@ -29,20 +29,20 @@ module Admin
 
     def update
       if run Operations::Admin::Pages::Update
-        flash[:success] = _('Page|Successfully updated')
+        flash[:success] = _('Admin|Page|Successfully updated')
         redirect_to admin_pages_path
       else
         add_breadcrumb model.title
-        flash[:danger] = _('Page|Edit failed')
+        flash[:danger] = _('Admin|Page|Edit failed')
         render :edit, status: :unprocessable_entity
       end
     end
 
     def destroy
       if run Operations::Admin::Pages::Destroy
-        flash[:success] = _('Page|Successfully deleted')
+        flash[:success] = _('Admin|Page|Successfully deleted')
       else
-        flash[:danger] = _('Page|Cannot be deleted')
+        flash[:danger] = _('Admin|Page|Cannot be deleted')
       end
       redirect_to admin_pages_path
     end

@@ -7,18 +7,18 @@ module Admin
         op Operations::Admin::Tournament::Match::Load
         add_breadcrumb model.phase.tournament.name, admin_tournament_path(model.phase.tournament)
         add_breadcrumb "#{model.phase.phase_number}. #{model.phase.name}", admin_phase_path(model.phase)
-        add_breadcrumb _('Admin|Match')
+        add_breadcrumb _('Admin|Tournament|Match')
       end
 
       def update
         if run Operations::Admin::Tournament::Match::Update
-          flash[:success] = _('Admin|Tournaments|Match|Successfully updated')
+          flash[:success] = _('Admin|Tournament|Match|Successfully updated')
           redirect_to admin_phase_path(model.phase)
         else
           flash[:danger] = _('Admin|Tournament|Match|Update failed')
           add_breadcrumb model.phase.tournament.name, admin_tournament_path(model.phase.tournament)
           add_breadcrumb "#{model.phase.phase_number}. #{model.phase.name}", admin_phase_path(model.phase)
-          add_breadcrumb _('Admin|Match')
+          add_breadcrumb _('Admin|Tournament|Match')
           render :show, status: :unprocessable_entity
         end
       rescue Operations::Admin::Tournament::Match::MatchNotInRunningPhase

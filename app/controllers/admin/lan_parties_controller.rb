@@ -1,6 +1,6 @@
 module Admin
   class LanPartiesController < AdminController
-    add_breadcrumb _('Admin|LanParty'), :admin_lan_parties_path
+    add_breadcrumb _('Admin|LanParties'), :admin_lan_parties_path
 
     def index
       op Operations::Admin::LanParty::Index
@@ -18,11 +18,11 @@ module Admin
 
     def create
       if run Operations::Admin::LanParty::Create
-        flash[:success] = _('LanParty|Successfully created')
+        flash[:success] = _('Admin|LanParty|Successfully created')
         redirect_to admin_lan_party_path(model)
       else
         add_breadcrumb _('Admin|LanParty|New')
-        flash[:danger] = _('LanParty|Create failed')
+        flash[:danger] = _('Admin|LanParty|Create failed')
         render :new, status: :unprocessable_entity
       end
     end
@@ -34,25 +34,25 @@ module Admin
 
     def update
       if run Operations::Admin::LanParty::Update
-        flash[:success] = _('LanParty|Successfully updated')
+        flash[:success] = _('Admin|LanParty|Successfully updated')
         redirect_to admin_lan_party_path(model)
       else
         add_breadcrumb model.name
-        flash[:danger] = _('LanParty|Edit failed')
+        flash[:danger] = _('Admin|LanParty|Edit failed')
         render :edit, status: :unprocessable_entity
       end
     end
 
     def destroy
       if run Operations::Admin::LanParty::Destroy
-        flash[:success] = _('LanParty|Successfully deleted')
+        flash[:success] = _('Admin|LanParty|Successfully deleted')
         redirect_to admin_lan_parties_path
       else
-        flash[:danger] = _('LanParty|Cannot be deleted')
+        flash[:danger] = _('Admin|LanParty|Cannot be deleted')
         redirect_to admin_lan_party_path(model)
       end
     rescue ActiveRecord::RecordNotDestroyed
-      flash[:danger] = _('LanParty|Cannot be deleted')
+      flash[:danger] = _('Admin|LanParty|Cannot be deleted')
       redirect_to admin_lan_party_path(model)
     end
   end

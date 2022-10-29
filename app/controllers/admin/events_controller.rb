@@ -18,11 +18,11 @@ module Admin
 
     def create
       if run Operations::Admin::Event::Create
-        flash[:success] = _('Event|Successfully created')
+        flash[:success] = _('Admin|Event|Successfully created')
         redirect_to admin_events_path
       else
         add_breadcrumb _('Admin|Event|New')
-        flash[:danger] = _('Event|Create failed')
+        flash[:danger] = _('Admin|Event|Create failed')
         render :new, status: :unprocessable_entity
       end
     end
@@ -34,20 +34,20 @@ module Admin
 
     def update
       if run Operations::Admin::Event::Update
-        flash[:success] = _('Event|Successfully updated')
+        flash[:success] = _('Admin|Event|Successfully updated')
         redirect_to admin_events_path
       else
         add_breadcrumb model.title
-        flash[:danger] = _('Event|Edit failed')
+        flash[:danger] = _('Admin|Event|Edit failed')
         render :edit, status: :unprocessable_entity
       end
     end
 
     def destroy
       if run Operations::Admin::Event::Destroy
-        flash[:success] = _('Event|Successfully deleted')
+        flash[:success] = _('Admin|Event|Successfully deleted')
       else
-        flash[:danger] = _('Event|Cannot be deleted')
+        flash[:danger] = _('Admin|Event|Cannot be deleted')
       end
       redirect_to admin_events_path
     end

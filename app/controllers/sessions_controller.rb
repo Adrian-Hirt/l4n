@@ -5,7 +5,7 @@ class SessionsController < Devise::SessionsController
 
   def new
     if user_signed_in?
-      flash[:danger] = _('User|Already logged in')
+      flash[:danger] = _('Session|Already logged in')
       redirect_to root_path
       return
     end
@@ -19,7 +19,7 @@ class SessionsController < Devise::SessionsController
     super
 
     flash.delete :notice
-    flash[:success] = _('Sessions|Successfully logged in')
+    flash[:success] = _('Session|Successfully logged in')
   end
 
   def authenticate_with_otp_two_factor
@@ -42,7 +42,7 @@ class SessionsController < Devise::SessionsController
   def destroy
     super
 
-    flash[:success] = _('Sessions|Successfully logged out')
+    flash[:success] = _('Session|Successfully logged out')
   end
 
   private
@@ -67,7 +67,7 @@ class SessionsController < Devise::SessionsController
 
       user.remember_me = true if session[:remember_me] == '1'
       sign_in(user, event: :authentication)
-      flash[:success] = _('Sessions|Successfully logged in')
+      flash[:success] = _('Session|Successfully logged in')
     else
       flash.now[:danger] = _('TwoFactor|Invalid two factor code')
       prompt_for_otp_two_factor(user)

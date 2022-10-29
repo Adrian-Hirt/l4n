@@ -16,9 +16,9 @@ class TournamentTeamMembersController < ApplicationController
 
   def promote
     if run Operations::Tournament::TeamMember::Promote
-      flash[:success] = _('Admin|TeamMember|Successfully promoted')
+      flash[:success] = _('TeamMember|Successfully promoted')
     else
-      flash[:danger] = _('Admin|TeamMember|Promoting failed')
+      flash[:danger] = _('TeamMember|Promoting failed')
     end
 
     redirect_to tournament_team_path(model)

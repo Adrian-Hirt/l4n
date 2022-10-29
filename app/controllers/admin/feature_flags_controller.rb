@@ -10,9 +10,9 @@ module Admin
       op Operations::Admin::FeatureFlag::Reinitialize
 
       if op.run
-        flash[:success] = _('FeatureFlag|Successfully reinitialized feature flags')
+        flash[:success] = _('Admin|FeatureFlag|Successfully reinitialized feature flags')
       else
-        flash[:danger] = _('FeatureFlag|Could not reinitialize the feature flags')
+        flash[:danger] = _('Admin|FeatureFlag|Could not reinitialize the feature flags')
       end
 
       redirect_to admin_feature_flags_path
@@ -22,9 +22,9 @@ module Admin
       op Operations::Admin::FeatureFlag::Toggle
 
       if op.run
-        flash[:success] = _('FeatureFlag|Successfully toggled flag')
+        flash[:success] = _('Admin|FeatureFlag|Successfully toggled flag')
       else
-        flash[:danger] = _('FeatureFlag|Could not toggle the flag')
+        flash[:danger] = _('Admin|FeatureFlag|Could not toggle the flag')
       end
 
       redirect_to admin_feature_flags_path

@@ -8,16 +8,16 @@ module Admin
 
     def new
       op Operations::Admin::ApiApplication::Create
-      add_breadcrumb _('Admin|API Applications|New')
+      add_breadcrumb _('Admin|API Application|New')
     end
 
     def create
       if run Operations::Admin::ApiApplication::Create
-        flash[:success] = _('Admin|API Applications|Successfully created')
+        flash[:success] = _('Admin|API Application|Successfully created')
         redirect_to edit_admin_api_application_path(model)
       else
-        add_breadcrumb _('Admin|API Applications|New')
-        flash[:danger] = _('Admin|API Applications|Create failed')
+        add_breadcrumb _('Admin|API Application|New')
+        flash[:danger] = _('Admin|API Application|Create failed')
         render :new, status: :unprocessable_entity
       end
     end
@@ -29,20 +29,20 @@ module Admin
 
     def update
       if run Operations::Admin::ApiApplication::Update
-        flash[:success] = _('Admin|API Applications|Successfully updated')
+        flash[:success] = _('Admin|API Application|Successfully updated')
         redirect_to admin_api_applications_path
       else
         add_breadcrumb model.name
-        flash[:danger] = _('Admin|API Applications|Update failed')
+        flash[:danger] = _('Admin|API Application|Update failed')
         render :new, status: :unprocessable_entity
       end
     end
 
     def destroy
       if run Operations::Admin::ApiApplication::Destroy
-        flash[:success] = _('Admin|API Applications|Successfully deleted')
+        flash[:success] = _('Admin|API Application|Successfully deleted')
       else
-        flash[:danger] = _('Admin|API Applications|Cannot be deleted')
+        flash[:danger] = _('Admin|API Application|Cannot be deleted')
       end
 
       redirect_to admin_api_applications_path

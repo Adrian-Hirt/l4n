@@ -8,7 +8,7 @@ module Admin
 
     def new
       op Operations::Admin::ScannerUser::Create
-      add_breadcrumb _('Admin|ScannerUsers|New')
+      add_breadcrumb _('Admin|ScannerUser|New')
     end
 
     def create
@@ -16,7 +16,7 @@ module Admin
         flash[:success] = _('Admin|ScannerUser|Successfully created')
         redirect_to admin_scanner_users_path
       else
-        add_breadcrumb _('Admin|ScannerUsers|New')
+        add_breadcrumb _('Admin|ScannerUser|New')
         flash[:danger] = _('Admin|ScannerUser|Create failed')
         render :new, status: :unprocessable_entity
       end

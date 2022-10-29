@@ -6,7 +6,7 @@ module Admin
       def index
         op Operations::Admin::SeatCategory::Index
         add_breadcrumb op.lan_party.name, admin_lan_party_path(op.lan_party)
-        add_breadcrumb _('Admin|SeatCategory')
+        add_breadcrumb _('Admin|SeatCategories')
       end
 
       def new
@@ -16,11 +16,11 @@ module Admin
 
       def create
         if run Operations::Admin::SeatCategory::Create
-          flash[:success] = _('SeatCategory|Successfully created')
+          flash[:success] = _('Admin|SeatCategory|Successfully created')
           redirect_to admin_lan_party_seat_categories_path(model.lan_party)
         else
           add_create_breadcrumbs
-          flash[:danger] = _('SeatCategory|Create failed')
+          flash[:danger] = _('Admin|SeatCategory|Create failed')
           render :new, status: :unprocessable_entity
         end
       end
@@ -32,20 +32,20 @@ module Admin
 
       def update
         if run Operations::Admin::SeatCategory::Update
-          flash[:success] = _('SeatCategory|Successfully updated')
+          flash[:success] = _('Admin|SeatCategory|Successfully updated')
           redirect_to admin_lan_party_seat_categories_path(model.lan_party)
         else
           add_update_breadcrumbs
-          flash[:danger] = _('SeatCategory|Edit failed')
+          flash[:danger] = _('Admin|SeatCategory|Edit failed')
           render :edit, status: :unprocessable_entity
         end
       end
 
       def destroy
         if run Operations::Admin::SeatCategory::Destroy
-          flash[:success] = _('SeatCategory|Successfully deleted')
+          flash[:success] = _('Admin|SeatCategory|Successfully deleted')
         else
-          flash[:danger] = _('SeatCategory|Cannot be deleted')
+          flash[:danger] = _('Admin|SeatCategory|Cannot be deleted')
         end
         redirect_to admin_lan_party_seat_categories_path(model.lan_party)
       end
@@ -54,13 +54,13 @@ module Admin
 
       def add_create_breadcrumbs
         add_breadcrumb op.lan_party.name, admin_lan_party_path(op.lan_party)
-        add_breadcrumb _('Admin|SeatCategory'), admin_lan_party_seat_categories_path(op.lan_party)
+        add_breadcrumb _('Admin|SeatCategories'), admin_lan_party_seat_categories_path(op.lan_party)
         add_breadcrumb _('Admin|SeatCategory|New')
       end
 
       def add_update_breadcrumbs
         add_breadcrumb model.lan_party.name, admin_lan_party_path(model.lan_party)
-        add_breadcrumb _('Admin|SeatCategory'), admin_lan_party_seat_categories_path(model.lan_party)
+        add_breadcrumb _('Admin|SeatCategories'), admin_lan_party_seat_categories_path(model.lan_party)
         add_breadcrumb model.name
       end
     end

@@ -8,17 +8,17 @@ module Admin
       end
 
       def new
-        add_breadcrumb _('Admin|Products|New')
+        add_breadcrumb _('Admin|Product|New')
         op Operations::Admin::Product::Create
       end
 
       def create
         if run Operations::Admin::Product::Create
-          flash[:success] = _('Product|Successfully created')
+          flash[:success] = _('Admin|Product|Successfully created')
           redirect_to admin_shop_products_path
         else
-          add_breadcrumb _('Admin|Products|New')
-          flash[:danger] = _('Product|Create failed')
+          add_breadcrumb _('Admin|Product|New')
+          flash[:danger] = _('Admin|Product|Create failed')
           render :new, status: :unprocessable_entity
         end
       end
@@ -30,28 +30,28 @@ module Admin
 
       def update
         if run Operations::Admin::Product::Update
-          flash[:success] = _('Product|Successfully updated')
+          flash[:success] = _('Admin|Product|Successfully updated')
           redirect_to admin_shop_product_path(model)
         else
           add_breadcrumb model.name
-          flash[:danger] = _('Product|Edit failed')
+          flash[:danger] = _('Admin|Product|Edit failed')
           render :edit, status: :unprocessable_entity
         end
       rescue ActiveRecord::RecordNotDestroyed
         add_breadcrumb model.name
-        flash[:danger] = _('Product|Edit failed')
+        flash[:danger] = _('Admin|Product|Edit failed')
         render :edit, status: :unprocessable_entity
       end
 
       def destroy
         if run Operations::Admin::Product::Destroy
-          flash[:success] = _('Product|Successfully deleted')
+          flash[:success] = _('Admin|Product|Successfully deleted')
         else
-          flash[:danger] = _('Product|Cannot be deleted')
+          flash[:danger] = _('Admin|Product|Cannot be deleted')
         end
         redirect_to admin_shop_products_path
       rescue ActiveRecord::RecordNotDestroyed
-        flash[:danger] = _('Product|Cannot be deleted')
+        flash[:danger] = _('Admin|Product|Cannot be deleted')
         redirect_to admin_shop_products_path
       end
     end
