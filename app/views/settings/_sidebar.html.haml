@@ -5,3 +5,5 @@
     = link_to _('Settings|Game accounts'), settings_gameaccounts_path, class: nav_item_classes(controller: 'settings/gameaccounts')
     = link_to _('Settings|Addresses'), settings_user_addresses_path, class: nav_item_classes(controller: 'settings/user_addresses')
     = link_to _('Settings|2FA'), settings_two_factor_path, class: nav_item_classes(controller: 'settings/two_factor')
+  .card-footer
+    = button _('User|Show my profile'), current_user, size: :sm
