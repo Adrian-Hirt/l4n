@@ -55,7 +55,7 @@ class User < ApplicationRecord
   # == Class Methods ===============================================================
 
   # == Instance Methods ============================================================
-  def destroyable?
+  def deletable?
     false
   end
 

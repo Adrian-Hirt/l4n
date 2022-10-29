@@ -16,7 +16,7 @@ module Grids
           safe_join([
                       show_button(user, size: :sm, icon_only: true),
                       edit_button(user, href: profile_admin_user_path(user), size: :sm, icon_only: true),
-                      delete_button(user, namespace: %i[admin], size: :sm, icon_only: true, disabled: user == current_user)
+                      delete_button(user, namespace: %i[admin], size: :sm, icon_only: true, disabled: !user.deletable? || user == current_user)
                     ])
         end
       end
