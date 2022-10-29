@@ -195,6 +195,10 @@ Rails.application.routes.draw do
         match :avatar, action: :edit, controller: 'users/avatar', via: %i[get patch]
         delete :avatar, action: :destroy, controller: 'users/avatar'
       end
+
+      collection do
+        get :permissions
+      end
     end
 
     # News posts

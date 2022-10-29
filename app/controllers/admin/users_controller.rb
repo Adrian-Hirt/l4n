@@ -30,5 +30,10 @@ module Admin
       end
       redirect_to admin_users_path
     end
+
+    def permissions
+      op Operations::Admin::User::ListPermissions
+      add_breadcrumb _('Admin|Users|Permissions')
+    end
   end
 end

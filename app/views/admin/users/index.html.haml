@@ -1,4 +1,5 @@
 - content_for :header_buttons do
+  = button _('Admin|User|List permissions'), permissions_admin_users_path
   = new_button User, namespace: %i[admin]
 
 .card
