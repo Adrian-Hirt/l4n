@@ -20,7 +20,5 @@ module Operations::Page
         page
       end
     end
-
-    
   end
 end
