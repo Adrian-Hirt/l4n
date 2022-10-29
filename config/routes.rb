@@ -55,12 +55,6 @@ Rails.application.routes.draw do
       delete :/, action: :destroy
     end
 
-    namespace :account do
-      get :/, action: :index
-      get :destroy, action: :init_destroy_account
-      post :destroy, action: :destroy_account
-    end
-
     namespace :gameaccounts do
       get :/, action: :index
       delete :discord, action: :remove_discord
