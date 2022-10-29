@@ -68,11 +68,17 @@ class Tournament < ApplicationRecord
   private
 
   def disallow_changes_when_teams_present
+    # Nothing to do if there are no teams
     return if teams.none?
 
+    # Team size cannot be changed when teams are present
     errors.add(:team_size, _('Tournament|Cannot be changed if teams are present')) if team_size_changed?
 
+    # The singleplayer flag cannot be changed if teams are present
     errors.add(:singleplayer, _('Tournament|Cannot be changed if teams are present')) if singleplayer_changed?
+
+    # The Teams need rank flag cannot be changed if teams are present
+    errors.add(:teams_need_rank, _('Tournament|Cannot be changed if teams are present')) if teams_need_rank_changed?
   end
 
   def max_number_of_participants_larger_than_in_tournament_teams
