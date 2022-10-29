@@ -1,3 +1,5 @@
-%h1= op.model.title
-%hr
-= markdown(model.content)
+- provide :page_title, op.model.title
+
+.card
+  .card-body
+    = markdown(model.content)

@@ -9,6 +9,7 @@ module Grids
 
       column :title
       column :published, html: ->(published) { format_boolean(published) }
+      column :use_sidebar, html: ->(use_sidebar) { format_boolean(use_sidebar) }
       column :url
       column :'datagrid-actions', html: true, header: false do |page|
         tag.div class: %i[datagrid-actions-wrapper] do

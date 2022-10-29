@@ -1,13 +1,17 @@
 - provide :page_title, _('NewsPosts')
 
+- op.posts.each do |newspost|
+  .card.mb-4
+    .card-body
+      %h3.mb-1= newspost.title
+      .mb-3.text-muted= l(newspost.published_at, format: :short)
+      %p.card-text.mb-auto
+        = markdown(truncate(newspost.content, length: 600, separator: ' ', escape: false))
 
-%table{class: 'table table-striped'}
-  - op.posts.each do |p|
-    %tr
-      %td= p.title
-      %td= p.published_at
-      %td= p.user.email
-      %td
-        = show_button p, href: news_path(p), size: :sm, icon_only: true
 
-= paginate op.posts
+      = button _('NewsPost|Read more'), news_path(newspost), size: :sm, color: :default
+
+- if op.posts.total_pages > 1
+  .card
+    .card-body
+      = paginate op.posts, theme: 'bootstrap'

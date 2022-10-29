@@ -1,14 +1,22 @@
 - provide :page_title, _('Events')
 
-%table{class: 'table table-striped'}
-  %tr
-    %th= _('Event|Title')
-    %th= _('Event|Start date')
-    %th= _('Event|End date')
-    %th
-  - op.events.each do |e|
-    %tr
-      %td= e.title
-      %td= e.next_date.start_date || '-'
-      %td= e.next_date.end_date || '-'
-      %td.tar= show_button e, size: :sm, icon_only: true
+- op.events.each do |event|
+  .card.mb-4
+    .card-body
+      %h3.mb-1= event.title
+      .mb-3
+        .text-muted
+          = _('Event|From %{start_date} to %{end_date}') % { start_date:  l(event.next_date.start_date, format: :short), end_date:  l(event.next_date.end_date, format: :short)}
+        - if event.location.present?
+          .text-muted
+            = _('Event|Location')
+            = event.location
+      %p.card-text.mb-auto
+        = markdown(truncate(event.description, length: 600, separator: ' ', escape: false))
+
+      = button _('Event|Read more'), event_path(event), size: :sm, color: :default
+
+- if op.events.total_pages > 1
+  .card
+    .card-body
+      = paginate op.events, theme: 'bootstrap'

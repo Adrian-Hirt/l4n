@@ -10,14 +10,14 @@
   %body.d-flex.application
     = render partial: 'layouts/application/header'
     = render partial: 'layouts/shared/flashes'
-    .main.container
+    .main.container.mb-5
       - if content_for?(:page_title)
         .page-title.mb-3
           %h1= yield :page_title
       .content
         - if @use_sidebar_layout
           .row
-            .col-md-8
+            .col-md-8.mb-3.mb-md-0
               = yield
             .col-md-4
               = render partial: 'shared/sidebar'

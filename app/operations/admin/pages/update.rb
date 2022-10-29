@@ -3,10 +3,11 @@ module Operations::Admin::Pages
     schema3 do
       str! :id, format: :integer
       hsh? :page do
-        str! :title
-        str! :published, format: :boolean
+        str? :title
+        boo? :published, cast_str: true
         str? :content
-        str! :url
+        str? :url
+        boo? :use_sidebar, cast_str: true
       end
     end
 

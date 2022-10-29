@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_28_142454) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_29_195022) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -123,7 +123,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_28_142454) do
   create_table "news_posts", force: :cascade do |t|
     t.string "title", null: false
     t.text "content"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.boolean "published", default: false, null: false
     t.datetime "published_at", precision: nil
     t.datetime "created_at", null: false
@@ -168,6 +168,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_28_142454) do
     t.string "url", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "use_sidebar", default: true, null: false
     t.index ["title"], name: "index_pages_on_title", unique: true
     t.index ["url"], name: "index_pages_on_url", unique: true
   end

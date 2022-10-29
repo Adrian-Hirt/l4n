@@ -1,11 +1,14 @@
-- provide :page_title, model.title
+- provide :page_title, _('Events')
 
-%p
-  %b= _('Event|Start date')
-  = model.next_date.start_date || '-'
-%p
-  %b= _('Event|End date')
-  = model.next_date.end_date || '-'
+.card
+  .card-body
+    %h3.mb-1= model.title
+    .mb-3
+      .text-muted
+        = _('Event|From %{start_date} to %{end_date}') % { start_date:  l(model.next_date.start_date, format: :short), end_date:  l(model.next_date.end_date, format: :short)}
+      - if model.location.present?
+        .text-muted
+          = _('Event|Location')
+          = model.location
 
-%hr
-= markdown(model.description)
+    = markdown(model.description)
