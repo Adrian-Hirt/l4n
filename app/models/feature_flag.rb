@@ -10,6 +10,7 @@ class FeatureFlag < ApplicationRecord
     shop
     lan_party
     tournaments
+    frontend_sidebar
   ].freeze
 
   # == Associations ================================================================
