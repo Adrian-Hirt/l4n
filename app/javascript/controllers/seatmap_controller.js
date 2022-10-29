@@ -35,6 +35,8 @@ export default class extends Controller {
     // Also setup the widow resize listener (debounced)
     let resizeTimeout;
 
+    this.highlightedSeats = [];
+
     window.addEventListener("resize", () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(this.#resizeToFit.bind(this), 250);
@@ -381,7 +383,6 @@ export default class extends Controller {
   #highlightSeats() {
     const urlParams = new URLSearchParams(window.location.search);
     const highlight = urlParams.getAll('highlight');
-    this.highlightedSeats = [];
 
     if(highlight.length > 0) {
       for(let id of highlight) {

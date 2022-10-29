@@ -12,8 +12,15 @@
     = render partial: 'layouts/shared/flashes'
     .main.container
       - if content_for?(:page_title)
-        .page-title
+        .page-title.mb-3
           %h1= yield :page_title
       .content
-        = yield
+        - if @use_sidebar_layout
+          .row
+            .col-md-8
+              = yield
+            .col-md-4
+              = render partial: 'shared/sidebar'
+        - else
+          = yield
     = render partial: 'layouts/application/footer'

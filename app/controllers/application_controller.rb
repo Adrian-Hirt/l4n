@@ -53,4 +53,9 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_in, keys: %i[email otp_attempt])
   end
+
+  # Enables the sidebar layout for that controller if the feature flag is toggled on
+  def enable_sidebar_layout
+    @use_sidebar_layout = FeatureFlag.enabled?(:frontend_sidebar)
+  end
 end
