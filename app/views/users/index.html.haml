@@ -7,7 +7,7 @@
         - op.grid.html_columns.each do |column|
           - next unless column.supports_order?
 
-          .d-flex{class: datagrid_column_classes(op.grid, column)}
+          .d-flex.px-3.py-1{class: datagrid_column_classes(op.grid, column)}
             .me-2= column.header
             = datagrid_order_for(op.grid, column)
 
