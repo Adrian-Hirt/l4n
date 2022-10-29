@@ -1,2 +1,33 @@
-.card
-  .card-body
+.row
+  .col-md-6.mb-3
+    .card
+      .card-body
+        .float-end
+          .text-white.bg-info.p-2
+            = icon %i[fas fa-fw fa-cart-shopping]
+        .text-muted.fw-normal.mt-0= _('Admin|Shop|Dashboard|Orders')
+        %h3.mt-3.mb-3= ::Order.count
+  .col-md-6.mb-3
+    .card
+      .card-body
+        .float-end
+          .text-white.bg-info.p-2
+            = icon %i[fas fa-fw fa-box]
+        .text-muted.fw-normal.mt-0= _('Admin|Shop|Dashboard|Products')
+        %h3.mt-3.mb-3= ::Product.count
+  .col-md-6.mb-3
+    .card
+      .card-body
+        .float-end
+          .text-white.bg-info.p-2
+            = icon %i[fas fa-fw fa-cash-register]
+        .text-muted.fw-normal.mt-0= _('Admin|Shop|Dashboard|Orders payment pending')
+        %h3.mt-3.mb-3= ::Order.where(status: Order.statuses[:delayed_payment_pending]).count
+  .col-md-6.mb-3
+    .card
+      .card-body
+        .float-end
+          .text-white.bg-info.p-2
+            = icon %i[fas fa-fw fa-percent]
+        .text-muted.fw-normal.mt-0= _('Admin|Shop|Dashboard|Active promotions')
+        %h3.mt-3.mb-3= ::Promotion.where(active: true).count
