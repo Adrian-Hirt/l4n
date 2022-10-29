@@ -11,6 +11,12 @@
               tag: :button,
               html: { method: :delete },
               classes: 'w-100'
+    - if model.tournament.teams_need_rank?
+      %hr
+      -# Display form to change the rank of the team
+      = simple_form_for model, wrapper: :input_group do |f|
+        = f.association :tournament_team_rank, as: :select, collection: model.tournament.tournament_team_ranks.order(:sort), include_blank: _('Form|Select|Blank')
+        = f.save class: %i[w-100]
   - elsif model.registered?
     .d-grid.gap-2
       = button _('Tournament|Remove my participation from tournament'),
