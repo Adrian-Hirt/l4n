@@ -11,6 +11,8 @@ module Operations::Admin::Tournament
         obj? :lan_party_id
         obj? :frontend_order
         obj? :description
+        obj? :teams_need_rank
+        hsh? :tournament_team_ranks_attributes, additional_properties: true
       end
     end
 

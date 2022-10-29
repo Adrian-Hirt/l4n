@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_25_194612) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_28_142454) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -123,7 +123,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_25_194612) do
   create_table "news_posts", force: :cascade do |t|
     t.string "title", null: false
     t.text "content"
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.boolean "published", default: false, null: false
     t.datetime "published_at", precision: nil
     t.datetime "created_at", null: false
@@ -420,6 +420,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_25_194612) do
     t.index ["user_id"], name: "index_tournament_team_members_on_user_id"
   end
 
+  create_table "tournament_team_ranks", force: :cascade do |t|
+    t.bigint "tournament_id", null: false
+    t.string "name", null: false
+    t.integer "sort", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name", "tournament_id"], name: "index_tournament_team_ranks_on_name_and_tournament_id", unique: true
+    t.index ["tournament_id"], name: "index_tournament_team_ranks_on_tournament_id"
+  end
+
   create_table "tournament_teams", force: :cascade do |t|
     t.bigint "tournament_id", null: false
     t.datetime "created_at", null: false
@@ -427,8 +437,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_25_194612) do
     t.string "status", null: false
     t.string "name", null: false
     t.string "password_digest"
+    t.bigint "tournament_team_rank_id"
     t.index ["name", "tournament_id"], name: "index_tournament_teams_on_name_and_tournament_id", unique: true
     t.index ["tournament_id"], name: "index_tournament_teams_on_tournament_id"
+    t.index ["tournament_team_rank_id"], name: "index_tournament_teams_on_tournament_team_rank_id"
   end
 
   create_table "tournaments", force: :cascade do |t|
@@ -443,6 +455,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_25_194612) do
     t.bigint "lan_party_id"
     t.text "description"
     t.integer "frontend_order", default: 0, null: false
+    t.boolean "teams_need_rank", default: false, null: false
     t.index ["lan_party_id"], name: "index_tournaments_on_lan_party_id"
   end
 
@@ -539,6 +552,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_25_194612) do
   add_foreign_key "tournament_rounds", "tournament_phases"
   add_foreign_key "tournament_team_members", "tournament_teams"
   add_foreign_key "tournament_team_members", "users"
+  add_foreign_key "tournament_team_ranks", "tournaments"
+  add_foreign_key "tournament_teams", "tournament_team_ranks"
   add_foreign_key "tournament_teams", "tournaments"
   add_foreign_key "user_addresses", "users"
 end

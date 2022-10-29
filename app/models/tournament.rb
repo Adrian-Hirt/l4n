@@ -16,6 +16,9 @@ class Tournament < ApplicationRecord
   has_many_attached :files
   belongs_to :lan_party, optional: true
 
+  has_many :tournament_team_ranks, class_name: 'Tournament::TeamRank', dependent: :destroy
+  accepts_nested_attributes_for :tournament_team_ranks, allow_destroy: true
+
   # == Validations =================================================================
   validates :name, presence: true, length: { maximum: 255 }
   validates :team_size, presence: true, numericality: { greater_than: 0 }
@@ -24,6 +27,7 @@ class Tournament < ApplicationRecord
   validates :status, presence: true, inclusion: statuses.keys
   validates_boolean :registration_open
   validates_boolean :singleplayer
+  validates_boolean :teams_need_rank
   validates :max_number_of_participants, presence: true
   validate :disallow_changes_when_teams_present
   validate :max_number_of_participants_larger_than_in_tournament_teams

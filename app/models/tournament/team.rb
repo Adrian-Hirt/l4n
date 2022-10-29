@@ -14,6 +14,7 @@ class Tournament::Team < ApplicationRecord
 
   # == Associations ================================================================
   belongs_to :tournament, touch: true
+  belongs_to :team_rank, class_name: 'Tournament::TeamRank', optional: true
   has_many :phase_teams, class_name: 'Tournament::PhaseTeam', foreign_key: :tournament_team_id, dependent: :destroy, inverse_of: :team
   has_many :phases, through: :phase_teams
   has_many :team_members, class_name: 'Tournament::TeamMember', foreign_key: :tournament_team_id, dependent: :destroy, inverse_of: :team
