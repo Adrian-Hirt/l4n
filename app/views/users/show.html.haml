@@ -15,17 +15,25 @@
       .card-header
         = _('User|About me')
       .card-body
-        = simple_format model.bio
+        - if model.bio.present?
+          = simple_format model.bio
+        - else
+          = _('User|No bio added yet')
     .card
       .card-header
         = _('User|My website')
       .card-body
-        = model.website
+        - if model.website.present?
+          = model.website
+        - else
+          = _('User|No website added yet')
   .col-md-9
     .card.mb-3
       .card-header
         = _('User|Game Profiles')
       .card-body
+        - if model.steam_id.blank? && model.discord_id.blank?
+          = _('Gameaccounts|No gameaccounts added yet')
         - if model.steam_id.present?
           .mb-3
             %h4= _('Gameaccounts|Steam')
