@@ -29,16 +29,16 @@
             %tr
               %td= item[:product]
               %td= item[:quantity]
-              %td= humanized_money_with_symbol(item[:total])
+              %td= money_formatted(item[:total])
           - op.result[:promotion_codes].each do |promotion_code|
             %tr
               %td= "#{_('Order|PromotionCode')} #{promotion_code[:name]}"
               %td= 1
-              %td.text-success= humanized_money_with_symbol(-promotion_code[:reduction])
+              %td.text-success= money_formatted(-promotion_code[:reduction])
           %tr.border-top
             %td= _('Order|Total')
             %td
-            %td= humanized_money_with_symbol(op.result[:total])
+            %td= money_formatted(op.result[:total])
 
 :javascript
   (function() {

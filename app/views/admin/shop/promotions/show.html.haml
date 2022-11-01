@@ -10,7 +10,7 @@
         .text-muted= _('Promotion|Code type')
         = model.code_type
         - if model.fixed_value?
-          = humanized_money_with_symbol model.reduction
+          = money_formatted model.reduction
       .col-md-4
         .text-muted= _('Promotion|Codes count')
         = model.promotion_codes.count

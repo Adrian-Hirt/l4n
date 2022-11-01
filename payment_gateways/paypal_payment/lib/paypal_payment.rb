@@ -7,6 +7,10 @@ module PaypalPayment
   end
 
   def self.name
-    _('PaypalPayment')
+    _('PaypalPaymentGateway')
+  end
+
+  def self.payment_button_text
+    _('PaypalPaymentGateway|Pay')
   end
 end

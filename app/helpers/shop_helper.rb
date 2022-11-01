@@ -12,4 +12,12 @@ module ShopHelper
   def ticket_seat_category_badge(ticket)
     seat_category_badge(ticket.seat_category)
   end
+
+  def money_formatted(money)
+    if (money.cents % 100).zero?
+      "#{money.format(symbol: false, decimal_mark: '.', thousands_separator: '\'', no_cents_if_whole: true)}.- CHF"
+    else
+      "#{money.format(symbol: false, decimal_mark: '.', thousands_separator: '\'')} CHF"
+    end
+  end
 end

@@ -9,4 +9,8 @@ module SekiPayment
   def self.name
     _('SekiPaymentGateway')
   end
+
+  def self.payment_button_text
+    _('SekiPaymentGateway|Pay')
+  end
 end

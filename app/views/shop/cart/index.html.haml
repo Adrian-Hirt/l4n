@@ -2,15 +2,28 @@
 = render partial: 'shop/shared/header'
 
 - if model.cart_items.none?
-  .card
-    .card-body
-      = _('Cart|Your cart is empty')
+  .row
+    .col-lg-9.mb-3
+      .card
+        .card-header
+          = _('Cart|Your items')
+        .card-body
+          = _('Cart|Your cart is empty')
+    .col-lg-3
+      .card
+        .card-header
+          = _('Cart|Actions')
+        .card-body
+          .d-grid
+            = button _('Cart|Back to shop'), shop_path, color: :secondary
 - else
   .row
-    .col-md-9
+    .col-lg-9.mb-3
       .card
+        .card-header
+          = _('Cart|Your items')
         .card-body
-          %table.table.table-borderless
+          %table.table.table-hover.mb-0
             %tr
               %th= _('Cart|Product')
               %th= _('Cart|Quantity')
@@ -55,19 +68,26 @@
                     disable_on_click: true,
                     disabled:         cart_item.quantity <= 1
                 %td
-                  = humanized_money_with_symbol(cart_item.total)
+                  = money_formatted(cart_item.total)
                   %br
                   %small.text-muted
-                    = _('Product|%{price} each') % { price: humanized_money_with_symbol(cart_item.product_variant.price) }
+                    = _('Product|%{price} each') % { price: money_formatted(cart_item.product_variant.price) }
                 %td.align-middle
                   = delete_button cart_item, namespace: %i[shop], icon_only: true, size: :sm
-    .col-md-3
+    .col-lg-3
       .card
+        .card-header
+          = _('Cart|Actions')
         .card-body
-          .mb-3
+          .mb-2
             = _('Cart|Total:')
-            = humanized_money_with_symbol(model.total)
-          - if false && op.availability_error
-            = button _('Cart|Checkout disabled'), nil, disabled: true
-          - else
-            = button _('Shop|Checkout'), shop_checkout_path
+            = money_formatted(model.total)
+          .d-grid
+            - if op.availability_error
+              = button _('Cart|Checkout disabled'), nil, disabled: true
+            - else
+              = button _('Shop|Checkout'), shop_checkout_path
+          %hr
+          .mb-2= _('Cart|Not yet done?')
+          .d-grid
+            = button _('Cart|Back to shop'), shop_path, color: :secondary

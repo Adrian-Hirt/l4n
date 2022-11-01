@@ -1,9 +1,17 @@
 = turbo_frame_tag 'payment_gateways', target: "_top" do
-  - if model.total.zero?
-    = button _('Order|Complete without payment'), process_free_shop_order_path(op.order), method: :post
-  - else
-    - Rails.application.config.payment_gateways.each do |gateway|
-      %p.mb-3
-        = gateway.name
-        %br
-        = button 'Pay', gateway.payment_path(order_id: op.order.uuid), html: { data: { turbo: 'false' } }
+  .card
+    .card
+      .card-header
+        = _('Checkout|Payment options')
+      .card-body
+        - if model.total.zero?
+          .d-grid
+            = button _('Order|Complete without payment'), process_free_shop_order_path(op.order), method: :post
+        - else
+          - Rails.application.config.payment_gateways.each_with_index do |gateway, index|
+            - unless index == 0
+              %hr
+            .d-grid{class: ('mt-3' unless index == 0)}
+              .mb-2
+                = gateway.name
+              = button gateway.payment_button_text, gateway.payment_path(order_id: op.order.uuid), html: { data: { turbo: 'false' } }

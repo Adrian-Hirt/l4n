@@ -1,17 +1,15 @@
 = render partial: 'shop/shared/header'
-
 = turbo_frame_tag 'payment_gateways'
 
-- op.products.in_groups_of(4) do |products|
-  .row
-    - products.each do |product|
-      - next if product.nil?
-      .col-md-3.col-sm-6
-        .card.product-listing-card
-          .card-body
-            %small.product-details
-              = product.product_category.name
-            %h4.product_title
-              = link_to product.name, [:shop, product]
-            .product-price
-              = _('Product|Starting from %{start_price}') % { start_price: humanized_money_with_symbol(product.starting_price) }
+.row
+  - op.products.each do |product|
+    .col-xl-4.col-lg-6.d-flex.align-items-stretch.mb-4.mb-md-3
+      .card.w-100
+        .card-body
+          %small.text-muted
+            = product.product_category.name
+          %h4.product_title
+            = link_to product.name, [:shop, product]
+        .card-footer
+          .product-price
+            = _('Product|Starting from %{start_price}') % { start_price: money_formatted(product.starting_price) }

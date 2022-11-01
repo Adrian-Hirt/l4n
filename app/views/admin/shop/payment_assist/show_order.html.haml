@@ -6,7 +6,7 @@
         = op.order.user.username
       .col-md-4
         .text-muted= _('Order|Total to pay')
-        %b= humanized_money_with_symbol(op.order.total)
+        %b= money_formatted(op.order.total)
     .my-3= _('Order|Order details')
     .row.border-bottom.pb-3.mb-2
       .col-md-4
@@ -27,15 +27,15 @@
         %tr
           %td= order_item.product_name
           %td= order_item.quantity
-          %td= humanized_money_with_symbol order_item.price
-          %td= humanized_money_with_symbol order_item.total
+          %td= money_formatted order_item.price
+          %td= money_formatted order_item.total
       - op.order.promotion_code_mappings.each do |code_matching|
         %tr
           %td{colspan: 3}= "#{_('Order|PromotionCode')} #{code_matching.promotion_code.promotion.name}"
-          %td.text-success= humanized_money_with_symbol(-code_matching.applied_reduction)
+          %td.text-success= money_formatted(-code_matching.applied_reduction)
       %tr.border-top
         %td{colspan: 3}= _('Order|Total')
-        %td= humanized_money_with_symbol(op.order.total)
+        %td= money_formatted(op.order.total)
     .border-top.pt-3
       = simple_form_for op.order, url: admin_shop_payment_assist_order_paid_path(op.order), wrapper: :input_group do |f|
         = f.input :payment_gateway_payment_id, label: _('PaymentAssist|Optional payment id'), placeholder: _('PaymentAssist|Optional payment id placeholder')

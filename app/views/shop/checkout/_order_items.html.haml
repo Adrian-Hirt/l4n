@@ -1,4 +1,4 @@
-%table.table.table-borderless
+%table.table.table-hover.mb-0
   %tr
     %th= _('Order|Product')
     %th= _('Order|Quantity')
@@ -6,20 +6,17 @@
   - op.order.order_items.each do |order_item|
     %tr
       %td
-        = order_item.product_variant_id
-        \|
         = order_item.product_variant.product.name
-        \|
-        = order_item.product_variant.name
-      %td= order_item.quantity
-      %td= humanized_money_with_symbol(order_item.total)
+        .text-muted= order_item.product_variant.name
+      %td.align-middle= order_item.quantity
+      %td.align-middle= money_formatted(order_item.total)
   - if op.order.respond_to?(:promotion_code_mappings)
     - op.order.promotion_code_mappings.each do |code_matching|
       %tr
         %td= "#{_('Order|PromotionCode')} #{code_matching.promotion_code.promotion.name}"
         %td= 1
-        %td.text-success= humanized_money_with_symbol(-code_matching.applied_reduction)
-  %tr.border-top
+        %td.text-success= money_formatted(-code_matching.applied_reduction)
+  %tr.fw-bold
     %td= _('Order|Total')
     %td
-    %td= humanized_money_with_symbol(op.total)
+    %td= money_formatted(op.total)

@@ -38,12 +38,12 @@
         %tr
           %td= order_item.product_name
           %td= order_item.quantity
-          %td= humanized_money_with_symbol order_item.price
-          %td= humanized_money_with_symbol order_item.total
+          %td= money_formatted order_item.price
+          %td= money_formatted order_item.total
       - model.promotion_code_mappings.each do |code_matching|
         %tr
           %td{colspan: 3}= "#{_('Order|PromotionCode')} #{code_matching.promotion_code.promotion.name}"
-          %td.text-success= humanized_money_with_symbol(-code_matching.applied_reduction)
+          %td.text-success= money_formatted(-code_matching.applied_reduction)
       %tr.border-top
         %td{colspan: 3}= _('Order|Total')
-        %td= humanized_money_with_symbol(model.total)
+        %td= money_formatted(model.total)

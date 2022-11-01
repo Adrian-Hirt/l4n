@@ -1,6 +1,7 @@
 module Operations::Shop::Order
   class SetOrderAddress < RailsOps::Operation::Model::Load
     schema3 do
+      int! :id, cast_str: true
       str? :selected_address_id
     end
 

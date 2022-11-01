@@ -9,4 +9,8 @@ module DummyPayment
   def self.name
     _('DummyPaymentGateway')
   end
+
+  def self.payment_button_text
+    _('DummyPaymentGateway|Pay')
+  end
 end
