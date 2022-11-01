@@ -21,6 +21,6 @@
           %th= _('EventDate|Start')
           %th= _('EventDate|End')
         - model.event_dates.order(:start_date).each do |event_date|
-          %tr
+          %tr{class: ('strikethrough' if event_date.end_date.past?)}
             %td= l(event_date.start_date, format: :short)
             %td= l(event_date.end_date, format: :short)
