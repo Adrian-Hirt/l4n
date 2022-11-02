@@ -38,12 +38,10 @@
       .card-body
         - op.lan_party.seat_categories.each do |category|
           .d-flex.align-items-center.mb-2
-            .me-2
-              .badge{style: "background-color: #{category.color_for_view};"}
-                &nbsp;
+            .me-2.badge.seat-id-badge{style: "background-color: #{category.color_for_view};"}
+              &nbsp;
             = category.name
         .d-flex.align-items-center
-          .me-2
-            .badge{style: "background-color: red"}
-              &nbsp;
-            = _('Seatmap|Taken seat')
+          .me-2.badge.seat-id-badge{style: "background-color: red"}
+            &nbsp;
+          = _('Seatmap|Taken seat')

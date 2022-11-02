@@ -1,7 +1,9 @@
 - if ticket.assignee.present?
   -# If assignee is present, we display the name of the assignee
-  .me-2
-    = ticket.assignee.username
+  .me-2.flex-grow-1
+    = link_to ticket.assignee, target: :_blank do
+      = icon %i[fas fa-arrow-up-right-from-square]
+      = ticket.assignee.username
 
   -# If the user is the user that ordered the ticket, we display a simple
   -# button to remove the assignation. If the user is the assigned user,
@@ -13,19 +15,19 @@
 
   -# Render the button
   = button nil,
-           remove_assignee_lan_ticket_path(id: ticket.id),
-           size: :sm,
-           method: :post,
-           btn_icon: %i[fas fa-user-slash fa-fw],
-           icon_only: true,
-           **additional_options
+          remove_assignee_lan_ticket_path(id: ticket.id),
+          size: :sm,
+          method: :post,
+          btn_icon: %i[fas fa-user-slash fa-fw],
+          icon_only: true,
+          **additional_options
 
 - else
   -# Otherwise we display the form to assign the ticket
-  = simple_form_for :assignee, url: assign_lan_ticket_path(ticket), wrapper: :input_group do |f|
+  = simple_form_for :assignee, url: assign_lan_ticket_path(ticket), wrapper: :input_group, html: { class: 'flex-grow-1' } do |f|
     = f.input :username, label: false,
                         wrapper_html: { style: 'margin-bottom: 0 !important;' },
-                        append: f.save('>', style: 'border-radius: 0;', class: %i[rounded-end btn-sm]),
+                        append: f.save('>', style: 'border-radius: 0; width: 2.25rem;', class: %i[rounded-end btn-sm]),
                         append_options: { class: '' },
                         placeholder: _('Seatmap|Username of user to assign to'),
                         input_html: { class: %i[py-0 seatmap-username-input] }

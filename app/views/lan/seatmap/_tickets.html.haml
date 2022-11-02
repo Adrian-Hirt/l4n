@@ -21,8 +21,10 @@
         .badge.seat-id-badge{style: "background-color: #{ticket.seat_category.color_for_view}; color: #{ticket.seat_category.font_color_for_view};", data: { seat_id: ticket.seat&.id, action: 'click->seatmap#highlightSeatOfBadge' }}
           = ticket.seat&.name_or_id.presence || '&nbsp;'.html_safe
       - if ticket.checked_in?
-        .me-2
-          = ticket.assignee.username
+        .me-2.flex-grow-1
+          = link_to ticket.assignee, target: :_blank do
+            = icon %i[fas fa-arrow-up-right-from-square]
+            = ticket.assignee.username
         .badge.bg-secondary
           = _('SeatMap|User checked in')
       - else

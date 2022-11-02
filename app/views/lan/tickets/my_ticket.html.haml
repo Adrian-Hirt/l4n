@@ -1,30 +1,45 @@
 - provide :page_title, _('My Ticket')
 
-.card
-  .card-header
-    = _('Ticket|Ticket for %{lan_name}') % { lan_name: op.lan_party.name }
-  .card-body
-    .row
-      .col-md-6.text-center
-        = op.qr_code.html_safe
-
-      .col-md-6
-        %table.table.table-striped.table-borderless
+.row
+  .col-md-6.mb-3
+    .card
+      .card-header
+        = _('Ticket|Ticket for %{lan_name}') % { lan_name: op.lan_party.name }
+      .card-body
+        .text-center= op.qr_code.html_safe
+  .col-md-6
+    .card
+      .card-header
+        = _('Ticket|Details')
+      %table.table.table-striped.table-borderless.mb-0.table-hover
+        %tr
+          %td= _('Ticket|Username')
+          %td= current_user.username
+        %tr
+          %td= _('Ticket|Seat')
+          %td
+            - if op.ticket.seat.present?
+              = link_to op.ticket.seat.name_or_id, lan_seatmap_path(highlight: op.ticket.seat.id)
+            - else
+              \-
+        %tr
+          %td= _('Ticket|Seat category')
+          %td
+            .badge{style: "background-color: #{op.ticket.seat_category.color_for_view}; color: #{op.ticket.seat_category.font_color_for_view}"}
+              = op.ticket.seat_category.name
+        %tr
+          %td= _('Ticket|Status')
+          %td= op.ticket.humanized_status
+        %tr{style: 'border-top: 2px solid grey;'}
+          %td= _('Ticket|Event name')
+          %td= op.lan_party.name
+        - if op.lan_party.location.present?
           %tr
-            %td= _('Ticket|Username')
-            %td= current_user.username
-          %tr
-            %td= _('Ticket|Seat')
-            %td
-              - if op.ticket.seat.present?
-                = link_to op.ticket.seat.name_or_id, lan_seatmap_path(highlight: op.ticket.seat.id)
-              - else
-                \-
-          %tr
-            %td= _('Ticket|Seat category')
-            %td
-              .badge{style: "background-color: #{op.ticket.seat_category.color_for_view}; color: #{op.ticket.seat_category.font_color_for_view}"}
-                = op.ticket.seat_category.name
-          %tr
-            %td= _('Ticket|Status')
-            %td= op.ticket.humanized_status
+            %td= _('Ticket|Event location')
+            %td= l op.lan_party.location
+        %tr
+          %td= _('Ticket|Event start')
+          %td= l op.lan_party.event_start
+        %tr
+          %td= _('Ticket|Event end')
+          %td= l op.lan_party.event_end

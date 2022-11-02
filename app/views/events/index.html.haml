@@ -9,7 +9,7 @@
           = _('Event|From %{start_date} to %{end_date}') % { start_date:  l(event.next_date.start_date, format: :short), end_date:  l(event.next_date.end_date, format: :short)}
         - if event.location.present?
           .text-muted
-            = _('Event|Location')
+            = "#{_('Event|Location')}:"
             = event.location
       %p.card-text.mb-auto
         = markdown(truncate(event.description, length: 600, separator: ' ', escape: false))
