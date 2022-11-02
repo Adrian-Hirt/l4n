@@ -22,5 +22,8 @@ module L4n
 
     # Array holding the payment gateways
     config.payment_gateways = []
+
+    # TODO: Make this configurable, probably in a settings file or similar
+    config.application_name = 'L4N Dev'
   end
 end

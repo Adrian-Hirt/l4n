@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :set_gettext_locale
+  before_action :set_gettext_locale, unless: :devise_controller?
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   include RailsOps::ControllerMixin
@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_in, keys: %i[email otp_attempt])
+    devise_parameter_sanitizer.permit(:sign_in, keys: %i[email otp_attempt password])
   end
 
   # Enables the sidebar layout for that controller if the feature flag is toggled on
