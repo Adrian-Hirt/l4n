@@ -17,7 +17,7 @@
             %td.align-middle= order.uuid
             %td.align-middle= l(order.created_at, format: :long)
             %td.align-middle= order.order_items.sum(&:quantity)
-            %td.text-end= show_button order, href: shop_order_path(id: order.uuid), size: :sm, icon_only: true
+            %td.text-end= show_button order, href: shop_order_path(id: order.uuid), size: :sm, icon_only: true, color: :default
     - else
       = _('Orders|No payment pending orders')
 .card.mb-3
@@ -36,6 +36,6 @@
             %td.align-middle= order.uuid
             %td.align-middle= l(order.created_at, format: :long)
             %td.align-middle= order.order_items.sum(&:quantity)
-            %td.text-end= show_button order, href: shop_order_path(id: order.uuid), size: :sm, icon_only: true
+            %td.text-end= show_button order, href: shop_order_path(id: order.uuid), size: :sm, icon_only: true, color: :default
     - else
       = _('Orders|No orders yet')

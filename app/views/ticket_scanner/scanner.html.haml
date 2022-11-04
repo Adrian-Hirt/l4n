@@ -7,9 +7,9 @@
                               data: { 'ticket-scanner-target' => 'cameraSelector' },
                               class: 'form-select d-inline-block w-auto'
         .scanner-action-buttons
-          = button _('TicketScanner|Start'), nil, html: { data: { action: 'click->ticket-scanner#startScanning' } }
-          = button _('TicketScanner|Stop'), nil, html: { data: { action: 'click->ticket-scanner#stopScanning' } }
-          = button _('TicketScanner|Toggle flash'), nil, html: { data: { action: 'click->ticket-scanner#toggleFlash' } }
+          = button _('TicketScanner|Start'), nil, html: { data: { action: 'click->ticket-scanner#startScanning' } }, color: :default
+          = button _('TicketScanner|Stop'), nil, html: { data: { action: 'click->ticket-scanner#stopScanning' } }, color: :default
+          = button _('TicketScanner|Toggle flash'), nil, html: { data: { action: 'click->ticket-scanner#toggleFlash' } }, color: :default
       .text-center
         %video
     = turbo_frame_tag 'ticket_scanner_actions' do

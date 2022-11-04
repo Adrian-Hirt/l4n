@@ -1,4 +1,4 @@
 = simple_form_for :promotion_code, url: shop_checkout_use_promotion_code_path(id: op.order.id), remote: true do |f|
   = f.input :code
   .d-grid
-    = f.save _('Order|Use promotion code')
+    = f.save _('Order|Use promotion code'), class: %i[btn-default]

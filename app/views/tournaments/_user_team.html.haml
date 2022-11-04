@@ -32,7 +32,8 @@
         .d-grid.gap-2
           = button _('Tournament|Participate in tournament'),
                   register_for_tournament_tournament_team_path(op.user_team),
-                  method: :post
+                  method: :post,
+                  color: :default
           = button _('Tournament|Delete team'),
                   op.user_team,
                   color: :danger,

@@ -7,7 +7,7 @@
         = _('Seatmap')
         .d-none.d-xl-block
           = button _('Seatmap|Toggle sidebar'), nil, btn_icon: %i[fas fa-bars],
-                                                     color: :secondary,
+                                                     color: :default,
                                                      html: { data: { 'seatmap-target' => 'sidebarToggle' } },
                                                      size: :sm
       .d-flex.justify-content-center
@@ -25,7 +25,7 @@
           = turbo_frame_tag :tickets do
             = render partial: 'tickets', locals: { tickets: op.available_tickets }
         .card-footer
-          = button _('Tickets|Manage & upgrade tickets'), manage_lan_tickets_path, size: :sm
+          = button _('Tickets|Manage & upgrade tickets'), manage_lan_tickets_path, size: :sm, color: :default
     .card.mb-3
       .card-header
         = _('Seatmap|Selected seat')

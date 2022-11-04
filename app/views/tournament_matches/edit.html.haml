@@ -50,7 +50,7 @@
                   = f.error :winner
                 - if model.phase.swiss?
                   = f.input :draw, input_html: { class: 'no-validation' }
-                = f.save _('Match|Submit result')
+                = f.save _('Match|Submit result'), class: %i[btn-default]
           - elsif model.result_reported?
             .border-top.pt-3
               - if model.reporter.team.captain?(current_user)
@@ -61,7 +61,7 @@
                   = f.input :confirmation, as: :radio_buttons,
                                           label: _('Match|Result is the result correct?'),
                                           input_html: { class: 'no-validation' }
-                  = f.save _('Match|Submit confirmation status')
+                  = f.save _('Match|Submit confirmation status'), class: %i[btn-default]
           - elsif model.result_disputed?
             .border-top.pt-3
               .alert.alert-warning.mb-0

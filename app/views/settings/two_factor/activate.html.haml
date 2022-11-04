@@ -26,4 +26,4 @@
           = f.input :otp_response_code, input_html: { inputmode: :numeric, placeholder: 'xxxxxx' }
           = f.input :backup_codes_saved, as: :boolean
         .card-footer
-          = f.save _('Settings|Save two factor code')
+          = f.save _('Settings|Save two factor code'), class: %i[btn-default]

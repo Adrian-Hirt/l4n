@@ -14,4 +14,4 @@
             .d-grid{class: ('mt-3' unless index == 0)}
               .mb-2
                 = gateway.name
-              = button gateway.payment_button_text, gateway.payment_path(order_id: op.order.uuid), html: { data: { turbo: 'false' } }
+              = button gateway.payment_button_text, gateway.payment_path(order_id: op.order.uuid), html: { data: { turbo: 'false' } }, color: :default

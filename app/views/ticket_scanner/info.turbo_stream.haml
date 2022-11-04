@@ -23,7 +23,7 @@
       = form_with url: ticket_scanner_checkin_path do |f|
         = f.hidden_field :qr_id, value: op.qr_id
         = f.submit _('TicketScanner|Check ticket in'), name: nil, class: 'btn btn-primary', disabled: op.ticket.checked_in?
-        = button _('TicketScanner|Cancel check in'), ticket_scanner_path, color: :secondary
+        = button _('TicketScanner|Cancel check in'), ticket_scanner_path, color: :default
 - else
   = turbo_stream.update :ticket_scanner_actions do
     = form_with url: ticket_scanner_info_path do |f|

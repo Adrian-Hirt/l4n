@@ -74,6 +74,11 @@ input[type=radio]
       border: 1px solid $warning
       background: $warning
 
+    &.checkbox-default:checked + label::before,
+    &.radio-default:checked + label::before
+      border: 1px solid var(--l4n-accent-color)
+      background: var(--l4n-accent-color)
+
     &:not(:checked):not(:disabled):hover + label::before
       border-width: 2px
 
@@ -95,3 +100,6 @@ input[type=radio]
     &.checkbox-warning:not(:checked):not(:disabled):hover + label::before,
     &.radio-warning:not(:checked):not(:disabled):hover + label::before
       border-color: $warning
+    &.checkbox-default:not(:checked):not(:disabled):hover + label::before,
+    &.radio-default:not(:checked):not(:disabled):hover + label::before
+      border-color: var(--l4n-accent-color)

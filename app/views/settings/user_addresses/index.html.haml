@@ -6,15 +6,16 @@
   .col-md-9
     .card
       .card-body
-        = new_button UserAddress, namespace: %i[settings]
+        = new_button UserAddress, namespace: %i[settings], color: :default
         %hr
-        - current_user.user_addresses.each do |user_address|
+        - current_user.user_addresses.each_with_index do |user_address, index|
+          - unless index == 0
+            %hr
           %p
             = "#{user_address.first_name} #{user_address.last_name}"
             %br
             = user_address.street
             %br
             = "#{user_address.zip_code} #{user_address.city}"
-          = edit_button user_address, namespace: %i[settings]
+          = edit_button user_address, namespace: %i[settings], color: :default
           = delete_button user_address, namespace: %i[settings]
-          %hr

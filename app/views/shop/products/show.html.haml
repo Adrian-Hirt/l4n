@@ -40,6 +40,6 @@
             - if current_user
               = button 'Add to cart', add_to_cart_shop_product_variant_path(product_variant),
                 btn_icon: %i[fas fa-cart-arrow-down], method: :post,
-                disabled: op.requested_quantity >= model.availability, size: :sm
+                disabled: op.requested_quantity >= model.availability, size: :sm, color: :default
             - else
-              = button _('Shop|Please log in to purchase this product'), nil, size: :sm, disabled: true
+              = button _('Shop|Please log in to purchase this product'), nil, size: :sm, disabled: true, color: :default

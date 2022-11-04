@@ -62,7 +62,8 @@
                                                                         html: {title: _('TeamMember|Promote to captain'), data: { 'bs-toggle' => :tooltip } },
                                                                         method: :post,
                                                                         disabled: !model.tournament.registration_open?,
-                                                                        confirm: _('Team|Promote to captain?')
+                                                                        confirm: _('Team|Promote to captain?'),
+                                                                        color: :default
                     = delete_button team_member, href: tournament_team_member_path(team_member),
                                                 icon_only: true,
                                                 size: :sm,
