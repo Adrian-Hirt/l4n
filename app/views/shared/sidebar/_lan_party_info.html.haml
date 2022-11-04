@@ -1,4 +1,4 @@
-.card
+.card.mb-3
   .card-header
     = _('Sidebar|Next lan')
   .card-body
@@ -6,14 +6,13 @@
     .mb-3
       .text-muted= _('Sidebar|Available tickets')
       = lan_party_progress_bar(lan_party)
-    %table
-      %tr
-        %td= _('Sidebar|Lan begin')
-        %td.ps-2= l lan_party.event_start
-      %tr
-        %td= _('Sidebar|Lan end')
-        %td.ps-2= l lan_party.event_end
-      - if lan_party.location.present?
-        %tr
-          %td= _('Sidebar|Lan location')
-          %td.ps-2= lan_party.location
+    .mb-1
+      .text-muted= _('Sidebar|Lan start')
+      = l lan_party.event_start
+    %div
+      .text-muted= _('Sidebar|Lan end')
+      = l lan_party.event_end
+    - if lan_party.location.present?
+      .mt-1
+        .text-muted= _('Sidebar|Lan location')
+        = l lan_party.location

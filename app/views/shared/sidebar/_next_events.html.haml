@@ -1,0 +1,16 @@
+.card.mb-3
+  .card-header
+    = _('Sidebar|Next events')
+  .card-body
+    - events.each_with_index do |event, index|
+      - unless index == 0
+        %hr
+
+      %h5= link_to event.title, event
+      .event-details
+        - if event.location.present?
+          = "#{l(event.next_date.start_date, format: '%d. %b, %H:%M')}, #{_('Event|Location')}: #{event.location}"
+        - else
+          = l(event.next_date.start_date, format: '%d. %b, %H:%M')
+  .card-footer
+    = button _('Sidebar|All events'), events_path, size: :sm, color: :default
