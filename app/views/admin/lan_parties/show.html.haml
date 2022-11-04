@@ -3,28 +3,28 @@
   = delete_button model, namespace: %i[admin], disabled: !model.deletable?
 
 .row
-  .col-md-8.mb-3.mb-md-3
+  .col-lg-8.mb-3
     .card.mb-3
       .card-header
         = _('LanParty|Details')
       .card-body
-        .row.mb-0.mb-md-3
-          .col-md-6
+        .row.mb-0.mb-lg-3
+          .col-lg-6
             = _('LanParty|Event start')
             .small.text-muted
               - if model.event_start.present?
                 = l model.event_start
               - else
                 \-
-          .col-md-6
+          .col-lg-6
             = _('LanParty|Event end')
             .small.text-muted
               - if model.event_end.present?
                 = l model.event_end
               - else
                 \-
-        .row.mb-0.mb-md-3
-          .col-md-6
+        .row.mb-0.mb-lg-3
+          .col-lg-6
             = _('LanParty|Location')
             .small.text-muted
               = model.location.presence || '-'
@@ -32,26 +32,34 @@
       .card-header
         = _('LanParty|Stats')
       .card-body
-        .row.mb-0.mb-md-3
-          .col-md-6
+        .row.mb-0.mb-lg-3
+          .col-lg-6
             = _('LanParty|Total seats')
             .small.text-muted
               = model.seat_map.seats.count
-          .col-md-6
+          .col-lg-6
             = _('LanParty|Sold tickets')
             .small.text-muted
               = model.tickets.count
-        .row
-          .col-md-6
+        .row.mb-0.mb-lg-3
+          .col-lg-6
             = _('LanParty|Checked in users')
             .small.text-muted
               = model.tickets.checked_in.count
-          .col-md-6
+          .col-lg-6
             = _('LanParty|Tournaments')
             .small.text-muted
               = model.tournaments.count
+        .row
+          .col-lg-6
+            = _('LanParty|Relevant seat categories for counter')
+            .small.text-muted
+              = model.seat_categories.where(relevant_for_counter: true).count
+          .col-lg-6
+            = _('LanParty|Counter')
+            = lan_party_progress_bar(model)
 
-  .col.md-4
+  .col-lg-4
     .card
       .card-header
         = _('LanParty|Actions & Links')

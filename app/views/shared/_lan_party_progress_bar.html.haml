@@ -1,0 +1,14 @@
+- available_products = Queries::Lan::CountRelevantProductInventory.call(lan_party: lan_party)
+- sold_tickets = Queries::Lan::CountRelevantTickets.call(lan_party: lan_party)
+- percentage = sold_tickets.to_f / available_products.to_f * 100.0
+
+- if(percentage < 50)
+  - color = "rgb(#{(percentage * 5.1).ceil}, 255, 0)"
+- else
+  - color = "rgb(255, #{((100 - percentage) * 5.1).ceil}, 0)"
+
+.progress.ticket-progress
+  .progress-bar{style: "background: linear-gradient(to right, #{color} #{percentage}%, transparent #{percentage}%);"}
+    = sold_tickets
+    \/
+    = available_products

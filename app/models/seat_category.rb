@@ -21,6 +21,7 @@ class SeatCategory < ApplicationRecord
   # == Validations =================================================================
   validates :name, presence: true, length: { maximum: 255 }
   validates :color, presence: true, inclusion: PREDEFINED_SEATCATEGORY_COLORS.keys
+  validates_boolean :relevant_for_counter
 
   # == Hooks =======================================================================
 

@@ -33,4 +33,8 @@ module ApplicationHelper
   def admin_page_title
     breadcrumbs_on_rails.map(&:name).join(' > ')
   end
+
+  def lan_party_progress_bar(lan_party)
+    render partial: 'shared/lan_party_progress_bar', locals: { lan_party: lan_party }
+  end
 end

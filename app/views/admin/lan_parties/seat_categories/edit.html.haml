@@ -1,11 +1,17 @@
 .card
   = simple_form_for [:admin, model] do |f|
     .card-body
-      = f.input :name
-      = f.input :color, as: :select,
-                        collection: SeatCategory::PREDEFINED_SEATCATEGORY_COLORS,
-                        value_method: :first,
-                        label_method: ->(color) { color.second[:title] },
-                        include_blank: _('Form|Select|Blank')
+      .row
+        .col-md-6
+          = f.input :name
+        .col-md-6
+          = f.input :color, as: :select,
+                            collection: SeatCategory::PREDEFINED_SEATCATEGORY_COLORS,
+                            value_method: :first,
+                            label_method: ->(color) { color.second[:title] },
+                            include_blank: _('Form|Select|Blank')
+      .row
+        .col-md-12
+          = f.input :relevant_for_counter, input_html: { class: 'no-validation' }
     .card-footer
       = f.save

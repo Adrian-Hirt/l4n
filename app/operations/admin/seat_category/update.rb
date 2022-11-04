@@ -3,8 +3,9 @@ module Operations::Admin::SeatCategory
     schema3 do
       int! :id, cast_str: true
       hsh? :seat_category do
-        str! :name
-        str! :color
+        str? :name
+        str? :color
+        str? :relevant_for_counter
       end
     end
 
