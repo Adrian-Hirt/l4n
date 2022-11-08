@@ -2,9 +2,8 @@ module Operations::Admin::MenuItem
   class CreateLink < RailsOps::Operation::Model::Create
     schema3 do
       hsh? :menu_link_item do
-        str! :title_en
-        str! :title_de
-        str! :sort, format: :integer
+        str? :title
+        str? :sort, format: :integer
         str? :page_attr
         str? :external_link
         str? :parent_id
@@ -42,7 +41,7 @@ module Operations::Admin::MenuItem
     end
 
     def parent_candidates
-      ::MenuDropdownItem.i18n.order(:title)
+      ::MenuDropdownItem.order(:title)
     end
   end
 end

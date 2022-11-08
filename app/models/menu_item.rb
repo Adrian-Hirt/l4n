@@ -1,7 +1,5 @@
 class MenuItem < ApplicationRecord
   # == Attributes ==================================================================
-  extend Mobility
-  translates :title
 
   # == Constants ===================================================================
   PREDEFINED_PAGES = {
@@ -21,7 +19,7 @@ class MenuItem < ApplicationRecord
   # == Validations =================================================================
   validates :sort, numericality: { min: 0 }, presence: true
   validates_boolean :visible
-  validates_translated :title, presence: true, length: { maximum: 255 }
+  validates :title, presence: true, length: { maximum: 255 }
   validates :type, inclusion: TYPES
 
   # == Hooks =======================================================================

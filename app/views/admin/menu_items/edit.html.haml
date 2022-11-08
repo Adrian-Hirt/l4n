@@ -2,10 +2,8 @@
   = simple_form_for model, url: admin_menu_item_path(model) do |f|
     .card-body
       .row
-        .col-md-6
-          = f.input :title_en
-        .col-md-6
-          = f.input :title_de
+        .col-md-12
+          = f.input :title
       .row
         .col-md-6
           = f.input :sort

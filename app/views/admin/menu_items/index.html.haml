@@ -8,8 +8,7 @@
       %table.table.datagrid.table-hover
         %tr
           %th.min
-          %th= _('MenuItem|Title_en')
-          %th= _('MenuItem|Title_de')
+          %th= _('MenuItem|Title')
           %th{title: _('MenuItem|Visible')}= icon %i[fas fa-eye]
           %th{title: _('MenuItem|Use namespace for active detection')}= icon %i[fas fa-magnifying-glass]
           %th= _('MenuItem|Page_name')
@@ -17,8 +16,7 @@
         - op.top_items.each do |top_item|
           %tr
             %td.min= top_item.is_a?(MenuDropdownItem) ? icon(%i[fas fa-square-caret-down]) : icon(%i[fas fa-link])
-            %td= top_item.title_en
-            %td= top_item.title_de
+            %td= top_item.title
             %td= format_boolean(top_item.visible)
             %td= format_boolean(top_item.use_namespace_for_active_detection)
             %td
@@ -34,8 +32,7 @@
               - top_item.children.order(:sort).each do |child_item|
                 %tr.bg-light
                   %td.min
-                  %td{style: 'text-indent: 1em;'}= child_item.title_en
-                  %td{style: 'text-indent: 1em;'}= child_item.title_de
+                  %td{style: 'text-indent: 1em;'}= child_item.title
                   %td= format_boolean(child_item.visible)
                   %td= format_boolean(child_item.use_namespace_for_active_detection)
                   %td= child_item.link_destination

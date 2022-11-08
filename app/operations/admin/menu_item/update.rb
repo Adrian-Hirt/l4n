@@ -3,18 +3,16 @@ module Operations::Admin::MenuItem
     schema3 do
       str! :id, format: :integer
       hsh? :menu_link_item do
-        str! :title_en
-        str! :title_de
-        str! :sort, format: :integer
+        str? :title
+        str? :sort, format: :integer
         str? :page_attr
         str? :external_link
         str? :parent_id
         str? :use_namespace_for_active_detection, format: :boolean
       end
       hsh? :menu_dropdown_item do
-        str! :title_en
-        str! :title_de
-        str! :sort, format: :integer
+        str? :title
+        str? :sort, format: :integer
         str? :visible, format: :boolean
       end
     end
@@ -67,7 +65,7 @@ module Operations::Admin::MenuItem
     end
 
     def parent_candidates
-      ::MenuDropdownItem.i18n.order(:title)
+      ::MenuDropdownItem.order(:title)
     end
   end
 end

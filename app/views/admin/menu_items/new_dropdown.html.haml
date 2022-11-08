@@ -2,10 +2,8 @@
   = simple_form_for model, url: new_dropdown_admin_menu_items_path do |f|
     .card-body
       .row
-        .col-md-6
-          = f.input :title_en
-        .col-md-6
-          = f.input :title_de
+        .col-md-12
+          = f.input :title
       .row
         .col-md-6
           = f.input :sort

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_04_183939) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_08_200638) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -111,8 +111,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_04_183939) do
     t.boolean "visible", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "title_en", null: false
-    t.string "title_de", null: false
+    t.string "title", null: false
     t.string "type", default: "MenuLinkItem", null: false
     t.integer "page_id"
     t.boolean "use_namespace_for_active_detection", default: false, null: false
@@ -481,7 +480,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_04_183939) do
     t.string "activation_token"
     t.string "username", null: false
     t.string "website"
-    t.string "preferred_locale"
     t.boolean "use_dark_mode", default: false, null: false
     t.boolean "user_admin_permission", default: false, null: false
     t.boolean "news_admin_permission", default: false, null: false
