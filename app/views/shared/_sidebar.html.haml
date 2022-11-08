@@ -1,4 +1,5 @@
-- sidebar_operation = Operations::Application::Sidebar.new
+- context = RailsOps::Context.new(user: current_user, ability: Ability.new(current_user))
+- sidebar_operation = Operations::Application::Sidebar.new(context)
 
 -# Lan party info block
 = sidebar_operation.lan_party_block

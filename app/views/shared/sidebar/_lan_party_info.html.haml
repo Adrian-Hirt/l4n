@@ -16,3 +16,12 @@
       .mt-1
         .text-muted= _('Sidebar|Lan location')
         = l lan_party.location
+
+    - if user && user.ticket_for(lan_party).present?
+      %hr
+      = button _('Ticket|Show ticket'),
+                 lan_ticket_path,
+                 btn_icon: %i[fas fa-arrow-up-right-from-square],
+                 html: { target: :_blank },
+                 color: :default,
+                 size: :sm

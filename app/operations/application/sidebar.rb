@@ -5,7 +5,7 @@ module Operations::Application
     def lan_party_block
       return unless FeatureFlag.enabled?(:lan_party)
 
-      ApplicationController.render partial: 'shared/sidebar/lan_party_info', locals: { lan_party: LanParty.active } if LanParty.active.present?
+      ApplicationController.render partial: 'shared/sidebar/lan_party_info', locals: { lan_party: LanParty.active, user: context.user } if LanParty.active.present?
     end
 
     def next_events_block
