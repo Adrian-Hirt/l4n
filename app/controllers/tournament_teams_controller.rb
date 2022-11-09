@@ -1,12 +1,18 @@
 class TournamentTeamsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
+  add_breadcrumb _('Tournaments'), :tournaments_path
+
   def index
     op Operations::Tournament::Team::Index
+    add_breadcrumb op.tournament.name, op.tournament
+    add_breadcrumb _('Tournament|Teams')
   end
 
   def show
     op Operations::Tournament::Team::Load
+    add_breadcrumb model.tournament.name, model.tournament
+    add_breadcrumb model.name
   end
 
   def create

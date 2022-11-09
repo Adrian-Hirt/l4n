@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   before_action :set_gettext_locale, unless: :devise_controller?
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  add_breadcrumb _('Home'), :root_path
+
   include RailsOps::ControllerMixin
 
   # Fail with a 404 as we don't want to expose possible existing,

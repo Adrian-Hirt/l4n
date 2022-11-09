@@ -54,6 +54,7 @@ module Lan
 
     def my_ticket
       op Operations::Ticket::LoadMyTicket
+      add_breadcrumb _('My Ticket')
     rescue Operations::Exceptions::OpFailed => e
       flash[:danger] = e.message
       redirect_to lan_seatmap_path
@@ -61,6 +62,7 @@ module Lan
 
     def manage
       op Operations::Ticket::Manage
+      add_breadcrumb _('Tickets|Manage')
     rescue Operations::Exceptions::OpFailed => e
       flash[:danger] = e.message
       redirect_to lan_seatmap_path

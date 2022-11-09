@@ -2,6 +2,8 @@ module Settings
   class GameaccountsController < ApplicationController
     before_action :authenticate_user!
 
+    add_breadcrumb _('Settings|Game accounts')
+
     def index; end
 
     def remove_steam

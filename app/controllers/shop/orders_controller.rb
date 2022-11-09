@@ -1,5 +1,7 @@
 module Shop
   class OrdersController < ShopController
+    add_breadcrumb _('Orders|My Orders'), :shop_orders_path
+
     def index
       op Operations::Shop::Order::Index
     end

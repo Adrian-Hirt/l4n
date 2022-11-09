@@ -4,6 +4,7 @@ module Shop
 
     def show
       run Operations::Shop::Product::Load
+      add_breadcrumb model.name
     end
   end
 end

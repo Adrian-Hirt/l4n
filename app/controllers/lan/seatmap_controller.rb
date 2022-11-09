@@ -2,6 +2,8 @@ module Lan
   class SeatmapController < LanController
     skip_before_action :authenticate_user!
 
+    add_breadcrumb _('Seatmap')
+
     def index
       op Operations::Lan::SeatMap::Load
     end

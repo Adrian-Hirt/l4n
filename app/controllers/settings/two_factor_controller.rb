@@ -3,6 +3,8 @@ module Settings
     before_action :authenticate_user!
     before_action :two_factor_not_enabled, only: %i[activate activate_save]
 
+    add_breadcrumb _('Settings|2FA')
+
     def index; end
 
     def activate

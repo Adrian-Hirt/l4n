@@ -1,12 +1,9 @@
 %footer.border-top
   .container.d-flex.flex-wrap.justify-content-between.align-items-center.my-4
-    %p.col-md-4.mb-0.text-muted
+    %p.mb-0.text-muted
       © 2021 -
       = Date.today.year
       %a{href: "https://l4n.ch", target: '_blank'} L4N
-    -# %a.col-md-4.d-flex.align-items-center.justify-content-center.mb-3.mb-md-0.me-md-auto.link-dark.text-decoration-none{:href => "/"}
-    -#   %svg.bi.me-2{:height => "32", :width => "40"}
-    -#     %use{"xlink:href" => "#bootstrap"}
-    %ul.nav.col-md-4.justify-content-end
-      %li.nav-item
-        = link_to _('Home'), root_path, class: %i[nav-link px-2 text-muted]
+    %nav.nav.justify-content-end
+      %ol.breadcrumb.mb-0
+        = render_breadcrumbs builder: Services::BootstrapBreadcrumbBuilder

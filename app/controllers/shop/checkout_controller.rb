@@ -1,5 +1,7 @@
 module Shop
   class CheckoutController < ShopController
+    add_breadcrumb _('Checkout')
+
     def show
       run! Operations::Shop::Order::PrepareCheckout
     rescue Operations::Exceptions::OpFailed => e

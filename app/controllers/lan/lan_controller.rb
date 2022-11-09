@@ -8,6 +8,8 @@ module Lan
     before_action :check_lan_active
     before_action :authenticate_user!
 
+    add_breadcrumb _('Lan')
+
     private
 
     def check_lan_feature_flag

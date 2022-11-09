@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: %i[show]
   layout 'devise', only: %i[new create]
 
+  add_breadcrumb _('Users'), :users_path
+
   def index
     op Operations::User::Index
   end
@@ -28,6 +30,7 @@ class UsersController < ApplicationController
 
   def show
     op Operations::User::Load
+    add_breadcrumb model.username
   end
 
   def activate

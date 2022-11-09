@@ -1,8 +1,11 @@
 class TournamentMatchesController < ApplicationController
   before_action :authenticate_user!
 
+  add_breadcrumb _('Tournaments'), :tournaments_path
+
   def edit
     op Operations::Tournament::Match::Update
+    add_breadcrumb op.tournament.name, op.tournament
   rescue Operations::Exceptions::OpFailed => e
     flash[:danger] = e.message
     redirect_to tournaments_path

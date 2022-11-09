@@ -4,7 +4,7 @@
       .d-flex.brand-container
         .flex-grow-1.flex-shrink-1.overflow-hidden.d-flex.align-items-center
           %a.brand{href: admin_path}
-            = _('ApplicationName')
+            = L4n::Application.config.application_name
         .flex-shrink-0.d-none.d-md-block
           %a.btn.btn-outline-secondary.icon-only-btn.rounded-0{data: { action: 'click->admin--sidebar#collapseSidebar' } }
             = icon %i[fas fa-bars]

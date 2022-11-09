@@ -2,6 +2,8 @@ module Settings
   class AvatarController < ApplicationController
     before_action :authenticate_user!
 
+    add_breadcrumb _('Settings|Avatar')
+
     def index
       return unless request.patch?
 

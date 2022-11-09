@@ -2,6 +2,8 @@ module Settings
   class ProfileController < ApplicationController
     before_action :authenticate_user!
 
+    add_breadcrumb _('Settings|Profile')
+
     def edit
       op Operations::User::UpdateProfile
     end

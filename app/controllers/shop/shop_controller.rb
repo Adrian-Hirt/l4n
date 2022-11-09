@@ -5,5 +5,7 @@ module Shop
     # this controller and add seperate controllers for each resource,
     # it's way cleaner that way
     before_action :authenticate_user!
+
+    add_breadcrumb _('Shop'), :shop_path
   end
 end

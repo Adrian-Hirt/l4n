@@ -2,6 +2,8 @@ module Settings
   class UserAddressesController < ApplicationController
     before_action :authenticate_user!
 
+    add_breadcrumb _('Settings|Addresses')
+
     def index; end
 
     def new

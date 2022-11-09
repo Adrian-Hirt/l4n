@@ -14,14 +14,6 @@ module ApplicationHelper
     nil
   end
 
-  def active_locale_class(locale)
-    if FastGettext.locale == locale.to_s
-      ' active'
-    else
-      ''
-    end
-  end
-
   def dark_mode_active?
     current_user&.use_dark_mode || cookies[:_l4n_dark_mode].present?
   end
@@ -32,6 +24,12 @@ module ApplicationHelper
 
   def admin_page_title
     breadcrumbs_on_rails.map(&:name).join(' > ')
+  end
+
+  def page_title
+    titles = [L4n::Application.config.application_name]
+    titles += breadcrumbs_on_rails.drop(1).map(&:name)
+    titles.join(' > ')
   end
 
   def lan_party_progress_bar(lan_party)

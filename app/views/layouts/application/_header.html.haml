@@ -1,6 +1,6 @@
 %nav.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
   .container-fluid
-    %a.navbar-brand{:href => "#"} L4N Dev
+    %a.navbar-brand{:href => "#"}= L4n::Application.config.application_name
     %button.navbar-toggler{"aria-controls" => "navbarCollapse", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarCollapse", "data-bs-toggle" => "collapse", :type => "button"}
       %span.navbar-toggler-icon
     #navbarCollapse.collapse.navbar-collapse
