@@ -18,8 +18,8 @@ module Settings
         redirect_to settings_two_factor_path
       end
     rescue Operations::Exceptions::OpFailed => e
-      flash.now[:danger] = e.message
-      render :activate, status: :unprocessable_entity
+      flash[:danger] = e.message
+      respond_to :turbo_stream
     end
 
     def deactivate

@@ -122,7 +122,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_08_200638) do
   create_table "news_posts", force: :cascade do |t|
     t.string "title", null: false
     t.text "content"
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.boolean "published", default: false, null: false
     t.datetime "published_at", precision: nil
     t.datetime "created_at", null: false

@@ -9,6 +9,8 @@ module Operations::TwoFactor
 
     without_authorization
 
+    attr_accessor :codes
+
     delegate :user, to: :context
 
     def perform
@@ -33,7 +35,7 @@ module Operations::TwoFactor
       user.otp_secret = ::User.generate_otp_secret
 
       # Generate the backup codes
-      user.otp_backup_codes = user.generate_otp_backup_codes!
+      @codes = user.generate_otp_backup_codes!
       user.save
     end
   end
