@@ -38,8 +38,11 @@
               %div= product_variant.name
               %div= money_formatted(product_variant.price)
             - if current_user
-              = button 'Add to cart', add_to_cart_shop_product_variant_path(product_variant),
-                btn_icon: %i[fas fa-cart-arrow-down], method: :post,
-                disabled: op.requested_quantity >= model.availability, size: :sm, color: :default
+              - if op.requested_quantity >= model.availability
+                = button _('Shop|Sold out'), nil, disabled: true, color: :default
+              - else
+                = button _('Shop|Add to cart'), add_to_cart_shop_product_variant_path(product_variant),
+                  btn_icon: %i[fas fa-cart-arrow-down], method: :post,
+                  size: :sm, color: :default
             - else
               = button _('Shop|Please log in to purchase this product'), nil, size: :sm, disabled: true, color: :default
