@@ -16,9 +16,6 @@ class SessionsController < Devise::SessionsController
 
   # Wrong flash message...
   def create
-    # Remove any lingering otp fields if the user did not actually activate the OTP
-    Operations::Session::CleanUnusedOtp.run(op_params)
-
     super
 
     flash.delete :notice
@@ -92,21 +89,5 @@ class SessionsController < Devise::SessionsController
 
   def otp_two_factor_enabled?
     find_user&.otp_required_for_login
-  end
-
-  # Need to be overwritten as the devise implementation is buggy
-  def invalidate_otp_backup_code!(user, code)
-    codes = user.otp_backup_codes || []
-
-    codes.each do |backup_code|
-      next unless ActiveSupport::SecurityUtils.secure_compare(backup_code, code)
-
-      codes.delete(backup_code)
-      user.otp_backup_codes = codes
-      user.save!
-      return true
-    end
-
-    false
   end
 end
