@@ -305,6 +305,10 @@ Rails.application.routes.draw do
       end
 
       resources :ticket_upgrades, controller: 'lan_parties/ticket_upgrades', only: %i[index]
+
+      member do
+        get :export_seat_assignees
+      end
     end
 
     # Tournament system

@@ -55,5 +55,14 @@ module Admin
       flash[:danger] = _('Admin|LanParty|Cannot be deleted')
       redirect_to admin_lan_party_path(model)
     end
+
+    def export_seat_assignees
+      op Operations::Admin::LanParty::ExportSeatAssignees
+
+      respond_to do |format|
+        format.json { send_data op.json_data }
+        format.csv { send_data op.csv_data }
+      end
+    end
   end
 end
