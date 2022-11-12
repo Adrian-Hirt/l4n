@@ -24,6 +24,7 @@ module Admin
 
     def edit
       op Operations::Admin::FooterLogo::Update
+      add_breadcrumb _('Admin|FooterLogo|Edit')
     end
 
     def update

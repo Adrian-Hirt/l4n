@@ -1,0 +1,10 @@
+.card
+  = simple_form_for [:admin, model] do |f|
+    .card-body
+      .row
+        .col-md-6
+          = f.input :key, disabled: true
+        .col-md-6
+          = f.input :value
+    .card-footer
+      = f.save

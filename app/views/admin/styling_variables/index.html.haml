@@ -1,0 +1,15 @@
+- content_for :header_buttons do
+  = new_button StylingVariable, namespace: %i[admin]
+
+.row
+  .col-md-6.mb-3
+    .card
+      .card-body
+        = datagrid_table op.grid, html: { class: 'table' }
+  .col-md-6
+    .card
+      .card-header
+        = _('Admin|StylingVariables|Generated CSS')
+      .card-body
+        %code
+          = simple_format StylingVariable.generate_css

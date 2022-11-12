@@ -181,6 +181,7 @@ class Ability
     if user.design_admin_permission?
       can :manage, :frontent_design
       can :manage, FooterLogo
+      can :manage, StylingVariable
     end
 
     # System admin permission, for actions such as clearing the cache and
