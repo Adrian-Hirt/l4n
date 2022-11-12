@@ -177,6 +177,12 @@ class Ability
       can :manage, Tournament::TeamMember
     end
 
+    # Design permissions (styling, footer logos etc.)
+    if user.design_admin_permission?
+      can :manage, :frontent_design
+      can :manage, FooterLogo
+    end
+
     # System admin permission, for actions such as clearing the cache and
     # feature flags. This permission should only be given very carefully
     if user.system_admin_permission?

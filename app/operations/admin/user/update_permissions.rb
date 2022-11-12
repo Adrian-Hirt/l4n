@@ -12,6 +12,7 @@ module Operations::Admin::User
         opt :payment_assist_admin_permission
         opt :lan_party_admin_permission
         opt :tournament_admin_permission
+        opt :design_admin_permission
         opt :system_admin_permission
       end
     end

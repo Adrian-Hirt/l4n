@@ -1,0 +1,11 @@
+.card
+  = simple_form_for [:admin, model] do |f|
+    .card-body
+      .row
+        .col-md-6
+          = f.input :sort
+        .col-md-6
+          = f.input :file
+      = f.input :visible
+    .card-footer
+      = f.save

@@ -351,6 +351,9 @@ Rails.application.routes.draw do
       post :cleanup_cache
     end
 
+    # Frontend design settings
+    resources :footer_logos, except: %i[show]
+
     # Api Applications management
     resources :api_applications, except: %i[show]
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_08_200638) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_11_230518) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -94,6 +94,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_08_200638) do
     t.index ["key"], name: "index_feature_flags_on_key", unique: true
   end
 
+  create_table "footer_logos", force: :cascade do |t|
+    t.integer "sort", default: 0, null: false
+    t.boolean "visible", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "lan_parties", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -122,7 +129,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_08_200638) do
   create_table "news_posts", force: :cascade do |t|
     t.string "title", null: false
     t.text "content"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.boolean "published", default: false, null: false
     t.datetime "published_at", precision: nil
     t.datetime "created_at", null: false
@@ -502,6 +509,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_08_200638) do
     t.text "bio"
     t.string "steam_id"
     t.string "discord_id"
+    t.boolean "design_admin_permission", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true

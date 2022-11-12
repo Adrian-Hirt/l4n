@@ -130,6 +130,20 @@
               %span
                 %i.nav-icon.fas.fa-trophy.fa-fw
                 %span.nav-item-text= _('Admin|Tournaments')
+        - if can? :manage, :frontent_design
+          %li.nav-item.dropdown
+            %a.nav-link.collapse-link{data: {'bs-toggle' => 'collapse'}, href: '#design-collapse', class: sidenav_collapser_classes(:footer_logos)}
+              %span
+                %i.nav-icon.fas.fa-palette.fa-fw
+                %span.nav-item-text= _('Admin|Design')
+              %i.right.fas.fa-angle-right.dropdown-icon
+            #design-collapse.collapse{class: sidenav_collapse_classes(:footer_logos), data: { 'bs-parent' => '.sidenav' }}
+              %ul.nav.nav-pills.flex-column
+                %li.nav-item
+                  %a.nav-link{href: admin_footer_logos_path, class: active_link_classes(:footer_logos)}
+                    %span
+                      %i.nav-icon.far.fa-images.fa-fw
+                      %span.nav-item-text= _('Admin|FooterLogos')
         - if can?(:manage, :system) || can?(:manage, FeatureFlag) || can?(:manage, ApiApplication)
           %li.nav-item.dropdown
             %a.nav-link.collapse-link{data: {'bs-toggle' => 'collapse'}, href: '#system-collapse', class: sidenav_collapser_classes(:system, :feature_flags)}

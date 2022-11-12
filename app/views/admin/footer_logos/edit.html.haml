@@ -1,0 +1,15 @@
+.card
+  = simple_form_for [:admin, model] do |f|
+    .card-body
+      .row
+        .col-md-6
+          = f.input :sort
+        .col-md-6
+          = f.input :file
+      .row
+        .col-md-6
+          = f.input :visible
+        .col-md-6
+          = image_tag model.file.variant(:thumb).processed
+    .card-footer
+      = f.save
