@@ -1,9 +1,18 @@
 %footer.border-top
-  .container.d-flex.flex-wrap.justify-content-between.align-items-center.my-4
-    %p.mb-0.text-muted
-      © 2021 -
-      = Date.today.year
-      %a{href: "https://l4n.ch", target: '_blank'} L4N
-    %nav.nav.justify-content-end
-      %ol.breadcrumb.mb-0
-        = render_breadcrumbs builder: Services::BootstrapBreadcrumbBuilder
+  .container
+    .row.py-3
+      %nav
+        %ol.breadcrumb.mb-0
+          = render_breadcrumbs builder: Services::BootstrapBreadcrumbBuilder
+    .d-flex.flex-wrap.justify-content-between.align-items-center.py-3.border-top
+      %p.mb-0.text-muted
+        © 2021 -
+        = Date.today.year
+        %a{href: "https://l4n.ch", target: '_blank'} L4N
+      .footer-logos
+        - ::FooterLogo.where(visible: true).order(:sort).includes(file_attachment: :blob).each do |logo|
+          - if logo.link.present?
+            = link_to logo.link, target: :_blank do
+              = image_tag logo.file.variant(:medium).processed, class: 'ms-2'
+          - else
+            = image_tag logo.file.variant(:medium).processed, class: 'ms-2'

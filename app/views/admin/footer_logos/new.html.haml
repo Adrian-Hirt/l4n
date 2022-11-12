@@ -5,7 +5,12 @@
         .col-md-6
           = f.input :sort
         .col-md-6
+          = f.input :link, hint: _('Admin|FooterLogo|Link is optional')
+      .row
+        .col-md-6
+          = f.input :visible, as: :select, include_blank: false
+        .col-md-6
           = f.input :file
-      = f.input :visible
+          = image_tag model.file.variant(:thumb).processed if model.file.attached?
     .card-footer
       = f.save
