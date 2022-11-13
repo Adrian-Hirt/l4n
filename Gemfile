@@ -54,6 +54,7 @@ gem 'redcarpet', '~> 3.5.1'
 
 # Settings
 gem 'figaro', '1.2.0'
+gem 'rails-settings-cached', '~> 2.8.2'
 
 # Attachments
 gem 'active_storage_validations', '~> 1.0.2'

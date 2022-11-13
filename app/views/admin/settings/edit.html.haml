@@ -1,0 +1,10 @@
+.card
+  = simple_form_for model, url: admin_settings_path, method: :patch do |f|
+    .card-body
+      - op.settings.each do |scope, settings|
+        %h4= scope.to_s.humanize
+        - settings.each do |setting|
+          - key = setting[:key]
+          = f.input key, input_html: { value: op.entered_values[key].presence || AppConfig.send(key) }
+    .card-footer
+      = f.save _('Admin|Settings|Save')

@@ -4,7 +4,7 @@
       .d-flex.brand-container
         .flex-grow-1.flex-shrink-1.overflow-hidden.d-flex.align-items-center
           %a.brand{href: admin_path}
-            = L4n::Application.config.application_name
+            = AppConfig.application_name
         .flex-shrink-0.d-none.d-md-block
           %a.btn.btn-outline-secondary.icon-only-btn.rounded-0{data: { action: 'click->admin--sidebar#collapseSidebar' } }
             = icon %i[fas fa-bars]
@@ -151,12 +151,12 @@
                       %span.nav-item-text= _('Admin|StylingVariables')
         - if can?(:manage, :system) || can?(:manage, FeatureFlag) || can?(:manage, ApiApplication)
           %li.nav-item.dropdown
-            %a.nav-link.collapse-link{data: {'bs-toggle' => 'collapse'}, href: '#system-collapse', class: sidenav_collapser_classes(:system, :feature_flags)}
+            %a.nav-link.collapse-link{data: {'bs-toggle' => 'collapse'}, href: '#system-collapse', class: sidenav_collapser_classes(:system, :feature_flags, :api_applications, :settings)}
               %span
                 %i.nav-icon.fas.fa-server.fa-fw
                 %span.nav-item-text= _('Admin|System')
               %i.right.fas.fa-angle-right.dropdown-icon
-            #system-collapse.collapse{class: sidenav_collapse_classes(:system, :feature_flags, :api_applications), data: { 'bs-parent' => '.sidenav' }}
+            #system-collapse.collapse{class: sidenav_collapse_classes(:system, :feature_flags, :api_applications, :settings), data: { 'bs-parent' => '.sidenav' }}
               %ul.nav.nav-pills.flex-column
                 - if can?(:manage, :system)
                   %li.nav-item
@@ -170,6 +170,12 @@
                       %span
                         %i.nav-icon.fas.fa-flag.fa-fw
                         %span.nav-item-text= _('Admin|Feature Flags')
+                - if can?(:manage, AppConfig)
+                  %li.nav-item
+                    %a.nav-link{href: admin_settings_path, class: active_link_classes(:settings)}
+                      %span
+                        %i.nav-icon.fas.fa-wrench.fa-fw
+                        %span.nav-item-text= _('Admin|Settings')
                 - if can?(:manage, ApiApplication)
                   %li.nav-item
                     %a.nav-link{href: admin_api_applications_path, class: active_link_classes(:api_applications)}

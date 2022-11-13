@@ -6,7 +6,7 @@
                                   wrapper: :input_group do |f|
       .card-header.text-center
         %a.h1{href: root_path}
-          = L4n::Application.config.application_name
+          = AppConfig.application_name
       .card-body.pb-1
         = f.input :email, label: false, placeholder: _('User|Email')
         = f.password :password, label: false, placeholder: _('User|Password'), wrapper_html: { style: 'margin-bottom: 0.25rem !important;' }

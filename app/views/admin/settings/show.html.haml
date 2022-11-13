@@ -1,0 +1,14 @@
+- content_for :header_buttons do
+  = button _('Admin|Settings|Edit settings'), edit_admin_settings_path, btn_icon: %i[fa fa-fw fa-edit]
+
+.card
+  .card-body
+    %table.table
+      - op.settings.each do |scope, settings|
+        %tr
+          %td{colspan: 2}
+            %b= scope.to_s.humanize
+        - settings.each do |setting|
+          %tr
+            %td{style: 'text-indent: 1em;'}= setting[:key]
+            %td= AppConfig.send(setting[:key])

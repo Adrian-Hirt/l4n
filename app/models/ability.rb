@@ -180,6 +180,7 @@ class Ability
     # Design permissions (styling, footer logos etc.)
     if user.design_admin_permission?
       can :manage, :frontent_design
+      can :manage, AppConfig
       can :manage, FooterLogo
       can :manage, StylingVariable
     end

@@ -27,7 +27,7 @@ module ApplicationHelper
   end
 
   def page_title
-    titles = [L4n::Application.config.application_name]
+    titles = [AppConfig.application_name]
     titles += breadcrumbs_on_rails.drop(1).map(&:name)
     titles.join(' > ')
   end

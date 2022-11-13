@@ -6,7 +6,7 @@
                                     wrapper: :input_group do |f|
       .card-header.text-center
         %a.h1{href: root_path}
-          = L4n::Application.config.application_name
+          = AppConfig.application_name
       .card-body.pb-1
         = f.input :name, label: false, placeholder: _('ScannerUser|Name'), input_html: { class: 'no-validation' }
         = f.password :password, label: false, placeholder: _('ScannerUser|Password'), input_html: { class: 'no-validation' }

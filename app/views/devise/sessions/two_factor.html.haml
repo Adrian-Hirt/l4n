@@ -6,7 +6,7 @@
                                     method: :post do |f|
       .card-header.text-center
         %a.h1{href: root_path}
-          = L4n::Application.config.application_name
+          = AppConfig.application_name
       .card-body
         %p.login-box-msg= _('Session|2FA authentication required hint')
         = f.input :otp_attempt, label: false,

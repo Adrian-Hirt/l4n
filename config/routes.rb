@@ -355,6 +355,8 @@ Rails.application.routes.draw do
     resources :footer_logos, except: %i[show]
     resources :styling_variables, except: %i[show]
 
+    resource :settings, only: %i[show edit update]
+
     # Api Applications management
     resources :api_applications, except: %i[show]
 

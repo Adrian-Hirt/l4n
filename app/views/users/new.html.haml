@@ -3,7 +3,7 @@
     = simple_form_for model, wrapper: :input_group, url: signup_path do |f|
       .card-header.text-center
         %a.h1{href: root_path}
-          = L4n::Application.config.application_name
+          = AppConfig.application_name
       .card-body
         = f.input :username, label: false, placeholder: _('User|Username')
         = f.input :email, label: false, placeholder: _('User|Email')
