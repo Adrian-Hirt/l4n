@@ -180,8 +180,8 @@ class Ability
     # Design permissions (styling, footer logos etc.)
     if user.design_admin_permission?
       can :manage, :frontent_design
-      can :manage, AppConfig
       can :manage, FooterLogo
+      can :manage, SidebarBlock
       can :manage, StylingVariable
     end
 
@@ -189,6 +189,7 @@ class Ability
     # feature flags. This permission should only be given very carefully
     if user.system_admin_permission?
       can :manage, :system
+      can :manage, AppConfig
       can :manage, FeatureFlag
       can :manage, ApiApplication
     end

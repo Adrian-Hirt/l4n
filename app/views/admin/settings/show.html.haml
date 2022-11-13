@@ -4,11 +4,21 @@
 .card
   .card-body
     %table.table
-      - op.settings.each do |scope, settings|
-        %tr
-          %td{colspan: 2}
-            %b= scope.to_s.humanize
-        - settings.each do |setting|
-          %tr
-            %td{style: 'text-indent: 1em;'}= setting[:key]
-            %td= AppConfig.send(setting[:key])
+      %tr
+        %td{colspan: 2}
+          %b= _('Settings|Scope|Application')
+      %tr
+        %td{style: 'text-indent: 1em;'}= _('Admin|Settings|Application name')
+        %td= AppConfig.application_name
+      %tr
+        %td{colspan: 2}
+          %b= _('Settings|Scope|Sidebar')
+      %tr
+        %td{style: 'text-indent: 1em;'}= _('Admin|Settings|Enable lan party block')
+        %td= format_boolean AppConfig.enable_lan_party_block
+      %tr
+        %td{style: 'text-indent: 1em;'}= _('Admin|Settings|Enable events block')
+        %td= format_boolean AppConfig.enable_events_block
+      %tr
+        %td{style: 'text-indent: 1em;'}= _('Admin|Settings|Enable news block')
+        %td= format_boolean AppConfig.enable_news_block

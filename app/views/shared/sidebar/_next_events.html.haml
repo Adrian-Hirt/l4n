@@ -6,8 +6,8 @@
       - unless index == 0
         %hr
 
-      %h5= link_to event.title, event
-      .event-details
+      %h5.mb-0= link_to event.title, event
+      %small.text-muted
         - if event.location.present?
           = "#{l(event.next_date.start_date, format: '%d. %b, %H:%M')}, #{_('Event|Location')}: #{event.location}"
         - else

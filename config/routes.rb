@@ -354,7 +354,7 @@ Rails.application.routes.draw do
     # Frontend design settings
     resources :footer_logos, except: %i[show]
     resources :styling_variables, except: %i[show]
-
+    resources :sidebar_blocks, except: %i[show]
     resource :settings, only: %i[show edit update]
 
     # Api Applications management

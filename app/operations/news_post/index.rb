@@ -9,7 +9,7 @@ module Operations::NewsPost
     end
 
     def posts
-      ::NewsPost.where(published: true).order(:published_at).page(osparams.page)
+      ::NewsPost.where(published: true).order(published_at: :desc).page(osparams.page)
     end
   end
 end

@@ -1,0 +1,12 @@
+.card.mb-3
+  .card-header
+    = _('Sidebar|Latest newsposts')
+  .card-body
+    - news_posts.each_with_index do |news_post, index|
+      - unless index == 0
+        %hr
+
+      %h5.mb-0= link_to news_post.title, news_path(news_post)
+      %small.text-muted= l(news_post.published_at, format: '%d. %b, %H:%M')
+  .card-footer
+    = button _('Sidebar|All newsposts'), news_index_path, size: :sm, color: :default

@@ -1,10 +1,26 @@
 .card
   = simple_form_for model, url: admin_settings_path, method: :patch do |f|
     .card-body
-      - op.settings.each do |scope, settings|
-        %h4= scope.to_s.humanize
-        - settings.each do |setting|
-          - key = setting[:key]
-          = f.input key, input_html: { value: op.entered_values[key].presence || AppConfig.send(key) }
+      %h4= _('Settings|Scope|Application')
+      = f.input :application_name, input_html: { value: op.entered_values[:application_name].presence || AppConfig.application_name },
+                                   label: _('Admin|Settings|Application name')
+
+      %h4= _('Settings|Scope|sidebar')
+      = f.input :enable_lan_party_block, input_html: { value: op.entered_values[:enable_lan_party_block].presence || AppConfig.enable_lan_party_block },
+                                         as: :select,
+                                         include_blank: false,
+                                         collection: [[_('Yes'), true], [_('No'), false]],
+                                         label: _('Admin|Settings|Enable lan party block')
+      = f.input :enable_events_block, input_html: { value: op.entered_values[:enable_events_block].presence || AppConfig.enable_events_block },
+                                      as: :select,
+                                      include_blank: false,
+                                      collection: [[_('Yes'), true], [_('No'), false]],
+                                      label: _('Admin|Settings|Enable events block')
+      = f.input :enable_news_block, input_html: { value: op.entered_values[:enable_news_block].presence || AppConfig.enable_news_block },
+                                    as: :select,
+                                    include_blank: false,
+                                    collection: [[_('Yes'), true], [_('No'), false]],
+                                    label: _('Admin|Settings|Enable news block')
+
     .card-footer
       = f.save _('Admin|Settings|Save')

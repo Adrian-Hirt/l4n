@@ -3,6 +3,9 @@ module Operations::Admin::Settings
     schema3 do
       hsh? :app_config do
         str? :application_name
+        boo? :enable_lan_party_block, cast_str: true
+        boo? :enable_events_block, cast_str: true
+        boo? :enable_news_block, cast_str: true
       end
     end
 
@@ -27,9 +30,6 @@ module Operations::Admin::Settings
         osparams.app_config.each do |key, value|
           next if value.nil?
 
-          # Remove whitespaces
-          value = value.strip
-
           # This is only for validation
           config = AppConfig.new(var: key)
           config.value = value
@@ -38,7 +38,7 @@ module Operations::Admin::Settings
           entered_values[key] = value
 
           if config.valid?
-            AppConfig.send("#{key}=", value.strip)
+            AppConfig.send("#{key}=", value)
           else
             model.errors.merge!(config.errors)
           end
