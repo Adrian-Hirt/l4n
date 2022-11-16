@@ -8,7 +8,7 @@
   -# If the user is the user that ordered the ticket, we display a simple
   -# button to remove the assignation. If the user is the assigned user,
   -# we add some warning messages
-  - if current_user == ticket.order.user
+  - if current_user == ticket.order&.user
     - additional_options = { html: { title: _('Ticket|Remove assignation') } }
   - else
     - additional_options = { html: { title: _('Ticket|Remove ticket from myself') }, confirm: _('Ticket|Really remove ticket from myself?') }

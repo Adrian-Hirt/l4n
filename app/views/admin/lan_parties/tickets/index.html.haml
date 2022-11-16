@@ -1,3 +1,6 @@
+- content_for :header_buttons do
+  = new_button Ticket, href: new_admin_lan_party_ticket_path(op.lan_party)
+
 .card
   .card-body
     = datagrid_table op.grid, html: { class: 'table' }

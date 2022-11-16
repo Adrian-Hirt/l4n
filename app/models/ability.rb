@@ -74,12 +74,12 @@ class Ability
 
     # A user can use their tickets to reserve seats
     can :use, Ticket do |m|
-      m.order.user == user || m.assignee == user
+      m.order&.user == user || m.assignee == user
     end
 
     # A user can only use the ticket_upgrades they own
     can :use, TicketUpgrade do |m|
-      m.order.user == user
+      m.order&.user == user
     end
 
     # Tournament permissions
@@ -160,7 +160,7 @@ class Ability
       can :manage, SeatCategory
       can :manage, SeatMap
       can :manage, ScannerUser
-      can %i[read update], Ticket
+      can %i[create read update], Ticket
       can :read, TicketUpgrade
       can :manage, Timetable
       can :manage, TimetableCategory

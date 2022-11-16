@@ -15,7 +15,10 @@
         .mb-2
           = _('Ticket|Order')
           .small.text-muted
-            = link_to model.order.formatted_id, admin_shop_order_path(model.order)
+            - if model.order.present?
+              = link_to model.order.formatted_id, admin_shop_order_path(model.order)
+            - else
+              = _('Admin|Ticket|Generated in admin panel')
         .mb-2
           = _('Ticket|Assignee')
           .small.text-muted

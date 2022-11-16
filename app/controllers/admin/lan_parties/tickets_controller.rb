@@ -15,6 +15,26 @@ module Admin
         add_breadcrumb _('Admin|Tickets'), admin_lan_party_tickets_path(model.lan_party)
       end
 
+      def new
+        op Operations::Admin::Ticket::Create
+        add_breadcrumb op.lan_party.name, admin_lan_party_path(op.lan_party)
+        add_breadcrumb _('Admin|Tickets'), admin_lan_party_tickets_path(op.lan_party)
+        add_breadcrumb _('Admin|Ticket|New')
+      end
+
+      def create
+        if run Operations::Admin::Ticket::Create
+          flash[:success] = _('Admin|Ticket|Successfully created')
+          redirect_to admin_lan_party_tickets_path(model.lan_party)
+        else
+          add_breadcrumb op.lan_party.name, admin_lan_party_path(op.lan_party)
+          add_breadcrumb _('Admin|Tickets'), admin_lan_party_tickets_path(op.lan_party)
+          add_breadcrumb _('Admin|Ticket|New')
+          flash[:danger] = _('Admin|Ticket|Create failed')
+          render :new, status: :unprocessable_entity
+        end
+      end
+
       def assign_user
         if run Operations::Admin::Ticket::AssignToUser
           flash[:success] = _('Admin|Ticket|Successfully assigned user')

@@ -15,7 +15,13 @@ module Grids
       column :assignee, html: ->(assignee) { assignee&.username }
       column :seat, html: ->(seat) { seat&.id }
       column :status, html: true, &:humanized_status
-      column :order, html: ->(order) { link_to order.formatted_id, admin_shop_order_path(order) }
+      column :order, html: true do |ticket|
+        if ticket.order.present?
+          link_to ticket.order.formatted_id, admin_shop_order_path(ticket.order)
+        else
+          _('Admin|Ticket|Generated in admin panel')
+        end
+      end
 
       column :'datagrid-actions', html: true, header: false do |ticket|
         tag.div class: %i[datagrid-actions-wrapper] do

@@ -7,7 +7,7 @@ module Queries::Lan::Ticket
 
     def call
       ::Ticket.where(lan_party: osparams.lan_party)
-              .joins(:order)
+              .left_outer_joins(:order)
               .where(order: { user: osparams.user })
               .or(
                 ::Ticket.where(lan_party: osparams.lan_party).where(assignee: osparams.user)
