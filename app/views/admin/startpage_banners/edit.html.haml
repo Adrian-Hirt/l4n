@@ -1,0 +1,24 @@
+.card
+  = simple_form_for [:admin, model] do |f|
+    .card-body
+      .row
+        .col-md-6
+          = f.input :name
+        .col-md-6
+          = f.input :height
+      .row
+        .col-md-6
+          = f.input :visible, as: :select, include_blank: false
+      .row
+        = f.input :images, input_html: { multiple: true }
+        - if model.images.attached?
+          .px-2
+            - model.images.each do |image|
+              .col-md-4.text-center.p-1
+                .border.border-secondary.p-1
+                  = image_tag image.variant(:thumb).processed
+                  .form-check
+                    = f.check_box :remove_images, { multiple: true }, image.id, nil
+                    = f.label :remove_images, _('StarpageBanner|Remove this image'), for: "startpage_banner_remove_images_#{image.id}"
+    .card-footer
+      = f.save

@@ -351,11 +351,14 @@ Rails.application.routes.draw do
       post :cleanup_cache
     end
 
+    # System settings
+    resource :settings, only: %i[show edit update]
+
     # Frontend design settings
     resources :footer_logos, except: %i[show]
     resources :styling_variables, except: %i[show]
     resources :sidebar_blocks, except: %i[show]
-    resource :settings, only: %i[show edit update]
+    resources :startpage_banners, except: %i[show]
 
     # Api Applications management
     resources :api_applications, except: %i[show]

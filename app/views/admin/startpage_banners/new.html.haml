@@ -1,0 +1,15 @@
+.card
+  = simple_form_for [:admin, model] do |f|
+    .card-body
+      .row
+        .col-md-6
+          = f.input :name
+        .col-md-6
+          = f.input :height
+      .row
+        .col-md-6
+          = f.input :visible, as: :select, include_blank: false
+        .col-md-6
+          = f.input :images, input_html: { multiple: true }
+    .card-footer
+      = f.save

@@ -183,6 +183,7 @@ class Ability
       can :manage, FooterLogo
       can :manage, SidebarBlock
       can :manage, StylingVariable
+      can :manage, StartpageBanner
     end
 
     # System admin permission, for actions such as clearing the cache and
