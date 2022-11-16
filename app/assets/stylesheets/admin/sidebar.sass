@@ -1,3 +1,6 @@
+#sidebar-wrapper
+  height: 100%
+
 #sidebar
   width: $sidebar-width
   color: $sidenav-color
@@ -6,7 +9,6 @@
   position: sticky
   transition: width 0.5s ease
   overflow: hidden
-  height: 100vh
   top: 0
   .sidebar-content
     height: calc(100% - 35px)
@@ -125,8 +127,12 @@
         display: block
 
 // Responsive stuff
+@include media-breakpoint-up(md)
+  #sidebar
+    height: 100vh
 @include media-breakpoint-down(md)
   #sidebar
+    height: 100%
     position: fixed
     top: 0
     bottom: 0
