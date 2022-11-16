@@ -91,9 +91,6 @@ group :development do
 
   # Security
   gem 'bundler-audit', '~> 0.9.0'
-
-  # Optimizations
-  gem 'bullet', '~> 7.0.3'
 end
 
 # Test gems
