@@ -1,6 +1,7 @@
 - content_for :header_buttons do
-  = new_button MenuLinkItem, namespace: %i[admin], href: new_link_admin_menu_items_path
-  = new_button MenuDropdownItem, namespace: %i[admin], href: new_dropdown_admin_menu_items_path
+  .d-flex.gap-1.flex-wrap
+    = new_button MenuLinkItem, namespace: %i[admin], href: new_link_admin_menu_items_path
+    = new_button MenuDropdownItem, namespace: %i[admin], href: new_dropdown_admin_menu_items_path
 
 .card
   .card-body
