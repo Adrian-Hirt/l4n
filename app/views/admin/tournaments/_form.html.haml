@@ -1,69 +1,84 @@
 = simple_form_for [:admin, model] do |f|
-  .card-body{data: { controller: 'admin--tournament-form' }}
-    .row
-      .col-md-6
-        = f.input :name
-      .col-md-6
-        = f.input :max_number_of_participants
-    - if model.teams.any?
-      .mb-3
-        = f.label :singleplayer, label: _('Tournament|Participant type')
-        %br
-        .text-muted= model.singleplayer? ? _('Tournament|Singleplayer participants') : _('Tournament|Team participants')
-    - else
-      = f.input :singleplayer, as: :radio_buttons,
-                              label: _('Tournament|Participant type'),
-                              collection: [[_('Tournament|Team participants'), false], [_('Tournament|Singleplayer participants'), true]],
-                              input_html: { class: 'no-validation' },
-                              wrapper_html: { data: { 'admin--tournament-form-target' => 'participantType' } }
-    - team_size_classes = model.singleplayer? ? %w[d-none] : []
-    = f.input :team_size, disabled: model.teams.any?,
-                          input_html: { class: 'no-validation' },
-                          wrapper_html: { class: team_size_classes, data: { 'admin--tournament-form-target' => 'teamSize' } }
+  .card.mb-3
+    .card-header
+      = _('Admin|Tournament|Basics')
+    .card-body{data: { controller: 'admin--tournament-form' }}
+      .row
+        .col-md-6
+          = f.input :name
+        .col-md-6
+          = f.input :max_number_of_participants
+      - if model.teams.any?
+        .mb-3
+          = f.label :singleplayer, label: _('Tournament|Participant type')
+          %br
+          .text-muted= model.singleplayer? ? _('Tournament|Singleplayer participants') : _('Tournament|Team participants')
+      - else
+        = f.input :singleplayer, as: :radio_buttons,
+                                label: _('Tournament|Participant type'),
+                                collection: [[_('Tournament|Team participants'), false], [_('Tournament|Singleplayer participants'), true]],
+                                input_html: { class: 'no-validation' },
+                                wrapper_html: { data: { 'admin--tournament-form-target' => 'participantType' } }
+      - team_size_classes = model.singleplayer? ? %w[d-none] : []
+      = f.input :team_size, disabled: model.teams.any?,
+                            input_html: { class: 'no-validation' },
+                            wrapper_html: { class: team_size_classes, data: { 'admin--tournament-form-target' => 'teamSize' } }
 
-    .row
-      .col-md-6
-        = f.input :status, collection: Tournament::statuses, include_blank: false
-      .col-md-6
-        = f.input :lan_party_id, collection: LanParty.order(:name), include_blank: _('Form|Select|Blank')
-    .row
-      .col-md-6
-        = f.input :frontend_order
-      .col-md-6
-        = f.input :teams_need_rank, as: :select, include_blank: false
+      .row
+        .col-md-6
+          = f.input :status, collection: Tournament::statuses, include_blank: false
+        .col-md-6
+          = f.input :lan_party_id, collection: LanParty.order(:name), include_blank: _('Form|Select|Blank')
+      .row
+        .col-md-6
+          = f.input :frontend_order
+        .col-md-6
+          = f.input :teams_need_rank, as: :select, include_blank: false
 
-    -# -- Files inputs -------------------------------------------------------------
-    = f.input :files, input_html: { multiple: true }
+  .card.mb-3
+    .card-header
+      = _('Admin|Tournament|Files')
+    .card-body
+      -# -- Files inputs -------------------------------------------------------------
+      = f.input :files, input_html: { multiple: true }
 
-    -# -- Attached files -----------------------------------------------------------
-    - if model.files.attached? && model.persisted?
-      %hr
-      %table.table.table-hover.mb-0
-        %tr
-          %th= _('Tournament|File|Name')
-          %th= _('Tournament|File|Size')
-          %th
-        - model.files.each do |file|
+      -# -- Attached files -----------------------------------------------------------
+      - if model.files.attached? && model.persisted?
+        %hr
+        %table.table.table-hover.mb-0
           %tr
-            %td= link_to file.filename, rails_blob_path(file, disposition: "inline"), target: :_blank
-            %td= number_to_human_size(file.blob.byte_size)
-            %td
-              .form-check
-                = f.check_box :remove_files, { multiple: true }, file.id, nil
-                = f.label :remove_files, _('Tournament|Remove this file'), for: "tournament_remove_files_#{file.id}"
+            %th= _('Tournament|File|Name')
+            %th= _('Tournament|File|Size')
+            %th
+          - model.files.each do |file|
+            %tr
+              %td= link_to file.filename, rails_blob_path(file, disposition: "inline"), target: :_blank
+              %td= number_to_human_size(file.blob.byte_size)
+              %td
+                .form-check
+                  = f.check_box :remove_files, { multiple: true }, file.id, nil
+                  = f.label :remove_files, _('Tournament|Remove this file'), for: "tournament_remove_files_#{file.id}"
 
-    -# -- Description input --------------------------------------------------------
-    = f.markdown :description, preview_url: admin_markdown_preview_path
+  .card.mb-3
+    .card-header
+      = _('Admin|Tournament|Description')
+    .card-body.pb-0
+      -# -- Description input --------------------------------------------------------
+      = f.markdown :description, preview_url: admin_markdown_preview_path
 
-    -# -- Team ranks input ---------------------------------------------------------
-    #tournament_team_ranks{data: { controller: 'cocoon' }}
-      = f.error :tournament_team_ranks, class: 'invalid-feedback d-block'
-      = f.simple_fields_for :tournament_team_ranks do |tournament_team_rank|
-        .nested-fields
-          = render 'tournament_team_rank_fields', f: tournament_team_rank
-      .links
-        = link_to_add_association f, :tournament_team_ranks, class: 'btn btn-primary', data: { action: 'click->cocoon#addRow' } do
-          = icon %i[fa fa-plus]
-          =_('Tournament|Add team rank')
-  .card-footer
-    = f.save
+  .card.mb-3
+    .card-header
+      = _('Admin|Tournament|Ranks')
+    .card-body
+      -# -- Team ranks input ---------------------------------------------------------
+      #tournament_team_ranks{data: { controller: 'cocoon' }}
+        = f.error :tournament_team_ranks, class: 'invalid-feedback d-block'
+        = f.simple_fields_for :tournament_team_ranks do |tournament_team_rank|
+          .nested-fields
+            = render 'tournament_team_rank_fields', f: tournament_team_rank
+        .links
+          = link_to_add_association f, :tournament_team_ranks, class: 'btn btn-primary', data: { action: 'click->cocoon#addRow' } do
+            = icon %i[fa fa-plus]
+            =_('Tournament|Add team rank')
+    .card-footer
+      = f.save
