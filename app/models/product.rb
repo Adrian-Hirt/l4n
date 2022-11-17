@@ -60,7 +60,7 @@ class Product < ApplicationRecord
     grouped = SeatCategory.all.group_by(&:lan_party_id)
     grouped.each do |k, v|
       grouped[k] = v.map do |category|
-        category.products.map { |product| { id: product.id, name: product.name } }
+        { id: category.product&.id, name: category.product&.name }
       end.compact_blank.flatten
     end
 
