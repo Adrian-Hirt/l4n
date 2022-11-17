@@ -53,7 +53,7 @@
                 = f.label :remove_files, _('Tournament|Remove this file'), for: "tournament_remove_files_#{file.id}"
 
     -# -- Description input --------------------------------------------------------
-    -# = f.markdown :description, preview_url: admin_markdown_preview_path
+    = f.markdown :description, preview_url: admin_markdown_preview_path
 
     -# -- Team ranks input ---------------------------------------------------------
     #tournament_team_ranks{data: { controller: 'cocoon' }}

@@ -16,21 +16,34 @@
       .card-header
         = _('Tournament|Tournament details')
       .card-body
-        .mb-2
-          = _('Tournament|Team types')
-          .small.text-muted
-            - if model.singleplayer?
-              = icon %i[fas fa-user]
-              = _('Team|1 player')
-            - else
-              = icon %i[fas fa-users]
-              = _('Team|%{count} players') % { count: model.team_size }
-        .mb-2
-          = _('Tournament|Number of Participants')
-          .small.text-muted
-            = "#{model.teams.in_tournament.count} / #{model.max_number_of_participants}"
-        %hr
-        .mb-2.fw-bold= _('Tournament|Description')
-        = markdown model.description
+        .row
+          .col-md-6
+            = _('Tournament|Team types')
+            .small.text-muted
+              - if model.singleplayer?
+                = icon %i[fas fa-user]
+                = _('Team|1 player')
+              - else
+                = icon %i[fas fa-users]
+                = _('Team|%{count} players') % { count: model.team_size }
+          .col-md-6
+            = _('Tournament|Number of Participants')
+            .small.text-muted
+              = "#{model.teams.in_tournament.count} / #{model.max_number_of_participants}"
+    - if model.description.present?
+      .card.mt-3
+        .card-header
+          = _('Tournament|Description')
+        .card-body.pb-0
+          = markdown model.description
+    - if model.files.any?
+      .card.mt-3
+        .card-header
+          = _('Tournament|Files')
+        %table.table.table-hover.mb-0
+          - model.files.each do |file|
+            %tr
+              %td.ps-3= link_to file.filename, rails_blob_path(file, disposition: "inline"), target: :_blank
+              %td= number_to_human_size(file.blob.byte_size)
   .col-md-4
     = render partial: 'actions_sidebar', locals: { tournament: model, op: op }
