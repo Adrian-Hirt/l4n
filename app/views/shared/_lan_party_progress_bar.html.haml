@@ -1,6 +1,9 @@
 - available_products = Queries::Lan::CountRelevantProductInventory.call(lan_party: lan_party)
 - sold_tickets = Queries::Lan::CountRelevantTickets.call(lan_party: lan_party)
-- percentage = sold_tickets.to_f / available_products.to_f * 100.0
+- if available_products.zero?
+  - percentage = 0
+- else
+  - percentage = sold_tickets.to_f / available_products.to_f * 100.0
 
 - if(percentage < 50)
   - color = "rgb(#{(percentage * 5.1).ceil}, 255, 0)"
