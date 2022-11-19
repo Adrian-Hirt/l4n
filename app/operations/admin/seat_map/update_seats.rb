@@ -5,16 +5,16 @@ module Operations::Admin::SeatMap
       hsh? :seat_map
       ary? :seats do
         list :hash do
-          int? :backendId
-          int! :seatCategoryId
-          num? :x
-          num? :y
-          num? :height
-          num? :width
-          num? :scaleX
-          num? :scaleY
-          num? :rotation
-          str? :seatName
+          obj? :backendId
+          obj! :seatCategoryId
+          obj? :x
+          obj? :y
+          obj? :height
+          obj? :width
+          obj? :scaleX
+          obj? :scaleY
+          obj? :rotation
+          obj? :seatName
         end
       end
       ary? :removed_seats
