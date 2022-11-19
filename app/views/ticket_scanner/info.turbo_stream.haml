@@ -27,4 +27,4 @@
 - else
   = turbo_stream.update :ticket_scanner_actions do
     = form_with url: ticket_scanner_info_path do |f|
-      = f.text_field :qr_id
+      = f.hidden_field :qr_id
