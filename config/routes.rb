@@ -359,6 +359,7 @@ Rails.application.routes.draw do
     resources :styling_variables, except: %i[show]
     resources :sidebar_blocks, except: %i[show]
     resources :startpage_banners, except: %i[show]
+    resources :startpage_blocks, except: %i[show]
 
     # Api Applications management
     resources :api_applications, except: %i[show]

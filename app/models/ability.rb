@@ -184,6 +184,7 @@ class Ability
       can :manage, SidebarBlock
       can :manage, StylingVariable
       can :manage, StartpageBanner
+      can :manage, StartpageBlock
     end
 
     # System admin permission, for actions such as clearing the cache and

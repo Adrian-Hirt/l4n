@@ -1,0 +1,12 @@
+.card
+  = simple_form_for [:admin, model] do |f|
+    .card-body
+      .row
+        .col-md-6
+          = f.input :title
+        .col-md-6
+          = f.input :sort
+      = f.input :visible, input_html: { class: 'no-validation' }
+      = f.markdown :content, preview_url: admin_markdown_preview_path
+    .card-footer
+      = f.save

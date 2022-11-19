@@ -132,13 +132,18 @@
                 %span.nav-item-text= _('Admin|Tournaments')
         - if can? :manage, :frontent_design
           %li.nav-item.dropdown
-            %a.nav-link.collapse-link{data: {'bs-toggle' => 'collapse'}, href: '#design-collapse', class: sidenav_collapser_classes(:footer_logos, :styling_variables, :sidebar_blocks, :startpage_banners)}
+            %a.nav-link.collapse-link{data: {'bs-toggle' => 'collapse'}, href: '#design-collapse', class: sidenav_collapser_classes(:footer_logos, :styling_variables, :sidebar_blocks, :startpage_banners, :startpage_blocks)}
               %span
                 %i.nav-icon.fas.fa-brush.fa-fw
                 %span.nav-item-text= _('Admin|Design')
               %i.right.fas.fa-angle-right.dropdown-icon
-            #design-collapse.collapse{class: sidenav_collapse_classes(:footer_logos, :styling_variables, :sidebar_blocks, :startpage_banners), data: { 'bs-parent' => '.sidenav' }}
+            #design-collapse.collapse{class: sidenav_collapse_classes(:footer_logos, :styling_variables, :sidebar_blocks, :startpage_banners, :startpage_blocks), data: { 'bs-parent' => '.sidenav' }}
               %ul.nav.nav-pills.flex-column
+                %li.nav-item
+                  %a.nav-link{href: admin_startpage_blocks_path, class: active_link_classes(:startpage_blocks)}
+                    %span
+                      %i.nav-icon.fas.fa-rectangle-list.fa-fw
+                      %span.nav-item-text= _('Admin|StartpageBlocks')
                 %li.nav-item
                   %a.nav-link{href: admin_startpage_banners_path, class: active_link_classes(:startpage_banners)}
                     %span
