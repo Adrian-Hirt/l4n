@@ -71,7 +71,7 @@
           = button _('Admin|LanParty|TicketUpgrades'), admin_lan_party_ticket_upgrades_path(model)
           = button _('Admin|LanParty|Tournaments'), admin_tournaments_path(grids_admin_tournaments: { lan_party: model.id })
           = button _('Admin|LanParty|Timetable'), admin_lan_party_timetable_path(model)
-    .card
+    .card.mb-3
       .card-header
         = _('LanParty|Exports')
       .card-body
@@ -83,4 +83,10 @@
               = link_to _('JSON'), export_seat_assignees_admin_lan_party_path(format: :json), class: %i[dropdown-item]
             %li
               = link_to _('CSV'), export_seat_assignees_admin_lan_party_path(format: :csv), class: %i[dropdown-item]
+    .card
+      .card-header
+        = _('LanParty|Frontend')
+      .card-body
+        .d-grid.gap-2
+          = button _('Admin|LanParty|Ticket scanner'), ticket_scanner_path
 
