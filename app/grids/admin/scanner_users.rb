@@ -8,7 +8,7 @@ module Grids
       model ScannerUser
 
       column :name
-      column :id
+      column :lan_party, html: -> (lan_party) { lan_party.name }
       column :'datagrid-actions', html: true, header: false do |scanner_user|
         tag.div class: %i[datagrid-actions-wrapper] do
           safe_join([

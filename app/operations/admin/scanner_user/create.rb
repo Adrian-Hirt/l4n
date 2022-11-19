@@ -4,6 +4,7 @@ module Operations::Admin::ScannerUser
       hsh? :scanner_user do
         str? :name
         str? :password
+        str? :lan_party_id
       end
     end
 

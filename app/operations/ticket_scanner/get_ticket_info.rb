@@ -50,6 +50,12 @@ module Operations::TicketScanner
         # Check that the assignee of the ticket is equal to the user_id from the qr code
         fail Operations::Exceptions::OpFailed, _('TicketScanner|Wrong user') unless user_id.to_i == ticket.assignee_id
 
+        # Check that the lanparty of the ticket is the lan_party the scanner user is allowed to scan
+        fail Operations::Exceptions::OpFailed, _('TicketScanner|Wrong event') unless ticket.lan_party == context.user.lan_party
+
+        # Check that the ticket actually has a seat assigned
+        fail Operations::Exceptions::OpFailed, _('TicketScanner|Ticket has no seat') if ticket.seat.nil?
+
         # Return the ticket
         ticket
       end
@@ -62,5 +68,3 @@ module Operations::TicketScanner
     end
   end
 end
-
-# WjFhUHBoVWpLdHYvYkVybHlOaz0tLURXNkVBVGZjZFFEWFlrRWItLWlVQ1VCVHdzN1gyc1JaZVFFNmtvdnc9PQ==

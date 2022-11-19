@@ -6,5 +6,7 @@
           = f.input :name
         .col-md-6
           = f.password :password
+      .row
+        = f.association :lan_party, include_blank: _('Form|Select|Blank')
     .card-footer
       = f.save

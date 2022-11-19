@@ -5,6 +5,7 @@ class ScannerUser < ApplicationRecord
   # == Constants ===================================================================
 
   # == Associations ================================================================
+  belongs_to :lan_party, optional: true
 
   # == Validations =================================================================
   validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }
