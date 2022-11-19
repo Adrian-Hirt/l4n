@@ -2,7 +2,7 @@
   .startpage-image{style: "height: #{height}px;"}
     = image_tag images.first
 - else
-  #startpageBannerImages.carousel.slide{"data-bs-ride" => "true", style: "height: #{height}px;"}
+  #startpageBannerImages.carousel.slide{"data-bs-ride" => "carousel", style: "height: #{height}px;"}
     .carousel-indicators
       - images.count.times do |index|
         %button{"data-bs-slide-to" => "#{index}", "data-bs-target" => "#startpageBannerImages", class: ('active' if index == 0)}
