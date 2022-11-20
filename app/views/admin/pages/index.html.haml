@@ -1,6 +1,16 @@
 - content_for :header_buttons do
-  = new_button Page, namespace: %i[admin]
+  .d-flex.gap-1.flex-wrap
+    = new_button ContentPage, namespace: %i[admin], href: new_content_admin_pages_path
+    = new_button RedirectPage, namespace: %i[admin], href: new_redirect_admin_pages_path
+
+.card.mb-3
+  .card-header
+    = _('Admin|ContentPages')
+  .card-body
+    = datagrid_table op.content_page_grid, html: { class: 'table' }
 
 .card
+  .card-header
+    = _('Admin|RedirectPages')
   .card-body
-    = datagrid_table op.grid, html: { class: 'table' }
+    = datagrid_table op.redirect_page_grid, html: { class: 'table' }

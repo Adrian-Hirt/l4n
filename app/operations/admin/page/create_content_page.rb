@@ -1,7 +1,7 @@
-module Operations::Admin::Pages
-  class Create < RailsOps::Operation::Model::Create
+module Operations::Admin::Page
+  class CreateContentPage < RailsOps::Operation::Model::Create
     schema3 do
-      hsh? :page do
+      hsh? :content_page do
         str? :title
         boo? :published, cast_str: true
         str? :content
@@ -10,6 +10,6 @@ module Operations::Admin::Pages
       end
     end
 
-    model ::Page
+    model ::ContentPage
   end
 end

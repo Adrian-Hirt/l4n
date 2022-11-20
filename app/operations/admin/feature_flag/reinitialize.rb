@@ -18,7 +18,7 @@ module Operations::Admin::FeatureFlag
         flag.destroy
 
         # Delete the cache entry
-        Rails.cache.delete("feature_flag/#{model.key}")
+        Rails.cache.delete("feature_flag/#{flag.key}")
       end
     end
   end

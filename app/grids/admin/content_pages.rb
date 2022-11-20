@@ -1,21 +1,21 @@
 module Grids
   module Admin
-    class Pages < ApplicationGrid
+    class ContentPages < ApplicationGrid
       scope do
-        Page.order(:title)
+        ContentPage.order(:url)
       end
 
-      model Page
+      model ContentPage
 
+      column :url
       column :title
       column :published, html: ->(published) { format_boolean(published) }
       column :use_sidebar, html: ->(use_sidebar) { format_boolean(use_sidebar) }
-      column :url
       column :'datagrid-actions', html: true, header: false do |page|
         tag.div class: %i[datagrid-actions-wrapper] do
           safe_join([
-                      edit_button(page, namespace: %i[admin], size: :sm, icon_only: true),
-                      delete_button(page, namespace: %i[admin], size: :sm, icon_only: true)
+                      edit_button(page, href: edit_admin_page_path(page), size: :sm, icon_only: true),
+                      delete_button(page, href: admin_page_path(page), size: :sm, icon_only: true)
                     ])
         end
       end

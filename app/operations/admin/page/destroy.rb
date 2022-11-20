@@ -1,4 +1,4 @@
-module Operations::Admin::Pages
+module Operations::Admin::Page
   class Destroy < RailsOps::Operation::Model::Destroy
     schema do
       req :id

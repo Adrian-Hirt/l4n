@@ -1,0 +1,16 @@
+.card
+  = simple_form_for model, url: new_content_admin_pages_path do |f|
+    .card-body
+      .row
+        .col-md-6
+          = f.input :title
+        .col-md-6
+          = f.input :url, hint: _('Page|Url may only contain: [a-z 0-9 - _] and needs to start with a letter')
+      .row
+        .col-md-6
+          = f.input :published, as: :select, include_blank: false
+        .col-md-6
+          = f.input :use_sidebar, as: :select, include_blank: false
+      = f.markdown :content, preview_url: admin_markdown_preview_path
+    .card-footer
+      = f.save

@@ -3,32 +3,48 @@ module Admin
     add_breadcrumb _('Admin|Pages'), :admin_pages_path
 
     def index
-      op Operations::Admin::Pages::Index
+      op Operations::Admin::Page::Index
     end
 
-    def new
+    def new_content_page
       add_breadcrumb _('Admin|Page|New')
-      op Operations::Admin::Pages::Create
+      op Operations::Admin::Page::CreateContentPage
     end
 
-    def create
-      if run Operations::Admin::Pages::Create
-        flash[:success] = _('Admin|Page|Successfully created')
+    def create_content_page
+      if run Operations::Admin::Page::CreateContentPage
+        flash[:success] = _('Admin|Page|Successfully created content page')
         redirect_to admin_pages_path
       else
         add_breadcrumb _('Admin|Page|New')
         flash[:danger] = _('Admin|Page|Create failed')
-        render :new, status: :unprocessable_entity
+        render :new_content_page, status: :unprocessable_entity
+      end
+    end
+
+    def new_redirect_page
+      add_breadcrumb _('Admin|Page|New')
+      op Operations::Admin::Page::CreateRedirectPage
+    end
+
+    def create_redirect_page
+      if run Operations::Admin::Page::CreateRedirectPage
+        flash[:success] = _('Admin|Page|Successfully created redirect page')
+        redirect_to admin_pages_path
+      else
+        add_breadcrumb _('Admin|Page|New')
+        flash[:danger] = _('Admin|Page|Create failed')
+        render :new_redirect_page, status: :unprocessable_entity
       end
     end
 
     def edit
-      op Operations::Admin::Pages::Update
+      op Operations::Admin::Page::Update
       add_breadcrumb model.title
     end
 
     def update
-      if run Operations::Admin::Pages::Update
+      if run Operations::Admin::Page::Update
         flash[:success] = _('Admin|Page|Successfully updated')
         redirect_to admin_pages_path
       else
@@ -39,7 +55,7 @@ module Admin
     end
 
     def destroy
-      if run Operations::Admin::Pages::Destroy
+      if run Operations::Admin::Page::Destroy
         flash[:success] = _('Admin|Page|Successfully deleted')
       else
         flash[:danger] = _('Admin|Page|Cannot be deleted')

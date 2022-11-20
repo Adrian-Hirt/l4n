@@ -1,0 +1,10 @@
+.card
+  = simple_form_for model, url: new_redirect_admin_pages_path do |f|
+    .card-body
+      .row
+        .col-md-6
+          = f.input :redirects_to
+        .col-md-6
+          = f.input :url, hint: _('Page|Url may only contain: [a-z 0-9 - _] and needs to start with a letter')
+    .card-footer
+      = f.save

@@ -217,7 +217,14 @@ Rails.application.routes.draw do
     end
 
     # Pages
-    resources :pages
+    resources :pages, except: %i[new create show] do
+      collection do
+        get :'new/content', action: :new_content_page
+        post :'new/content', action: :create_content_page
+        get :'new/redirect', action: :new_redirect_page
+        post :'new/redirect', action: :create_redirect_page
+      end
+    end
 
     # Configurable menu items
     resources :menu_items, except: %i[new create show] do
