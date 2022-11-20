@@ -13,8 +13,8 @@ module Operations::Admin::Tournament::Team
       # Check that we have an user
       fail Operations::Exceptions::OpFailed, _('Admin|Team|User not found') if user.nil?
 
-      # Check that the user is activated
-      fail Operations::Exceptions::OpFailed, _('Admin|Team|User not activated') unless user.activated?
+      # Check that the user is confirmed
+      fail Operations::Exceptions::OpFailed, _('Admin|Team|User not confirmed') unless user.confirmed?
 
       # Check that there is still space in the team
       fail Operations::Exceptions::OpFailed, _('Admin|Team|Team is full') if model.full?

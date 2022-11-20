@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   # == Attributes ==================================================================
-  devise :two_factor_backupable, :rememberable, :recoverable
+  devise :two_factor_backupable, :rememberable, :recoverable, :confirmable
   devise :two_factor_authenticatable, authentication_keys: %i[email]
 
   # == Constants ===================================================================

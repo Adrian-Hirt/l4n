@@ -19,8 +19,8 @@ module Unit
             assert_equal 'Testuser', user.username
             assert_equal 'testuser@example.com', user.email
             assert user.valid_password?('Password123')
-            assert user.activation_token.present?
-            assert_not user.activated?
+            assert user.confirmation_token.present?
+            assert_not user.confirmed?
           end
         end
 

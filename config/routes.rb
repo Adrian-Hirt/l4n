@@ -19,11 +19,7 @@ Rails.application.routes.draw do
   match '/reset_password', to: 'password_resets#reset_password', via: %i[get patch]
 
   # == Users ============================================================================
-  resources :users, only: %i[index show] do
-    collection do
-      get :activate
-    end
-  end
+  resources :users, only: %i[index show]
 
   # == Gameaccount frames for users =====================================================
   namespace :gameaccounts do

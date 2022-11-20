@@ -22,8 +22,8 @@ module Operations::Admin::Tournament::Team
         if singleplayer_user.nil?
           model.errors.add(:single_user_name, _('Team|User cannot be found'))
           fail UserError
-        elsif !singleplayer_user.activated?
-          model.errors.add(:single_user_name, _('Team|User is not activated'))
+        elsif !singleplayer_user.confirmed?
+          model.errors.add(:single_user_name, _('Team|User is not confirmed'))
           fail UserError
         elsif singleplayer_user.teams.where(tournament: tournament).any?
           model.errors.add(:single_user_name, _('Team|User is already in tournament'))

@@ -22,8 +22,8 @@ module Operations::Admin::Ticket
       # Throw exception if the user is nil
       fail Operations::Exceptions::OpFailed, _('Ticket|User not found') if user.nil?
 
-      # Throw exception if the user is not activated
-      fail Operations::Exceptions::OpFailed, _('Ticket|User not activated') unless user.activated?
+      # Throw exception if the user is not confirmed
+      fail Operations::Exceptions::OpFailed, _('Ticket|User not confirmed') unless user.confirmed?
 
       # Throw exception if the user already has an assigned ticket for
       # the current event
