@@ -1,6 +1,7 @@
 import { Controller } from '@hotwired/stimulus';
 import Cropper from 'cropperjs';
 import 'sweetalert2'
+const i18n = require("gettext.js")();
 
 export default class extends Controller {
   static targets = ['imageLoader', 'uploadButton', 'canvas', 'fileNameList'];
@@ -63,9 +64,9 @@ export default class extends Controller {
         }
         else {
           Sweetalert2.fire({
-            title: i18n._('Avatar|Uploading avatar failed'),
+            title: i18n.gettext('Avatar|Uploading avatar failed'),
             icon: 'error',
-            cancelButtonText: i18n._('ConfirmDialog|Confirm'),
+            cancelButtonText: i18n.gettext('ConfirmDialog|Confirm'),
             showConfirmButton: false,
             showCancelButton: true
           });

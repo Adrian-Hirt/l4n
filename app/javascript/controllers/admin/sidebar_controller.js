@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import Cookies from 'components/cookies'
+import Cookies from '../../components/cookies'
 
 export default class extends Controller {
   static targets = ['sidebar'];

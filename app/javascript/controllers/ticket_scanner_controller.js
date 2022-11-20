@@ -1,7 +1,7 @@
 import { Controller } from '@hotwired/stimulus'
 import QrScanner from 'qr-scanner'
-import Translations from 'components/translations'
-import JsAlert from 'utils/js_alert'
+import JsAlert from '../utils/js_alert'
+const i18n = require("gettext.js")();
 
 export default class extends Controller {
   static targets = ['cameraSelector'];
@@ -62,7 +62,7 @@ export default class extends Controller {
     }
     catch {
       // Show alert if parsing failed
-      new JsAlert(i18n._('TicketScanner|Invalid QR code, please try again'), 'danger').show();
+      new JsAlert(i18n.gettext('TicketScanner|Invalid QR code, please try again'), 'danger').show();
       return;
     }
 

@@ -24,7 +24,7 @@ gem 'pg', '~> 1.4.3'
 
 # Assets
 gem 'cssbundling-rails', '~> 1.1.1'
-gem 'importmap-rails', '~> 1.1.5'
+gem 'jsbundling-rails', '~> 1.0.3'
 gem 'sprockets-rails', '~> 3.4.1'
 gem 'stimulus-rails', '~> 1.1.0'
 gem 'turbo-rails', '~> 1.3.2'

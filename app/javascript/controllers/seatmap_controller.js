@@ -1,5 +1,6 @@
-import { Controller } from "@hotwired/stimulus";
-import 'konva';
+import { Controller } from "@hotwired/stimulus"
+import 'konva'
+const i18n = require("gettext.js")();
 
 export default class extends Controller {
   static targets = [
@@ -377,7 +378,7 @@ export default class extends Controller {
       }
     }
 
-    this.currentSelectedSeatInfoTarget.innerHTML = i18n._('Seatmap|Please select a seat');
+    this.currentSelectedSeatInfoTarget.innerHTML = i18n.gettext('Seatmap|Please select a seat');
   }
 
   #highlightSeats() {
@@ -417,15 +418,15 @@ export default class extends Controller {
       let username = attributes.userName;
 
       if(username) {
-        infoString += `${i18n._('Seat|Seat is taken by')}: `;
+        infoString += `${i18n.gettext('Seat|Seat is taken by')}: `;
         infoString += `<a href="/users/${attributes.userId}" target="_blank">${username}</a>`
       }
       else {
-        infoString += i18n._('Seat|Seat is taken');
+        infoString += i18n.gettext('Seat|Seat is taken');
       }
     }
     else {
-      infoString += i18n._('Seatmap|Seat is free');
+      infoString += i18n.gettext('Seatmap|Seat is free');
     }
 
     this.currentSelectedSeatInfoTarget.innerHTML = infoString;

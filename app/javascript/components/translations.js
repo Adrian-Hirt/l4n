@@ -1,10 +1,4 @@
-import i18n from 'gettext.js';
-
-const i18nConst = i18n();
-
-i18nConst._ = function(str) {
-  return i18nConst.gettext(str);
-}
+const i18n = require("gettext.js")();
 
 export default class Translations {
   static available_locales =  ["en", "de"];
@@ -13,16 +7,11 @@ export default class Translations {
     for(let lang of Translations.available_locales) {
       fetch(`/locale/${lang}.json`)
         .then(response => response.json())
-        .then(data => i18nConst.loadJSON(data, 'messages'));
+        .then(data => i18n.loadJSON(data, 'messages'));
     }
   }
 
   static setup() {
-    window.i18n = i18nConst;
     this.loadTranslations();
-  }
-
-  static _(str) {
-    return i18nConst._(str);
   }
 };

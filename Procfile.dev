@@ -1,3 +1,4 @@
 web: bin/rails server -b 'ssl://0.0.0.0:3000'
 css-app: yarn build:css:app --watch
 css-admin: yarn build:css:admin --watch
+js: yarn build --watch

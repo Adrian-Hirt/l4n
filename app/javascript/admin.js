@@ -9,7 +9,7 @@ import "@fortawesome/fontawesome-free/js/all"
 FontAwesome.config.mutateApproach = 'sync'
 
 // Our controllers
-import "./controllers/index.js"
+import "./controllers/admin.js"
 
 document.addEventListener('turbo:load', function () {
   Translations.setup();
