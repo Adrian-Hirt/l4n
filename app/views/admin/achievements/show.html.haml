@@ -1,0 +1,6 @@
+- content_for :header_buttons do
+  = new_button UserAchievement, namespace: %i[admin], href: new_admin_achievement_user_achievement_path(model)
+
+.card
+  .card-body
+    = datagrid_table op.grid, html: { class: 'table' }

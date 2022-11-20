@@ -1,0 +1,16 @@
+.card
+  = simple_form_for [:admin, model] do |f|
+    .card-body
+      .row
+        .col-md-6
+          = f.input :title
+        .col-md-6
+          = f.input :description
+      .row
+        .col-md-6
+          = f.input :icon
+          %div= image_tag model.icon.variant(:medium).processed if model.icon.attached?
+        .col-md-6
+          = f.association :lan_party, include_blank: _('Form|Select|Blank')
+    .card-footer
+      = f.save

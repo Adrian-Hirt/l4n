@@ -187,6 +187,12 @@ class Ability
       can :manage, StartpageBlock
     end
 
+    # Achievement permissions
+    if user.achievement_admin_permission?
+      can :manage, Achievement
+      can :manage, UserAchievement
+    end
+
     # System admin permission, for actions such as clearing the cache and
     # feature flags. This permission should only be given very carefully
     if user.system_admin_permission?

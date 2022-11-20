@@ -14,10 +14,11 @@
     .card.mb-3
       .card-header
         = _('User|About me')
-      .card-body
-        - if model.bio.present?
+      - if model.bio.present?
+        .card-body.pb-0
           = simple_format model.bio
-        - else
+      - else
+        .card-body
           = _('User|No bio added yet')
     .card
       .card-header
@@ -60,8 +61,23 @@
                   .placeholder-glow
                     %h4.d-block.placeholder.col-4 &nbsp;
                     .d-block.placeholder.col-4
-    -# .card
-    -#   .card-header
-    -#     = _('User|Achievements')
-    -#   .card-body
-    -#     TODO
+    .card
+      .card-header
+        = _('User|Achievements')
+      .card-body
+        - if model.user_achievements.none?
+          = _('Gameaccounts|No achievements yet')
+        - else
+          .row
+            - model.user_achievements.order(awarded_at: :desc).includes(:achievement).each do |user_achievement|
+              .col-md-6
+                .d-flex
+                  - if user_achievement.achievement.icon.attached?
+                    .flex-shrink-0
+                      = image_tag user_achievement.achievement.icon.variant(:medium)
+                  - else
+                    .achievement-icon-placeholder
+                  .flex-grow-1.ms-3
+                    %b= user_achievement.achievement.title
+                    %div= user_achievement.achievement.description
+                    .text-muted= l user_achievement.awarded_at

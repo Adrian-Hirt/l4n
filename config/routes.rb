@@ -361,6 +361,11 @@ Rails.application.routes.draw do
     resources :startpage_banners, except: %i[show]
     resources :startpage_blocks, except: %i[show]
 
+    # Achievements settings
+    resources :achievements, shallow: true do
+      resources :user_achievements, only: %i[new create destroy]
+    end
+
     # Api Applications management
     resources :api_applications, except: %i[show]
 

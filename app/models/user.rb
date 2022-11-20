@@ -17,6 +17,7 @@ class User < ApplicationRecord
     lan_party_admin_permission
     tournament_admin_permission
     design_admin_permission
+    achievement_admin_permission
     system_admin_permission
   ].freeze
 
@@ -33,6 +34,7 @@ class User < ApplicationRecord
   has_many :team_memberships, class_name: 'Tournament::TeamMember', dependent: :destroy, inverse_of: :user
   has_many :teams, through: :team_memberships
   has_many :tickets, foreign_key: :assignee_id, dependent: :nullify, inverse_of: :assignee
+  has_many :user_achievements, dependent: :destroy
 
   # == Validations =================================================================
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }, length: { maximum: 255 }

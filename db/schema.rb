@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_19_115418) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_19_130553) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "achievements", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "description"
+    t.bigint "lan_party_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lan_party_id"], name: "index_achievements_on_lan_party_id"
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -512,6 +521,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_19_115418) do
     t.index ["lan_party_id"], name: "index_tournaments_on_lan_party_id"
   end
 
+  create_table "user_achievements", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "achievement_id", null: false
+    t.datetime "awarded_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["achievement_id"], name: "index_user_achievements_on_achievement_id"
+    t.index ["user_id", "achievement_id"], name: "index_user_achievements_on_user_id_and_achievement_id", unique: true
+    t.index ["user_id"], name: "index_user_achievements_on_user_id"
+  end
+
   create_table "user_addresses", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "first_name", null: false
@@ -555,6 +575,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_19_115418) do
     t.string "steam_id"
     t.string "discord_id"
     t.boolean "design_admin_permission", default: false, null: false
+    t.boolean "achievement_admin_permission", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
@@ -608,5 +629,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_19_115418) do
   add_foreign_key "tournament_team_ranks", "tournaments"
   add_foreign_key "tournament_teams", "tournament_team_ranks"
   add_foreign_key "tournament_teams", "tournaments"
+  add_foreign_key "user_achievements", "achievements"
+  add_foreign_key "user_achievements", "users"
   add_foreign_key "user_addresses", "users"
 end

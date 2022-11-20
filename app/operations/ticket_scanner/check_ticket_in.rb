@@ -20,6 +20,9 @@ module Operations::TicketScanner
 
       # Otherwise, check the ticket in
       ticket.checked_in!
+
+      # And finally, award the achievement for attending the lanparty (if present)
+      run_sub Operations::Achievement::AwardForLanParty, lan_party: ticket.lan_party, user: ticket.assignee
     end
 
     delegate :qr_id, to: :osparams
