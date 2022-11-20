@@ -7,7 +7,6 @@ module Grids
 
       model User
 
-      column :id
       column :username
       column :email
       column :confirmed, html: true, header: _('User|Confirmed') do |user|

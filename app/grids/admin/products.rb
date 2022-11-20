@@ -7,7 +7,6 @@ module Grids
 
       model Product
 
-      column :id
       column :name
       column :sort
       column :product_category, html: ->(product_category) { product_category.name }

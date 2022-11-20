@@ -7,7 +7,7 @@ module Grids
 
       model Order
 
-      column :id
+      column :uuid
       column :user, html: ->(user) { user.username }
       column :'datagrid-actions', html: true, header: false do |order|
         tag.div class: %i[datagrid-actions-wrapper] do

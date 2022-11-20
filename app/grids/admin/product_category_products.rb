@@ -7,7 +7,6 @@ module Grids
 
       model Product
 
-      column :id
       column :name
       column :sort
       column :on_sale, html: ->(on_sale) { format_boolean(on_sale) }

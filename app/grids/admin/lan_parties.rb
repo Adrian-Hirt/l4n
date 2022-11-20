@@ -7,7 +7,6 @@ module Grids
 
       model LanParty
 
-      column :id
       column :active, html: ->(active) { format_boolean(active) }
       column :name
       column :'datagrid-actions', html: true, header: false do |lan_party|

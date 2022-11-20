@@ -7,7 +7,6 @@ module Grids
 
       model ProductCategory
 
-      column :id
       column :name
       column :sort
       column :products_count, html: true do |product_category|

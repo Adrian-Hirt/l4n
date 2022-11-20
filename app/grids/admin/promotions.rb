@@ -7,7 +7,6 @@ module Grids
 
       model Promotion
 
-      column :id
       column :name
       column :active, html: ->(active) { format_boolean(active) }
       column :code_type

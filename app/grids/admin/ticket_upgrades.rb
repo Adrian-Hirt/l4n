@@ -7,7 +7,6 @@ module Grids
 
       model TicketUpgrade
 
-      column :id
       column :used, html: ->(used) { format_boolean(used) }
       column :from_product, html: true do |ticket|
         seat_category_badge(ticket.from_product.seat_category)

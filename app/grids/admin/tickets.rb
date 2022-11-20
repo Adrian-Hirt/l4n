@@ -7,7 +7,6 @@ module Grids
 
       model Ticket
 
-      column :id
       column :seat_category, html: true do |ticket|
         ticket_seat_category_badge(ticket)
       end
