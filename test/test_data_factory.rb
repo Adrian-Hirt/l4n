@@ -81,4 +81,14 @@ module TestDataFactory
       price:           product_variant.price.to_s
     )
   end
+
+  def create_news_post(title: 'Testpost', content: nil, published: false, user: nil)
+    as_user user do
+      run_op! ::Operations::Admin::NewsPost::Create, news_post: {
+        title:     title,
+        content:   content,
+        published: published
+      }
+    end
+  end
 end
