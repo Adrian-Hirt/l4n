@@ -9,7 +9,7 @@ module TestDataFactory
   # and can safely use them in other tests to create data.
 
   def create_user(attrs = {})
-    ::Operations::Admin::User::Create.run!(
+    ::Operations::User::Create.run!(
       user: {
         username: 'Testuser',
         email:    'testuser@example.com',

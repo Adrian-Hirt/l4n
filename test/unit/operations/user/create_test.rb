@@ -66,6 +66,47 @@ module Unit
             end
           end
         end
+
+        def test_duplicate_user
+          # First, create an user
+          assert_difference '::User.count', 1 do
+            ::Operations::User::Create.run!(
+              user: {
+                username: 'Testuser',
+                email:    'testuser@example.com',
+                password: 'Password123'
+              }
+            )
+          end
+
+          # Now we try to create an user with the same username, but
+          # a different emaill
+          assert_no_difference '::User.count' do
+            assert_raises ActiveRecord::RecordInvalid do
+              ::Operations::User::Create.run!(
+                user: {
+                  username: 'Testuser',
+                  email:    'another@example.com',
+                  password: 'Password123'
+                }
+              )
+            end
+          end
+
+          # Now we try to create an user with the same username, but
+          # a different emaill
+          assert_no_difference '::User.count' do
+            assert_raises ActiveRecord::RecordInvalid do
+              ::Operations::User::Create.run!(
+                user: {
+                  username: 'Another user',
+                  email:    'testuser@example.com',
+                  password: 'Password123'
+                }
+              )
+            end
+          end
+        end
       end
     end
   end
