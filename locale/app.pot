@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-18 01:01+0100\n"
-"PO-Revision-Date: 2021-12-18 01:01+0100\n"
+"POT-Creation-Date: 2022-11-20 22:10+0100\n"
+"PO-Revision-Date: 2022-11-20 22:10+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -17,6 +17,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+msgid "API Application"
+msgstr ""
+
+msgid "Achievement"
+msgstr ""
+
+msgid "Achievement|Description"
+msgstr ""
+
+msgid "Achievement|Title"
+msgstr ""
 
 msgid "Active storage/record"
 msgstr ""
@@ -54,7 +66,49 @@ msgstr ""
 msgid "Admin Panel"
 msgstr ""
 
+msgid "Admin|%{model_name}|Cannot be deleted"
+msgstr ""
+
+msgid "Admin|%{model_name}|Create failed"
+msgstr ""
+
+msgid "Admin|%{model_name}|New"
+msgstr ""
+
+msgid "Admin|%{model_name}|Successfully created"
+msgstr ""
+
+msgid "Admin|%{model_name}|Successfully deleted"
+msgstr ""
+
+msgid "Admin|%{model_name}|Successfully updated"
+msgstr ""
+
+msgid "Admin|%{model_name}|Update failed"
+msgstr ""
+
+msgid "Admin|API Applications"
+msgstr ""
+
+msgid "Admin|API Application|Key will be generated when saved"
+msgstr ""
+
+msgid "Admin|API applications"
+msgstr ""
+
+msgid "Admin|Achievements"
+msgstr ""
+
+msgid "Admin|Cache|Cleanup cache now"
+msgstr ""
+
+msgid "Admin|ContentPages"
+msgstr ""
+
 msgid "Admin|Dashboard"
+msgstr ""
+
+msgid "Admin|Design"
 msgstr ""
 
 msgid "Admin|Events"
@@ -66,31 +120,631 @@ msgstr ""
 msgid "Admin|Events|Events"
 msgstr ""
 
-msgid "Admin|Event|New"
-msgstr ""
-
 msgid "Admin|Feature Flags"
 msgstr ""
 
 msgid "Admin|FeatureFlags"
 msgstr ""
 
+msgid "Admin|FeatureFlag|Could not reinitialize the feature flags"
+msgstr ""
+
+msgid "Admin|FeatureFlag|Could not toggle the flag"
+msgstr ""
+
+msgid "Admin|FeatureFlag|Successfully reinitialized feature flags"
+msgstr ""
+
+msgid "Admin|FeatureFlag|Successfully toggled flag"
+msgstr ""
+
+msgid "Admin|FooterLogos"
+msgstr ""
+
+msgid "Admin|FooterLogo|Edit"
+msgstr ""
+
+msgid "Admin|FooterLogo|Link is optional"
+msgstr ""
+
+msgid "Admin|LanParties"
+msgstr ""
+
+msgid "Admin|LanParty"
+msgstr ""
+
+msgid "Admin|LanParty|SeatCategories"
+msgstr ""
+
+msgid "Admin|LanParty|SeatMap"
+msgstr ""
+
+msgid "Admin|LanParty|Ticket scanner"
+msgstr ""
+
+msgid "Admin|LanParty|TicketUpgrades"
+msgstr ""
+
+msgid "Admin|LanParty|Tickets"
+msgstr ""
+
+msgid "Admin|LanParty|Timetable"
+msgstr ""
+
+msgid "Admin|LanParty|Tournaments"
+msgstr ""
+
+msgid "Admin|Match|Not updateable hint"
+msgstr ""
+
+msgid "Admin|Match|Submit result"
+msgstr ""
+
+msgid "Admin|MenuItems"
+msgstr ""
+
+msgid "Admin|MenuItem|New Dropdown"
+msgstr ""
+
+msgid "Admin|MenuItem|New Link"
+msgstr ""
+
+msgid "Admin|MenuLinkItem|Either select a page or enter a link hint"
+msgstr ""
+
 msgid "Admin|NewsPosts"
 msgstr ""
 
-msgid "Admin|NewsPosts|New"
+msgid "Admin|Orders"
+msgstr ""
+
+msgid "Admin|Orders|Are you sure you want to clean the orders up?"
+msgstr ""
+
+msgid "Admin|Orders|Cleanup expired"
+msgstr ""
+
+msgid "Admin|Order|Canceled successfully"
+msgstr ""
+
+msgid "Admin|Order|Cannot be canceled"
+msgstr ""
+
+msgid "Admin|Order|Cannot delete active order"
+msgstr ""
+
+msgid "Admin|Order|Cannot delete paid order"
+msgstr ""
+
+msgid "Admin|Order|Destroyed successfully"
+msgstr ""
+
+msgid "Admin|Order|Expired cleaned up successfully"
+msgstr ""
+
+msgid "Admin|Order|Expired could not be cleaned up"
+msgstr ""
+
+msgid "Admin|Order|Not expired yet"
+msgstr ""
+
+msgid "Admin|Order|Wrong status to delete"
+msgstr ""
+
+msgid "Admin|Pages"
+msgstr ""
+
+msgid "Admin|Page|Successfully created content page"
+msgstr ""
+
+msgid "Admin|Page|Successfully created redirect page"
+msgstr ""
+
+msgid "Admin|Payment Assist"
+msgstr ""
+
+msgid "Admin|PaymentAssist"
+msgstr ""
+
+msgid "Admin|PaymentAssist|Order could not be marked as paid"
+msgstr ""
+
+msgid "Admin|PaymentAssist|Order is marked as paid successfully"
+msgstr ""
+
+msgid "Admin|ProductCategories"
+msgstr ""
+
+msgid "Admin|Products"
+msgstr ""
+
+msgid "Admin|Product|Basics"
+msgstr ""
+
+msgid "Admin|Product|Images"
+msgstr ""
+
+msgid "Admin|Product|Product behaviours"
+msgstr ""
+
+msgid "Admin|Product|Product variants"
+msgstr ""
+
+msgid "Admin|Promotions"
+msgstr ""
+
+msgid "Admin|Promotion|Add codes"
+msgstr ""
+
+msgid "Admin|Promotion|Codes added"
+msgstr ""
+
+msgid "Admin|Promotion|Codes could not be added"
+msgstr ""
+
+msgid "Admin|RedirectPages"
+msgstr ""
+
+msgid "Admin|ScannerUsers"
+msgstr ""
+
+msgid "Admin|SeatCategories"
+msgstr ""
+
+msgid "Admin|SeatMap"
+msgstr ""
+
+msgid "Admin|SeatMap|Cannot delete some of the seats you wanted to delete"
+msgstr ""
+
+msgid "Admin|SeatMap|Something went wrong, please try again"
+msgstr ""
+
+msgid "Admin|SeatMap|Updated successfully"
+msgstr ""
+
+msgid "Admin|Seatmap|Please select a seat"
+msgstr ""
+
+msgid "Admin|Seat|Already taken"
+msgstr ""
+
+msgid "Admin|Seat|Mismatched categories"
+msgstr ""
+
+msgid "Admin|Seat|Not found"
+msgstr ""
+
+msgid "Admin|Settings"
+msgstr ""
+
+msgid "Admin|Settings|Application name"
+msgstr ""
+
+msgid "Admin|Settings|Edit"
+msgstr ""
+
+msgid "Admin|Settings|Edit settings"
+msgstr ""
+
+msgid "Admin|Settings|Enable events block"
+msgstr ""
+
+msgid "Admin|Settings|Enable lan party block"
+msgstr ""
+
+msgid "Admin|Settings|Enable news block"
+msgstr ""
+
+msgid "Admin|Settings|Save"
+msgstr ""
+
+msgid "Admin|Shop"
+msgstr ""
+
+msgid "Admin|Shop|Dashboard"
+msgstr ""
+
+msgid "Admin|Shop|Dashboard|Active promotions"
+msgstr ""
+
+msgid "Admin|Shop|Dashboard|Orders"
+msgstr ""
+
+msgid "Admin|Shop|Dashboard|Orders payment pending"
+msgstr ""
+
+msgid "Admin|Shop|Dashboard|Products"
+msgstr ""
+
+msgid "Admin|SidebarBlocks"
+msgstr ""
+
+msgid "Admin|SidebarBlock|Edit"
+msgstr ""
+
+msgid "Admin|StartpageBanners"
+msgstr ""
+
+msgid "Admin|StartpageBanner|Edit"
+msgstr ""
+
+msgid "Admin|StartpageBlocks"
+msgstr ""
+
+msgid "Admin|StartpageBlock|Edit"
+msgstr ""
+
+msgid "Admin|StylingVariables"
+msgstr ""
+
+msgid "Admin|StylingVariables|Generated CSS"
+msgstr ""
+
+msgid "Admin|StylingVariable|Edit"
+msgstr ""
+
+msgid "Admin|System"
+msgstr ""
+
+msgid "Admin|System Dashboard"
+msgstr ""
+
+msgid "Admin|System|Cache"
+msgstr ""
+
+msgid "Admin|System|Cache size cannot be fetched"
+msgstr ""
+
+msgid "Admin|System|Cache size reported: %{size}"
+msgstr ""
+
+msgid "Admin|System|Cache was cleaned"
+msgstr ""
+
+msgid "Admin|TeamMember|Destroying failed"
+msgstr ""
+
+msgid "Admin|TeamMember|Promoting failed"
+msgstr ""
+
+msgid "Admin|TeamMember|Successfully promoted"
+msgstr ""
+
+msgid "Admin|TeamMember|Team has state other than created and as such team cannot be deleted"
+msgstr ""
+
+msgid "Admin|Teams|Register for tournament"
+msgstr ""
+
+msgid "Admin|Teams|Unregister from tournament"
+msgstr ""
+
+msgid "Admin|Team|Captain missing"
+msgstr ""
+
+msgid "Admin|Team|Team is full"
+msgstr ""
+
+msgid "Admin|Team|Teamcaptain missing"
+msgstr ""
+
+msgid "Admin|Team|User is in another team already"
+msgstr ""
+
+msgid "Admin|Team|User is in this team already"
+msgstr ""
+
+msgid "Admin|Team|User needs to be checked in to do this"
+msgstr ""
+
+msgid "Admin|Team|User not confirmed"
+msgstr ""
+
+msgid "Admin|Team|User not found"
+msgstr ""
+
+msgid "Admin|Team|Username of user to add to team"
+msgstr ""
+
+msgid "Admin|TicketUpgrades"
+msgstr ""
+
+msgid "Admin|Tickets"
+msgstr ""
+
+msgid "Admin|Tickets|From product cannot be found"
+msgstr ""
+
+msgid "Admin|Tickets|No more to products available"
+msgstr ""
+
+msgid "Admin|Tickets|Please remove the seat first"
+msgstr ""
+
+msgid "Admin|Tickets|To product cannot be found"
+msgstr ""
+
+msgid "Admin|Ticket|Already checked in"
+msgstr ""
+
+msgid "Admin|Ticket|Already used"
+msgstr ""
+
+msgid "Admin|Ticket|Assign seat"
+msgstr ""
+
+msgid "Admin|Ticket|Assign to user"
+msgstr ""
+
+msgid "Admin|Ticket|Assignee could not be removed"
+msgstr ""
+
+msgid "Admin|Ticket|Assignee not set"
+msgstr ""
+
+msgid "Admin|Ticket|Category could not be changed"
+msgstr ""
+
+msgid "Admin|Ticket|Change category"
+msgstr ""
+
+msgid "Admin|Ticket|Could not check-in"
+msgstr ""
+
+msgid "Admin|Ticket|Creating a ticket manually should only be used to give out tickets of seat categories which are not sold in the shop. Use the free_item promotion to give such a tickets for free to an user."
+msgstr ""
+
+msgid "Admin|Ticket|Generated in admin panel"
+msgstr ""
+
+msgid "Admin|Ticket|Hint"
+msgstr ""
+
+msgid "Admin|Ticket|Not assigned to a seat"
+msgstr ""
+
+msgid "Admin|Ticket|Not checked in"
+msgstr ""
+
+msgid "Admin|Ticket|Not found"
+msgstr ""
+
+msgid "Admin|Ticket|Remove seat"
+msgstr ""
+
+msgid "Admin|Ticket|Remove user"
+msgstr ""
+
+msgid "Admin|Ticket|Seat could not be assigned"
+msgstr ""
+
+msgid "Admin|Ticket|Seat could not be removed"
+msgstr ""
+
+msgid "Admin|Ticket|Seat id to assign to"
+msgstr ""
+
+msgid "Admin|Ticket|Seat not set"
+msgstr ""
+
+msgid "Admin|Ticket|Successfully assigned seat"
+msgstr ""
+
+msgid "Admin|Ticket|Successfully assigned user"
+msgstr ""
+
+msgid "Admin|Ticket|Successfully changed the category"
+msgstr ""
+
+msgid "Admin|Ticket|Successfully checked in"
+msgstr ""
+
+msgid "Admin|Ticket|Successfully removed assignee"
+msgstr ""
+
+msgid "Admin|Ticket|Successfully removed seat"
+msgstr ""
+
+msgid "Admin|Ticket|Successfully reverted the check in"
+msgstr ""
+
+msgid "Admin|Ticket|Ticket has no assignee"
+msgstr ""
+
+msgid "Admin|Ticket|Ticket is already checked in"
+msgstr ""
+
+msgid "Admin|Ticket|User could not be assigned"
+msgstr ""
+
+msgid "Admin|Ticket|Username of user to assign to"
+msgstr ""
+
+msgid "Admin|Timetable"
+msgstr ""
+
+msgid "Admin|TimetableEntry|Timetable end: %{start}"
+msgstr ""
+
+msgid "Admin|TimetableEntry|Timetable start: %{start}"
+msgstr ""
+
+msgid "Admin|Timetable|Category could not be created"
+msgstr ""
+
+msgid "Admin|Timetable|Category could not be deleted"
+msgstr ""
+
+msgid "Admin|Timetable|Category could not be updated"
+msgstr ""
+
+msgid "Admin|Timetable|Category successfully created"
+msgstr ""
+
+msgid "Admin|Timetable|Category successfully deleted"
+msgstr ""
+
+msgid "Admin|Timetable|Category successfully updated"
+msgstr ""
+
+msgid "Admin|Timetable|Could not be updated"
+msgstr ""
+
+msgid "Admin|Timetable|Entry could not be created"
+msgstr ""
+
+msgid "Admin|Timetable|Entry could not be deleted"
+msgstr ""
+
+msgid "Admin|Timetable|Entry could not be updated"
+msgstr ""
+
+msgid "Admin|Timetable|Entry successfully created"
+msgstr ""
+
+msgid "Admin|Timetable|Entry successfully deleted"
+msgstr ""
+
+msgid "Admin|Timetable|Entry successfully updated"
+msgstr ""
+
+msgid "Admin|Timetable|Times are not set"
+msgstr ""
+
+msgid "Admin|Tournaments"
+msgstr ""
+
+msgid "Admin|Tournaments|Phase|Cannot generate rounds without any seedable teams"
+msgstr ""
+
+msgid "Admin|Tournaments|Phase|No next round to generate the matches for"
+msgstr ""
+
+msgid "Admin|Tournaments|Phase|Not all matches are completed"
+msgstr ""
+
+msgid "Admin|Tournaments|Phase|Phase has wrong status"
+msgstr ""
+
+msgid "Admin|Tournaments|Phase|Please close the registration before generating rounds"
+msgstr ""
+
+msgid "Admin|Tournaments|Phase|Please first finish all the matches of the current round"
+msgstr ""
+
+msgid "Admin|Tournaments|Phase|Rounds have already been generated"
+msgstr ""
+
+msgid "Admin|Tournaments|Phase|The previous round is still ongoing!"
+msgstr ""
+
+msgid "Admin|Tournaments|Phase|Wrong status to complete the phase"
+msgstr ""
+
+msgid "Admin|Tournaments|Team|No new teams can be created"
+msgstr ""
+
+msgid "Admin|Tournament|Basics"
+msgstr ""
+
+msgid "Admin|Tournament|Could not toggle registration"
+msgstr ""
+
+msgid "Admin|Tournament|Description"
+msgstr ""
+
+msgid "Admin|Tournament|Files"
+msgstr ""
+
+msgid "Admin|Tournament|Match"
+msgstr ""
+
+msgid "Admin|Tournament|Match|Not in current round"
+msgstr ""
+
+msgid "Admin|Tournament|Match|Not in running phase"
+msgstr ""
+
+msgid "Admin|Tournament|Phase|Could not be destroyed"
+msgstr ""
+
+msgid "Admin|Tournament|Phase|Failed to complete the phase"
+msgstr ""
+
+msgid "Admin|Tournament|Phase|Failed to confirm seeding"
+msgstr ""
+
+msgid "Admin|Tournament|Phase|Failed to generate next round matches"
+msgstr ""
+
+msgid "Admin|Tournament|Phase|Failed to update seeding"
+msgstr ""
+
+msgid "Admin|Tournament|Phase|Generating rounds failed"
+msgstr ""
+
+msgid "Admin|Tournament|Phase|Successfully completed the phase"
+msgstr ""
+
+msgid "Admin|Tournament|Phase|Successfully confirmed seeding"
+msgstr ""
+
+msgid "Admin|Tournament|Phase|Successfully generated next round matches"
+msgstr ""
+
+msgid "Admin|Tournament|Phase|Successfully generated rounds"
+msgstr ""
+
+msgid "Admin|Tournament|Phase|Successfully updated seeding"
+msgstr ""
+
+msgid "Admin|Tournament|Ranks"
+msgstr ""
+
+msgid "Admin|Tournament|Successfully toggled registration"
+msgstr ""
+
+msgid "Admin|Tournament|Team|Destroying failed"
+msgstr ""
+
+msgid "Admin|Tournament|Team|Registering for the tournament failed"
+msgstr ""
+
+msgid "Admin|Tournament|Team|Successfully registered for the tournament"
+msgstr ""
+
+msgid "Admin|Tournament|Team|Successfully unregistered from the tournament"
+msgstr ""
+
+msgid "Admin|Tournament|Team|Team cannot be registered as it has the wrong status"
+msgstr ""
+
+msgid "Admin|Tournament|Team|Team is already seeded"
+msgstr ""
+
+msgid "Admin|Tournament|Team|Team is not registered for the tournament"
+msgstr ""
+
+msgid "Admin|Tournament|Team|Unregistering from the tournament failed"
+msgstr ""
+
+msgid "Admin|Tournament|Team|User added to team"
+msgstr ""
+
+msgid "Admin|Tournament|The team does not have enough players"
+msgstr ""
+
+msgid "Admin|Tournament|The tournament has ongoing phases"
+msgstr ""
+
+msgid "Admin|Tournament|The tournament is full"
 msgstr ""
 
 msgid "Admin|Users"
 msgstr ""
 
 msgid "Admin|Users|Avatar"
-msgstr ""
-
-msgid "Admin|Users|Avatar|Avatar removed successfully"
-msgstr ""
-
-msgid "Admin|Users|Avatar|Avatar updated successfully"
 msgstr ""
 
 msgid "Admin|Users|Avatar|Crop your avatar"
@@ -105,22 +759,10 @@ msgstr ""
 msgid "Admin|Users|Avatar|Upload avatar"
 msgstr ""
 
-msgid "Admin|Users|Create user"
-msgstr ""
-
-msgid "Admin|Users|New"
-msgstr ""
-
 msgid "Admin|Users|Permissions"
 msgstr ""
 
-msgid "Admin|Users|Permissions|Successfully updated"
-msgstr ""
-
 msgid "Admin|Users|Permissions|Update"
-msgstr ""
-
-msgid "Admin|Users|Permissions|Update failed"
 msgstr ""
 
 msgid "Admin|Users|Profile"
@@ -129,16 +771,40 @@ msgstr ""
 msgid "Admin|Users|Profile|Password|Leave blank to keep current password"
 msgstr ""
 
-msgid "Admin|Users|Profile|Successfully updated"
-msgstr ""
-
-msgid "Admin|Users|Profile|Update failed"
-msgstr ""
-
 msgid "Admin|Users|Profile|Update profile"
 msgstr ""
 
-msgid "ApplicationName"
+msgid "Admin|Users|Registration is currently disabled"
+msgstr ""
+
+msgid "Admin|User|Avatar"
+msgstr ""
+
+msgid "Admin|User|Avatar|Avatar removed successfully"
+msgstr ""
+
+msgid "Admin|User|Avatar|Avatar updated successfully"
+msgstr ""
+
+msgid "Admin|User|List permissions"
+msgstr ""
+
+msgid "Admin|User|Permissions"
+msgstr ""
+
+msgid "Admin|User|Profile"
+msgstr ""
+
+msgid "Admin|Welcome to the L4N Admin panel, version %{version}"
+msgstr ""
+
+msgid "Api application"
+msgstr ""
+
+msgid "ApiApplication|Api key"
+msgstr ""
+
+msgid "ApiApplication|Name"
 msgstr ""
 
 msgid "Application|Dark mode successfully disabled"
@@ -147,7 +813,139 @@ msgstr ""
 msgid "Application|Dark mode successfully enabled"
 msgstr ""
 
-msgid "Application|Language successfully changed"
+msgid "Buttons|Confirm message"
+msgstr ""
+
+msgid "CSV"
+msgstr ""
+
+msgid "Cart"
+msgstr ""
+
+msgid "Cart item"
+msgstr ""
+
+msgid "CartItem|Cannot be deleted"
+msgstr ""
+
+msgid "CartItem|Max quantity reached"
+msgstr ""
+
+msgid "CartItem|Quantity"
+msgstr ""
+
+msgid "CartItem|Quantity cannod be increased"
+msgstr ""
+
+msgid "CartItem|Quantity cannot be decreased"
+msgstr ""
+
+msgid "CartItem|Successfully decreased quantity"
+msgstr ""
+
+msgid "CartItem|Successfully deleted"
+msgstr ""
+
+msgid "CartItem|Successfully increased quantity"
+msgstr ""
+
+msgid "Cart|Actions"
+msgstr ""
+
+msgid "Cart|Back to shop"
+msgstr ""
+
+msgid "Cart|Checkout disabled"
+msgstr ""
+
+msgid "Cart|Not yet done?"
+msgstr ""
+
+msgid "Cart|Price"
+msgstr ""
+
+msgid "Cart|Product"
+msgstr ""
+
+msgid "Cart|Quantity"
+msgstr ""
+
+msgid "Cart|Some items are not available in the requested quantity, please check below"
+msgstr ""
+
+msgid "Cart|Total:"
+msgstr ""
+
+msgid "Cart|Your cart is empty"
+msgstr ""
+
+msgid "Cart|Your items"
+msgstr ""
+
+msgid "Checkout"
+msgstr ""
+
+msgid "Checkout|Click here to add an address"
+msgstr ""
+
+msgid "Checkout|Payment options"
+msgstr ""
+
+msgid "Checkout|Please add an address to your user profile"
+msgstr ""
+
+msgid "Checkout|Please set an address from the list below"
+msgstr ""
+
+msgid "Checkout|Promotion codes"
+msgstr ""
+
+msgid "Checkout|Select your billing address"
+msgstr ""
+
+msgid "Checkout|The promotion code cannot be applied!"
+msgstr ""
+
+msgid "Checkout|The promotion code is already applied to this order!"
+msgstr ""
+
+msgid "Checkout|Use this address"
+msgstr ""
+
+msgid "Checkout|You have reached the max number of codes for this order!"
+msgstr ""
+
+msgid "Checkout|Your cart is empty, cannot checkout"
+msgstr ""
+
+msgid "Checkout|Your items"
+msgstr ""
+
+msgid "Checkout|Your promotion code is invalid or already used!"
+msgstr ""
+
+msgid "Colors|Blue"
+msgstr ""
+
+msgid "Colors|Green"
+msgstr ""
+
+msgid "Colors|Light blue"
+msgstr ""
+
+msgid "Colors|Light green"
+msgstr ""
+
+msgid "Colors|Olive"
+msgstr ""
+
+msgid "Colors|Orange"
+msgstr ""
+
+msgid "Colors|Pink"
+msgstr ""
+
+msgid "Colors|Yellow"
 msgstr ""
 
 msgid "ConfirmDialog|Cancel"
@@ -168,10 +966,10 @@ msgstr ""
 msgid "Event date"
 msgstr ""
 
-msgid "EventDate|End date"
+msgid "EventDate|End"
 msgstr ""
 
-msgid "EventDate|End time"
+msgid "EventDate|End date"
 msgstr ""
 
 msgid "EventDate|Needs to be at larger or equal to the start date"
@@ -180,10 +978,10 @@ msgstr ""
 msgid "EventDate|Overlaps with another date"
 msgstr ""
 
-msgid "EventDate|Start date"
+msgid "EventDate|Start"
 msgstr ""
 
-msgid "EventDate|Start time"
+msgid "EventDate|Start date"
 msgstr ""
 
 msgid "Events"
@@ -192,52 +990,34 @@ msgstr ""
 msgid "Event|Add event date"
 msgstr ""
 
-msgid "Event|Cannot be deleted"
-msgstr ""
-
-msgid "Event|Create failed"
-msgstr ""
-
 msgid "Event|Description"
 msgstr ""
 
-msgid "Event|Edit"
+msgid "Event|From %{start_date} to %{end_date}"
 msgstr ""
 
-msgid "Event|Edit failed"
+msgid "Event|Last end"
 msgstr ""
 
-msgid "Event|End date"
-msgstr ""
-
-msgid "Event|End time"
-msgstr ""
-
-msgid "Event|Info"
+msgid "Event|Last start"
 msgstr ""
 
 msgid "Event|Location"
 msgstr ""
 
-msgid "Event|New"
+msgid "Event|Next end"
+msgstr ""
+
+msgid "Event|Next start"
 msgstr ""
 
 msgid "Event|Published"
 msgstr ""
 
-msgid "Event|Start date"
+msgid "Event|Read more"
 msgstr ""
 
-msgid "Event|Start time"
-msgstr ""
-
-msgid "Event|Successfully created"
-msgstr ""
-
-msgid "Event|Successfully deleted"
-msgstr ""
-
-msgid "Event|Successfully updated"
+msgid "Event|This event will take place at the following dates"
 msgstr ""
 
 msgid "Event|Title"
@@ -249,28 +1029,94 @@ msgstr ""
 msgid "Feature flag"
 msgstr ""
 
-msgid "FeatureFlag|Could not reinitialize the feature flags"
-msgstr ""
-
-msgid "FeatureFlag|Could not toggle the flag"
-msgstr ""
-
 msgid "FeatureFlag|Enabled"
 msgstr ""
 
 msgid "FeatureFlag|Key"
 msgstr ""
 
+msgid "FeatureFlag|Please re-initialize the flags, as not all are present and/or unneeded flags are present"
+msgstr ""
+
 msgid "FeatureFlag|Reinitialize"
 msgstr ""
 
-msgid "FeatureFlag|Successfully reinitialized feature flags"
-msgstr ""
-
-msgid "FeatureFlag|Successfully toggled flag"
-msgstr ""
-
 msgid "FeatureFlag|Toggle"
+msgstr ""
+
+msgid "File is too large, max. allowed %{size}"
+msgstr ""
+
+msgid "Footer logo"
+msgstr ""
+
+msgid "FooterLogo"
+msgstr ""
+
+msgid "FooterLogo|Link"
+msgstr ""
+
+msgid "FooterLogo|Sort"
+msgstr ""
+
+msgid "FooterLogo|Visible"
+msgstr ""
+
+msgid "Form|Select|Blank"
+msgstr ""
+
+msgid "Form|Select|Show all"
+msgstr ""
+
+msgid "GameAccounts|Discord api error"
+msgstr ""
+
+msgid "GameAccounts|Join steam server"
+msgstr ""
+
+msgid "GameAccounts|Steam api error"
+msgstr ""
+
+msgid "GameAccounts|Steam currently playing %{game}"
+msgstr ""
+
+msgid "Gameaccounts|Add discord"
+msgstr ""
+
+msgid "Gameaccounts|Add steam"
+msgstr ""
+
+msgid "Gameaccounts|Discord"
+msgstr ""
+
+msgid "Gameaccounts|Discord could not be removed"
+msgstr ""
+
+msgid "Gameaccounts|Discord was removed successfully"
+msgstr ""
+
+msgid "Gameaccounts|No achievements yet"
+msgstr ""
+
+msgid "Gameaccounts|No gameaccounts added yet"
+msgstr ""
+
+msgid "Gameaccounts|Remove discord"
+msgstr ""
+
+msgid "Gameaccounts|Remove steam"
+msgstr ""
+
+msgid "Gameaccounts|Steam"
+msgstr ""
+
+msgid "Gameaccounts|Steam could not be removed"
+msgstr ""
+
+msgid "Gameaccounts|Steam was removed successfully"
+msgstr ""
+
+msgid "Home"
 msgstr ""
 
 msgid "Homepage"
@@ -279,13 +1125,88 @@ msgstr ""
 msgid "ImageUploader|Select file"
 msgstr ""
 
+msgid "JSON"
+msgstr ""
+
+msgid "Kaminari|Entries"
+msgstr ""
+
+msgid "Kaminari|Entry"
+msgstr ""
+
+msgid "L4N Admin"
+msgstr ""
+
+msgid "L4N Ticket Scanner"
+msgstr ""
+
 msgid "L4N Version % {version}"
 msgstr ""
 
-msgid "Language|English"
+msgid "Lan"
 msgstr ""
 
-msgid "Language|German"
+msgid "Lan party"
+msgstr ""
+
+msgid "LanParty"
+msgstr ""
+
+msgid "LanParty|Actions & Links"
+msgstr ""
+
+msgid "LanParty|Active"
+msgstr ""
+
+msgid "LanParty|Checked in users"
+msgstr ""
+
+msgid "LanParty|Counter"
+msgstr ""
+
+msgid "LanParty|Details"
+msgstr ""
+
+msgid "LanParty|Event end"
+msgstr ""
+
+msgid "LanParty|Event start"
+msgstr ""
+
+msgid "LanParty|Export seats with usernames"
+msgstr ""
+
+msgid "LanParty|Exports"
+msgstr ""
+
+msgid "LanParty|Frontend"
+msgstr ""
+
+msgid "LanParty|Location"
+msgstr ""
+
+msgid "LanParty|Name"
+msgstr ""
+
+msgid "LanParty|Relevant seat categories for counter"
+msgstr ""
+
+msgid "LanParty|SeatMap"
+msgstr ""
+
+msgid "LanParty|Sold tickets"
+msgstr ""
+
+msgid "LanParty|Stats"
+msgstr ""
+
+msgid "LanParty|Timetable"
+msgstr ""
+
+msgid "LanParty|Total seats"
+msgstr ""
+
+msgid "LanParty|Tournaments"
 msgstr ""
 
 msgid "Login / Sign up"
@@ -321,7 +1242,106 @@ msgstr ""
 msgid "MarkdownEditor|Popup|Please paste the URL of the youtube video here. The URL needs to be of format 'https://www.youtube.com/watch?v='"
 msgstr ""
 
+msgid "Match|Bye"
+msgstr ""
+
+msgid "Match|Draw"
+msgstr ""
+
+msgid "Match|Draw short"
+msgstr ""
+
+msgid "Match|Loser"
+msgstr ""
+
+msgid "Match|Loss short"
+msgstr ""
+
+msgid "Match|Match not in current round"
+msgstr ""
+
+msgid "Match|Not updateable hint"
+msgstr ""
+
+msgid "Match|Phase not updateable"
+msgstr ""
+
+msgid "Match|Please contact an admin to resolve the dispute"
+msgstr ""
+
+msgid "Match|Please select a confirmation status"
+msgstr ""
+
+msgid "Match|Please set the winner"
+msgstr ""
+
+msgid "Match|Please wait for the other team to confirm the result"
+msgstr ""
+
+msgid "Match|Result is the result correct?"
+msgstr ""
+
+msgid "Match|Submit confirmation status"
+msgstr ""
+
+msgid "Match|Submit result"
+msgstr ""
+
+msgid "Match|Tbd"
+msgstr ""
+
+msgid "Match|Win short"
+msgstr ""
+
+msgid "Match|Winner"
+msgstr ""
+
+msgid "Menu item"
+msgstr ""
+
+msgid "MenuItem"
+msgstr ""
+
+msgid "MenuItem|External link"
+msgstr ""
+
+msgid "MenuItem|Page_name"
+msgstr ""
+
+msgid "MenuItem|Sort"
+msgstr ""
+
+msgid "MenuItem|Static page name"
+msgstr ""
+
+msgid "MenuItem|Title"
+msgstr ""
+
+msgid "MenuItem|Use namespace for active detection"
+msgstr ""
+
+msgid "MenuItem|Visible"
+msgstr ""
+
+msgid "MenuLinkItem|Can only select a page or enter an external link but not both"
+msgstr ""
+
+msgid "MenuLinkItem|Can only set static page name or page id"
+msgstr ""
+
+msgid "MenuLinkItem|Please either select a page or set an external link"
+msgstr ""
+
+msgid "My Ticket"
+msgstr ""
+
+msgid "News"
+msgstr ""
+
 msgid "News post"
+msgstr ""
+
+msgid "NewsPost"
 msgstr ""
 
 msgid "NewsPosts"
@@ -330,31 +1350,7 @@ msgstr ""
 msgid "NewsPosts|Author"
 msgstr ""
 
-msgid "NewsPosts|Edit"
-msgstr ""
-
-msgid "NewsPosts|New"
-msgstr ""
-
-msgid "NewsPosts|Published"
-msgstr ""
-
-msgid "NewsPosts|Published at"
-msgstr ""
-
-msgid "NewsPosts|Title"
-msgstr ""
-
-msgid "NewsPost|Cannot be deleted"
-msgstr ""
-
 msgid "NewsPost|Content"
-msgstr ""
-
-msgid "NewsPost|Create failed"
-msgstr ""
-
-msgid "NewsPost|Edit failed"
 msgstr ""
 
 msgid "NewsPost|Published"
@@ -363,25 +1359,181 @@ msgstr ""
 msgid "NewsPost|Published at"
 msgstr ""
 
-msgid "NewsPost|Successfully created"
-msgstr ""
-
-msgid "NewsPost|Successfully deleted"
-msgstr ""
-
-msgid "NewsPost|Successfully updated"
+msgid "NewsPost|Read more"
 msgstr ""
 
 msgid "NewsPost|Title"
 msgstr ""
 
-msgid "PasswordResetRequest|Failed to change password"
+msgid "No"
 msgstr ""
 
-msgid "PasswordResetRequest|If account exists, password reset mail was sent"
+msgid "Order"
 msgstr ""
 
-msgid "PasswordResetRequest|Password changed successfully"
+msgid "Order item"
+msgstr ""
+
+msgid "OrderItem|Item"
+msgstr ""
+
+msgid "OrderItem|Price"
+msgstr ""
+
+msgid "OrderItem|Price cents"
+msgstr ""
+
+msgid "OrderItem|Product name"
+msgstr ""
+
+msgid "OrderItem|Quantity"
+msgstr ""
+
+msgid "OrderItem|Total"
+msgstr ""
+
+msgid "Orders|Completed orders"
+msgstr ""
+
+msgid "Orders|My Orders"
+msgstr ""
+
+msgid "Orders|No orders yet"
+msgstr ""
+
+msgid "Orders|No payment pending orders"
+msgstr ""
+
+msgid "Orders|Payment pending"
+msgstr ""
+
+msgid "Order|Billing address"
+msgstr ""
+
+msgid "Order|Billing address city"
+msgstr ""
+
+msgid "Order|Billing address first name"
+msgstr ""
+
+msgid "Order|Billing address last name"
+msgstr ""
+
+msgid "Order|Billing address street"
+msgstr ""
+
+msgid "Order|Billing address zip code"
+msgstr ""
+
+msgid "Order|Canceled successfully"
+msgstr ""
+
+msgid "Order|Cannot be canceled"
+msgstr ""
+
+msgid "Order|Cannot delete order with that status"
+msgstr ""
+
+msgid "Order|Cannot process this order"
+msgstr ""
+
+msgid "Order|Cleanup timestamp"
+msgstr ""
+
+msgid "Order|Complete without payment"
+msgstr ""
+
+msgid "Order|Completed at"
+msgstr ""
+
+msgid "Order|Created at"
+msgstr ""
+
+msgid "Order|Delayed payment required hint"
+msgstr ""
+
+msgid "Order|Number of items"
+msgstr ""
+
+msgid "Order|Order details"
+msgstr ""
+
+msgid "Order|Order id"
+msgstr ""
+
+msgid "Order|Order items"
+msgstr ""
+
+msgid "Order|Order items count"
+msgstr ""
+
+msgid "Order|Payment gateway name"
+msgstr ""
+
+msgid "Order|Payment gateway payment id"
+msgstr ""
+
+msgid "Order|Product"
+msgstr ""
+
+msgid "Order|PromotionCode"
+msgstr ""
+
+msgid "Order|Quantity"
+msgstr ""
+
+msgid "Order|Set address"
+msgstr ""
+
+msgid "Order|Shipping address"
+msgstr ""
+
+msgid "Order|Status"
+msgstr ""
+
+msgid "Order|Successfully completed the order"
+msgstr ""
+
+msgid "Order|Total"
+msgstr ""
+
+msgid "Order|Total to pay"
+msgstr ""
+
+msgid "Order|Use promotion code"
+msgstr ""
+
+msgid "Order|User"
+msgstr ""
+
+msgid "Order|Uuid"
+msgstr ""
+
+msgid "Order|Your total is more than zero"
+msgstr ""
+
+msgid "Page"
+msgstr ""
+
+msgid "Page|Content"
+msgstr ""
+
+msgid "Page|Published"
+msgstr ""
+
+msgid "Page|Redirects to"
+msgstr ""
+
+msgid "Page|Title"
+msgstr ""
+
+msgid "Page|Url"
+msgstr ""
+
+msgid "Page|Url may only contain: [a-z 0-9 - _] and needs to start with a letter"
+msgstr ""
+
+msgid "Page|Use sidebar"
 msgstr ""
 
 msgid "PasswordResetRequest|Request password reset"
@@ -393,16 +1545,421 @@ msgstr ""
 msgid "PasswordResetRequest|Reset your password"
 msgstr ""
 
-msgid "PasswordResetRequest|Token invalid or expired"
+msgid "PasswordReset|%{min_chars} characters minimum"
 msgstr ""
 
-msgid "Session|2FA authentication"
+msgid "PasswordReset|Request reset"
+msgstr ""
+
+msgid "PasswordReset|Update password"
+msgstr ""
+
+msgid "PaymentAssist|Optional payment id"
+msgstr ""
+
+msgid "PaymentAssist|Optional payment id placeholder"
+msgstr ""
+
+msgid "PaymentAssist|Order paid button"
+msgstr ""
+
+msgid "Phase|Cannot change mode when phase is in another state than created"
+msgstr ""
+
+msgid "Phase|Cannot change size when phase is in another state than created"
+msgstr ""
+
+msgid "Phase|Complete phase"
+msgstr ""
+
+msgid "Phase|Confirm seeding"
+msgstr ""
+
+msgid "Phase|Confirm seeding?"
+msgstr ""
+
+msgid "Phase|Create rounds for seeding"
+msgstr ""
+
+msgid "Phase|Current round"
+msgstr ""
+
+msgid "Phase|Double elimination lower bracket"
+msgstr ""
+
+msgid "Phase|Double elimination upper bracket"
+msgstr ""
+
+msgid "Phase|Generate first round matches"
+msgstr ""
+
+msgid "Phase|Generate next round matches"
+msgstr ""
+
+msgid "Phase|Generate phases"
+msgstr ""
+
+msgid "Phase|Generate rounds"
+msgstr ""
+
+msgid "Phase|Matches being played, please wait"
+msgstr ""
+
+msgid "Phase|Number of participating teams"
+msgstr ""
+
+msgid "Phase|Number of rounds"
+msgstr ""
+
+msgid "Phase|Phase completed"
+msgstr ""
+
+msgid "Phase|Rounds"
+msgstr ""
+
+msgid "Phase|Seeding"
+msgstr ""
+
+msgid "Phase|Seeding not completed hint"
+msgstr ""
+
+msgid "Phase|Seeds"
+msgstr ""
+
+msgid "Phase|Size must be smaller or equal to the number of teams in the previous stage"
+msgstr ""
+
+msgid "Phase|Standings"
+msgstr ""
+
+msgid "Phase|Swiss Rounds|Leave blank to use minimum of %{rounds} rounds"
+msgstr ""
+
+msgid "Phase|Tournament cannot have another phase"
+msgstr ""
+
+msgid "Phase|Tournament mode"
+msgstr ""
+
+msgid "Product"
+msgstr ""
+
+msgid "Product category"
+msgstr ""
+
+msgid "Product variant"
+msgstr ""
+
+msgid "ProductBehaviours|Dummy"
+msgstr ""
+
+msgid "ProductCategory"
+msgstr ""
+
+msgid "ProductCategory|Name"
+msgstr ""
+
+msgid "ProductCategory|Products"
+msgstr ""
+
+msgid "ProductCategory|Sort"
+msgstr ""
+
+msgid "ProductVariant|Cannot delete as an order in payment has this variant"
+msgstr ""
+
+msgid "ProductVariant|Could not be added to cart"
+msgstr ""
+
+msgid "ProductVariant|Max quantity reached"
+msgstr ""
+
+msgid "ProductVariant|Name"
+msgstr ""
+
+msgid "ProductVariant|Price cents"
+msgstr ""
+
+msgid "ProductVariant|Successfully added to cart"
+msgstr ""
+
+msgid "Product|%{price} each"
+msgstr ""
+
+msgid "Product|Add product variant"
+msgstr ""
+
+msgid "Product|Availability"
+msgstr ""
+
+msgid "Product|Description"
+msgstr ""
+
+msgid "Product|Enabled product behaviours"
+msgstr ""
+
+msgid "Product|From Product"
+msgstr ""
+
+msgid "Product|Inventory"
+msgstr ""
+
+msgid "Product|Name"
+msgstr ""
+
+msgid "Product|No description"
+msgstr ""
+
+msgid "Product|On sale"
+msgstr ""
+
+msgid "Product|Remove this image"
+msgstr ""
+
+msgid "Product|Sort"
+msgstr ""
+
+msgid "Product|Starting from %{start_price}"
+msgstr ""
+
+msgid "Product|TicketBehaviour|Cannot be changed as this product is used as the to or from product elsewhere!"
+msgstr ""
+
+msgid "Product|TicketBehaviour|Cannot be the same as the from product"
+msgstr ""
+
+msgid "Product|TicketBehaviour|Does not have a seat category set!"
+msgstr ""
+
+msgid "Product|TicketBehaviour|Does not have the same lan party as the from product"
+msgstr ""
+
+msgid "Product|TicketBehaviour|From product needs to be set"
+msgstr ""
+
+msgid "Product|TicketBehaviour|Invalid combination"
+msgstr ""
+
+msgid "Product|TicketBehaviour|Seat category needs to be set"
+msgstr ""
+
+msgid "Product|TicketBehaviour|To product needs to be set"
+msgstr ""
+
+msgid "Product|To Product"
+msgstr ""
+
+msgid "PromitionCodes|Apply filter"
+msgstr ""
+
+msgid "Promotion"
+msgstr ""
+
+msgid "Promotion code"
+msgstr ""
+
+msgid "Promotion code mapping"
+msgstr ""
+
+msgid "PromotionCode"
+msgstr ""
+
+msgid "PromotionCodeMapping|Applied reduction cents"
+msgstr ""
+
+msgid "PromotionCodes|Show all"
+msgstr ""
+
+msgid "PromotionCodes|Show only unused"
+msgstr ""
+
+msgid "PromotionCodes|Show only used"
+msgstr ""
+
+msgid "PromotionCode|Cannot be deleted, as it has been used"
+msgstr ""
+
+msgid "PromotionCode|Code"
+msgstr ""
+
+msgid "Promotion|Active"
+msgstr ""
+
+msgid "Promotion|Add codes"
+msgstr ""
+
+msgid "Promotion|Code prefix"
+msgstr ""
+
+msgid "Promotion|Code type"
+msgstr ""
+
+msgid "Promotion|Codes count"
+msgstr ""
+
+msgid "Promotion|Export codes"
+msgstr ""
+
+msgid "Promotion|Generate additional codes"
+msgstr ""
+
+msgid "Promotion|Name"
+msgstr ""
+
+msgid "Promotion|Products"
+msgstr ""
+
+msgid "Promotion|Reduction cents"
+msgstr ""
+
+msgid "Promotion|Used codes count"
+msgstr ""
+
+msgid "Rails settings/base"
+msgstr ""
+
+msgid "RailsSettings::Base|Value"
+msgstr ""
+
+msgid "RailsSettings::Base|Var"
+msgstr ""
+
+msgid "Round number %{number}"
+msgstr ""
+
+msgid "Scanner user"
+msgstr ""
+
+msgid "ScannerUser"
+msgstr ""
+
+msgid "ScannerUser|Already logged in"
+msgstr ""
+
+msgid "ScannerUser|Encrypted password"
+msgstr ""
+
+msgid "ScannerUser|Leave password blank to keep current password"
+msgstr ""
+
+msgid "ScannerUser|Name"
+msgstr ""
+
+msgid "ScannerUser|Password"
+msgstr ""
+
+msgid "ScannerUser|Successfully logged out"
+msgstr ""
+
+msgid "Seat"
+msgstr ""
+
+msgid "Seat category"
+msgstr ""
+
+msgid "Seat map"
+msgstr ""
+
+msgid "SeatCategories"
+msgstr ""
+
+msgid "SeatCategory"
+msgstr ""
+
+msgid "SeatCategory|Color"
+msgstr ""
+
+msgid "SeatCategory|Name"
+msgstr ""
+
+msgid "SeatCategory|Relevant for counter"
+msgstr ""
+
+msgid "SeatMap"
+msgstr ""
+
+msgid "SeatMap|Background height"
+msgstr ""
+
+msgid "SeatMap|Background width"
+msgstr ""
+
+msgid "SeatMap|Canvas height"
+msgstr ""
+
+msgid "SeatMap|Canvas width"
+msgstr ""
+
+msgid "SeatMap|Change category"
+msgstr ""
+
+msgid "SeatMap|Change seat names"
+msgstr ""
+
+msgid "SeatMap|Delete Seat"
+msgstr ""
+
+msgid "SeatMap|User checked in"
+msgstr ""
+
+msgid "Seatmap"
+msgstr ""
+
+msgid "Seatmap|Please select a seat"
+msgstr ""
+
+msgid "Seatmap|Seat categories"
+msgstr ""
+
+msgid "Seatmap|Selected seat"
+msgstr ""
+
+msgid "Seatmap|Taken seat"
+msgstr ""
+
+msgid "Seatmap|Toggle sidebar"
+msgstr ""
+
+msgid "Seatmap|Username of user to assign to"
+msgstr ""
+
+msgid "Seatmap|You don't have any tickets for this event"
+msgstr ""
+
+msgid "Seatmap|Your available tickets"
+msgstr ""
+
+msgid "Seatmap|Your ticket"
+msgstr ""
+
+msgid "Seat|Already taken"
+msgstr ""
+
+msgid "Seat|Data"
+msgstr ""
+
+msgid "Seat|Mismatched categories"
+msgstr ""
+
+msgid "Seat|Name"
+msgstr ""
+
+msgid "Seat|Not found"
+msgstr ""
+
+msgid "Seeding"
+msgstr ""
+
+msgid "Session|2FA authentication required hint"
+msgstr ""
+
+msgid "Session|2FA code from authenticator"
+msgstr ""
+
+msgid "Session|Already logged in"
 msgstr ""
 
 msgid "Session|Back to application"
-msgstr ""
-
-msgid "Session|Confirm"
 msgstr ""
 
 msgid "Session|Forgot password"
@@ -414,12 +1971,6 @@ msgstr ""
 msgid "Session|Log in"
 msgstr ""
 
-msgid "Session|Login failed"
-msgstr ""
-
-msgid "Session|Please log in"
-msgstr ""
-
 msgid "Session|Remember me"
 msgstr ""
 
@@ -429,67 +1980,40 @@ msgstr ""
 msgid "Session|Submit 2FA code"
 msgstr ""
 
-msgid "Session|Successful login"
+msgid "Session|Successfully logged in"
 msgstr ""
 
-msgid "Session|Successful logout"
+msgid "Session|Successfully logged out"
 msgstr ""
 
-msgid "Session|You first need to enter your password"
-msgstr ""
-
-msgid "Session|Your login expired"
+msgid "Settings"
 msgstr ""
 
 msgid "Settings|2FA"
 msgstr ""
 
-msgid "Settings|Abort destroying my account"
-msgstr ""
-
-msgid "Settings|Account"
-msgstr ""
-
-msgid "Settings|Account is not destroyable"
-msgstr ""
-
-msgid "Settings|Account successfully destroyed"
-msgstr ""
-
 msgid "Settings|Activate 2FA"
+msgstr ""
+
+msgid "Settings|Addresses"
+msgstr ""
+
+msgid "Settings|Addresses|Add new"
 msgstr ""
 
 msgid "Settings|Avatar"
 msgstr ""
 
-msgid "Settings|Destroy account"
-msgstr ""
-
-msgid "Settings|Destroy account warning"
-msgstr ""
-
-msgid "Settings|Destroy my account"
-msgstr ""
-
 msgid "Settings|Edit avatar"
+msgstr ""
+
+msgid "Settings|Edit gameaccounts"
 msgstr ""
 
 msgid "Settings|Edit profile"
 msgstr ""
 
-msgid "Settings|Enter password and two factor code to confirm destroying your account"
-msgstr ""
-
-msgid "Settings|Enter password to confirm destroying your account"
-msgstr ""
-
-msgid "Settings|Export account info"
-msgstr ""
-
-msgid "Settings|Password confirmation|Leave blank to keep current password"
-msgstr ""
-
-msgid "Settings|Password is incorrect"
+msgid "Settings|Game accounts"
 msgstr ""
 
 msgid "Settings|Password|Leave blank to keep current password"
@@ -501,16 +2025,940 @@ msgstr ""
 msgid "Settings|Save two factor code"
 msgstr ""
 
-msgid "Settings|Two factor code is incorrect"
+msgid "Settings|Scope|Application"
+msgstr ""
+
+msgid "Settings|Scope|Sidebar"
+msgstr ""
+
+msgid "Settings|Scope|sidebar"
 msgstr ""
 
 msgid "Settings|Update profile"
+msgstr ""
+
+msgid "Shop"
+msgstr ""
+
+msgid "Shop|Add to cart"
+msgstr ""
+
+msgid "Shop|Checkout"
+msgstr ""
+
+msgid "Shop|Please log in to purchase this product"
+msgstr ""
+
+msgid "Shop|Sold out"
+msgstr ""
+
+msgid "Sidebar block"
+msgstr ""
+
+msgid "SidebarBlock"
+msgstr ""
+
+msgid "SidebarBlock|Content"
+msgstr ""
+
+msgid "SidebarBlock|Sort"
+msgstr ""
+
+msgid "SidebarBlock|Title"
+msgstr ""
+
+msgid "SidebarBlock|Visible"
+msgstr ""
+
+msgid "Sidebar|All events"
+msgstr ""
+
+msgid "Sidebar|All newsposts"
+msgstr ""
+
+msgid "Sidebar|Available tickets"
+msgstr ""
+
+msgid "Sidebar|Lan end"
+msgstr ""
+
+msgid "Sidebar|Lan location"
+msgstr ""
+
+msgid "Sidebar|Lan start"
+msgstr ""
+
+msgid "Sidebar|Latest newsposts"
+msgstr ""
+
+msgid "Sidebar|Next events"
+msgstr ""
+
+msgid "Sidebar|Next lan"
+msgstr ""
+
+msgid "StarpageBanner|Remove this image"
+msgstr ""
+
+msgid "Startpage banner"
+msgstr ""
+
+msgid "Startpage block"
+msgstr ""
+
+msgid "StartpageBanner"
+msgstr ""
+
+msgid "StartpageBanner|Height"
+msgstr ""
+
+msgid "StartpageBanner|Name"
+msgstr ""
+
+msgid "StartpageBanner|Visible"
+msgstr ""
+
+msgid "StartpageBlock"
+msgstr ""
+
+msgid "StartpageBlock|Content"
+msgstr ""
+
+msgid "StartpageBlock|Sort"
+msgstr ""
+
+msgid "StartpageBlock|Title"
+msgstr ""
+
+msgid "StartpageBlock|Visible"
+msgstr ""
+
+msgid "SteamStatus|Away"
+msgstr ""
+
+msgid "SteamStatus|Busy"
+msgstr ""
+
+msgid "SteamStatus|Looking to play"
+msgstr ""
+
+msgid "SteamStatus|Looking to trade"
+msgstr ""
+
+msgid "SteamStatus|Offline"
+msgstr ""
+
+msgid "SteamStatus|Online"
+msgstr ""
+
+msgid "SteamStatus|Snooze"
+msgstr ""
+
+msgid "Styling variable"
+msgstr ""
+
+msgid "StylingVariable"
+msgstr ""
+
+msgid "StylingVariable|Key"
+msgstr ""
+
+msgid "StylingVariable|Value"
+msgstr ""
+
+msgid "TeamMember"
+msgstr ""
+
+msgid "TeamMember|Promote to captain"
+msgstr ""
+
+msgid "TeamMember|Promoting failed"
+msgstr ""
+
+msgid "TeamMember|Successfully promoted"
+msgstr ""
+
+msgid "Team|%{count} players"
+msgstr ""
+
+msgid "Team|1 player"
+msgstr ""
+
+msgid "Team|Cannot leave team"
+msgstr ""
+
+msgid "Team|Cannot update score in wrong status"
+msgstr ""
+
+msgid "Team|Could not be deleted"
+msgstr ""
+
+msgid "Team|Could not be registered for tournament"
+msgstr ""
+
+msgid "Team|Could not join"
+msgstr ""
+
+msgid "Team|Create a team"
+msgstr ""
+
+msgid "Team|Edit details"
+msgstr ""
+
+msgid "Team|Matches"
+msgstr ""
+
+msgid "Team|Name"
+msgstr ""
+
+msgid "Team|Name placeholder"
+msgstr ""
+
+msgid "Team|No actions possible"
+msgstr ""
+
+msgid "Team|No matches played so far"
+msgstr ""
+
+msgid "Team|Not deletable"
+msgstr ""
+
+msgid "Team|Only the captain can do this"
+msgstr ""
+
+msgid "Team|Password is incorrect"
+msgstr ""
+
+msgid "Team|Promote to captain?"
+msgstr ""
+
+msgid "Team|Result could not be updated"
+msgstr ""
+
+msgid "Team|Result updated"
+msgstr ""
+
+msgid "Team|Score"
+msgstr ""
+
+msgid "Team|Successfully created"
+msgstr ""
+
+msgid "Team|Successfully deleted"
+msgstr ""
+
+msgid "Team|Successfully joined"
+msgstr ""
+
+msgid "Team|Successfully registered for tournament"
+msgstr ""
+
+msgid "Team|Successfully unregistered from tournament"
+msgstr ""
+
+msgid "Team|Successfully updated"
+msgstr ""
+
+msgid "Team|Team is full"
+msgstr ""
+
+msgid "Team|Team members"
+msgstr ""
+
+msgid "Team|Team members: %{count} of %{needed}"
+msgstr ""
+
+msgid "Team|The captain cannot be removed"
+msgstr ""
+
+msgid "Team|The other team already reported the score, please confirm the score!"
+msgstr ""
+
+msgid "Team|The other team needs to confirm the score!"
+msgstr ""
+
+msgid "Team|User cannot be found"
+msgstr ""
+
+msgid "Team|User is already in tournament"
+msgstr ""
+
+msgid "Team|User is not confirmed"
+msgstr ""
+
+msgid "Team|You are in another team already"
+msgstr ""
+
+msgid "Team|You are in this team already"
+msgstr ""
+
+msgid "Ticket"
+msgstr ""
+
+msgid "Ticket upgrade"
+msgstr ""
+
+msgid "TicketScanner|Already checked in"
+msgstr ""
+
+msgid "TicketScanner|Back to main page"
+msgstr ""
+
+msgid "TicketScanner|Cancel check in"
+msgstr ""
+
+msgid "TicketScanner|Check ticket in"
+msgstr ""
+
+msgid "TicketScanner|Error checking in, please try again"
+msgstr ""
+
+msgid "TicketScanner|Id missing"
+msgstr ""
+
+msgid "TicketScanner|Invalid QR code"
+msgstr ""
+
+msgid "TicketScanner|Logged in as %{name}"
+msgstr ""
+
+msgid "TicketScanner|No camera found"
+msgstr ""
+
+msgid "TicketScanner|No seat present"
+msgstr ""
+
+msgid "TicketScanner|Start"
+msgstr ""
+
+msgid "TicketScanner|Stop"
+msgstr ""
+
+msgid "TicketScanner|Successfully checked in"
+msgstr ""
+
+msgid "TicketScanner|Ticket has no assignee"
+msgstr ""
+
+msgid "TicketScanner|Ticket has no seat"
+msgstr ""
+
+msgid "TicketScanner|Toggle flash"
+msgstr ""
+
+msgid "TicketScanner|Wrong event"
+msgstr ""
+
+msgid "TicketScanner|Wrong user"
+msgstr ""
+
+msgid "TicketUpgrades|Manage my ticket upgrades"
+msgstr ""
+
+msgid "TicketUpgrades|You don't have any upgrades for this event"
+msgstr ""
+
+msgid "TicketUpgrade|Already used"
+msgstr ""
+
+msgid "TicketUpgrade|Applied successfully"
+msgstr ""
+
+msgid "TicketUpgrade|Could not be applied"
+msgstr ""
+
+msgid "TicketUpgrade|From category"
+msgstr ""
+
+msgid "TicketUpgrade|Not allowed to do that"
+msgstr ""
+
+msgid "TicketUpgrade|Not found"
+msgstr ""
+
+msgid "TicketUpgrade|Please remove the seat first"
+msgstr ""
+
+msgid "TicketUpgrade|To category"
+msgstr ""
+
+msgid "TicketUpgrade|Upgrade"
+msgstr ""
+
+msgid "TicketUpgrade|Used"
+msgstr ""
+
+msgid "TicketUpgrade|Wrong category"
+msgstr ""
+
+msgid "TicketUpgrade|You can only buy as many upgrades as the number of upgradeable tickets you own"
+msgstr ""
+
+msgid "Tickets|Manage"
+msgstr ""
+
+msgid "Tickets|Manage & upgrade tickets"
+msgstr ""
+
+msgid "Tickets|Manage my tickets"
+msgstr ""
+
+msgid "Tickets|Ticket manage view hint"
+msgstr ""
+
+msgid "Tickets|You don't have any tickets for this event"
+msgstr ""
+
+msgid "Ticket|Actions"
+msgstr ""
+
+msgid "Ticket|Already assigned"
+msgstr ""
+
+msgid "Ticket|Already used"
+msgstr ""
+
+msgid "Ticket|Apply upgrade"
+msgstr ""
+
+msgid "Ticket|Assign to myself"
+msgstr ""
+
+msgid "Ticket|Assignee"
+msgstr ""
+
+msgid "Ticket|Assignee could not be removed"
+msgstr ""
+
+msgid "Ticket|Category"
+msgstr ""
+
+msgid "Ticket|Check in"
+msgstr ""
+
+msgid "Ticket|Could not be assigned"
+msgstr ""
+
+msgid "Ticket|Details"
+msgstr ""
+
+msgid "Ticket|Event end"
+msgstr ""
+
+msgid "Ticket|Event location"
+msgstr ""
+
+msgid "Ticket|Event name"
+msgstr ""
+
+msgid "Ticket|Event start"
+msgstr ""
+
+msgid "Ticket|Info"
+msgstr ""
+
+msgid "Ticket|No ticket found"
+msgstr ""
+
+msgid "Ticket|Not allowed"
+msgstr ""
+
+msgid "Ticket|Not allowed to do that"
+msgstr ""
+
+msgid "Ticket|Not assigned to a seat"
+msgstr ""
+
+msgid "Ticket|Not found"
+msgstr ""
+
+msgid "Ticket|Order"
+msgstr ""
+
+msgid "Ticket|QR code only available when user is assigned"
+msgstr ""
+
+msgid "Ticket|Really remove ticket from myself?"
+msgstr ""
+
+msgid "Ticket|Remove assignation"
+msgstr ""
+
+msgid "Ticket|Remove seat"
+msgstr ""
+
+msgid "Ticket|Remove ticket from myself"
+msgstr ""
+
+msgid "Ticket|Revert check in"
+msgstr ""
+
+msgid "Ticket|Seat"
+msgstr ""
+
+msgid "Ticket|Seat category"
+msgstr ""
+
+msgid "Ticket|Seat category must not be assigned to a product when manually creating a ticket"
+msgstr ""
+
+msgid "Ticket|Seat could not be removed"
+msgstr ""
+
+msgid "Ticket|Seat could not be taken"
+msgstr ""
+
+msgid "Ticket|Show QR"
+msgstr ""
+
+msgid "Ticket|Show ticket"
+msgstr ""
+
+msgid "Ticket|Status"
+msgstr ""
+
+msgid "Ticket|Successfully assigned"
+msgstr ""
+
+msgid "Ticket|Successfully removed assignee"
+msgstr ""
+
+msgid "Ticket|Successfully removed seat"
+msgstr ""
+
+msgid "Ticket|Successfully taken seat"
+msgstr ""
+
+msgid "Ticket|Ticket for %{lan_name}"
+msgstr ""
+
+msgid "Ticket|Ticket is already checked in"
+msgstr ""
+
+msgid "Ticket|Toggle QR"
+msgstr ""
+
+msgid "Ticket|Unassigned"
+msgstr ""
+
+msgid "Ticket|User already has assigned ticket"
+msgstr ""
+
+msgid "Ticket|User not confirmed"
+msgstr ""
+
+msgid "Ticket|User not found"
+msgstr ""
+
+msgid "Ticket|Username"
+msgstr ""
+
+msgid "Timetable"
+msgstr ""
+
+msgid "Timetable category"
+msgstr ""
+
+msgid "Timetable entry"
+msgstr ""
+
+msgid "TimetableCategory|Name"
+msgstr ""
+
+msgid "TimetableCategory|Order"
+msgstr ""
+
+msgid "TimetableEntry|Entry end"
+msgstr ""
+
+msgid "TimetableEntry|Entry start"
+msgstr ""
+
+msgid "TimetableEntry|Link"
+msgstr ""
+
+msgid "TimetableEntry|Title"
+msgstr ""
+
+msgid "Timetable|End datetime"
+msgstr ""
+
+msgid "Timetable|No timetable available"
+msgstr ""
+
+msgid "Timetable|Start datetime"
+msgstr ""
+
+msgid "Tournament"
+msgstr ""
+
+msgid "Tournament/match"
+msgstr ""
+
+msgid "Tournament/phase"
+msgstr ""
+
+msgid "Tournament/phase team"
+msgstr ""
+
+msgid "Tournament/round"
+msgstr ""
+
+msgid "Tournament/team"
+msgstr ""
+
+msgid "Tournament/team member"
+msgstr ""
+
+msgid "Tournament/team rank"
+msgstr ""
+
+msgid "Tournament::Match|Away score"
+msgstr ""
+
+msgid "Tournament::Match|Draw"
+msgstr ""
+
+msgid "Tournament::Match|Home score"
+msgstr ""
+
+msgid "Tournament::Match|Result status"
+msgstr ""
+
+msgid "Tournament::PhaseTeam|Score"
+msgstr ""
+
+msgid "Tournament::PhaseTeam|Seed"
+msgstr ""
+
+msgid "Tournament::Phase|Auto progress"
+msgstr ""
+
+msgid "Tournament::Phase|Name"
+msgstr ""
+
+msgid "Tournament::Phase|Phase number"
+msgstr ""
+
+msgid "Tournament::Phase|Size"
+msgstr ""
+
+msgid "Tournament::Phase|Status"
+msgstr ""
+
+msgid "Tournament::Phase|Tournament mode"
+msgstr ""
+
+msgid "Tournament::Round|Round number"
+msgstr ""
+
+msgid "Tournament::TeamMember|Captain"
+msgstr ""
+
+msgid "Tournament::TeamRank|Name"
+msgstr ""
+
+msgid "Tournament::TeamRank|Sort"
+msgstr ""
+
+msgid "Tournament::Team|Name"
+msgstr ""
+
+msgid "Tournament::Team|Password digest"
+msgstr ""
+
+msgid "Tournament::Team|Status"
+msgstr ""
+
+msgid "TournamentMatch|Submit result"
+msgstr ""
+
+msgid "TournamentTeam|Join"
+msgstr ""
+
+msgid "TournamentTeam|Join password"
+msgstr ""
+
+msgid "TournamentTeam|Name"
+msgstr ""
+
+msgid "TournamentTeam|Password"
+msgstr ""
+
+msgid "TournamentTeam|Password|Leave blank to leave"
+msgstr ""
+
+msgid "TournamentTeam|Player"
+msgstr ""
+
+msgid "TournamentTeam|Please sign in to see actions"
+msgstr ""
+
+msgid "TournamentTeam|Rank"
+msgstr ""
+
+msgid "TournamentTeam|Status"
+msgstr ""
+
+msgid "TournamentTeam|Team actions"
+msgstr ""
+
+msgid "TournamentTeam|Team details"
+msgstr ""
+
+msgid "TournamentTeam|Team is full"
+msgstr ""
+
+msgid "TournamentTeam|Team members"
+msgstr ""
+
+msgid "Tournaments"
+msgstr ""
+
+msgid "Tournaments|Apply filter"
+msgstr ""
+
+msgid "Tournament|%{participants} participants"
+msgstr ""
+
+msgid "Tournament|Add team rank"
+msgstr ""
+
+msgid "Tournament|Cannot be changed if teams are present"
+msgstr ""
+
+msgid "Tournament|Delete team"
+msgstr ""
+
+msgid "Tournament|Description"
+msgstr ""
+
+msgid "Tournament|Files"
+msgstr ""
+
+msgid "Tournament|File|Name"
+msgstr ""
+
+msgid "Tournament|File|Size"
+msgstr ""
+
+msgid "Tournament|Final Standings"
+msgstr ""
+
+msgid "Tournament|Frontend order"
+msgstr ""
+
+msgid "Tournament|In tournament teams"
+msgstr ""
+
+msgid "Tournament|Info"
+msgstr ""
+
+msgid "Tournament|Leave team"
+msgstr ""
+
+msgid "Tournament|Leave team?"
+msgstr ""
+
+msgid "Tournament|Leave tournament?"
+msgstr ""
+
+msgid "Tournament|Match"
+msgstr ""
+
+msgid "Tournament|Max number of participants"
+msgstr ""
+
+msgid "Tournament|Name"
+msgstr ""
+
+msgid "Tournament|No files"
+msgstr ""
+
+msgid "Tournament|No next match available"
+msgstr ""
+
+msgid "Tournament|No next match yet"
+msgstr ""
+
+msgid "Tournament|No phases"
+msgstr ""
+
+msgid "Tournament|No phases yet"
+msgstr ""
+
+msgid "Tournament|No teams"
+msgstr ""
+
+msgid "Tournament|Not in tournament teams"
+msgstr ""
+
+msgid "Tournament|Number of Participants"
+msgstr ""
+
+msgid "Tournament|Number of ranks"
+msgstr ""
+
+msgid "Tournament|Participant type"
+msgstr ""
+
+msgid "Tournament|Participate in tournament"
+msgstr ""
+
+msgid "Tournament|Phase"
+msgstr ""
+
+msgid "Tournament|Please check-in at the event to see the available actions"
+msgstr ""
+
+msgid "Tournament|Please login to see the available actions"
+msgstr ""
+
+msgid "Tournament|Please review the result of the match"
+msgstr ""
+
+msgid "Tournament|Please see the tree for the current standings"
+msgstr ""
+
+msgid "Tournament|Registration closed"
+msgstr ""
+
+msgid "Tournament|Registration is closed"
+msgstr ""
+
+msgid "Tournament|Registration open"
+msgstr ""
+
+msgid "Tournament|Registration status"
+msgstr ""
+
+msgid "Tournament|Remove listing"
+msgstr ""
+
+msgid "Tournament|Remove my participation from tournament"
+msgstr ""
+
+msgid "Tournament|Remove team from tournament"
+msgstr ""
+
+msgid "Tournament|Remove this file"
+msgstr ""
+
+msgid "Tournament|Result needs to be confirmed by other team"
+msgstr ""
+
+msgid "Tournament|Sign up for tournaments"
+msgstr ""
+
+msgid "Tournament|Singleplayer"
+msgstr ""
+
+msgid "Tournament|Singleplayer participants"
+msgstr ""
+
+msgid "Tournament|Standings"
+msgstr ""
+
+msgid "Tournament|Status"
+msgstr ""
+
+msgid "Tournament|Structure"
+msgstr ""
+
+msgid "Tournament|Team"
+msgstr ""
+
+msgid "Tournament|Team participants"
+msgstr ""
+
+msgid "Tournament|Team size"
+msgstr ""
+
+msgid "Tournament|Team types"
+msgstr ""
+
+msgid "Tournament|Teams"
+msgstr ""
+
+msgid "Tournament|Teams need rank"
+msgstr ""
+
+msgid "Tournament|Team|Team cannot be registered as it has the wrong status"
+msgstr ""
+
+msgid "Tournament|Team|Team has wrong state"
+msgstr ""
+
+msgid "Tournament|Team|Team is already seeded"
+msgstr ""
+
+msgid "Tournament|Team|Team is not registered for the tournament"
+msgstr ""
+
+msgid "Tournament|The team does not have enough players"
+msgstr ""
+
+msgid "Tournament|The tournament has ongoing phases"
+msgstr ""
+
+msgid "Tournament|The tournament is full"
+msgstr ""
+
+msgid "Tournament|This is a singleplayer tournament"
+msgstr ""
+
+msgid "Tournament|Toggle registration"
+msgstr ""
+
+msgid "Tournament|Tournament Teams"
+msgstr ""
+
+msgid "Tournament|Tournament actions"
+msgstr ""
+
+msgid "Tournament|Tournament details"
+msgstr ""
+
+msgid "Tournament|You are already in the tournament"
+msgstr ""
+
+msgid "Tournament|You are not in the tournament"
+msgstr ""
+
+msgid "Tournament|You are participating in the tournament"
+msgstr ""
+
+msgid "Tournament|You need to be checked in to do this"
+msgstr ""
+
+msgid "Tournament|Your next match"
+msgstr ""
+
+msgid "Tournament|Your participation page"
+msgstr ""
+
+msgid "Tournament|Your team"
+msgstr ""
+
+msgid "Tournament|Your team is not in the tournament"
+msgstr ""
+
+msgid "Tournament|Your team is not yet in the tournament"
+msgstr ""
+
+msgid "Tournament|Your team is participating in the tournament"
 msgstr ""
 
 msgid "TwoFactor|2FA activated successfully"
 msgstr ""
 
 msgid "TwoFactor|2FA code was wrong, please try again"
+msgstr ""
+
+msgid "TwoFactor|If you cannot scan, please enter the following code manually:"
+msgstr ""
+
+msgid "TwoFactor|Invalid two factor code"
 msgstr ""
 
 msgid "TwoFactor|Please confirm that you saved the backup codes"
@@ -523,6 +2971,51 @@ msgid "TwoFactor|Scan code with auth app"
 msgstr ""
 
 msgid "User"
+msgstr ""
+
+msgid "User achievement"
+msgstr ""
+
+msgid "User address"
+msgstr ""
+
+msgid "UserAchievement"
+msgstr ""
+
+msgid "UserAchievement|Awarded at"
+msgstr ""
+
+msgid "UserAddress|City"
+msgstr ""
+
+msgid "UserAddress|Could not be destroyed"
+msgstr ""
+
+msgid "UserAddress|Create failed"
+msgstr ""
+
+msgid "UserAddress|First name"
+msgstr ""
+
+msgid "UserAddress|Last name"
+msgstr ""
+
+msgid "UserAddress|Street"
+msgstr ""
+
+msgid "UserAddress|Successfully created"
+msgstr ""
+
+msgid "UserAddress|Successfully destroyed"
+msgstr ""
+
+msgid "UserAddress|Successfully updated"
+msgstr ""
+
+msgid "UserAddress|Update failed"
+msgstr ""
+
+msgid "UserAddress|Zip code"
 msgstr ""
 
 msgid "UserMailer|ConfirmSignup|Click following link to activate"
@@ -564,10 +3057,16 @@ msgstr ""
 msgid "UserMailer|PasswordResetRequest|You resetted your password"
 msgstr ""
 
-msgid "User|2FA already activated"
+msgid "Users"
 msgstr ""
 
-msgid "User|2FA code from authenticator"
+msgid "Users List"
+msgstr ""
+
+msgid "Users|Index|Reset sort"
+msgstr ""
+
+msgid "User|2FA already activated"
 msgstr ""
 
 msgid "User|2FA could not be removed, please try again"
@@ -579,19 +3078,16 @@ msgstr ""
 msgid "User|About me"
 msgstr ""
 
+msgid "User|Achievement admin permission"
+msgstr ""
+
 msgid "User|Achievements"
 msgstr ""
 
-msgid "User|Activated"
-msgstr ""
-
-msgid "User|Activation invalid"
-msgstr ""
-
-msgid "User|Activation token"
-msgstr ""
-
 msgid "User|Add 2FA"
+msgstr ""
+
+msgid "User|Avatar could not be uploaded!"
 msgstr ""
 
 msgid "User|Avatar removed successfully"
@@ -600,19 +3096,40 @@ msgstr ""
 msgid "User|Avatar updated successfully"
 msgstr ""
 
-msgid "User|Cannot be deleted"
+msgid "User|Bio"
+msgstr ""
+
+msgid "User|Confirmation sent at"
+msgstr ""
+
+msgid "User|Confirmation token"
+msgstr ""
+
+msgid "User|Confirmed"
+msgstr ""
+
+msgid "User|Confirmed at"
+msgstr ""
+
+msgid "User|Consumed timestep"
 msgstr ""
 
 msgid "User|Create account"
 msgstr ""
 
-msgid "User|Create failed"
-msgstr ""
-
 msgid "User|Crop your avatar"
 msgstr ""
 
+msgid "User|Design admin permission"
+msgstr ""
+
+msgid "User|Discord account successfully added"
+msgstr ""
+
 msgid "User|Email"
+msgstr ""
+
+msgid "User|Encrypted password"
 msgstr ""
 
 msgid "User|Event admin permission"
@@ -621,37 +3138,55 @@ msgstr ""
 msgid "User|Game Profiles"
 msgstr ""
 
-msgid "User|Id"
+msgid "User|Lan party admin permission"
 msgstr ""
 
 msgid "User|Login"
 msgstr ""
 
+msgid "User|Menu items admin permission"
+msgstr ""
+
+msgid "User|My profile"
+msgstr ""
+
+msgid "User|My website"
+msgstr ""
+
+msgid "User|New Password"
+msgstr ""
+
+msgid "User|New Password confirmation"
+msgstr ""
+
 msgid "User|News admin permission"
+msgstr ""
+
+msgid "User|No bio added yet"
+msgstr ""
+
+msgid "User|No website added yet"
 msgstr ""
 
 msgid "User|Otp backup codes"
 msgstr ""
 
-msgid "User|Otp secret key"
+msgid "User|Otp required for login"
+msgstr ""
+
+msgid "User|Otp secret"
+msgstr ""
+
+msgid "User|Page admin permission"
 msgstr ""
 
 msgid "User|Password"
 msgstr ""
 
-msgid "User|Password confirmation"
+msgid "User|Payment assist admin permission"
 msgstr ""
 
-msgid "User|Password digest"
-msgstr ""
-
-msgid "User|Password reset token created at"
-msgstr ""
-
-msgid "User|Password reset token digest"
-msgstr ""
-
-msgid "User|Preferred locale"
+msgid "User|Permissions"
 msgstr ""
 
 msgid "User|Preview your avatar"
@@ -666,10 +3201,7 @@ msgstr ""
 msgid "User|Profile updated successfully"
 msgstr ""
 
-msgid "User|Remember me token created at"
-msgstr ""
-
-msgid "User|Remember me token digest"
+msgid "User|Remember created at"
 msgstr ""
 
 msgid "User|Remove 2FA"
@@ -681,25 +3213,40 @@ msgstr ""
 msgid "User|Remove avatar"
 msgstr ""
 
+msgid "User|Reset password sent at"
+msgstr ""
+
+msgid "User|Reset password token"
+msgstr ""
+
+msgid "User|Shop admin permission"
+msgstr ""
+
+msgid "User|Show my profile"
+msgstr ""
+
 msgid "User|Sign up"
 msgstr ""
 
-msgid "User|Successfully activated"
+msgid "User|Signup is currently closed"
 msgstr ""
 
-msgid "User|Successfully created"
+msgid "User|Steam account successfully added"
 msgstr ""
 
 msgid "User|Successfully created, check your mail for activation"
 msgstr ""
 
-msgid "User|Successfully deleted"
-msgstr ""
-
 msgid "User|System admin permission"
 msgstr ""
 
-msgid "User|Two factor enabled"
+msgid "User|Tournament admin permission"
+msgstr ""
+
+msgid "User|TwoFactor|Enabled"
+msgstr ""
+
+msgid "User|TwoFactor|Not enabled"
 msgstr ""
 
 msgid "User|Update password"
@@ -718,4 +3265,16 @@ msgid "User|Username"
 msgstr ""
 
 msgid "User|Website"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "Your Order"
+msgstr ""
+
+msgid "must be larger or equal than the number of teams (currently %{number})"
+msgstr ""
+
+msgid "must be larger than 0"
 msgstr ""

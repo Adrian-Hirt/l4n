@@ -7,7 +7,7 @@ module Admin
     end
 
     def new_content_page
-      add_breadcrumb _('Admin|Page|New')
+      add_breadcrumb _('Admin|%{model_name}|New') % { model_name: _('Page') }
       op Operations::Admin::Page::CreateContentPage
     end
 
@@ -16,14 +16,14 @@ module Admin
         flash[:success] = _('Admin|Page|Successfully created content page')
         redirect_to admin_pages_path
       else
-        add_breadcrumb _('Admin|Page|New')
-        flash[:danger] = _('Admin|Page|Create failed')
+        add_breadcrumb _('Admin|%{model_name}|New') % { model_name: _('Page') }
+        flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('Page') }
         render :new_content_page, status: :unprocessable_entity
       end
     end
 
     def new_redirect_page
-      add_breadcrumb _('Admin|Page|New')
+      add_breadcrumb _('Admin|%{model_name}|New') % { model_name: _('Page') }
       op Operations::Admin::Page::CreateRedirectPage
     end
 
@@ -32,8 +32,8 @@ module Admin
         flash[:success] = _('Admin|Page|Successfully created redirect page')
         redirect_to admin_pages_path
       else
-        add_breadcrumb _('Admin|Page|New')
-        flash[:danger] = _('Admin|Page|Create failed')
+        add_breadcrumb _('Admin|%{model_name}|New') % { model_name: _('Page') }
+        flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('Page') }
         render :new_redirect_page, status: :unprocessable_entity
       end
     end
@@ -45,20 +45,20 @@ module Admin
 
     def update
       if run Operations::Admin::Page::Update
-        flash[:success] = _('Admin|Page|Successfully updated')
+        flash[:success] = _('Admin|%{model_name}|Successfully updated') % { model_name: _('Page') }
         redirect_to admin_pages_path
       else
         add_breadcrumb model.title
-        flash[:danger] = _('Admin|Page|Edit failed')
+        flash[:danger] = _('Admin|%{model_name}|Update failed') % { model_name: _('Page') }
         render :edit, status: :unprocessable_entity
       end
     end
 
     def destroy
       if run Operations::Admin::Page::Destroy
-        flash[:success] = _('Admin|Page|Successfully deleted')
+        flash[:success] = _('Admin|%{model_name}|Successfully deleted') % { model_name: _('Page') }
       else
-        flash[:danger] = _('Admin|Page|Cannot be deleted')
+        flash[:danger] = _('Admin|%{model_name}|Cannot be deleted') % { model_name: _('Page') }
       end
       redirect_to admin_pages_path
     end

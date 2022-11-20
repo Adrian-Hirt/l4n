@@ -13,7 +13,7 @@ module Admin
         if run Operations::Admin::SeatMap::Update
           flash[:success] = _('Admin|SeatMap|Updated successfully')
         else
-          flash[:danger] = _('Admin|SeatMap|Edit failed')
+          flash[:danger] = _('Admin|%{model_name}|Update failed') % { model_name: _('SeatMap') }
         end
 
         redirect_to admin_lan_party_seat_map_path(model)

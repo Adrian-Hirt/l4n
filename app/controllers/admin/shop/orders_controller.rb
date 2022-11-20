@@ -17,7 +17,7 @@ module Admin
           flash[:success] = _('Admin|Order|Destroyed successfully')
           redirect_to admin_shop_orders_path
         else
-          flash[:danger] = _('Admin|Order|Cannot be destroyed')
+          flash[:danger] = _('Admin|%{model_name}|Cannot be deleted') % { model_name: _('Order') }
           redirect_to admin_shop_order_path(model)
         end
       end

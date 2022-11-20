@@ -17,7 +17,7 @@ module Admin
 
       def update
         if run Operations::Admin::Timetable::Update
-          flash[:success] = _('Admin|Timetable|Successfully updated')
+          flash[:success] = _('Admin|%{model_name}|Create failed') % { model_name: _('Timetable') }
           redirect_to admin_lan_party_timetable_path(model)
         else
           add_breadcrumb model.lan_party.name, admin_lan_party_path(model.lan_party)

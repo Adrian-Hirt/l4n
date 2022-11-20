@@ -11,12 +11,12 @@ module Admin
 
       def update
         if run Operations::Admin::User::UpdateProfile
-          flash[:success] = _('Admin|User|Profile|Successfully updated')
+          flash[:success] = _('Admin|%{model_name}|Create failed') % { model_name: _('User|Profile') }
           redirect_to profile_admin_user_path
         else
           add_breadcrumb model.username
           add_breadcrumb _('Admin|User|Profile'), profile_admin_user_path(model)
-          flash[:danger] = _('Admin|User|Profile|Update failed')
+          flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('User|Profile') }
           render :edit, status: :unprocessable_entity
         end
       end

@@ -12,10 +12,10 @@ module Admin
 
       def update
         if run Operations::Admin::Tournament::Match::Update
-          flash[:success] = _('Admin|Tournament|Match|Successfully updated')
+          flash[:success] = _('Admin|%{model_name}|Create failed') % { model_name: _('Tournament|Match') }
           redirect_to admin_phase_path(model.phase)
         else
-          flash[:danger] = _('Admin|Tournament|Match|Update failed')
+          flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('Tournament|Match') }
           add_breadcrumb model.phase.tournament.name, admin_tournament_path(model.phase.tournament)
           add_breadcrumb "#{model.phase.phase_number}. #{model.phase.name}", admin_phase_path(model.phase)
           add_breadcrumb _('Admin|Tournament|Match')

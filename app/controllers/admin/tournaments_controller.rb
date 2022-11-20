@@ -13,16 +13,16 @@ module Admin
 
     def new
       op Operations::Admin::Tournament::Create
-      add_breadcrumb _('Admin|Tournament|New')
+      add_breadcrumb _('Admin|%{model_name}|New') % { model_name: _('Tournament') }
     end
 
     def create
       if run Operations::Admin::Tournament::Create
-        flash[:success] = _('Admin|Tournament|Successfully created')
+        flash[:success] = _('Admin|%{model_name}|Successfully created') % { model_name: _('Tournament') }
         redirect_to admin_tournament_path(model)
       else
-        add_breadcrumb _('Admin|Tournament|New')
-        flash[:danger] = _('Admin|Tournament|Create failed')
+        add_breadcrumb _('Admin|%{model_name}|New') % { model_name: _('Tournament') }
+        flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('Tournament') }
         render :new, status: :unprocessable_entity
       end
     end
@@ -34,11 +34,11 @@ module Admin
 
     def update
       if run Operations::Admin::Tournament::Update
-        flash[:success] = _('Admin|Tournament|Successfully updated')
+        flash[:success] = _('Admin|%{model_name}|Create failed') % { model_name: _('Tournament') }
         redirect_to admin_tournament_path(model)
       else
         add_breadcrumb model.name, admin_tournament_path(model)
-        flash[:danger] = _('Admin|Tournament|Update failed')
+        flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('Tournament') }
         render :new, status: :unprocessable_entity
       end
     end

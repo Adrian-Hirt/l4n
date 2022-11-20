@@ -3,10 +3,20 @@
         "language": "en",
         "plural-forms": "nplurals=2; plural=n != 1;"
     },
+    "Achievement": "Achievement",
+    "Achievement|Description": "Description",
+    "Achievement|Title": "Title",
+    "Admin Panel": "Admin Panel",
+    "Admin|API Applications": "API Applications",
+    "Admin|API Application|Key will be generated when saved": "Key will be generated when saved",
+    "Admin|API applications": "API Applications",
+    "Admin|Achievements": "Achievements",
+    "Admin|Users": "Users",
+    "Admin|Users|Avatar": "Users",
+    "Admin|Users|Avatar|Preview your avatar": "Users",
     "ConfirmDialog|Cancel": "Cancel",
     "ConfirmDialog|Confirm": "Ok",
     "User": "User",
     "User|Email": "Email",
-    "User|Password": "Password",
-    "User|Password digest": "Password"
+    "User|Password": "Password"
 }

@@ -12,17 +12,17 @@ module Admin
     end
 
     def new
-      add_breadcrumb _('Admin|Event|New')
+      add_breadcrumb _('Admin|%{model_name}|New') % { model_name: _('Event') }
       op Operations::Admin::Event::Create
     end
 
     def create
       if run Operations::Admin::Event::Create
-        flash[:success] = _('Admin|Event|Successfully created')
+        flash[:success] = _('Admin|%{model_name}|Successfully created') % { model_name: _('Event') }
         redirect_to admin_events_path
       else
-        add_breadcrumb _('Admin|Event|New')
-        flash[:danger] = _('Admin|Event|Create failed')
+        add_breadcrumb _('Admin|%{model_name}|New') % { model_name: _('Event') }
+        flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('Event') }
         render :new, status: :unprocessable_entity
       end
     end
@@ -34,20 +34,20 @@ module Admin
 
     def update
       if run Operations::Admin::Event::Update
-        flash[:success] = _('Admin|Event|Successfully updated')
+        flash[:success] = _('Admin|%{model_name}|Successfully updated') % { model_name: _('Event') }
         redirect_to admin_events_path
       else
         add_breadcrumb model.title
-        flash[:danger] = _('Admin|Event|Edit failed')
+        flash[:danger] = _('Admin|%{model_name}|Update failed') % { model_name: _('Event') }
         render :edit, status: :unprocessable_entity
       end
     end
 
     def destroy
       if run Operations::Admin::Event::Destroy
-        flash[:success] = _('Admin|Event|Successfully deleted')
+        flash[:success] = _('Admin|%{model_name}|Successfully deleted') % { model_name: _('Event') }
       else
-        flash[:danger] = _('Admin|Event|Cannot be deleted')
+        flash[:danger] = _('Admin|%{model_name}|Cannot be deleted') % { model_name: _('Event') }
       end
       redirect_to admin_events_path
     end

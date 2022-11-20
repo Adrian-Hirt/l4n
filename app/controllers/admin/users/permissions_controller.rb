@@ -11,12 +11,12 @@ module Admin
 
       def update
         if run Operations::Admin::User::UpdatePermissions
-          flash[:success] = _('Admin|User|Permissions|Successfully updated')
+          flash[:success] = _('Admin|%{model_name}|Create failed') % { model_name: _('User|Permissions') }
           redirect_to permissions_admin_user_path
         else
           add_breadcrumb model.username
           add_breadcrumb _('Admin|User|Permissions'), permissions_admin_user_path(model)
-          flash[:danger] = _('Admin|User|Permissions|Update failed')
+          flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('User|Permissions') }
           render :edit, status: :unprocessable_entity
         end
       end

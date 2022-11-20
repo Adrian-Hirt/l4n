@@ -12,17 +12,17 @@ module Admin
       def new
         op Operations::Admin::Tournament::Phase::CreateForTournament
         add_breadcrumb op.tournament.name, admin_tournament_path(op.tournament)
-        add_breadcrumb _('Admin|Tournament|Phase|New')
+        add_breadcrumb _('Admin|%{model_name}|New') % { model_name: _('Tournament|Phase') }
       end
 
       def create
         if run Operations::Admin::Tournament::Phase::CreateForTournament
-          flash[:success] = _('Admin|Tournament|Phase|Successfully created')
+          flash[:success] = _('Admin|%{model_name}|Successfully created') % { model_name: _('Tournament|Phase') }
           redirect_to admin_tournament_path(op.tournament)
         else
           add_breadcrumb op.tournament.name, admin_tournament_path(op.tournament)
-          add_breadcrumb _('Admin|Tournament|Phase|New')
-          flash[:danger] = _('Admin|Tournament|Phase|Create failed')
+          add_breadcrumb _('Admin|%{model_name}|New') % { model_name: _('Tournament|Phase') }
+          flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('Tournament|Phase') }
           render :new, status: :unprocessable_entity
         end
       end
@@ -35,19 +35,19 @@ module Admin
 
       def update
         if run Operations::Admin::Tournament::Phase::Update
-          flash[:success] = _('Admin|Tournament|Phase|Successfully updated')
+          flash[:success] = _('Admin|%{model_name}|Create failed') % { model_name: _('Tournament|Phase') }
           redirect_to admin_tournament_path(model.tournament)
         else
           add_breadcrumb model.tournament.name, admin_tournament_path(model.tournament)
           add_breadcrumb model.name
-          flash[:danger] = _('Admin|Tournament|Phase|Update failed')
+          flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('Tournament|Phase') }
           render :new, status: :unprocessable_entity
         end
       end
 
       def destroy
         if run Operations::Admin::Tournament::Phase::Destroy
-          flash[:success] = _('Admin|Tournament|Phase|Successfully destroyed')
+          flash[:success] = _('Admin|%{model_name}|Successfully deleted') % { model_name: _('Tournament|Phase') }
         else
           flash[:danger] = _('Admin|Tournament|Phase|Could not be destroyed')
         end

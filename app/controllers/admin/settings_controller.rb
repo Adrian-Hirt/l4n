@@ -13,11 +13,11 @@ module Admin
 
     def update
       if run Operations::Admin::Settings::Update
-        flash[:success] = _('Admin|Settings|Successfully updated')
+        flash[:success] = _('Admin|%{model_name}|Create failed') % { model_name: _('Settings') }
         redirect_to admin_settings_path
       else
         add_breadcrumb _('Admin|Settings|Edit')
-        flash[:danger] = _('Admin|Settings|Update failed')
+        flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('Settings') }
         render :edit, status: :unprocessable_entity
       end
     end

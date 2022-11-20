@@ -3,7 +3,7 @@ module Admin
     class TeamMembersController < AdminController
       def destroy
         if run Operations::Admin::Tournament::TeamMember::Destroy
-          flash[:success] = _('Admin|TeamMember|Successfully destroyed')
+          flash[:success] = _('Admin|%{model_name}|Successfully deleted') % { model_name: _('TeamMember') }
         else
           flash[:danger] = _('Admin|TeamMember|Destroying failed')
         end

@@ -13,17 +13,17 @@ module Admin
       end
 
       def new
-        add_breadcrumb _('Admin|ProductCategory|New')
+        add_breadcrumb _('Admin|%{model_name}|New') % { model_name: _('ProductCategory') }
         op Operations::Admin::ProductCategory::Create
       end
 
       def create
         if run Operations::Admin::ProductCategory::Create
-          flash[:success] = _('Admin|ProductCategory|Successfully created')
+          flash[:success] = _('Admin|%{model_name}|Successfully created') % { model_name: _('ProductCategory') }
           redirect_to admin_shop_product_categories_path
         else
-          add_breadcrumb _('Admin|ProductCategory|New')
-          flash[:danger] = _('Admin|ProductCategory|Create failed')
+          add_breadcrumb _('Admin|%{model_name}|New') % { model_name: _('ProductCategory') }
+          flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('ProductCategory') }
           render :new, status: :unprocessable_entity
         end
       end
@@ -35,20 +35,20 @@ module Admin
 
       def update
         if run Operations::Admin::ProductCategory::Update
-          flash[:success] = _('Admin|ProductCategory|Successfully updated')
+          flash[:success] = _('Admin|%{model_name}|Successfully updated') % { model_name: _('ProductCategory') }
           redirect_to admin_shop_product_categories_path
         else
           add_breadcrumb model.name
-          flash[:danger] = _('Admin|ProductCategory|Edit failed')
+          flash[:danger] = _('Admin|%{model_name}|Update failed') % { model_name: _('ProductCategory') }
           render :edit, status: :unprocessable_entity
         end
       end
 
       def destroy
         if run Operations::Admin::ProductCategory::Destroy
-          flash[:success] = _('Admin|ProductCategory|Successfully deleted')
+          flash[:success] = _('Admin|%{model_name}|Successfully deleted') % { model_name: _('ProductCategory') }
         else
-          flash[:danger] = _('Admin|ProductCategory|Cannot be deleted')
+          flash[:danger] = _('Admin|%{model_name}|Cannot be deleted') % { model_name: _('ProductCategory') }
         end
         redirect_to admin_shop_product_categories_path
       end

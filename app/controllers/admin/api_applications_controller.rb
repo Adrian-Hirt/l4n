@@ -8,16 +8,16 @@ module Admin
 
     def new
       op Operations::Admin::ApiApplication::Create
-      add_breadcrumb _('Admin|API Application|New')
+      add_breadcrumb _('Admin|%{model_name}|New') % { model_name: _('API Application') }
     end
 
     def create
       if run Operations::Admin::ApiApplication::Create
-        flash[:success] = _('Admin|API Application|Successfully created')
+        flash[:success] = _('Admin|%{model_name}|Successfully created') % { model_name: _('API Application') }
         redirect_to edit_admin_api_application_path(model)
       else
-        add_breadcrumb _('Admin|API Application|New')
-        flash[:danger] = _('Admin|API Application|Create failed')
+        add_breadcrumb _('Admin|%{model_name}|New') % { model_name: _('API Application') }
+        flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('API Application') }
         render :new, status: :unprocessable_entity
       end
     end
@@ -29,20 +29,20 @@ module Admin
 
     def update
       if run Operations::Admin::ApiApplication::Update
-        flash[:success] = _('Admin|API Application|Successfully updated')
+        flash[:success] = _('Admin|%{model_name}|Successfully updated') % { model_name: _('API Application') }
         redirect_to admin_api_applications_path
       else
         add_breadcrumb model.name
-        flash[:danger] = _('Admin|API Application|Update failed')
+        flash[:danger] = _('Admin|%{model_name}|Update failed') % { model_name: _('API Application') }
         render :new, status: :unprocessable_entity
       end
     end
 
     def destroy
       if run Operations::Admin::ApiApplication::Destroy
-        flash[:success] = _('Admin|API Application|Successfully deleted')
+        flash[:success] = _('Admin|%{model_name}|Successfully deleted') % { model_name: _('API Application') }
       else
-        flash[:danger] = _('Admin|API Application|Cannot be deleted')
+        flash[:danger] = _('Admin|%{model_name}|Cannot be deleted') % { model_name: _('API Application') }
       end
 
       redirect_to admin_api_applications_path
