@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-20 22:10+0100\n"
-"PO-Revision-Date: 2022-11-20 22:10+0100\n"
+"POT-Creation-Date: 2022-11-20 22:57+0100\n"
+"PO-Revision-Date: 2022-11-20 22:57+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -70,6 +70,9 @@ msgid "Admin|%{model_name}|Cannot be deleted"
 msgstr ""
 
 msgid "Admin|%{model_name}|Create failed"
+msgstr ""
+
+msgid "Admin|%{model_name}|Edit"
 msgstr ""
 
 msgid "Admin|%{model_name}|New"
@@ -139,9 +142,6 @@ msgid "Admin|FeatureFlag|Successfully toggled flag"
 msgstr ""
 
 msgid "Admin|FooterLogos"
-msgstr ""
-
-msgid "Admin|FooterLogo|Edit"
 msgstr ""
 
 msgid "Admin|FooterLogo|Link is optional"
@@ -321,9 +321,6 @@ msgstr ""
 msgid "Admin|Settings|Application name"
 msgstr ""
 
-msgid "Admin|Settings|Edit"
-msgstr ""
-
 msgid "Admin|Settings|Edit settings"
 msgstr ""
 
@@ -360,28 +357,16 @@ msgstr ""
 msgid "Admin|SidebarBlocks"
 msgstr ""
 
-msgid "Admin|SidebarBlock|Edit"
-msgstr ""
-
 msgid "Admin|StartpageBanners"
 msgstr ""
 
-msgid "Admin|StartpageBanner|Edit"
-msgstr ""
-
 msgid "Admin|StartpageBlocks"
-msgstr ""
-
-msgid "Admin|StartpageBlock|Edit"
 msgstr ""
 
 msgid "Admin|StylingVariables"
 msgstr ""
 
 msgid "Admin|StylingVariables|Generated CSS"
-msgstr ""
-
-msgid "Admin|StylingVariable|Edit"
 msgstr ""
 
 msgid "Admin|System"
@@ -3016,45 +3001,6 @@ msgid "UserAddress|Update failed"
 msgstr ""
 
 msgid "UserAddress|Zip code"
-msgstr ""
-
-msgid "UserMailer|ConfirmSignup|Click following link to activate"
-msgstr ""
-
-msgid "UserMailer|ConfirmSignup|Confirm your account"
-msgstr ""
-
-msgid "UserMailer|ConfirmSignup|Copy url below"
-msgstr ""
-
-msgid "UserMailer|ConfirmSignup|Greeting %{username}"
-msgstr ""
-
-msgid "UserMailer|ConfirmSignup|Link"
-msgstr ""
-
-msgid "UserMailer|ConfirmSignup|Title"
-msgstr ""
-
-msgid "UserMailer|PasswordResetRequest|Click following link to reset your password"
-msgstr ""
-
-msgid "UserMailer|PasswordResetRequest|Copy url below"
-msgstr ""
-
-msgid "UserMailer|PasswordResetRequest|End of mail hint"
-msgstr ""
-
-msgid "UserMailer|PasswordResetRequest|Greeting %{username}"
-msgstr ""
-
-msgid "UserMailer|PasswordResetRequest|Link"
-msgstr ""
-
-msgid "UserMailer|PasswordResetRequest|Title"
-msgstr ""
-
-msgid "UserMailer|PasswordResetRequest|You resetted your password"
 msgstr ""
 
 msgid "Users"

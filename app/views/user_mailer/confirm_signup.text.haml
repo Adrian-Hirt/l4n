@@ -1,8 +1,0 @@
-= _('UserMailer|ConfirmSignup|Title')
-\------------------------------------
-\
-= _('UserMailer|ConfirmSignup|Greeting %{username}') % { username: @user.username }
-\
-= _('UserMailer|ConfirmSignup|Copy url below')
-\
-=  activate_users_url(activation_token: @user.activation_token, email: @user.email)

@@ -16,7 +16,7 @@ module Admin
         flash[:success] = _('Admin|%{model_name}|Successfully created') % { model_name: _('FooterLogo') }
         redirect_to admin_footer_logos_path
       else
-        add_breadcrumb _('Admin|FooterLogo|Edit')
+        add_breadcrumb _('Admin|%{model_name}|Edit') % { model_name: _('FooterLogo') }
         flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('FooterLogo') }
         render :new, status: :unprocessable_entity
       end
@@ -24,7 +24,7 @@ module Admin
 
     def edit
       op Operations::Admin::FooterLogo::Update
-      add_breadcrumb _('Admin|FooterLogo|Edit')
+      add_breadcrumb _('Admin|%{model_name}|Edit') % { model_name: _('FooterLogo') }
     end
 
     def update
@@ -32,7 +32,7 @@ module Admin
         flash[:success] = _('Admin|%{model_name}|Successfully updated') % { model_name: _('FooterLogo') }
         redirect_to admin_footer_logos_path
       else
-        add_breadcrumb _('Admin|FooterLogo|Edit')
+        add_breadcrumb _('Admin|%{model_name}|Edit') % { model_name: _('FooterLogo') }
         flash[:danger] = _('Admin|%{model_name}|Update failed') % { model_name: _('FooterLogo') }
         render :new, status: :unprocessable_entity
       end

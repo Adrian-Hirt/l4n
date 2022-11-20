@@ -16,7 +16,7 @@ module Admin
         flash[:success] = _('Admin|%{model_name}|Successfully created') % { model_name: _('SidebarBlock') }
         redirect_to admin_sidebar_blocks_path
       else
-        add_breadcrumb _('Admin|SidebarBlock|Edit')
+        add_breadcrumb _('Admin|%{model_name}|Edit') % { model_name: _('SidebarBlock') }
         flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('SidebarBlock') }
         render :new, status: :unprocessable_entity
       end
@@ -24,7 +24,7 @@ module Admin
 
     def edit
       op Operations::Admin::SidebarBlock::Update
-      add_breadcrumb _('Admin|SidebarBlock|Edit')
+      add_breadcrumb _('Admin|%{model_name}|Edit') % { model_name: _('SidebarBlock') }
     end
 
     def update
@@ -32,7 +32,7 @@ module Admin
         flash[:success] = _('Admin|%{model_name}|Successfully updated') % { model_name: _('SidebarBlock') }
         redirect_to admin_sidebar_blocks_path
       else
-        add_breadcrumb _('Admin|SidebarBlock|Edit')
+        add_breadcrumb _('Admin|%{model_name}|Edit') % { model_name: _('SidebarBlock') }
         flash[:danger] = _('Admin|%{model_name}|Update failed') % { model_name: _('SidebarBlock') }
         render :new, status: :unprocessable_entity
       end

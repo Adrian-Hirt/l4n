@@ -16,7 +16,7 @@ module Admin
         flash[:success] = _('Admin|%{model_name}|Successfully created') % { model_name: _('StartpageBanner') }
         redirect_to admin_startpage_banners_path
       else
-        add_breadcrumb _('Admin|StartpageBanner|Edit')
+        add_breadcrumb _('Admin|%{model_name}|Edit') % { model_name: _('StartpageBanner') }
         flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('StartpageBanner') }
         render :new, status: :unprocessable_entity
       end
@@ -24,7 +24,7 @@ module Admin
 
     def edit
       op Operations::Admin::StartpageBanner::Update
-      add_breadcrumb _('Admin|StartpageBanner|Edit')
+      add_breadcrumb _('Admin|%{model_name}|Edit') % { model_name: _('StartpageBanner') }
     end
 
     def update
@@ -32,7 +32,7 @@ module Admin
         flash[:success] = _('Admin|%{model_name}|Successfully updated') % { model_name: _('StartpageBanner') }
         redirect_to admin_startpage_banners_path
       else
-        add_breadcrumb _('Admin|StartpageBanner|Edit')
+        add_breadcrumb _('Admin|%{model_name}|Edit') % { model_name: _('StartpageBanner') }
         flash[:danger] = _('Admin|%{model_name}|Update failed') % { model_name: _('StartpageBanner') }
         render :new, status: :unprocessable_entity
       end
