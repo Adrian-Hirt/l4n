@@ -1,7 +1,7 @@
 const i18n = require("gettext.js")();
 
 export default class Translations {
-  static available_locales =  ["en", "de"];
+  static available_locales =  ["en"];
 
   static loadTranslations() {
     for(let lang of Translations.available_locales) {
