@@ -4,6 +4,8 @@
   .col-12
     .card
       .card-body.d-flex.users-table-header
+        .d-flex.px-3.py-1
+          .me-2= link_to _('Users|Index|Reset sort'), users_path
         - op.grid.html_columns.each do |column|
           - next unless column.supports_order?
 

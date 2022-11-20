@@ -1,7 +1,7 @@
 module Grids
   class Users < ApplicationGrid
     scope do
-      ::User.all
+      ::User.order(:created_at)
     end
 
     model ::User
@@ -14,6 +14,7 @@ module Grids
       end
     end
     column :username
+    column :created_at
     column :'datagrid-actions', html: true, header: false do |user|
       show_button(user, size: :sm, icon_only: true)
     end
