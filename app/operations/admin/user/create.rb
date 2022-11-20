@@ -12,5 +12,11 @@ module Operations::Admin::User
     end
 
     model ::User
+
+    def perform
+      model.skip_confirmation!
+      super
+      model.confirm
+    end
   end
 end
