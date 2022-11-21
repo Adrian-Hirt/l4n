@@ -87,7 +87,7 @@ class Tournament < ApplicationRecord
     if teams.in_tournament.none? && max_number_of_participants <= 0
       errors.add(:max_number_of_participants, _('must be larger than 0'))
     elsif max_number_of_participants < teams.in_tournament.count
-      errors.add(:max_number_of_participants, format(_('must be larger or equal than the number of teams (currently %{number})'), number: teams.in_tournament.count))
+      errors.add(:max_number_of_participants, _('must be larger or equal than the number of teams (currently %{number})') % { number: teams.in_tournament.count })
     end
   end
 end

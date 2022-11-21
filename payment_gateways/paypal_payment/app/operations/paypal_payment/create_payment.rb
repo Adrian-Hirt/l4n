@@ -57,7 +57,7 @@ module PaypalPayment
           item_list:      {
             items: items
           },
-          description:    format(_('PaypalPaymentGateway|Order description for %{order_id}'), order_id: order_data[:real_order_id]),
+          description:    _('PaypalPaymentGateway|Order description for %{order_id}') % { order_id: order_data[:real_order_id] },
           invoice_number: SecureRandom.hex
         ]
       }

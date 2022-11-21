@@ -11,7 +11,7 @@ module Operations::Admin::System
       if result.blank?
         _('Admin|System|Cache size cannot be fetched')
       else
-        format(_('Admin|System|Cache size reported: %{size}'), size: result.split("\t")[0])
+        _('Admin|System|Cache size reported: %{size}') % { size: result.split("\t")[0] }
       end
     end
   end

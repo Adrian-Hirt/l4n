@@ -131,3 +131,6 @@ Rails/ActionControllerFlashBeforeRender:
 
 Rails/ActionOrder:
   Enabled: false
+
+Style/FormatString:
+  EnforcedStyle: percent
