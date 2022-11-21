@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-20 22:57+0100\n"
-"PO-Revision-Date: 2022-11-20 22:57+0100\n"
+"POT-Creation-Date: 2022-11-21 21:03+0100\n"
+"PO-Revision-Date: 2022-11-21 21:03+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -315,6 +315,9 @@ msgstr ""
 msgid "Admin|Seat|Not found"
 msgstr ""
 
+msgid "Admin|Seat|Seat is taken."
+msgstr ""
+
 msgid "Admin|Settings"
 msgstr ""
 
@@ -352,6 +355,9 @@ msgid "Admin|Shop|Dashboard|Orders payment pending"
 msgstr ""
 
 msgid "Admin|Shop|Dashboard|Products"
+msgstr ""
+
+msgid "Admin|Show ticket"
 msgstr ""
 
 msgid "Admin|SidebarBlocks"
@@ -798,6 +804,9 @@ msgstr ""
 msgid "Application|Dark mode successfully enabled"
 msgstr ""
 
+msgid "Avatar|Uploading avatar failed"
+msgstr ""
+
 msgid "Buttons|Confirm message"
 msgstr ""
 
@@ -1225,6 +1234,72 @@ msgid "MarkdownEditor|Popup|Please paste the URL of the map you want to share he
 msgstr ""
 
 msgid "MarkdownEditor|Popup|Please paste the URL of the youtube video here. The URL needs to be of format 'https://www.youtube.com/watch?v='"
+msgstr ""
+
+msgid "MarkdownEditor|Rendering preview failed"
+msgstr ""
+
+msgid "MarkdownEditor|Toolbar|Bold"
+msgstr ""
+
+msgid "MarkdownEditor|Toolbar|Clean block"
+msgstr ""
+
+msgid "MarkdownEditor|Toolbar|Code"
+msgstr ""
+
+msgid "MarkdownEditor|Toolbar|Heading"
+msgstr ""
+
+msgid "MarkdownEditor|Toolbar|Highlight text"
+msgstr ""
+
+msgid "MarkdownEditor|Toolbar|Insert a Youtube video"
+msgstr ""
+
+msgid "MarkdownEditor|Toolbar|Insert an icon"
+msgstr ""
+
+msgid "MarkdownEditor|Toolbar|Insert horizontal rule"
+msgstr ""
+
+msgid "MarkdownEditor|Toolbar|Insert image"
+msgstr ""
+
+msgid "MarkdownEditor|Toolbar|Insert link"
+msgstr ""
+
+msgid "MarkdownEditor|Toolbar|Insert map"
+msgstr ""
+
+msgid "MarkdownEditor|Toolbar|Insert table"
+msgstr ""
+
+msgid "MarkdownEditor|Toolbar|Italic"
+msgstr ""
+
+msgid "MarkdownEditor|Toolbar|Need help with the icons?"
+msgstr ""
+
+msgid "MarkdownEditor|Toolbar|Ordered list"
+msgstr ""
+
+msgid "MarkdownEditor|Toolbar|Quote"
+msgstr ""
+
+msgid "MarkdownEditor|Toolbar|Show side-by-side preview"
+msgstr ""
+
+msgid "MarkdownEditor|Toolbar|Strikethrough"
+msgstr ""
+
+msgid "MarkdownEditor|Toolbar|Toggle full screen"
+msgstr ""
+
+msgid "MarkdownEditor|Toolbar|Toggle preview"
+msgstr ""
+
+msgid "MarkdownEditor|Toolbar|Unordered list"
 msgstr ""
 
 msgid "Match|Bye"
@@ -1878,13 +1953,40 @@ msgstr ""
 msgid "SeatMap|Change category"
 msgstr ""
 
+msgid "SeatMap|Change seat category"
+msgstr ""
+
 msgid "SeatMap|Change seat names"
+msgstr ""
+
+msgid "SeatMap|Change seat naming"
 msgstr ""
 
 msgid "SeatMap|Delete Seat"
 msgstr ""
 
+msgid "SeatMap|Enter placeholder and offset for the seat naming. A $ in the placeholder will be replaced by an increasing number, starting at the given offset."
+msgstr ""
+
+msgid "SeatMap|Offset must be a number!"
+msgstr ""
+
+msgid "SeatMap|Placeholder needs to be given!"
+msgstr ""
+
+msgid "SeatMap|Please select the new seat category"
+msgstr ""
+
+msgid "SeatMap|Saved successfully"
+msgstr ""
+
 msgid "SeatMap|User checked in"
+msgstr ""
+
+msgid "SeatMap|You need to create at least 1 seat!"
+msgstr ""
+
+msgid "SeatMap|You need to select a seat category to add a seat!"
 msgstr ""
 
 msgid "Seatmap"
@@ -1894,6 +1996,15 @@ msgid "Seatmap|Please select a seat"
 msgstr ""
 
 msgid "Seatmap|Seat categories"
+msgstr ""
+
+msgid "Seatmap|Seat is free"
+msgstr ""
+
+msgid "Seatmap|Seat name placeholder"
+msgstr ""
+
+msgid "Seatmap|Seat name start offset"
 msgstr ""
 
 msgid "Seatmap|Selected seat"
@@ -1930,6 +2041,12 @@ msgid "Seat|Name"
 msgstr ""
 
 msgid "Seat|Not found"
+msgstr ""
+
+msgid "Seat|Seat is taken"
+msgstr ""
+
+msgid "Seat|Seat is taken by"
 msgstr ""
 
 msgid "Seeding"
@@ -2151,6 +2268,12 @@ msgstr ""
 msgid "StylingVariable|Value"
 msgstr ""
 
+msgid "SweetAlertForm|Cancel"
+msgstr ""
+
+msgid "SweetAlertForm|Save"
+msgstr ""
+
 msgid "TeamMember"
 msgstr ""
 
@@ -2302,6 +2425,9 @@ msgid "TicketScanner|Id missing"
 msgstr ""
 
 msgid "TicketScanner|Invalid QR code"
+msgstr ""
+
+msgid "TicketScanner|Invalid QR code, please try again"
 msgstr ""
 
 msgid "TicketScanner|Logged in as %{name}"
