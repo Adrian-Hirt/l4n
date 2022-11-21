@@ -17,7 +17,7 @@ module PaypalPayment
     # Gets an Oauth token to use in the payment requests
     def oauth_token
       @oauth_token ||= begin
-        auth = { username: Figaro.env.paypal_id, password: Figaro.env.paypal_secret }
+        auth = { username: Figaro.env.paypal_id!, password: Figaro.env.paypal_secret! }
         body = {
           'grant_type' => 'client_credentials'
         }

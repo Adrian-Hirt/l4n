@@ -1,26 +1,31 @@
 # Development notes
 
-## Used libraries with caveats
+## Required env variables:
 
-The following libraries needed some adaptions, and therefore should be updated carefully:
+* `hcaptcha_site_key`
+* `hcaptcha_site_secret`
+* `steam_web_api_key`
+* `discord_id`
+* `discord_secret`
+* `discord_bot_auth`
 
-### Bootstrap
+When using Paypal gateway:
 
-Bootstrap `5.1.0` is used, where in the js file located in the `vendor/javascript` folder, the line
+* `paypal_id`
+* `paypal_secret`
 
-```js
-import "@popperjs/core";
-```
+For the mailer gateway in production:
 
-is replaced by
+* `use_smtp`
 
-```js
-import "@popperjs/core";
-let t = Popper;
-```
+If this is set to true (and the app uses smtp), we need the following
+variables set as well:
 
-This is such that the included popper js file works.
-
-### Popper.js
-
-Used version is `2.11.0`, but the minified version from the CDN and not the version included by `importmap-rails`, as that version does not work.
+* `mailer_host`
+* `smtp_address`
+* `smtp_port`
+* `smtp_authentication`
+* `smtp_username`
+* `smtp_password`
+* `smtp_domain`
+* `smtp_enable_starttls`

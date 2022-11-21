@@ -19,7 +19,7 @@ module Operations::Gameaccounts
         return
       end
 
-      steam_url = "https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=#{Figaro.env.steam_web_api_key}&steamids=#{user.steam_id}"
+      steam_url = "https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=#{Figaro.env.steam_web_api_key!}&steamids=#{user.steam_id}"
       response = HTTParty.get(steam_url)
 
       if response.code == 200

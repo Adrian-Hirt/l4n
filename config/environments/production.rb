@@ -93,4 +93,28 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # --------------------------------------------------------------
+  # Mailer settings
+  # --------------------------------------------------------------
+  # Use the host defined in mailer host
+  config.action_mailer.default_url_options = { host: Figaro.env.mailer_host! }
+
+  # When using smtp, configure it, otherwise configure sendmail
+  if Figaro.env.use_smtp!
+    config.action_mailer.delivery_method = :smtp
+
+    # Setup the smtp mailer
+    config.action_mailer.smtp_settings = {
+      address:              Figaro.env.smtp_address!,
+      port:                 Figaro.env.smtp_port!,
+      authentication:       Figaro.env.smtp_authentication!,
+      user_name:            Figaro.env.smtp_username!,
+      password:             Figaro.env.smtp_password!,
+      domain:               Figaro.env.smtp_domain!,
+      enable_starttls_auto: Figaro.env.smtp_enable_starttls_auto!
+    }
+  else
+    config.action_mailer.delivery_method = :sendmail
+  end
 end
