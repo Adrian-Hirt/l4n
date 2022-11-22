@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-const i18n = require("gettext.js")();
+import Translations from "../../components/translations"
 
 export default class extends Controller {
   static targets = ['fromProduct', 'toProduct'];
@@ -12,7 +12,7 @@ export default class extends Controller {
     let selectedOption = event.currentTarget.selectedOptions[0].value;
 
     if (selectedOption) {
-      let optStr = `<option value="">${ i18n.gettext('Form|Select|Blank') }</option>`;
+      let optStr = `<option value="">${ Translations._('Form|Select|Blank') }</option>`;
 
       for (let opt of this.options[selectedOption]) {
         optStr += `<option value="${opt.id}">${opt.name}</option>`
@@ -24,9 +24,9 @@ export default class extends Controller {
       this.toProductTarget.disabled = false;
     }
     else {
-      this.fromProductTarget.innerHTML = `<option value="">${ i18n.gettext('Form|Select|Blank') }</option>`;
+      this.fromProductTarget.innerHTML = `<option value="">${ Translations._('Form|Select|Blank') }</option>`;
       this.fromProductTarget.disabled = true;
-      this.toProductTarget.innerHTML = `<option value="">${ i18n.gettext('Form|Select|Blank') }</option>`;
+      this.toProductTarget.innerHTML = `<option value="">${ Translations._('Form|Select|Blank') }</option>`;
       this.toProductTarget.disabled = true;
     }
   }

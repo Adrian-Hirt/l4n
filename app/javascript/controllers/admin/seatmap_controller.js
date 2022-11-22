@@ -1,8 +1,8 @@
 import { Controller } from "@hotwired/stimulus"
 import JsAlert from '../../utils/js_alert'
 import 'konva'
-import 'sweetalert2'
-const i18n = require("gettext.js")();
+import Sweetalert2 from 'sweetalert2'
+import Translations from "../../components/translations"
 
 export default class extends Controller {
   static targets = [
@@ -34,7 +34,7 @@ export default class extends Controller {
     let seatCategoryId = this.seatCategorySelectorTarget.value;
 
     if(!seatCategoryId) {
-      new JsAlert(i18n.gettext('SeatMap|You need to select a seat category to add a seat!'), 'danger').show();
+      new JsAlert(Translations._('SeatMap|You need to select a seat category to add a seat!'), 'danger').show();
 
       return false;
     }
@@ -43,7 +43,7 @@ export default class extends Controller {
 
     // Check that we add at least 1 seat
     if (seatQuantity < 1) {
-      new JsAlert(i18n.gettext('SeatMap|You need to create at least 1 seat!'), 'danger').show();
+      new JsAlert(Translations._('SeatMap|You need to create at least 1 seat!'), 'danger').show();
 
       return false;
     }
@@ -128,7 +128,7 @@ export default class extends Controller {
       body: JSON.stringify(postData)
     }).then(response => {
       if(response.ok) {
-        new JsAlert(i18n.gettext('SeatMap|Saved successfully'), 'success').show();
+        new JsAlert(Translations._('SeatMap|Saved successfully'), 'success').show();
       }
       else {
         window.location.reload();
@@ -389,7 +389,7 @@ export default class extends Controller {
     this.stage.on('click', (e) => {
       // if we are selecting with rect, do nothing
       if (this.selectionRectangle.visible()) {
-        this.currentSelectedSeatInfoTarget.innerHTML = i18n.gettext('Admin|Seatmap|Please select a seat');
+        this.currentSelectedSeatInfoTarget.innerHTML = Translations._('Admin|Seatmap|Please select a seat');
         return;
       }
 
@@ -397,7 +397,7 @@ export default class extends Controller {
       if (e.target === this.stage || e.target === this.background) {
         this.transformer.nodes([]);
 
-        this.currentSelectedSeatInfoTarget.innerHTML = i18n.gettext('Admin|Seatmap|Please select a seat');
+        this.currentSelectedSeatInfoTarget.innerHTML = Translations._('Admin|Seatmap|Please select a seat');
         return;
       }
 
@@ -464,14 +464,14 @@ export default class extends Controller {
     }
 
     Sweetalert2.fire({
-      title: i18n.gettext('SeatMap|Change seat category'),
-      text:  i18n.gettext('SeatMap|Please select the new seat category'),
+      title: Translations._('SeatMap|Change seat category'),
+      text:  Translations._('SeatMap|Please select the new seat category'),
       input: 'select',
       inputOptions: options,
-      inputPlaceholder: i18n.gettext('Form|Select|Blank'),
+      inputPlaceholder: Translations._('Form|Select|Blank'),
       showCancelButton: true,
-      confirmButtonText: i18n.gettext('SweetAlertForm|Save'),
-      cancelButtonText: i18n.gettext('SweetAlertForm|Cancel'),
+      confirmButtonText: Translations._('SweetAlertForm|Save'),
+      cancelButtonText: Translations._('SweetAlertForm|Cancel'),
     }).then(result => {
       if (result.isConfirmed) {
         for (let node of this.transformer.nodes()) {
@@ -486,17 +486,17 @@ export default class extends Controller {
 
   openNamingPopup() {
     Sweetalert2.fire({
-      title: i18n.gettext('SeatMap|Change seat naming'),
+      title: Translations._('SeatMap|Change seat naming'),
       html: `
         <div class="mb-3">
-          ${i18n.gettext('SeatMap|Enter placeholder and offset for the seat naming. A $ in the placeholder will be replaced by an increasing number, starting at the given offset.')}
+          ${Translations._('SeatMap|Enter placeholder and offset for the seat naming. A $ in the placeholder will be replaced by an increasing number, starting at the given offset.')}
         </div>
-        <input id="pattern-input" class="swal2-input" placeholder="${i18n.gettext('Seatmap|Seat name placeholder')}">
-        <input id="start-offset-input" class="swal2-input mb-2" placeholder="${i18n.gettext('Seatmap|Seat name start offset')}">
+        <input id="pattern-input" class="swal2-input" placeholder="${Translations._('Seatmap|Seat name placeholder')}">
+        <input id="start-offset-input" class="swal2-input mb-2" placeholder="${Translations._('Seatmap|Seat name start offset')}">
       `,
       showCancelButton: true,
-      confirmButtonText: i18n.gettext('SweetAlertForm|Save'),
-      cancelButtonText: i18n.gettext('SweetAlertForm|Cancel'),
+      confirmButtonText: Translations._('SweetAlertForm|Save'),
+      cancelButtonText: Translations._('SweetAlertForm|Cancel'),
     }).then(result => {
       if (result.isConfirmed) {
         // Get the placeholder and offset
@@ -505,7 +505,7 @@ export default class extends Controller {
 
         // Exit if the placeholder is empty
         if (!placeholder || placeholder === "") {
-          new JsAlert(i18n.gettext('SeatMap|Placeholder needs to be given!'), 'danger').show();
+          new JsAlert(Translations._('SeatMap|Placeholder needs to be given!'), 'danger').show();
           return;
         }
 
@@ -513,7 +513,7 @@ export default class extends Controller {
         if (offset) {
           offset = parseInt(offset);
           if (isNaN(offset)) {
-            new JsAlert(i18n.gettext('SeatMap|Offset must be a number!'), 'danger').show();
+            new JsAlert(Translations._('SeatMap|Offset must be a number!'), 'danger').show();
             return;
           }
         }
@@ -576,23 +576,23 @@ export default class extends Controller {
 
       if(attributes.taken) {
         if(attributes.userName) {
-          infoString += `${i18n.gettext('Seat|Seat is taken by')}: `;
+          infoString += `${Translations._('Seat|Seat is taken by')}: `;
           infoString += `${attributes.userName}.`
         }
         else {
-          infoString += i18n.gettext('Admin|Seat|Seat is taken.');
+          infoString += Translations._('Admin|Seat|Seat is taken.');
         }
 
-        infoString += ` <a href="/admin/tickets/${attributes.ticketId}" target="_blank">${i18n.gettext('Admin|Show ticket')}</a>`
+        infoString += ` <a href="/admin/tickets/${attributes.ticketId}" target="_blank">${Translations._('Admin|Show ticket')}</a>`
       }
       else {
-        infoString += i18n.gettext('Seatmap|Seat is free');
+        infoString += Translations._('Seatmap|Seat is free');
       }
 
       this.currentSelectedSeatInfoTarget.innerHTML = infoString;
     }
     else {
-      this.currentSelectedSeatInfoTarget.innerHTML = i18n.gettext('Admin|Seatmap|Please select a seat');
+      this.currentSelectedSeatInfoTarget.innerHTML = Translations._('Admin|Seatmap|Please select a seat');
     }
   }
 }

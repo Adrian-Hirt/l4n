@@ -1,9 +1,8 @@
 import { debounce } from "../utils/debounce"
 import { rectanglesLoader } from '../components/loading_animations'
 import EasyMDE from 'easymde'
-import 'sweetalert2'
-
-const i18n = require("gettext.js")();
+import Sweetalert2 from 'sweetalert2'
+import Translations from "./translations"
 
 export default class MarkdownEditor extends EasyMDE {
   // Constructs our markdown editor, which extends the EasyMDE editor
@@ -22,19 +21,18 @@ export default class MarkdownEditor extends EasyMDE {
 
   // Render the markdown for preview.
   static previewRender(plainText, previewContainer) {
-    var self = this;
     let csrfToken = document.querySelector("[name='csrf-token']").content;
 
     // We need to use a timeout of 1 ms before we check if the preview
     // is active, as the EasyMDE only adds the active class after a delay
     // of 1 ms
-    setTimeout(function () {
-      if (!(self.parent.isPreviewActive() || self.parent.isSideBySideActive())) {
+    setTimeout(() => {
+      if (!(this.parent.isPreviewActive() || this.parent.isSideBySideActive())) {
         return null;
       }
 
       // Get the url from the parent
-      var url = self.parent.previewUrl;
+      var url = this.parent.previewUrl;
 
       fetch(url, {
         method: 'POST',
@@ -51,9 +49,9 @@ export default class MarkdownEditor extends EasyMDE {
       .catch((error) => {
         console.error('Error:', error);
         Sweetalert2.fire({
-          title: i18n.gettext('MarkdownEditor|Rendering preview failed'),
+          title: Translations._('MarkdownEditor|Rendering preview failed'),
           icon: 'error',
-          confirmButtonText: i18n.gettext('ConfirmDialog|Confirm')
+          confirmButtonText: Translations._('ConfirmDialog|Confirm')
         });
       });
     }, 1);
@@ -93,132 +91,132 @@ export default class MarkdownEditor extends EasyMDE {
         name: "bold",
         action: EasyMDE.toggleBold,
         className: 'fa fa-bold',
-        title: i18n.gettext('MarkdownEditor|Toolbar|Bold')
+        title: Translations._('MarkdownEditor|Toolbar|Bold')
       },
       {
         name: "italic",
         action: EasyMDE.toggleItalic,
         className: 'fa fa-italic',
-        title: i18n.gettext('MarkdownEditor|Toolbar|Italic')
+        title: Translations._('MarkdownEditor|Toolbar|Italic')
       },
       {
         name: "strikethrough",
         action: EasyMDE.toggleStrikethrough,
         className: 'fa fa-strikethrough',
-        title: i18n.gettext('MarkdownEditor|Toolbar|Strikethrough')
+        title: Translations._('MarkdownEditor|Toolbar|Strikethrough')
       },
       {
         name: "heading",
         action: EasyMDE.toggleHeadingSmaller,
         className: 'fa fa-heading',
-        title: i18n.gettext('MarkdownEditor|Toolbar|Heading')
+        title: Translations._('MarkdownEditor|Toolbar|Heading')
       },
       {
         name: "highlight",
         action: MarkdownEditor.highlight,
         className: 'fas fa-highlighter',
-        title: i18n.gettext('MarkdownEditor|Toolbar|Highlight text'),
+        title: Translations._('MarkdownEditor|Toolbar|Highlight text'),
       },
       "|",
       {
         name: "quote",
         action: EasyMDE.toggleBlockquote,
         className: 'fa fa-quote-left',
-        title: i18n.gettext('MarkdownEditor|Toolbar|Quote')
+        title: Translations._('MarkdownEditor|Toolbar|Quote')
       },
       {
         name: "code",
         action: EasyMDE.toggleCodeBlock,
         className: 'fa fa-code',
-        title: i18n.gettext('MarkdownEditor|Toolbar|Code')
+        title: Translations._('MarkdownEditor|Toolbar|Code')
       },
       {
         name: "unordered-list",
         action: EasyMDE.toggleUnorderedList,
         className: 'fa fa-list-ul',
-        title: i18n.gettext('MarkdownEditor|Toolbar|Unordered list')
+        title: Translations._('MarkdownEditor|Toolbar|Unordered list')
       },
       {
         name: "ordered-list",
         action: EasyMDE.toggleOrderedList,
         className: 'fa fa-list-ol',
-        title: i18n.gettext('MarkdownEditor|Toolbar|Ordered list')
+        title: Translations._('MarkdownEditor|Toolbar|Ordered list')
       },
       {
         name: "clean-block",
         action: EasyMDE.cleanBlock,
         className: 'fa fa-eraser',
-        title: i18n.gettext('MarkdownEditor|Toolbar|Clean block')
+        title: Translations._('MarkdownEditor|Toolbar|Clean block')
       },
       "|",
       {
         name: 'link',
         action: MarkdownEditor.insertLink,
         className: 'fa fa-link',
-        title:  i18n.gettext('MarkdownEditor|Toolbar|Insert link')
+        title:  Translations._('MarkdownEditor|Toolbar|Insert link')
       },
       {
         name: 'image',
         action: MarkdownEditor.insertImage,
         className: 'fa fa-image',
-        title:  i18n.gettext('MarkdownEditor|Toolbar|Insert image')
+        title:  Translations._('MarkdownEditor|Toolbar|Insert image')
       },
       {
         name: "button-table",
         action: EasyMDE.drawTable,
         className: 'fa fa-table',
-        title: i18n.gettext('MarkdownEditor|Toolbar|Insert table')
+        title: Translations._('MarkdownEditor|Toolbar|Insert table')
       },
       {
         name: "horizontal-rule",
         action: EasyMDE.drawHorizontalRule,
         className: 'fa fa-minus',
-        title: i18n.gettext('MarkdownEditor|Toolbar|Insert horizontal rule')
+        title: Translations._('MarkdownEditor|Toolbar|Insert horizontal rule')
       },
       "|",
       {
         name: "insertIcon",
         action: MarkdownEditor.insertIcon,
         className: "fa fa-icons",
-        title: i18n.gettext('MarkdownEditor|Toolbar|Insert an icon')
+        title: Translations._('MarkdownEditor|Toolbar|Insert an icon')
       },
       {
         name: "youtubeVideo",
         action: MarkdownEditor.insertYoutubeVideo,
         className: "fab fa-youtube",
-        title: i18n.gettext('MarkdownEditor|Toolbar|Insert a Youtube video')
+        title: Translations._('MarkdownEditor|Toolbar|Insert a Youtube video')
       },
       {
         name: "googleMaps",
         action: MarkdownEditor.insertGoogleMaps,
         className: "fa fa-map",
-        title: i18n.gettext('MarkdownEditor|Toolbar|Insert map')
+        title: Translations._('MarkdownEditor|Toolbar|Insert map')
       },
       "|",
       {
         name: "preview",
         action: EasyMDE.togglePreview,
         className: 'fa fa-eye no-disable no-mobile',
-        title: i18n.gettext('MarkdownEditor|Toolbar|Toggle preview')
+        title: Translations._('MarkdownEditor|Toolbar|Toggle preview')
       },
       // {
       //   name: "side-by-side",
       //   action: MarkdownEditor.debouncedToggleSideBySide,
       //   className: "fa fa-columns no-disable no-mobile",
-      //   title: i18n.gettext('MarkdownEditor|Toolbar|Show side-by-side preview')
+      //   title: Translations._('MarkdownEditor|Toolbar|Show side-by-side preview')
       // },
       // {
       //   name: "fullscreen",
       //   action: EasyMDE.toggleFullScreen,
       //   className: 'fa fa-arrows-alt no-disable no-mobile',
-      //   title: i18n.gettext('MarkdownEditor|Toolbar|Toggle full screen')
+      //   title: Translations._('MarkdownEditor|Toolbar|Toggle full screen')
       // },
       "|",
       {
         name: "iconInfo",
         action: MarkdownEditor.showIconInfo,
         className: "fa fa-info-circle",
-        title: i18n.gettext('MarkdownEditor|Toolbar|Need help with the icons?')
+        title: Translations._('MarkdownEditor|Toolbar|Need help with the icons?')
       }
     ]
   }
@@ -247,12 +245,12 @@ export default class MarkdownEditor extends EasyMDE {
   // Insert a font awesome icon
   static insertIcon(editor) {
     Sweetalert2.fire({
-      title: i18n.gettext('MarkdownEditor|Popup|Insert icon'),
-      text:  i18n.gettext('MarkdownEditor|Popup|Please enter the name of the icon you want to use. If you need help with the names of the icons, click on the i button in the editor!'),
+      title: Translations._('MarkdownEditor|Popup|Insert icon'),
+      text:  Translations._('MarkdownEditor|Popup|Please enter the name of the icon you want to use. If you need help with the names of the icons, click on the i button in the editor!'),
       input: 'text',
       showCancelButton: true,
-      confirmButtonText: i18n.gettext('MarkdownEditor|Popup|Confirm'),
-      cancelButtonText: i18n.gettext('MarkdownEditor|Popup|Cancel'),
+      confirmButtonText: Translations._('MarkdownEditor|Popup|Confirm'),
+      cancelButtonText: Translations._('MarkdownEditor|Popup|Cancel'),
     }).then(result => {
       if (result.isConfirmed) {
         var icon = result.value;
@@ -272,12 +270,12 @@ export default class MarkdownEditor extends EasyMDE {
   // Insert a youtube video as an iframe
   static insertYoutubeVideo(editor) {
     Sweetalert2.fire({
-      title: i18n.gettext('MarkdownEditor|Popup|Insert youtube video'),
-      text:  i18n.gettext("MarkdownEditor|Popup|Please paste the URL of the youtube video here. The URL needs to be of format 'https://www.youtube.com/watch?v='"),
+      title: Translations._('MarkdownEditor|Popup|Insert youtube video'),
+      text:  Translations._("MarkdownEditor|Popup|Please paste the URL of the youtube video here. The URL needs to be of format 'https://www.youtube.com/watch?v='"),
       input: 'text',
       showCancelButton: true,
-      confirmButtonText: i18n.gettext('MarkdownEditor|Popup|Confirm'),
-      cancelButtonText: i18n.gettext('MarkdownEditor|Popup|Cancel'),
+      confirmButtonText: Translations._('MarkdownEditor|Popup|Confirm'),
+      cancelButtonText: Translations._('MarkdownEditor|Popup|Cancel'),
     }).then(result => {
       if (result.isConfirmed) {
         var url = result.value;
@@ -294,12 +292,12 @@ export default class MarkdownEditor extends EasyMDE {
   // Insert a google maps map as an iframe
   static insertGoogleMaps(editor) {
     Sweetalert2.fire({
-      title: i18n.gettext('MarkdownEditor|Popup|Insert Google Maps Map'),
-      text:  i18n.gettext("MarkdownEditor|Popup|Please paste the URL of the map you want to share here! The URL needs to be of format 'https://www.google.com/maps/d/embed?mid=' or 'https://www.google.com/maps/embed?pb='"),
+      title: Translations._('MarkdownEditor|Popup|Insert Google Maps Map'),
+      text:  Translations._("MarkdownEditor|Popup|Please paste the URL of the map you want to share here! The URL needs to be of format 'https://www.google.com/maps/d/embed?mid=' or 'https://www.google.com/maps/embed?pb='"),
       input: 'text',
       showCancelButton: true,
-      confirmButtonText: i18n.gettext('MarkdownEditor|Popup|Confirm'),
-      cancelButtonText: i18n.gettext('MarkdownEditor|Popup|Cancel'),
+      confirmButtonText: Translations._('MarkdownEditor|Popup|Confirm'),
+      cancelButtonText: Translations._('MarkdownEditor|Popup|Cancel'),
     }).then(result => {
       if (result.isConfirmed) {
         var url = result.value;
@@ -322,12 +320,12 @@ export default class MarkdownEditor extends EasyMDE {
   // popup, as this looks way better
   static insertLink(editor) {
     Sweetalert2.fire({
-      title: i18n.gettext('MarkdownEditor|Popup|Please enter your link'),
+      title: Translations._('MarkdownEditor|Popup|Please enter your link'),
       input: 'text',
       inputPlaceholder: 'https://',
       showCancelButton: true,
-      confirmButtonText: i18n.gettext('MarkdownEditor|Popup|Confirm'),
-      cancelButtonText: i18n.gettext('MarkdownEditor|Popup|Cancel'),
+      confirmButtonText: Translations._('MarkdownEditor|Popup|Confirm'),
+      cancelButtonText: Translations._('MarkdownEditor|Popup|Cancel'),
     }).then(result => {
       if (result.isConfirmed) {
         var url = result.value;
@@ -343,12 +341,12 @@ export default class MarkdownEditor extends EasyMDE {
   // popup, as this looks way better
   static insertImage(editor) {
     Sweetalert2.fire({
-      title: i18n.gettext('MarkdownEditor|Popup|Please enter the URL of the image'),
+      title: Translations._('MarkdownEditor|Popup|Please enter the URL of the image'),
       input: 'text',
       inputPlaceholder: 'https://',
       showCancelButton: true,
-      confirmButtonText: i18n.gettext('MarkdownEditor|Popup|Confirm'),
-      cancelButtonText: i18n.gettext('MarkdownEditor|Popup|Cancel'),
+      confirmButtonText: Translations._('MarkdownEditor|Popup|Confirm'),
+      cancelButtonText: Translations._('MarkdownEditor|Popup|Cancel'),
     }).then(result => {
       if (result.isConfirmed) {
         var url = result.value;

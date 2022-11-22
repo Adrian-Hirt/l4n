@@ -8,10 +8,11 @@ import "@fortawesome/fontawesome-free/js/all"
 
 FontAwesome.config.mutateApproach = 'sync'
 
+Translations.setup();
+
 // Our controllers
 import "./controllers/index.js"
 
 document.addEventListener('turbo:load', function () {
-  Translations.setup();
   BootstrapTooltips.setup();
 });

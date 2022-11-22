@@ -14,4 +14,8 @@ export default class Translations {
   static setup() {
     this.loadTranslations();
   }
+
+  static _(string) {
+    return i18n.gettext(string);
+  }
 };

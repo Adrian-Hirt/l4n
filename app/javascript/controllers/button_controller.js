@@ -1,6 +1,6 @@
 import { Controller } from '@hotwired/stimulus'
-import 'sweetalert2'
-const i18n = require("gettext.js")();
+import Sweetalert2 from 'sweetalert2'
+import Translations from "../components/translations"
 
 export default class extends Controller {
   connect() {
@@ -22,8 +22,8 @@ export default class extends Controller {
       text: text || '',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: i18n.gettext('ConfirmDialog|Confirm'),
-      cancelButtonText: i18n.gettext('ConfirmDialog|Cancel')
+      confirmButtonText: Translations._('ConfirmDialog|Confirm'),
+      cancelButtonText: Translations._('ConfirmDialog|Cancel')
     }).then(result => {
       if(result.isConfirmed) {
         this.confirmed = true;

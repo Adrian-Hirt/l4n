@@ -3,6 +3,8 @@ import MarkdownEditor from '../../components/markdown_editor'
 
 export default class extends Controller {
   connect() {
-    new MarkdownEditor(this.element);
+    setTimeout(() => {
+      new MarkdownEditor(this.element);
+    }, 100);
   }
 }
