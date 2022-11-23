@@ -2218,7 +2218,7 @@ msgid "SekiPaymentGateway|Countdown loading..."
 msgstr "Countdown loading..."
 
 msgid "SekiPaymentGateway|Description, order_id: %{order_id}"
-msgstr "Please pay your order within the next 4 days in the VSETH Sekretatiat. Your order ID is: %{order_id}. If you don't pay your order until then, it will be deleted!"
+msgstr "Please pay your order within the next 4 days in the VSETH Sekretatiat. If you don't pay your order until then, it will be deleted!<br><br>Your order ID is: %{order_id}.<br><br>You can also find the order ID in \"My Orders\" in the Shop."
 
 msgid "SekiPaymentGateway|Order details"
 msgstr "Order"
