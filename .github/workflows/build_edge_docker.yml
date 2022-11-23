@@ -39,4 +39,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: edge
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
