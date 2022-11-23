@@ -1,4 +1,7 @@
 N_('User|Password')
+N_('Ticket|Seat_category')
+
+# Translated enums
 
 # Product Behaviours
 N_('ProductBehaviours|Dummy')

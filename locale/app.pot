@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-21 21:03+0100\n"
-"PO-Revision-Date: 2022-11-21 21:03+0100\n"
+"POT-Creation-Date: 2022-11-23 11:46+0100\n"
+"PO-Revision-Date: 2022-11-23 11:46+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -1992,6 +1992,9 @@ msgstr ""
 msgid "Seatmap"
 msgstr ""
 
+msgid "Seatmap|Hover over badge to see type"
+msgstr ""
+
 msgid "Seatmap|Please select a seat"
 msgstr ""
 
@@ -2586,6 +2589,12 @@ msgstr ""
 msgid "Ticket|Order"
 msgstr ""
 
+msgid "Ticket|Product variant name"
+msgstr ""
+
+msgid "Ticket|Product_variant_name"
+msgstr ""
+
 msgid "Ticket|QR code only available when user is assigned"
 msgstr ""
 
@@ -2617,6 +2626,9 @@ msgid "Ticket|Seat could not be removed"
 msgstr ""
 
 msgid "Ticket|Seat could not be taken"
+msgstr ""
+
+msgid "Ticket|Seat_category"
 msgstr ""
 
 msgid "Ticket|Show QR"

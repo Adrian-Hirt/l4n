@@ -378,7 +378,7 @@ export default class extends Controller {
       }
     }
 
-    this.currentSelectedSeatInfoTarget.innerHTML = Translations._._('Seatmap|Please select a seat');
+    this.currentSelectedSeatInfoTarget.innerHTML = Translations._('Seatmap|Please select a seat');
   }
 
   #highlightSeats() {
@@ -418,15 +418,15 @@ export default class extends Controller {
       let username = attributes.userName;
 
       if(username) {
-        infoString += `${Translations._._('Seat|Seat is taken by')}: `;
+        infoString += `${Translations._('Seat|Seat is taken by')}: `;
         infoString += `<a href="/users/${attributes.userId}" target="_blank">${username}</a>`
       }
       else {
-        infoString += Translations._._('Seat|Seat is taken');
+        infoString += Translations._('Seat|Seat is taken');
       }
     }
     else {
-      infoString += Translations._._('Seatmap|Seat is free');
+      infoString += Translations._('Seatmap|Seat is free');
     }
 
     this.currentSelectedSeatInfoTarget.innerHTML = infoString;

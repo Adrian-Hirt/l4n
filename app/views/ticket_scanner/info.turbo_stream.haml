@@ -19,6 +19,9 @@
         %tr
           %td= _('Ticket|Status')
           %td= op.ticket.humanized_status
+        %tr
+          %td= _('Ticket|Product variant name')
+          %td= op.ticket.product_variant_name
     .col-md-6
       = form_with url: ticket_scanner_checkin_path do |f|
         = f.hidden_field :qr_id, value: op.qr_id

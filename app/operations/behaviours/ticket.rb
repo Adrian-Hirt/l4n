@@ -3,9 +3,10 @@ module Operations::Behaviours
     def perform
       osparams.order_item.quantity.times do
         ::Ticket.create!({
-                           lan_party:     osparams.product.seat_category.lan_party,
-                           seat_category: osparams.product.seat_category,
-                           order:         osparams.order_item.order
+                           lan_party:            osparams.product.seat_category.lan_party,
+                           seat_category:        osparams.product.seat_category,
+                           order:                osparams.order_item.order,
+                           product_variant_name: osparams.order_item.product_variant.name
                          })
       end
     end

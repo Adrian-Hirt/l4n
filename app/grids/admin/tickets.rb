@@ -10,6 +10,7 @@ module Grids
       column :seat_category, html: true do |ticket|
         ticket_seat_category_badge(ticket)
       end
+      column :product_variant_name
 
       column :assignee, html: ->(assignee) { assignee&.username }
       column :seat, html: ->(seat) { seat&.id }

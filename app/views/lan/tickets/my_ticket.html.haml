@@ -28,6 +28,9 @@
             .badge{style: "background-color: #{op.ticket.seat_category.color_for_view}; color: #{op.ticket.seat_category.font_color_for_view}"}
               = op.ticket.seat_category.name
         %tr
+          %td= _('Ticket|Product_variant_name')
+          %td= op.ticket.product_variant_name.presence || '-'
+        %tr
           %td= _('Ticket|Status')
           %td= op.ticket.humanized_status
         %tr{style: 'border-top: 2px solid grey;'}

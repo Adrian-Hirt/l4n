@@ -1056,7 +1056,7 @@ msgid "FooterLogo|Visible"
 msgstr "Visible"
 
 msgid "Form|Select|Blank"
-msgstr "Blank"
+msgstr "--"
 
 msgid "Form|Select|Show all"
 msgstr "Show all"
@@ -1991,6 +1991,9 @@ msgstr "You need to select a seat category to add a seat!"
 msgid "Seatmap"
 msgstr "Seat Map"
 
+msgid "Seatmap|Hover over badge to see type"
+msgstr "Hover over badge to see type of ticket"
+
 msgid "Seatmap|Please select a seat"
 msgstr "Please select a seat"
 
@@ -2517,7 +2520,7 @@ msgid "Tickets|Ticket manage view hint"
 msgstr "Here you can manage & upgrade all tickets you have purchased."
 
 msgid "Tickets|You don't have any tickets for this event"
-msgstr "You don"
+msgstr "You don't have any tickets for this event"
 
 msgid "Ticket|Actions"
 msgstr "Actions"
@@ -2585,6 +2588,12 @@ msgstr "Not found"
 msgid "Ticket|Order"
 msgstr "Order"
 
+msgid "Ticket|Product variant name"
+msgstr "Ticket type"
+
+msgid "Ticket|Product_variant_name"
+msgstr "Ticket type"
+
 msgid "Ticket|QR code only available when user is assigned"
 msgstr "QR code only available when user is assigned"
 
@@ -2617,6 +2626,9 @@ msgstr "Seat could not be removed"
 
 msgid "Ticket|Seat could not be taken"
 msgstr "Seat could not be taken"
+
+msgid "Ticket|Seat_category"
+msgstr "Seat category"
 
 msgid "Ticket|Show QR"
 msgstr "Show QR"

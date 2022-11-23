@@ -10,9 +10,10 @@
     - if op.tickets.none?
       = _('Tickets|You don\'t have any tickets for this event')
     - else
-      %table.table
+      %table.table.mb-0
         %tr
           %th= _('Ticket|Category')
+          %th= _('Ticket|Product_variant_name')
           %th= _('Ticket|Seat')
           %th= _('Ticket|Assignee')
           %th= _('Ticket|Apply upgrade')
@@ -21,6 +22,8 @@
             %td.align-middle
               = ticket_seat_category_badge(ticket)
             %td.align-middle
+              = ticket.product_variant_name.presence || '-'
+            %td.align-middle
               = ticket.seat&.name_or_id.presence || '&nbsp;'.html_safe
             %td.align-middle
               = ticket.assignee&.username || _('Ticket|Unassigned')
@@ -28,13 +31,15 @@
               = simple_form_for :ticket_upgrade, url: apply_upgrade_lan_tickets_path(ticket) do |f|
                 .d-flex
                   = f.input :ticket_id, input_html: { value: ticket.id }, as: :hidden
+                  - available_upgrades = op.ticket_upgrades.reject(&:used).filter { |upgrade| upgrade.from_product.seat_category == ticket.seat_category }
                   = f.input :upgrade_id, as: :select,
-                                          collection: op.ticket_upgrades.reject(&:used).filter { |upgrade| upgrade.from_product.seat_category == ticket.seat_category },
+                                          collection: available_upgrades,
                                           include_blank: _('Form|Select|Blank'),
                                           label_method: :name,
                                           label: false,
-                                          wrapper_html: { style: 'margin-bottom: 0 !important;', class: 'me-1' }
-                  = f.save _('TicketUpgrade|Upgrade'), class: %i[btn-default]
+                                          wrapper_html: { style: 'margin-bottom: 0 !important;', class: 'me-1 flex-grow-1' },
+                                          disabled: available_upgrades.none?
+                  = f.save _('TicketUpgrade|Upgrade'), class: %i[btn-default], disabled: available_upgrades.none?
 .card
   .card-header
     = _('TicketUpgrades|Manage my ticket upgrades')

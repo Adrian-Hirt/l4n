@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_20_195213) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_23_102144) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -388,6 +388,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_20_195213) do
     t.datetime "updated_at", null: false
     t.bigint "assignee_id"
     t.string "status", default: "created", null: false
+    t.string "product_variant_name"
     t.index ["assignee_id"], name: "index_tickets_on_assignee_id"
     t.index ["lan_party_id"], name: "index_tickets_on_lan_party_id"
     t.index ["order_id"], name: "index_tickets_on_order_id"

@@ -4,39 +4,44 @@
       .card-header
         = _('Ticket|Info')
       .card-body
-        .mb-2
-          = _('Ticket|Seat category')
-          .small.text-muted
-            = ticket_seat_category_badge(model)
-        .mb-2
-          = _('Ticket|Status')
-          .small.text-muted
-            = model.humanized_status
-        .mb-2
-          = _('Ticket|Order')
-          .small.text-muted
-            - if model.order.present?
-              = link_to model.order.formatted_id, admin_shop_order_path(model.order)
-            - else
-              = _('Admin|Ticket|Generated in admin panel')
-        .mb-2
-          = _('Ticket|Assignee')
-          .small.text-muted
-            - if model.assignee.present?
-              = link_to user_path(model.assignee), target: :_blank do
-                = model.assignee.username
-                = icon %i[fas fa-arrow-up-right-from-square]
-            - else
-              \-
-        .mb-2
-          = _('Ticket|Seat')
-          .small.text-muted
-            - if model.seat.present?
-              = link_to lan_seatmap_path(highlight: model.seat.id), target: :_blank do
-                = model.seat.id
-                = icon %i[fas fa-arrow-up-right-from-square]
-            - else
-              \-
+        .row
+          .col-md-6.mb-3
+            = _('Ticket|Seat category')
+            .small.text-muted
+              = ticket_seat_category_badge(model)
+          .col-md-6.mb-3
+            = _('Ticket|Product_variant_name')
+            .small.text-muted
+              = model.product_variant_name.presence || '-'
+          .col-md-6.mb-3
+            = _('Ticket|Status')
+            .small.text-muted
+              = model.humanized_status
+          .col-md-6.mb-3
+            = _('Ticket|Order')
+            .small.text-muted
+              - if model.order.present?
+                = link_to model.order.formatted_id, admin_shop_order_path(model.order)
+              - else
+                = _('Admin|Ticket|Generated in admin panel')
+          .col-md-6.mb-3
+            = _('Ticket|Assignee')
+            .small.text-muted
+              - if model.assignee.present?
+                = link_to user_path(model.assignee), target: :_blank do
+                  = model.assignee.username
+                  = icon %i[fas fa-arrow-up-right-from-square]
+              - else
+                \-
+          .col-md-6.mb-3
+            = _('Ticket|Seat')
+            .small.text-muted
+              - if model.seat.present?
+                = link_to lan_seatmap_path(highlight: model.seat.id), target: :_blank do
+                  = model.seat.id
+                  = icon %i[fas fa-arrow-up-right-from-square]
+              - else
+                \-
 
   .col-md-4
     .card.mb-3

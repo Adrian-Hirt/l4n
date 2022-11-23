@@ -12,7 +12,7 @@ export default class extends Controller {
     let selectedOption = event.currentTarget.selectedOptions[0].value;
 
     if (selectedOption) {
-      let optStr = `<option value="">${ Translations._._('Form|Select|Blank') }</option>`;
+      let optStr = `<option value="">${ Translations._('Form|Select|Blank') }</option>`;
 
       for (let opt of this.options[selectedOption]) {
         optStr += `<option value="${opt.id}">${opt.name}</option>`
@@ -22,7 +22,7 @@ export default class extends Controller {
       this.categoryTarget.disabled = false;
     }
     else {
-      this.categoryTarget.innerHTML = `<option value="">${ Translations._._('Form|Select|Blank') }</option>`;
+      this.categoryTarget.innerHTML = `<option value="">${ Translations._('Form|Select|Blank') }</option>`;
       this.categoryTarget.disabled = true;
     }
   }
