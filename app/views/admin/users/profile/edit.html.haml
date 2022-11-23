@@ -2,6 +2,13 @@
   .col-md-3
     = render partial: 'admin/users/sidebar'
   .col-md-9
+    - unless model.confirmed?
+      .card.mb-3
+        .card-body
+          = _('Admin|User|User is not yet confirmed, click confirm below to confirm the user manually')
+        .card-footer
+          = button _('Admin|User|Confirm now'), confirm_admin_user_path(model), confirm: _('Admin|User|Do you really want to confirm this user?'), method: :post
+
     .card
       = simple_form_for model, url: profile_admin_user_path(model), wrapper: :input_group do |f|
         .card-body

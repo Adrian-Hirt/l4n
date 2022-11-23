@@ -785,6 +785,15 @@ msgstr "Avatar removed successfully"
 msgid "Admin|User|Avatar|Avatar updated successfully"
 msgstr "Avatar updated successfully"
 
+msgid "Admin|User|Cannot be confirmed"
+msgstr "Cannot be confirmed"
+
+msgid "Admin|User|Confirm now"
+msgstr "Confirm now"
+
+msgid "Admin|User|Do you really want to confirm this user?"
+msgstr "Do you really want to confirm this user?"
+
 msgid "Admin|User|List permissions"
 msgstr "List permissions"
 
@@ -793,6 +802,12 @@ msgstr "Permissions"
 
 msgid "Admin|User|Profile"
 msgstr "Profile"
+
+msgid "Admin|User|Successfully confirmed user"
+msgstr "Successfully confirmed user"
+
+msgid "Admin|User|User is not yet confirmed, click confirm below to confirm the user manually"
+msgstr "User is not yet confirmed, click confirm below to confirm the user manually"
 
 msgid "Admin|Welcome to the L4N Admin panel, version %{version}"
 msgstr "Welcome to the L4N Admin panel, version %{version}"

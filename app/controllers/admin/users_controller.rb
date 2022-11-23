@@ -35,5 +35,14 @@ module Admin
       op Operations::Admin::User::ListPermissions
       add_breadcrumb _('Admin|Users|Permissions')
     end
+
+    def confirm
+      if run Operations::Admin::User::Confirm
+        flash[:success] = _('Admin|User|Successfully confirmed user')
+      else
+        flash[:danger] = _('Admin|User|Cannot be confirmed')
+      end
+      redirect_to admin_user_path(model)
+    end
   end
 end

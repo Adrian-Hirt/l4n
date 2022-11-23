@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-23 16:51+0100\n"
-"PO-Revision-Date: 2022-11-23 16:51+0100\n"
+"POT-Creation-Date: 2022-11-23 19:05+0100\n"
+"PO-Revision-Date: 2022-11-23 19:05+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -786,6 +786,15 @@ msgstr ""
 msgid "Admin|User|Avatar|Avatar updated successfully"
 msgstr ""
 
+msgid "Admin|User|Cannot be confirmed"
+msgstr ""
+
+msgid "Admin|User|Confirm now"
+msgstr ""
+
+msgid "Admin|User|Do you really want to confirm this user?"
+msgstr ""
+
 msgid "Admin|User|List permissions"
 msgstr ""
 
@@ -793,6 +802,12 @@ msgid "Admin|User|Permissions"
 msgstr ""
 
 msgid "Admin|User|Profile"
+msgstr ""
+
+msgid "Admin|User|Successfully confirmed user"
+msgstr ""
+
+msgid "Admin|User|User is not yet confirmed, click confirm below to confirm the user manually"
 msgstr ""
 
 msgid "Admin|Welcome to the L4N Admin panel, version %{version}"
