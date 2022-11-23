@@ -23,7 +23,7 @@ module L4n
     # ActiveRecord encryption
     config.active_record.encryption.primary_key = Figaro.env.ar_primary_key!
     config.active_record.encryption.deterministic_key = Figaro.env.ar_deterministic_key!
-    config.active_record.encryption.key_derivation_salt = Figaro.env.key_derivation_salt!
+    config.active_record.encryption.key_derivation_salt = Figaro.env.ar_key_derivation_salt!
 
     # Array holding the payment gateways
     config.payment_gateways = []
