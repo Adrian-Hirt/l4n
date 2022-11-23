@@ -1,4 +1,4 @@
-unless Rails.env.test? || ENV['RUNNING_ON_HEROKU'].present?
+if Rails.env.development?
   Figaro.require_keys(%w[
                         paypal_id
                         paypal_secret
