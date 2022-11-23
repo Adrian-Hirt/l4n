@@ -16,5 +16,9 @@
         %br
         = "#{model.billing_address_zip_code} #{model.billing_address_city}"
 
-  = turbo_stream.update 'payment_gateways' do
-    = render partial: 'payment_gateways'
+  - if AppConfig.enable_terms_and_conditions
+    = turbo_stream.update 'terms_and_conditions' do
+      = render partial: 'terms_and_conditions_form'
+  - else
+    = turbo_stream.update 'payment_gateways' do
+      = render partial: 'payment_gateways'

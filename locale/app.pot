@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-23 13:08+0100\n"
-"PO-Revision-Date: 2022-11-23 13:08+0100\n"
+"POT-Creation-Date: 2022-11-23 16:51+0100\n"
+"PO-Revision-Date: 2022-11-23 16:51+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -336,7 +336,13 @@ msgstr ""
 msgid "Admin|Settings|Enable news block"
 msgstr ""
 
+msgid "Admin|Settings|Enable terms and conditions"
+msgstr ""
+
 msgid "Admin|Settings|Save"
+msgstr ""
+
+msgid "Admin|Settings|Terms and conditions URL"
 msgstr ""
 
 msgid "Admin|Shop"
@@ -732,6 +738,9 @@ msgstr ""
 msgid "Admin|Tournament|The tournament is full"
 msgstr ""
 
+msgid "Admin|Uploads"
+msgstr ""
+
 msgid "Admin|Users"
 msgstr ""
 
@@ -882,7 +891,25 @@ msgstr ""
 msgid "Checkout"
 msgstr ""
 
+msgid "Checkout|An product variant has been deleted"
+msgstr ""
+
 msgid "Checkout|Click here to add an address"
+msgstr ""
+
+msgid "Checkout|Could not set the order as payment pending"
+msgstr ""
+
+msgid "Checkout|No address present"
+msgstr ""
+
+msgid "Checkout|No order_id given"
+msgstr ""
+
+msgid "Checkout|Order expired"
+msgstr ""
+
+msgid "Checkout|Order has wrong status"
 msgstr ""
 
 msgid "Checkout|Payment options"
@@ -907,6 +934,9 @@ msgid "Checkout|The promotion code is already applied to this order!"
 msgstr ""
 
 msgid "Checkout|Use this address"
+msgstr ""
+
+msgid "Checkout|You did not accepd the terms and conditions"
 msgstr ""
 
 msgid "Checkout|You have reached the max number of codes for this order!"
@@ -1518,6 +1548,9 @@ msgstr ""
 msgid "Orders|Payment pending"
 msgstr ""
 
+msgid "Order|Accept terms and conditions"
+msgstr ""
+
 msgid "Order|Billing address"
 msgstr ""
 
@@ -1534,6 +1567,9 @@ msgid "Order|Billing address street"
 msgstr ""
 
 msgid "Order|Billing address zip code"
+msgstr ""
+
+msgid "Order|By clicking the %{button_text} button below, you accept our terms and conditions, which you can find at"
 msgstr ""
 
 msgid "Order|Canceled successfully"
@@ -1561,6 +1597,12 @@ msgid "Order|Created at"
 msgstr ""
 
 msgid "Order|Delayed payment required hint"
+msgstr ""
+
+msgid "Order|Do not accept terms and conditions"
+msgstr ""
+
+msgid "Order|Gtcs accepted"
 msgstr ""
 
 msgid "Order|Number of items"
@@ -1611,6 +1653,9 @@ msgstr ""
 msgid "Order|Successfully submitted for later payment"
 msgstr ""
 
+msgid "Order|Terms and conditions"
+msgstr ""
+
 msgid "Order|Total"
 msgstr ""
 
@@ -1626,7 +1671,13 @@ msgstr ""
 msgid "Order|Uuid"
 msgstr ""
 
+msgid "Order|You need to accept the terms and conditions to continue your checkyout. Are you sure you do not want to accept the terms and conditions?"
+msgstr ""
+
 msgid "Order|Your total is more than zero"
+msgstr ""
+
+msgid "Order|the terms and conditions page"
 msgstr ""
 
 msgid "Page"
@@ -1708,9 +1759,6 @@ msgid "PaypalPaymentGateway|Payment details"
 msgstr ""
 
 msgid "PaypalPaymentGateway|Something went wrong, please try again"
-msgstr ""
-
-msgid "PaypalPaymentGateway|There was an error, please try again"
 msgstr ""
 
 msgid "PaypalPaymentGateway|Time left:"
@@ -2274,10 +2322,10 @@ msgstr ""
 msgid "Settings|Scope|Application"
 msgstr ""
 
-msgid "Settings|Scope|Sidebar"
+msgid "Settings|Scope|Shop"
 msgstr ""
 
-msgid "Settings|Scope|sidebar"
+msgid "Settings|Scope|Sidebar"
 msgstr ""
 
 msgid "Settings|Update profile"
@@ -3309,6 +3357,24 @@ msgstr ""
 msgid "TwoFactor|Scan code with auth app"
 msgstr ""
 
+msgid "Upload"
+msgstr ""
+
+msgid "Upload|Filename"
+msgstr ""
+
+msgid "Upload|Size"
+msgstr ""
+
+msgid "Upload|Type"
+msgstr ""
+
+msgid "Upload|Uploaded at"
+msgstr ""
+
+msgid "Upload|Uploaded by"
+msgstr ""
+
 msgid "User"
 msgstr ""
 
@@ -3553,6 +3619,9 @@ msgid "User|TwoFactor|Not enabled"
 msgstr ""
 
 msgid "User|Update password"
+msgstr ""
+
+msgid "User|Upload admin permission"
 msgstr ""
 
 msgid "User|Upload avatar"

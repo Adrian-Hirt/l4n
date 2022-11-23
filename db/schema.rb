@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_23_141004) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_23_152954) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -173,6 +173,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_23_141004) do
     t.string "payment_gateway_name"
     t.string "payment_gateway_payment_id"
     t.uuid "uuid", default: -> { "gen_random_uuid()" }
+    t.boolean "gtcs_accepted", default: false, null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
     t.index ["uuid"], name: "index_orders_on_uuid", unique: true
   end

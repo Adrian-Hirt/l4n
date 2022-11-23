@@ -1,18 +1,19 @@
-= simple_form_for op.order, url: shop_checkout_set_address_path(id: op.order.id), remote: true do |f|
-  .card-header
-    = _('Checkout|Select your billing address')
-  .card-body.pb-0
-    .row
-      - current_user.user_addresses.each do |user_address|
-        .col-md-4.mb-md-4.mb-2
-          .border.p-3.bg-light
-            = "#{user_address.first_name} #{user_address.last_name}"
-            %br
-            = user_address.street
-            %br
-            = "#{user_address.zip_code} #{user_address.city}"
-            .form-check.mt-2.mb-0
-              = radio_button_tag :selected_address_id, user_address.id, false, class: 'form-check-input radio_buttons radio-default'
-              = f.label :selected_address_id, _('Checkout|Use this address'), for: "selected_address_id_#{user_address.id}"
-  .card-footer
-    = f.save _('Order|Set address'), class: %i[btn-default]
+.card.mb-3
+  = simple_form_for op.order, url: shop_checkout_set_address_path(id: op.order.id), remote: true do |f|
+    .card-header
+      = _('Checkout|Select your billing address')
+    .card-body.pb-0
+      .row
+        - current_user.user_addresses.each do |user_address|
+          .col-md-4.mb-md-4.mb-2
+            .border.p-3.bg-light
+              = "#{user_address.first_name} #{user_address.last_name}"
+              %br
+              = user_address.street
+              %br
+              = "#{user_address.zip_code} #{user_address.city}"
+              .form-check.mt-2.mb-0
+                = radio_button_tag :selected_address_id, user_address.id, false, class: 'form-check-input radio_buttons radio-default'
+                = f.label :selected_address_id, _('Checkout|Use this address'), for: "selected_address_id_#{user_address.id}"
+    .card-footer
+      = f.save _('Order|Set address'), class: %i[btn-default]

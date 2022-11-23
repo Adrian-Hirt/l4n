@@ -14,6 +14,12 @@ module Shop
       redirect_to shop_cart_path
     end
 
+    def accept_gtcs
+      run Operations::Shop::Order::AcceptGtcs
+
+      respond_to :turbo_stream
+    end
+
     def set_address
       run Operations::Shop::Order::SetOrderAddress
 

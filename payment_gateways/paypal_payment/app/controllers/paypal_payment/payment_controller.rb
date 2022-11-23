@@ -4,8 +4,8 @@ module PaypalPayment
 
     def index
       run Operations::PaymentGateway::GetPaymentInfo
-    rescue Operations::PaymentGateway::InvalidOrder
-      flash[:danger] = _('PaypalPaymentGateway|There was an error, please try again')
+    rescue Operations::PaymentGateway::InvalidOrder => e
+      flash[:danger] = e.message
       redirect_to main_app.shop_cart_path
     end
 

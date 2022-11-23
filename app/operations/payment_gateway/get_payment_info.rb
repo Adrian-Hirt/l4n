@@ -9,26 +9,28 @@ module Operations::PaymentGateway
     attr_accessor :result
 
     def perform
-      fail InvalidOrder, 'No order_id given' if osparams.order_id.blank?
+      fail InvalidOrder, _('Checkout|No order_id given') if osparams.order_id.blank?
 
       # Get order
       order = ::Order.find_by(uuid: osparams.order_id)
 
       # Verify that the order is still active and in the correct state
-      fail InvalidOrder, 'Order has wrong status' unless order.created? || order.payment_pending?
+      fail InvalidOrder, _('Checkout|Order has wrong status') unless order.created? || order.payment_pending?
 
-      fail InvalidOrder, 'Order expired' if order.expired?
+      fail InvalidOrder, _('Checkout|Order expired') if order.expired?
+
+      fail InvalidOrder, _('Checkout|You did not accepd the terms and conditions') if AppConfig.enable_terms_and_conditions && !order.gtcs_accepted
 
       # Check that no product_variant has been deleted while loading the payment gateway
-      fail InvalidOrder, 'An product variant has been deleted' if order.order_items.any? { |order_item| order_item.product_variant.nil? }
+      fail InvalidOrder, _('Checkout|An product variant has been deleted') if order.order_items.any? { |order_item| order_item.product_variant.nil? }
 
-      fail InvalidOrder, 'No address present' unless order.address_present?
+      fail InvalidOrder, _('Checkout|No address present') unless order.address_present?
 
       # Set order as payment pending
       begin
         order.payment_pending!
       rescue ActiveRecord::RecordInvalid
-        fail InvalidOrder, 'Could not set the order as payment pending'
+        fail InvalidOrder, _('Checkout|Could not set the order as payment pending')
       end
 
       @result = {}

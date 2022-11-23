@@ -3,6 +3,8 @@ module Operations::Admin::Settings
     schema3 do
       hsh? :app_config do
         str? :application_name
+        boo? :enable_terms_and_conditions, cast_str: true
+        str? :terms_and_conditions_url
         boo? :enable_lan_party_block, cast_str: true
         boo? :enable_events_block, cast_str: true
         boo? :enable_news_block, cast_str: true

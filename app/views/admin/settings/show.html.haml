@@ -12,6 +12,15 @@
         %td= AppConfig.application_name
       %tr
         %td{colspan: 2}
+          %b= _('Settings|Scope|Shop')
+      %tr
+        %td{style: 'text-indent: 1em;'}= _('Admin|Settings|Enable terms and conditions')
+        %td= format_boolean AppConfig.enable_terms_and_conditions
+      %tr
+        %td{style: 'text-indent: 1em;'}= _('Admin|Settings|Terms and conditions URL')
+        %td= AppConfig.terms_and_conditions_url
+      %tr
+        %td{colspan: 2}
           %b= _('Settings|Scope|Sidebar')
       %tr
         %td{style: 'text-indent: 1em;'}= _('Admin|Settings|Enable lan party block')

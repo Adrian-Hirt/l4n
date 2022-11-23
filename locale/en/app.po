@@ -335,8 +335,14 @@ msgstr "Enable lan party block"
 msgid "Admin|Settings|Enable news block"
 msgstr "Enable news block"
 
+msgid "Admin|Settings|Enable terms and conditions"
+msgstr "Enable terms and conditions"
+
 msgid "Admin|Settings|Save"
 msgstr "Save"
+
+msgid "Admin|Settings|Terms and conditions URL"
+msgstr "Terms and conditions URL"
 
 msgid "Admin|Shop"
 msgstr "Shop"
@@ -731,6 +737,9 @@ msgstr "The tournament has ongoing phases"
 msgid "Admin|Tournament|The tournament is full"
 msgstr "The tournament is full"
 
+msgid "Admin|Uploads"
+msgstr "Uploads"
+
 msgid "Admin|Users"
 msgstr "Users"
 
@@ -881,8 +890,26 @@ msgstr "Your items"
 msgid "Checkout"
 msgstr "Checkout"
 
+msgid "Checkout|An product variant has been deleted"
+msgstr "An product variant has been deleted"
+
 msgid "Checkout|Click here to add an address"
 msgstr "Click here to add an address"
+
+msgid "Checkout|Could not set the order as payment pending"
+msgstr "Could not set the order as payment pending"
+
+msgid "Checkout|No address present"
+msgstr "No address present"
+
+msgid "Checkout|No order_id given"
+msgstr "No order_id given"
+
+msgid "Checkout|Order expired"
+msgstr "Order expired"
+
+msgid "Checkout|Order has wrong status"
+msgstr "Order has wrong status"
 
 msgid "Checkout|Payment options"
 msgstr "Payment options"
@@ -907,6 +934,10 @@ msgstr "The promotion code is already applied to this order!"
 
 msgid "Checkout|Use this address"
 msgstr "Use this address"
+
+#, fuzzy
+msgid "Checkout|You did not accepd the terms and conditions"
+msgstr "Checkout"
 
 msgid "Checkout|You have reached the max number of codes for this order!"
 msgstr "You have reached the max number of codes for this order!"
@@ -1517,6 +1548,9 @@ msgstr "No payment pending orders"
 msgid "Orders|Payment pending"
 msgstr "Payment pending"
 
+msgid "Order|Accept terms and conditions"
+msgstr "Accept terms and conditions"
+
 msgid "Order|Billing address"
 msgstr "Billing address"
 
@@ -1534,6 +1568,9 @@ msgstr "Billing address street"
 
 msgid "Order|Billing address zip code"
 msgstr "Billing address zip code"
+
+msgid "Order|By clicking the %{button_text} button below, you accept our terms and conditions, which you can find at"
+msgstr "By clicking the %{button_text} button below, you accept our terms and conditions, which you can find at"
 
 msgid "Order|Canceled successfully"
 msgstr "Canceled successfully"
@@ -1561,6 +1598,12 @@ msgstr "Created at"
 
 msgid "Order|Delayed payment required hint"
 msgstr "This order still needs to be paid! Please do so until the time below, as otherwise your order will be deleted"
+
+msgid "Order|Do not accept terms and conditions"
+msgstr "Do not accept terms and conditions"
+
+msgid "Order|Gtcs accepted"
+msgstr "Gtcs accepted"
 
 msgid "Order|Number of items"
 msgstr "Number of items"
@@ -1610,6 +1653,9 @@ msgstr "Successfully paid for the order"
 msgid "Order|Successfully submitted for later payment"
 msgstr "Successfully submitted for later payment"
 
+msgid "Order|Terms and conditions"
+msgstr "Terms and conditions"
+
 msgid "Order|Total"
 msgstr "Total"
 
@@ -1625,8 +1671,14 @@ msgstr "User"
 msgid "Order|Uuid"
 msgstr "Uuid"
 
+msgid "Order|You need to accept the terms and conditions to continue your checkyout. Are you sure you do not want to accept the terms and conditions?"
+msgstr "You need to accept the terms and conditions to continue your checkyout. Are you sure you do not want to accept the terms and conditions?"
+
 msgid "Order|Your total is more than zero"
 msgstr "Your total is more than zero"
+
+msgid "Order|the terms and conditions page"
+msgstr "the terms and conditions page"
 
 msgid "Page"
 msgstr "Page"
@@ -1708,9 +1760,6 @@ msgstr "Payment details"
 
 msgid "PaypalPaymentGateway|Something went wrong, please try again"
 msgstr "Something went wrong, please try again"
-
-msgid "PaypalPaymentGateway|There was an error, please try again"
-msgstr "There was an error, please try again"
 
 msgid "PaypalPaymentGateway|Time left:"
 msgstr "Time left:"
@@ -2273,10 +2322,10 @@ msgstr "Save two factor code"
 msgid "Settings|Scope|Application"
 msgstr "Application"
 
-msgid "Settings|Scope|Sidebar"
-msgstr "Sidebar"
+msgid "Settings|Scope|Shop"
+msgstr "Shop"
 
-msgid "Settings|Scope|sidebar"
+msgid "Settings|Scope|Sidebar"
 msgstr "Sidebar"
 
 msgid "Settings|Update profile"
@@ -3308,6 +3357,24 @@ msgstr "Save the backup codes"
 msgid "TwoFactor|Scan code with auth app"
 msgstr "Scan code with auth app"
 
+msgid "Upload"
+msgstr "Upload"
+
+msgid "Upload|Filename"
+msgstr "Filename"
+
+msgid "Upload|Size"
+msgstr "Size"
+
+msgid "Upload|Type"
+msgstr "Type"
+
+msgid "Upload|Uploaded at"
+msgstr "Uploaded at"
+
+msgid "Upload|Uploaded by"
+msgstr "Uploaded by"
+
 msgid "User"
 msgstr "User"
 
@@ -3553,6 +3620,9 @@ msgstr "Not enabled"
 
 msgid "User|Update password"
 msgstr "Update password"
+
+msgid "User|Upload admin permission"
+msgstr "Upload admin permission"
 
 msgid "User|Upload avatar"
 msgstr "Upload avatar"
