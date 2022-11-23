@@ -2,30 +2,44 @@
 
 ## Required env variables:
 
-* `hcaptcha_site_key`
-* `hcaptcha_site_secret`
-* `steam_web_api_key`
-* `discord_id`
-* `discord_secret`
-* `discord_bot_auth`
+### Rails-specific
 
-When using Paypal gateway:
-
-* `paypal_id`
-* `paypal_secret`
+* `SECRET_KEY_BASE`
+* `AR_PRIMARY_KEY`
+* `AR_DETERMINISTIC_KEY`
+* `AR_KEY_DERIVATION_SALT`
 
 For the mailer gateway in production:
 
-* `use_smtp`
+* `MAILER_HOST`
+* `USE_SMTP`
 
-If this is set to true (and the app uses smtp), we need the following
+If `USE_SMTP` is set to true (and the app uses smtp), we need the following
 variables set as well:
 
-* `mailer_host`
-* `smtp_address`
-* `smtp_port`
-* `smtp_authentication`
-* `smtp_username`
-* `smtp_password`
-* `smtp_domain`
-* `smtp_enable_starttls`
+* `SMTP_ADDRESS`
+* `SMTP_PORT`
+* `SMTP_AUTHENTICATION`
+* `SMTP_USERNAME`
+* `SMTP_PASSWORD`
+* `SMTP_DOMAIN`
+* `SMTP_ENABLE_STARTTLS`
+
+### Securing registration
+
+* `HCAPTCHA_SITE_KEY`
+* `HCAPTCHA_SITE_SECRET`
+
+### Game accounts
+
+* `STEAM_WEB_API_KEY`
+* `DISCORD_ID`
+* `DISCORD_SECRET`
+* `DISCORD_BOT_AUTH`
+
+### Payment gateways
+
+When using Paypal gateway:
+
+* `PAYPAL_ID`
+* `PAYPAL_SECRET`
