@@ -20,7 +20,7 @@ RUN bundle install
 RUN yarn install
 
 # Precompile assets
-RUN bundle exec rake assets:precompile
+RUN BUILDING_DOCKER_IMAGE=1 bundle exec rake assets:precompile
 
 EXPOSE 3000
 
