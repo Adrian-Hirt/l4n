@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :check_captcha, only: %i[create]
-  before_action :authenticate_user!, only: %i[show]
   layout 'devise', only: %i[new create]
 
   add_breadcrumb _('Users'), :users_path
