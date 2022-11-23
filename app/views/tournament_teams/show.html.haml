@@ -100,6 +100,10 @@
       .card-header
         = _('TournamentTeam|Team actions')
       .card-body
+        - if model.tournament.lan_party.present?
+          .d-grid
+            = button _('TournamentTeam|Show users on map'), lan_seatmap_path + op.seatmap_query
+          %hr
         - if user_signed_in?
           - if model.tournament.lan_party.blank? || current_user.ticket_for(model.tournament.lan_party)&.checked_in?
             - if model.users.include?(current_user)

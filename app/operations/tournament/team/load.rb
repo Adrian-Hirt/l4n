@@ -29,5 +29,25 @@ module Operations::Tournament::Team
         result
       end
     end
+
+    # This is a bit hacky, but I did not get rails to format the params in
+    # the correct way for js otherwise...
+    def seatmap_query
+      if model.team_members.none? || model.tournament.lan_party.blank?
+        ''
+      else
+        query_ids = []
+
+        model.team_members.each do |team_member|
+          ticket = team_member.user.ticket_for(model.tournament.lan_party)
+          next if ticket&.seat.nil?
+
+          query_ids << ticket.seat.id
+        end
+
+        return '' if query_ids.none?
+        return "?highlight=#{query_ids.join('&highlight=')}"
+      end
+    end
   end
 end

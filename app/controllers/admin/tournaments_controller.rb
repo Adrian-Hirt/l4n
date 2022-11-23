@@ -34,7 +34,7 @@ module Admin
 
     def update
       if run Operations::Admin::Tournament::Update
-        flash[:success] = _('Admin|%{model_name}|Create failed') % { model_name: _('Tournament') }
+        flash[:success] = _('Admin|%{model_name}|Successfully updated') % { model_name: _('Tournament') }
         redirect_to admin_tournament_path(model)
       else
         add_breadcrumb model.name, admin_tournament_path(model)
