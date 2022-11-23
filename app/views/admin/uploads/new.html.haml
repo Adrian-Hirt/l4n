@@ -1,0 +1,6 @@
+.card
+  = simple_form_for [:admin, model] do |f|
+    .card-body
+      = f.input :file
+    .card-footer
+      = f.save

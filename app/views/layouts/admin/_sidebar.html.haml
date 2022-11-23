@@ -130,6 +130,13 @@
               %span
                 %i.nav-icon.fas.fa-trophy.fa-fw
                 %span.nav-item-text= _('Admin|Tournaments')
+        - if can? :manage, Upload
+          .li.nav-item
+            %a.nav-link{href: admin_uploads_path, class: active_link_classes(:uploads, include_children: true)}
+              %span
+                %i.nav-icon.fas.fa-cloud-arrow-up.fa-fw
+                %span.nav-item-text= _('Admin|Uploads')
+
         - if can? :manage, :frontent_design
           %li.nav-item.dropdown
             %a.nav-link.collapse-link{data: {'bs-toggle' => 'collapse'}, href: '#design-collapse', class: sidenav_collapser_classes(:footer_logos, :styling_variables, :sidebar_blocks, :startpage_banners, :startpage_blocks)}

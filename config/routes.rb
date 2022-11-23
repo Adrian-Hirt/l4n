@@ -152,6 +152,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # == Uploads ==========================================================================
+  resources :uploads, only: %i[show]
+
   # == Omniauth callbacks ===============================================================
   scope :auth do
     post 'steam/callback', controller: :omniauth, action: :steam_callback
@@ -371,6 +374,9 @@ Rails.application.routes.draw do
 
     # Api Applications management
     resources :api_applications, except: %i[show]
+
+    # Uploads
+    resources :uploads, only: %i[index new create destroy]
 
     # Markdown preview endpoint
     post :markdown_preview, to: 'markdown#preview'

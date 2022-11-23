@@ -1,6 +1,6 @@
 namespace :gettext do
   def files_to_translate
-    Dir.glob("{app,lib,config,locale,payment_gateways}/**/*.{rb,erb,haml,slim}")
+    Dir.glob('{app,lib,config,locale,payment_gateways}/**/*.{rb,erb,haml,slim}')
   end
 end
 

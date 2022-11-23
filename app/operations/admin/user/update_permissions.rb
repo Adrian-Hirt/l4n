@@ -14,6 +14,7 @@ module Operations::Admin::User
         opt :tournament_admin_permission
         opt :design_admin_permission
         opt :achievement_admin_permission
+        opt :upload_admin_permission
         opt :system_admin_permission
       end
     end

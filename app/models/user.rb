@@ -18,6 +18,7 @@ class User < ApplicationRecord
     tournament_admin_permission
     design_admin_permission
     achievement_admin_permission
+    upload_admin_permission
     system_admin_permission
   ].freeze
 

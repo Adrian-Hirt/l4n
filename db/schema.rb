@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_23_102144) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_23_141004) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -524,6 +524,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_23_102144) do
     t.index ["lan_party_id"], name: "index_tournaments_on_lan_party_id"
   end
 
+  create_table "uploads", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_uploads_on_user_id"
+  end
+
   create_table "user_achievements", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "achievement_id", null: false
@@ -580,6 +587,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_23_102144) do
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.boolean "upload_admin_permission", default: false, null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -634,6 +642,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_23_102144) do
   add_foreign_key "tournament_team_ranks", "tournaments"
   add_foreign_key "tournament_teams", "tournament_team_ranks"
   add_foreign_key "tournament_teams", "tournaments"
+  add_foreign_key "uploads", "users"
   add_foreign_key "user_achievements", "achievements"
   add_foreign_key "user_achievements", "users"
   add_foreign_key "user_addresses", "users"

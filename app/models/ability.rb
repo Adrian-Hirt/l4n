@@ -193,6 +193,9 @@ class Ability
       can :manage, UserAchievement
     end
 
+    # Uploading files
+    can :manage, Upload if user.upload_admin_permission?
+
     # System admin permission, for actions such as clearing the cache and
     # feature flags. This permission should only be given very carefully
     if user.system_admin_permission?
