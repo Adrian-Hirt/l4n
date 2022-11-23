@@ -56,3 +56,6 @@ vendor/bundle
 coverage
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+# .env File
+.env
