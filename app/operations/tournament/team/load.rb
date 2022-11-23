@@ -46,7 +46,8 @@ module Operations::Tournament::Team
         end
 
         return '' if query_ids.none?
-        return "?highlight=#{query_ids.join('&highlight=')}"
+
+        "?highlight=#{query_ids.join('&highlight=')}"
       end
     end
   end
