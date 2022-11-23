@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-23 12:07+0100\n"
-"PO-Revision-Date: 2022-11-23 12:07+0100\n"
+"POT-Creation-Date: 2022-11-23 13:08+0100\n"
+"PO-Revision-Date: 2022-11-23 13:08+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -822,6 +822,9 @@ msgstr ""
 msgid "CartItem|Cannot be deleted"
 msgstr ""
 
+msgid "CartItem|Delete confirmation?"
+msgstr ""
+
 msgid "CartItem|Max quantity reached"
 msgstr ""
 
@@ -964,6 +967,39 @@ msgid "Datagrid|No columns"
 msgstr ""
 
 msgid "Datagrid|No results"
+msgstr ""
+
+msgid "DummyPaymentGateway"
+msgstr ""
+
+msgid "DummyPaymentGateway|Cancel"
+msgstr ""
+
+msgid "DummyPaymentGateway|Countdown loading..."
+msgstr ""
+
+msgid "DummyPaymentGateway|Description"
+msgstr ""
+
+msgid "DummyPaymentGateway|Order details"
+msgstr ""
+
+msgid "DummyPaymentGateway|Pay"
+msgstr ""
+
+msgid "DummyPaymentGateway|Pay now"
+msgstr ""
+
+msgid "DummyPaymentGateway|Payment details"
+msgstr ""
+
+msgid "DummyPaymentGateway|Time left:"
+msgstr ""
+
+msgid "DummyPaymentGateway|Title"
+msgstr ""
+
+msgid "DummyPayment|There was an error, please try again"
 msgstr ""
 
 msgid "Event"
@@ -1569,6 +1605,12 @@ msgstr ""
 msgid "Order|Successfully completed the order"
 msgstr ""
 
+msgid "Order|Successfully paid for the order"
+msgstr ""
+
+msgid "Order|Successfully submitted for later payment"
+msgstr ""
+
 msgid "Order|Total"
 msgstr ""
 
@@ -1636,6 +1678,45 @@ msgid "PaymentAssist|Optional payment id placeholder"
 msgstr ""
 
 msgid "PaymentAssist|Order paid button"
+msgstr ""
+
+msgid "PaypalPaymentGateway"
+msgstr ""
+
+msgid "PaypalPaymentGateway|Cancel"
+msgstr ""
+
+msgid "PaypalPaymentGateway|Countdown loading..."
+msgstr ""
+
+msgid "PaypalPaymentGateway|Description"
+msgstr ""
+
+msgid "PaypalPaymentGateway|Order description for %{order_id}"
+msgstr ""
+
+msgid "PaypalPaymentGateway|Order details"
+msgstr ""
+
+msgid "PaypalPaymentGateway|Page title"
+msgstr ""
+
+msgid "PaypalPaymentGateway|Pay"
+msgstr ""
+
+msgid "PaypalPaymentGateway|Payment details"
+msgstr ""
+
+msgid "PaypalPaymentGateway|Something went wrong, please try again"
+msgstr ""
+
+msgid "PaypalPaymentGateway|There was an error, please try again"
+msgstr ""
+
+msgid "PaypalPaymentGateway|Time left:"
+msgstr ""
+
+msgid "PaypalPaymentGateway|Title"
 msgstr ""
 
 msgid "Phase|Cannot change mode when phase is in another state than created"
@@ -2077,6 +2158,42 @@ msgid "Seat|Seat is taken by"
 msgstr ""
 
 msgid "Seeding"
+msgstr ""
+
+msgid "SekiPaymentGateway"
+msgstr ""
+
+msgid "SekiPaymentGateway|Cancel"
+msgstr ""
+
+msgid "SekiPaymentGateway|Countdown loading..."
+msgstr ""
+
+msgid "SekiPaymentGateway|Description, order_id: %{order_id}"
+msgstr ""
+
+msgid "SekiPaymentGateway|Order details"
+msgstr ""
+
+msgid "SekiPaymentGateway|Page title"
+msgstr ""
+
+msgid "SekiPaymentGateway|Pay"
+msgstr ""
+
+msgid "SekiPaymentGateway|Payment details"
+msgstr ""
+
+msgid "SekiPaymentGateway|Submit order"
+msgstr ""
+
+msgid "SekiPaymentGateway|Time left:"
+msgstr ""
+
+msgid "SekiPaymentGateway|Title"
+msgstr ""
+
+msgid "SekiPayment|There was an error, please try again"
 msgstr ""
 
 msgid "Session|2FA authentication required hint"
@@ -2899,6 +3016,9 @@ msgid "TournamentTeam|Please sign in to see actions"
 msgstr ""
 
 msgid "TournamentTeam|Rank"
+msgstr ""
+
+msgid "TournamentTeam|Show users on map"
 msgstr ""
 
 msgid "TournamentTeam|Status"

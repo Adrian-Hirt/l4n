@@ -31,16 +31,16 @@
             %tr
               %td= item[:product]
               %td= item[:quantity]
-              %td= money_formatted(item[:total])
+              %td= PaypalPayment::ApplicationController.money_formatted(item[:total])
           - op.result[:promotion_codes].each do |promotion_code|
             %tr
               %td= "#{_('Order|PromotionCode')} #{promotion_code[:name]}"
               %td= 1
-              %td.text-success= money_formatted(-promotion_code[:reduction])
+              %td.text-success= PaypalPayment::ApplicationController.money_formatted(-promotion_code[:reduction])
           %tr.border-top
             %td= _('Order|Total')
             %td
-            %td= money_formatted(op.result[:total])
+            %td= PaypalPayment::ApplicationController.money_formatted(op.result[:total])
 
 :javascript
   (function() {

@@ -821,6 +821,9 @@ msgstr "Cart item"
 msgid "CartItem|Cannot be deleted"
 msgstr "Cannot be deleted"
 
+msgid "CartItem|Delete confirmation?"
+msgstr "Remove item from your cart?"
+
 msgid "CartItem|Max quantity reached"
 msgstr "Max quantity reached"
 
@@ -964,6 +967,39 @@ msgstr "No columns"
 
 msgid "Datagrid|No results"
 msgstr "No results"
+
+msgid "DummyPaymentGateway"
+msgstr "Dummy payment gateway"
+
+msgid "DummyPaymentGateway|Cancel"
+msgstr "Cancel payment"
+
+msgid "DummyPaymentGateway|Countdown loading..."
+msgstr "Countdown loading..."
+
+msgid "DummyPaymentGateway|Description"
+msgstr "This is a dummy payment gateway which does not do any payment handling and simply sets the order to paid."
+
+msgid "DummyPaymentGateway|Order details"
+msgstr "Order"
+
+msgid "DummyPaymentGateway|Pay"
+msgstr "Pay with dummy gateway"
+
+msgid "DummyPaymentGateway|Pay now"
+msgstr "Pay now"
+
+msgid "DummyPaymentGateway|Payment details"
+msgstr "Payment details"
+
+msgid "DummyPaymentGateway|Time left:"
+msgstr "Time left:"
+
+msgid "DummyPaymentGateway|Title"
+msgstr "Dummy payment gateway"
+
+msgid "DummyPayment|There was an error, please try again"
+msgstr "There was an error, please try again"
 
 msgid "Event"
 msgstr "Event"
@@ -1568,6 +1604,12 @@ msgstr "Status"
 msgid "Order|Successfully completed the order"
 msgstr "Successfully completed the order"
 
+msgid "Order|Successfully paid for the order"
+msgstr "Successfully paid for the order"
+
+msgid "Order|Successfully submitted for later payment"
+msgstr "Successfully submitted for later payment"
+
 msgid "Order|Total"
 msgstr "Total"
 
@@ -1636,6 +1678,45 @@ msgstr "Optional payment id placeholder"
 
 msgid "PaymentAssist|Order paid button"
 msgstr "Order paid button"
+
+msgid "PaypalPaymentGateway"
+msgstr "Paypal"
+
+msgid "PaypalPaymentGateway|Cancel"
+msgstr "Cancel"
+
+msgid "PaypalPaymentGateway|Countdown loading..."
+msgstr "Countdown loading..."
+
+msgid "PaypalPaymentGateway|Description"
+msgstr "Simply pay your order using Paypal"
+
+msgid "PaypalPaymentGateway|Order description for %{order_id}"
+msgstr "Order"
+
+msgid "PaypalPaymentGateway|Order details"
+msgstr "Order details"
+
+msgid "PaypalPaymentGateway|Page title"
+msgstr "Paypal payment"
+
+msgid "PaypalPaymentGateway|Pay"
+msgstr "Pay with Paypal"
+
+msgid "PaypalPaymentGateway|Payment details"
+msgstr "Payment details"
+
+msgid "PaypalPaymentGateway|Something went wrong, please try again"
+msgstr "Something went wrong, please try again"
+
+msgid "PaypalPaymentGateway|There was an error, please try again"
+msgstr "There was an error, please try again"
+
+msgid "PaypalPaymentGateway|Time left:"
+msgstr "Time left:"
+
+msgid "PaypalPaymentGateway|Title"
+msgstr "Paypal payment"
 
 msgid "Phase|Cannot change mode when phase is in another state than created"
 msgstr "Cannot change mode when phase is in another state than created"
@@ -2077,6 +2158,42 @@ msgstr "Seat is taken by"
 
 msgid "Seeding"
 msgstr "Seeding"
+
+msgid "SekiPaymentGateway"
+msgstr "Pay in VSETH Sekretariat"
+
+msgid "SekiPaymentGateway|Cancel"
+msgstr "Cancel"
+
+msgid "SekiPaymentGateway|Countdown loading..."
+msgstr "Countdown loading..."
+
+msgid "SekiPaymentGateway|Description, order_id: %{order_id}"
+msgstr "Please pay your order within the next 4 days in the VSETH Sekretatiat. Your order ID is: %{order_id}. If you don't pay your order until then, it will be deleted!"
+
+msgid "SekiPaymentGateway|Order details"
+msgstr "Order"
+
+msgid "SekiPaymentGateway|Page title"
+msgstr "Pay in VSETH Sekretariat"
+
+msgid "SekiPaymentGateway|Pay"
+msgstr "Pay in Seki"
+
+msgid "SekiPaymentGateway|Payment details"
+msgstr "Payment details"
+
+msgid "SekiPaymentGateway|Submit order"
+msgstr "Submit order"
+
+msgid "SekiPaymentGateway|Time left:"
+msgstr "Time left:"
+
+msgid "SekiPaymentGateway|Title"
+msgstr "Pay in VSETH Sekretariat"
+
+msgid "SekiPayment|There was an error, please try again"
+msgstr "There was an error, please try again"
 
 msgid "Session|2FA authentication required hint"
 msgstr "2FA authentication required to continue"
@@ -2899,6 +3016,9 @@ msgstr "Please sign in to see actions"
 
 msgid "TournamentTeam|Rank"
 msgstr "Rank"
+
+msgid "TournamentTeam|Show users on map"
+msgstr "Show teammembers on map"
 
 msgid "TournamentTeam|Status"
 msgstr "Status"

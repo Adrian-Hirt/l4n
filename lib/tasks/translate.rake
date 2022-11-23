@@ -1,3 +1,9 @@
+namespace :gettext do
+  def files_to_translate
+    Dir.glob("{app,lib,config,locale,payment_gateways}/**/*.{rb,erb,haml,slim}")
+  end
+end
+
 namespace :translate do
   task run: :environment do
     puts '----- Storing model attributes -----'
