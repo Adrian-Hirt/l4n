@@ -4,8 +4,6 @@ class User < ApplicationRecord
   devise :two_factor_authenticatable, authentication_keys: %i[email]
 
   # == Constants ===================================================================
-  RESET_TOKEN_EXPIRES_AFTER = 6.hours
-
   PERMISSION_FIELDS = %i[
     user_admin_permission
     news_admin_permission

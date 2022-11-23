@@ -1,5 +1,5 @@
 module Admin
   class HomeController < AdminController
-    def index; end
+    def dashboard; end
   end
 end
