@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-23 11:46+0100\n"
-"PO-Revision-Date: 2022-11-23 11:46+0100\n"
+"POT-Creation-Date: 2022-11-23 12:07+0100\n"
+"PO-Revision-Date: 2022-11-23 12:07+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -948,6 +948,18 @@ msgstr ""
 msgid "ConfirmDialog|Confirm"
 msgstr ""
 
+msgid "ContentPage|Published"
+msgstr ""
+
+msgid "ContentPage|Title"
+msgstr ""
+
+msgid "ContentPage|Url"
+msgstr ""
+
+msgid "ContentPage|Use sidebar"
+msgstr ""
+
 msgid "Datagrid|No columns"
 msgstr ""
 
@@ -1048,6 +1060,9 @@ msgid "FooterLogo"
 msgstr ""
 
 msgid "FooterLogo|Link"
+msgstr ""
+
+msgid "FooterLogo|Logo file"
 msgstr ""
 
 msgid "FooterLogo|Sort"
@@ -1884,6 +1899,12 @@ msgstr ""
 msgid "RailsSettings::Base|Var"
 msgstr ""
 
+msgid "RedirectPage|Redirects to"
+msgstr ""
+
+msgid "RedirectPage|Url"
+msgstr ""
+
 msgid "Round number %{number}"
 msgstr ""
 
@@ -1897,6 +1918,9 @@ msgid "ScannerUser|Already logged in"
 msgstr ""
 
 msgid "ScannerUser|Encrypted password"
+msgstr ""
+
+msgid "ScannerUser|Lan party"
 msgstr ""
 
 msgid "ScannerUser|Leave password blank to keep current password"
@@ -2215,6 +2239,9 @@ msgid "StartpageBanner"
 msgstr ""
 
 msgid "StartpageBanner|Height"
+msgstr ""
+
+msgid "StartpageBanner|Images"
 msgstr ""
 
 msgid "StartpageBanner|Name"
@@ -2676,6 +2703,15 @@ msgstr ""
 msgid "Ticket|Username"
 msgstr ""
 
+msgid "Ticket|status|assigned"
+msgstr ""
+
+msgid "Ticket|status|checked_in"
+msgstr ""
+
+msgid "Ticket|status|created"
+msgstr ""
+
 msgid "Timetable"
 msgstr ""
 
@@ -2748,6 +2784,18 @@ msgstr ""
 msgid "Tournament::Match|Result status"
 msgstr ""
 
+msgid "Tournament::Match|result_status|confirmed"
+msgstr ""
+
+msgid "Tournament::Match|result_status|disputed"
+msgstr ""
+
+msgid "Tournament::Match|result_status|missing"
+msgstr ""
+
+msgid "Tournament::Match|result_status|reported"
+msgstr ""
+
 msgid "Tournament::PhaseTeam|Score"
 msgstr ""
 
@@ -2772,6 +2820,30 @@ msgstr ""
 msgid "Tournament::Phase|Tournament mode"
 msgstr ""
 
+msgid "Tournament::Phase|status|completed"
+msgstr ""
+
+msgid "Tournament::Phase|status|confirmed"
+msgstr ""
+
+msgid "Tournament::Phase|status|created"
+msgstr ""
+
+msgid "Tournament::Phase|status|running"
+msgstr ""
+
+msgid "Tournament::Phase|status|seeding"
+msgstr ""
+
+msgid "Tournament::Phase|tournament_mode|double_elimination"
+msgstr ""
+
+msgid "Tournament::Phase|tournament_mode|single_elimination"
+msgstr ""
+
+msgid "Tournament::Phase|tournament_mode|swiss"
+msgstr ""
+
 msgid "Tournament::Round|Round number"
 msgstr ""
 
@@ -2791,6 +2863,15 @@ msgid "Tournament::Team|Password digest"
 msgstr ""
 
 msgid "Tournament::Team|Status"
+msgstr ""
+
+msgid "Tournament::Team|status|created"
+msgstr ""
+
+msgid "Tournament::Team|status|registered"
+msgstr ""
+
+msgid "Tournament::Team|status|seeded"
 msgstr ""
 
 msgid "TournamentMatch|Submit result"
@@ -2875,6 +2956,9 @@ msgid "Tournament|In tournament teams"
 msgstr ""
 
 msgid "Tournament|Info"
+msgstr ""
+
+msgid "Tournament|Lan party"
 msgstr ""
 
 msgid "Tournament|Leave team"
@@ -2968,6 +3052,9 @@ msgid "Tournament|Remove this file"
 msgstr ""
 
 msgid "Tournament|Result needs to be confirmed by other team"
+msgstr ""
+
+msgid "Tournament|Show"
 msgstr ""
 
 msgid "Tournament|Sign up for tournaments"
@@ -3070,6 +3157,15 @@ msgid "Tournament|Your team is not yet in the tournament"
 msgstr ""
 
 msgid "Tournament|Your team is participating in the tournament"
+msgstr ""
+
+msgid "Tournament|status|archived"
+msgstr ""
+
+msgid "Tournament|status|draft"
+msgstr ""
+
+msgid "Tournament|status|published"
 msgstr ""
 
 msgid "TwoFactor|2FA activated successfully"
@@ -3199,6 +3295,9 @@ msgid "User|Consumed timestep"
 msgstr ""
 
 msgid "User|Create account"
+msgstr ""
+
+msgid "User|Created at"
 msgstr ""
 
 msgid "User|Crop your avatar"

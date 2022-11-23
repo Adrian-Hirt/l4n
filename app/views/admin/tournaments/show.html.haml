@@ -40,9 +40,9 @@
                 \.
                 = phase.name
                 .small.text-muted
-                  = phase.tournament_mode
+                  = phase.humanized_tournament_mode
                   \|
-                  = phase.status
+                  = phase.humanized_status
               %div
                 = show_button phase, size: :sm, icon_only: true, href: admin_phase_path(phase)
                 = edit_button phase, size: :sm, icon_only: true, href: edit_admin_phase_path(phase)

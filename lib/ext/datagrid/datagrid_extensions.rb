@@ -3,7 +3,7 @@ module HeaderExtension
     return nil if options[:header] == false
 
     if grid_class.model.present? && options[:header].blank?
-      _("#{grid_class.model}|#{name.capitalize}")
+      _("#{grid_class.model}|#{name.to_s.humanize}")
     else
       super
     end

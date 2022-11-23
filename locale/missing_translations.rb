@@ -2,9 +2,59 @@ N_('User|Password')
 N_('Ticket|Seat_category')
 
 # Translated enums
+N_('Ticket|status|created')
+N_('Ticket|status|assigned')
+N_('Ticket|status|checked_in')
+
+N_('Tournament|status|draft')
+N_('Tournament|status|published')
+N_('Tournament|status|archived')
+
+N_('Tournament::Match|result_status|missing')
+N_('Tournament::Match|result_status|confirmed')
+N_('Tournament::Match|result_status|reported')
+N_('Tournament::Match|result_status|disputed')
+
+N_('Tournament::Phase|status|created')
+N_('Tournament::Phase|status|seeding')
+N_('Tournament::Phase|status|confirmed')
+N_('Tournament::Phase|status|running')
+N_('Tournament::Phase|status|completed')
+
+N_('Tournament::Phase|tournament_mode|swiss')
+N_('Tournament::Phase|tournament_mode|single_elimination')
+N_('Tournament::Phase|tournament_mode|double_elimination')
+
+N_('Tournament::Team|status|created')
+N_('Tournament::Team|status|registered')
+N_('Tournament::Team|status|seeded')
 
 # Product Behaviours
 N_('ProductBehaviours|Dummy')
+
+# Tournament
+N_('Tournament|Lan party')
+N_('Tournament|Show')
+
+# Users
+N_('User|Created at')
+
+# Pages
+N_('ContentPage|Url')
+N_('ContentPage|Title')
+N_('ContentPage|Published')
+N_('ContentPage|Use sidebar')
+N_('RedirectPage|Url')
+N_('RedirectPage|Redirects to')
+
+# ScannerUser
+N_('ScannerUser|Lan party')
+
+# StartpageBanners
+N_('StartpageBanner|Images')
+
+# Footer Logo
+N_('FooterLogo|Logo file')
 
 # JS translations missing otherwise
 N_('Form|Select|Blank')

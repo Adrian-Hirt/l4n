@@ -947,6 +947,18 @@ msgstr "Cancel"
 msgid "ConfirmDialog|Confirm"
 msgstr "Confirm"
 
+msgid "ContentPage|Published"
+msgstr "Published"
+
+msgid "ContentPage|Title"
+msgstr "Title"
+
+msgid "ContentPage|Url"
+msgstr "Url"
+
+msgid "ContentPage|Use sidebar"
+msgstr "Use sidebar"
+
 msgid "Datagrid|No columns"
 msgstr "No columns"
 
@@ -1048,6 +1060,9 @@ msgstr "FooterLogo"
 
 msgid "FooterLogo|Link"
 msgstr "Link"
+
+msgid "FooterLogo|Logo file"
+msgstr "Logo"
 
 msgid "FooterLogo|Sort"
 msgstr "Sort"
@@ -1883,6 +1898,12 @@ msgstr "Value"
 msgid "RailsSettings::Base|Var"
 msgstr "Var"
 
+msgid "RedirectPage|Redirects to"
+msgstr "Redirects to"
+
+msgid "RedirectPage|Url"
+msgstr "Url"
+
 msgid "Round number %{number}"
 msgstr "Round number %{number}"
 
@@ -1897,6 +1918,9 @@ msgstr "Already logged in"
 
 msgid "ScannerUser|Encrypted password"
 msgstr "Encrypted password"
+
+msgid "ScannerUser|Lan party"
+msgstr "Lan Party"
 
 msgid "ScannerUser|Leave password blank to keep current password"
 msgstr "Leave password blank to keep current password"
@@ -2215,6 +2239,9 @@ msgstr "StartpageBanner"
 
 msgid "StartpageBanner|Height"
 msgstr "Height"
+
+msgid "StartpageBanner|Images"
+msgstr "Number of images"
 
 msgid "StartpageBanner|Name"
 msgstr "Name"
@@ -2675,6 +2702,15 @@ msgstr "User not found"
 msgid "Ticket|Username"
 msgstr "Username"
 
+msgid "Ticket|status|assigned"
+msgstr "Assigned"
+
+msgid "Ticket|status|checked_in"
+msgstr "Checked in"
+
+msgid "Ticket|status|created"
+msgstr "Created"
+
 msgid "Timetable"
 msgstr "Timetable"
 
@@ -2715,25 +2751,25 @@ msgid "Tournament"
 msgstr "Tournament"
 
 msgid "Tournament/match"
-msgstr "Tournament/match"
+msgstr "Match"
 
 msgid "Tournament/phase"
-msgstr "Tournament/phase"
+msgstr "Phase"
 
 msgid "Tournament/phase team"
 msgstr "Tournament/phase team"
 
 msgid "Tournament/round"
-msgstr "Tournament/round"
+msgstr "Round"
 
 msgid "Tournament/team"
-msgstr "Tournament/team"
+msgstr "Team"
 
 msgid "Tournament/team member"
-msgstr "Tournament/team member"
+msgstr "Team member"
 
 msgid "Tournament/team rank"
-msgstr "Tournament/team rank"
+msgstr "Team rank"
 
 msgid "Tournament::Match|Away score"
 msgstr "Away score"
@@ -2746,6 +2782,18 @@ msgstr "Home score"
 
 msgid "Tournament::Match|Result status"
 msgstr "Result status"
+
+msgid "Tournament::Match|result_status|confirmed"
+msgstr "Result confirmed"
+
+msgid "Tournament::Match|result_status|disputed"
+msgstr "Result disputed"
+
+msgid "Tournament::Match|result_status|missing"
+msgstr "Result missing"
+
+msgid "Tournament::Match|result_status|reported"
+msgstr "Result reported"
 
 msgid "Tournament::PhaseTeam|Score"
 msgstr "Score"
@@ -2771,6 +2819,30 @@ msgstr "Status"
 msgid "Tournament::Phase|Tournament mode"
 msgstr "Tournament mode"
 
+msgid "Tournament::Phase|status|completed"
+msgstr "Completed"
+
+msgid "Tournament::Phase|status|confirmed"
+msgstr "Confirmed"
+
+msgid "Tournament::Phase|status|created"
+msgstr "Created"
+
+msgid "Tournament::Phase|status|running"
+msgstr "Running"
+
+msgid "Tournament::Phase|status|seeding"
+msgstr "Seeding"
+
+msgid "Tournament::Phase|tournament_mode|double_elimination"
+msgstr "Double elimination"
+
+msgid "Tournament::Phase|tournament_mode|single_elimination"
+msgstr "Single elimination"
+
+msgid "Tournament::Phase|tournament_mode|swiss"
+msgstr "Swiss system"
+
 msgid "Tournament::Round|Round number"
 msgstr "Round number"
 
@@ -2791,6 +2863,15 @@ msgstr "Password"
 
 msgid "Tournament::Team|Status"
 msgstr "Status"
+
+msgid "Tournament::Team|status|created"
+msgstr "Created"
+
+msgid "Tournament::Team|status|registered"
+msgstr "Registered"
+
+msgid "Tournament::Team|status|seeded"
+msgstr "Seeded"
 
 msgid "TournamentMatch|Submit result"
 msgstr "Submit result"
@@ -2875,6 +2956,9 @@ msgstr "In tournament teams"
 
 msgid "Tournament|Info"
 msgstr "Info"
+
+msgid "Tournament|Lan party"
+msgstr "Lan Party"
 
 msgid "Tournament|Leave team"
 msgstr "Leave team"
@@ -2968,6 +3052,9 @@ msgstr "Remove this file"
 
 msgid "Tournament|Result needs to be confirmed by other team"
 msgstr "Result needs to be confirmed by other team"
+
+msgid "Tournament|Show"
+msgstr "Show"
 
 msgid "Tournament|Sign up for tournaments"
 msgstr "Sign up for tournaments"
@@ -3070,6 +3157,15 @@ msgstr "Your team is not yet in the tournament"
 
 msgid "Tournament|Your team is participating in the tournament"
 msgstr "Your team is participating in the tournament"
+
+msgid "Tournament|status|archived"
+msgstr "Archived"
+
+msgid "Tournament|status|draft"
+msgstr "Draft"
+
+msgid "Tournament|status|published"
+msgstr "Published"
 
 msgid "TwoFactor|2FA activated successfully"
 msgstr "2FA activated successfully"
@@ -3199,6 +3295,9 @@ msgstr "Consumed timestep"
 
 msgid "User|Create account"
 msgstr "Create account"
+
+msgid "User|Created at"
+msgstr "Created at"
 
 msgid "User|Crop your avatar"
 msgstr "Crop your avatar"
