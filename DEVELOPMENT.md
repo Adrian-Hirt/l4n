@@ -11,7 +11,7 @@
 
 For the mailer gateway in production:
 
-* `MAILER_HOST`
+* `HOST_DOMAIN`
 * `USE_SMTP`
 
 If `USE_SMTP` is set to true (and the app uses smtp), we need the following

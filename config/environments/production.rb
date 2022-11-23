@@ -98,7 +98,7 @@ Rails.application.configure do
   # Mailer settings
   # --------------------------------------------------------------
   # Use the host defined in mailer host
-  config.action_mailer.default_url_options = { host: Figaro.env.mailer_host! }
+  config.action_mailer.default_url_options = { host: Figaro.env.host_domain! }
 
   # When using smtp, configure it, otherwise configure sendmail
   if Figaro.env.use_smtp! == 'true'
