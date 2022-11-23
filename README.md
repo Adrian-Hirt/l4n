@@ -1,6 +1,6 @@
 # l4n
 
-[![Rails Rake Test](https://github.com/Adrian-Hirt/l4n/actions/workflows/rails_rake.yml/badge.svg)](https://github.com/Adrian-Hirt/l4n/actions/workflows/rails_rake.yml)
-[![Rubocop check](https://github.com/Adrian-Hirt/l4n/actions/workflows/rubocop.yml/badge.svg)](https://github.com/Adrian-Hirt/l4n/actions/workflows/rubocop.yml)
+[![CI check](https://github.com/Adrian-Hirt/l4n/actions/workflows/ci.yml/badge.svg)](https://github.com/Adrian-Hirt/l4n/actions/workflows/ci.yml)
+[![Build the edge docker image](https://github.com/Adrian-Hirt/l4n/actions/workflows/build_edge_docker.yml/badge.svg)](https://github.com/Adrian-Hirt/l4n/actions/workflows/build_edge_docker.yml)
 
 l4n is an upcoming CMS for managing lan parties.
