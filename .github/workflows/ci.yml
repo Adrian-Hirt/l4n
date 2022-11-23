@@ -1,4 +1,4 @@
-name: Rails Rake Test
+name: CI check
 on: push
 
 jobs:
@@ -54,6 +54,8 @@ jobs:
         run: |
           cp config/database.ci.yml config/database.yml
           bundle exec rake db:create db:migrate
+      - name: Run rubocop
+        run: bundle exec rubocop
       - name: Run tests
         env:
           PGHOST: localhost
