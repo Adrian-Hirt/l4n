@@ -10,7 +10,9 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-l4n}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?err}
   web:
-    image: l4n
+    # Change this from "main" to a tag if you do not want to use the
+    # "edge" image from the main branch
+    image: ghcr.io/adrian-hirt/l4n:main
     command: bash -c "rails db:migrate && rails s -p 3000 -b '0.0.0.0'"
     networks:
       - reverse_proxy
@@ -19,6 +21,9 @@ services:
       - "3000:3000"
     depends_on:
       - db
+    env_file: .env
+    volumes:
+      - storage-data:/app/storage
     environment:
       # Set defaults for running server
       RAILS_ENV: production
@@ -46,10 +51,11 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=reverse_proxy
-      - traefik.http.routers.${ROUTER_NAME:-l4n}.rule=Host(`${HOST_DOMAIN:?err}`)
+      - traefik.http.routers.${ROUTER_NAME:-l4n}.rule=Host(`${HOST_DOMAIN:-localhost}`)
       - traefik.http.routers.${ROUTER_NAME:-l4n}.tls.certresolver=letsencrypt
 volumes:
   db-data:
+  storage-data:
 networks:
   reverse_proxy:
     name: reverse_proxy
