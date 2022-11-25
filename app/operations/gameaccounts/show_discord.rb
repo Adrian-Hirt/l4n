@@ -19,6 +19,11 @@ module Operations::Gameaccounts
         return
       end
 
+      if Figaro.env.discord_bot_auth.blank?
+        @successful = false
+        return
+      end
+
       response = HTTParty.get("https://discordapp.com/api/users/#{user.discord_id}", headers: { 'Authorization' => Figaro.env.discord_bot_auth! })
 
       if response.code == 200
