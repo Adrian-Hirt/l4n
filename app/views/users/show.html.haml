@@ -70,7 +70,7 @@
         - else
           .row
             - model.user_achievements.order(awarded_at: :desc).includes(:achievement).each do |user_achievement|
-              .col-md-6
+              .col-md-6.mb-2
                 .d-flex
                   - if user_achievement.achievement.icon.attached?
                     .flex-shrink-0
