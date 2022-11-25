@@ -138,8 +138,8 @@ class Ability
     # Menu items permission
     can :manage, MenuItem if user.menu_items_admin_permission?
 
-    # User can use the payment assist TODO: add permission check
-    can :use, :payment_assist if FeatureFlag.enabled?(:shop)
+    # User can use the payment assist
+    can :use, :payment_assist if user.payment_assist_admin_permission? && FeatureFlag.enabled?(:shop)
 
     # Shop permissions. For now, we group the models related to the shop
     # together, as we probably don't need a too fine-grained access control
