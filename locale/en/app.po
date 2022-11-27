@@ -17,6 +17,21 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "\n"
 
+msgid "%{name}|Delete"
+msgstr "Delete %{name}"
+
+msgid "%{name}|Delete confirmation?"
+msgstr "Really delete this %{name}?"
+
+msgid "%{name}|Edit"
+msgstr "Edit this %{name}"
+
+msgid "%{name}|New"
+msgstr "New %{name}"
+
+msgid "%{name}|Show"
+msgstr "Show this %{name}"
+
 msgid "API Application"
 msgstr "API Application"
 

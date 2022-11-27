@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-27 21:57+0100\n"
-"PO-Revision-Date: 2022-11-27 21:57+0100\n"
+"POT-Creation-Date: 2022-11-27 22:05+0100\n"
+"PO-Revision-Date: 2022-11-27 22:05+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -17,6 +17,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+msgid "%{name}|Delete"
+msgstr ""
+
+msgid "%{name}|Delete confirmation?"
+msgstr ""
+
+msgid "%{name}|Edit"
+msgstr ""
+
+msgid "%{name}|New"
+msgstr ""
+
+msgid "%{name}|Show"
+msgstr ""
 
 msgid "API Application"
 msgstr ""
