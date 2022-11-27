@@ -110,9 +110,8 @@ msgstr "Content Pages"
 msgid "Admin|Dashboard"
 msgstr "Dashboard"
 
-#, fuzzy
 msgid "Admin|Dashboard|Users total"
-msgstr "Dashboard"
+msgstr "Total users"
 
 msgid "Admin|Design"
 msgstr "Design"
@@ -366,9 +365,8 @@ msgstr "Orders with payment pending"
 msgid "Admin|Shop|Dashboard|Products"
 msgstr "Products"
 
-#, fuzzy
 msgid "Admin|Shop|New users in the last week"
-msgstr "Shop"
+msgstr "New users in the last week"
 
 msgid "Admin|Show ticket"
 msgstr "Show ticket"
@@ -836,7 +834,7 @@ msgid "Application|Dark mode successfully enabled"
 msgstr "Dark mode successfully enabled"
 
 msgid "Apply filter"
-msgstr ""
+msgstr "Apply filter"
 
 msgid "Avatar|Uploading avatar failed"
 msgstr "Uploading avatar failed"
@@ -961,9 +959,8 @@ msgstr "The promotion code is already applied to this order!"
 msgid "Checkout|Use this address"
 msgstr "Use this address"
 
-#, fuzzy
 msgid "Checkout|You did not accepd the terms and conditions"
-msgstr "Checkout"
+msgstr "You did not accepd the terms and conditions"
 
 msgid "Checkout|You have reached the max number of codes for this order!"
 msgstr "You have reached the max number of codes for this order!"
@@ -2091,7 +2088,7 @@ msgid "ScannerUser|Successfully logged out"
 msgstr "Successfully logged out"
 
 msgid "Search|Reset"
-msgstr ""
+msgstr "Reset"
 
 msgid "Seat"
 msgstr "Seat"
@@ -2116,6 +2113,9 @@ msgstr "Name"
 
 msgid "SeatCategory|Relevant for counter"
 msgstr "Relevant for counter"
+
+msgid "SeatCategory|Seat count"
+msgstr "Number of seats in that category"
 
 msgid "SeatMap"
 msgstr "SeatMap"

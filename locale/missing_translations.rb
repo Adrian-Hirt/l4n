@@ -56,6 +56,9 @@ N_('StartpageBanner|Images')
 # Footer Logo
 N_('FooterLogo|Logo file')
 
+# Seat categories
+N_('SeatCategory|Seat count')
+
 # JS translations missing otherwise
 N_('Form|Select|Blank')
 N_('SeatMap|You need to select a seat category to add a seat!')

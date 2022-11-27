@@ -9,6 +9,9 @@ module Grids
 
       column :name
       column :relevant_for_counter, html: ->(relevant_for_counter) { format_boolean(relevant_for_counter) }
+      column :seat_count, html: true do |seat_category|
+        seat_category.seats.count
+      end
       column :color, html: true do |seat_category|
         tag.div style: "background-color: #{seat_category.color_for_view}; height: 1rem; width: 100px;"
       end
