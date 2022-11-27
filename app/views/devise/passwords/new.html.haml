@@ -1,15 +1,12 @@
-.d-flex.justify-content-center
-  .login-box.mx-auto
-    .card.card-outline.card-primary
+.d-flex.justify-content-center.align-items-center.sessions-page
+  .card
+    = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { data: { turbo: false} } do |f|
       .card-header.text-center
         %a.h1{href: root_path}
-          %b> L4N
-          Dev
-      .card-body
-        %p.login-box-msg= _('Session|Sign in')
-        = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { data: { turbo: false} } do |f|
-          = f.input :email, label: false, placeholder: _('User|Email')
-          .input-group.mb-3
-            = f.save _('PasswordReset|Request reset')
-        %hr
+          = AppConfig.application_name
+      .card-body.pb-1
+        = f.input :email, label: false, placeholder: _('User|Email')
+      .card-footer
+        .d-grid.gap-3
+          = f.save _('PasswordReset|Request reset'), class: %i[btn-default]
           = button _('Session|Back to application'), root_path, color: :secondary
