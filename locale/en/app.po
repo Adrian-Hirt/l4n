@@ -110,6 +110,10 @@ msgstr "Content Pages"
 msgid "Admin|Dashboard"
 msgstr "Dashboard"
 
+#, fuzzy
+msgid "Admin|Dashboard|Users total"
+msgstr "Dashboard"
+
 msgid "Admin|Design"
 msgstr "Design"
 
@@ -362,6 +366,10 @@ msgstr "Orders with payment pending"
 msgid "Admin|Shop|Dashboard|Products"
 msgstr "Products"
 
+#, fuzzy
+msgid "Admin|Shop|New users in the last week"
+msgstr "Shop"
+
 msgid "Admin|Show ticket"
 msgstr "Show ticket"
 
@@ -560,11 +568,11 @@ msgstr "Username of user to assign to"
 msgid "Admin|Timetable"
 msgstr "Timetable"
 
-msgid "Admin|TimetableEntry|Timetable end: %{start}"
-msgstr "Timetable end"
+msgid "Admin|TimetableEntry|Timetable end: %{end}"
+msgstr "Timetable end: %{end}"
 
 msgid "Admin|TimetableEntry|Timetable start: %{start}"
-msgstr "Timetable start"
+msgstr "Timetable start: %{start}"
 
 msgid "Admin|Timetable|Category could not be created"
 msgstr "Category could not be created"
@@ -826,6 +834,9 @@ msgstr "Dark mode successfully disabled"
 
 msgid "Application|Dark mode successfully enabled"
 msgstr "Dark mode successfully enabled"
+
+msgid "Apply filter"
+msgstr ""
 
 msgid "Avatar|Uploading avatar failed"
 msgstr "Uploading avatar failed"
@@ -2079,6 +2090,9 @@ msgstr "Password"
 msgid "ScannerUser|Successfully logged out"
 msgstr "Successfully logged out"
 
+msgid "Search|Reset"
+msgstr ""
+
 msgid "Seat"
 msgstr "Seat"
 
@@ -3102,9 +3116,6 @@ msgstr "Team members"
 msgid "Tournaments"
 msgstr "Tournaments"
 
-msgid "Tournaments|Apply filter"
-msgstr "Apply filter"
-
 msgid "Tournament|%{participants} participants"
 msgstr "%{participants} participants"
 
@@ -3443,9 +3454,6 @@ msgstr "Users"
 
 msgid "Users List"
 msgstr "Users List"
-
-msgid "Users|Index|Reset sort"
-msgstr "Reset sort"
 
 msgid "User|2FA already activated"
 msgstr "2FA already activated"

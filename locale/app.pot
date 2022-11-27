@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-23 19:05+0100\n"
-"PO-Revision-Date: 2022-11-23 19:05+0100\n"
+"POT-Creation-Date: 2022-11-27 21:55+0100\n"
+"PO-Revision-Date: 2022-11-27 21:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -109,6 +109,9 @@ msgid "Admin|ContentPages"
 msgstr ""
 
 msgid "Admin|Dashboard"
+msgstr ""
+
+msgid "Admin|Dashboard|Users total"
 msgstr ""
 
 msgid "Admin|Design"
@@ -363,6 +366,9 @@ msgstr ""
 msgid "Admin|Shop|Dashboard|Products"
 msgstr ""
 
+msgid "Admin|Shop|New users in the last week"
+msgstr ""
+
 msgid "Admin|Show ticket"
 msgstr ""
 
@@ -561,7 +567,7 @@ msgstr ""
 msgid "Admin|Timetable"
 msgstr ""
 
-msgid "Admin|TimetableEntry|Timetable end: %{start}"
+msgid "Admin|TimetableEntry|Timetable end: %{end}"
 msgstr ""
 
 msgid "Admin|TimetableEntry|Timetable start: %{start}"
@@ -826,6 +832,9 @@ msgid "Application|Dark mode successfully disabled"
 msgstr ""
 
 msgid "Application|Dark mode successfully enabled"
+msgstr ""
+
+msgid "Apply filter"
 msgstr ""
 
 msgid "Avatar|Uploading avatar failed"
@@ -2079,6 +2088,9 @@ msgstr ""
 msgid "ScannerUser|Successfully logged out"
 msgstr ""
 
+msgid "Search|Reset"
+msgstr ""
+
 msgid "Seat"
 msgstr ""
 
@@ -3102,9 +3114,6 @@ msgstr ""
 msgid "Tournaments"
 msgstr ""
 
-msgid "Tournaments|Apply filter"
-msgstr ""
-
 msgid "Tournament|%{participants} participants"
 msgstr ""
 
@@ -3442,9 +3451,6 @@ msgid "Users"
 msgstr ""
 
 msgid "Users List"
-msgstr ""
-
-msgid "Users|Index|Reset sort"
 msgstr ""
 
 msgid "User|2FA already activated"
