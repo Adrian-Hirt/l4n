@@ -2,13 +2,13 @@ class UsersController < ApplicationController
   before_action :check_captcha, only: %i[create]
   layout 'devise', only: %i[new create]
 
-  add_breadcrumb _('Users'), :users_path
-
   def index
     op Operations::User::Index
+    add_breadcrumb _('Users'), :users_path
   end
 
   def new
+    add_breadcrumb _('Signup')
     op Operations::User::Create
   rescue Operations::User::Create::SignupClosed
     flash[:danger] = _('User|Signup is currently closed')
@@ -20,6 +20,7 @@ class UsersController < ApplicationController
       flash[:success] = _('User|Successfully created, check your mail for activation')
       redirect_to root_path
     else
+      add_breadcrumb _('Signup')
       render :new, status: :unprocessable_entity
     end
   rescue Operations::User::Create::SignupClosed
@@ -29,6 +30,7 @@ class UsersController < ApplicationController
 
   def show
     op Operations::User::Load
+    add_breadcrumb _('Users'), :users_path
     add_breadcrumb model.username
   end
 

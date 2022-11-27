@@ -4,6 +4,7 @@ class SessionsController < Devise::SessionsController
   skip_before_action :require_no_authentication, only: %i[new]
 
   def new
+    add_breadcrumb _('Login')
     if user_signed_in?
       flash[:danger] = _('Session|Already logged in')
       redirect_to root_path
@@ -16,6 +17,7 @@ class SessionsController < Devise::SessionsController
 
   # Wrong flash message...
   def create
+    add_breadcrumb _('Login')
     super
 
     flash.delete :notice
@@ -52,6 +54,7 @@ class SessionsController < Devise::SessionsController
   end
 
   def prompt_for_otp_two_factor(user)
+    add_breadcrumb _('2FA')
     @user = user
 
     session[:otp_user_id] = user.id

@@ -1,12 +1,14 @@
 !!!
 %html{lang: FastGettext.locale}
   %head
-    %title L4n
+    %title= page_title
     %meta{content: 'width=device-width,initial-scale=1', name: 'viewport'}
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
     = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
+    %style
+      = ::StylingVariable.generate_css
   %body
     = render partial: 'layouts/shared/flashes'
     = yield

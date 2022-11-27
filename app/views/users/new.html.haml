@@ -11,5 +11,5 @@
         = hcaptcha_tags theme: :light
       .card-footer
         .d-grid.gap-3
-          = f.save _('User|Create account')
+          = f.save _('User|Create account'), class: %i[btn-default]
           = button 'Back to application', root_path, btn_icon: %i[fas fa-arrow-left], color: :secondary
