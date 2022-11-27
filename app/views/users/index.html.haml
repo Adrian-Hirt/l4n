@@ -3,15 +3,22 @@
 .row.mb-3
   .col-12
     .card
-      .card-body.d-flex.users-table-header
-        .d-flex.px-3.py-1
-          .me-2= link_to _('Users|Index|Reset sort'), users_path
-        - op.grid.html_columns.each do |column|
-          - next unless column.supports_order?
+      .card-body.d-flex.users-table-header.justify-content-between
+        .d-flex
+          - op.grid.html_columns.each do |column|
+            - next unless column.supports_order?
 
-          .d-flex.px-3.py-1{class: datagrid_column_classes(op.grid, column)}
-            .me-2= column.header
-            = datagrid_order_for(op.grid, column)
+            .d-flex.px-3.py-1.align-items-center{class: datagrid_column_classes(op.grid, column)}
+              .me-2= column.header
+              = datagrid_order_for(op.grid, column)
+        %div
+          = simple_form_for op.grid, url: users_path, method: :get do |f|
+            .d-flex
+              .optional.me-2
+                = f.datagrid_filter :username, class: 'form-control rounded-0 string', placeholder: _('User|Username')
+              %div
+                = f.save _('Apply filter')
+                = button _('Search|Reset'), users_path, color: :secondary
 
 .row.mb-3
   = datagrid_rows(op.grid) do |row|

@@ -8,4 +8,14 @@
     - unless FeatureFlag.enabled?(:user_registration)
       .alert.alert-warning.rounded-0.p-1
         = _('Admin|Users|Registration is currently disabled')
+
+    = simple_form_for op.grid, url: admin_users_path, method: :get do |f|
+      .d-flex.mb-3
+        .optional.me-2
+          = f.datagrid_filter :username, class: 'form-control rounded-0 string', placeholder: _('User|Username')
+        .optional.me-2
+          = f.datagrid_filter :email, class: 'form-control rounded-0 string', placeholder: _('User|Email')
+        %div
+          = f.save _('Apply filter')
+          = button _('Search|Reset'), admin_users_path, color: :secondary
     = datagrid_table op.grid, html: { class: 'table' }

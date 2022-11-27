@@ -2,7 +2,7 @@ module Grids
   module Admin
     class Users < ApplicationGrid
       scope do
-        User.all
+        User.order(:id)
       end
 
       model User
@@ -21,6 +21,9 @@ module Grids
                     ])
         end
       end
+
+      filter(:email, :string)
+      filter(:username, :string)
     end
   end
 end

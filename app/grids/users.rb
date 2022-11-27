@@ -18,5 +18,7 @@ module Grids
     column :'datagrid-actions', html: true, header: false do |user|
       show_button(user, size: :sm, icon_only: true)
     end
+
+    filter(:username, :string)
   end
 end
