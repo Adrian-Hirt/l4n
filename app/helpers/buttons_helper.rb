@@ -47,9 +47,7 @@ module ButtonsHelper
     options = get_options(opts)
     href = options[:href] || polymorphic_path(options[:namespace] << model)
     title = icon %i[fa fa-fw fa-arrow-right]
-    unless options[:icon_only]
-      title += _("%{name}|Show") % { name: model.class.name }
-    end
+    title += _('%{name}|Show') % { name: model.class.name } unless options[:icon_only]
     _button(title, href, get_btn_class(options), **html)
   end
 
@@ -57,9 +55,7 @@ module ButtonsHelper
     options = get_options(opts)
     href = options[:href] || new_polymorphic_path(options[:namespace] << klass)
     title = icon %i[fa fa-fw fa-plus]
-    unless options[:icon_only]
-      title += _("%{name}|New") % { name: klass.name }
-    end
+    title += _('%{name}|New') % { name: klass.name } unless options[:icon_only]
     _button(title, href, get_btn_class(options), **html)
   end
 
@@ -67,9 +63,7 @@ module ButtonsHelper
     options = get_options(opts)
     href = options[:href] || edit_polymorphic_path(options[:namespace] << model)
     title = icon %i[fa fa-fw fa-edit]
-    unless options[:icon_only]
-      title += _("%{name}|Edit") % { name: model.class.name }
-    end
+    title += _('%{name}|Edit') % { name: model.class.name } unless options[:icon_only]
     _button(title, href, get_btn_class(options), **html)
   end
 
@@ -82,12 +76,12 @@ module ButtonsHelper
       if options[:title]
         title += options[:title]
       else
-        title += _("%{name}|Delete") % { name: model.class.name }
+        title += _('%{name}|Delete') % { name: model.class.name }
       end
     end
     html_options = {
       data:   {
-        confirm:    _("%{name}|Delete confirmation?") % { name: model.class.name },
+        confirm:    _('%{name}|Delete confirmation?') % { name: model.class.name },
         controller: 'button',
         action:     'click->button#confirmAction'
       },
