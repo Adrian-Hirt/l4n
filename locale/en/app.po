@@ -2451,10 +2451,13 @@ msgid "StartpageBanner|Height"
 msgstr "Height"
 
 msgid "StartpageBanner|Images"
-msgstr "Number of images"
+msgstr "Images"
 
 msgid "StartpageBanner|Name"
 msgstr "Name"
+
+msgid "StartpageBanner|Number of images"
+msgstr "Number of images"
 
 msgid "StartpageBanner|Visible"
 msgstr "Visible"

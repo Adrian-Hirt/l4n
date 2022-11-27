@@ -10,7 +10,7 @@ module Grids
       column :name
       column :visible, html: ->(visible) { format_boolean visible }
       column :height
-      column :images, html: true do |startpage_banner|
+      column :images, html: true, header: _('StartpageBanner|Number of images') do |startpage_banner|
         startpage_banner.images.count
       end
       column :'datagrid-actions', html: true, header: false do |startpage_banner|
