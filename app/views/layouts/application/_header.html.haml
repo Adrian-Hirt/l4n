@@ -18,7 +18,7 @@
                 = menu_item.title
                 = icon %i[fa fa-chevron-down]
               %ul.dropdown-menu.dropdown-menu-dark
-                - menu_item.children.each do |child_menu_item|
+                - menu_item.children.order(sort: :asc).each do |child_menu_item|
                   - next unless child_menu_item.visible?
                   - if child_menu_item.to_external?
                     %a.dropdown-item{href: child_menu_item.linked_page_url, target: :_blank}
