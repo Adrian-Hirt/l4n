@@ -207,7 +207,7 @@ msgid "Admin|MenuItem|New Link"
 msgstr "New Link"
 
 msgid "Admin|MenuLinkItem|Either select a page or enter a link hint"
-msgstr "Either select a page or enter a link hint"
+msgstr "Either select a page or enter a link, but not both"
 
 msgid "Admin|NewsPosts"
 msgstr "News Posts"
@@ -1483,6 +1483,9 @@ msgstr "MenuItem"
 
 msgid "MenuItem|External link"
 msgstr "External link"
+
+msgid "MenuItem|Page"
+msgstr "Page"
 
 msgid "MenuItem|Page_name"
 msgstr "Page name"

@@ -33,7 +33,7 @@ module Operations::Admin::MenuItem
       end
 
       # Add dynamic pages
-      ::Page.order(:title).each do |page|
+      ::ContentPage.order(:title).each do |page|
         candidates << [page.title, page.id]
       end
 
