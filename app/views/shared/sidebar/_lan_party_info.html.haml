@@ -15,7 +15,7 @@
     - if lan_party.location.present?
       .mt-1
         .text-muted= _('Sidebar|Lan location')
-        = l lan_party.location
+        = lan_party.location
 
   - if user && user.ticket_for(lan_party).present?
     .card-footer
