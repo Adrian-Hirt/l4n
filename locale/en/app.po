@@ -1524,10 +1524,10 @@ msgid "News post"
 msgstr "News post"
 
 msgid "NewsPost"
-msgstr "NewsPost"
+msgstr "News"
 
 msgid "NewsPosts"
-msgstr "NewsPosts"
+msgstr "News"
 
 msgid "NewsPosts|Author"
 msgstr "Author"
