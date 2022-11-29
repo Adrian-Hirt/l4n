@@ -2333,9 +2333,6 @@ msgstr "Back to application"
 msgid "Session|Forgot password"
 msgstr "Forgot password?"
 
-msgid "Session|Hcaptcha failed, please try again"
-msgstr "Captcha failed, please try again"
-
 msgid "Session|Log in"
 msgstr "Log in"
 
@@ -3551,6 +3548,9 @@ msgstr "Confirmed at"
 msgid "User|Consumed timestep"
 msgstr "Consumed timestep"
 
+msgid "User|Could not be created, please check the form below for more infos"
+msgstr "User could not be created, please check the form below for more infos"
+
 msgid "User|Create account"
 msgstr "Create account"
 
@@ -3676,6 +3676,9 @@ msgstr "Successfully created"
 
 msgid "User|System admin permission"
 msgstr "System admin permission"
+
+msgid "User|The captcha verification failed, please try again"
+msgstr "The captcha verification failed, please try again"
 
 msgid "User|Tournament admin permission"
 msgstr "Tournament admin permission"
