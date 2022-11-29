@@ -7,11 +7,15 @@
     .card
       - if current_user.otp_required_for_login?
         .card-body
-          = _('User|TwoFactor|Enabled')
+          .alert.alert-success.rounded-0.p-2.mb-0
+            = icon %i[fas fa-check fa-fw]
+            = _('User|TwoFactor|Enabled')
         .card-footer
           = delete_button(current_user, href: settings_two_factor_deactivate_path, title: _('User|Remove 2FA'), html: { data: { confirm: _('User|Remove 2FA confirmation') } })
       - else
         .card-body
-          = _('User|TwoFactor|Not enabled')
+          .alert.alert-danger.rounded-0.p-2.mb-0
+            = icon %i[fas fa-times fa-fw]
+            = _('User|TwoFactor|Not enabled')
         .card-footer
           = button _('User|Add 2FA'), settings_two_factor_activate_path, color: :default
