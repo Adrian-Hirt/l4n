@@ -32,6 +32,9 @@ msgstr "New %{name}"
 msgid "%{name}|Show"
 msgstr "Show this %{name}"
 
+msgid "2FA"
+msgstr "2FA"
+
 msgid "API Application"
 msgstr "API Application"
 
@@ -1322,8 +1325,35 @@ msgstr "Total seats"
 msgid "LanParty|Tournaments"
 msgstr "Tournaments"
 
+msgid "Login"
+msgstr "Login"
+
 msgid "Login / Sign up"
 msgstr "Login / Sign up"
+
+msgid "Mailer|Confirmation|Confirm account through link below:"
+msgstr "Confirm your account now by clicking the link below:"
+
+msgid "Mailer|Confirmation|Confirm my account"
+msgstr "Confirm my account"
+
+msgid "Mailer|Confirmation|Greeting %{user_email} %{app_name}"
+msgstr "Welcome to %{app_name} %{user_email}!"
+
+msgid "Mailer|Reset Password|Change my password"
+msgstr "Change my password"
+
+msgid "Mailer|Reset Password|Greeting %{user_name}"
+msgstr "Hello %{user_name}"
+
+msgid "Mailer|Reset Password|If you didn't request this, please ignore this email."
+msgstr "If you didn't request this, please ignore this email."
+
+msgid "Mailer|Reset Password|Someone has requested a link to change your password. You can do this through the link below."
+msgstr "Someone has requested a link to change your password. You can do this through the link below."
+
+msgid "Mailer|Reset Password|Your password won't change until you access the link above and create a new one."
+msgstr "Your password won't change until you access the link above and create a new one."
 
 msgid "MarkdownEditor|Popup|Cancel"
 msgstr "Cancel"
@@ -1753,9 +1783,6 @@ msgstr "Request reset"
 
 msgid "PasswordResetRequest|Reset your password"
 msgstr "Reset your password"
-
-msgid "PasswordReset|%{min_chars} characters minimum"
-msgstr "%{min_chars} characters minimum"
 
 msgid "PasswordReset|Request reset"
 msgstr "Request reset"
@@ -2315,9 +2342,6 @@ msgstr "Log in"
 msgid "Session|Remember me"
 msgstr "Remember me"
 
-msgid "Session|Sign in"
-msgstr "Sign in"
-
 msgid "Session|Submit 2FA code"
 msgstr "Submit 2FA code"
 
@@ -2437,6 +2461,9 @@ msgstr "Next events"
 
 msgid "Sidebar|Next lan"
 msgstr "Next lan"
+
+msgid "Signup"
+msgstr "Sign Up"
 
 msgid "StarpageBanner|Remove this image"
 msgstr "Remove this image"
@@ -3568,9 +3595,6 @@ msgstr "My website"
 
 msgid "User|New Password"
 msgstr "New Password"
-
-msgid "User|New Password confirmation"
-msgstr "New Password confirmation"
 
 msgid "User|News admin permission"
 msgstr "News admin permission"

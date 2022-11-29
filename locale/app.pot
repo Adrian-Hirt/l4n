@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-27 22:15+0100\n"
-"PO-Revision-Date: 2022-11-27 22:15+0100\n"
+"POT-Creation-Date: 2022-11-29 21:20+0100\n"
+"PO-Revision-Date: 2022-11-29 21:20+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -31,6 +31,9 @@ msgid "%{name}|New"
 msgstr ""
 
 msgid "%{name}|Show"
+msgstr ""
+
+msgid "2FA"
 msgstr ""
 
 msgid "API Application"
@@ -1323,7 +1326,34 @@ msgstr ""
 msgid "LanParty|Tournaments"
 msgstr ""
 
+msgid "Login"
+msgstr ""
+
 msgid "Login / Sign up"
+msgstr ""
+
+msgid "Mailer|Confirmation|Confirm account through link below:"
+msgstr ""
+
+msgid "Mailer|Confirmation|Confirm my account"
+msgstr ""
+
+msgid "Mailer|Confirmation|Greeting %{user_email} %{app_name}"
+msgstr ""
+
+msgid "Mailer|Reset Password|Change my password"
+msgstr ""
+
+msgid "Mailer|Reset Password|Greeting %{user_name}"
+msgstr ""
+
+msgid "Mailer|Reset Password|If you didn't request this, please ignore this email."
+msgstr ""
+
+msgid "Mailer|Reset Password|Someone has requested a link to change your password. You can do this through the link below."
+msgstr ""
+
+msgid "Mailer|Reset Password|Your password won't change until you access the link above and create a new one."
 msgstr ""
 
 msgid "MarkdownEditor|Popup|Cancel"
@@ -1753,9 +1783,6 @@ msgid "PasswordResetRequest|Request reset"
 msgstr ""
 
 msgid "PasswordResetRequest|Reset your password"
-msgstr ""
-
-msgid "PasswordReset|%{min_chars} characters minimum"
 msgstr ""
 
 msgid "PasswordReset|Request reset"
@@ -2316,9 +2343,6 @@ msgstr ""
 msgid "Session|Remember me"
 msgstr ""
 
-msgid "Session|Sign in"
-msgstr ""
-
 msgid "Session|Submit 2FA code"
 msgstr ""
 
@@ -2437,6 +2461,9 @@ msgid "Sidebar|Next events"
 msgstr ""
 
 msgid "Sidebar|Next lan"
+msgstr ""
+
+msgid "Signup"
 msgstr ""
 
 msgid "StarpageBanner|Remove this image"
@@ -3568,9 +3595,6 @@ msgid "User|My website"
 msgstr ""
 
 msgid "User|New Password"
-msgstr ""
-
-msgid "User|New Password confirmation"
 msgstr ""
 
 msgid "User|News admin permission"
