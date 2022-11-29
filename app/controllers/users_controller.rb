@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :check_captcha, only: %i[create]
   layout 'devise', only: %i[new create]
 
   def index
@@ -16,12 +15,21 @@ class UsersController < ApplicationController
   end
 
   def create
-    if run Operations::User::Create
+    op Operations::User::Create
+
+    captcha_success = verify_recaptcha(model: model)
+
+    if run && captcha_success
       flash[:success] = _('User|Successfully created, check your mail for activation')
       redirect_to root_path
     else
       add_breadcrumb _('Signup')
-      render :new, status: :unprocessable_entity
+      if captcha_success
+        flash[:danger] = _('User|Could not be created, please check the form below for more infos')
+      else
+        flash[:danger] = _('User|The captcha verification failed, please try again')
+      end
+      render :new
     end
   rescue Operations::User::Create::SignupClosed
     flash[:danger] = _('User|Signup is currently closed')
@@ -32,17 +40,5 @@ class UsersController < ApplicationController
     op Operations::User::Load
     add_breadcrumb _('Users'), :users_path
     add_breadcrumb model.username
-  end
-
-  private
-
-  def check_captcha
-    return if verify_hcaptcha
-
-    op Operations::User::Create
-    model.validate
-    flash.delete(:hcaptcha_error)
-    flash.now[:danger] = _('Session|Hcaptcha failed, please try again')
-    render :new, status: :unprocessable_entity
   end
 end

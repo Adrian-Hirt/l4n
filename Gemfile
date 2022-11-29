@@ -10,7 +10,7 @@ gem 'rails', '~> 7.0.4'
 gem 'cancancan', '~> 3.4.0'
 gem 'devise', '~> 4.8'
 gem 'devise-two-factor', '~> 5.0.0'
-gem 'hcaptcha', '~> 7.1'
+gem 'recaptcha', '~> 5.12.3'
 
 # Session handling
 gem 'activerecord-session_store', '~> 2.0.0'

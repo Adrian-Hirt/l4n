@@ -163,8 +163,6 @@ GEM
       haml (>= 4.0.6)
       railties (>= 5.1)
     hashie (5.0.0)
-    hcaptcha (7.1.0)
-      json
     httparty (0.20.0)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
@@ -332,6 +330,8 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    recaptcha (5.12.3)
+      json
     redcarpet (3.5.1)
     regexp_parser (2.6.0)
     request_store (1.5.1)
@@ -448,7 +448,6 @@ DEPENDENCIES
   gettext (>= 3.0.2)
   gettext_i18n_rails (~> 1.9.0)
   haml-rails (~> 2.0)
-  hcaptcha (~> 7.1)
   image_processing (~> 1.12)
   inquery (~> 1.0.9)
   jsbundling-rails (~> 1.0.3)
@@ -469,6 +468,7 @@ DEPENDENCIES
   rails-i18n (~> 7.0.1)
   rails-settings-cached (~> 2.8.2)
   rails_ops (~> 1.2.0)
+  recaptcha (~> 5.12.3)
   redcarpet (~> 3.5.1)
   rqrcode (~> 2.1.0)
   rubocop (~> 1.24)

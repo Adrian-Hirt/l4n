@@ -1,6 +1,6 @@
 .d-flex.justify-content-center.align-items-center.sessions-page
   .card
-    = simple_form_for model, wrapper: :input_group, url: signup_path do |f|
+    = simple_form_for model, wrapper: :input_group, url: signup_path, html: { data: { turbo: false } } do |f|
       .card-header.text-center
         %a.h1{href: root_path}
           = AppConfig.application_name
@@ -8,7 +8,7 @@
         = f.input :username, label: false, placeholder: _('User|Username')
         = f.input :email, label: false, placeholder: _('User|Email')
         = f.password :password, label: false, placeholder: _('User|Password')
-        = hcaptcha_tags theme: :light
+        = recaptcha_tags noscript: false
       .card-footer
         .d-grid.gap-3
           = f.save _('User|Create account'), class: %i[btn-default]

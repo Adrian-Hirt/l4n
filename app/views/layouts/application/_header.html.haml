@@ -68,7 +68,7 @@
               %li
                 = link_to _('User|Login'), new_user_session_path, class: %i[dropdown-item]
               %li
-                = link_to _('User|Sign up'), signup_path, class: %i[dropdown-item]
+                = link_to _('User|Sign up'), signup_path, class: %i[dropdown-item], data: { turbo: false }
           - else
             %li.nav-item
               = link_to _('User|Login'), new_user_session_path, class: %i[nav-link]
