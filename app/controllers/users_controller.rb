@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def new
     add_breadcrumb _('Signup')
     op Operations::User::Create
-  rescue Operations::User::Create::SignupClosed
+  rescue Operations::User::SignupClosed
     flash[:danger] = _('User|Signup is currently closed')
     redirect_to root_path
   end
@@ -25,13 +25,13 @@ class UsersController < ApplicationController
     else
       add_breadcrumb _('Signup')
       if captcha_success
-        flash[:danger] = _('User|Could not be created, please check the form below for more infos')
+        flash.now[:danger] = _('User|Could not be created, please check the form below for more infos')
       else
-        flash[:danger] = _('User|The captcha verification failed, please try again')
+        flash.now[:danger] = _('User|The captcha verification failed, please try again')
       end
       render :new
     end
-  rescue Operations::User::Create::SignupClosed
+  rescue Operations::User::SignupClosed
     flash[:danger] = _('User|Signup is currently closed')
     redirect_to root_path
   end

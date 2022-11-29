@@ -1,5 +1,5 @@
 .d-flex.justify-content-center.align-items-center.sessions-page
-  .card
+  .card.devise-card
     = simple_form_for model, wrapper: :input_group, url: signup_path, html: { data: { turbo: false } } do |f|
       .card-header.text-center
         %a.h1{href: root_path}
@@ -8,7 +8,7 @@
         = f.input :username, label: false, placeholder: _('User|Username')
         = f.input :email, label: false, placeholder: _('User|Email')
         = f.password :password, label: false, placeholder: _('User|Password')
-        = recaptcha_tags noscript: false
+        = recaptcha_tags noscript: false, class: 'd-flex justify-content-center'
       .card-footer
         .d-grid.gap-3
           = f.save _('User|Create account'), class: %i[btn-default]
