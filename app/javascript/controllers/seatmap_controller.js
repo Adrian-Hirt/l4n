@@ -484,15 +484,24 @@ export default class extends Controller {
 
     if(containerWidth < this.seatmapData.canvasWidth) {
       let scale = containerWidth / this.seatmapData.canvasWidth;
+      let stageHeight = this.seatmapData.canvasHeight * scale;
 
       this.stage.width(this.seatmapData.canvasWidth * scale);
       this.stage.height(this.seatmapData.canvasHeight * scale);
       this.stage.scale({ x: scale, y: scale });
+
+      if(stageHeight > this.containerTarget.offsetHeight) {
+        this.containerTarget.classList.add('overflowing');
+      }
+      else {
+        this.containerTarget.classList.remove('overflowing');
+      }
     }
     else {
       this.stage.width(this.seatmapData.canvasWidth);
       this.stage.height(this.seatmapData.canvasHeight);
       this.stage.scale({ x: 1, y: 1 });
+      this.containerTarget.classList.remove('overflowing');
     }
   }
 
