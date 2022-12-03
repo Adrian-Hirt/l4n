@@ -19,7 +19,7 @@ module Operations::Application
       # Check that the config setting is enabled
       return unless AppConfig.enable_events_block
 
-      next_relevant_events = Queries::Event::FetchFutureEvents.call.first(3)
+      next_relevant_events = Queries::Event::FetchFutureEvents.call.where(published: true).first(3)
 
       ApplicationController.render partial: 'shared/sidebar/next_events', locals: { events: next_relevant_events } if next_relevant_events.any?
     end
