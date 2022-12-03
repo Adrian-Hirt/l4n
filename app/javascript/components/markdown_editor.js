@@ -313,7 +313,7 @@ export default class MarkdownEditor extends EasyMDE {
 
   // Opens a window with a list of the fontawesome icons
   static showIconInfo(editor) {
-    window.open("https://fontawesome.com/v6.0/icons?m=free");
+    window.open("https://fontawesome.com/search?o=r&m=free");
   }
 
   // Insert a link. Instead of the browser prompt, we'll use the sweetalert
