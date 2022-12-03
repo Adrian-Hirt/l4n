@@ -1242,7 +1242,7 @@ msgid "Home"
 msgstr "Home"
 
 msgid "Homepage"
-msgstr "Homepage"
+msgstr "Home"
 
 msgid "ImageUploader|Select file"
 msgstr "Select file"
@@ -1321,6 +1321,10 @@ msgstr "Sold tickets"
 
 msgid "LanParty|Stats"
 msgstr "Stats"
+
+#, fuzzy
+msgid "LanParty|Tickets"
+msgstr "Lan Party"
 
 msgid "LanParty|Timetable"
 msgstr "Timetable"
@@ -2748,7 +2752,7 @@ msgid "TicketScanner|Wrong user"
 msgstr "Wrong user"
 
 msgid "TicketUpgrades|Manage my ticket upgrades"
-msgstr "Manage my ticket upgrades"
+msgstr "My ticket upgrades"
 
 msgid "TicketUpgrades|You don't have any upgrades for this event"
 msgstr "You don't have any upgrades for this event"
@@ -2790,7 +2794,7 @@ msgid "TicketUpgrade|You can only buy as many upgrades as the number of upgradea
 msgstr "You can only buy as many upgrades as the number of upgradeable tickets you own"
 
 msgid "Tickets|Manage"
-msgstr "Manage"
+msgstr "Tickets"
 
 msgid "Tickets|Manage & upgrade tickets"
 msgstr "Manage & upgrade tickets"

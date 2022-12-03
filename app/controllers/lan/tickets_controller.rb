@@ -60,7 +60,7 @@ module Lan
       redirect_to lan_seatmap_path
     end
 
-    def manage
+    def index
       op Operations::Ticket::Manage
       add_breadcrumb _('Tickets|Manage')
     rescue Operations::Exceptions::OpFailed => e
@@ -75,10 +75,10 @@ module Lan
         flash[:danger] = _('TicketUpgrade|Could not be applied')
       end
 
-      redirect_to manage_lan_tickets_path
+      redirect_to lan_tickets_path
     rescue Operations::Exceptions::OpFailed => e
       flash[:danger] = e.message
-      redirect_to manage_lan_tickets_path
+      redirect_to lan_tickets_path
     end
   end
 end

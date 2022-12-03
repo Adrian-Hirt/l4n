@@ -135,7 +135,7 @@ Rails.application.routes.draw do
 
     get :ticket, to: 'tickets#my_ticket'
 
-    resources :tickets, only: [] do
+    resources :tickets, only: %i[index] do
       member do
         # Assign and remove assignation of tickets
         post :assign
@@ -147,7 +147,6 @@ Rails.application.routes.draw do
       end
 
       collection do
-        get :manage
         post :apply_upgrade
       end
     end
