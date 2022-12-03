@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-29 23:23+0100\n"
-"PO-Revision-Date: 2022-11-29 23:23+0100\n"
+"POT-Creation-Date: 2022-12-03 10:31+0100\n"
+"PO-Revision-Date: 2022-12-03 10:31+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -1189,6 +1189,12 @@ msgid "GameAccounts|Discord api error"
 msgstr ""
 
 msgid "GameAccounts|Join steam server"
+msgstr ""
+
+msgid "GameAccounts|Really remove your discord account?"
+msgstr ""
+
+msgid "GameAccounts|Really remove your steam account?"
 msgstr ""
 
 msgid "GameAccounts|Steam api error"

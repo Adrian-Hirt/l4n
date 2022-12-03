@@ -7,16 +7,16 @@
     .card
       .card-body
         - if Figaro.env.discord_id.present? && Figaro.env.discord_secret.present?
-          %h4 Discord
+          %h4= _('Gameaccounts|Discord')
           - if current_user.discord_id.present?
-            = delete_button nil, title: _('Gameaccounts|Remove discord'), href: settings_gameaccounts_discord_path
+            = button  _('Gameaccounts|Remove discord'), settings_gameaccounts_discord_path, method: :delete, confirm: _('GameAccounts|Really remove your discord account?'), color: :danger
           - else
             = button_to _('Gameaccounts|Add discord'), '/auth/discord', data: { turbo: false }, class: %i[btn btn-default]
 
         - if Figaro.env.steam_web_api_key.present?
           %hr
-          %h4 Steam
+          %h4= _('Gameaccounts|Steam')
           - if current_user.steam_id.present?
-            = delete_button nil, title: _('Gameaccounts|Remove steam'), href: settings_gameaccounts_steam_path
+            = button _('Gameaccounts|Remove steam'), settings_gameaccounts_steam_path,  method: :delete, confirm: _('GameAccounts|Really remove your steam account?'), color: :danger
           - else
             = button_to _('Gameaccounts|Add steam'), '/auth/steam', data: { turbo: false }, class: %i[btn btn-default]

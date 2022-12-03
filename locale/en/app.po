@@ -1190,6 +1190,12 @@ msgstr "Discord API error"
 msgid "GameAccounts|Join steam server"
 msgstr "Join steam server"
 
+msgid "GameAccounts|Really remove your discord account?"
+msgstr "Really remove your discord account?"
+
+msgid "GameAccounts|Really remove your steam account?"
+msgstr "Really remove your steam account?"
+
 msgid "GameAccounts|Steam api error"
 msgstr "Steam API error"
 
