@@ -1,9 +1,7 @@
 module Admin
   class HomeController < AdminController
     def dashboard
-      if current_user.only_payment_assist_permission?
-        redirect_to admin_shop_payment_assist_path
-      end
+      redirect_to admin_shop_payment_assist_path if current_user.only_payment_assist_permission?
     end
   end
 end
