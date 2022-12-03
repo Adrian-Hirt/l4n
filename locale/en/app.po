@@ -1806,10 +1806,10 @@ msgid "PaymentAssist|Optional payment id"
 msgstr "Optional payment id"
 
 msgid "PaymentAssist|Optional payment id placeholder"
-msgstr "Optional payment id placeholder"
+msgstr "Optional payment id, can be left empty"
 
 msgid "PaymentAssist|Order paid button"
-msgstr "Order paid button"
+msgstr "Order is paid"
 
 msgid "PaypalPaymentGateway"
 msgstr "Paypal"

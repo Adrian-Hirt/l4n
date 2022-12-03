@@ -8,6 +8,7 @@ module Admin
 
     before_action :authenticate_user!
     before_action :check_admin_panel_access
+    before_action :clear_app_breadcrumbs
 
     add_breadcrumb _('L4N Admin'), :admin_path
 
@@ -15,6 +16,10 @@ module Admin
 
     def check_admin_panel_access
       authorize! :access, :admin_panel
+    end
+
+    def clear_app_breadcrumbs
+      @breadcrumbs_on_rails = []
     end
   end
 end

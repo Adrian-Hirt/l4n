@@ -65,6 +65,14 @@ class User < ApplicationRecord
     User::PERMISSION_FIELDS.any? { |permission| send(permission) }
   end
 
+  def only_payment_assist_permission?
+    # Return false if the user does not have the payment assist permission
+    return false unless payment_assist_admin_permission?
+
+    # Otherwise check if this is the only permission the user has
+    User::PERMISSION_FIELDS.excluding(:payment_assist_admin_permission).none? { |permission| send(permission) }
+  end
+
   def ticket_for(lan_party)
     tickets.find_by(lan_party: lan_party)
   end
