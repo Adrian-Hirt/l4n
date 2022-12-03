@@ -97,24 +97,26 @@ Rails.application.configure do
   # --------------------------------------------------------------
   # Mailer settings
   # --------------------------------------------------------------
-  # Use the host defined in mailer host
-  config.action_mailer.default_url_options = { host: Figaro.env.host_domain! }
+  unless Figaro.env.building_docker_image
+    # Use the host defined in mailer host
+    config.action_mailer.default_url_options = { host: Figaro.env.host_domain! }
 
-  # When using smtp, configure it, otherwise configure sendmail
-  if Figaro.env.use_smtp! == 'true'
-    config.action_mailer.delivery_method = :smtp
+    # When using smtp, configure it, otherwise configure sendmail
+    if Figaro.env.use_smtp! == 'true'
+      config.action_mailer.delivery_method = :smtp
 
-    # Setup the smtp mailer
-    config.action_mailer.smtp_settings = {
-      address:              Figaro.env.smtp_address!,
-      port:                 Figaro.env.smtp_port!,
-      authentication:       Figaro.env.smtp_authentication!,
-      user_name:            Figaro.env.smtp_username!,
-      password:             Figaro.env.smtp_password!,
-      domain:               Figaro.env.smtp_domain!,
-      enable_starttls_auto: Figaro.env.smtp_enable_starttls_auto!
-    }
-  else
-    config.action_mailer.delivery_method = :sendmail
+      # Setup the smtp mailer
+      config.action_mailer.smtp_settings = {
+        address:              Figaro.env.smtp_address!,
+        port:                 Figaro.env.smtp_port!,
+        authentication:       Figaro.env.smtp_authentication!,
+        user_name:            Figaro.env.smtp_username!,
+        password:             Figaro.env.smtp_password!,
+        domain:               Figaro.env.smtp_domain!,
+        enable_starttls_auto: Figaro.env.smtp_enable_starttls_auto!
+      }
+    else
+      config.action_mailer.delivery_method = :sendmail
+    end
   end
 end

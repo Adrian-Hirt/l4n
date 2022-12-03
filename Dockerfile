@@ -12,15 +12,24 @@ RUN apt-get update -qq && apt-get install -y postgresql-client libvips \
 RUN mkdir /app
 WORKDIR /app
 
-# Install gems
+# Set build-time variables
+ARG RAILS_ENV=production
+ARG BUILDING_DOCKER_IMAGE=true
+# This value is only set such that the asset precompile works. It
+# will not be available to the final container and you need to
+# set the value in your docker compose
+ARG SECRET_KEY_BASE=583364b0aaaef81adc0d476c18efec0c
+
+# Install gems, skipping the test and development gems
 ADD . /app
+RUN bundle config set --local without 'test development'
 RUN bundle install
 
 # Install yarn packages
 RUN yarn install
 
 # Precompile assets
-RUN BUILDING_DOCKER_IMAGE=1 bundle exec rake assets:precompile
+RUN bundle exec rake assets:precompile
 
 EXPOSE 3000
 
