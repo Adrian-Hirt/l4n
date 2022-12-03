@@ -2,7 +2,7 @@ module Grids
   module Admin
     class NewsPosts < ApplicationGrid
       scope do
-        NewsPost.order(:title)
+        NewsPost.order(:created_at)
       end
 
       model NewsPost
