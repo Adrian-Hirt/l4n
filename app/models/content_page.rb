@@ -4,7 +4,7 @@ class ContentPage < Page
   # == Constants ===================================================================
 
   # == Associations ================================================================
-  has_many :menu_items, dependent: :destroy
+  has_many :menu_items, dependent: :destroy, foreign_key: 'page_id'
 
   # == Validations =================================================================
   validates :title, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }
