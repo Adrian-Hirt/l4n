@@ -2,7 +2,7 @@
 FROM ruby:3.1.2
 
 # Install dependencies
-RUN apt-get update -qq && apt-get install -y postgresql-client libvips \
+RUN apt-get update -qq && apt-get install -y postgresql-client libvips cron \
                        && curl -sSL https://deb.nodesource.com/setup_18.x | bash - \
                        && curl -sSL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
                        && echo 'deb https://dl.yarnpkg.com/debian/ stable main' | tee /etc/apt/sources.list.d/yarn.list \
