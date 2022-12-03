@@ -75,6 +75,9 @@ gem 'omniauth-discord', '~> 1.0.2'
 gem 'omniauth-rails_csrf_protection', '~> 1.0.1'
 gem 'omniauth-steam', '~> 1.0.6'
 
+# Notifications
+gem 'exception_notification', '~> 4.5.0'
+
 # Development gems
 group :development do
   gem 'listen', '~> 3.2'

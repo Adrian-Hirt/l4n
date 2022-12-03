@@ -133,6 +133,9 @@ GEM
       rotp (~> 6.0)
     docile (1.4.0)
     erubi (1.11.0)
+    exception_notification (4.5.0)
+      actionmailer (>= 5.2, < 8)
+      activesupport (>= 5.2, < 8)
     faraday (2.6.0)
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
@@ -444,6 +447,7 @@ DEPENDENCIES
   devise (~> 4.8)
   devise-two-factor (~> 5.0.0)
   dummy_payment!
+  exception_notification (~> 4.5.0)
   figaro (= 1.2.0)
   gettext (>= 3.0.2)
   gettext_i18n_rails (~> 1.9.0)

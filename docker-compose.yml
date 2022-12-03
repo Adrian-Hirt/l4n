@@ -48,6 +48,9 @@ services:
       DISCORD_ID: ${DISCORD_ID:?err}
       DISCORD_SECRET: ${DISCORD_SECRET:?err}
       DISCORD_BOT_AUTH: ${DISCORD_BOT_AUTH:?err}
+      # Exception notification
+      ENABLE_EXCEPTION_NOTIFIER: ${AR_DETERMINISTIC_KEY:-false}
+      EXCEPTION_NOTIFIER_RECIPIENT: ${AR_DETERMINISTIC_KEY}
     labels:
       - traefik.enable=true
       - traefik.docker.network=reverse_proxy
