@@ -1,2 +1,11 @@
 = turbo_stream.update 'payment_gateways' do
   = render partial: 'payment_gateways'
+
+= turbo_stream.update 'terms_and_conditions' do
+  .card
+    .card-header
+      = _('Order|Terms and conditions')
+    .card-body
+      = _('Order|You have accepted the terms and condition')
+    .card-footer
+      = button _('Order|Cancel order after accepting terms and conditions'), shop_path, color: :secondary
