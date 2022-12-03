@@ -2439,16 +2439,16 @@ msgid "Sidebar|All newsposts"
 msgstr "All newsposts"
 
 msgid "Sidebar|Available tickets"
-msgstr "Available tickets"
+msgstr "Sold tickets"
 
 msgid "Sidebar|Lan end"
-msgstr "Lan end"
+msgstr "End"
 
 msgid "Sidebar|Lan location"
-msgstr "Lan location"
+msgstr "Location"
 
 msgid "Sidebar|Lan start"
-msgstr "Lan start"
+msgstr "Start"
 
 msgid "Sidebar|Latest newsposts"
 msgstr "Latest newsposts"
@@ -2457,7 +2457,7 @@ msgid "Sidebar|Next events"
 msgstr "Next events"
 
 msgid "Sidebar|Next lan"
-msgstr "Next lan"
+msgstr "Next LAN"
 
 msgid "Signup"
 msgstr "Sign Up"
