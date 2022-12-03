@@ -8,6 +8,7 @@ module Operations::Shop::Order
     model ::Order
 
     attr_reader :no_address_given_error
+    attr_reader :chosen_address
 
     def perform
       if osparams.selected_address_id.blank?
@@ -23,6 +24,8 @@ module Operations::Shop::Order
       model.billing_address_zip_code = address.zip_code
       model.billing_address_city = address.city
       model.save!
+
+      @chosen_address = address
     end
 
     def order

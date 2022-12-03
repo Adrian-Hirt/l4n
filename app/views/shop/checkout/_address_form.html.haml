@@ -13,7 +13,7 @@
               %br
               = "#{user_address.zip_code} #{user_address.city}"
               .form-check.mt-2.mb-0
-                = radio_button_tag :selected_address_id, user_address.id, false, class: 'form-check-input radio_buttons radio-default'
+                = radio_button_tag :selected_address_id, user_address.id, false, class: 'form-check-input radio_buttons radio-default', checked: user_address == chosen_address
                 = f.label :selected_address_id, _('Checkout|Use this address'), for: "selected_address_id_#{user_address.id}"
     .card-footer
       = f.save _('Order|Set address'), class: %i[btn-default]
