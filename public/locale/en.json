@@ -927,7 +927,7 @@
     "Tickets|Manage": "Manage",
     "Tickets|Manage & upgrade tickets": "Manage & upgrade tickets",
     "Tickets|Manage my tickets": "Manage my tickets",
-    "Tickets|Ticket manage view hint": "Here you can manage & upgrade all tickets you have purchased.",
+    "Tickets|Ticket manage view hint": "Here you can manage & upgrade all tickets you have purchased. Please note that you can only manage the tickets you purchased, if someone else assigned a ticket to you they have to manage it!",
     "Tickets|You don't have any tickets for this event": "You don't have any tickets for this event",
     "Ticket|Actions": "Actions",
     "Ticket|Already assigned": "Already assigned",
