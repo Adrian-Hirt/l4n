@@ -459,7 +459,7 @@ msgid "Admin|Team|User needs to be checked in to do this"
 msgstr "User needs to be checked in to do this"
 
 msgid "Admin|Team|User not confirmed"
-msgstr "User not confirmed"
+msgstr "User needs to confirm their account before they can be added to a team"
 
 msgid "Admin|Team|User not found"
 msgstr "User not found"
@@ -2940,7 +2940,7 @@ msgid "Ticket|User already has assigned ticket"
 msgstr "User already has assigned ticket"
 
 msgid "Ticket|User not confirmed"
-msgstr "User not confirmed"
+msgstr "User needs to confirm their account before you can assign a ticket to them"
 
 msgid "Ticket|User not found"
 msgstr "User not found"
