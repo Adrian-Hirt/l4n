@@ -30,7 +30,7 @@ module Operations::Shop::Order
         end
 
         # Remove the cart to "empty" it
-        order.user.cart.destroy!
+        order.user.cart&.destroy!
       end
     end
   end
