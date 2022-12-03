@@ -1,5 +1,6 @@
 N_('User|Password')
 N_('Ticket|Seat_category')
+N_('User|Logout')
 
 # Translated enums
 N_('Ticket|status|created')
