@@ -21,15 +21,21 @@
                 = button _('Search|Reset'), users_path, color: :secondary
 
 .row.mb-3
-  = datagrid_rows(op.grid) do |row|
-    .col-md-6.mb-3
+  - if op.grid.assets.any?
+    = datagrid_rows(op.grid) do |row|
+      .col-md-6.mb-3
+        .card
+          .card-body
+            .d-flex
+              .flex-shrink-0
+                .placeholder-glow
+                  = row.avatar
+              .flex-grow-1.ms-3
+                %h4= link_to row.username, row.asset
+  - else
+    .col-12
       .card
         .card-body
-          .d-flex
-            .flex-shrink-0
-              .placeholder-glow
-                = row.avatar
-            .flex-grow-1.ms-3
-              %h4= link_to row.username, row.asset
+          = _('User|No users found')
 
 = paginate op.grid.assets, theme: 'bootstrap'

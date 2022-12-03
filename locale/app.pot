@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-03 11:07+0100\n"
-"PO-Revision-Date: 2022-12-03 11:07+0100\n"
+"POT-Creation-Date: 2022-12-03 11:32+0100\n"
+"PO-Revision-Date: 2022-12-03 11:32+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -1650,6 +1650,9 @@ msgstr ""
 msgid "Order|By clicking the %{button_text} button below, you accept our terms and conditions, which you can find at"
 msgstr ""
 
+msgid "Order|Cancel order after accepting terms and conditions"
+msgstr ""
+
 msgid "Order|Canceled successfully"
 msgstr ""
 
@@ -1747,6 +1750,9 @@ msgid "Order|User"
 msgstr ""
 
 msgid "Order|Uuid"
+msgstr ""
+
+msgid "Order|You have accepted the terms and condition"
 msgstr ""
 
 msgid "Order|You need to accept the terms and conditions to continue your checkyout. Are you sure you do not want to accept the terms and conditions?"
@@ -3610,6 +3616,9 @@ msgid "User|News admin permission"
 msgstr ""
 
 msgid "User|No bio added yet"
+msgstr ""
+
+msgid "User|No users found"
 msgstr ""
 
 msgid "User|No website added yet"

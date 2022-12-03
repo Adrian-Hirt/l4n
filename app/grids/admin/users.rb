@@ -22,8 +22,15 @@ module Grids
         end
       end
 
-      filter(:email, :string)
-      filter(:username, :string)
+      filter(:email, :string) do |value|
+        sanitized_value = sanitize_sql_like(value.downcase)
+        where('LOWER(email) LIKE ?', "%#{sanitized_value}%")
+      end
+
+      filter(:username, :string) do |value|
+        sanitized_value = sanitize_sql_like(value.downcase)
+        where('LOWER(username) LIKE ?', "%#{sanitized_value}%")
+      end
     end
   end
 end

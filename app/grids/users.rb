@@ -19,6 +19,9 @@ module Grids
       show_button(user, size: :sm, icon_only: true)
     end
 
-    filter(:username, :string)
+    filter(:username, :string) do |value|
+      sanitized_value = sanitize_sql_like(value.downcase)
+      where('LOWER(username) LIKE ?', "%#{sanitized_value}%")
+    end
   end
 end

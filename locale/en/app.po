@@ -1649,6 +1649,9 @@ msgstr "Billing address zip code"
 msgid "Order|By clicking the %{button_text} button below, you accept our terms and conditions, which you can find at"
 msgstr "By clicking the %{button_text} button below, you accept our terms and conditions, which you can find at"
 
+msgid "Order|Cancel order after accepting terms and conditions"
+msgstr "Cancel"
+
 msgid "Order|Canceled successfully"
 msgstr "Canceled successfully"
 
@@ -1747,6 +1750,9 @@ msgstr "User"
 
 msgid "Order|Uuid"
 msgstr "Uuid"
+
+msgid "Order|You have accepted the terms and condition"
+msgstr "You have accepted the terms and condition"
 
 msgid "Order|You need to accept the terms and conditions to continue your checkyout. Are you sure you do not want to accept the terms and conditions?"
 msgstr "You need to accept the terms and conditions to continue your checkyout. Are you sure you do not want to accept the terms and conditions?"
@@ -3610,6 +3616,9 @@ msgstr "News admin permission"
 
 msgid "User|No bio added yet"
 msgstr "No bio added yet"
+
+msgid "User|No users found"
+msgstr "No users found"
 
 msgid "User|No website added yet"
 msgstr "No website added yet"
