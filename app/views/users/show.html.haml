@@ -16,7 +16,7 @@
         = _('User|About me')
       - if model.bio.present?
         .card-body.pb-0
-          = simple_format model.bio
+          = markdown(model.bio)
       - else
         .card-body
           = _('User|No bio added yet')
