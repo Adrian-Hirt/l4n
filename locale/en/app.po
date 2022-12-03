@@ -2231,6 +2231,9 @@ msgstr "Hover over badge to see type of ticket"
 msgid "Seatmap|Please select a seat"
 msgstr "Please select a seat"
 
+msgid "Seatmap|Reset zoom & position"
+msgstr "Reset zoom & position"
+
 msgid "Seatmap|Seat categories"
 msgstr "Seat categories"
 

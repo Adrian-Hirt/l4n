@@ -294,6 +294,14 @@ export default class extends Controller {
     }.bind(this));
   }
 
+  resetZoomAndPosition(e) {
+    this.stage.position({x: 0, y: 0});
+    this.#resizeToFit();
+
+    e.preventDefault();
+    return false;
+  }
+
   #setupSeatSelectionFunctionality() {
     this.stage.on('mouseup touchend', (e) => {
       if (e.target === this.stage || e.target === this.background) {
