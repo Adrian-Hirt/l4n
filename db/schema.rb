@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_23_152954) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_14_210815) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -224,6 +224,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_23_152954) do
     t.integer "sort", default: 0, null: false
     t.bigint "from_product_id"
     t.bigint "to_product_id"
+    t.integer "total_inventory", default: 0, null: false
     t.index ["from_product_id"], name: "index_products_on_from_product_id"
     t.index ["name"], name: "index_products_on_name", unique: true
     t.index ["product_category_id"], name: "index_products_on_product_category_id"

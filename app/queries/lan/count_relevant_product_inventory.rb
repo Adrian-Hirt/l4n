@@ -7,7 +7,7 @@ module Queries::Lan
     def call
       relevant_categories = osparams.lan_party.seat_categories.where(relevant_for_counter: true)
 
-      ::Product.where(seat_category: relevant_categories).sum(&:inventory)
+      ::Product.where(seat_category: relevant_categories).sum(&:total_inventory)
     end
   end
 end

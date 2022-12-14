@@ -15,10 +15,12 @@
         .col-md-5
           = f.association :product_category, include_blank: _('Form|Select|Blank')
       .row
-        .col-md-6
+        .col-md-4
           = f.input :inventory, wrapper_html: { style: 'margin-bottom: 0 !important;' }
-        .col-md-6
+        .col-md-4
           = f.input :availability, disabled: true, wrapper_html: { style: 'margin-bottom: 0 !important;' }
+        .col-md-4
+          = f.input :total_inventory, disabled: true, wrapper_html: { style: 'margin-bottom: 0 !important;' }
 
   -# -- Product behaviours inputs -------------------------------------------------
   .card.mb-3
