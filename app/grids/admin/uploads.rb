@@ -8,14 +8,14 @@ module Grids
       model Upload
 
       column :filename, header: _('Upload|Filename'), html: true do |upload|
-        upload.file.blob.filename
+        upload.file&.blob&.filename
       end
       column :user, header: _('Upload|Uploaded by'), html: ->(user) { user.username }
       column :size, header: _('Upload|Size'), html: true do |upload|
-        number_to_human_size(upload.file.blob.byte_size)
+        number_to_human_size(upload.file&.blob&.byte_size)
       end
       column :type, header: _('Upload|Type'), html: true do |upload|
-        upload.file.blob.content_type
+        upload.file&.blob&.content_type
       end
       column :created_at, header: _('Upload|Uploaded at'), html: ->(created_at) { l created_at }
 
