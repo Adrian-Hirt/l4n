@@ -1,6 +1,13 @@
 # Changelog
 
-## 1.0.1 - 2022-12-03
+## 1.0.2 - 2022-12-14
+
+### Fixed
+
+* Fix changelog date
+* Fix L4N Version
+
+## 1.0.1 - 2022-12-14
 
 ### Added
 
