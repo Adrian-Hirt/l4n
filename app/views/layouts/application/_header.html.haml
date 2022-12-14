@@ -61,7 +61,7 @@
               %li
                 = button_to destroy_user_session_path, method: :delete, class: 'dropdown-item', html: { turbo: false } do
                   = icon %i[fa fa-sign-out-alt]
-                  = ('User|Logout')
+                  = _('User|Logout')
           - elsif FeatureFlag.enabled?(:user_registration)
             %a.nav-link.dropdown-toggle{data: { 'bs-toggle' => :dropdown}, href: '#'}= _('Login / Sign up')
             %ul.dropdown-menu.dropdown-menu-end.dropdown-menu-dark
