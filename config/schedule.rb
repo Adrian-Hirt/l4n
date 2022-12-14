@@ -7,7 +7,10 @@
 
 set :output, "#{Whenever.path}/log/cron.log"
 
-every 5.minutes do
+# This is needed in order to have all the needed env vars set
+ENV.each { |k, v| env(k, v) }
+
+every 2.minutes do
   runner 'Operations::Admin::Order::CleanupExpired.run'
 end
 
