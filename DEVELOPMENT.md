@@ -9,6 +9,12 @@
 * `AR_DETERMINISTIC_KEY`
 * `AR_KEY_DERIVATION_SALT`
 
+For the production database:
+
+* `POSTGRES_HOSTNAME`
+* `POSTGRES_PASSWORD`
+* `POSTGRES_USER`
+
 For the mailer gateway in production:
 
 * `HOST_DOMAIN`
@@ -25,10 +31,15 @@ variables set as well:
 * `SMTP_DOMAIN`
 * `SMTP_ENABLE_STARTTLS`
 
+For the exception notification:
+
+* `ENABLE_EXCEPTION_NOTIFIER`
+* `EXCEPTION_NOTIFIER_RECIPIENT`
+
 ### Securing registration
 
-* `HCAPTCHA_SITE_KEY`
-* `HCAPTCHA_SITE_SECRET`
+* `RECAPTCHA_SITE_KEY`
+* `RECAPTCHA_SITE_SECRET`
 
 ### Game accounts
 
