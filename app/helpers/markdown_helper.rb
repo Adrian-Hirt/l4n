@@ -1,5 +1,7 @@
 module MarkdownHelper
   def markdown(text)
-    Services::Markdown.render(text)
+    tag.div class: 'markdown-rendering' do
+      Services::Markdown.render(text)
+    end
   end
 end
