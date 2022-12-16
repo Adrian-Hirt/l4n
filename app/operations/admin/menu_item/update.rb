@@ -49,17 +49,22 @@ module Operations::Admin::MenuItem
     end
 
     def page_candidates
-      candidates = []
+      candidates = {}
+      predefined_pages = []
+      content_pages = []
 
       # Add "static" pages
       ::MenuItem::PREDEFINED_PAGES.each do |page|
-        candidates << [page[1][:title], page[0]]
+        predefined_pages << [page[1][:title], page[0]]
       end
 
       # Add dynamic pages
       ::ContentPage.order(:title).each do |page|
-        candidates << [page.title, page.id]
+        content_pages << [page.title, page.id]
       end
+
+      candidates[_('MenuItem|Predefined pages')] = predefined_pages
+      candidates[_('MenuItem|Content pages')] = content_pages
 
       candidates
     end
