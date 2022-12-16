@@ -6,6 +6,7 @@
 
 * Allow dots and slashes in page URL
 * Disable password autofill in registration and update profile form
+* Improve styling of markdown rendering
 
 ## 1.0.3 - 2022-12-16
 
