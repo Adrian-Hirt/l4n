@@ -1,10 +1,11 @@
 # Changelog
 
-## UNRELEASED
+## 1.0.3 - 2022-12-16
 
-### Added
+### Fixed
 
 * Implement updating of `total_inventory`
+* Fix markdown editor duplicating
 
 ---
 
