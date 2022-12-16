@@ -1,5 +1,11 @@
 # Changelog
 
+## UNRELEASED
+
+### Changed
+
+* Allow dots and slashes in page URL
+
 ## 1.0.3 - 2022-12-16
 
 ### Fixed
