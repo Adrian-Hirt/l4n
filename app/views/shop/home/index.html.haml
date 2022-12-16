@@ -1,15 +1,35 @@
 = render partial: 'shop/shared/header'
 = turbo_frame_tag 'payment_gateways'
 
-.row
-  - op.products.each do |product|
-    .col-xl-4.col-lg-6.d-flex.align-items-stretch.mb-4.mb-md-3
-      .card.w-100
+-# Only display the filter if we have at least 2 categories, otherwise it does not make much sense
+- if op.available_categories.count > 0
+  .row
+    .col-md-12
+      .card.mb-3
         .card-body
-          %small.text-muted
-            = product.product_category.name
-          %h4.product_title
-            = link_to product.name, [:shop, product]
-        .card-footer
-          .product-price
-            = _('Product|Starting from %{start_price}') % { start_price: money_formatted(product.starting_price) }
+          %ul.nav.nav-pills.gap-2
+            %li.nav-item
+              = link_to _('Shop|Show all'), shop_path, class: 'nav-link'
+            - op.available_categories.each do |category|
+              - link_class = category.id == params[:category_id]&.to_i ? 'nav-link active' : 'nav-link'
+              %li.nav-item
+                = link_to category.name, shop_path(category_id: category.id), class: link_class
+
+.row
+  - if op.products.any?
+    - op.products.each do |product|
+      .col-xl-4.col-lg-6.d-flex.align-items-stretch.mb-4.mb-md-3
+        .card.w-100
+          .card-body
+            %small.text-muted
+              = product.product_category.name
+            %h4.product_title
+              = link_to product.name, [:shop, product]
+          .card-footer
+            .product-price
+              = _('Product|Starting from %{start_price}') % { start_price: money_formatted(product.starting_price) }
+  - else
+    .col-12
+      .card
+        .card-body
+          = _('Shop|No products found')
