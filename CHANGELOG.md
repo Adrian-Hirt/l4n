@@ -1,11 +1,21 @@
 # Changelog
 
+## UNRELEASED
+
+### Added
+
+* Implement updating of `total_inventory`
+
+---
+
 ## 1.0.2 - 2022-12-14
 
 ### Fixed
 
 * Fix changelog date
 * Fix L4N Version
+
+---
 
 ## 1.0.1 - 2022-12-14
 
@@ -26,13 +36,19 @@
 * Fix payment gateway being shown too early
 * Fix `whenever` schedule
 
+---
+
 ## 1.0.0 - 2022-12-03
 
 * First major release
 
+---
+
 ## 0.1.1 - 2022-12-03
 
 * Add new action to tag images when pushing a tag
+
+---
 
 ## 0.1.0 - 2022-12-03
 
