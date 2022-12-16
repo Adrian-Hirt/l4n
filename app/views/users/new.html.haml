@@ -5,9 +5,9 @@
         %a.h1{href: root_path}
           = AppConfig.application_name
       .card-body
-        = f.input :username, label: false, placeholder: _('User|Username')
-        = f.input :email, label: false, placeholder: _('User|Email')
-        = f.password :password, label: false, placeholder: _('User|Password')
+        = f.input :username, label: false, placeholder: _('User|Username'), input_html: { autocomplete: 'off' }
+        = f.input :email, label: false, placeholder: _('User|Email'), input_html: { autocomplete: 'email' }
+        = f.password :password, label: false, placeholder: _('User|Password'), input_html: { autocomplete: 'new-password' }
         = recaptcha_tags noscript: false, class: 'd-flex justify-content-center'
       .card-footer
         .d-grid.gap-3
