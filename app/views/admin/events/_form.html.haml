@@ -4,8 +4,7 @@
       .col-md-6
         = f.input :title
       .col-md-6
-        = f.input :location
-    = f.input :published, input_html: { class: 'no-validation' }
+        = f.input :published, as: :select, include_blank: false
     = f.markdown :description, preview_url: admin_markdown_preview_path
     #event_dates{data: { controller: 'cocoon' }}
       = f.label :event_dates

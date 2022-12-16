@@ -4,7 +4,6 @@ module Operations::Admin::Event
       req :id
       opt :event do
         opt :title
-        opt :location
         opt :published
         opt :description
         opt :event_dates_attributes

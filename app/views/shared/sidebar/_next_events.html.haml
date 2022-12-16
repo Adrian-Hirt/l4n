@@ -8,8 +8,8 @@
 
       %h5.mb-0= link_to event.title, event
       %small.text-muted
-        - if event.location.present?
-          = "#{l(event.next_date.start_date, format: '%d. %b, %H:%M')}, #{_('Event|Location')}: #{event.location}"
+        - if event.next_date.location.present?
+          = "#{l(event.next_date.start_date, format: '%d. %b, %H:%M')}, #{_('Event|Location')}: #{event.next_date.location}"
         - else
           = l(event.next_date.start_date, format: '%d. %b, %H:%M')
   .card-footer

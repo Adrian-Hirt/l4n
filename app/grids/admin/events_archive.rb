@@ -8,8 +8,8 @@ module Grids
       model Event
 
       column :title
-      column :location
       column :published, html: ->(published) { format_boolean(published) }
+      column :next_date, header: _('Event|Last location'), html: ->(last_date) { last_date.location }
       column :last_date, header: _('Event|Last start'), html: ->(last_date) { l(last_date.start_date) }
       column :last_date, header: _('Event|Last end'), html: ->(last_date) { l(last_date.end_date) }
       column :'datagrid-actions', html: true, header: false do |event|

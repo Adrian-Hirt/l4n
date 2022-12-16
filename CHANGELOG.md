@@ -4,6 +4,7 @@
 
 ### Changed
 
+* Moved `location` from `Event` to `EventDate` model
 * Allow dots and slashes in page URL
 * Disable password autofill in registration and update profile form
 * Improve styling of markdown rendering

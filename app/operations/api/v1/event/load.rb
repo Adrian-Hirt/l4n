@@ -16,9 +16,8 @@ module Operations::Api::V1::Event
       {
         title:       event.title,
         description: event.description,
-        location:    event.location,
         url:         context.view.event_url(event),
-        dates:       event.event_dates.order(start_date: :asc).map { |date| { start: date.start_date.iso8601, end: date.end_date.iso8601 } }
+        dates:       event.event_dates.order(start_date: :asc).map { |date| { start: date.start_date.iso8601, end: date.end_date.iso8601, location: date.location.presence } }
       }
     end
   end

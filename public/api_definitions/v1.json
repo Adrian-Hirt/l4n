@@ -177,12 +177,7 @@
           "description": {
             "type": "string",
             "description": "The description text of the event, markdown",
-            "example": "**Date: Someday**\\n**Location: Somewhere**\\n\\nJoin us for the first ..."
-          },
-          "location": {
-            "type": "string",
-            "description": "The location of the event",
-            "example": "**Date: Someday**\\n**Location: Somewhere**\\n\\nJoin us for the first ..."
+            "example": "**Some bold text** followed by other"
           },
           "url": {
             "type": "string",
@@ -203,6 +198,11 @@
                 "end": {
                   "type": "string",
                   "format": "date-time"
+                },
+                "location": {
+                  "type": "string",
+                  "description": "The location of the event",
+                  "example": "Some location"
                 }
               }
             }

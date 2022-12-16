@@ -9,6 +9,7 @@ class EventDate < ApplicationRecord
   # == Validations =================================================================
   validates :start_date, presence: true
   validates :end_date, presence: true
+  validates :location, length: { maximum: 255 }
   validate :no_date_overlap
   validate :end_date_at_least_start
 
