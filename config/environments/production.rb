@@ -120,18 +120,4 @@ Rails.application.configure do
       config.action_mailer.delivery_method = :sendmail
     end
   end
-
-  # --------------------------------------------------------------
-  # Exception notification settings
-  # --------------------------------------------------------------
-  # Skip when building the docker image
-  # Skip then notifier is not enabled
-  if !Figaro.env.building_docker_image && Figaro.env.enable_exception_notifier
-    Rails.application.config.middleware.use ExceptionNotification::Rack,
-                                            email: {
-                                              email_prefix:         '[EXCEPTION NOTIFICATION] ',
-                                              sender_address:       "notifier@#{Figaro.env.host_domain!}",
-                                              exception_recipients: Figaro.env.exception_notifier_recipient
-                                            }
-  end
 end
