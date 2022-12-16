@@ -14,7 +14,7 @@ module PaypalPayment
         # Check that the order is still valid
         fail ExecutionFailed, _('PaypalPaymentGateway|Order is expired, payment was not executed') if result[:valid_until] <= Time.zone.now
       rescue Operations::PaymentGateway::InvalidOrder => e
-
+        fail ExecutionFailed, e.message
       end
 
       # Execute the payment

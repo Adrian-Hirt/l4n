@@ -50,7 +50,7 @@ module Operations::PaymentGateway
       @result[:items] = items
 
       # minus 1 minute to have some "padding" between redirect and cleanup
-      @result[:valid_until] = order.cleanup_timestamp + ::Order::TIMEOUT_PAYMENT_PENDING - 2.minute
+      @result[:valid_until] = order.cleanup_timestamp + ::Order::TIMEOUT_PAYMENT_PENDING - 2.minutes
       total = Money.zero
 
       order.order_items.each do |order_item|

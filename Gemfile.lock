@@ -7,7 +7,7 @@ PATH
 PATH
   remote: payment_gateways/paypal_payment
   specs:
-    paypal_payment (1.0.0)
+    paypal_payment (1.1.0)
       httparty
       rails (>= 7.0.1)
 
