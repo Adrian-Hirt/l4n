@@ -24,8 +24,8 @@ module PaypalPayment
       else
         render json: { status: 'error', message: _('PaypalPaymentGateway|Something went wrong, please try again') }
       end
-    rescue PaypalPayment::ExecutionFailed
-      render json: { status: 'error', message: _('PaypalPaymentGateway|Something went wrong, please try again') }
+    rescue PaypalPayment::ExecutionFailed => e
+      render json: { status: 'error', message: e.message }
     end
   end
 end

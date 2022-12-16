@@ -7,13 +7,25 @@ module PaypalPayment
     end
 
     def perform
+      # Get data from the backend about the payment
+      begin
+        result = Operations::PaymentGateway::GetPaymentInfo.run!(order_id: osparams.order_id).result
+
+        # Check that the order is still valid
+        fail ExecutionFailed, _('PaypalPaymentGateway|Order is expired, payment was not executed') if result[:valid_until] <= Time.zone.now
+      rescue Operations::PaymentGateway::InvalidOrder => e
+
+      end
+
       # Execute the payment
       response = execute_payment
 
-      fail ExecutionFailed unless response['state'] == 'approved'
+      fail ExecutionFailed, _('PaypalPaymentGateway|Payment could not be executed') unless response['state'] == 'approved'
 
       # If the payment is approved, mark the order as paid
       run_sub Operations::PaymentGateway::SubmitPaymentResult, { gateway_name: 'Paypal Payment', payment_id: osparams.paymentID, order_id: osparams.order_id }
+
+      # Return true
       true
     end
 
