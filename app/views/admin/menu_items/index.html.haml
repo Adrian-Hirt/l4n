@@ -12,6 +12,7 @@
           %th= _('MenuItem|Title')
           %th{title: _('MenuItem|Visible')}= icon %i[fas fa-eye]
           %th{title: _('MenuItem|Use namespace for active detection')}= icon %i[fas fa-magnifying-glass]
+          %th{title: _('MenuItem|Sort')}= icon %i[fas fa-arrow-down-1-9]
           %th= _('MenuItem|Page_name')
           %th
         - op.top_items.each do |top_item|
@@ -20,6 +21,7 @@
             %td= top_item.title
             %td= format_boolean(top_item.visible)
             %td= format_boolean(top_item.use_namespace_for_active_detection)
+            %td= top_item.sort
             %td
               - if top_item.is_a? MenuLinkItem
                 = top_item.link_destination
@@ -36,6 +38,7 @@
                   %td{style: 'text-indent: 1em;'}= child_item.title
                   %td= format_boolean(child_item.visible)
                   %td= format_boolean(child_item.use_namespace_for_active_detection)
+                  %td= child_item.sort
                   %td= child_item.link_destination
                   %td.datagrid-actions
                     .datagrid-actions-wrapper
