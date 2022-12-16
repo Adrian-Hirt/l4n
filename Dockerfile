@@ -15,18 +15,29 @@ WORKDIR /app
 # Set build-time variables
 ARG RAILS_ENV=production
 ARG BUILDING_DOCKER_IMAGE=true
+
 # This value is only set such that the asset precompile works. It
 # will not be available to the final container and you need to
 # set the value in your docker compose
 ARG SECRET_KEY_BASE=583364b0aaaef81adc0d476c18efec0c
 
 # Install gems, skipping the test and development gems
-ADD . /app
+## Copy gemfiles
+COPY Gemfile /app/Gemfile
+COPY Gemfile.lock /app/Gemfile.lock
+## Copy payment gateways
+COPY payment_gateways/ /app/payment_gateways/
+## Run bundle
 RUN bundle config set --local without 'test development'
 RUN bundle install
 
 # Install yarn packages
+COPY package.json /app/package.json
+COPY yarn.lock /app/yarn.lock
 RUN yarn install
+
+# Copy rails code
+ADD . /app
 
 # Precompile assets
 RUN bundle exec rake assets:precompile
