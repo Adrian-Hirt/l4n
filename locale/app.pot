@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-03 22:38+0100\n"
-"PO-Revision-Date: 2022-12-03 22:38+0100\n"
+"POT-Creation-Date: 2022-12-16 19:49+0100\n"
+"PO-Revision-Date: 2022-12-16 19:49+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -1023,6 +1023,9 @@ msgstr ""
 msgid "ConfirmDialog|Confirm"
 msgstr ""
 
+msgid "ContentPage"
+msgstr ""
+
 msgid "ContentPage|Published"
 msgstr ""
 
@@ -1086,6 +1089,9 @@ msgstr ""
 msgid "EventDate|End date"
 msgstr ""
 
+msgid "EventDate|Location"
+msgstr ""
+
 msgid "EventDate|Needs to be at larger or equal to the start date"
 msgstr ""
 
@@ -1113,6 +1119,9 @@ msgstr ""
 msgid "Event|Last end"
 msgstr ""
 
+msgid "Event|Last location"
+msgstr ""
+
 msgid "Event|Last start"
 msgstr ""
 
@@ -1120,6 +1129,9 @@ msgid "Event|Location"
 msgstr ""
 
 msgid "Event|Next end"
+msgstr ""
+
+msgid "Event|Next location"
 msgstr ""
 
 msgid "Event|Next start"
@@ -1521,6 +1533,9 @@ msgstr ""
 msgid "MenuItem"
 msgstr ""
 
+msgid "MenuItem|Content pages"
+msgstr ""
+
 msgid "MenuItem|External link"
 msgstr ""
 
@@ -1528,6 +1543,9 @@ msgid "MenuItem|Page"
 msgstr ""
 
 msgid "MenuItem|Page_name"
+msgstr ""
+
+msgid "MenuItem|Predefined pages"
 msgstr ""
 
 msgid "MenuItem|Sort"
@@ -1833,10 +1851,16 @@ msgstr ""
 msgid "PaypalPaymentGateway|Order details"
 msgstr ""
 
+msgid "PaypalPaymentGateway|Order is expired, payment was not executed"
+msgstr ""
+
 msgid "PaypalPaymentGateway|Page title"
 msgstr ""
 
 msgid "PaypalPaymentGateway|Pay"
+msgstr ""
+
+msgid "PaypalPaymentGateway|Payment could not be executed"
 msgstr ""
 
 msgid "PaypalPaymentGateway|Payment details"
@@ -2037,6 +2061,9 @@ msgstr ""
 msgid "Product|To Product"
 msgstr ""
 
+msgid "Product|Total inventory"
+msgstr ""
+
 msgid "PromitionCodes|Apply filter"
 msgstr ""
 
@@ -2110,6 +2137,9 @@ msgid "RailsSettings::Base|Value"
 msgstr ""
 
 msgid "RailsSettings::Base|Var"
+msgstr ""
+
+msgid "RedirectPage"
 msgstr ""
 
 msgid "RedirectPage|Redirects to"
@@ -2427,7 +2457,13 @@ msgstr ""
 msgid "Shop|Checkout"
 msgstr ""
 
+msgid "Shop|No products found"
+msgstr ""
+
 msgid "Shop|Please log in to purchase this product"
+msgstr ""
+
+msgid "Shop|Show all"
 msgstr ""
 
 msgid "Shop|Sold out"
@@ -3030,6 +3066,9 @@ msgstr ""
 msgid "Tournament/team rank"
 msgstr ""
 
+msgid "Tournament::Match"
+msgstr ""
+
 msgid "Tournament::Match|Away score"
 msgstr ""
 
@@ -3052,6 +3091,9 @@ msgid "Tournament::Match|result_status|missing"
 msgstr ""
 
 msgid "Tournament::Match|result_status|reported"
+msgstr ""
+
+msgid "Tournament::Phase"
 msgstr ""
 
 msgid "Tournament::PhaseTeam|Score"
@@ -3103,6 +3145,9 @@ msgid "Tournament::Phase|tournament_mode|swiss"
 msgstr ""
 
 msgid "Tournament::Round|Round number"
+msgstr ""
+
+msgid "Tournament::Team"
 msgstr ""
 
 msgid "Tournament::TeamMember|Captain"

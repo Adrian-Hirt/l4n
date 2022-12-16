@@ -1022,6 +1022,9 @@ msgstr "Cancel"
 msgid "ConfirmDialog|Confirm"
 msgstr "Confirm"
 
+msgid "ContentPage"
+msgstr "Content page"
+
 msgid "ContentPage|Published"
 msgstr "Published"
 
@@ -1085,6 +1088,9 @@ msgstr "End"
 msgid "EventDate|End date"
 msgstr "End date"
 
+msgid "EventDate|Location"
+msgstr "Location"
+
 msgid "EventDate|Needs to be at larger or equal to the start date"
 msgstr "Needs to be at larger or equal to the start date"
 
@@ -1112,6 +1118,9 @@ msgstr "From %{start_date} to %{end_date}"
 msgid "Event|Last end"
 msgstr "Last end"
 
+msgid "Event|Last location"
+msgstr "Last location"
+
 msgid "Event|Last start"
 msgstr "Last start"
 
@@ -1120,6 +1129,9 @@ msgstr "Location"
 
 msgid "Event|Next end"
 msgstr "Next end"
+
+msgid "Event|Next location"
+msgstr "Next location"
 
 msgid "Event|Next start"
 msgstr "Next start"
@@ -1521,6 +1533,9 @@ msgstr "Menu item"
 msgid "MenuItem"
 msgstr "MenuItem"
 
+msgid "MenuItem|Content pages"
+msgstr "Content pages"
+
 msgid "MenuItem|External link"
 msgstr "External link"
 
@@ -1529,6 +1544,9 @@ msgstr "Page"
 
 msgid "MenuItem|Page_name"
 msgstr "Page name"
+
+msgid "MenuItem|Predefined pages"
+msgstr "Predefined pages"
 
 msgid "MenuItem|Sort"
 msgstr "Sort"
@@ -1833,11 +1851,17 @@ msgstr "Order"
 msgid "PaypalPaymentGateway|Order details"
 msgstr "Order details"
 
+msgid "PaypalPaymentGateway|Order is expired, payment was not executed"
+msgstr "Order is expired, payment was not executed"
+
 msgid "PaypalPaymentGateway|Page title"
 msgstr "Paypal payment"
 
 msgid "PaypalPaymentGateway|Pay"
 msgstr "Pay with Paypal"
+
+msgid "PaypalPaymentGateway|Payment could not be executed"
+msgstr "Payment could not be executed"
 
 msgid "PaypalPaymentGateway|Payment details"
 msgstr "Payment details"
@@ -2037,6 +2061,9 @@ msgstr "To product needs to be set"
 msgid "Product|To Product"
 msgstr "To Product"
 
+msgid "Product|Total inventory"
+msgstr "Total inventory"
+
 msgid "PromitionCodes|Apply filter"
 msgstr "Apply filter"
 
@@ -2111,6 +2138,9 @@ msgstr "Value"
 
 msgid "RailsSettings::Base|Var"
 msgstr "Var"
+
+msgid "RedirectPage"
+msgstr "Redirect page"
 
 msgid "RedirectPage|Redirects to"
 msgstr "Redirects to"
@@ -2427,8 +2457,14 @@ msgstr "Add to cart"
 msgid "Shop|Checkout"
 msgstr "Checkout"
 
+msgid "Shop|No products found"
+msgstr "No products found"
+
 msgid "Shop|Please log in to purchase this product"
 msgstr "Please log in to purchase this product"
+
+msgid "Shop|Show all"
+msgstr "Show all"
 
 msgid "Shop|Sold out"
 msgstr "Sold out"
@@ -3030,6 +3066,9 @@ msgstr "Team member"
 msgid "Tournament/team rank"
 msgstr "Team rank"
 
+msgid "Tournament::Match"
+msgstr "Match"
+
 msgid "Tournament::Match|Away score"
 msgstr "Away score"
 
@@ -3053,6 +3092,9 @@ msgstr "Result missing"
 
 msgid "Tournament::Match|result_status|reported"
 msgstr "Result reported"
+
+msgid "Tournament::Phase"
+msgstr "Phase"
 
 msgid "Tournament::PhaseTeam|Score"
 msgstr "Score"
@@ -3104,6 +3146,9 @@ msgstr "Swiss system"
 
 msgid "Tournament::Round|Round number"
 msgstr "Round number"
+
+msgid "Tournament::Team"
+msgstr "Team"
 
 msgid "Tournament::TeamMember|Captain"
 msgstr "Captain"
