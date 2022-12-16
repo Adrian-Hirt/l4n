@@ -44,6 +44,7 @@ module Operations::Admin::Product
     def perform
       difference = model.inventory - model.inventory_was
       model.availability += difference
+      model.total_inventory += difference
 
       # Remove the seat_category_id if it was not given
       model.seat_category_id = osparams.product[:seat_category_id]

@@ -57,7 +57,7 @@ class Product < ApplicationRecord
   validates :seat_category, uniqueness: true, if: :seat_category
 
   # == Hooks =======================================================================
-  before_create :add_availability
+  before_create :add_availability_and_total_inventory
   before_destroy :check_deletable?
 
   # == Scopes ======================================================================
@@ -86,8 +86,9 @@ class Product < ApplicationRecord
   # == Private Methods =============================================================
   private
 
-  def add_availability
+  def add_availability_and_total_inventory
     self.availability = inventory
+    self.total_inventory = inventory
   end
 
   def check_deletable?
