@@ -2,9 +2,8 @@ module Operations::Ticket
   class AssignToUser < RailsOps::Operation
     schema3 do
       int! :id, cast_str: true
-      int? :user_id, cast_str: true
       hsh? :assignee do
-        str? :username
+        int? :user_id, cast_str: true
       end
     end
 
@@ -62,11 +61,7 @@ module Operations::Ticket
     private
 
     def user_to_assign
-      if osparams.user_id.present?
-        ::User.find_by(id: osparams.user_id)
-      else
-        ::User.find_by('LOWER(username) = ?', osparams.assignee[:username].downcase)
-      end
+      ::User.find_by(id: osparams.assignee[:user_id]) if osparams.assignee[:user_id].present?
     end
 
     def ticket

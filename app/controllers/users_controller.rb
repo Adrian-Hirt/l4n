@@ -41,4 +41,9 @@ class UsersController < ApplicationController
     add_breadcrumb _('Users'), :users_path
     add_breadcrumb model.username
   end
+
+  def autocomplete
+    run Operations::User::Autocomplete
+    render 'autocomplete', layout: false
+  end
 end

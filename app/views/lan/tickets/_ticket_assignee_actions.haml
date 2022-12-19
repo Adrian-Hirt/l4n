@@ -19,14 +19,13 @@
             color: :danger
 
 - else
-  -# Otherwise we display the form to assign the ticket
-  = simple_form_for :assignee, url: assign_lan_ticket_path(ticket), wrapper: :input_group, html: { class: 'flex-grow-1' } do |f|
-    = f.input :username, label: false,
-                        wrapper_html: { style: 'margin-bottom: 0 !important;' },
-                        append: f.save('>', style: 'border-radius: 0; width: 2.25rem;', class: %i[rounded-end btn-sm]),
-                        append_options: { class: '' },
-                        placeholder: _('Seatmap|Username of user to assign to'),
-                        input_html: { class: %i[py-0 seatmap-username-input] }
+  .flex-grow-1{ data: { autocomplete: { 'url-value' => autocomplete_users_path, 'min-length-value' => '3' }, controller: 'autocomplete' } }
+    .d-flex
+      %input.form-control.rounded-0.string.py-0.seatmap-username-input.flex-grow-1{"data-autocomplete-target" => "input", placeholder: _('Users|Autocomplete|Type to search')}
+      = simple_form_for :assignee, url: assign_lan_ticket_path(ticket) do |f|
+        = f.input :user_id, label: false, input_html: { data: { "autocomplete-target" => "hidden" } }, as: :hidden, wrapper_html: { style:'margin-bottom: 0 !important;' }
+        = f.save '>', style: 'border-radius: 0; width: 2.25rem;', class: %i[rounded-end btn-sm]
+    %ul.shadow.user-autocomplete-popup.list-group{"data-autocomplete-target" => "results"}
 
 
   -# Also, if the current user does not have a ticket assigned yet for this lan,

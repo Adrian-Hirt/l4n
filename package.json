@@ -23,6 +23,7 @@
     "gettext.js": "1.1.1",
     "konva": "8.3.2",
     "qr-scanner": "1.4.1",
+    "stimulus-autocomplete": "^3.0.2",
     "sweetalert2": "11.3.0"
   }
 }

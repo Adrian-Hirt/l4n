@@ -19,6 +19,8 @@
             = link_to lan_seatmap_path(highlight: ticket.seat.id), target: :_blank do
               = icon %i[fas fa-arrow-up-right-from-square]
               = ticket.seat.name_or_id
+          - else
+            \-
         %td.align-middle
           .d-flex.align-items-center
             = render partial: 'ticket_assignee_actions', locals: { ticket: ticket }
