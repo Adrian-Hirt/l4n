@@ -9,6 +9,8 @@
 * Allow dots and slashes in page URL
 * Disable password autofill in registration and update profile form
 * Improve styling of markdown rendering
+* Order events in archive by date descending
+* Use `db:prepare` in `docker-compose.yml` instead of `db:migrate`
 
 ## 1.0.3 - 2022-12-16
 
