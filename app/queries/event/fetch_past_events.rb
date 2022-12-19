@@ -23,7 +23,7 @@ module Queries::Event
         ON events.id = event_dates_grouped.event_id
       ")
 
-      rel.order('event_dates_grouped.start_date ASC')
+      rel.order('event_dates_grouped.start_date DESC')
     end
   end
 end
