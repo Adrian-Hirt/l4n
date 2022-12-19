@@ -1,0 +1,18 @@
+# Heroku Stuff
+Aptfile
+Procfile
+
+# Documentation
+CHANGELOG.md
+DEVELOPMENT.md
+README.md
+
+# docker-compose file
+docker-compose.yml
+
+# Local dev procfile
+Procfile.dev
+
+# Config files for development
+.gitignore
+.rubocop.yml
