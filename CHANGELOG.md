@@ -1,14 +1,16 @@
 # Changelog
 
-## UNRELEASED
+## 1.1.0 - 2022-12-19
 
 ### Added
 
 * Add autocomplete to ticket assigigning
+* Display hint when no events available in events list
 
 ### Changed
 
 * Moved `location` from `Event` to `EventDate` model
+* Move assigning of tickets to manage view from seatmap
 * Add filtering of shop by categories
 * Allow dots and slashes in page URL
 * Disable password autofill in registration and update profile form
