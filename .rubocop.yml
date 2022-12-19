@@ -129,5 +129,8 @@ Style/HashSyntax:
 Rails/ActionControllerFlashBeforeRender:
   Enabled: false
 
+Rails/ActionOrder:
+  Enabled: false
+
 Style/FormatString:
   EnforcedStyle: percent
