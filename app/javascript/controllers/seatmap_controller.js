@@ -298,6 +298,7 @@ export default class extends Controller {
     this.stage.position({x: 0, y: 0});
     this.#resizeToFit();
 
+    e.target.blur();
     e.preventDefault();
     return false;
   }
@@ -457,6 +458,9 @@ export default class extends Controller {
 
     // Resize the map
     this.#resizeToFit();
+
+    // Remove focus
+    e.target.blur();
 
     e.preventDefault();
     return false;
