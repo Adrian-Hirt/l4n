@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-16 19:49+0100\n"
-"PO-Revision-Date: 2022-12-16 19:49+0100\n"
+"POT-Creation-Date: 2022-12-19 22:00+0100\n"
+"PO-Revision-Date: 2022-12-19 22:00+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -2265,9 +2265,6 @@ msgstr ""
 msgid "Seatmap"
 msgstr ""
 
-msgid "Seatmap|Hover over badge to see type"
-msgstr ""
-
 msgid "Seatmap|Please select a seat"
 msgstr ""
 
@@ -2295,7 +2292,7 @@ msgstr ""
 msgid "Seatmap|Toggle sidebar"
 msgstr ""
 
-msgid "Seatmap|Username of user to assign to"
+msgid "Seatmap|Unassigned ticket"
 msgstr ""
 
 msgid "Seatmap|You don't have any tickets for this event"
@@ -2829,10 +2826,10 @@ msgstr ""
 msgid "TicketUpgrade|You can only buy as many upgrades as the number of upgradeable tickets you own"
 msgstr ""
 
-msgid "Tickets|Manage"
+msgid "Tickets|Assign & upgrade tickets"
 msgstr ""
 
-msgid "Tickets|Manage & upgrade tickets"
+msgid "Tickets|Manage"
 msgstr ""
 
 msgid "Tickets|Manage my tickets"
@@ -2980,9 +2977,6 @@ msgid "Ticket|Ticket is already checked in"
 msgstr ""
 
 msgid "Ticket|Toggle QR"
-msgstr ""
-
-msgid "Ticket|Unassigned"
 msgstr ""
 
 msgid "Ticket|User already has assigned ticket"
@@ -3562,6 +3556,12 @@ msgid "Users"
 msgstr ""
 
 msgid "Users List"
+msgstr ""
+
+msgid "Users|Autocomplete|Nothing found"
+msgstr ""
+
+msgid "Users|Autocomplete|Type to search"
 msgstr ""
 
 msgid "User|2FA already activated"

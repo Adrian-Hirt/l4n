@@ -2265,9 +2265,6 @@ msgstr "You need to select a seat category to add a seat!"
 msgid "Seatmap"
 msgstr "Seat Map"
 
-msgid "Seatmap|Hover over badge to see type"
-msgstr "Hover over badge to see type of ticket"
-
 msgid "Seatmap|Please select a seat"
 msgstr "Please select a seat"
 
@@ -2295,8 +2292,8 @@ msgstr "Taken seat"
 msgid "Seatmap|Toggle sidebar"
 msgstr "Toggle sidebar"
 
-msgid "Seatmap|Username of user to assign to"
-msgstr "Username of user to assign to"
+msgid "Seatmap|Unassigned ticket"
+msgstr "Unassigned"
 
 msgid "Seatmap|You don't have any tickets for this event"
 msgstr "You don't have any tickets for this event"
@@ -2829,11 +2826,11 @@ msgstr "Wrong category"
 msgid "TicketUpgrade|You can only buy as many upgrades as the number of upgradeable tickets you own"
 msgstr "You can only buy as many upgrades as the number of upgradeable tickets you own"
 
+msgid "Tickets|Assign & upgrade tickets"
+msgstr "Assign & upgrade tickets"
+
 msgid "Tickets|Manage"
 msgstr "Tickets"
-
-msgid "Tickets|Manage & upgrade tickets"
-msgstr "Manage & upgrade tickets"
 
 msgid "Tickets|Manage my tickets"
 msgstr "Manage my tickets"
@@ -2981,9 +2978,6 @@ msgstr "Ticket is already checked in"
 
 msgid "Ticket|Toggle QR"
 msgstr "Toggle QR"
-
-msgid "Ticket|Unassigned"
-msgstr "Unassigned"
 
 msgid "Ticket|User already has assigned ticket"
 msgstr "User already has assigned ticket"
@@ -3563,6 +3557,12 @@ msgstr "Users"
 
 msgid "Users List"
 msgstr "Users List"
+
+msgid "Users|Autocomplete|Nothing found"
+msgstr "Nothing found"
+
+msgid "Users|Autocomplete|Type to search"
+msgstr "Type to search"
 
 msgid "User|2FA already activated"
 msgstr "2FA already activated"
