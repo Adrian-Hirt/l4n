@@ -366,6 +366,7 @@
     "EventDate|Start": "Start",
     "EventDate|Start date": "Start date",
     "Events": "Events",
+    "Events|No events found": "No events found",
     "Event|Add event date": "Add event date",
     "Event|Description": "Description",
     "Event|From %{start_date} to %{end_date}": "From %{start_date} to %{end_date}",

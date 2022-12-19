@@ -1106,6 +1106,9 @@ msgstr "Start date"
 msgid "Events"
 msgstr "Events"
 
+msgid "Events|No events found"
+msgstr "No events found"
+
 msgid "Event|Add event date"
 msgstr "Add event date"
 
