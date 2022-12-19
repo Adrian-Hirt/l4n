@@ -2,6 +2,10 @@
 
 ## UNRELEASED
 
+### Added
+
+* Add autocomplete to ticket assigigning
+
 ### Changed
 
 * Moved `location` from `Event` to `EventDate` model
