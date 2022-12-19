@@ -1,0 +1,32 @@
+- if op.ticket_for_lan_party.present?
+  .card.mb-3
+    .card-header
+      = _('Seatmap|Your ticket')
+    .card-body
+      .row
+        .col-md-2
+          .text-muted= _('Ticket|Category')
+          = ticket_seat_category_badge(op.ticket_for_lan_party)
+        .col-md-3
+          .text-muted= _('Ticket|Product_variant_name')
+          = op.ticket_for_lan_party.product_variant_name.presence || '-'
+        .col-md-2
+          .text-muted= _('Ticket|Seat')
+          - if op.ticket_for_lan_party.seat.present?
+            = link_to lan_seatmap_path(highlight: op.ticket_for_lan_party.seat.id), target: :_blank do
+              = icon %i[fas fa-arrow-up-right-from-square]
+              = op.ticket_for_lan_party.seat.name_or_id
+          - else
+            \-
+        .col-md-5.d-flex.align-items-center.gap-1.justify-content-end
+          = button _('Ticket|Show ticket'),
+                    lan_ticket_path,
+                    btn_icon: %i[fas fa-arrow-up-right-from-square],
+                    html: { target: :_blank },
+                    color: :default
+          = button _('Ticket|Remove ticket from myself'),
+                  remove_assignee_lan_ticket_path(id: op.ticket_for_lan_party.id),
+                  method: :post,
+                  btn_icon: %i[fas fa-user-slash fa-fw],
+                  confirm: _('Ticket|Really remove ticket from myself?'),
+                  color: :default

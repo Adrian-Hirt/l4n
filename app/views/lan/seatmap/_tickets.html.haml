@@ -5,33 +5,30 @@
   - if op.respond_to?(:taken_seat)
     #takenSeat{data: { id: op.taken_seat.id }}
 
-  - if op.respond_to?(:assigned_seat)
-    #assignedSeat{data: { id: op.assigned_seat&.id, username: op.assigned_user&.username, userid: op.assigned_user&.id }}
-
-  - if op.respond_to?(:unassigned_seat)
-    #unassignedSeat{data: { id: op.unassigned_seat&.id }}
-
-
 %div{data: { 'seatmap-target' => 'tickets' }}
   - if op.available_tickets.none?
     = _('Seatmap|You don\'t have any tickets for this event')
   - else
-    .text-muted= _('Seatmap|Hover over badge to see type')
-    %hr
-  - op.available_tickets.order(:id).each do |ticket|
-    .d-flex.align-items-center.ticket-container.mb-2{data: { seat_category_id: ticket.seat_category_id, ticket_id: ticket.id }}
-      .me-2
-        .badge.seat-id-badge{style: "background-color: #{ticket.seat_category.color_for_view}; color: #{ticket.seat_category.font_color_for_view};",
-                             data: { seat_id: ticket.seat&.id, action: 'click->seatmap#highlightSeatOfBadge', 'bs-toggle': :tooltip, 'bs-placement': :left },
-                             title: ticket.product_variant_name.presence || '-' }
-          = ticket.seat&.name_or_id.presence || '&nbsp;'.html_safe
-      - if ticket.checked_in?
-        .me-2.flex-grow-1
-          = link_to ticket.assignee, target: :_blank do
-            = icon %i[fas fa-arrow-up-right-from-square]
-            = ticket.assignee.username
-        .badge.bg-secondary
-          = _('SeatMap|User checked in')
-      - else
-        = render partial: 'lan/seatmap/ticket_assignee_actions', locals: { ticket: ticket }
-        .ms-2= render partial: 'lan/seatmap/ticket_seat_actions', locals: { ticket: ticket }
+    - op.available_tickets.order(:id).each do |ticket|
+      .d-flex.align-items-center.ticket-container.mb-2{data: { seat_category_id: ticket.seat_category_id, ticket_id: ticket.id }}
+        .me-2
+          .badge.seat-id-badge{style: "background-color: #{ticket.seat_category.color_for_view}; color: #{ticket.seat_category.font_color_for_view};",
+                              data: { seat_id: ticket.seat&.id, action: 'click->seatmap#highlightSeatOfBadge', 'bs-toggle': :tooltip, 'bs-placement': :left },
+                              title: ticket.product_variant_name.presence || '-' }
+            = ticket.seat&.name_or_id.presence || '&nbsp;'.html_safe
+        - if ticket.checked_in?
+          .me-2.flex-grow-1
+            = link_to ticket.assignee, target: :_blank do
+              = icon %i[fas fa-arrow-up-right-from-square]
+              = ticket.assignee.username
+          .badge.bg-secondary
+            = _('SeatMap|User checked in')
+        - else
+          .flex-grow-1
+            - if ticket.assignee.present?
+              = link_to ticket.assignee, target: :_blank do
+                = icon %i[fas fa-arrow-up-right-from-square]
+                = ticket.assignee.username
+            - else
+              .text-muted= _('Seatmap|Unassigned ticket')
+          .ms-2= render partial: 'lan/seatmap/ticket_seat_actions', locals: { ticket: ticket }

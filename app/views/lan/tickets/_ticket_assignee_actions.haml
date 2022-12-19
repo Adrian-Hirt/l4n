@@ -5,22 +5,18 @@
       = icon %i[fas fa-arrow-up-right-from-square]
       = ticket.assignee.username
 
-  -# If the user is the user that ordered the ticket, we display a simple
-  -# button to remove the assignation. If the user is the assigned user,
-  -# we add some warning messages
-  - if current_user == ticket.order&.user
-    - additional_options = { html: { title: _('Ticket|Remove assignation') } }
+  -# Render the button if ticket is not checked in
+  -  if ticket.checked_in?
+    = button nil, nil, size: :sm, disabled: true, btn_icon: %i[fas fa-user-slash fa-fw], icon_only: true, color: :danger
   - else
-    - additional_options = { html: { title: _('Ticket|Remove ticket from myself') }, confirm: _('Ticket|Really remove ticket from myself?') }
-
-  -# Render the button
-  = button nil,
-          remove_assignee_lan_ticket_path(id: ticket.id),
-          size: :sm,
-          method: :post,
-          btn_icon: %i[fas fa-user-slash fa-fw],
-          icon_only: true,
-          **additional_options
+    = button nil,
+            remove_assignee_lan_ticket_path(id: ticket.id),
+            size: :sm,
+            method: :post,
+            btn_icon: %i[fas fa-user-slash fa-fw],
+            icon_only: true,
+            html: { title: _('Ticket|Remove assignation') },
+            color: :danger
 
 - else
   -# Otherwise we display the form to assign the ticket

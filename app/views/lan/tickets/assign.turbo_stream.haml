@@ -1,3 +1,3 @@
 = turbo_stream.replace :flashes, partial: 'layouts/shared/flashes'
-= turbo_stream.update :tickets, partial: 'lan/seatmap/tickets', locals: { op: op }
-= turbo_stream.update :user_ticket, partial: 'lan/seatmap/user_ticket'
+= turbo_stream.update :tickets, partial: 'lan/tickets/tickets', locals: { op: op }
+= turbo_stream.update :user_ticket, partial: 'lan/tickets/user_ticket'

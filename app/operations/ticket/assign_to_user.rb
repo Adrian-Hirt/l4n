@@ -52,12 +52,11 @@ module Operations::Ticket
       @lan_party ||= ticket.lan_party
     end
 
-    def assigned_seat
-      ticket.seat
-    end
-
-    def assigned_user
-      @assigned_user ||= user_to_assign
+    def ticket_upgrades
+      @ticket_upgrades ||= ::TicketUpgrade.where(lan_party: lan_party)
+                                          .joins(:order)
+                                          .where(order: { user: context.user })
+                                          .includes(:from_product, :to_product)
     end
 
     private

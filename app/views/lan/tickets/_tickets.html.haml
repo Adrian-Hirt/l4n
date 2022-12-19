@@ -1,0 +1,37 @@
+- if op.available_tickets.none?
+  = _('Tickets|You don\'t have any tickets for this event')
+- else
+  %table.table.mb-0
+    %tr
+      %th= _('Ticket|Category')
+      %th= _('Ticket|Product_variant_name')
+      %th= _('Ticket|Seat')
+      %th= _('Ticket|Assignee')
+      %th= _('Ticket|Apply upgrade')
+    - op.available_tickets.order(:id).each do |ticket|
+      %tr
+        %td.align-middle
+          = ticket_seat_category_badge(ticket)
+        %td.align-middle
+          = ticket.product_variant_name.presence || '-'
+        %td.align-middle
+          - if ticket.seat.present?
+            = link_to lan_seatmap_path(highlight: ticket.seat.id), target: :_blank do
+              = icon %i[fas fa-arrow-up-right-from-square]
+              = ticket.seat.name_or_id
+        %td.align-middle
+          .d-flex.align-items-center
+            = render partial: 'ticket_assignee_actions', locals: { ticket: ticket }
+        %td.align-middle
+          = simple_form_for :ticket_upgrade, url: apply_upgrade_lan_tickets_path(ticket) do |f|
+            .d-flex
+              = f.input :ticket_id, input_html: { value: ticket.id }, as: :hidden
+              - available_upgrades = op.ticket_upgrades.reject(&:used).filter { |upgrade| upgrade.from_product.seat_category == ticket.seat_category }
+              = f.input :upgrade_id, as: :select,
+                                      collection: available_upgrades,
+                                      include_blank: _('Form|Select|Blank'),
+                                      label_method: :name,
+                                      label: false,
+                                      wrapper_html: { style: 'margin-bottom: 0 !important;', class: 'me-1 flex-grow-1' },
+                                      disabled: available_upgrades.none?
+              = f.save _('TicketUpgrade|Upgrade'), class: %i[btn-default], disabled: available_upgrades.none?

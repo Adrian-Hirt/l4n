@@ -19,7 +19,9 @@
           %td= _('Ticket|Seat')
           %td
             - if op.ticket.seat.present?
-              = link_to op.ticket.seat.name_or_id, lan_seatmap_path(highlight: op.ticket.seat.id)
+              = link_to lan_seatmap_path(highlight: op.ticket.seat.id) do
+                = icon %i[fas fa-arrow-up-right-from-square]
+                = op.ticket.seat.name_or_id
             - else
               \-
         %tr

@@ -34,8 +34,11 @@ module Operations::Ticket
       @ticket_for_lan_party ||= context.user.ticket_for(lan_party)
     end
 
-    def unassigned_seat
-      model.seat
+    def ticket_upgrades
+      @ticket_upgrades ||= ::TicketUpgrade.where(lan_party: lan_party)
+                                          .joins(:order)
+                                          .where(order: { user: context.user })
+                                          .includes(:from_product, :to_product)
     end
   end
 end

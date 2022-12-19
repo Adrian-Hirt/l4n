@@ -6,11 +6,11 @@ module Operations::Ticket
       authorize! :use, Ticket
     end
 
-    def tickets
-      @tickets ||= ::Ticket.where(lan_party: lan_party)
-                           .joins(:order)
-                           .where(order: { user: context.user })
-                           .includes(:seat_category, :seat, :assignee)
+    def available_tickets
+      @available_tickets ||= ::Ticket.where(lan_party: lan_party)
+                                     .joins(:order)
+                                     .where(order: { user: context.user })
+                                     .includes(:seat_category, :seat, :assignee)
     end
 
     def ticket_upgrades
@@ -18,6 +18,10 @@ module Operations::Ticket
                                           .joins(:order)
                                           .where(order: { user: context.user })
                                           .includes(:from_product, :to_product)
+    end
+
+    def ticket_for_lan_party
+      @ticket_for_lan_party ||= context.user.ticket_for(lan_party)
     end
 
     def lan_party
