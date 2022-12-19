@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.1 - 2022-12-19
+
+### Fixed
+
+* Fixed a nil exception in Events Archive grid
+
 ## 1.1.0 - 2022-12-19
 
 ### Added
