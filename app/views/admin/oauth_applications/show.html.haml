@@ -1,0 +1,37 @@
+- content_for :header_buttons do
+  .d-flex.gap-1.flex-wrap
+    = edit_button @application, href: edit_oauth_application_path(@application)
+    = delete_button @application, href: oauth_application_path(@application)
+
+.card
+  .card-body
+    .row
+      .col-md-6
+        %h4= _('Doorkeeper::Application|Id')
+        %p= text_field_tag :uid, @application.uid, disabled: true, class: 'form-control rounded-0 string disabled'
+
+        %h4= _('Doorkeeper::Application|Secret')
+        %p= text_field_tag :plaintext_secret, @application.plaintext_secret, disabled: true, class: 'form-control rounded-0 string disabled'
+      .col-md-6
+        %h4= _('Doorkeeper::Application|Scopes')
+        - if @application.scopes.present?
+          %p= text_field_tag :scopes, @application.scopes, disabled: true, class: 'form-control rounded-0 string disabled'
+        - else
+          %p= text_field_tag :scopes, _('Admin|Oauth|No scopes'), disabled: true, class: 'form-control rounded-0 string disabled'
+        %h4= _('Doorkeeper::Application|Confidential')
+        %p= format_boolean(@application.confidential?)
+    .col-12
+      %h4= _('Doorkeeper::Application|Callback uris')
+      - if @application.redirect_uri.present?
+        %table.table.table-striped
+          - @application.redirect_uri.split.each do |uri|
+            %tr
+              %td.align-middle
+                %code.bg-light= uri
+              %td
+                = link_to _('Doorkeeper::Application|Authorize'), oauth_authorization_path(client_id: @application.uid,
+                                                                                           redirect_uri: uri,
+                                                                                           response_type: 'code',
+                                                                                           scope: @application.scopes), class: 'btn btn-primary btn-sm', target: '_blank'
+      - else
+        %span.bg-light.font-italic.text-uppercase.text-muted= t('.not_defined')

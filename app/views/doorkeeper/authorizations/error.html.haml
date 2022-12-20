@@ -1,0 +1,9 @@
+.d-flex.justify-content-center.align-items-center.sessions-page
+  .card.doorkeeper-card
+    .card-header.text-center
+      %a.h1{href: root_path}
+        = AppConfig.application_name
+    .card-body.pb-1
+      %p= _('Oauth|An error has occured, please see below for more information')
+      %hr
+      %p.text-muted= @pre_auth.error_response.body[:error_description]

@@ -11,6 +11,19 @@ Rails.application.routes.draw do
                              path_names:  { sign_in: :login, sign_out: :logout },
                              controllers: { sessions: :scanner_user_sessions }
 
+  # == Doorkeeper =======================================================================
+  use_doorkeeper do
+    # Applications are in admin panel, and we don't need the token_info stuff
+    skip_controllers :applications, :token_info
+  end
+
+  # Only put the applications into a namespace, such that we can edit them in the
+  # admin panel
+  use_doorkeeper scope: 'admin/oauth' do
+    skip_controllers :authorizations, :tokens, :token_info, :authorized_applications
+    controllers applications: :'admin/oauth_applications'
+  end
+
   # == Settings =========================================================================
   post 'toggle_dark_mode', to: 'application#toggle_dark_mode'
 

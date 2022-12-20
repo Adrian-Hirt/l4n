@@ -1,0 +1,6 @@
+- content_for :header_buttons do
+  = new_button Doorkeeper::Application, namespace: %i[admin], href: new_oauth_application_path
+
+.card
+  .card-body
+    = datagrid_table @grid, html: { class: 'table' }

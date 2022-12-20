@@ -35,6 +35,18 @@ class User < ApplicationRecord
   has_many :tickets, foreign_key: :assignee_id, dependent: :nullify, inverse_of: :assignee
   has_many :user_achievements, dependent: :destroy
 
+  # rubocop:disable Rails/InverseOf
+  has_many :access_grants,
+           class_name:  'Doorkeeper::AccessGrant',
+           foreign_key: :resource_owner_id,
+           dependent:   :destroy
+
+  has_many :access_tokens,
+           class_name:  'Doorkeeper::AccessToken',
+           foreign_key: :resource_owner_id,
+           dependent:   :destroy
+  # rubocop:enable Rails/InverseOf
+
   # == Validations =================================================================
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }, length: { maximum: 255 }
   validates :password, presence: true, length: { minimum: 10, maximum: 72 }, if: -> { password.present? || new_record? }

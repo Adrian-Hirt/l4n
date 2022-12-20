@@ -27,5 +27,14 @@ module L4n
 
     # Array holding the payment gateways
     config.payment_gateways = []
+
+    # Override layouts for Doorkeeper
+    config.to_prepare do
+      # Only Authorized Applications
+      Doorkeeper::AuthorizedApplicationsController.layout 'application'
+
+      # Only Authorization endpoint
+      Doorkeeper::AuthorizationsController.layout 'devise'
+    end
   end
 end

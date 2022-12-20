@@ -1,0 +1,36 @@
+.d-flex.justify-content-center.align-items-center.sessions-page
+  .card.doorkeeper-card
+    .card-header.text-center
+      %a.h1{href: root_path}
+        = AppConfig.application_name
+    .card-body.pb-1
+      %h2= _('Oauth|Authorize <b class="text-accent">%{app_name}</b> to use your account?').html_safe % { app_name: @pre_auth.client.name }
+      - if @pre_auth.scopes.count > 0
+        .my-3
+          = _('Oauth|This application will be able to')
+          %ul.mt-3
+            - @pre_auth.scopes.each do |scope|
+              - defined_scope = L4N_OAUTH_SCOPES[scope.to_sym]
+              %li= defined_scope[:user_description]
+    .card-footer
+      = form_tag oauth_authorization_path, method: :post, class: 'd-inline', data: { turbo: false } do
+        = hidden_field_tag :client_id, @pre_auth.client.uid, id: nil
+        = hidden_field_tag :redirect_uri, @pre_auth.redirect_uri, id: nil
+        = hidden_field_tag :state, @pre_auth.state, id: nil
+        = hidden_field_tag :response_type, @pre_auth.response_type, id: nil
+        = hidden_field_tag :response_mode, @pre_auth.response_mode, id: nil
+        = hidden_field_tag :scope, @pre_auth.scope, id: nil
+        = hidden_field_tag :code_challenge, @pre_auth.code_challenge, id: nil
+        = hidden_field_tag :code_challenge_method, @pre_auth.code_challenge_method, id: nil
+        = submit_tag _('Oauth|Authorize application'), class: "btn btn-success"
+
+      = form_tag oauth_authorization_path, method: :delete, class: 'd-inline', data: { turbo: false } do
+        = hidden_field_tag :client_id, @pre_auth.client.uid, id: nil
+        = hidden_field_tag :redirect_uri, @pre_auth.redirect_uri, id: nil
+        = hidden_field_tag :state, @pre_auth.state, id: nil
+        = hidden_field_tag :response_type, @pre_auth.response_type, id: nil
+        = hidden_field_tag :response_mode, @pre_auth.response_mode, id: nil
+        = hidden_field_tag :scope, @pre_auth.scope, id: nil
+        = hidden_field_tag :code_challenge, @pre_auth.code_challenge, id: nil
+        = hidden_field_tag :code_challenge_method, @pre_auth.code_challenge_method, id: nil
+        = submit_tag _('Oauth|Deny request'), class: "btn btn-danger"

@@ -1,0 +1,25 @@
+- provide :page_title, _('Settings|Authorized oauth apps')
+
+.row
+  .col-md-3
+    = render partial: 'settings/sidebar'
+  .col-md-9
+    .card
+      .card-body
+        - if @applications.any?
+          - if @applications.count == 1
+            = _('Oauth|You have granted 1 application access to your account')
+          - else
+            = _('Oauth|You have granted %{count} applications access to your account') % { count: @applications.count }
+          %hr
+          - @applications.each do |application|
+            .d-flex.border-bottom.align-items-center.justify-content-between.py-2
+              .oauth-app-info
+                %h4.mb-1= application.name
+                .text-muted
+                  = _('Doorkeeper::AuthorizedApplication|Authenticated at')
+                  = l(application.created_at)
+              .oauth-app-actions
+                = delete_button application, href: oauth_authorized_application_path(application), icon_only: true, size: :smW
+        - else
+          = _('Oauth|You don\'t have any authorized applications yet')
