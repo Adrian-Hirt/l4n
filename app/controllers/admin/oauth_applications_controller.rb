@@ -2,7 +2,8 @@ module Admin
   class OauthApplicationsController < Doorkeeper::ApplicationsController
     layout 'admin'
 
-    # Skip this, as we don't need it
+    # Skip this, as we don't need it. This is the method from
+    # Doorkeeper, our auth is below
     skip_before_action :authenticate_admin!
 
     # The normal admin panel hooks
@@ -19,6 +20,7 @@ module Admin
 
     def check_admin_panel_access
       authorize! :access, :admin_panel
+      authorize! :manage, :system
     end
 
     def clear_app_breadcrumbs
