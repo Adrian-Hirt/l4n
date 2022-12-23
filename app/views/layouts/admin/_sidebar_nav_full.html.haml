@@ -160,12 +160,12 @@
                 %span.nav-item-text= _('Admin|StylingVariables')
   - if can?(:manage, :system) || can?(:manage, FeatureFlag) || can?(:manage, ApiApplication)
     %li.nav-item.dropdown
-      %a.nav-link.collapse-link{data: {'bs-toggle' => 'collapse'}, href: '#system-collapse', class: sidenav_collapser_classes(:system, :feature_flags, :api_applications, :settings)}
+      %a.nav-link.collapse-link{data: {'bs-toggle' => 'collapse'}, href: '#system-collapse', class: sidenav_collapser_classes(:system, :feature_flags, :api_applications, :settings, :oauth_applications)}
         %span
           %i.nav-icon.fas.fa-server.fa-fw
           %span.nav-item-text= _('Admin|System')
         %i.right.fas.fa-angle-right.dropdown-icon
-      #system-collapse.collapse{class: sidenav_collapse_classes(:system, :feature_flags, :api_applications, :settings), data: { 'bs-parent' => '.sidenav' }}
+      #system-collapse.collapse{class: sidenav_collapse_classes(:system, :feature_flags, :api_applications, :settings, :oauth_applications), data: { 'bs-parent' => '.sidenav' }}
         %ul.nav.nav-pills.flex-column
           - if can?(:manage, :system)
             %li.nav-item
@@ -191,3 +191,9 @@
                 %span
                   %i.nav-icon.fas.fa-key.fa-fw
                   %span.nav-item-text= _('Admin|API applications')
+          - if can?(:manage, :system)
+            %li.nav-item
+              %a.nav-link{href: oauth_applications_path, class: active_link_classes(:oauth_applications)}
+                %span
+                  %i.nav-icon.fas.fa-unlock-keyhole.fa-fw
+                  %span.nav-item-text= _('Admin|OAuth applications')
