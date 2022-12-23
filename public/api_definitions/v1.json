@@ -164,6 +164,18 @@
         "type": "apiKey",
         "in": "header",
         "name": "X-API-KEY"
+      },
+      "OAuth": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "/oauth/authorize",
+            "tokenUrl": "/oauth/token",
+            "scopes": {
+              "user:lan:read": "Allows the application to read the status of an user at a LanParty"
+            }
+          }
+        }
       }
     },
     "schemas": {
