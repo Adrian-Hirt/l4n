@@ -28,7 +28,7 @@
             %tr
               %td.align-middle
                 %code.bg-light= uri
-              %td
+              %td.text-end
                 = link_to _('Doorkeeper::Application|Authorize'), oauth_authorization_path(client_id: @application.uid,
                                                                                            redirect_uri: uri,
                                                                                            response_type: 'code',
