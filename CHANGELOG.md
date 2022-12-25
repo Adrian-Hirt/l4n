@@ -4,7 +4,8 @@
 
 ### Fixed
 
-* Fixed a nil exception when opening a past event
+* Fix a nil exception when opening a past event
+* Fix exception when adding team without rank in admin panel
 
 ## 1.1.1 - 2022-12-19
 
