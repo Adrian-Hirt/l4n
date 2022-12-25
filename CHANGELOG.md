@@ -1,11 +1,12 @@
 # Changelog
 
-## 1.1.2 - UNRELEASED
+## 1.1.2 - 2022-12-25
 
 ### Fixed
 
 * Fix a nil exception when opening a past event
 * Fix exception when adding team without rank in admin panel
+* Fix wrong order of events in event archive grid
 
 ## 1.1.1 - 2022-12-19
 
