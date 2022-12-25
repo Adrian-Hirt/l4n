@@ -2,7 +2,7 @@ module Grids
   module Admin
     class Events < ApplicationGrid
       scope do
-        Queries::Event::FetchFutureEvents.run
+        @data ||= Queries::Event::FetchFutureEvents.run
       end
 
       model Event
