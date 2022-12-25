@@ -16,9 +16,9 @@ module Queries::Event
               event_dates.start_date <= '#{Time.zone.today}'
               AND event_dates.end_date >= '#{Time.zone.today}'
             )
-            ORDER BY event_id, start_date ASC
+            ORDER BY event_id, start_date DESC
           )
-          ORDER BY event_id, start_date ASC
+          ORDER BY event_id, start_date DESC
         ) AS event_dates_grouped
         ON events.id = event_dates_grouped.event_id
       ")

@@ -26,7 +26,7 @@
             - if model.tournament.teams_need_rank?
               .text-muted.ms-1
                 \|
-                = found_team.team.tournament_team_rank.name
+                = found_team.team.tournament_team_rank&.name
           - else
             = simple_form_for :seeding, url: update_seeding_admin_phase_path(model), html: { class: 'd-flex' } do |f|
               = f.save '+', class: %i[btn-sm me-2]

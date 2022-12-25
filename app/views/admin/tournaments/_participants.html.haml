@@ -18,8 +18,9 @@
           = team.name
           .small.text-muted
             = team.humanized_status
-            \|
-            = team.tournament_team_rank.name
+            - if team.tournament_team_rank.present?
+              \|
+              = team.tournament_team_rank.name
       %hr
       = _('Tournament|Not in tournament teams')
       - model.teams.not_in_tournament.order(:name).each do |team|
@@ -27,8 +28,9 @@
           = team.name
           .small.text-muted
             = team.humanized_status
-            \|
-            = team.tournament_team_rank.name
+            - if team.tournament_team_rank.present?
+              \|
+              = team.tournament_team_rank.name
     - else
       - tournament_full = model.teams_full?
       - model.teams.order(:name).each do |team|
@@ -37,15 +39,16 @@
             = team.name
             .small.text-muted
               = team.humanized_status
-              \|
-              = team.tournament_team_rank.name
+              - if team.tournament_team_rank.present?
+                \|
+                = team.tournament_team_rank.name
               - unless model.singleplayer?
                 \|
                 = "(#{team.team_members.count} / #{model.team_size} #{_('Team|Team members')})"
           %div
             - if team.created?
               = button nil, register_for_tournament_admin_team_path(team), icon_only: true,
-                                                                            btn_icon: %i[fas fa-plus],
+                                                                            btn_icon: %i[fas fa-plus fa-fw],
                                                                             size: :sm,
                                                                             method: :post,
                                                                             color: :primary,
@@ -53,7 +56,7 @@
                                                                             html: {title: _('Admin|Teams|Register for tournament'), data: { 'bs-toggle' => :tooltip } }
             - elsif team.registered?
               = button nil, unregister_from_tournament_admin_team_path(team), icon_only: true,
-                                                                              btn_icon: %i[fas fa-minus],
+                                                                              btn_icon: %i[fas fa-minus fa-fw],
                                                                               size: :sm,
                                                                               method: :post,
                                                                               color: :primary,
