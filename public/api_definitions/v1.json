@@ -167,12 +167,13 @@
       },
       "OAuth": {
         "type": "oauth2",
+        "description": "To implement an application using OAuth2 to authenticate in L4N, you need to register an application in the admin panel, where you can specify the scopes the application should be able to access. After creating the application, you'll be able to access the `client_id` and the `client_secret`, which you'll need to access the OAuth2 endpoints. Please note that the token URLs will only accept a content type of `application/x-www-form-urlencoded`, all other contents are not permitted and will return an error.",
         "flows": {
           "authorizationCode": {
-            "authorizationUrl": "/oauth/authorize",
-            "tokenUrl": "/oauth/token",
+            "authorizationUrl": "`/oauth/authorize`",
+            "tokenUrl": "`/oauth/token`",
             "scopes": {
-              "user:lan:read": "Allows the application to read the status of an user at a LanParty"
+              "user:lan:read": "Allows the application to read the status of an user at a LanParty as well as the username of the user."
             }
           }
         }
