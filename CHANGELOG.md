@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.2 - UNRELEASED
+
+### Fixed
+
+* Fixed a nil exception when opening a past event
+
 ## 1.1.1 - 2022-12-19
 
 ### Fixed
