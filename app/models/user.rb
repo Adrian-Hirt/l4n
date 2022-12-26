@@ -17,6 +17,7 @@ class User < ApplicationRecord
     design_admin_permission
     achievement_admin_permission
     upload_admin_permission
+    developer_admin_permission
     system_admin_permission
   ].freeze
 

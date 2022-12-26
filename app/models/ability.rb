@@ -202,7 +202,13 @@ class Ability
       can :manage, :system
       can :manage, AppConfig
       can :manage, FeatureFlag
+    end
+
+    # Access to stuff needed for developers, such as Api & OAuth applications
+    if user.developer_admin_permission?
+      can :manage, :developer
       can :manage, ApiApplication
+      can :manage, Doorkeeper::Application
     end
   end
 end

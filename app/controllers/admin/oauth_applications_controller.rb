@@ -20,7 +20,7 @@ module Admin
 
     def check_admin_panel_access
       authorize! :access, :admin_panel
-      authorize! :manage, :system
+      authorize! :manage, Doorkeeper::Application
     end
 
     def clear_app_breadcrumbs
