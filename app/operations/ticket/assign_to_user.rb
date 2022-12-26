@@ -40,7 +40,7 @@ module Operations::Ticket
     end
 
     def available_tickets
-      Queries::Lan::Ticket::LoadForUserAndLanPartyWithAssigned.call(user: context.user, lan_party: ticket.lan_party).includes(:seat_category, :seat)
+      Queries::Lan::Ticket::LoadForUserAndLanParty.call(user: context.user, lan_party: ticket.lan_party).includes(:seat_category, :seat)
     end
 
     def ticket_for_lan_party

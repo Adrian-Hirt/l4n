@@ -33,7 +33,7 @@
   - if op.ticket_for_lan_party.nil?
     .ms-2
       = button nil,
-              assign_lan_ticket_path(id: ticket.id, user_id: current_user.id),
+              assign_lan_ticket_path(id: ticket.id, assignee: { user_id: current_user.id }),
               size: :sm,
               method: :post,
               btn_icon: %i[fas fa-user-plus fa-fw],

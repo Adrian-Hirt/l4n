@@ -7,10 +7,7 @@ module Operations::Ticket
     end
 
     def available_tickets
-      @available_tickets ||= ::Ticket.where(lan_party: lan_party)
-                                     .joins(:order)
-                                     .where(order: { user: context.user })
-                                     .includes(:seat_category, :seat, :assignee)
+      @available_tickets ||= Queries::Lan::Ticket::LoadForUserAndLanParty.call(lan_party: lan_party, user: context.user)
     end
 
     def ticket_upgrades
