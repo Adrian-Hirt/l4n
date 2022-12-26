@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-19 22:21+0100\n"
-"PO-Revision-Date: 2022-12-19 22:21+0100\n"
+"POT-Creation-Date: 2022-12-26 13:11+0100\n"
+"PO-Revision-Date: 2022-12-26 13:11+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -214,6 +214,21 @@ msgid "Admin|MenuLinkItem|Either select a page or enter a link hint"
 msgstr ""
 
 msgid "Admin|NewsPosts"
+msgstr ""
+
+msgid "Admin|OAuth applications"
+msgstr ""
+
+msgid "Admin|OauthApplications"
+msgstr ""
+
+msgid "Admin|Oauth|Available scopes"
+msgstr ""
+
+msgid "Admin|Oauth|No scopes"
+msgstr ""
+
+msgid "Admin|Oauth|user:lan:read description"
 msgstr ""
 
 msgid "Admin|Orders"
@@ -1044,6 +1059,42 @@ msgstr ""
 msgid "Datagrid|No results"
 msgstr ""
 
+msgid "Doorkeeper/application"
+msgstr ""
+
+msgid "Doorkeeper::Application"
+msgstr ""
+
+msgid "Doorkeeper::Application|Authorize"
+msgstr ""
+
+msgid "Doorkeeper::Application|Callback uris"
+msgstr ""
+
+msgid "Doorkeeper::Application|Confidential"
+msgstr ""
+
+msgid "Doorkeeper::Application|Id"
+msgstr ""
+
+msgid "Doorkeeper::Application|Name"
+msgstr ""
+
+msgid "Doorkeeper::Application|Redirect uri"
+msgstr ""
+
+msgid "Doorkeeper::Application|Scopes"
+msgstr ""
+
+msgid "Doorkeeper::Application|Secret"
+msgstr ""
+
+msgid "Doorkeeper::Application|Uid"
+msgstr ""
+
+msgid "Doorkeeper::AuthorizedApplication|Authenticated at"
+msgstr ""
+
 msgid "DummyPaymentGateway"
 msgstr ""
 
@@ -1144,6 +1195,9 @@ msgid "Event|Published"
 msgstr ""
 
 msgid "Event|Read more"
+msgstr ""
+
+msgid "Event|This event is over"
 msgstr ""
 
 msgid "Event|This event will take place at the following dates"
@@ -1609,6 +1663,36 @@ msgid "NewsPost|Title"
 msgstr ""
 
 msgid "No"
+msgstr ""
+
+msgid "Oauth|An error has occured, please see below for more information"
+msgstr ""
+
+msgid "Oauth|Authorize <b class=\"text-accent\">%{app_name}</b> to use your account?"
+msgstr ""
+
+msgid "Oauth|Authorize application"
+msgstr ""
+
+msgid "Oauth|Deny request"
+msgstr ""
+
+msgid "Oauth|Please sign in to continue"
+msgstr ""
+
+msgid "Oauth|This application will be able to"
+msgstr ""
+
+msgid "Oauth|You don't have any authorized applications yet"
+msgstr ""
+
+msgid "Oauth|You have granted %{count} applications access to your account"
+msgstr ""
+
+msgid "Oauth|You have granted 1 application access to your account"
+msgstr ""
+
+msgid "Oauth|user:lan:read description"
 msgstr ""
 
 msgid "Order"
@@ -2410,6 +2494,9 @@ msgid "Settings|Addresses"
 msgstr ""
 
 msgid "Settings|Addresses|Add new"
+msgstr ""
+
+msgid "Settings|Authorized oauth apps"
 msgstr ""
 
 msgid "Settings|Avatar"

@@ -43,6 +43,8 @@ N_('Tournament|Show')
 # Users
 N_('User|Created at')
 
+N_('Doorkeeper::Application')
+
 # Pages
 N_('ContentPage')
 N_('ContentPage|Url')

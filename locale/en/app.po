@@ -215,6 +215,21 @@ msgstr "Either select a page or enter a link, but not both"
 msgid "Admin|NewsPosts"
 msgstr "News Posts"
 
+msgid "Admin|OAuth applications"
+msgstr "OAuth applications"
+
+msgid "Admin|OauthApplications"
+msgstr "OAuth applications"
+
+msgid "Admin|Oauth|Available scopes"
+msgstr "Available scopes"
+
+msgid "Admin|Oauth|No scopes"
+msgstr "No scopes"
+
+msgid "Admin|Oauth|user:lan:read description"
+msgstr "Allows the application to get status informations about an user connected to a lan party (e.g. wether the user is checked in at a LanParty). This does not allow the application to read general data of the user except the ID and the Username."
+
 msgid "Admin|Orders"
 msgstr "Orders"
 
@@ -1043,6 +1058,42 @@ msgstr "No columns"
 msgid "Datagrid|No results"
 msgstr "No results"
 
+msgid "Doorkeeper/application"
+msgstr "OAuth Application"
+
+msgid "Doorkeeper::Application"
+msgstr "OAuth Application"
+
+msgid "Doorkeeper::Application|Authorize"
+msgstr "Authorize"
+
+msgid "Doorkeeper::Application|Callback uris"
+msgstr "Callback URIs"
+
+msgid "Doorkeeper::Application|Confidential"
+msgstr "Confidential"
+
+msgid "Doorkeeper::Application|Id"
+msgstr "Application ID"
+
+msgid "Doorkeeper::Application|Name"
+msgstr "Name"
+
+msgid "Doorkeeper::Application|Redirect uri"
+msgstr "Redirect URI"
+
+msgid "Doorkeeper::Application|Scopes"
+msgstr "Scopes"
+
+msgid "Doorkeeper::Application|Secret"
+msgstr "Application secret"
+
+msgid "Doorkeeper::Application|Uid"
+msgstr "Application ID"
+
+msgid "Doorkeeper::AuthorizedApplication|Authenticated at"
+msgstr "Authenticated at"
+
 msgid "DummyPaymentGateway"
 msgstr "Dummy payment gateway"
 
@@ -1144,6 +1195,9 @@ msgstr "Published"
 
 msgid "Event|Read more"
 msgstr "Read more"
+
+msgid "Event|This event is over"
+msgstr "This event is over"
 
 msgid "Event|This event will take place at the following dates"
 msgstr "This event will take place at the following dates"
@@ -1610,6 +1664,36 @@ msgstr "Title"
 
 msgid "No"
 msgstr "No"
+
+msgid "Oauth|An error has occured, please see below for more information"
+msgstr "An error has occured, please see below for more information"
+
+msgid "Oauth|Authorize <b class=\"text-accent\">%{app_name}</b> to use your account?"
+msgstr "Authorize <b class=\"text-accent\">%{app_name}</b> to use your account?"
+
+msgid "Oauth|Authorize application"
+msgstr "Authorize application"
+
+msgid "Oauth|Deny request"
+msgstr "Deny request"
+
+msgid "Oauth|Please sign in to continue"
+msgstr "Please sign in to continue"
+
+msgid "Oauth|This application will be able to"
+msgstr "This application will be able to"
+
+msgid "Oauth|You don't have any authorized applications yet"
+msgstr "You don't have any authorized applications yet"
+
+msgid "Oauth|You have granted %{count} applications access to your account"
+msgstr "You have granted %{count} applications access to your account"
+
+msgid "Oauth|You have granted 1 application access to your account"
+msgstr "You have granted 1 application access to your account"
+
+msgid "Oauth|user:lan:read description"
+msgstr "read the status of your account at a LanParty (wether you are checked in or not), as well as read your username"
 
 msgid "Order"
 msgstr "Order"
@@ -2411,6 +2495,9 @@ msgstr "Addresses"
 
 msgid "Settings|Addresses|Add new"
 msgstr "Add new"
+
+msgid "Settings|Authorized oauth apps"
+msgstr "Authorized OAuth apps"
 
 msgid "Settings|Avatar"
 msgstr "Avatar"
