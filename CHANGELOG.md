@@ -13,6 +13,10 @@
 
 * Add missing margins to cards on mobile
 
+### Changed
+
+* Update gem dependencies
+
 ## 1.1.2 - 2022-12-25
 
 ### Fixed
