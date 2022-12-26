@@ -15,7 +15,7 @@
       .card-header
         = _('User|About me')
       - if model.bio.present?
-        .card-body.pb-0
+        .card-body
           = markdown(model.bio)
       - else
         .card-body
