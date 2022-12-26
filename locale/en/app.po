@@ -134,6 +134,9 @@ msgstr "Total users"
 msgid "Admin|Design"
 msgstr "Design"
 
+msgid "Admin|Developer"
+msgstr "Developer"
+
 msgid "Admin|Events"
 msgstr "Events"
 
@@ -3716,6 +3719,9 @@ msgstr "Crop your avatar"
 
 msgid "User|Design admin permission"
 msgstr "Design admin permission"
+
+msgid "User|Developer admin permission"
+msgstr "Developer admin permission"
 
 msgid "User|Discord account successfully added"
 msgstr "Discord account successfully added"
