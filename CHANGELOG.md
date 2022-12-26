@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.2.0 - UNRELEASED
+
+### Added
+
+* Add OAuth provider
+* Add new API endpoint to fetch details for an user at a LanParty
+* Add new `DeveloperAdmin` permission
+* Add icons to username dropdown in application header
+
+### Fixed
+
+* Add missing margins to cards on mobile
+
 ## 1.1.2 - 2022-12-25
 
 ### Fixed
