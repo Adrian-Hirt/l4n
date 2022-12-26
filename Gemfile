@@ -25,9 +25,9 @@ gem 'pg', '~> 1.4.3'
 
 # Assets
 gem 'cssbundling-rails', '~> 1.1.1'
-gem 'jsbundling-rails', '~> 1.0.3'
+gem 'jsbundling-rails', '~> 1.1.1'
 gem 'sprockets-rails', '~> 3.4.1'
-gem 'stimulus-rails', '~> 1.1.0'
+gem 'stimulus-rails', '~> 1.2.1'
 gem 'turbo-rails', '~> 1.3.2'
 
 # Application structure
@@ -102,8 +102,7 @@ end
 
 # Test gems
 group :test do
-  gem 'simplecov', '~> 0.21.2', require: false
-  gem 'simplecov-lcov', '~> 0.8.0', require: false
+  gem 'simplecov', '~> 0.22.0', require: false
 end
 
 # Payment gateways
