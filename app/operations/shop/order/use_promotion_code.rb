@@ -67,7 +67,7 @@ module Operations::Shop::Order
       promotion_code_product_ids = promotion_code.promotion.products.map(&:id)
 
       # Get the set intersection and check if it's non-empty
-      fail PromoCodeCannotBeApplied if (promotion_code_product_ids & product_ids).empty?
+      fail PromoCodeCannotBeApplied unless promotion_code_product_ids.intersect?(product_ids)
 
       # Get the already applied codes
       applied_codes = order.promotion_codes.map { |code| code.promotion.products.map(&:id) }

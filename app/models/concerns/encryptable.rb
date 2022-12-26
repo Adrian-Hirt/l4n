@@ -14,7 +14,7 @@ module Encryptable
           fail "Unknown attribute #{attributes}"
         end
 
-        return self.class.encrypt_data(data)
+        self.class.encrypt_data(data)
       end
     end
 
