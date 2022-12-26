@@ -191,6 +191,11 @@ Rails.application.routes.draw do
       get :/, action: :docs, controller: :api
       resources :news, only: %i[index show]
       resources :events, only: %i[index show]
+      resources :lan_parties, only: [] do
+        member do
+          get :me
+        end
+      end
     end
   end
 

@@ -162,6 +162,17 @@
         "summary": "Retrieve status of an User at a LanParty",
         "description": "Retrieve the status of an User at a LanParty identified by the `id` param, returning some details about the user and their assigned seat.",
         "tags": ["LanParty"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of the LanParty",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "security": [
           {
             "OAuth": ["user:lan:read"]

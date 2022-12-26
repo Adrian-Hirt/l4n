@@ -1,6 +1,16 @@
 module Api
   module V1
     class ApiController < ActionController::Base # rubocop:disable Rails/ApplicationController
+      # All API controllers using the oauth tokens to authorize their
+      # endpoints should inherit from this controller. It's important
+      # that the endpoints check the oauth token themselfes, as the
+      # required scopes usually differ. An example is:
+      #
+      #   before_action -> { doorkeeper_authorize!(:'user:read') }
+      #
+      # All normal endpoints should use the API key authentication, and as
+      # such this is enabled by default. OAuth controllers should skip this
+      # and instead use the OAuth token to authenticate
       before_action :authenticate_with_api_key, except: %i[docs]
 
       wrap_parameters false
@@ -18,10 +28,6 @@ module Api
 
       private
 
-      # This will be changed later, probably to a token-based approach.
-      # Right now, we only have public available info anyway in the api,
-      # and as such this is "enough security", but it should be changed
-      # if the api is extended.
       def authenticate_with_api_key
         # Get key
         api_key = request.headers['X-Api-Key'] || params[:api_key]
@@ -61,6 +67,10 @@ module Api
       # Custom op params, removing the API_KEY
       def op_params
         super.except(:api_key)
+      end
+
+      def current_resource_owner
+        User.find(doorkeeper_token.resource_owner_id) if doorkeeper_token
       end
     end
   end
