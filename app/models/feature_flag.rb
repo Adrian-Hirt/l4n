@@ -11,6 +11,7 @@ class FeatureFlag < ApplicationRecord
     lan_party
     tournaments
     frontend_sidebar
+    api_and_oauth
   ].freeze
 
   # == Associations ================================================================

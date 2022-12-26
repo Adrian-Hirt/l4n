@@ -44,6 +44,7 @@ N_('Tournament|Show')
 N_('User|Created at')
 
 N_('Doorkeeper::Application')
+N_('ApiApplication|Id')
 
 # Pages
 N_('ContentPage')

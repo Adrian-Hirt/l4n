@@ -14,7 +14,11 @@ Doorkeeper.configure do
 
   # This block will be called to check whether the resource owner is authenticated or not.
   resource_owner_authenticator do
-    if user_signed_in?
+    # Check if the feature flag is enabled. If not, we simply redirect
+    # to the root_path of the app
+    if !FeatureFlag.enabled?(:api_and_oauth)
+      redirect_to root_path
+    elsif user_signed_in?
       current_user
     else
       session[:user_return_to] = request.fullpath

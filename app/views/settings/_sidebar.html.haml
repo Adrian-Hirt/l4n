@@ -4,7 +4,8 @@
     = link_to _('Settings|Avatar'), settings_avatar_path, class: nav_item_classes(controller: 'settings/avatar')
     = link_to _('Settings|Game accounts'), settings_gameaccounts_path, class: nav_item_classes(controller: 'settings/gameaccounts')
     = link_to _('Settings|Addresses'), settings_user_addresses_path, class: nav_item_classes(controller: 'settings/user_addresses')
-    = link_to _('Settings|Authorized oauth apps'), oauth_authorized_applications_path, class: nav_item_classes(controller: 'doorkeeper/authorized_applications')
+    - if FeatureFlag.enabled?(:api_and_oauth)
+      = link_to _('Settings|Authorized oauth apps'), oauth_authorized_applications_path, class: nav_item_classes(controller: 'doorkeeper/authorized_applications')
     = link_to _('Settings|2FA'), settings_two_factor_path, class: nav_item_classes(controller: 'settings/two_factor')
   .card-footer
     = button _('User|Show my profile'), current_user, size: :sm, color: :default

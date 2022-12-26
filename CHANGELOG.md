@@ -8,6 +8,7 @@
 * Add new API endpoint to fetch details for an user at a LanParty
 * Add new `DeveloperAdmin` permission
 * Add icons to username dropdown in application header
+* Add feature flag for API & OAuth
 
 ### Fixed
 

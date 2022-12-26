@@ -205,7 +205,7 @@ class Ability
     end
 
     # Access to stuff needed for developers, such as Api & OAuth applications
-    if user.developer_admin_permission?
+    if FeatureFlag.enabled?(:api_and_oauth) && user.developer_admin_permission?
       can :manage, :developer
       can :manage, ApiApplication
       can :manage, Doorkeeper::Application

@@ -13,6 +13,9 @@ module Api
       # and instead use the OAuth token to authenticate
       before_action :authenticate_with_api_key, except: %i[docs]
 
+      # Check that the API is enabled
+      before_action :check_feature_flag
+
       wrap_parameters false
 
       rescue_from ActiveRecord::RecordNotFound do |_exception|
@@ -46,6 +49,11 @@ module Api
 
       # 404 response
       def not_found!
+        # If api is enabled, we simply return a plain text
+        # 404, otherwise we re-raise the excaption, such that
+        # the normal 404 page is shown
+        fail ActiveRecord::RecordNotFound unless FeatureFlag.enabled?(:api)
+
         render plain: 'Not found', status: :not_found
       end
 
@@ -71,6 +79,12 @@ module Api
 
       def current_resource_owner
         User.find(doorkeeper_token.resource_owner_id) if doorkeeper_token
+      end
+
+      def check_feature_flag
+        return if FeatureFlag.enabled?(:api_and_oauth)
+
+        fail ActiveRecord::RecordNotFound
       end
     end
   end
