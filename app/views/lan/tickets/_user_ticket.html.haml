@@ -1,8 +1,9 @@
-- if op.ticket_for_lan_party.present?
-  .card.mb-3
-    .card-header
-      = _('Seatmap|Your ticket')
-    .card-body
+.card.mb-3
+  .card-header
+    = _('Seatmap|Your ticket')
+  .card-body
+
+    - if op.ticket_for_lan_party.present?
       .row
         .col-md-2
           .text-muted= _('Ticket|Category')
@@ -29,4 +30,7 @@
                   method: :post,
                   btn_icon: %i[fas fa-user-slash fa-fw],
                   confirm: _('Ticket|Really remove ticket from myself?'),
-                  color: :default
+                  color: :danger,
+                  disabled: op.ticket_for_lan_party.checked_in?
+    - else
+      = _('Ticket|You don\'t have a ticket assigned yet, purchase a ticket or assign yourself a ticket below')
