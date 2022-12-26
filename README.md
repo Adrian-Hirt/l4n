@@ -38,6 +38,10 @@ and as such you should replace `main` with the tag of the latest release.
 After that, you can start L4N using `docker compose up -d`. This will pull the image, create the database,
 run the migrations and prepare other required settings for L4N.
 
+### Custom installations
+
+L4N can also be used in a custom setup, with your own docker compose setup. Please note however, that L4N requires Postgresql as the application database server. Currently it is not possible to use SQLite, mySQL or any other database as the application database server.
+
 ## Users
 
 * [VSETH GECo](https://geco.ethz.ch)
