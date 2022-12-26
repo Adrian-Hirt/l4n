@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.3 - 2022-12-26
+
+### Fixed
+
+* Fix flashes shown twice
+* Fix incorrect tickets shown in manage view
+
 ## 1.1.2 - 2022-12-25
 
 ### Fixed
