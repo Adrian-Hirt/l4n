@@ -160,12 +160,12 @@
                 %span.nav-item-text= _('Admin|StylingVariables')
   - if can?(:manage, :developer)
     %li.nav-item.dropdown
-      %a.nav-link.collapse-link{data: {'bs-toggle' => 'collapse'}, href: '#system-collapse', class: sidenav_collapser_classes(:api_applications, :oauth_applications)}
+      %a.nav-link.collapse-link{data: {'bs-toggle' => 'collapse'}, href: '#developer-collapse', class: sidenav_collapser_classes(:api_applications, :oauth_applications)}
         %span
           %i.nav-icon.fas.fa-code.fa-fw
           %span.nav-item-text= _('Admin|Developer')
         %i.right.fas.fa-angle-right.dropdown-icon
-      #system-collapse.collapse{class: sidenav_collapse_classes(:api_applications, :oauth_applications), data: { 'bs-parent' => '.sidenav' }}
+      #developer-collapse.collapse{class: sidenav_collapse_classes(:api_applications, :oauth_applications), data: { 'bs-parent' => '.sidenav' }}
         %ul.nav.nav-pills.flex-column
           - if can?(:manage, ApiApplication)
             %li.nav-item
