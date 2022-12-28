@@ -860,6 +860,9 @@ msgstr "Api Application"
 msgid "ApiApplication|Api key"
 msgstr "Api key"
 
+msgid "ApiApplication|Id"
+msgstr "ID"
+
 msgid "ApiApplication|Name"
 msgstr "Name"
 
@@ -3083,6 +3086,9 @@ msgstr "User not found"
 
 msgid "Ticket|Username"
 msgstr "Username"
+
+msgid "Ticket|You don't have a ticket assigned yet, purchase a ticket or assign yourself a ticket below"
+msgstr "You don't have a ticket assigned yet, purchase a ticket or assign yourself a ticket below"
 
 msgid "Ticket|status|assigned"
 msgstr "Assigned"

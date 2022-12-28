@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-26 13:45+0100\n"
-"PO-Revision-Date: 2022-12-26 13:45+0100\n"
+"POT-Creation-Date: 2022-12-26 16:06+0100\n"
+"PO-Revision-Date: 2022-12-26 16:06+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -859,6 +859,9 @@ msgid "Api application"
 msgstr ""
 
 msgid "ApiApplication|Api key"
+msgstr ""
+
+msgid "ApiApplication|Id"
 msgstr ""
 
 msgid "ApiApplication|Name"
@@ -3082,6 +3085,9 @@ msgid "Ticket|User not found"
 msgstr ""
 
 msgid "Ticket|Username"
+msgstr ""
+
+msgid "Ticket|You don't have a ticket assigned yet, purchase a ticket or assign yourself a ticket below"
 msgstr ""
 
 msgid "Ticket|status|assigned"
