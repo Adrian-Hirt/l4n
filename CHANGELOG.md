@@ -9,6 +9,7 @@
 * Add new `DeveloperAdmin` permission
 * Add icons to username dropdown in application header
 * Add feature flag for API & OAuth
+* Display changelog in Admin Panel
 
 ### Fixed
 

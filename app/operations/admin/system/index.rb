@@ -17,12 +17,10 @@ module Operations::Admin::System
 
     def changelog
       # Open the changelog file
-      changelog_file = File.read("#{Rails.root}/CHANGELOG.md")
+      changelog_file = Rails.root.join('CHANGELOG.md').read
 
       # Remove the h1 title
-      changelog_file = changelog_file.gsub('# Changelog', '')
-
-      return changelog_file
+      changelog_file.gsub('# Changelog', '')
     rescue Errno::ENOENT
       'Changelog file not found'
     end
