@@ -14,5 +14,17 @@ module Operations::Admin::System
         _('Admin|System|Cache size reported: %{size}') % { size: result.split("\t")[0] }
       end
     end
+
+    def changelog
+      # Open the changelog file
+      changelog_file = File.read("#{Rails.root}/CHANGELOG.md")
+
+      # Remove the h1 title
+      changelog_file = changelog_file.gsub('# Changelog', '')
+
+      return changelog_file
+    rescue Errno::ENOENT
+      'Changelog file not found'
+    end
   end
 end

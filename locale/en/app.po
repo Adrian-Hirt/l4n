@@ -440,6 +440,15 @@ msgstr "Cache size is around %{size}"
 msgid "Admin|System|Cache was cleaned"
 msgstr "Cache was cleaned"
 
+msgid "Admin|System|Changelog"
+msgstr "Changelog"
+
+msgid "Admin|System|L4N Details"
+msgstr "L4N details"
+
+msgid "Admin|System|Running L4N Version %{l4n_version}"
+msgstr "Running L4N version %{l4n_version}"
+
 msgid "Admin|TeamMember|Destroying failed"
 msgstr "Destroying failed"
 
