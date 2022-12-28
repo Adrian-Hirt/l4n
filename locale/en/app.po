@@ -2026,7 +2026,7 @@ msgid "Phase|Seeding"
 msgstr "Seeding"
 
 msgid "Phase|Seeding not completed hint"
-msgstr "Seeding not completed hint"
+msgstr "Please complete the seeding before continuing"
 
 msgid "Phase|Seeds"
 msgstr "Seeds"
