@@ -2,9 +2,10 @@
   .card.doorkeeper-card
     .card-header.text-center
       %a.h1{href: root_path}
-        = AppConfig.application_name
+        = _('Oauth|Title for %{l4n_name}') % { l4n_name: AppConfig.application_name }
     .card-body.pb-1
       %h2= _('Oauth|Authorize <b class="text-accent">%{app_name}</b> to use your account?').html_safe % { app_name: @pre_auth.client.name }
+      %hr
       - if @pre_auth.scopes.count > 0
         .my-3
           = _('Oauth|This application will be able to')
@@ -12,6 +13,13 @@
             - @pre_auth.scopes.each do |scope|
               - defined_scope = L4N_OAUTH_SCOPES[scope.to_sym]
               %li= defined_scope[:user_description]
+        %hr
+        .my-3
+          = _('Oauth|This application will <b class="text-danger">not be able</b> to').html_safe
+          %ul.mt-3
+            %li= _('Oauth|read your password')
+            %li= _('Oauth|make any changes to your account')
+            %li= _('Oauth|read any data not specified above')
     .card-footer
       = form_tag oauth_authorization_path, method: :post, class: 'd-inline', data: { turbo: false } do
         = hidden_field_tag :client_id, @pre_auth.client.uid, id: nil

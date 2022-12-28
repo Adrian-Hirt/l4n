@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-28 12:40+0100\n"
-"PO-Revision-Date: 2022-12-28 12:40+0100\n"
+"POT-Creation-Date: 2022-12-28 12:57+0100\n"
+"PO-Revision-Date: 2022-12-28 12:57+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -1686,7 +1686,13 @@ msgstr ""
 msgid "Oauth|Please sign in to continue"
 msgstr ""
 
+msgid "Oauth|This application will <b class=\"text-danger\">not be able</b> to"
+msgstr ""
+
 msgid "Oauth|This application will be able to"
+msgstr ""
+
+msgid "Oauth|Title for %{l4n_name}"
 msgstr ""
 
 msgid "Oauth|You don't have any authorized applications yet"
@@ -1696,6 +1702,15 @@ msgid "Oauth|You have granted %{count} applications access to your account"
 msgstr ""
 
 msgid "Oauth|You have granted 1 application access to your account"
+msgstr ""
+
+msgid "Oauth|make any changes to your account"
+msgstr ""
+
+msgid "Oauth|read any data not specified above"
+msgstr ""
+
+msgid "Oauth|read your password"
 msgstr ""
 
 msgid "Oauth|user:lan:read description"

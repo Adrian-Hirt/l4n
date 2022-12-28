@@ -1686,8 +1686,14 @@ msgstr "Deny request"
 msgid "Oauth|Please sign in to continue"
 msgstr "Please sign in to continue"
 
+msgid "Oauth|This application will <b class=\"text-danger\">not be able</b> to"
+msgstr "This application will <b class=\"text-danger\">not be able</b> to"
+
 msgid "Oauth|This application will be able to"
 msgstr "This application will be able to"
+
+msgid "Oauth|Title for %{l4n_name}"
+msgstr "%{l4n_name} OAuth"
 
 msgid "Oauth|You don't have any authorized applications yet"
 msgstr "You don't have any authorized applications yet"
@@ -1697,6 +1703,15 @@ msgstr "You have granted %{count} applications access to your account"
 
 msgid "Oauth|You have granted 1 application access to your account"
 msgstr "You have granted 1 application access to your account"
+
+msgid "Oauth|make any changes to your account"
+msgstr "make any changes to your account"
+
+msgid "Oauth|read any data not specified above"
+msgstr "read any data not specified above"
+
+msgid "Oauth|read your password"
+msgstr "read your password"
 
 msgid "Oauth|user:lan:read description"
 msgstr "read the status of your account at a LanParty (wether you are checked in or not), as well as read your username"
