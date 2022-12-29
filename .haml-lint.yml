@@ -1,0 +1,7 @@
+linters:
+  UnnecessaryStringOutput:
+    enabled: false
+  LineLength:
+    enabled: false
+  ConsecutiveComments:
+    enabled: false
