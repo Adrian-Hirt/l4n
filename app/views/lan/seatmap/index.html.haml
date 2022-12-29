@@ -1,7 +1,7 @@
 - provide :page_title, _('Seatmap')
 
-.row{data: { controller: 'seatmap' }}
-  .col-xl-8.mb-3.mb-xl-0{data: { 'seatmap-target' => 'mainColumn'}}
+.row{ data: { controller: 'seatmap' } }
+  .col-xl-8.mb-3.mb-xl-0{ data: { 'seatmap-target' => 'mainColumn' } }
     .card
       .card-header.d-flex.align-items-center.py-1.justify-content-between
         = _('Seatmap')
@@ -16,9 +16,9 @@
                                                       html: { data: { 'seatmap-target' => 'sidebarToggle' } },
                                                       size: :sm
       .d-flex.justify-content-center
-        #seatmap-container.frontend-seatmap{data: { 'seatmap-target' => 'container', seatmap_data: op.seat_map_data }}
+        .frontend-seatmap#seatmap-container{ data: { 'seatmap-target' => 'container', seatmap_data: op.seat_map_data } }
 
-  .col-xl-4{data: { 'seatmap-target' => 'sidebar' }}
+  .col-xl-4{ data: { 'seatmap-target' => 'sidebar' } }
     - if user_signed_in?
       = turbo_frame_tag :user_ticket do
         = render partial: 'lan/seatmap/user_ticket'
@@ -35,7 +35,7 @@
       .card-header
         = _('Seatmap|Selected seat')
       .card-body
-        #current-selected-seat{data: { 'seatmap-target' => 'currentSelectedSeatInfo' }}
+        #current-selected-seat{ data: { 'seatmap-target' => 'currentSelectedSeatInfo' } }
           = _('Seatmap|Please select a seat')
     .card
       .card-header
@@ -43,10 +43,12 @@
       .card-body
         - op.lan_party.seat_categories.each do |category|
           .d-flex.align-items-center.mb-2
-            .me-2.badge.seat-id-badge{style: "background-color: #{category.color_for_view};"}
+            -# haml-lint:disable InlineStyles
+            .me-2.badge.seat-id-badge{ style: "background-color: #{category.color_for_view};" }
               &nbsp;
             = category.name
+            -# haml-lint:enable InlineStyles
         .d-flex.align-items-center
-          .me-2.badge.seat-id-badge{style: "background-color: red"}
+          .me-2.badge.seat-id-badge.taken
             &nbsp;
           = _('Seatmap|Taken seat')

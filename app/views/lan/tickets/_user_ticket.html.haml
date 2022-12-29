@@ -14,7 +14,7 @@
         .col-md-2
           .text-muted= _('Ticket|Seat')
           - if op.ticket_for_lan_party.seat.present?
-            = link_to lan_seatmap_path(highlight: op.ticket_for_lan_party.seat.id), target: :_blank do
+            = link_to lan_seatmap_path(highlight: op.ticket_for_lan_party.seat.id), target: :_blank, rel: :noopener do
               = icon %i[fas fa-arrow-up-right-from-square]
               = op.ticket_for_lan_party.seat.name_or_id
           - else

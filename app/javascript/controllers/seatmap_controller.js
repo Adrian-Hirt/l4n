@@ -45,10 +45,8 @@ export default class extends Controller {
   }
 
   #updateSeatMap() {
-    let removedId = document.querySelector('#removedSeat')?.dataset?.id;
-    let takenId = document.querySelector('#takenSeat')?.dataset?.id;
-    let assignedSeatDataset = document.querySelector('#assignedSeat')?.dataset;
-    let unassignedSeatId = document.querySelector('#unassignedSeat')?.dataset?.id;
+    let removedId = document.querySelector('#removed-seat')?.dataset?.id;
+    let takenId = document.querySelector('#taken-seat')?.dataset?.id;
 
     if(removedId) {
       // "reset" the color of the seat
@@ -66,18 +64,6 @@ export default class extends Controller {
 
       // Mark the seat as taken
       seat.setAttr('taken', true);
-    }
-
-    if(assignedSeatDataset?.id) {
-      let seat = this.seats.find(element => element.attrs.backendId == assignedSeatDataset.id);
-      seat.setAttr('userName', assignedSeatDataset.username);
-      seat.setAttr('userId', assignedSeatDataset.userid);
-    }
-
-    if(unassignedSeatId) {
-      let seat = this.seats.find(element => element.attrs.backendId == unassignedSeatId);
-      seat.setAttr('userName', null);
-      seat.setAttr('userId', null);
     }
 
     this.#unselectSeat();

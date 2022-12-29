@@ -9,7 +9,8 @@
         -# still should be possible to display the event (if the direct link
         -# is used), without raising an exception
         - if model.next_date.present?
-          = _('Event|From %{start_date} to %{end_date}') % { start_date:  l(model.next_date.start_date, format: :short), end_date:  l(model.next_date.end_date, format: :short)}
+          = _('Event|From %{start_date} to %{end_date}') % { start_date: l(model.next_date.start_date, format: :short),
+                                                             end_date: l(model.next_date.end_date, format: :short) }
         - else
           = _('Event|This event is over')
       - if model.next_date&.location.present?
@@ -28,7 +29,7 @@
           %th= _('EventDate|End')
           %th= _('EventDate|Location')
         - model.event_dates.order(:start_date).each do |event_date|
-          %tr{class: ('strikethrough' if event_date.end_date.past?)}
+          %tr{ class: ('strikethrough' if event_date.end_date.past?) }
             %td= l(event_date.start_date, format: :short)
             %td= l(event_date.end_date, format: :short)
             %td= event_date.location.presence || '-'

@@ -2,11 +2,11 @@
   - if op.successful
     .d-flex
       .flex-shrink-0
-        %img.gameaccount-image{src: op.data[:steam_avatar]}
+        %img.gameaccount-image{ src: op.data[:steam_avatar] }
       .flex-grow-1.ms-3
-        %h4= link_to op.data[:steam_name], op.data[:steam_url], target: :_blank
+        %h4= link_to op.data[:steam_name], op.data[:steam_url], target: :_blank, rel: :noopener
         .d-block
-          = icon %i[fas fa-circle], classes:"steam-status-#{op.data[:steam_status_id]}"
+          = icon %i[fas fa-circle], classes: "steam-status-#{op.data[:steam_status_id]}"
           = op.data[:steam_status]
         - if op.data[:steam_game].present?
           .d-block.mt-1

@@ -2,10 +2,10 @@
 -# the "remove seat" button, otherwise display the "get seat" button
 - unless ticket.checked_in?
   - if ticket.seat.present?
-    = button nil, remove_seat_lan_ticket_path(ticket), size: :sm, method: :post, color: :danger, html: { title: _('Ticket|Remove seat') }  do
+    = button nil, remove_seat_lan_ticket_path(ticket), size: :sm, method: :post, color: :danger, html: { title: _('Ticket|Remove seat') } do
       %span.fa-stack.stacked-icons
         %i.fa-solid.fa-chair.fa-stack-1x.mx-0
-        %i.fa-solid.fa-x.fa-stack-1x.mx-0{color: 'black'}
+        %i.fa-solid.fa-x.fa-stack-1x.mx-0{ color: 'black' }
   - else
     = simple_form_for :ticket, url: take_seat_lan_ticket_path(ticket) do |f|
       = f.input :selected_seat_id, input_html: { class: 'selected-seat-input' },

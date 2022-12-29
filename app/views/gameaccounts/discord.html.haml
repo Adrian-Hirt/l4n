@@ -3,7 +3,7 @@
     .d-flex
       .flex-shrink-0
         - if op.data[:discord_avatar].present?
-          %img.gameaccount-image{src: op.data[:discord_avatar]}
+          %img.gameaccount-image{ src: op.data[:discord_avatar] }
         - else
           .placeholder.gameaccount-image
       .flex-grow-1.ms-3

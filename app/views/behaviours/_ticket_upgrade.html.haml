@@ -1,16 +1,18 @@
-#product-behaviour-ticket_upgrade{class: ('d-none' unless enabled)}
-  .row{data: { controller: 'admin--product-to-and-from-product-input', options: Product.grouped_by_lan.to_json }}
+#product-behaviour-ticket-upgrade{ class: ('d-none' unless enabled) }
+  .row{ data: { controller: 'admin--product-to-and-from-product-input', options: Product.grouped_by_lan.to_json } }
     .col-md-4
       .select.optional
-        - lan_party = product.from_product&.seat_category&.lan_party_id || product.to_product&.seat_category&.lan_party_id
-        - if lan_party
-          - initially_available = Product.where(seat_category: SeatCategory.where(lan_party_id: lan_party))
-        - else
-          - initially_available = []
+        :ruby
+          lan_party = product.from_product&.seat_category&.lan_party_id || product.to_product&.seat_category&.lan_party_id
+          if lan_party
+            initially_available = Product.where(seat_category: SeatCategory.where(lan_party_id: lan_party))
+          else
+            initially_available = []
+          end
 
         = f.label :lan_party, class: 'form-label select optional'
         = select_tag :lan_party,
-          options_from_collection_for_select(LanParty.all, "id", "name", lan_party),
+          options_from_collection_for_select(LanParty.all, 'id', 'name', lan_party),
           class: 'form-select rounded-0 select optional mb-0',
           include_blank: _('Form|Select|Blank'),
           data: { action: 'change->admin--product-to-and-from-product-input#changeAvailableOptions' },
@@ -37,4 +39,4 @@
   - if product.to_product.present?
     .row.mt-3
       .col-md-12
-        = ('Product|TicketBehaviour|Virtual availability from to_product is: %{availability}') % { availability: product.to_product.availability }
+        = _('Product|TicketBehaviour|Virtual availability from to_product is: %{availability}') % { availability: product.to_product.availability }

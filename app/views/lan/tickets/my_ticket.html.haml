@@ -6,7 +6,7 @@
       .card-header
         = _('Ticket|Ticket for %{lan_name}') % { lan_name: op.lan_party.name }
       .card-body
-        .text-center= op.qr_code.html_safe
+        .text-center= op.qr_code.html_safe # rubocop:disable Rails/OutputSafety
   .col-md-6
     .card
       .card-header
@@ -27,15 +27,17 @@
         %tr
           %td= _('Ticket|Seat category')
           %td
-            .badge{style: "background-color: #{op.ticket.seat_category.color_for_view}; color: #{op.ticket.seat_category.font_color_for_view}"}
+            -# haml-lint:disable InlineStyles
+            .badge{ style: "background-color: #{op.ticket.seat_category.color_for_view}; color: #{op.ticket.seat_category.font_color_for_view}" }
               = op.ticket.seat_category.name
+            -# haml-lint:enable InlineStyles
         %tr
           %td= _('Ticket|Product_variant_name')
           %td= op.ticket.product_variant_name.presence || '-'
         %tr
           %td= _('Ticket|Status')
           %td= op.ticket.humanized_status
-        %tr{style: 'border-top: 2px solid grey;'}
+        %tr.border-top.border-dark
           %td= _('Ticket|Event name')
           %td= op.lan_party.name
         - if op.lan_party.location.present?

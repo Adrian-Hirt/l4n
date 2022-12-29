@@ -16,7 +16,7 @@
           = ticket.product_variant_name.presence || '-'
         %td.align-middle
           - if ticket.seat.present?
-            = link_to lan_seatmap_path(highlight: ticket.seat.id), target: :_blank do
+            = link_to lan_seatmap_path(highlight: ticket.seat.id), target: :_blank, rel: :noopener do
               = icon %i[fas fa-arrow-up-right-from-square]
               = ticket.seat.name_or_id
           - else

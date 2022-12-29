@@ -1,12 +1,12 @@
 .d-flex.justify-content-center.align-items-center.sessions-page
   .card.doorkeeper-card
     .card-header.text-center
-      %a.h1{href: root_path}
+      %a.h1{ href: root_path }
         = _('Oauth|Title for %{l4n_name}') % { l4n_name: AppConfig.application_name }
     .card-body.pb-1
-      %h2= _('Oauth|Authorize <b class="text-accent">%{app_name}</b> to use your account?').html_safe % { app_name: @pre_auth.client.name }
+      %h2= _('Oauth|Authorize <b class="text-accent">%{app_name}</b> to use your account?').html_safe % { app_name: @pre_auth.client.name } # rubocop:disable Rails/OutputSafety
       %hr
-      - if @pre_auth.scopes.count > 0
+      - if @pre_auth.scopes.count.positive?
         .my-3
           = _('Oauth|This application will be able to')
           %ul.mt-3
@@ -15,7 +15,7 @@
               %li= defined_scope[:user_description]
         %hr
         .my-3
-          = _('Oauth|This application will <b class="text-danger">not be able</b> to').html_safe
+          = _('Oauth|This application will <b class="text-danger">not be able</b> to').html_safe # rubocop:disable Rails/OutputSafety
           %ul.mt-3
             %li= _('Oauth|read your password')
             %li= _('Oauth|make any changes to your account')
@@ -30,7 +30,7 @@
         = hidden_field_tag :scope, @pre_auth.scope, id: nil
         = hidden_field_tag :code_challenge, @pre_auth.code_challenge, id: nil
         = hidden_field_tag :code_challenge_method, @pre_auth.code_challenge_method, id: nil
-        = submit_tag _('Oauth|Authorize application'), class: "btn btn-success"
+        = submit_tag _('Oauth|Authorize application'), class: 'btn btn-success'
 
       = form_tag oauth_authorization_path, method: :delete, class: 'd-inline', data: { turbo: false } do
         = hidden_field_tag :client_id, @pre_auth.client.uid, id: nil
@@ -41,4 +41,4 @@
         = hidden_field_tag :scope, @pre_auth.scope, id: nil
         = hidden_field_tag :code_challenge, @pre_auth.code_challenge, id: nil
         = hidden_field_tag :code_challenge_method, @pre_auth.code_challenge_method, id: nil
-        = submit_tag _('Oauth|Deny request'), class: "btn btn-danger"
+        = submit_tag _('Oauth|Deny request'), class: 'btn btn-danger'

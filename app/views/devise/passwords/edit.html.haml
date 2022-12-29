@@ -1,8 +1,8 @@
 .d-flex.justify-content-center.align-items-center.sessions-page
   .card.devise-card
-    = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { data: { turbo: false}, method: :put }, wrapper: :input_group do |f|
+    = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { data: { turbo: false }, method: :put }, wrapper: :input_group do |f|
       .card-header.text-center
-        %a.h1{href: root_path}
+        %a.h1{ href: root_path }
           = AppConfig.application_name
       .card-body.pb-1
         = f.input :reset_password_token, as: :hidden
