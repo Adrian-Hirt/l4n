@@ -6,7 +6,7 @@
       .card-body
         %ul.nav.nav-pills
           %li.nav-item
-            %a.nav-link.active{href: '#'}= _('Tournament|Info')
+            %a.nav-link.active{ href: '#' }= _('Tournament|Info')
           %li.nav-item
             = link_to _('Tournament|Teams'), tournament_teams_path(model), class: 'nav-link'
           %li.nav-item
@@ -43,7 +43,7 @@
         %table.table.table-hover.mb-0
           - model.files.each do |file|
             %tr
-              %td.ps-3= link_to file.filename, rails_blob_path(file, disposition: "inline"), target: :_blank
+              %td.ps-3= link_to file.filename, rails_blob_path(file, disposition: 'inline'), target: :_blank, rel: :noopener
               %td= number_to_human_size(file.blob.byte_size)
   .col-md-4
     = render partial: 'actions_sidebar', locals: { tournament: model, op: op }

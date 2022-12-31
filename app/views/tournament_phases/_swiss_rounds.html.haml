@@ -22,7 +22,7 @@
                         .matchteam
                           = match.home.team.name
                         .matchscore
-                          = format_match_score(match,  :home)
+                          = format_match_score(match, :home)
                       .d-flex.justify-content-between
                         .matchteam
                           = match.away&.team&.name || _('Match|Bye')
@@ -30,7 +30,7 @@
                           = format_match_score(match, :away)
 
                     - if can_update_result?(match)
-                      %a.swiss-match-card{href: edit_match_path(match)}
+                      %a.swiss-match-card{ href: edit_match_path(match) }
                         = yield :match
                     - else
                       .swiss-match-card
@@ -39,7 +39,7 @@
                 - else
                   -# If we have not yet generated the matches for the round, we just take
                   -# the number of rounds from the first round and add "TBD" everywhere
-                  - round_matches_count.times do |index|
+                  - round_matches_count.times do
                     .swiss-match-card
                       .d-flex.justify-content-between
                         .matchteam

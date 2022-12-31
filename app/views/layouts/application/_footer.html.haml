@@ -3,16 +3,16 @@
     .d-flex.flex-wrap.justify-content-between.align-items-center.py-3
       %p.mb-0.text-muted
         © 2021 -
-        = Date.today.year
-        %a{href: "https://l4n.ch", target: '_blank'} L4N
+        = Time.zone.today.year
+        %a{ href: 'https://l4n.ch', target: '_blank', rel: 'noopener' } L4N
       %nav
         %ol.breadcrumb.mb-0
           = render_breadcrumbs builder: Services::BootstrapBreadcrumbBuilder
-    - if ::FooterLogo.where(visible: true).any?
+    - if FooterLogo.where(visible: true).any?
       .d-flex.flex-wrap.justify-content-left.align-items-center.py-3.border-top
-        - ::FooterLogo.where(visible: true).order(:sort).includes(file_attachment: :blob).each do |logo|
+        - FooterLogo.where(visible: true).order(:sort).includes(file_attachment: :blob).each do |logo|
           - if logo.link.present?
-            = link_to logo.link, target: :_blank do
+            = link_to logo.link, target: :_blank, rel: :noopener do
               = image_tag logo.file.variant(:medium).processed, class: 'ms-2'
           - else
             = image_tag logo.file.variant(:medium).processed, class: 'ms-2'

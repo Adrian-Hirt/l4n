@@ -3,7 +3,7 @@
     = _('Sidebar|Latest newsposts')
   .card-body
     - news_posts.each_with_index do |news_post, index|
-      - unless index == 0
+      - unless index.zero?
         %hr
 
       %h5.mb-0= link_to news_post.title, news_path(news_post)

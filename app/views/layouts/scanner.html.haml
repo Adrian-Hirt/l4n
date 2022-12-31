@@ -1,12 +1,12 @@
 !!!
-%html{lang: FastGettext.locale}
+%html{ lang: FastGettext.locale }
   %head
     %title= _('L4N Ticket Scanner')
-    %meta{content: 'width=device-width,initial-scale=1', name: 'viewport'}
+    %meta{ content: 'width=device-width,initial-scale=1', name: 'viewport' }
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
-    = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
+    = javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true
   %body.d-flex.application.ticket-scanner
     = render partial: 'layouts/scanner/header'
     = render partial: 'layouts/shared/flashes'

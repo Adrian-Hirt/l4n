@@ -933,7 +933,7 @@ msgid "Cart|Back to shop"
 msgstr "Back to shop"
 
 msgid "Cart|Checkout disabled"
-msgstr "Checkout disabled"
+msgstr "Cannot checkout"
 
 msgid "Cart|Not yet done?"
 msgstr "Not yet done?"

@@ -9,7 +9,7 @@
         = new_button UserAddress, namespace: %i[settings], color: :default
         %hr
         - current_user.user_addresses.each_with_index do |user_address, index|
-          - unless index == 0
+          - unless index.zero?
             %hr
           %p
             = "#{user_address.first_name} #{user_address.last_name}"

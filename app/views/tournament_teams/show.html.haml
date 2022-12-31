@@ -26,7 +26,7 @@
               .mb-2.fw-bold= _('TournamentTeam|Rank')
               = model.tournament_team_rank.name
         -# -- Roster ------------------------------------------------------------------------------
-        - if !model.tournament.singleplayer?
+        - unless model.tournament.singleplayer?
           .mb-4
             .mb-2.fw-bold= _('TournamentTeam|Team members')
             -# Display the captain first
@@ -59,7 +59,7 @@
                     = button nil, promote_tournament_team_member_path(team_member), btn_icon: %i[fas fa-chevron-up fa-fw],
                                                                         icon_only: true,
                                                                         size: :sm,
-                                                                        html: {title: _('TeamMember|Promote to captain'), data: { 'bs-toggle' => :tooltip } },
+                                                                        html: { title: _('TeamMember|Promote to captain'), data: { 'bs-toggle' => :tooltip } },
                                                                         method: :post,
                                                                         disabled: !model.tournament.registration_open?,
                                                                         confirm: _('Team|Promote to captain?'),
@@ -81,7 +81,7 @@
                   .matchteam
                     = match.home.team.name
                   .matchscore
-                    = format_match_score(match,  :home)
+                    = format_match_score(match, :home)
                 .d-flex.justify-content-between
                   .matchteam
                     = match.away&.team&.name || _('Match|Bye')
@@ -89,7 +89,7 @@
                     = format_match_score(match, :away)
 
               - if can_update_result?(match)
-                %a.single-match-card{href: edit_match_path(match)}
+                %a.single-match-card{ href: edit_match_path(match) }
                   = yield :match
               - else
                 .single-match-card
@@ -118,11 +118,10 @@
               .d-grid.gap-2
                 = simple_form_for :join_data, wrapper: :input_group, url: join_tournament_team_path(model) do |f|
                   = f.password :password, placeholder: _('TournamentTeam|Join password')
-                  = f.save _('TournamentTeam|Join'), class: %i[w-100]
+                  = f.save _('TournamentTeam|Join'), class: 'w-100'
             - else
               = _('Team|No actions possible')
           - else
             = _('Tournament|Please check-in at the event to see the available actions')
         - else
           = _('TournamentTeam|Please sign in to see actions')
-

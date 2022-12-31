@@ -1,53 +1,49 @@
 %nav.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
   .container-fluid
     = link_to AppConfig.application_name, root_path, class: 'navbar-brand'
-    %button.navbar-toggler{"aria-controls" => "navbarCollapse", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarCollapse", "data-bs-toggle" => "collapse", :type => "button"}
+    %button.navbar-toggler{ data: { 'bs-target' => '#navbar-collapse', 'bs-toggle' => 'collapse' }, type: 'button' }
       %span.navbar-toggler-icon
-    #navbarCollapse.collapse.navbar-collapse
+    .collapse.navbar-collapse#navbar-collapse
       -# Left dynamic menu
       %ul.navbar-nav.me-auto.mb-2.mb-md-0
         %li.nav-item
-          = link_to _('Homepage'), root_path, class: 'nav-link ' + navbar_item_active_classes(:home)
+          = link_to _('Homepage'), root_path, class: "nav-link #{navbar_item_active_classes(:home)}"
 
         - Queries::MenuItem::FindActiveTopElements.call.each do |menu_item|
           - next unless menu_item.visible?
 
           - if menu_item.is_a? MenuDropdownItem
             %li.nav-item.dropdown
-              %a.nav-link{data: { 'bs-toggle' => :dropdown}, href: '#', class: menu_item_active_classes(menu_item)}
+              %a.nav-link{ data: { 'bs-toggle' => :dropdown }, href: '#', class: menu_item_active_classes(menu_item) }
                 = menu_item.title
                 = icon %i[fa fa-chevron-down]
               %ul.dropdown-menu.dropdown-menu-dark
                 - menu_item.children.order(sort: :asc).each do |child_menu_item|
                   - next unless child_menu_item.visible?
+
                   - if child_menu_item.to_external?
-                    %a.dropdown-item{href: child_menu_item.linked_page_url, target: :_blank}
+                    %a.dropdown-item{ href: child_menu_item.linked_page_url, target: :_blank }
                       = child_menu_item.title
                       = icon %i[fas fa-arrow-up-right-from-square]
                   - else
-                    %a.dropdown-item{href: "/#{child_menu_item.linked_page_url}", class: menu_item_active_classes(child_menu_item)}
+                    %a.dropdown-item{ href: "/#{child_menu_item.linked_page_url}", class: menu_item_active_classes(child_menu_item) }
                       = child_menu_item.title
           - else
             %li.nav-item
               - if menu_item.to_external?
-                %a.nav-link{href: menu_item.linked_page_url, target: :_blank}
+                %a.nav-link{ href: menu_item.linked_page_url, target: :_blank }
                   = menu_item.title
                   = icon %i[fas fa-arrow-up-right-from-square]
               - else
-                %a.nav-link{href: "/#{menu_item.linked_page_url}", class: menu_item_active_classes(menu_item)}
+                %a.nav-link{ href: "/#{menu_item.linked_page_url}", class: menu_item_active_classes(menu_item) }
                   = menu_item.title
       -# Right menu
       %ul.order-1.order-md-3.navbar-nav.ml-auto
         %li.nav-item.dropdown
           - if current_user
-            %a.nav-link{data: { 'bs-toggle' => :dropdown}, href: '#'}
-              %div{style: 'height: 100%;'}
-                -# - if current_user.avatar.attached?
-                -#   = image_tag current_user.avatar.variant(:thumb).processed, class: %i[img-circle mr-2], style: 'height: 100%;'
-                -# - else
-                -#   = icon %i[fas fa-user mr-2]
-                = current_user.username
-                = icon %i[fa fa-chevron-down]
+            %a.nav-link{ data: { 'bs-toggle' => :dropdown }, href: '#' }
+              = current_user.username
+              = icon %i[fa fa-chevron-down]
             %ul.dropdown-menu.dropdown-menu-end.dropdown-menu-dark
               %li
                 = link_to current_user, class: %i[dropdown-item] do
@@ -69,7 +65,7 @@
                   = icon %i[fa fa-sign-out-alt fa-fw]
                   = _('User|Logout')
           - elsif FeatureFlag.enabled?(:user_registration)
-            %a.nav-link.dropdown-toggle{data: { 'bs-toggle' => :dropdown}, href: '#'}= _('Login / Sign up')
+            %a.nav-link.dropdown-toggle{ data: { 'bs-toggle' => :dropdown }, href: '#' }= _('Login / Sign up')
             %ul.dropdown-menu.dropdown-menu-end.dropdown-menu-dark
               %li
                 = link_to _('User|Login'), new_user_session_path, class: %i[dropdown-item]

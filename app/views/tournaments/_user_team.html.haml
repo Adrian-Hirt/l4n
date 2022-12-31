@@ -9,7 +9,7 @@
       = f.password :password, placeholder: _('TournamentTeam|Password')
       - if tournament.teams_need_rank?
         = f.input :tournament_team_rank_id, as: :select, collection: tournament.tournament_team_ranks.order(:sort), include_blank: _('Form|Select|Blank')
-      = f.save class: %i[w-100]
+      = f.save class: 'w-100'
   - else
     -# Case: Registration open & team present
     .mb-2.fw-bold= _('Tournament|Your team')
@@ -48,24 +48,22 @@
                   method: :post
       - else
         = _('Team|No actions possible')
-    - else
+    - elsif op.user_team.created?
       -# Case: Normal teammember with correct state
-      - if op.user_team.created?
-        = button _('Tournament|Leave team'),
-                op.user_team_membership,
-                color: :danger,
-                confirm: _('Tournament|Leave team?'),
-                tag: :button,
-                html: { method: :delete },
-                classes: 'w-100'
+      = button _('Tournament|Leave team'),
+              op.user_team_membership,
+              color: :danger,
+              confirm: _('Tournament|Leave team?'),
+              tag: :button,
+              html: { method: :delete },
+              classes: 'w-100'
+- elsif op.user_team.nil?
+  = _('Tournament|You are not in the tournament')
 - else
-  - if op.user_team.nil?
-    = _('Tournament|You are not in the tournament')
-  - else
-    .mb-2.fw-bold= _('Tournament|Your team')
-    = link_to op.user_team.name, team_path(op.user_team)
-    .text-muted
-      - if op.user_team.created?
-        = _('Tournament|Your team is not in the tournament')
-      - else
-        = _('Tournament|Your team is participating in the tournament')
+  .mb-2.fw-bold= _('Tournament|Your team')
+  = link_to op.user_team.name, team_path(op.user_team)
+  .text-muted
+    - if op.user_team.created?
+      = _('Tournament|Your team is not in the tournament')
+    - else
+      = _('Tournament|Your team is participating in the tournament')

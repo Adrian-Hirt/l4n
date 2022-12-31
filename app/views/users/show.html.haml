@@ -24,10 +24,7 @@
       .card-header
         = _('User|My website')
       .card-body
-        - if model.website.present?
-          = model.website
-        - else
-          = _('User|No website added yet')
+        = model.website.presence || _('User|No website added yet')
   .col-md-9
     .card.mb-3
       .card-header

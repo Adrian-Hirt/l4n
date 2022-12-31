@@ -17,10 +17,10 @@
           -# rounds have higher indices. We divide by 2 because we have double
           -# the rounds because of the lower bracket, and then make sure we
           -# have at least 1 match (for the last round).
-          - number_of_matches = (2 ** ((round.round_number / 2) - total_visible_rounds).abs) / 2
-          - number_of_matches = [1, number_of_matches].max
-
-          - round_is_last_round = round.round_number == total_rounds
+          :ruby
+            number_of_matches = (2**((round.round_number / 2) - total_visible_rounds).abs) / 2
+            number_of_matches = [1, number_of_matches].max
+            round_is_last_round = round.round_number == total_rounds
 
           -# Add one horizontal line when we're in the last round
           - if round_is_last_round
@@ -29,10 +29,12 @@
 
           .tournament-round
             - if round.matches.any?
-              - if round.first_round? || round_is_last_round
-                - relevant_matches = round.matches.order(:id).includes(:winner, away: :team, home: :team)
-              - else
-                - relevant_matches = round.matches.order(:id).includes(:winner, away: :team, home: :team).first(number_of_matches)
+              :ruby
+                if round.first_round? || round_is_last_round
+                  relevant_matches = round.matches.order(:id).includes(:winner, away: :team, home: :team)
+                else
+                  relevant_matches = round.matches.order(:id).includes(:winner, away: :team, home: :team).first(number_of_matches)
+                end
 
               - relevant_matches.each do |match|
                 - content_for :match, flush: true do
@@ -48,7 +50,7 @@
                       = format_match_score(match, :away)
 
                 - if can_update_result?(match)
-                  %a.match{href: edit_match_path(match)}
+                  %a.match{ href: edit_match_path(match) }
                     = yield :match
                 - else
                   .match
@@ -77,7 +79,7 @@
               %div
 
           -# Generate the vertical connectors
-          .round-connectors-vertical{class: round_matches_to_inverse_round_index_word(number_of_matches)}
+          .round-connectors-vertical{ class: round_matches_to_inverse_round_index_word(number_of_matches) }
             - (number_of_matches / 2).times do
               %div
 
@@ -89,21 +91,23 @@
 
     .mb-2= _('Phase|Double elimination lower bracket')
     .double-elimination-tournament-tree.mb-3
-      - phase.rounds.order(:round_number).includes(matches: %i[away home]).each_with_index do |round, index|
+      - phase.rounds.order(:round_number).includes(matches: %i[away home]).each do |round|
         - cache [round, I18n.locale, :fontent, :tournament_standings_double_elim_lower_round, current_user] do
-          - round_is_last_round = round.round_number == total_rounds
+          :ruby
+            round_is_last_round = round.round_number == total_rounds
+            next if round.first_round? || round_is_last_round
 
-          - next if round.first_round? || round_is_last_round
-
-          - number_of_matches = (2 ** ((round.round_number / 2) - total_visible_rounds).abs) / 2
-          - number_of_matches = [1, number_of_matches].max
+            number_of_matches = (2**((round.round_number / 2) - total_visible_rounds).abs) / 2
+            number_of_matches = [1, number_of_matches].max
 
           .tournament-round
             - if round.matches.any?
-              - if round.lower_bracket_only?
-                - relevant_matches = round.matches.order(:id).includes(:winner, away: :team, home: :team)
-              - else
-                - relevant_matches = round.matches.order(:id).includes(:winner, away: :team, home: :team).last(number_of_matches)
+              :ruby
+                if round.lower_bracket_only?
+                  relevant_matches = round.matches.order(:id).includes(:winner, away: :team, home: :team)
+                else
+                  relevant_matches = round.matches.order(:id).includes(:winner, away: :team, home: :team).last(number_of_matches)
+                end
 
               - relevant_matches.each do |match|
                 - content_for :match, flush: true do
@@ -111,7 +115,7 @@
                     .matchteam
                       = match.home.team.name
                     .matchscore
-                      = format_match_score(match,  :home)
+                      = format_match_score(match, :home)
                   .d-flex.justify-content-between
                     .matchteam
                       = match.away&.team&.name || _('Match|Bye')
@@ -119,7 +123,7 @@
                       = format_match_score(match, :away)
 
                 - if can_update_result?(match)
-                  %a.match{href: edit_match_path(match)}
+                  %a.match{ href: edit_match_path(match) }
                     = yield :match
                 - else
                   .match
@@ -150,7 +154,7 @@
               - number_of_matches.times do
                 %div
             -# Generate the vertical connectors
-            .round-connectors-vertical{class: round_matches_to_inverse_round_index_word(number_of_matches)}
+            .round-connectors-vertical{ class: round_matches_to_inverse_round_index_word(number_of_matches) }
               - (number_of_matches / 2).times do
                 %div
 

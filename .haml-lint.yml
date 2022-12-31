@@ -5,3 +5,9 @@ linters:
     enabled: false
   ConsecutiveComments:
     enabled: false
+  ViewLength:
+    # Files on the exclude list should be rewritten to be shorter
+    exclude:
+      - app/views/layouts/admin/_sidebar_nav_full.html.haml
+      - app/views/tournament_phases/_double_elimination_tree.html.haml
+      - app/views/tournament_teams/show.html.haml

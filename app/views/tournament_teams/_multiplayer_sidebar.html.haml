@@ -20,7 +20,7 @@
       = f.password :password, placeholder: _('TournamentTeam|Password|Leave blank to leave')
       - if model.tournament.teams_need_rank?
         = f.association :tournament_team_rank, as: :select, collection: model.tournament.tournament_team_ranks.order(:sort), include_blank: _('Form|Select|Blank')
-      = f.save class: %i[w-100 btn-default]
+      = f.save class: 'w-100 btn-default'
 
   - elsif model.registered?
     .d-grid.gap-2
@@ -29,15 +29,14 @@
               method: :post
   - else
     = _('Team|No actions possible')
-- else
+- elsif model.created?
   -# Case: Normal teammember with correct state
-  - if model.created?
-    = button _('Tournament|Leave team'),
-            op.user_team_membership,
-            color: :danger,
-            confirm: _('Tournament|Leave team?'),
-            tag: :button,
-            html: { method: :delete },
-            classes: 'w-100'
-  - else
-    = _('Team|No actions possible')
+  = button _('Tournament|Leave team'),
+          op.user_team_membership,
+          color: :danger,
+          confirm: _('Tournament|Leave team?'),
+          tag: :button,
+          html: { method: :delete },
+          classes: 'w-100'
+- else
+  = _('Team|No actions possible')

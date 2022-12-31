@@ -14,8 +14,10 @@
         %tr
           %td= _('Ticket|Seat category')
           %td
-            .badge{style: "background-color: #{op.ticket.seat_category.color_for_view};"}
+            -# haml-lint:disable InlineStyles
+            .badge{ style: "background-color: #{op.ticket.seat_category.color_for_view};" }
               = op.ticket.seat_category.name
+            -# haml-lint:enable InlineStyles
         %tr
           %td= _('Ticket|Status')
           %td= op.ticket.humanized_status

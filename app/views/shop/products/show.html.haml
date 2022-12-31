@@ -11,17 +11,17 @@
 
         -# Screenshots
         - if model.images.attached?
-          #productImages.carousel.slide.carousel-dark{"data-bs-ride" => "true"}
+          .carousel.slide.carousel-dark#product-images{ 'data-bs-ride' => 'true' }
             .carousel-indicators
               - model.images.count.times do |index|
-                %button{"data-bs-slide-to" => "#{index}", "data-bs-target" => "#productImages", class: ('active' if index == 0)}
+                %button{ data: { 'bs-slide-to' => index.to_s, 'bs-target' => '#product-images' }, class: ('active' if index.zero?) }
             .carousel-inner
               - model.images.each_with_index do |image, index|
-                .carousel-item{class: ('active' if index == 0)}
+                .carousel-item{ class: ('active' if index.zero?) }
                   = image_tag image.variant(:medium).processed, class: 'd-block'
-            %button.carousel-control-prev{"data-bs-slide" => "prev", "data-bs-target" => "#productImages"}
+            %button.carousel-control-prev{ data: { 'bs-slide' => 'prev', 'bs-target' => '#product-images' } }
               %span.carousel-control-prev-icon
-            %button.carousel-control-next{"data-bs-slide" => "next", "data-bs-target" => "#productImages"}
+            %button.carousel-control-next{ data: { 'bs-slide' => 'next', 'bs-target' => '#product-images' } }
               %span.carousel-control-next-icon
           %hr
 
@@ -31,9 +31,9 @@
     .card
       .card-body
         - model.product_variants.each_with_index do |product_variant, index|
-          - unless index == 0
+          - unless index.zero?
             %hr
-          .d-grid{class: ('mt-3' unless index == 0)}
+          .d-grid{ class: ('mt-3' unless index.zero?) }
             .mb-2.d-flex.justify-content-between
               %div= product_variant.name
               %div= money_formatted(product_variant.price)

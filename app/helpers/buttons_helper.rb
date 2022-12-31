@@ -79,9 +79,16 @@ module ButtonsHelper
         title += _('%{name}|Delete') % { name: _(model.class.name) }
       end
     end
+
+    if opts[:confirm]
+      confirm_message = opts.delete(:confirm)
+    else
+      confirm_message = _('%{name}|Delete confirmation?') % { name: _(model.class.name) }
+    end
+
     html_options = {
       data:   {
-        confirm:    _('%{name}|Delete confirmation?') % { name: _(model.class.name) },
+        confirm:    confirm_message,
         controller: 'button',
         action:     'click->button#confirmAction'
       },

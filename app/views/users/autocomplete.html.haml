@@ -1,5 +1,5 @@
 - if op.users.any?
   - op.users.each do |user|
-    %li.list-group-item{"data-autocomplete-value" => user.id, :role => "option"}= user.username
+    %li.list-group-item{ 'data-autocomplete-value' => user.id, role: 'option' }= user.username
 - else
-  %li.list-group-item.disabled{role: 'option', 'aria-disabled' => 'true'}= _('Users|Autocomplete|Nothing found')
+  %li.list-group-item.disabled{ role: 'option', 'aria-disabled' => 'true' }= _('Users|Autocomplete|Nothing found')

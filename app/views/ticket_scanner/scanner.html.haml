@@ -1,5 +1,5 @@
 .card
-  .card-body{data: { controller: 'ticket-scanner' }}
+  .card-body{ data: { controller: 'ticket-scanner' } }
     = turbo_frame_tag 'ticket_scanner_scan' do
       .border-bottom.pb-3.mb-3
         = select_tag 'camera', options_for_select([], nil),

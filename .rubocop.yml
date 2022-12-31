@@ -134,3 +134,8 @@ Rails/ActionOrder:
 
 Style/FormatString:
   EnforcedStyle: percent
+
+# Does not work in haml files
+Layout/EmptyLineAfterGuardClause:
+  Exclude:
+    - 'app/views/**/*'

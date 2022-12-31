@@ -4,7 +4,7 @@
       = _('Order|Terms and conditions')
     .card-body
       = _('Order|By clicking the %{button_text} button below, you accept our terms and conditions, which you can find at') % { button_text: _('Order|Accept terms and conditions') }
-      = link_to _('Order|the terms and conditions page'), AppConfig.terms_and_conditions_url, target: :_blank
+      = link_to _('Order|the terms and conditions page'), AppConfig.terms_and_conditions_url, target: :_blank, rel: :noopener
     .card-footer
       = f.save _('Order|Accept terms and conditions'), class: %i[btn-default]
       = button _('Order|Do not accept terms and conditions'), root_path, color: :secondary, confirm: _('Order|You need to accept the terms and conditions to continue your checkyout. Are you sure you do not want to accept the terms and conditions?')

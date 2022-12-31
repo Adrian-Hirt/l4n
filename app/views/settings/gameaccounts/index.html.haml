@@ -17,6 +17,6 @@
           %hr
           %h4= _('Gameaccounts|Steam')
           - if current_user.steam_id.present?
-            = button _('Gameaccounts|Remove steam'), settings_gameaccounts_steam_path,  method: :delete, confirm: _('GameAccounts|Really remove your steam account?'), color: :danger
+            = button _('Gameaccounts|Remove steam'), settings_gameaccounts_steam_path, method: :delete, confirm: _('GameAccounts|Really remove your steam account?'), color: :danger
           - else
             = button_to _('Gameaccounts|Add steam'), '/auth/steam', data: { turbo: false }, class: %i[btn btn-default]

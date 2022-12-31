@@ -3,7 +3,7 @@
     = _('Sidebar|Next events')
   .card-body
     - events.each_with_index do |event, index|
-      - unless index == 0
+      - unless index.zero?
         %hr
 
       %h5.mb-0= link_to event.title, event

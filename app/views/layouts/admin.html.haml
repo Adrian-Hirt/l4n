@@ -1,22 +1,22 @@
 !!!
-%html{lang: FastGettext.locale, class: dark_mode_classes}
+%html{ lang: FastGettext.locale, class: dark_mode_classes }
   %head
     %title= admin_page_title
-    %meta{content: 'width=device-width,initial-scale=1', name: 'viewport'}
+    %meta{ content: 'width=device-width,initial-scale=1', name: 'viewport' }
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'admin', 'data-turbo-track': 'reload'
-    = javascript_include_tag "admin", "data-turbo-track": "reload", defer: true
+    = javascript_include_tag 'admin', 'data-turbo-track': 'reload', defer: true
   %body.d-flex
     = flash_messages
     = render partial: 'layouts/admin/sidebar'
     .main.d-flex.w-100.overflow-hidden
       .header.d-block.d-md-flex.justify-content-between
         .page-title
-          %h1= breadcrumbs_on_rails.last.name # yield :page_title
+          %h1= breadcrumbs_on_rails.last.name
           .breadcrumbs= render_breadcrumbs tag: :span, separator: '<span class="breadcrumb-seperator">-</span>'
         - if content_for? :header_buttons
-          %div.mt-3.mt-md-auto
+          .mt-3.mt-md-auto
             = yield :header_buttons
       .content
         = yield

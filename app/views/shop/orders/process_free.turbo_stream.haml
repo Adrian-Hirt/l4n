@@ -2,4 +2,4 @@
 
 - if model.paid?
   = turbo_stream.replace :payment_gateways do
-    %div{data: { controller: 'redirect', url: shop_url }}
+    %div{ data: { controller: 'redirect', url: shop_url } }

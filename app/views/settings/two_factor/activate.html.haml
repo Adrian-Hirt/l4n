@@ -11,7 +11,7 @@
             .col-md-6
               %h5= _('TwoFactor|Scan code with auth app')
               .text-center.border-top.border-bottom.py-3.my-3
-                = op.qr_code.html_safe
+                = op.qr_code.html_safe # rubocop:disable Rails/OutputSafety
               .text-muted
                 = _('TwoFactor|If you cannot scan, please enter the following code manually:')
                 %code= current_user.otp_secret

@@ -10,7 +10,7 @@
           -# Calculate the number of matches, which is 2 to the power of
           -# "current_round index", where the final has index 0 and earlier
           -# rounds have higher indices
-          - number_of_matches = 2 ** (round.round_number - total_rounds).abs
+          - number_of_matches = 2**(round.round_number - total_rounds).abs
 
           .tournament-round
             -# Create the boxes for the matches. If we have matches,
@@ -23,7 +23,7 @@
                     .matchteam
                       = match.home.team.name
                     .matchscore
-                      = format_match_score(match,  :home)
+                      = format_match_score(match, :home)
                   .d-flex.justify-content-between
                     .matchteam
                       = match.away&.team&.name || _('Match|Bye')
@@ -31,7 +31,7 @@
                       = format_match_score(match, :away)
 
                 - if can_update_result?(match)
-                  %a.match{href: edit_match_path(match)}
+                  %a.match{ href: edit_match_path(match) }
                     = yield :match
                 - else
                   .match
@@ -59,7 +59,7 @@
                 %div
 
             -# Generate the vertical connectors
-            .round-connectors-vertical{class: round_matches_to_inverse_round_index_word(number_of_matches)}
+            .round-connectors-vertical{ class: round_matches_to_inverse_round_index_word(number_of_matches) }
               - (number_of_matches / 2).times do
                 %div
 
