@@ -1,4 +1,4 @@
-import { Controller } from '@hotwired/stimulus'
+import { Controller } from '@hotwired/stimulus';
 import Cocoon from '../components/cocoon';
 
 export default class extends Controller {

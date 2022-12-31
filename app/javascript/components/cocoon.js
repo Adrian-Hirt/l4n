@@ -5,15 +5,15 @@ export default class Cocoon {
 
   static createNewID() {
     return (new Date().getTime() + Cocoon.cocoonElementCounter++);
-  };
+  }
 
   static newcontentBraced(id) {
     return '[' + id + ']$1';
-  };
+  }
 
   static newcontentUnderscored(id) {
     return '_' + id + '_$1';
-  };
+  }
 
   static getInsertionNodeElem(insertionNode, insertionTraversal, thisNode) {
     if (!insertionNode) {
@@ -34,11 +34,11 @@ export default class Cocoon {
         return insertionNode === 'this' ? thisNode : document.querySelector(insertionNode);
       }
     }
-  };
+  }
 
   static cocoonDetach(node) {
     return node.parentElement.removeChild(node);
-  };
+  }
 
   static cocoonGetPreviousSibling(elem, selector) {
     var sibling = elem.previousElementSibling;
@@ -50,7 +50,7 @@ export default class Cocoon {
       if (match) return sibling;
       sibling = sibling.previousElementSibling;
     }
-  };
+  }
 
   static cocoonAddFields(e, target) {
     e.preventDefault();
@@ -95,10 +95,10 @@ export default class Cocoon {
     let insertionNodeElem = Cocoon.getInsertionNodeElem(insertionNode, insertionTraversal, thisNode);
 
     if (!insertionNodeElem || (insertionNodeElem.length === 0)) {
-      console.warn("Couldn't find the element to insert the template. Make sure your `data-association-insertion-*` on `link_to_add_association` is correct.");
+      console.warn('Couldn\'t find the element to insert the template. Make sure your `data-association-insertion-*` on `link_to_add_association` is correct.');
     }
 
-    newContents.forEach(function (node, i) {
+    newContents.forEach(function (node) {
       let contentNode = node;
 
       let beforeInsert = new CustomEvent('cocoon:before-insert', { cancelable: true, detail: [contentNode, originalEvent] });
@@ -121,7 +121,7 @@ export default class Cocoon {
         insertionNodeElem.dispatchEvent(afterInsert);
       }
     });
-  };
+  }
 
   static cocoonRemoveFields(e, target) {
     let thisNode = target;
@@ -151,5 +151,5 @@ export default class Cocoon {
         triggerNode.dispatchEvent(afterRemove);
       }, timeout);
     }
-  };
-};
+  }
+}

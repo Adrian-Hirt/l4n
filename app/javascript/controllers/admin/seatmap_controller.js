@@ -1,8 +1,8 @@
-import { Controller } from "@hotwired/stimulus"
-import JsAlert from '../../utils/js_alert'
-import 'konva'
-import Sweetalert2 from 'sweetalert2'
-import Translations from "../../components/translations"
+import { Controller } from '@hotwired/stimulus';
+import JsAlert from '../../utils/js_alert';
+import KonvaJS from 'konva';
+import Sweetalert2 from 'sweetalert2';
+import Translations from '../../components/translations';
 
 export default class extends Controller {
   static targets = [
@@ -54,7 +54,7 @@ export default class extends Controller {
     seatCategoryId = parseInt(seatCategoryId);
 
     for(let i = 0; i < seatQuantity; i++) {
-      let newSeat = new Konva.Rect({
+      let newSeat = new KonvaJS.Rect({
         x: 50 * (i + 1),
         y: 50,
         width: 40,
@@ -108,22 +108,22 @@ export default class extends Controller {
         backendId: seatData.backendId,
         seatCategoryId: seatData.seatCategoryId,
         seatName: seatData.seatName
-      }
+      };
       postData.seats.push(dataToSend);
     }
 
     // Send the data
-    const csrfToken = document.querySelector("[name='csrf-token']").content;
+    const csrfToken = document.querySelector('[name=\'csrf-token\']').content;
 
-    let currentLocation = document.URL
+    let currentLocation = document.URL;
     currentLocation = currentLocation.endsWith('/') ? currentLocation.slice(0, -1) : currentLocation;
     let url = `${currentLocation}/update_seats`;
 
     fetch(url, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "X-CSRF-Token": csrfToken,
-        "Content-Type": "application/json"
+        'X-CSRF-Token': csrfToken,
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(postData)
     }).then(response => {
@@ -134,26 +134,26 @@ export default class extends Controller {
         window.location.reload();
       }
     }).catch(error => {
-      console.error("error", error);
+      console.error('error', error);
     });
 
     return false;
   }
 
   #loadSeats() {
-    let currentLocation = document.URL
+    let currentLocation = document.URL;
     currentLocation = currentLocation.endsWith('/') ? currentLocation.slice(0, -1) : currentLocation;
     let url = `${currentLocation}/seats.json`;
 
     fetch(url)
       .then(response => response.json())
       .then((data) => this.#initSeats(data.seats))
-      .catch(error => console.error("error", error));
+      .catch(error => console.error('error', error));
   }
 
   #initSeats(seatData) {
     for (let seat of seatData) {
-      let newSeat = new Konva.Rect({
+      let newSeat = new KonvaJS.Rect({
         x: seat.x,
         y: seat.y,
         width: seat.width,
@@ -194,7 +194,7 @@ export default class extends Controller {
     this.seatmapData = JSON.parse(this.containerTarget.dataset.seatmapData);
 
     // Setup the stage
-    this.stage = new Konva.Stage({
+    this.stage = new KonvaJS.Stage({
       container: this.containerTarget,
       width: this.seatmapData.canvasWidth,
       height: this.seatmapData.canvasHeight,
@@ -202,11 +202,11 @@ export default class extends Controller {
     });
 
     // Add base layer
-    this.baseLayer = new Konva.Layer();
+    this.baseLayer = new KonvaJS.Layer();
     this.stage.add(this.baseLayer);
 
     // Add transformer
-    this.transformer = new Konva.Transformer({
+    this.transformer = new KonvaJS.Transformer({
       keepRatio: false,
       flipEnabled: false,
       enabledAnchors: ['top-left', 'top-right', 'bottom-left', 'bottom-right'],
@@ -219,13 +219,13 @@ export default class extends Controller {
     const image = new window.Image();
 
     image.onload = () => {
-      this.background = new Konva.Rect({
+      this.background = new KonvaJS.Rect({
         x: 0,
         y: 0,
         width: this.seatmapData.backgroundWidth,
         height: this.seatmapData.backgroundHeight,
         fillPatternImage: image,
-        fillPatternRepeat: "no-repeat",
+        fillPatternRepeat: 'no-repeat',
         draggable: false
       });
 
@@ -233,7 +233,7 @@ export default class extends Controller {
 
       // And move the transformer to the top again
       this.background.moveToBottom();
-    }
+    };
 
     // Set source of image
     image.src = this.seatmapData.backgroundUrl;
@@ -293,7 +293,7 @@ export default class extends Controller {
 
   #setupSelectFunctionality() {
     // Add the selection rectangle
-    this.selectionRectangle = new Konva.Rect({
+    this.selectionRectangle = new KonvaJS.Rect({
       fill: 'rgba(0,0,255,0.5)',
       visible: false
     });
@@ -375,7 +375,7 @@ export default class extends Controller {
       let shapes = this.stage.find('.seatRect');
       let box = this.selectionRectangle.getClientRect();
       let selected = shapes.filter((shape) =>
-        Konva.Util.haveIntersection(box, shape.getClientRect())
+        KonvaJS.Util.haveIntersection(box, shape.getClientRect())
       );
 
       // For correct look of the transformer
@@ -481,7 +481,7 @@ export default class extends Controller {
           node.setAttr('fill', this.seatCategoryColorMap[seatCategoryId]);
         }
       }
-    })
+    });
   }
 
   openNamingPopup() {
@@ -504,7 +504,7 @@ export default class extends Controller {
         let offset = document.getElementById('start-offset-input').value;
 
         // Exit if the placeholder is empty
-        if (!placeholder || placeholder === "") {
+        if (!placeholder || placeholder === '') {
           new JsAlert(Translations._('SeatMap|Placeholder needs to be given!'), 'danger').show();
           return;
         }
@@ -532,7 +532,7 @@ export default class extends Controller {
           node.setAttr('seatName', currentSeatName);
         }
       }
-    })
+    });
   }
 
   #setupContextMenuFunctionality() {
@@ -572,18 +572,18 @@ export default class extends Controller {
       infoString += `<span class="badge bg-secondary">${attributes.seatName}</span>`;
       infoString += `<span class="badge mx-2" style="background-color: ${categoryOption.dataset.color}; color: ${categoryOption.dataset.fontcolor};">
                       ${categoryOption.innerHTML}
-                    </span>`
+                    </span>`;
 
       if(attributes.taken) {
         if(attributes.userName) {
           infoString += `${Translations._('Seat|Seat is taken by')}: `;
-          infoString += `${attributes.userName}.`
+          infoString += `${attributes.userName}.`;
         }
         else {
           infoString += Translations._('Admin|Seat|Seat is taken.');
         }
 
-        infoString += ` <a href="/admin/tickets/${attributes.ticketId}" target="_blank">${Translations._('Admin|Show ticket')}</a>`
+        infoString += ` <a href="/admin/tickets/${attributes.ticketId}" target="_blank">${Translations._('Admin|Show ticket')}</a>`;
       }
       else {
         infoString += Translations._('Seatmap|Seat is free');

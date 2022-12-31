@@ -5,7 +5,7 @@ export default class JsAlert {
   }
 
   show() {
-    let alert = document.createElement("div");
+    let alert = document.createElement('div');
 
     // Add classes
     alert.classList.add('alert', `alert-${this.type}`, 'alert-dismissible', 'fade', 'show', 'notification-flash');
@@ -14,7 +14,7 @@ export default class JsAlert {
     alert.dataset.controller = 'alert';
 
     // Add text and hide button
-    alert.innerHTML = `${this.text} <button class='btn-close' data-bs-dismiss='alert'></button>`
+    alert.innerHTML = `${this.text} <button class='btn-close' data-bs-dismiss='alert'></button>`;
 
     // show the flash
     document.body.appendChild(alert);

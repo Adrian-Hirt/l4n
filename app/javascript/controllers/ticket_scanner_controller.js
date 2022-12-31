@@ -1,7 +1,7 @@
-import { Controller } from '@hotwired/stimulus'
-import QrScanner from 'qr-scanner'
-import JsAlert from '../utils/js_alert'
-import Translations from "../components/translations"
+import { Controller } from '@hotwired/stimulus';
+import QrScanner from 'qr-scanner';
+import JsAlert from '../utils/js_alert';
+import Translations from '../components/translations';
 
 export default class extends Controller {
   static targets = ['cameraSelector'];
@@ -25,7 +25,7 @@ export default class extends Controller {
     // List the cameras
     this.#listCameras();
 
-    this.#processScanResult({ "data":  '{ "qr_id": "MHhWbXhpUitkdGF3aGNEcUJnPT0tLVlGeFpuM3RldnAvOEpyYlYtLWgyUlBVV2lxejY0Y2E1RGxNcUUyTlE9PQ==" }' })
+    this.#processScanResult({ 'data':  '{ "qr_id": "MHhWbXhpUitkdGF3aGNEcUJnPT0tLVlGeFpuM3RldnAvOEpyYlYtLWgyUlBVV2lxejY0Y2E1RGxNcUUyTlE9PQ==" }' });
   }
 
   #listCameras() {
@@ -99,6 +99,6 @@ export default class extends Controller {
     e.preventDefault();
 
     // Toggle the flash (if supported)
-    qrScanner.toggleFlash();
+    this.qrScanner.toggleFlash();
   }
 }

@@ -1,16 +1,16 @@
-import { Controller } from "@hotwired/stimulus"
-import 'konva'
-import Translations from "../components/translations"
+import { Controller } from '@hotwired/stimulus';
+import KonvaJS from 'konva';
+import Translations from '../components/translations';
 
 export default class extends Controller {
   static targets = [
-                    'container',
-                    'tickets',
-                    'currentSelectedSeatInfo',
-                    'sidebarToggle',
-                    'sidebar',
-                    'mainColumn'
-                  ];
+    'container',
+    'tickets',
+    'currentSelectedSeatInfo',
+    'sidebarToggle',
+    'sidebar',
+    'mainColumn'
+  ];
 
   connect() {
     // Setup the base
@@ -38,7 +38,7 @@ export default class extends Controller {
 
     this.highlightedSeats = [];
 
-    window.addEventListener("resize", () => {
+    window.addEventListener('resize', () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(this.#resizeToFit.bind(this), 250);
     });
@@ -77,7 +77,7 @@ export default class extends Controller {
     fetch(url)
       .then(response => response.json())
       .then((data) => this.#initSeats(data.seats))
-      .catch(error => console.error("error", error));
+      .catch(error => console.error('error', error));
   }
 
   #initSeats(seatData) {
@@ -86,7 +86,7 @@ export default class extends Controller {
     this.seatsById = {};
 
     for (let seat of seatData) {
-      let newSeat = new Konva.Rect({
+      let newSeat = new KonvaJS.Rect({
         x: seat.x,
         y: seat.y,
         width: seat.width,
@@ -125,7 +125,7 @@ export default class extends Controller {
     this.seatCategoryData = this.seatmapData.categories;
 
     // Setup the stage
-    this.stage = new Konva.Stage({
+    this.stage = new KonvaJS.Stage({
       container: this.containerTarget,
       width: this.seatmapData.canvasWidth,
       height: this.seatmapData.canvasHeight,
@@ -133,21 +133,21 @@ export default class extends Controller {
     });
 
     // Add base layer
-    this.baseLayer = new Konva.Layer();
+    this.baseLayer = new KonvaJS.Layer();
     this.stage.add(this.baseLayer);
 
     // Add background image if the url is given
     if (this.seatmapData.backgroundUrl) {
-    const image = new window.Image();
+      const image = new window.Image();
 
       image.onload = () => {
-        this.background = new Konva.Rect({
+        this.background = new KonvaJS.Rect({
           x: 0,
           y: 0,
           width: this.seatmapData.backgroundWidth,
           height: this.seatmapData.backgroundHeight,
           fillPatternImage: image,
-          fillPatternRepeat: "no-repeat",
+          fillPatternRepeat: 'no-repeat',
           draggable: false
         });
 
@@ -156,7 +156,7 @@ export default class extends Controller {
 
         // And move the background to the bottom of the stack
         this.background.moveToBottom();
-      }
+      };
 
       // Set source of image
       image.src = this.seatmapData.backgroundUrl;
@@ -207,7 +207,7 @@ export default class extends Controller {
     // Mobile pinch zoom
     ///////////////////////////////////////
     // Needs to be enabled for pinch zoom
-    Konva.hitOnDragEnabled = true;
+    KonvaJS.hitOnDragEnabled = true;
 
     this.lastCenter = null;
     this.lastDist = 0;
@@ -219,7 +219,7 @@ export default class extends Controller {
       let touch2 = e.evt.touches[1];
 
       if (touch1 && touch2) {
-        // if the stage was under Konva's drag&drop
+        // if the stage was under KonvaJS's drag&drop
         // we need to stop it, and implement our own pan logic with two pointers
         if (this.stage.isDragging()) {
           this.stage.stopDrag();
@@ -407,14 +407,14 @@ export default class extends Controller {
     let infoString = '';
 
     infoString += `<span class="badge bg-secondary">${attributes.seatName}</span>`;
-    infoString += `<span class="badge ms-2" style="background-color: ${categoryData.color}; color: ${categoryData.fontColor}">${categoryData.name}</span><hr>`
+    infoString += `<span class="badge ms-2" style="background-color: ${categoryData.color}; color: ${categoryData.fontColor}">${categoryData.name}</span><hr>`;
 
     if(attributes.taken) {
       let username = attributes.userName;
 
       if(username) {
         infoString += `${Translations._('Seat|Seat is taken by')}: `;
-        infoString += `<a href="/users/${attributes.userId}" target="_blank">${username}</a>`
+        infoString += `<a href="/users/${attributes.userId}" target="_blank">${username}</a>`;
       }
       else {
         infoString += Translations._('Seat|Seat is taken');

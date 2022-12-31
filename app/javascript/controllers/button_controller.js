@@ -1,6 +1,6 @@
-import { Controller } from '@hotwired/stimulus'
-import Sweetalert2 from 'sweetalert2'
-import Translations from "../components/translations"
+import { Controller } from '@hotwired/stimulus';
+import Sweetalert2 from 'sweetalert2';
+import Translations from '../components/translations';
 
 export default class extends Controller {
   connect() {
@@ -10,7 +10,7 @@ export default class extends Controller {
 
   confirmAction(event) {
     if(this.confirmed) {
-      return true
+      return true;
     }
 
     event.preventDefault();

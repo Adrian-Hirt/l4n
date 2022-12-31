@@ -1,5 +1,5 @@
-import { Controller } from "@hotwired/stimulus"
-import Translations from "../../components/translations"
+import { Controller } from '@hotwired/stimulus';
+import Translations from '../../components/translations';
 
 export default class extends Controller {
   static targets = ['category'];
@@ -15,7 +15,7 @@ export default class extends Controller {
       let optStr = `<option value="">${ Translations._('Form|Select|Blank') }</option>`;
 
       for (let opt of this.options[selectedOption]) {
-        optStr += `<option value="${opt.id}">${opt.name}</option>`
+        optStr += `<option value="${opt.id}">${opt.name}</option>`;
       }
 
       this.categoryTarget.innerHTML = optStr;

@@ -1,8 +1,8 @@
-import { debounce } from "../utils/debounce"
-import { rectanglesLoader } from '../components/loading_animations'
-import EasyMDE from 'easymde'
-import Sweetalert2 from 'sweetalert2'
-import Translations from "./translations"
+import { debounce } from '../utils/debounce';
+import { rectanglesLoader } from '../components/loading_animations';
+import EasyMDE from 'easymde';
+import Sweetalert2 from 'sweetalert2';
+import Translations from './translations';
 
 export default class MarkdownEditor extends EasyMDE {
   // Constructs our markdown editor, which extends the EasyMDE editor
@@ -21,7 +21,7 @@ export default class MarkdownEditor extends EasyMDE {
 
   // Render the markdown for preview.
   static previewRender(plainText, previewContainer) {
-    let csrfToken = document.querySelector("[name='csrf-token']").content;
+    let csrfToken = document.querySelector('[name=\'csrf-token\']').content;
 
     // We need to use a timeout of 1 ms before we check if the preview
     // is active, as the EasyMDE only adds the active class after a delay
@@ -42,22 +42,22 @@ export default class MarkdownEditor extends EasyMDE {
         },
         body: JSON.stringify(plainText)
       })
-      .then(response => response.json())
-      .then(data => {
-        previewContainer.innerHTML = data;
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-        Sweetalert2.fire({
-          title: Translations._('MarkdownEditor|Rendering preview failed'),
-          icon: 'error',
-          confirmButtonText: Translations._('ConfirmDialog|Confirm')
+        .then(response => response.json())
+        .then(data => {
+          previewContainer.innerHTML = data;
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          Sweetalert2.fire({
+            title: Translations._('MarkdownEditor|Rendering preview failed'),
+            icon: 'error',
+            confirmButtonText: Translations._('ConfirmDialog|Confirm')
+          });
         });
-      });
     }, 1);
 
     // While our AJAX call is still loading, display the loading animation
-    return "<div class='markdownPreviewLoading'>" + rectanglesLoader() + "</div>";
+    return '<div class=\'markdownPreviewLoading\'>' + rectanglesLoader() + '</div>';
   }
 
   // Our toggle side by side uses a debounced version of the preview
@@ -74,7 +74,7 @@ export default class MarkdownEditor extends EasyMDE {
       var preview = wrapper.nextSibling;
       var newValue = editor.options.previewRender(editor.value(), preview);
       preview.innerHTML = newValue;
-    }
+    };
 
     // Disable the old callback
     cm.off('update', cm.sideBySideRenderingFunction);
@@ -88,67 +88,67 @@ export default class MarkdownEditor extends EasyMDE {
   static constructToolbar() {
     return [
       {
-        name: "bold",
+        name: 'bold',
         action: EasyMDE.toggleBold,
         className: 'fa fa-bold',
         title: Translations._('MarkdownEditor|Toolbar|Bold')
       },
       {
-        name: "italic",
+        name: 'italic',
         action: EasyMDE.toggleItalic,
         className: 'fa fa-italic',
         title: Translations._('MarkdownEditor|Toolbar|Italic')
       },
       {
-        name: "strikethrough",
+        name: 'strikethrough',
         action: EasyMDE.toggleStrikethrough,
         className: 'fa fa-strikethrough',
         title: Translations._('MarkdownEditor|Toolbar|Strikethrough')
       },
       {
-        name: "heading",
+        name: 'heading',
         action: EasyMDE.toggleHeadingSmaller,
         className: 'fa fa-heading',
         title: Translations._('MarkdownEditor|Toolbar|Heading')
       },
       {
-        name: "highlight",
+        name: 'highlight',
         action: MarkdownEditor.highlight,
         className: 'fas fa-highlighter',
         title: Translations._('MarkdownEditor|Toolbar|Highlight text'),
       },
-      "|",
+      '|',
       {
-        name: "quote",
+        name: 'quote',
         action: EasyMDE.toggleBlockquote,
         className: 'fa fa-quote-left',
         title: Translations._('MarkdownEditor|Toolbar|Quote')
       },
       {
-        name: "code",
+        name: 'code',
         action: EasyMDE.toggleCodeBlock,
         className: 'fa fa-code',
         title: Translations._('MarkdownEditor|Toolbar|Code')
       },
       {
-        name: "unordered-list",
+        name: 'unordered-list',
         action: EasyMDE.toggleUnorderedList,
         className: 'fa fa-list-ul',
         title: Translations._('MarkdownEditor|Toolbar|Unordered list')
       },
       {
-        name: "ordered-list",
+        name: 'ordered-list',
         action: EasyMDE.toggleOrderedList,
         className: 'fa fa-list-ol',
         title: Translations._('MarkdownEditor|Toolbar|Ordered list')
       },
       {
-        name: "clean-block",
+        name: 'clean-block',
         action: EasyMDE.cleanBlock,
         className: 'fa fa-eraser',
         title: Translations._('MarkdownEditor|Toolbar|Clean block')
       },
-      "|",
+      '|',
       {
         name: 'link',
         action: MarkdownEditor.insertLink,
@@ -162,39 +162,39 @@ export default class MarkdownEditor extends EasyMDE {
         title:  Translations._('MarkdownEditor|Toolbar|Insert image')
       },
       {
-        name: "button-table",
+        name: 'button-table',
         action: EasyMDE.drawTable,
         className: 'fa fa-table',
         title: Translations._('MarkdownEditor|Toolbar|Insert table')
       },
       {
-        name: "horizontal-rule",
+        name: 'horizontal-rule',
         action: EasyMDE.drawHorizontalRule,
         className: 'fa fa-minus',
         title: Translations._('MarkdownEditor|Toolbar|Insert horizontal rule')
       },
-      "|",
+      '|',
       {
-        name: "insertIcon",
+        name: 'insertIcon',
         action: MarkdownEditor.insertIcon,
-        className: "fa fa-icons",
+        className: 'fa fa-icons',
         title: Translations._('MarkdownEditor|Toolbar|Insert an icon')
       },
       {
-        name: "youtubeVideo",
+        name: 'youtubeVideo',
         action: MarkdownEditor.insertYoutubeVideo,
-        className: "fab fa-youtube",
+        className: 'fab fa-youtube',
         title: Translations._('MarkdownEditor|Toolbar|Insert a Youtube video')
       },
       {
-        name: "googleMaps",
+        name: 'googleMaps',
         action: MarkdownEditor.insertGoogleMaps,
-        className: "fa fa-map",
+        className: 'fa fa-map',
         title: Translations._('MarkdownEditor|Toolbar|Insert map')
       },
-      "|",
+      '|',
       {
-        name: "preview",
+        name: 'preview',
         action: EasyMDE.togglePreview,
         className: 'fa fa-eye no-disable no-mobile',
         title: Translations._('MarkdownEditor|Toolbar|Toggle preview')
@@ -211,14 +211,14 @@ export default class MarkdownEditor extends EasyMDE {
       //   className: 'fa fa-arrows-alt no-disable no-mobile',
       //   title: Translations._('MarkdownEditor|Toolbar|Toggle full screen')
       // },
-      "|",
+      '|',
       {
-        name: "iconInfo",
+        name: 'iconInfo',
         action: MarkdownEditor.showIconInfo,
-        className: "fa fa-info-circle",
+        className: 'fa fa-info-circle',
         title: Translations._('MarkdownEditor|Toolbar|Need help with the icons?')
       }
-    ]
+    ];
   }
 
   // Highlight text in markdown
@@ -258,20 +258,20 @@ export default class MarkdownEditor extends EasyMDE {
           return;
         }
         var cm = editor.codemirror;
-        if(icon.substring(0, 3) == "fa-") {
+        if(icon.substring(0, 3) == 'fa-') {
           icon = icon.substring(3, icon.length);
         }
-        var output = "{{" + icon + "}}";
+        var output = '{{' + icon + '}}';
         cm.replaceSelection(output);
       }
-    })
+    });
   }
 
   // Insert a youtube video as an iframe
   static insertYoutubeVideo(editor) {
     Sweetalert2.fire({
       title: Translations._('MarkdownEditor|Popup|Insert youtube video'),
-      text:  Translations._("MarkdownEditor|Popup|Please paste the URL of the youtube video here. The URL needs to be of format 'https://www.youtube.com/watch?v='"),
+      text:  Translations._('MarkdownEditor|Popup|Please paste the URL of the youtube video here. The URL needs to be of format \'https://www.youtube.com/watch?v=\''),
       input: 'text',
       showCancelButton: true,
       confirmButtonText: Translations._('MarkdownEditor|Popup|Confirm'),
@@ -283,17 +283,17 @@ export default class MarkdownEditor extends EasyMDE {
           return;
         }
         var cm = editor.codemirror;
-        var output = "{iframe}(" + url + ")";
+        var output = '{iframe}(' + url + ')';
         cm.replaceSelection(output);
       }
-    })
+    });
   }
 
   // Insert a google maps map as an iframe
   static insertGoogleMaps(editor) {
     Sweetalert2.fire({
       title: Translations._('MarkdownEditor|Popup|Insert Google Maps Map'),
-      text:  Translations._("MarkdownEditor|Popup|Please paste the URL of the map you want to share here! The URL needs to be of format 'https://www.google.com/maps/d/embed?mid=' or 'https://www.google.com/maps/embed?pb='"),
+      text:  Translations._('MarkdownEditor|Popup|Please paste the URL of the map you want to share here! The URL needs to be of format \'https://www.google.com/maps/d/embed?mid=\' or \'https://www.google.com/maps/embed?pb=\''),
       input: 'text',
       showCancelButton: true,
       confirmButtonText: Translations._('MarkdownEditor|Popup|Confirm'),
@@ -305,15 +305,15 @@ export default class MarkdownEditor extends EasyMDE {
           return;
         }
         var cm = editor.codemirror;
-        var output = "{iframe}(" + url + ")";
+        var output = '{iframe}(' + url + ')';
         cm.replaceSelection(output);
       }
-    })
+    });
   }
 
   // Opens a window with a list of the fontawesome icons
-  static showIconInfo(editor) {
-    window.open("https://fontawesome.com/search?o=r&m=free");
+  static showIconInfo() {
+    window.open('https://fontawesome.com/search?o=r&m=free');
   }
 
   // Insert a link. Instead of the browser prompt, we'll use the sweetalert
@@ -334,7 +334,7 @@ export default class MarkdownEditor extends EasyMDE {
         var output = '[' + str + '](' + url + ')';
         cm.replaceSelection(output);
       }
-    })
+    });
   }
 
   // Insert an image. Instead of the browser prompt, we'll use the sweetalert
@@ -355,6 +355,6 @@ export default class MarkdownEditor extends EasyMDE {
         var output = '![' + str + '](' + url + ')';
         cm.replaceSelection(output);
       }
-    })
+    });
   }
 }

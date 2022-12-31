@@ -1,33 +1,33 @@
 import { Controller } from '@hotwired/stimulus';
 import Cropper from 'cropperjs';
-import Sweetalert2 from 'sweetalert2'
-import Translations from "../components/translations"
+import Sweetalert2 from 'sweetalert2';
+import Translations from '../components/translations';
 
 export default class extends Controller {
   static targets = ['imageLoader', 'uploadButton', 'canvas', 'fileNameList'];
 
   connect() {
     this.canvas = this.canvasTarget;
-    this.imageLoader = this.imageLoaderTarget
+    this.imageLoader = this.imageLoaderTarget;
     this.ctx = this.canvas.getContext('2d');
     this.cropper = new Cropper(this.canvas, {aspectRatio: 1/1, preview: '.cropper-preview'});
 
     this.canvas.addEventListener('ready', function () {
       this.cropper.setCropBoxData({
-        "left":0,
-        "top":0,
-        "width":300,
-        "height":300
+        'left':0,
+        'top':0,
+        'width':300,
+        'height':300
       });
     });
 
     this.imageLoader.addEventListener('change', (e) => {
       var reader = new FileReader();
-      reader.onload = (event) => {;
+      reader.onload = (event) => {
         var img = new Image();
         img.src = event.target.result;
         this.cropper.replace(img.src);
-      }
+      };
       reader.readAsDataURL(e.target.files[0]);
 
       let fileName = this.imageLoader.files[0].name;
@@ -45,7 +45,7 @@ export default class extends Controller {
   uploadImage(event) {
     event.preventDefault();
     let submitUrl = this.uploadButtonTarget.getAttribute('data-url');
-    let csrfToken = document.querySelector("[name='csrf-token']").content;
+    let csrfToken = document.querySelector('[name=\'csrf-token\']').content;
 
     this.cropper.getCroppedCanvas().toBlob((blob) => {
       let formData = new FormData();
@@ -58,20 +58,20 @@ export default class extends Controller {
         },
         body: formData
       })
-      .then((response) => {
-        if(response.status === 200) {
-          Turbo.visit(window.location)
-        }
-        else {
-          Sweetalert2.fire({
-            title: Translations._('Avatar|Uploading avatar failed'),
-            icon: 'error',
-            cancelButtonText: Translations._('ConfirmDialog|Confirm'),
-            showConfirmButton: false,
-            showCancelButton: true
-          });
-        }
-      });
+        .then((response) => {
+          if(response.status === 200) {
+            window.Turbo.visit(window.location);
+          }
+          else {
+            Sweetalert2.fire({
+              title: Translations._('Avatar|Uploading avatar failed'),
+              icon: 'error',
+              cancelButtonText: Translations._('ConfirmDialog|Confirm'),
+              showConfirmButton: false,
+              showCancelButton: true
+            });
+          }
+        });
     });
 
     return false;
@@ -83,16 +83,16 @@ export default class extends Controller {
     img.height = this.canvas.height;
     img.onload = (e) => this.ctx.drawImage(e.target, 0, 0, 300, 300);
 
-    var src = initialImageUrl.replace(/^url|["()]/g, "");
+    var src = initialImageUrl.replace(/^url|["()]/g, '');
     var reader = new FileReader;
     reader.onload = (e) => {
       img.src = e.target.result;
       this.cropper.replace(img.src);
-    }
+    };
     fetch(src)
-    .then(response => response.blob())
-    .then(blob => {
-      reader.readAsDataURL(blob);
-    });
+      .then(response => response.blob())
+      .then(blob => {
+        reader.readAsDataURL(blob);
+      });
   }
 }
