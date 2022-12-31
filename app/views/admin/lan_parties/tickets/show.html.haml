@@ -28,7 +28,7 @@
             = _('Ticket|Assignee')
             .small.text-muted
               - if model.assignee.present?
-                = link_to user_path(model.assignee), target: :_blank do
+                = link_to user_path(model.assignee), target: :_blank, rel: :noopener do
                   = model.assignee.username
                   = icon %i[fas fa-arrow-up-right-from-square]
               - else
@@ -37,7 +37,7 @@
             = _('Ticket|Seat')
             .small.text-muted
               - if model.seat.present?
-                = link_to lan_seatmap_path(highlight: model.seat.id), target: :_blank do
+                = link_to lan_seatmap_path(highlight: model.seat.id), target: :_blank, rel: :noopener do
                   = model.seat.id
                   = icon %i[fas fa-arrow-up-right-from-square]
               - else
@@ -101,9 +101,9 @@
       .card-body
         - if model.assignee.present?
           .d-grid
-            %a.btn.btn-primary{'data-bs-toggle' => 'collapse', href: "#qrTicket"}
+            %a.btn.btn-primary{ 'data-bs-toggle' => 'collapse', href: '#qr-ticket' }
               = _('Ticket|Toggle QR')
-          #qrTicket.collapse.mt-3.text-center
-            = op.qr_code.html_safe
+          .collapse.mt-3.text-center#qr-ticket
+            = op.qr_code.html_safe # rubocop:disable Rails/OutputSafety
         - else
           = _('Ticket|QR code only available when user is assigned')

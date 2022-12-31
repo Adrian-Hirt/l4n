@@ -7,17 +7,19 @@
       -# number_of_seedable_teams (worst seed), where we can add a team
       -# to that seed with a button click (or remove the team from this
       -# seed).
-      - seeded_teams = model.phase_teams.includes(:team)
-      - if model.tournament.teams_need_rank?
-        - seedable_teams = model.seedable_teams.joins(:tournament_team_rank).order('tournament_team_ranks.sort ASC, tournament_teams.name ASC')
-      - else
-        - seedable_teams = model.seedable_teams.order(:name)
+      :ruby
+        seeded_teams = model.phase_teams.includes(:team)
+        if model.tournament.teams_need_rank?
+          seedable_teams = model.seedable_teams.joins(:tournament_team_rank).order('tournament_team_ranks.sort ASC, tournament_teams.name ASC')
+        else
+          seedable_teams = model.seedable_teams.order(:name)
+        end
 
       - (1..model.participating_teams.count).each do |current_seed|
         .d-flex.align-items-center.py-1{ class: ('border-top' unless current_seed == 1) }
-          .me-2{style: 'width: 25px;'}
+          .me-2.team-seed
             = current_seed
-          - if found_team = seeded_teams.find { |seeded_team| seeded_team.seed == current_seed }
+          - if (found_team = seeded_teams.find { |seeded_team| seeded_team.seed == current_seed })
             = simple_form_for :seeding, url: update_seeding_admin_phase_path(model), html: { class: 'd-flex' } do |f|
               = f.save '-', class: %i[btn-sm me-2 btn-danger]
               = f.input :seed, as: :hidden, input_html: { value: current_seed }

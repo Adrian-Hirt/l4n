@@ -4,10 +4,10 @@
   -# rounds have higher indices. We divide by 2 because we have double
   -# the rounds because of the lower bracket, and then make sure we
   -# have at least 1 match (for the last round).
-  - number_of_matches = (2 ** ((round.round_number / 2) - total_visible_rounds).abs) / 2
-  - number_of_matches = [1, number_of_matches].max
-
-  - round_is_last_round = round.round_number == total_rounds
+  :ruby
+    number_of_matches = (2**((round.round_number / 2) - total_visible_rounds).abs) / 2
+    number_of_matches = [1, number_of_matches].max
+    round_is_last_round = round.round_number == total_rounds
 
   -# Add one horizontal line when we're in the last round
   - if round_is_last_round
@@ -16,13 +16,15 @@
 
   .tournament-round
     - if round.matches.any?
-      - if round.first_round? || round_is_last_round
-        - relevant_matches = round.matches.order(:id).includes(:winner, away: :team, home: :team)
-      - else
-        - relevant_matches = round.matches.order(:id).includes(:winner, away: :team, home: :team).first(number_of_matches)
+      :ruby
+        if round.first_round? || round_is_last_round
+          relevant_matches = round.matches.order(:id).includes(:winner, away: :team, home: :team)
+        else
+          relevant_matches = round.matches.order(:id).includes(:winner, away: :team, home: :team).first(number_of_matches)
+        end
 
       - relevant_matches.each do |match|
-        %a.match{href: admin_match_path(match)}
+        %a.match{ href: admin_match_path(match) }
           .d-flex.justify-content-between
             .matchteam
               = match.home.team.name
@@ -56,7 +58,7 @@
         %div
 
     -# Generate the vertical connectors
-    .round-connectors-vertical{class: round_matches_to_inverse_round_index_word(number_of_matches)}
+    .round-connectors-vertical{ class: round_matches_to_inverse_round_index_word(number_of_matches) }
       - (number_of_matches / 2).times do
         %div
 

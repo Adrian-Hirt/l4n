@@ -2,7 +2,7 @@
   .card.mb-3
     .card-header
       = _('Admin|Tournament|Basics')
-    .card-body{data: { controller: 'admin--tournament-form' }}
+    .card-body{ data: { controller: 'admin--tournament-form' } }
       .row
         .col-md-6
           = f.input :name
@@ -26,7 +26,7 @@
 
       .row
         .col-md-6
-          = f.input :status, collection: Tournament::statuses, include_blank: false
+          = f.input :status, collection: Tournament.statuses, include_blank: false
         .col-md-6
           = f.input :lan_party_id, collection: LanParty.order(:name), include_blank: _('Form|Select|Blank')
       .row
@@ -52,7 +52,7 @@
             %th
           - model.files.each do |file|
             %tr
-              %td= link_to file.filename, rails_blob_path(file, disposition: "inline"), target: :_blank
+              %td= link_to file.filename, rails_blob_path(file, disposition: 'inline'), target: :_blank, rel: :noopener
               %td= number_to_human_size(file.blob.byte_size)
               %td
                 .form-check
@@ -71,7 +71,7 @@
       = _('Admin|Tournament|Ranks')
     .card-body
       -# -- Team ranks input ---------------------------------------------------------
-      #tournament_team_ranks{data: { controller: 'cocoon' }}
+      #tournament-team-ranks{ data: { controller: 'cocoon' } }
         = f.error :tournament_team_ranks, class: 'invalid-feedback d-block'
         = f.simple_fields_for :tournament_team_ranks do |tournament_team_rank|
           .nested-fields
@@ -79,6 +79,6 @@
         .links
           = link_to_add_association f, :tournament_team_ranks, class: 'btn btn-primary', data: { action: 'click->cocoon#addRow' } do
             = icon %i[fa fa-plus]
-            =_('Tournament|Add team rank')
+            = _('Tournament|Add team rank')
     .card-footer
       = f.save

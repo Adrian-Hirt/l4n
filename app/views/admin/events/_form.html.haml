@@ -6,7 +6,7 @@
       .col-md-6
         = f.input :published, as: :select, include_blank: false
     = f.markdown :description, preview_url: admin_markdown_preview_path
-    #event_dates{data: { controller: 'cocoon' }}
+    #event-dates{ data: { controller: 'cocoon' } }
       = f.label :event_dates
       = f.error :event_dates, class: 'invalid-feedback d-block'
       = f.simple_fields_for :event_dates do |event_date|
@@ -14,6 +14,6 @@
       .links
         = link_to_add_association f, :event_dates, class: 'btn btn-primary', data: { action: 'click->cocoon#addRow' } do
           = icon %i[fa fa-plus]
-          =_('Event|Add event date')
+          = _('Event|Add event date')
   .card-footer
     = f.save

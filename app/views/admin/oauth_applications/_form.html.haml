@@ -1,7 +1,7 @@
 .card
   = simple_form_for application, url: doorkeeper_submit_path(application),
                                  as: :doorkeeper_application,
-                                 html: { data: { turbo: false} } do |f|
+                                 html: { data: { turbo: false } } do |f|
     .card-body
       = f.input :name
       = f.input :redirect_uri, wrapper_html: { style: 'margin-bottom: 0 !important;' }

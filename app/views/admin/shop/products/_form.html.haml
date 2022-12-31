@@ -26,7 +26,7 @@
   .card.mb-3
     .card-header
       = _('Admin|Product|Product behaviours')
-    .card-body{data: { controller: 'admin--product-behaviours' } }
+    .card-body{ data: { controller: 'admin--product-behaviours' } }
       = f.input :enabled_product_behaviours,
         as: :check_boxes,
         collection: model.available_product_behaviours,
@@ -59,7 +59,7 @@
     .card-header
       = _('Admin|Product|Product variants')
     .card-body
-      #product_variants{data: { controller: 'cocoon' }}
+      #product-variants{ data: { controller: 'cocoon' } }
         = f.error :product_variants, class: 'invalid-feedback d-block'
         = f.simple_fields_for :product_variants do |product_variant|
           .nested-fields
@@ -67,6 +67,6 @@
         .links
           = link_to_add_association f, :product_variants, class: 'btn btn-primary', data: { action: 'click->cocoon#addRow' } do
             = icon %i[fa fa-plus]
-            =_('Product|Add product variant')
+            = _('Product|Add product variant')
     .card-footer
       = f.save

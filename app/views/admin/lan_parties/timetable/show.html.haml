@@ -3,9 +3,10 @@
   = new_button TimetableEntry, href: new_admin_lan_party_timetable_entry_path(model)
   = edit_button model, namespace: %i[admin lan_party]
 
-- css_row_data= ""
-- css_column_data = ""
+- css_row_data = ''
+- css_column_data = ''
 
+-# haml-lint:disable InlineStyles
 .card
   .card-body
     - if model.times_set?
@@ -16,32 +17,30 @@
           - css_row_data += "[time-#{datetime.to_i}] 0.5fr "
 
           - if datetime.min.zero?
-            %span.time-slot{style: "grid-row: time-#{datetime.to_i} / time-#{datetime.to_i + 1800};"}
-              = datetime.strftime("%H:%M")
-            .time-line{style: "grid-row: time-#{datetime.to_i};"}
+            %span.time-slot{ style: "grid-row: time-#{datetime.to_i} / time-#{datetime.to_i + 1800};" }
+              = datetime.strftime('%H:%M')
+            .time-line{ style: "grid-row: time-#{datetime.to_i};" }
 
           - datetime += 15.minutes
 
         - model.timetable_categories.order(order: :asc).each do |category|
-          .category-slot{style: "grid-column: category-#{category.id}; grid-row: categories;"}
+          .category-slot{ style: "grid-column: category-#{category.id}; grid-row: categories;" }
             .category-name
               = category.name
             .category-actions
               = edit_button category, namespace: %i[admin], icon_only: true, size: :sm
               = delete_button category, namespace: %i[admin], icon_only: true, size: :sm
           - css_column_data += "[category-#{category.id}] 1fr "
-          .column-line{style: "grid-column: category-#{category.id};"}
+          .column-line{ style: "grid-column: category-#{category.id};" }
 
         - model.timetable_entries.order(:entry_start).each do |entry|
-          .entry{style: "grid-column: category-#{entry.timetable_category.id}; grid-row: time-#{entry.entry_start.round_nearest(900).to_i} / time-#{entry.entry_end.round_nearest(900).to_i};"}
+          .entry{ style: "grid-column: category-#{entry.timetable_category.id}; grid-row: time-#{entry.entry_start.round_nearest(900).to_i} / time-#{entry.entry_end.round_nearest(900).to_i};" }
             .entry-data
               .entry-title
               - if entry.link.present?
                 = icon %i[fas fa-link]
-                = entry.title
-              - else
-                = entry.title
-              .entry-time= "#{entry.entry_start.strftime("%H:%M")} - #{entry.entry_end.strftime("%H:%M")}"
+              = entry.title
+              .entry-time= "#{entry.entry_start.strftime('%H:%M')} - #{entry.entry_end.strftime('%H:%M')}"
             .entry-actions
               = edit_button entry, namespace: %i[admin], icon_only: true, size: :sm
               = delete_button entry, namespace: %i[admin], icon_only: true, size: :sm
@@ -56,4 +55,4 @@
       grid-template-columns: [times] 6em #{css_column_data};
     }
   }
-
+-# haml-lint:enable InlineStyles

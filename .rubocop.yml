@@ -111,6 +111,9 @@ Style/AccessorGrouping:
 
 Naming/VariableNumber:
   EnforcedStyle: snake_case
+  # Sometimes we need different cases in haml files, e.g. for the `html5` argument
+  Exclude:
+    - 'app/views/**/*'
 
 # Disable for test files
 Metrics/ClassLength:

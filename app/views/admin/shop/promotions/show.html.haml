@@ -28,5 +28,5 @@
           = f.datagrid_filter :used, class: 'form-select rounded-0 select optional'
         .col-md-3
           = f.save _('PromitionCodes|Apply filter')
-    -# = datagrid_form_for op.codes_grid, url: admin_shop_promotion_path(model)
+
     = datagrid_table op.codes_grid, html: { class: 'table' }

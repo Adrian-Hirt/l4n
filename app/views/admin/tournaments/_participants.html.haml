@@ -53,7 +53,7 @@
                                                                             method: :post,
                                                                             color: :primary,
                                                                             disabled: tournament_full || !team.full? || team.captain_missing?,
-                                                                            html: {title: _('Admin|Teams|Register for tournament'), data: { 'bs-toggle' => :tooltip } }
+                                                                            html: { title: _('Admin|Teams|Register for tournament'), data: { 'bs-toggle' => :tooltip } }
             - elsif team.registered?
               = button nil, unregister_from_tournament_admin_team_path(team), icon_only: true,
                                                                               btn_icon: %i[fas fa-minus fa-fw],

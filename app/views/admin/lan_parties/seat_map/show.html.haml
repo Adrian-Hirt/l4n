@@ -1,5 +1,5 @@
 .card
-  .card-body{data: { controller: 'admin--seatmap' }}
+  .card-body{ data: { controller: 'admin--seatmap' } }
     .d-flex.justify-content-between.align-items-center
       .seatmap-actions
         = button 'Add seat', nil, html: { data: { action: 'click->admin--seatmap#addNewSeat' } }
@@ -11,17 +11,17 @@
             data: { 'admin--seatmap-target' => 'seatCategorySelector' }
         = number_field_tag 'quantity', 1, class: 'form-control d-inline-block w-auto', min: 1, data: { 'admin--seatmap-target' => 'seatQuantity' }
         = button 'Save seatmap', nil, html: { data: { action: 'click->admin--seatmap#saveSeatMap' } }
-      .selected-seat-info{data: { 'admin--seatmap-target' => 'currentSelectedSeatInfo' }}
+      .selected-seat-info{ data: { 'admin--seatmap-target' => 'currentSelectedSeatInfo' } }
         = _('Admin|Seatmap|Please select a seat')
     %hr
-    #seatmap-container.admin-seatmap.overflow-auto{data: { 'admin--seatmap-target' => 'container', seatmap_data: op.seat_map_data }}
-    #seatmap-context-menu{data: { 'admin--seatmap-target' => 'contextMenu' }}
+    .admin-seatmap.overflow-auto#seatmap-container{ data: { 'admin--seatmap-target' => 'container', seatmap_data: op.seat_map_data } }
+    #seatmap-context-menu{ data: { 'admin--seatmap-target' => 'contextMenu' } }
       %div
-        %button#delete-button{data: { action: 'click->admin--seatmap#deleteSeats' }}
+        %button#delete-button{ data: { action: 'click->admin--seatmap#deleteSeats' } }
           = _('SeatMap|Delete Seat')
-        %button#change-category-button{data: { action: 'click->admin--seatmap#openCategoryChangePopup' }}
+        %button#change-category-button{ data: { action: 'click->admin--seatmap#openCategoryChangePopup' } }
           = _('SeatMap|Change category')
-        %button#change-category-button{data: { action: 'click->admin--seatmap#openNamingPopup' }}
+        %button#change-names-button{ data: { action: 'click->admin--seatmap#openNamingPopup' } }
           = _('SeatMap|Change seat names')
     %hr
     %h5= _('SeatCategories')

@@ -14,7 +14,7 @@
           = _('Team|Edit details')
         = render partial: 'multiplayer_form'
     .col-md-6
-      .card{data: { controller: 'admin--tournament-team' }}
+      .card{ data: { controller: 'admin--tournament-team' } }
         .card-header.d-flex.justify-content-between.align-items-center
           = _('Team|Team members: %{count} of %{needed}') % { count: model.users.count, needed: model.tournament.team_size }
           - if model.full?
@@ -36,7 +36,7 @@
                 = button nil, promote_admin_team_member_path(team_member), btn_icon: %i[fas fa-chevron-up],
                                                                           icon_only: true,
                                                                           size: :sm,
-                                                                          html: {title: _('TeamMember|Promote to captain'), data: { 'bs-toggle' => :tooltip } },
+                                                                          html: { title: _('TeamMember|Promote to captain'), data: { 'bs-toggle' => :tooltip } },
                                                                           disabled: team_member.captain?,
                                                                           method: :post
                 = delete_button team_member, href: admin_team_member_path(team_member),

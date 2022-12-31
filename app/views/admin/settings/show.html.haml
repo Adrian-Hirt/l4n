@@ -5,29 +5,29 @@
   .card-body
     %table.table
       %tr
-        %td{colspan: 2}
+        %td{ colspan: 2 }
           %b= _('Settings|Scope|Application')
       %tr
-        %td{style: 'text-indent: 1em;'}= _('Admin|Settings|Application name')
+        %td.indent-1= _('Admin|Settings|Application name')
         %td= AppConfig.application_name
       %tr
-        %td{colspan: 2}
+        %td{ colspan: 2 }
           %b= _('Settings|Scope|Shop')
       %tr
-        %td{style: 'text-indent: 1em;'}= _('Admin|Settings|Enable terms and conditions')
+        %td.indent-1= _('Admin|Settings|Enable terms and conditions')
         %td= format_boolean AppConfig.enable_terms_and_conditions
       %tr
-        %td{style: 'text-indent: 1em;'}= _('Admin|Settings|Terms and conditions URL')
+        %td.indent-1= _('Admin|Settings|Terms and conditions URL')
         %td= AppConfig.terms_and_conditions_url
       %tr
-        %td{colspan: 2}
+        %td{ colspan: 2 }
           %b= _('Settings|Scope|Sidebar')
       %tr
-        %td{style: 'text-indent: 1em;'}= _('Admin|Settings|Enable lan party block')
+        %td.indent-1= _('Admin|Settings|Enable lan party block')
         %td= format_boolean AppConfig.enable_lan_party_block
       %tr
-        %td{style: 'text-indent: 1em;'}= _('Admin|Settings|Enable events block')
+        %td.indent-1= _('Admin|Settings|Enable events block')
         %td= format_boolean AppConfig.enable_events_block
       %tr
-        %td{style: 'text-indent: 1em;'}= _('Admin|Settings|Enable news block')
+        %td.indent-1= _('Admin|Settings|Enable news block')
         %td= format_boolean AppConfig.enable_news_block

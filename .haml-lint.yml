@@ -11,3 +11,4 @@ linters:
       - app/views/layouts/admin/_sidebar_nav_full.html.haml
       - app/views/tournament_phases/_double_elimination_tree.html.haml
       - app/views/tournament_teams/show.html.haml
+      - app/views/admin/lan_parties/tickets/show.html.haml
