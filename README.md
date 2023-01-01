@@ -9,9 +9,31 @@
 L4N is a CMS for managing LAN parties, featuring a ticketing system, seatmaps, timetables, a tournament system, a shop, newsposts,
 recurring events and more!
 
+## Features
+
+* Ticketing System with QR Code Scanner for checking in at the event
+* General Purpose Sop to sell tickets, merchandise, food, etc.
+* Tournament System which can be used independently from a LAN party
+* Newspost / Blogging system with markdown
+* Side-Events with multiple dates
+* Dynamic content pages & URL redirects
+* Fully customizable Topnav menu
+* Achievements
+* File uploads
+* Customizable CSS in admin panel
+* Dynamic homepage with customizable content blocks & startpage banners
+* Sidebar with customizable infoboxes
+* Featureflags to disable not needed features
+* JSON API for fetching data from the CMS
+* OAuth2 provider
+
+## Requirements
+
+* [Docker Compose](https://docs.docker.com/compose/)
+
 ## Installation
 
-We recommend using the included `docker-compose` file to deploy the app with [docker compose](https://docs.docker.com/compose/).
+We recommend using the included `docker-compose.yml` file to deploy the app with [docker compose](https://docs.docker.com/compose/).
 Below are the steps needed to deploy the app in such a way:
 
 ### Install docker
@@ -41,6 +63,18 @@ run the migrations and prepare other required settings for L4N.
 ### Custom installations
 
 L4N can also be used in a custom setup, with your own docker compose setup. Please note however, that L4N requires Postgresql as the application database server. Currently it is not possible to use SQLite, mySQL or any other database as the application database server.
+
+## Development
+
+### Code style
+
+To ensure a consistent code style, we use the following code analyzers / linters:
+
+* [rubocop](https://github.com/rubocop/rubocop) for the Ruby source files
+* [haml-lint](https://github.com/sds/haml-lint) for the haml view files
+* [eslint](https://eslint.org/) for the Javascript source files
+
+When you want to contribute to this project, please ensure that none of these 3 tools find any issues with your code (and if they do, follow the outlined suggestions to resolve the problems).
 
 ## Users
 
