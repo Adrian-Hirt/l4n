@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0 - UNRELEASED
+
+### Added
+
+* Add ability to set the favicon of the app in the `Settings` tab
+
 ## 1.2.0 - 2022-12-29
 
 ### Added

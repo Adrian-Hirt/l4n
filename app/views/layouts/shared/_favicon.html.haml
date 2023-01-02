@@ -1,0 +1,3 @@
+- cache [AppConfig.favicon_url] do
+  - if AppConfig.favicon_url.present?
+    = favicon_link_tag AppConfig.favicon_url
