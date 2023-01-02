@@ -56,6 +56,10 @@ jobs:
           bundle exec rake db:create db:migrate
       - name: Run rubocop
         run: bundle exec rubocop
+      - name: Run haml-lint
+        run: bundle exec haml-lint app/views
+      - name: Run eslint
+        run: yarn run eslint app/javascript/**/*
       - name: Run tests
         env:
           PGHOST: localhost
