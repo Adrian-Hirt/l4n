@@ -377,6 +377,12 @@ msgstr "Enable news block"
 msgid "Admin|Settings|Enable terms and conditions"
 msgstr "Enable terms and conditions"
 
+msgid "Admin|Settings|Favicon URL"
+msgstr "Favicon URL"
+
+msgid "Admin|Settings|Favicon URL hint"
+msgstr "Should be an URL pointing to a suitable favicon image (use for example the Uploads functionality to upload the favicon)."
+
 msgid "Admin|Settings|Save"
 msgstr "Save"
 
@@ -1926,15 +1932,6 @@ msgstr "Url may only contain: [a-z 0-9 - _] and needs to start with a letter"
 msgid "Page|Use sidebar"
 msgstr "Use sidebar"
 
-msgid "PasswordResetRequest|Request password reset"
-msgstr "Request password reset"
-
-msgid "PasswordResetRequest|Request reset"
-msgstr "Request reset"
-
-msgid "PasswordResetRequest|Reset your password"
-msgstr "Reset your password"
-
 msgid "PasswordReset|Request reset"
 msgstr "Request reset"
 
@@ -2174,6 +2171,10 @@ msgstr "Seat category needs to be set"
 
 msgid "Product|TicketBehaviour|To product needs to be set"
 msgstr "To product needs to be set"
+
+#, fuzzy
+msgid "Product|TicketBehaviour|Virtual availability from to_product is: %{availability}"
+msgstr "Product"
 
 msgid "Product|To Product"
 msgstr "To Product"
@@ -2873,6 +2874,10 @@ msgstr "Invalid QR code, please try again"
 
 msgid "TicketScanner|Logged in as %{name}"
 msgstr "Logged in as %{name}"
+
+#, fuzzy
+msgid "TicketScanner|Logout"
+msgstr "Start"
 
 msgid "TicketScanner|No camera found"
 msgstr "No camera found"
@@ -3884,9 +3889,6 @@ msgstr "Enabled"
 
 msgid "User|TwoFactor|Not enabled"
 msgstr "Not enabled"
-
-msgid "User|Update password"
-msgstr "Update password"
 
 msgid "User|Upload admin permission"
 msgstr "Upload admin permission"

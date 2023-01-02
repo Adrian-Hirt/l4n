@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-28 13:28+0100\n"
-"PO-Revision-Date: 2022-12-28 13:28+0100\n"
+"POT-Creation-Date: 2023-01-02 18:41+0100\n"
+"PO-Revision-Date: 2023-01-02 18:41+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -376,6 +376,12 @@ msgid "Admin|Settings|Enable news block"
 msgstr ""
 
 msgid "Admin|Settings|Enable terms and conditions"
+msgstr ""
+
+msgid "Admin|Settings|Favicon URL"
+msgstr ""
+
+msgid "Admin|Settings|Favicon URL hint"
 msgstr ""
 
 msgid "Admin|Settings|Save"
@@ -1926,15 +1932,6 @@ msgstr ""
 msgid "Page|Use sidebar"
 msgstr ""
 
-msgid "PasswordResetRequest|Request password reset"
-msgstr ""
-
-msgid "PasswordResetRequest|Request reset"
-msgstr ""
-
-msgid "PasswordResetRequest|Reset your password"
-msgstr ""
-
 msgid "PasswordReset|Request reset"
 msgstr ""
 
@@ -2173,6 +2170,9 @@ msgid "Product|TicketBehaviour|Seat category needs to be set"
 msgstr ""
 
 msgid "Product|TicketBehaviour|To product needs to be set"
+msgstr ""
+
+msgid "Product|TicketBehaviour|Virtual availability from to_product is: %{availability}"
 msgstr ""
 
 msgid "Product|To Product"
@@ -2872,6 +2872,9 @@ msgid "TicketScanner|Invalid QR code, please try again"
 msgstr ""
 
 msgid "TicketScanner|Logged in as %{name}"
+msgstr ""
+
+msgid "TicketScanner|Logout"
 msgstr ""
 
 msgid "TicketScanner|No camera found"
@@ -3883,9 +3886,6 @@ msgid "User|TwoFactor|Enabled"
 msgstr ""
 
 msgid "User|TwoFactor|Not enabled"
-msgstr ""
-
-msgid "User|Update password"
 msgstr ""
 
 msgid "User|Upload admin permission"

@@ -7,6 +7,10 @@
 * Fixed a bug with uploads not working properly due to the use of UUID as the primary key.
   When upgrading, please check that your uploads still work properly
 
+### Added
+
+* Add ability to set the favicon of the app in the `Settings` tab
+
 ## 1.2.0 - 2022-12-29
 
 ### Added

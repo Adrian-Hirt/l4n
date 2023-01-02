@@ -5,6 +5,9 @@
     .card-body
       = f.input :application_name, input_html: { value: op.entered_values[:application_name].presence || AppConfig.application_name },
                                    label: _('Admin|Settings|Application name')
+      = f.input :favicon_url, input_html: { value: op.entered_values[:favicon_url].presence || AppConfig.favicon_url },
+                                   label: _('Admin|Settings|Favicon URL'),
+                                   hint: _('Admin|Settings|Favicon URL hint')
 
   .card.mb-3
     .card-header

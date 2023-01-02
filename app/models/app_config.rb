@@ -4,6 +4,7 @@ class AppConfig < RailsSettings::Base
 
   scope :application do
     field :application_name, default: 'L4N', validates: { presence: true, length: { in: 2..20 } }
+    field :favicon_url, default: nil
   end
 
   scope :sidebar do
