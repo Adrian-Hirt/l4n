@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.3.0 - 2023-01-02
+
+### Fixed
+
+* Fixed a bug with uploads not working properly due to the use of UUID as the primary key.
+  When upgrading, please check that your uploads still work properly
+
 ## 1.2.0 - 2022-12-29
 
 ### Added

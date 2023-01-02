@@ -22,7 +22,7 @@ module Grids
       column :'datagrid-actions', html: true, header: false do |upload|
         tag.div class: %i[datagrid-actions-wrapper] do
           safe_join([
-                      show_button(upload, size: :sm, icon_only: true, html: { target: :_blank }),
+                      show_button(upload, href: upload_path(upload.uuid), size: :sm, icon_only: true, html: { target: :_blank }),
                       delete_button(upload, namespace: %i[admin], size: :sm, icon_only: true)
                     ])
         end
