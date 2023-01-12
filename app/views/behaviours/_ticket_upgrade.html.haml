@@ -1,4 +1,5 @@
-#product-behaviour-ticket-upgrade{ class: ('d-none' unless enabled) }
+-# haml-lint:disable IdNames
+#product-behaviour-ticket_upgrade{ class: ('d-none' unless enabled) }
   .row{ data: { controller: 'admin--product-to-and-from-product-input', options: Product.grouped_by_lan.to_json } }
     .col-md-4
       .select.optional
