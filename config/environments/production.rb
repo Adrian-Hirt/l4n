@@ -103,7 +103,7 @@ Rails.application.configure do
     config.action_mailer.default_url_options = { host: Figaro.env.host_domain! }
 
     # When using smtp, configure it, otherwise configure sendmail
-    if Figaro.env.use_smtp! == 'true'
+    if ActiveModel::Type::Boolean.new.cast(Figaro.env.use_smtp!)
       config.action_mailer.delivery_method = :smtp
 
       # Setup the smtp mailer
@@ -114,7 +114,7 @@ Rails.application.configure do
         user_name:            Figaro.env.smtp_username!,
         password:             Figaro.env.smtp_password!,
         domain:               Figaro.env.smtp_domain!,
-        enable_starttls_auto: Figaro.env.smtp_enable_starttls_auto!
+        enable_starttls_auto: ActiveModel::Type::Boolean.new.cast(Figaro.env.smtp_enable_starttls_auto!)
       }
     else
       config.action_mailer.delivery_method = :sendmail
