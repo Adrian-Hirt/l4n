@@ -4,7 +4,7 @@ module Operations::NewsPost
       authorize! :read, NewsPost
     end
 
-    schema3 do
+    schema3 ignore_obsolete_properties: true do
       str? :page
     end
 

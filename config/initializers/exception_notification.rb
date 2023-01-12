@@ -9,6 +9,7 @@ return unless Figaro.env.enable_exception_notifier
 
 # Otherwise, setup the exception notifier
 Rails.application.config.middleware.use ExceptionNotification::Rack,
+                                        ignore_exceptions: ['ActionController::BadRequest'] + ExceptionNotifier.ignored_exceptions,
                                         email: {
                                           email_prefix:         '[EXCEPTION NOTIFICATION] ',
                                           sender_address:       "notifier@#{Figaro.env.host_domain!}",

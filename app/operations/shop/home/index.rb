@@ -1,6 +1,6 @@
 module Operations::Shop::Home
   class Index < RailsOps::Operation
-    schema3 do
+    schema3 ignore_obsolete_properties: true do
       int? :category_id, cast_str: true
     end
 

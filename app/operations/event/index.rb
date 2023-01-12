@@ -1,6 +1,6 @@
 module Operations::Event
   class Index < RailsOps::Operation
-    schema3 do
+    schema3 ignore_obsolete_properties: true do
       str? :page
     end
 

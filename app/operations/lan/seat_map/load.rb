@@ -1,6 +1,6 @@
 module Operations::Lan::SeatMap
   class Load < RailsOps::Operation::Model
-    schema3 do
+    schema3 ignore_obsolete_properties: true do
       obj? :highlight
     end
 

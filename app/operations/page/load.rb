@@ -1,7 +1,7 @@
 module Operations::Page
   class Load < RailsOps::Operation::Model
-    schema do
-      req :page
+    schema3 ignore_obsolete_properties: true do
+      str? :page
     end
 
     model ::Page

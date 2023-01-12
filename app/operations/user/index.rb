@@ -1,6 +1,6 @@
 module Operations::User
   class Index < RailsOps::Operation
-    schema3 do
+    schema3 ignore_obsolete_properties: true do
       str? :page
       hsh? :grids_users, additional_properties: true
     end
