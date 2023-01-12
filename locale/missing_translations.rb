@@ -69,6 +69,17 @@ N_('FooterLogo|Logo file')
 # Seat categories
 N_('SeatCategory|Seat count')
 
+# Ticket upgrades
+N_('TicketUpgrade|From product')
+N_('TicketUpgrade|To product')
+N_('TicketUpgrade|Order')
+
+# Order
+N_('Order|status|created')
+N_('Order|status|payment_pending')
+N_('Order|status|delayed_payment_pending')
+N_('Order|status|paid')
+
 # JS translations missing otherwise
 N_('Form|Select|Blank')
 N_('SeatMap|You need to select a seat category to add a seat!')

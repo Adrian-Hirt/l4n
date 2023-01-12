@@ -1905,6 +1905,18 @@ msgstr "You need to accept the terms and conditions to continue your checkyout. 
 msgid "Order|Your total is more than zero"
 msgstr "Your total is more than zero"
 
+msgid "Order|status|created"
+msgstr "Created"
+
+msgid "Order|status|delayed_payment_pending"
+msgstr "Later payment pending"
+
+msgid "Order|status|paid"
+msgstr "Paid"
+
+msgid "Order|status|payment_pending"
+msgstr "Payment pending"
+
 msgid "Order|the terms and conditions page"
 msgstr "the terms and conditions page"
 
@@ -2927,17 +2939,26 @@ msgstr "Could not be applied"
 msgid "TicketUpgrade|From category"
 msgstr "From category"
 
+msgid "TicketUpgrade|From product"
+msgstr "From"
+
 msgid "TicketUpgrade|Not allowed to do that"
 msgstr "Not allowed to do that"
 
 msgid "TicketUpgrade|Not found"
 msgstr "Not found"
 
+msgid "TicketUpgrade|Order"
+msgstr "Order"
+
 msgid "TicketUpgrade|Please remove the seat first"
 msgstr "Please remove the seat first"
 
 msgid "TicketUpgrade|To category"
 msgstr "To category"
+
+msgid "TicketUpgrade|To product"
+msgstr "To"
 
 msgid "TicketUpgrade|Upgrade"
 msgstr "Upgrade"
@@ -3631,6 +3652,9 @@ msgstr "Uploaded at"
 
 msgid "Upload|Uploaded by"
 msgstr "Uploaded by"
+
+msgid "Upload|Uuid"
+msgstr "UUID"
 
 msgid "User"
 msgstr "User"

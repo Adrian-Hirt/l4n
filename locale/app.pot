@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-02 18:41+0100\n"
-"PO-Revision-Date: 2023-01-02 18:41+0100\n"
+"POT-Creation-Date: 2023-01-12 21:31+0100\n"
+"PO-Revision-Date: 2023-01-12 21:31+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -1905,6 +1905,18 @@ msgstr ""
 msgid "Order|Your total is more than zero"
 msgstr ""
 
+msgid "Order|status|created"
+msgstr ""
+
+msgid "Order|status|delayed_payment_pending"
+msgstr ""
+
+msgid "Order|status|paid"
+msgstr ""
+
+msgid "Order|status|payment_pending"
+msgstr ""
+
 msgid "Order|the terms and conditions page"
 msgstr ""
 
@@ -2925,16 +2937,25 @@ msgstr ""
 msgid "TicketUpgrade|From category"
 msgstr ""
 
+msgid "TicketUpgrade|From product"
+msgstr ""
+
 msgid "TicketUpgrade|Not allowed to do that"
 msgstr ""
 
 msgid "TicketUpgrade|Not found"
 msgstr ""
 
+msgid "TicketUpgrade|Order"
+msgstr ""
+
 msgid "TicketUpgrade|Please remove the seat first"
 msgstr ""
 
 msgid "TicketUpgrade|To category"
+msgstr ""
+
+msgid "TicketUpgrade|To product"
 msgstr ""
 
 msgid "TicketUpgrade|Upgrade"
@@ -3628,6 +3649,9 @@ msgid "Upload|Uploaded at"
 msgstr ""
 
 msgid "Upload|Uploaded by"
+msgstr ""
+
+msgid "Upload|Uuid"
 msgstr ""
 
 msgid "User"

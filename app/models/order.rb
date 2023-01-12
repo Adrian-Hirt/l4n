@@ -7,6 +7,8 @@ class Order < ApplicationRecord
     paid:                    'paid'
   }
 
+  translate_enums
+
   # == Constants ===================================================================
   TIMEOUT = 15.minutes
   TIMEOUT_PAYMENT_PENDING = 45.minutes
