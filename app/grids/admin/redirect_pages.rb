@@ -7,6 +7,8 @@ module Grids
 
       model RedirectPage
 
+      pagination_param :redirect_page
+
       column :url
       column :redirects_to
       column :'datagrid-actions', html: true, header: false do |page|

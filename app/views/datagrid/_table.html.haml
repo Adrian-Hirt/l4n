@@ -18,7 +18,10 @@
       %tfoot
         %tr
           %td.px-0.py-2
-            = paginate grid.assets, theme: 'bootstrap'
+            - if grid.class.pagination_param.present?
+              = paginate grid.assets, theme: 'bootstrap', param_name: grid.class.pagination_param
+            - else
+              = paginate grid.assets, theme: 'bootstrap'
           %td.px-0.py-2.table-info-box{ colspan: '100%' }
             - entry_name = grid.assets.size > 1 ? _('Kaminari|Entries') : _('Kaminari|Entry')
             = page_entries_info grid.assets, entry_name: entry_name

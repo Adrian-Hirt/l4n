@@ -7,6 +7,8 @@ module Grids
 
       model ContentPage
 
+      pagination_param :content_page
+
       column :url
       column :title
       column :published, html: ->(published) { format_boolean(published) }
