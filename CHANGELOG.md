@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.3.1 - 2023-01-12
+
+### Fixed
+
+* Fixed exception in mailer config
+* Fixed exception notifications for BadRequest exceptions
+
+### Added
+
+* Added some missing translations
+
+### Changed
+
+* Make sidebar sticky in seatmap on non-mobile
+
 ## 1.3.0 - 2023-01-02
 
 ### Fixed
