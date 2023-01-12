@@ -69,7 +69,8 @@
           = button _('Admin|LanParty|SeatMap'), admin_lan_party_seat_map_path(model)
           = button _('Admin|LanParty|Tickets'), admin_lan_party_tickets_path(model)
           = button _('Admin|LanParty|TicketUpgrades'), admin_lan_party_ticket_upgrades_path(model)
-          = button _('Admin|LanParty|Tournaments'), admin_tournaments_path(grids_admin_tournaments: { lan_party: model.id })
+          - if can? :manage, Tournament
+            = button _('Admin|LanParty|Tournaments'), admin_tournaments_path(grids_admin_tournaments: { lan_party: model.id })
           = button _('Admin|LanParty|Timetable'), admin_lan_party_timetable_path(model)
     .card.mb-3
       .card-header
