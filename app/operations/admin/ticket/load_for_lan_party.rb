@@ -2,6 +2,7 @@ module Operations::Admin::Ticket
   class LoadForLanParty < RailsOps::Operation
     schema3 do
       str! :lan_party_id
+      str? :page
       hsh? :grids_admin_tickets, additional_properties: true
     end
 
