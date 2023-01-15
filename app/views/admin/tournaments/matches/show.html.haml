@@ -22,7 +22,7 @@
       - if model.result_updateable?
         - teams = [model.home, model.away]
 
-        = simple_form_for model, url: admin_match_path(model), confirm: 'soos'  do |f|
+        = simple_form_for model, url: admin_match_path(model) do |f|
           .row
             .col-md-6
               = f.input :home_score
