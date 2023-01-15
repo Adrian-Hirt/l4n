@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-15 17:38+0100\n"
-"PO-Revision-Date: 2023-01-15 17:38+0100\n"
+"POT-Creation-Date: 2023-01-15 20:17+0100\n"
+"PO-Revision-Date: 2023-01-15 20:17+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -198,7 +198,13 @@ msgstr ""
 msgid "Admin|LanParty|Tournaments"
 msgstr ""
 
+msgid "Admin|Match|Dispute resolved?"
+msgstr ""
+
 msgid "Admin|Match|Not updateable hint"
+msgstr ""
+
+msgid "Admin|Match|Result is disputed, please resolve the dispute with the players"
 msgstr ""
 
 msgid "Admin|Match|Submit result"
@@ -291,6 +297,9 @@ msgstr ""
 msgid "Admin|PaymentAssist|Order is marked as paid successfully"
 msgstr ""
 
+msgid "Admin|Phase|Disputed matches"
+msgstr ""
+
 msgid "Admin|ProductCategories"
 msgstr ""
 
@@ -355,6 +364,12 @@ msgid "Admin|Seat|Not found"
 msgstr ""
 
 msgid "Admin|Seat|Seat is taken."
+msgstr ""
+
+msgid "Admin|Seeding|Remove"
+msgstr ""
+
+msgid "Admin|Seeding|Save"
 msgstr ""
 
 msgid "Admin|Settings"
@@ -741,6 +756,9 @@ msgstr ""
 msgid "Admin|Tournament|Phase|Failed to generate next round matches"
 msgstr ""
 
+msgid "Admin|Tournament|Phase|Failed to reset the seeding confirmation"
+msgstr ""
+
 msgid "Admin|Tournament|Phase|Failed to update seeding"
 msgstr ""
 
@@ -760,6 +778,9 @@ msgid "Admin|Tournament|Phase|Successfully generated next round matches"
 msgstr ""
 
 msgid "Admin|Tournament|Phase|Successfully generated rounds"
+msgstr ""
+
+msgid "Admin|Tournament|Phase|Successfully resetted the seeding confirmation"
 msgstr ""
 
 msgid "Admin|Tournament|Phase|Successfully updated seeding"
@@ -1572,6 +1593,9 @@ msgstr ""
 msgid "Match|Draw short"
 msgstr ""
 
+msgid "Match|Is the result correct?"
+msgstr ""
+
 msgid "Match|Loser"
 msgstr ""
 
@@ -1597,9 +1621,6 @@ msgid "Match|Please set the winner"
 msgstr ""
 
 msgid "Match|Please wait for the other team to confirm the result"
-msgstr ""
-
-msgid "Match|Result is the result correct?"
 msgstr ""
 
 msgid "Match|Submit confirmation status"
@@ -2068,6 +2089,12 @@ msgid "Phase|Number of rounds"
 msgstr ""
 
 msgid "Phase|Phase completed"
+msgstr ""
+
+msgid "Phase|Reset seeding confirmation"
+msgstr ""
+
+msgid "Phase|Reset seeding confirmation?"
 msgstr ""
 
 msgid "Phase|Rounds"
@@ -3439,6 +3466,9 @@ msgid "Tournament|Name"
 msgstr ""
 
 msgid "Tournament|No files"
+msgstr ""
+
+msgid "Tournament|No lan party assigned"
 msgstr ""
 
 msgid "Tournament|No next match available"

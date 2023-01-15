@@ -5,7 +5,7 @@ class TournamentMatchesController < ApplicationController
 
   def edit
     op Operations::Tournament::Match::Update
-    add_breadcrumb op.tournament.name, op.tournament
+    add_breadcrumb model.tournament.name, model.tournament
   rescue Operations::Exceptions::OpFailed => e
     flash[:danger] = e.message
     redirect_to tournaments_path

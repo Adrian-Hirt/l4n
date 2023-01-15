@@ -1,3 +1,7 @@
+- if model.result_disputed?
+  .alert.alert-warning
+    = _('Admin|Match|Result is disputed, please resolve the dispute with the players')
+
 .card
   .card-body
     .match.d-flex.justify-content-around.align-items-center.border-bottom.py-3
@@ -18,7 +22,7 @@
       - if model.result_updateable?
         - teams = [model.home, model.away]
 
-        = simple_form_for model, url: admin_match_path(model) do |f|
+        = simple_form_for model, url: admin_match_path(model), confirm: 'soos'  do |f|
           .row
             .col-md-6
               = f.input :home_score
@@ -29,6 +33,9 @@
                                 include_blank: _('Form|Select|Blank')
           - if model.phase.swiss?
             = f.input :draw, input_html: { class: 'no-validation' }
-          = f.save _('Admin|Match|Submit result')
+          - if model.result_disputed?
+            = f.save _('Admin|Match|Submit result'), data: { controller: 'button', action: 'click->button#confirmAction', confirm: _('Admin|Match|Dispute resolved?') }
+          - else
+            = f.save _('Admin|Match|Submit result')
       - else
         = _('Admin|Match|Not updateable hint')

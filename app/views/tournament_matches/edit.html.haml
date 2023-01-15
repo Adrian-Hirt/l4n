@@ -59,7 +59,7 @@
               - else
                 = simple_form_for model, url: match_path(model) do |f|
                   = f.input :confirmation, as: :radio_buttons,
-                                          label: _('Match|Result is the result correct?'),
+                                          label: _('Match|Is the result correct?'),
                                           input_html: { class: 'no-validation' }
                   = f.save _('Match|Submit confirmation status'), class: %i[btn-default]
           - elsif model.result_disputed?

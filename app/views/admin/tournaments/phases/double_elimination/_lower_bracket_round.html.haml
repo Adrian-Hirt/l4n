@@ -14,7 +14,7 @@
         end
 
       - relevant_matches.each do |match|
-        %a.match{ href: admin_match_path(match) }
+        %a.match{ href: admin_match_path(match), class: ('disputed-match' if match.result_disputed?) }
           .d-flex.justify-content-between
             .matchteam
               = match.home.team.name

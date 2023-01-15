@@ -43,6 +43,9 @@
                 = phase.phase_number
                 \.
                 = phase.name
+                - if phase.matches.any?(&:result_disputed?)
+                  .badge.bg-warning.text-dark.ms-2
+                    = _('Admin|Phase|Disputed matches')
                 .small.text-muted
                   = phase.humanized_tournament_mode
                   \|

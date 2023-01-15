@@ -15,9 +15,12 @@
                     = _('Round number %{number}') % { number: round.round_number }
                   - if model.current_round == round
                     %span.badge.bg-secondary.fw-normal= _('Phase|Current round')
+                  - if round.matches.any?(&:result_disputed?)
+                    .badge.bg-warning.text-dark
+                      = _('Admin|Phase|Disputed matches')
                 - if round.matches.any?
                   - round.matches.order(:id).includes(away: :team, home: :team).each do |match|
-                    %a.swiss-match-card{ href: admin_match_path(match) }
+                    %a.swiss-match-card{ href: admin_match_path(match), class: ('disputed-match' if match.result_disputed?) }
                       .d-flex.justify-content-between
                         .matchteam
                           = match.home.team.name

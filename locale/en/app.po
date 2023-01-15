@@ -197,8 +197,14 @@ msgstr "Timetable"
 msgid "Admin|LanParty|Tournaments"
 msgstr "Tournaments"
 
+msgid "Admin|Match|Dispute resolved?"
+msgstr ""
+
 msgid "Admin|Match|Not updateable hint"
 msgstr "Match is not updateable anymore"
+
+msgid "Admin|Match|Result is disputed, please resolve the dispute with the players"
+msgstr ""
 
 msgid "Admin|Match|Submit result"
 msgstr "Submit result"
@@ -290,6 +296,9 @@ msgstr "Order could not be marked as paid"
 msgid "Admin|PaymentAssist|Order is marked as paid successfully"
 msgstr "Order is marked as paid successfully"
 
+msgid "Admin|Phase|Disputed matches"
+msgstr ""
+
 msgid "Admin|ProductCategories"
 msgstr "Product Categories"
 
@@ -355,6 +364,12 @@ msgstr "Not found"
 
 msgid "Admin|Seat|Seat is taken."
 msgstr "Seat is taken"
+
+msgid "Admin|Seeding|Remove"
+msgstr "Remove"
+
+msgid "Admin|Seeding|Save"
+msgstr "Save"
 
 msgid "Admin|Settings"
 msgstr "Settings"
@@ -557,13 +572,11 @@ msgstr "Not checked in"
 msgid "Admin|Ticket|Not found"
 msgstr "Not found"
 
-#, fuzzy
 msgid "Admin|Ticket|Not in shop"
-msgstr "Not found"
+msgstr "Not in shop"
 
-#, fuzzy
 msgid "Admin|Ticket|Product is not available anymore"
-msgstr "Product"
+msgstr "Product is not available anymore"
 
 msgid "Admin|Ticket|Remove seat"
 msgstr "Remove seat"
@@ -583,9 +596,8 @@ msgstr "Seat id to assign to"
 msgid "Admin|Ticket|Seat not set"
 msgstr "Seat not set"
 
-#, fuzzy
 msgid "Admin|Ticket|Sold in shop"
-msgstr "Ticket"
+msgstr "Sold in shop"
 
 msgid "Admin|Ticket|Successfully assigned seat"
 msgstr "Successfully assigned seat"
@@ -692,9 +704,8 @@ msgstr "Please close the registration before generating rounds"
 msgid "Admin|Tournaments|Phase|Please first finish all the matches of the current round"
 msgstr "Please first finish all the matches of the current round"
 
-#, fuzzy
 msgid "Admin|Tournaments|Phase|Previous phase is still running, please complete the previous phase before generating the rounds for this phase"
-msgstr "Tournaments"
+msgstr "Previous phase is still running, please complete the previous phase before generating the rounds for this phase"
 
 msgid "Admin|Tournaments|Phase|Rounds have already been generated"
 msgstr "Rounds have already been generated"
@@ -732,9 +743,8 @@ msgstr "Not in running phase"
 msgid "Admin|Tournament|Phase|Could not be destroyed"
 msgstr "Could not be destroyed"
 
-#, fuzzy
 msgid "Admin|Tournament|Phase|Deleting rounds failed"
-msgstr "Generating rounds failed"
+msgstr "Deleting rounds failed"
 
 msgid "Admin|Tournament|Phase|Failed to complete the phase"
 msgstr "Failed to complete the phase"
@@ -744,6 +754,9 @@ msgstr "Failed to confirm seeding"
 
 msgid "Admin|Tournament|Phase|Failed to generate next round matches"
 msgstr "Failed to generate next round matches"
+
+msgid "Admin|Tournament|Phase|Failed to reset the seeding confirmation"
+msgstr "Failed to reset the seeding confirmation"
 
 msgid "Admin|Tournament|Phase|Failed to update seeding"
 msgstr "Failed to update seeding"
@@ -757,15 +770,17 @@ msgstr "Successfully completed the phase"
 msgid "Admin|Tournament|Phase|Successfully confirmed seeding"
 msgstr "Successfully confirmed seeding"
 
-#, fuzzy
 msgid "Admin|Tournament|Phase|Successfully deleted rounds"
-msgstr "Successfully generated rounds"
+msgstr "Successfully deleted rounds"
 
 msgid "Admin|Tournament|Phase|Successfully generated next round matches"
 msgstr "Successfully generated next round matches"
 
 msgid "Admin|Tournament|Phase|Successfully generated rounds"
 msgstr "Successfully generated rounds"
+
+msgid "Admin|Tournament|Phase|Successfully resetted the seeding confirmation"
+msgstr "Successfully resetted the seeding confirmation"
 
 msgid "Admin|Tournament|Phase|Successfully updated seeding"
 msgstr "Successfully updated seeding"
@@ -1430,9 +1445,8 @@ msgstr "Sold tickets"
 msgid "LanParty|Stats"
 msgstr "Stats"
 
-#, fuzzy
 msgid "LanParty|Tickets"
-msgstr "Lan Party"
+msgstr "Tickets"
 
 msgid "LanParty|Timetable"
 msgstr "Timetable"
@@ -1578,6 +1592,9 @@ msgstr "Draw"
 msgid "Match|Draw short"
 msgstr "D"
 
+msgid "Match|Is the result correct?"
+msgstr "Is the result correct"
+
 msgid "Match|Loser"
 msgstr "Loser"
 
@@ -1604,9 +1621,6 @@ msgstr "Please set the winner"
 
 msgid "Match|Please wait for the other team to confirm the result"
 msgstr "Please wait for the other team to confirm the result"
-
-msgid "Match|Result is the result correct?"
-msgstr "Result is the result correct"
 
 msgid "Match|Submit confirmation status"
 msgstr "Submit confirmation status"
@@ -2043,9 +2057,8 @@ msgstr "Create rounds for seeding"
 msgid "Phase|Current round"
 msgstr "Current round"
 
-#, fuzzy
 msgid "Phase|Delete rounds"
-msgstr "Generate rounds"
+msgstr "Delete round"
 
 msgid "Phase|Double elimination lower bracket"
 msgstr "Double elimination lower bracket"
@@ -2076,6 +2089,12 @@ msgstr "Number of rounds"
 
 msgid "Phase|Phase completed"
 msgstr "Phase completed"
+
+msgid "Phase|Reset seeding confirmation"
+msgstr "Reset seeding confirmation"
+
+msgid "Phase|Reset seeding confirmation?"
+msgstr "Do you really want to reset the seeding confirmation?"
 
 msgid "Phase|Rounds"
 msgstr "Rounds"
@@ -2206,9 +2225,8 @@ msgstr "Seat category needs to be set"
 msgid "Product|TicketBehaviour|To product needs to be set"
 msgstr "To product needs to be set"
 
-#, fuzzy
 msgid "Product|TicketBehaviour|Virtual availability from to_product is: %{availability}"
-msgstr "Product"
+msgstr "Virtual availability from to_product is: %{availability}"
 
 msgid "Product|To Product"
 msgstr "To Product"
@@ -2915,9 +2933,8 @@ msgstr "Invalid QR code, please try again"
 msgid "TicketScanner|Logged in as %{name}"
 msgstr "Logged in as %{name}"
 
-#, fuzzy
 msgid "TicketScanner|Logout"
-msgstr "Start"
+msgstr "Logout"
 
 msgid "TicketScanner|No camera found"
 msgstr "No camera found"
@@ -3418,7 +3435,7 @@ msgid "Tournament|Final Standings"
 msgstr "Final Standings"
 
 msgid "Tournament|Frontend order"
-msgstr "Frontend order"
+msgstr "Order"
 
 msgid "Tournament|In tournament teams"
 msgstr "In tournament teams"
@@ -3449,6 +3466,9 @@ msgstr "Name"
 
 msgid "Tournament|No files"
 msgstr "No files"
+
+msgid "Tournament|No lan party assigned"
+msgstr "No lan party assigned"
 
 msgid "Tournament|No next match available"
 msgstr "No next match available"
