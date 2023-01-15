@@ -1,5 +1,7 @@
 - content_for :header_buttons do
-  = new_button Tournament, namespace: %i[admin]
+  .d-flex.gap-1.flex-wrap
+    = button _('Admin|Tournaments|Disputed matches'), disputed_matches_admin_tournaments_path
+    = new_button Tournament, namespace: %i[admin]
 
 .card
   .card-body

@@ -346,6 +346,9 @@ Rails.application.routes.draw do
       member do
         post :toggle_registration
       end
+      collection do
+        get :disputed_matches
+      end
       scope module: :tournaments do
         resources :phases, except: %i[index] do
           member do

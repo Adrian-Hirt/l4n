@@ -52,5 +52,10 @@ module Admin
 
       redirect_to admin_tournament_path(model)
     end
+
+    def disputed_matches
+      add_breadcrumb _('Admin|Tournaments|Disputed matches')
+      op Operations::Admin::Tournament::DisputedMatches
+    end
   end
 end

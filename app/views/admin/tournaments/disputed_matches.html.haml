@@ -1,0 +1,20 @@
+.card
+  .card-body
+    - if op.matches.any?
+      .swiss-tournament-tree
+        - op.matches.each do |match|
+          %a.swiss-match-card{ href: admin_match_path(match) }
+            = match.tournament.name
+            %hr
+            .d-flex.justify-content-between
+              .matchteam
+                = match.home.team.name
+              .matchscore
+                = format_match_score(match, :home)
+            .d-flex.justify-content-between
+              .matchteam
+                = match.away&.team&.name || _('Match|Bye')
+              .matchscore
+                = format_match_score(match, :away)
+    - else
+      = _('Admin|Tournament|No disputed matches')
