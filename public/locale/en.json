@@ -223,6 +223,7 @@
     "Admin|Timetable|Entry successfully updated": "Entry successfully updated",
     "Admin|Timetable|Times are not set": "Times are not set",
     "Admin|Tournaments": "Tournaments",
+    "Admin|Tournaments|Disputed matches": "Disputed matches",
     "Admin|Tournaments|Phase|Cannot generate rounds without any seedable teams": "Cannot generate rounds without any seedable teams",
     "Admin|Tournaments|Phase|No next round to generate the matches for": "No next round to generate the matches for",
     "Admin|Tournaments|Phase|Not all matches are completed": "Not all matches are completed",

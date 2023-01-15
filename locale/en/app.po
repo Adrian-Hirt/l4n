@@ -686,6 +686,9 @@ msgstr "Times are not set"
 msgid "Admin|Tournaments"
 msgstr "Tournaments"
 
+msgid "Admin|Tournaments|Disputed matches"
+msgstr "Disputed matches"
+
 msgid "Admin|Tournaments|Phase|Cannot generate rounds without any seedable teams"
 msgstr "Cannot generate rounds without any seedable teams"
 
@@ -739,6 +742,10 @@ msgstr "Not in current round"
 
 msgid "Admin|Tournament|Match|Not in running phase"
 msgstr "Not in running phase"
+
+#, fuzzy
+msgid "Admin|Tournament|No disputed matches"
+msgstr "Tournament"
 
 msgid "Admin|Tournament|Phase|Could not be destroyed"
 msgstr "Could not be destroyed"

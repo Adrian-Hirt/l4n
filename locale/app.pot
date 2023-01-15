@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-15 20:17+0100\n"
-"PO-Revision-Date: 2023-01-15 20:17+0100\n"
+"POT-Creation-Date: 2023-01-15 20:42+0100\n"
+"PO-Revision-Date: 2023-01-15 20:42+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -687,6 +687,9 @@ msgstr ""
 msgid "Admin|Tournaments"
 msgstr ""
 
+msgid "Admin|Tournaments|Disputed matches"
+msgstr ""
+
 msgid "Admin|Tournaments|Phase|Cannot generate rounds without any seedable teams"
 msgstr ""
 
@@ -739,6 +742,9 @@ msgid "Admin|Tournament|Match|Not in current round"
 msgstr ""
 
 msgid "Admin|Tournament|Match|Not in running phase"
+msgstr ""
+
+msgid "Admin|Tournament|No disputed matches"
 msgstr ""
 
 msgid "Admin|Tournament|Phase|Could not be destroyed"
