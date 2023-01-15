@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.3.2 - 2023-01-15
+
+### Changed
+
+* Add ability to manually create tickets for all categories
+* Improve styling of sidebar in seatmap view
+
 ## 1.3.1 - 2023-01-12
 
 ### Fixed
