@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-12 21:31+0100\n"
-"PO-Revision-Date: 2023-01-12 21:31+0100\n"
+"POT-Creation-Date: 2023-01-15 15:24+0100\n"
+"PO-Revision-Date: 2023-01-15 15:24+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -2394,7 +2394,13 @@ msgstr ""
 msgid "Seatmap"
 msgstr ""
 
+msgid "Seatmap|Get seat"
+msgstr ""
+
 msgid "Seatmap|Please select a seat"
+msgstr ""
+
+msgid "Seatmap|Remove seat"
 msgstr ""
 
 msgid "Seatmap|Reset zoom & position"
@@ -3064,9 +3070,6 @@ msgid "Ticket|Really remove ticket from myself?"
 msgstr ""
 
 msgid "Ticket|Remove assignation"
-msgstr ""
-
-msgid "Ticket|Remove seat"
 msgstr ""
 
 msgid "Ticket|Remove ticket from myself"

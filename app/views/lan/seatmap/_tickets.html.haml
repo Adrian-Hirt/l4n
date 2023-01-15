@@ -10,27 +10,25 @@
     = _('Seatmap|You don\'t have any tickets for this event')
   - else
     - op.available_tickets.order(:id).each do |ticket|
-      .d-flex.align-items-center.ticket-container.mb-2{ data: { seat_category_id: ticket.seat_category_id, ticket_id: ticket.id } }
-        .me-2
-          -# haml-lint:disable InlineStyles
-          .badge.seat-id-badge{ style: "background-color: #{ticket.seat_category.color_for_view}; color: #{ticket.seat_category.font_color_for_view};",
-                              data: { seat_id: ticket.seat&.id, action: 'click->seatmap#highlightSeatOfBadge', 'bs-toggle': :tooltip, 'bs-placement': :left },
-                              title: ticket.product_variant_name.presence || '-' }
-            = ticket.seat&.name_or_id.presence || '&nbsp;'.html_safe
-          -# haml-lint:enable InlineStyles
-        - if ticket.checked_in?
-          .me-2.flex-grow-1
-            = link_to ticket.assignee, target: :_blank, rel: :noopener do
-              = icon %i[fas fa-arrow-up-right-from-square]
-              = ticket.assignee.username
-          .badge.bg-secondary
-            = _('SeatMap|User checked in')
-        - else
-          .flex-grow-1
-            - if ticket.assignee.present?
+      .d-flex.align-items-center.ticket-container.mb-2.justify-content-between{ data: { seat_category_id: ticket.seat_category_id, ticket_id: ticket.id } }
+        .d-flex.align-items-center.min-width-0
+          .me-2
+            -# haml-lint:disable InlineStyles
+            .badge.seat-id-badge{ style: "background-color: #{ticket.seat_category.color_for_view}; color: #{ticket.seat_category.font_color_for_view};",
+                                data: { seat_id: ticket.seat&.id, action: 'click->seatmap#highlightSeatOfBadge', 'bs-toggle': :tooltip, 'bs-placement': :left },
+                                title: ticket.product_variant_name.presence || '-' }
+              = ticket.seat&.name_or_id.presence || '&nbsp;'.html_safe
+            -# haml-lint:enable InlineStyles
+          .ticket-username
+            - if ticket.assignee.present? || ticket.checked_in?
               = link_to ticket.assignee, target: :_blank, rel: :noopener do
                 = icon %i[fas fa-arrow-up-right-from-square]
                 = ticket.assignee.username
             - else
               .text-muted= _('Seatmap|Unassigned ticket')
-          .ms-2= render partial: 'lan/seatmap/ticket_seat_actions', locals: { ticket: ticket }
+        .ms-2
+          - if ticket.checked_in?
+            .btn.btn-secondary.btn-sm.disabled.text-nowrap
+              = _('SeatMap|User checked in')
+          - else
+            = render partial: 'lan/seatmap/ticket_seat_actions', locals: { ticket: ticket }

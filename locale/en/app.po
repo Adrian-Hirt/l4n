@@ -2384,7 +2384,7 @@ msgid "SeatMap|Saved successfully"
 msgstr "Saved successfully"
 
 msgid "SeatMap|User checked in"
-msgstr "User checked in"
+msgstr "Checked in"
 
 msgid "SeatMap|You need to create at least 1 seat!"
 msgstr "You need to create at least 1 seat!"
@@ -2395,8 +2395,14 @@ msgstr "You need to select a seat category to add a seat!"
 msgid "Seatmap"
 msgstr "Seat Map"
 
+msgid "Seatmap|Get seat"
+msgstr "Get seat"
+
 msgid "Seatmap|Please select a seat"
 msgstr "Please select a seat"
+
+msgid "Seatmap|Remove seat"
+msgstr "Remove seat"
 
 msgid "Seatmap|Reset zoom & position"
 msgstr "Reset zoom & position"
@@ -3067,9 +3073,6 @@ msgstr "Really remove ticket from myself?"
 
 msgid "Ticket|Remove assignation"
 msgstr "Remove assignation"
-
-msgid "Ticket|Remove seat"
-msgstr "Remove seat"
 
 msgid "Ticket|Remove ticket from myself"
 msgstr "Remove ticket from myself"
