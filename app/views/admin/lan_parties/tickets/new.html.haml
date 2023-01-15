@@ -1,12 +1,12 @@
 .card
   = simple_form_for [:admin, :lan_party, model] do |f|
     .card-body
-      .row
-        .col-lg-6
-          = f.association :seat_category, as: :select, collection: op.available_seat_categories, include_blank: _('Form|Select|Blank')
-        .col-lg-6
-          .mb-2
-            = _('Admin|Ticket|Hint')
-          = _('Admin|Ticket|Creating a ticket manually should only be used to give out tickets of seat categories which are not sold in the shop. Use the free_item promotion to give such a tickets for free to an user.')
+      = f.association :seat_category, as: :grouped_select,
+                      collection: op.available_seat_categories,
+                      include_blank: _('Form|Select|Blank'),
+                      label: _('MenuItem|Page'),
+                      group_method: :last,
+                      label_method: :first,
+                      value_method: :last
     .card-footer
       = f.save

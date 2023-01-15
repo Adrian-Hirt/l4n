@@ -24,7 +24,6 @@ class Ticket < ApplicationRecord
 
   # == Validations =================================================================
   validates :status, presence: true, inclusion: statuses.keys
-  validate :restrict_seat_category_if_no_order
 
   # == Hooks =======================================================================
 
@@ -36,19 +35,4 @@ class Ticket < ApplicationRecord
   # == Instance Methods ============================================================
 
   # == Private Methods =============================================================
-  private
-
-  def restrict_seat_category_if_no_order
-    # If we have an order we can directly return
-    return if order.present?
-
-    # Return early if we have no seat_category set
-    return if seat_category.nil?
-
-    # Otherwise we need to check that the seat_category has no product set.
-    # If yes, we add an error
-    return if seat_category.product.nil?
-
-    errors.add(:seat_category, _('Ticket|Seat category must not be assigned to a product when manually creating a ticket'))
-  end
 end
