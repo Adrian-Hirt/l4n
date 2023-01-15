@@ -1,3 +1,7 @@
+- if model.created?
+  - content_for :header_buttons do
+    = edit_button model, href: edit_admin_phase_path(model)
+
 .row
   .col-md-6.mb-4.mb-md-0
     .card.mb-4
@@ -6,12 +10,18 @@
         \.
         = model.name
       .card-body
-        .small.text-muted= _('Phase|Tournament mode')
-        .mb-1= model.tournament_mode
-        .small.text-muted= _('Phase|Number of participating teams')
-        .mb-1= model.participating_teams.count
+        .row
+          .col-md-6
+            .small.text-muted= _('Phase|Tournament mode')
+            .mb-1= model.tournament_mode
+          .col-md-6
+            .small.text-muted= _('Phase|Number of participating teams')
+            .mb-1= model.participating_teams.count
+        %hr
         - if model.created?
-          - if model.tournament.registration_open?
+          - if !model.first_phase? && !model.previous_phase.completed?
+            = _('Admin|Tournaments|Phase|Previous phase is still running, please complete the previous phase before generating the rounds for this phase')
+          - elsif model.tournament.registration_open?
             = _('Admin|Tournaments|Phase|Please close the registration before generating rounds')
           - elsif model.swiss?
             -# For Swiss tournaments, we can optionally set a number of rounds, which must
@@ -23,8 +33,13 @@
             -# Otherwise we just display the button to generate the phases
             = button _('Phase|Generate rounds'), generate_rounds_admin_phase_path(model), method: :post
         - elsif model.seeding?
-          .small.text-muted= _('Phase|Number of rounds')
-          = model.rounds.count
+          .mb-2
+            .small.text-muted= _('Phase|Number of rounds')
+            = model.rounds.count
+          = delete_button nil, title: _('Phase|Delete rounds'),
+                               href: delete_rounds_admin_phase_path(model),
+                               confirm: _('Phase|Are you sure you want to delete all rounds for this phase?'),
+                               size: :sm
         - elsif model.confirmed?
           = button _('Phase|Generate first round matches'), generate_next_round_matches_admin_phase_path(model), method: :post
         - elsif model.running?

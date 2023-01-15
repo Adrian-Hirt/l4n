@@ -9,36 +9,38 @@
       -# seed).
       :ruby
         seeded_teams = model.phase_teams.includes(:team)
-        if model.tournament.teams_need_rank?
-          seedable_teams = model.seedable_teams.joins(:tournament_team_rank).order('tournament_team_ranks.sort ASC, tournament_teams.name ASC')
-        else
-          seedable_teams = model.seedable_teams.order(:name)
-        end
+        seedable_teams = model.seedable_teams
 
       - (1..model.participating_teams.count).each do |current_seed|
         .d-flex.align-items-center.py-1{ class: ('border-top' unless current_seed == 1) }
           .me-2.team-seed
             = current_seed
           - if (found_team = seeded_teams.find { |seeded_team| seeded_team.seed == current_seed })
-            = simple_form_for :seeding, url: update_seeding_admin_phase_path(model), html: { class: 'd-flex' } do |f|
-              = f.save '-', class: %i[btn-sm me-2 btn-danger]
-              = f.input :seed, as: :hidden, input_html: { value: current_seed }
-              = f.input :team, as: :hidden, input_html: { team: nil }
-            = found_team.team.name
-            - if model.tournament.teams_need_rank?
-              .text-muted.ms-1
-                \|
-                = found_team.team.tournament_team_rank&.name
+            .d-flex.align-items-center.justify-content-between.flex-grow-1
+              .d-flex
+                = found_team.team.name
+                - if model.tournament.teams_need_rank?
+                  .text-muted.ms-1
+                    \|
+                    = found_team.team.tournament_team_rank&.name
+              %div
+                = simple_form_for :seeding, url: update_seeding_admin_phase_path(model), html: { class: 'd-flex' } do |f|
+                  = f.save _('Admin|Seeding|Remove'), class: %i[btn-sm me-2 btn-danger]
+                  = f.input :seed, as: :hidden, input_html: { value: current_seed }
+                  = f.input :team, as: :hidden, input_html: { team: nil }
           - else
-            = simple_form_for :seeding, url: update_seeding_admin_phase_path(model), html: { class: 'd-flex' } do |f|
-              = f.save '+', class: %i[btn-sm me-2]
-              = f.input :seed, as: :hidden, input_html: { value: current_seed }
-              = f.input :team, as: :select, collection: seedable_teams,
-                                            include_blank: _('Form|Select|Blank'),
-                                            label: false,
-                                            wrapper_html: { style: 'margin-bottom: 0 !important;' },
-                                            input_html: { class: 'form-select-sm' },
-                                            label_method: :name_with_optional_rank
+            = simple_form_for :seeding, url: update_seeding_admin_phase_path(model),
+                                        html: { class: 'd-flex align-items-center justify-content-between flex-grow-1' } do |f|
+              .flex-grow-1
+                = f.input :seed, as: :hidden, input_html: { value: current_seed }, wrapper_html: { style: 'margin-bottom: 0 !important;' }
+                = f.input :team, as: :select, collection: seedable_teams,
+                                              include_blank: _('Form|Select|Blank'),
+                                              label: false,
+                                              wrapper_html: { style: 'margin-bottom: 0 !important;' },
+                                              input_html: { class: 'form-select-sm' },
+                                              label_method: :name_with_optional_rank
+              .ms-2
+                = f.save _('Admin|Seeding|Save'), class: %i[btn-sm me-2]
     .card-footer
       - if seedable_teams.any?
         = _('Phase|Seeding not completed hint')

@@ -350,8 +350,10 @@ Rails.application.routes.draw do
         resources :phases, except: %i[index] do
           member do
             post :generate_rounds
+            delete :delete_rounds
             post :update_seeding
             post :confirm_seeding
+            post :reset_seeding_confirmation
             post :generate_next_round_matches
             post :complete
           end

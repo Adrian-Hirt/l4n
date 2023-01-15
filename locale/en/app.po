@@ -545,14 +545,8 @@ msgstr "Change category"
 msgid "Admin|Ticket|Could not check-in"
 msgstr "Could not check-in"
 
-msgid "Admin|Ticket|Creating a ticket manually should only be used to give out tickets of seat categories which are not sold in the shop. Use the free_item promotion to give such a tickets for free to an user."
-msgstr "Creating a ticket manually should only be used to give out tickets of seat categories which are not sold in the shop. Use the free_item promotion to give such a tickets for free to an user."
-
 msgid "Admin|Ticket|Generated in admin panel"
 msgstr "Generated in admin panel"
-
-msgid "Admin|Ticket|Hint"
-msgstr "Hint"
 
 msgid "Admin|Ticket|Not assigned to a seat"
 msgstr "Not assigned to a seat"
@@ -562,6 +556,14 @@ msgstr "Not checked in"
 
 msgid "Admin|Ticket|Not found"
 msgstr "Not found"
+
+#, fuzzy
+msgid "Admin|Ticket|Not in shop"
+msgstr "Not found"
+
+#, fuzzy
+msgid "Admin|Ticket|Product is not available anymore"
+msgstr "Product"
 
 msgid "Admin|Ticket|Remove seat"
 msgstr "Remove seat"
@@ -580,6 +582,10 @@ msgstr "Seat id to assign to"
 
 msgid "Admin|Ticket|Seat not set"
 msgstr "Seat not set"
+
+#, fuzzy
+msgid "Admin|Ticket|Sold in shop"
+msgstr "Ticket"
 
 msgid "Admin|Ticket|Successfully assigned seat"
 msgstr "Successfully assigned seat"
@@ -686,6 +692,10 @@ msgstr "Please close the registration before generating rounds"
 msgid "Admin|Tournaments|Phase|Please first finish all the matches of the current round"
 msgstr "Please first finish all the matches of the current round"
 
+#, fuzzy
+msgid "Admin|Tournaments|Phase|Previous phase is still running, please complete the previous phase before generating the rounds for this phase"
+msgstr "Tournaments"
+
 msgid "Admin|Tournaments|Phase|Rounds have already been generated"
 msgstr "Rounds have already been generated"
 
@@ -722,6 +732,10 @@ msgstr "Not in running phase"
 msgid "Admin|Tournament|Phase|Could not be destroyed"
 msgstr "Could not be destroyed"
 
+#, fuzzy
+msgid "Admin|Tournament|Phase|Deleting rounds failed"
+msgstr "Generating rounds failed"
+
 msgid "Admin|Tournament|Phase|Failed to complete the phase"
 msgstr "Failed to complete the phase"
 
@@ -742,6 +756,10 @@ msgstr "Successfully completed the phase"
 
 msgid "Admin|Tournament|Phase|Successfully confirmed seeding"
 msgstr "Successfully confirmed seeding"
+
+#, fuzzy
+msgid "Admin|Tournament|Phase|Successfully deleted rounds"
+msgstr "Successfully generated rounds"
 
 msgid "Admin|Tournament|Phase|Successfully generated next round matches"
 msgstr "Successfully generated next round matches"
@@ -894,7 +912,7 @@ msgid "Avatar|Uploading avatar failed"
 msgstr "Uploading avatar failed"
 
 msgid "Buttons|Confirm message"
-msgstr "Confirm message"
+msgstr "Are you sure?"
 
 msgid "CSV"
 msgstr "CSV"
@@ -2001,6 +2019,9 @@ msgstr "Time left:"
 msgid "PaypalPaymentGateway|Title"
 msgstr "Paypal payment"
 
+msgid "Phase|Are you sure you want to delete all rounds for this phase?"
+msgstr ""
+
 msgid "Phase|Cannot change mode when phase is in another state than created"
 msgstr "Cannot change mode when phase is in another state than created"
 
@@ -2014,13 +2035,17 @@ msgid "Phase|Confirm seeding"
 msgstr "Confirm seeding"
 
 msgid "Phase|Confirm seeding?"
-msgstr "Confirm seeding"
+msgstr "Is the seeding correct?"
 
 msgid "Phase|Create rounds for seeding"
 msgstr "Create rounds for seeding"
 
 msgid "Phase|Current round"
 msgstr "Current round"
+
+#, fuzzy
+msgid "Phase|Delete rounds"
+msgstr "Generate rounds"
 
 msgid "Phase|Double elimination lower bracket"
 msgstr "Double elimination lower bracket"
@@ -2063,9 +2088,6 @@ msgstr "Please complete the seeding before continuing"
 
 msgid "Phase|Seeds"
 msgstr "Seeds"
-
-msgid "Phase|Size must be smaller or equal to the number of teams in the previous stage"
-msgstr "Size must be smaller or equal to the number of teams in the previous stage"
 
 msgid "Phase|Standings"
 msgstr "Standings"
@@ -3085,9 +3107,6 @@ msgstr "Seat"
 
 msgid "Ticket|Seat category"
 msgstr "Seat category"
-
-msgid "Ticket|Seat category must not be assigned to a product when manually creating a ticket"
-msgstr "Seat category must not be assigned to a product when manually creating a ticket"
 
 msgid "Ticket|Seat could not be removed"
 msgstr "Seat could not be removed"

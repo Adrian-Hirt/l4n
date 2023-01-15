@@ -67,6 +67,18 @@ module Admin
         redirect_to admin_phase_path(model)
       end
 
+      def delete_rounds
+        if run Operations::Admin::Tournament::Phase::DeleteRounds
+          flash[:success] = _('Admin|Tournament|Phase|Successfully deleted rounds')
+        else
+          flash[:danger] = _('Admin|Tournament|Phase|Deleting rounds failed')
+        end
+      rescue Operations::Exceptions::OpFailed => e
+        flash[:danger] = e.message
+      ensure
+        redirect_to admin_phase_path(model)
+      end
+
       def update_seeding
         if run Operations::Admin::Tournament::Phase::UpdateSeeding
           flash[:success] = _('Admin|Tournament|Phase|Successfully updated seeding')
@@ -81,6 +93,15 @@ module Admin
           flash[:success] = _('Admin|Tournament|Phase|Successfully confirmed seeding')
         else
           flash[:danger] = _('Admin|Tournament|Phase|Failed to confirm seeding')
+        end
+        redirect_to admin_phase_path(model)
+      end
+
+      def reset_seeding_confirmation
+        if run Operations::Admin::Tournament::Phase::ResetSeedingConfirmation
+          flash[:success] = _('Admin|Tournament|Phase|Successfully resetted the seeding confirmation')
+        else
+          flash[:danger] = _('Admin|Tournament|Phase|Failed to reset the seeding confirmation')
         end
         redirect_to admin_phase_path(model)
       end

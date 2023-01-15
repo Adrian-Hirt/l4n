@@ -9,13 +9,18 @@
   .card-body
     - if model.errors[:base].present?
       = f.error :base, class: 'text-danger mb-3'
-    = f.input :name
-    = f.input :tournament_mode, as: :select,
+    .row
+      .col-md-6
+        = f.input :name
+      .col-md-6
+        = f.input :tournament_mode, as: :select,
                                 collection: Tournament::Phase.tournament_modes,
                                 include_blank: _('Form|Select|Blank'),
                                 disabled: !model.created?
-    - unless model.first_phase?
-      = f.input :size, required: true, disabled: !model.created?
-    = f.input :auto_progress, input_html: { class: 'no-validation' }
+      - unless model.first_phase?
+        .col-md-6
+          = f.input :size, required: true, disabled: !model.created?
+      .col-md-6
+        = f.input :auto_progress, input_html: { class: 'no-validation' }, as: :select, include_blank: false
   .card-footer
     = f.save

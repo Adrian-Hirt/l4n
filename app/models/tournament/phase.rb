@@ -36,7 +36,7 @@ class Tournament::Phase < ApplicationRecord
   validates :size, presence: true, numericality: { greater_than: 0 }, unless: :first_phase?
   validate :tournament_must_allow_another_phase, on: :create
   validate :disallow_changes_when_not_created
-  validate :size_smaller_than_previous_teams
+  # validate :size_smaller_than_previous_teams
   validates_boolean :auto_progress
 
   # == Hooks =======================================================================
@@ -78,6 +78,7 @@ class Tournament::Phase < ApplicationRecord
       # If we're the first phase, we get all teams from the tournament which are in
       # status "registered", i.e. all teams which have completed the
       # registration process.
+      # TODO: We maybe should sort this in some meaningful way
       tournament.teams.where(status: 'registered')
     else
       # Otherwise, we get all teams from the previous phase that qualified themselfes
@@ -143,11 +144,11 @@ class Tournament::Phase < ApplicationRecord
     throw :abort unless deletable?
   end
 
-  def size_smaller_than_previous_teams
-    return if first_phase?
+  # def size_smaller_than_previous_teams
+  #   return if first_phase?
 
-    return if size.blank?
+  #   return if size.blank?
 
-    errors.add(:size, _('Phase|Size must be smaller or equal to the number of teams in the previous stage')) if size > previous_phase.teams.count
-  end
+  #   errors.add(:size, _('Phase|Size must be smaller or equal to the number of teams in the previous stage')) if size > previous_phase.teams.count
+  # end
 end

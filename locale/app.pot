@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-15 15:24+0100\n"
-"PO-Revision-Date: 2023-01-15 15:24+0100\n"
+"POT-Creation-Date: 2023-01-15 17:38+0100\n"
+"PO-Revision-Date: 2023-01-15 17:38+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -546,13 +546,7 @@ msgstr ""
 msgid "Admin|Ticket|Could not check-in"
 msgstr ""
 
-msgid "Admin|Ticket|Creating a ticket manually should only be used to give out tickets of seat categories which are not sold in the shop. Use the free_item promotion to give such a tickets for free to an user."
-msgstr ""
-
 msgid "Admin|Ticket|Generated in admin panel"
-msgstr ""
-
-msgid "Admin|Ticket|Hint"
 msgstr ""
 
 msgid "Admin|Ticket|Not assigned to a seat"
@@ -562,6 +556,12 @@ msgid "Admin|Ticket|Not checked in"
 msgstr ""
 
 msgid "Admin|Ticket|Not found"
+msgstr ""
+
+msgid "Admin|Ticket|Not in shop"
+msgstr ""
+
+msgid "Admin|Ticket|Product is not available anymore"
 msgstr ""
 
 msgid "Admin|Ticket|Remove seat"
@@ -580,6 +580,9 @@ msgid "Admin|Ticket|Seat id to assign to"
 msgstr ""
 
 msgid "Admin|Ticket|Seat not set"
+msgstr ""
+
+msgid "Admin|Ticket|Sold in shop"
 msgstr ""
 
 msgid "Admin|Ticket|Successfully assigned seat"
@@ -687,6 +690,9 @@ msgstr ""
 msgid "Admin|Tournaments|Phase|Please first finish all the matches of the current round"
 msgstr ""
 
+msgid "Admin|Tournaments|Phase|Previous phase is still running, please complete the previous phase before generating the rounds for this phase"
+msgstr ""
+
 msgid "Admin|Tournaments|Phase|Rounds have already been generated"
 msgstr ""
 
@@ -723,6 +729,9 @@ msgstr ""
 msgid "Admin|Tournament|Phase|Could not be destroyed"
 msgstr ""
 
+msgid "Admin|Tournament|Phase|Deleting rounds failed"
+msgstr ""
+
 msgid "Admin|Tournament|Phase|Failed to complete the phase"
 msgstr ""
 
@@ -742,6 +751,9 @@ msgid "Admin|Tournament|Phase|Successfully completed the phase"
 msgstr ""
 
 msgid "Admin|Tournament|Phase|Successfully confirmed seeding"
+msgstr ""
+
+msgid "Admin|Tournament|Phase|Successfully deleted rounds"
 msgstr ""
 
 msgid "Admin|Tournament|Phase|Successfully generated next round matches"
@@ -2001,6 +2013,9 @@ msgstr ""
 msgid "PaypalPaymentGateway|Title"
 msgstr ""
 
+msgid "Phase|Are you sure you want to delete all rounds for this phase?"
+msgstr ""
+
 msgid "Phase|Cannot change mode when phase is in another state than created"
 msgstr ""
 
@@ -2020,6 +2035,9 @@ msgid "Phase|Create rounds for seeding"
 msgstr ""
 
 msgid "Phase|Current round"
+msgstr ""
+
+msgid "Phase|Delete rounds"
 msgstr ""
 
 msgid "Phase|Double elimination lower bracket"
@@ -2062,9 +2080,6 @@ msgid "Phase|Seeding not completed hint"
 msgstr ""
 
 msgid "Phase|Seeds"
-msgstr ""
-
-msgid "Phase|Size must be smaller or equal to the number of teams in the previous stage"
 msgstr ""
 
 msgid "Phase|Standings"
@@ -3082,9 +3097,6 @@ msgid "Ticket|Seat"
 msgstr ""
 
 msgid "Ticket|Seat category"
-msgstr ""
-
-msgid "Ticket|Seat category must not be assigned to a product when manually creating a ticket"
 msgstr ""
 
 msgid "Ticket|Seat could not be removed"
