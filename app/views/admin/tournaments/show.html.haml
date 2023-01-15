@@ -8,21 +8,25 @@
         = model.name
         = format_tournament_status(model)
       .card-body
-        .mb-2
-          = _('Tournament|Team types')
-          .small.text-muted
-            - if model.singleplayer?
-              = icon %i[fas fa-user]
-              = _('Team|1 player')
-            - else
-              = icon %i[fas fa-users]
-              = _('Team|%{count} players') % { count: model.team_size }
-        .mb-2
-          = _('Tournament|Max number of participants')
-          .small.text-muted= model.max_number_of_participants
-        %div
-          = _('Tournament|Number of ranks')
-          .small.text-muted= model.tournament_team_ranks.count
+        .row
+          .col-md-6.mb-2
+            = _('Tournament|Team types')
+            .small.text-muted
+              - if model.singleplayer?
+                = icon %i[fas fa-user]
+                = _('Team|1 player')
+              - else
+                = icon %i[fas fa-users]
+                = _('Team|%{count} players') % { count: model.team_size }
+          .col-md-6.mb-2
+            = _('Tournament|Max number of participants')
+            .small.text-muted= model.max_number_of_participants
+          .col-md-6.mb-2
+            = _('Tournament|Number of ranks')
+            .small.text-muted= model.tournament_team_ranks.count
+          .col-md-6.mb-2
+            = _('Tournament|Lan party')
+            .small.text-muted= model.lan_party&.name.presence || _('Tournament|No lan party assigned')
 
     .card.mb-4
       .card-header.d-flex.justify-content-between.align-items-center

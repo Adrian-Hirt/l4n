@@ -12,7 +12,7 @@
                                       color: :primary
   .card-body
     - if model.ongoing_phases?
-      = _('Tournament|In tournament teams')
+      %b= _('Tournament|In tournament teams')
       - model.teams.in_tournament.order(:name).each do |team|
         %div
           = team.name
@@ -22,7 +22,7 @@
               \|
               = team.tournament_team_rank.name
       %hr
-      = _('Tournament|Not in tournament teams')
+      %b= _('Tournament|Not in tournament teams')
       - model.teams.not_in_tournament.order(:name).each do |team|
         %div
           = team.name

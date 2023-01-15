@@ -5,10 +5,13 @@
 .row
   .col-md-6.mb-4.mb-md-0
     .card.mb-4
-      .card-header
-        = model.phase_number
-        \.
-        = model.name
+      .card-header.d-flex.justify-content-between
+        %div
+          = model.phase_number
+          \.
+          = model.name
+        .badge.bg-secondary
+          = model.humanized_status
       .card-body
         .row
           .col-md-6
