@@ -14,5 +14,9 @@ module Operations::Admin::Tournament
         scope.page(params[:page])
       end
     end
+
+    def disputed_match_count
+      @disputed_match_count ||= Tournament::Match.accessible_by(context.ability).where(result_status: Tournament::Match.result_statuses[:disputed]).count
+    end
   end
 end

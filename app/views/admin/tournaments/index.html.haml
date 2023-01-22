@@ -1,6 +1,9 @@
 - content_for :header_buttons do
   .d-flex.gap-1.flex-wrap
-    = button _('Admin|Tournaments|Disputed matches'), disputed_matches_admin_tournaments_path
+    = link_to disputed_matches_admin_tournaments_path, class: %i[btn btn-primary] do
+      = _('Admin|Tournaments|Disputed matches')
+      .badge.bg-secondary
+        = op.disputed_match_count
     = new_button Tournament, namespace: %i[admin]
 
 .card
