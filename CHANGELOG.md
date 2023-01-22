@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.3.3 - 2023-01-22
+
+### Fixed
+
+* Update `Rails` and `Rack` to resolve CVEs
+* Fix minor bugs reported by Exception Notifier
+
 ## 1.3.2 - 2023-01-15
 
 ### Changed

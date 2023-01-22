@@ -30,12 +30,19 @@ module Operations::Gameaccounts
       if response.code == 200
         @successful = true
         @data = {}
-        @data[:steam_name] = response['response']['players'][0]['personaname']
-        @data[:steam_url] = response['response']['players'][0]['profileurl']
-        @data[:steam_avatar] = response['response']['players'][0]['avatarfull']
-        @data[:steam_status_id] = response['response']['players'][0]['personastate']
-        @data[:steam_game] = response['response']['players'][0]['gameextrainfo']
-        @data[:steam_ip] = response['response']['players'][0]['gameserverip']
+        user_data = response.dig('response', 'players', 0)
+
+        if user_data.nil?
+          @successful = false
+          return
+        end
+
+        @data[:steam_name] = user_data['personaname']
+        @data[:steam_url] = user_data['profileurl']
+        @data[:steam_avatar] = user_data['avatarfull']
+        @data[:steam_status_id] = user_data['personastate']
+        @data[:steam_game] = user_data['gameextrainfo']
+        @data[:steam_ip] = user_data['gameserverip']
 
         # 0 - Offline, 1 - Online, 2 - Busy, 3 - Away, 4 - Snooze, 5 - looking to trade, 6 - looking to play
         case @data[:steam_status_id]

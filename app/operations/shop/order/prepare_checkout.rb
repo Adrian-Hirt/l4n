@@ -12,7 +12,7 @@ module Operations::Shop::Order
       # Delete other orders for user that have status `created`
       run_sub! Operations::Shop::Order::CleanupUntouched
 
-      fail CartEmpty if context.user.cart.cart_items.count.zero?
+      fail CartEmpty if context.user.cart.nil? || context.user.cart.cart_items.count.zero?
 
       # Wrap in a transaction
       ActiveRecord::Base.transaction do
