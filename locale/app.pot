@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-15 15:24+0100\n"
-"PO-Revision-Date: 2023-01-15 15:24+0100\n"
+"POT-Creation-Date: 2023-01-23 20:18+0100\n"
+"PO-Revision-Date: 2023-01-23 20:18+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -546,13 +546,7 @@ msgstr ""
 msgid "Admin|Ticket|Could not check-in"
 msgstr ""
 
-msgid "Admin|Ticket|Creating a ticket manually should only be used to give out tickets of seat categories which are not sold in the shop. Use the free_item promotion to give such a tickets for free to an user."
-msgstr ""
-
 msgid "Admin|Ticket|Generated in admin panel"
-msgstr ""
-
-msgid "Admin|Ticket|Hint"
 msgstr ""
 
 msgid "Admin|Ticket|Not assigned to a seat"
@@ -562,6 +556,12 @@ msgid "Admin|Ticket|Not checked in"
 msgstr ""
 
 msgid "Admin|Ticket|Not found"
+msgstr ""
+
+msgid "Admin|Ticket|Not in shop"
+msgstr ""
+
+msgid "Admin|Ticket|Product is not available anymore"
 msgstr ""
 
 msgid "Admin|Ticket|Remove seat"
@@ -580,6 +580,9 @@ msgid "Admin|Ticket|Seat id to assign to"
 msgstr ""
 
 msgid "Admin|Ticket|Seat not set"
+msgstr ""
+
+msgid "Admin|Ticket|Sold in shop"
 msgstr ""
 
 msgid "Admin|Ticket|Successfully assigned seat"
@@ -1102,6 +1105,9 @@ msgid "Doorkeeper::Application|Name"
 msgstr ""
 
 msgid "Doorkeeper::Application|Redirect uri"
+msgstr ""
+
+msgid "Doorkeeper::Application|Redirect uris"
 msgstr ""
 
 msgid "Doorkeeper::Application|Scopes"
@@ -3082,9 +3088,6 @@ msgid "Ticket|Seat"
 msgstr ""
 
 msgid "Ticket|Seat category"
-msgstr ""
-
-msgid "Ticket|Seat category must not be assigned to a product when manually creating a ticket"
 msgstr ""
 
 msgid "Ticket|Seat could not be removed"
