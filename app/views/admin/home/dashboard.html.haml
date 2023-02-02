@@ -3,19 +3,20 @@
     .card
       .card-body
         = _('Admin|Welcome to the L4N Admin panel, version %{version}') % { version: L4N::VERSION }
-  .col-md-6.mb-3
-    .card
-      .card-body
-        .float-end
-          .text-white.bg-info.p-2
-            = icon %i[fas fa-fw fa-users]
-        .text-muted.fw-normal.mt-0= _('Admin|Dashboard|Users total')
-        %h3.mt-3.mb-3= User.count
-  .col-md-6.mb-3
-    .card
-      .card-body
-        .float-end
-          .text-white.bg-info.p-2
-            = icon %i[fas fa-fw fa-user-clock]
-        .text-muted.fw-normal.mt-0= _('Admin|Shop|New users in the last week')
-        %h3.mt-3.mb-3= User.where('created_at >= ?', 7.days.ago).count
+  - if can?(:manage, User)
+    .col-md-6.mb-3
+      .card
+        .card-body
+          .float-end
+            .text-white.bg-info.p-2
+              = icon %i[fas fa-fw fa-users]
+          .text-muted.fw-normal.mt-0= _('Admin|Dashboard|Users total')
+          %h3.mt-3.mb-3= User.count
+    .col-md-6.mb-3
+      .card
+        .card-body
+          .float-end
+            .text-white.bg-info.p-2
+              = icon %i[fas fa-fw fa-user-clock]
+          .text-muted.fw-normal.mt-0= _('Admin|Shop|New users in the last week')
+          %h3.mt-3.mb-3= User.where('created_at >= ?', 7.days.ago).count
