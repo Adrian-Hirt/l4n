@@ -1,0 +1,16 @@
+= simple_form_for [:permissions, :admin, model] do |f|
+  .card.mb-3
+    .card-header
+      = _('Admin|Tournament|Permissions')
+    .card-body
+      #user-tournament-permissions{ data: { controller: 'cocoon' } }
+        = f.error :user_tournament_permissions, class: 'invalid-feedback d-block'
+        = f.simple_fields_for :user_tournament_permissions do |user_tournament_permission|
+          .nested-fields
+            = render 'user_tournament_permission_fields', f: user_tournament_permission
+        .links
+          = link_to_add_association f, :user_tournament_permissions, class: 'btn btn-primary', data: { action: 'click->cocoon#addRow' } do
+            = icon %i[fa fa-plus]
+            = _('Tournament|Add permission')
+    .card-footer
+      = f.save

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_02_175321) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_22_192050) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -599,6 +599,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_02_175321) do
     t.index ["user_id"], name: "index_user_addresses_on_user_id"
   end
 
+  create_table "user_tournament_permissions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "tournament_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tournament_id"], name: "index_user_tournament_permissions_on_tournament_id"
+    t.index ["user_id", "tournament_id"], name: "index_user_tournament_permissions_on_user_id_and_tournament_id", unique: true
+    t.index ["user_id"], name: "index_user_tournament_permissions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.datetime "created_at", null: false
@@ -696,4 +706,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_02_175321) do
   add_foreign_key "user_achievements", "achievements"
   add_foreign_key "user_achievements", "users"
   add_foreign_key "user_addresses", "users"
+  add_foreign_key "user_tournament_permissions", "tournaments"
+  add_foreign_key "user_tournament_permissions", "users"
 end

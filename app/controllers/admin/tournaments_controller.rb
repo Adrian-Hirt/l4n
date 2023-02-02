@@ -38,7 +38,7 @@ module Admin
         redirect_to admin_tournament_path(model)
       else
         add_breadcrumb model.name, admin_tournament_path(model)
-        flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('Tournament') }
+        flash[:danger] = _('Admin|%{model_name}|Update failed') % { model_name: _('Tournament') }
         render :new, status: :unprocessable_entity
       end
     end
@@ -56,6 +56,22 @@ module Admin
     def disputed_matches
       add_breadcrumb _('Admin|Tournaments|Disputed matches')
       op Operations::Admin::Tournament::DisputedMatches
+    end
+
+    def permissions
+      op Operations::Admin::Tournament::UpdatePermissions
+      add_breadcrumb model.name, admin_tournament_path(model)
+    end
+
+    def update_permissions
+      if run Operations::Admin::Tournament::UpdatePermissions
+        flash[:success] = _('Admin|Tournament|Successfully updated permissions')
+        redirect_to admin_tournament_path(model)
+      else
+        add_breadcrumb model.name, admin_tournament_path(model)
+        flash[:danger] = _('Admin|Tournament|Failed to update the permissions')
+        render :permissions, status: :unprocessable_entity
+      end
     end
   end
 end

@@ -19,6 +19,10 @@ class Tournament < ApplicationRecord
   has_many :tournament_team_ranks, class_name: 'Tournament::TeamRank', dependent: :destroy
   accepts_nested_attributes_for :tournament_team_ranks, allow_destroy: true
 
+  has_many :user_tournament_permissions
+  has_many :permitted_users, through: :user_tournament_permissions
+  accepts_nested_attributes_for :user_tournament_permissions, allow_destroy: true
+
   # == Validations =================================================================
   validates :name, presence: true, length: { maximum: 255 }
   validates :team_size, presence: true, numericality: { greater_than: 0 }

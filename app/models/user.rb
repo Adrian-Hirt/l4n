@@ -36,6 +36,9 @@ class User < ApplicationRecord
   has_many :tickets, foreign_key: :assignee_id, dependent: :nullify, inverse_of: :assignee
   has_many :user_achievements, dependent: :destroy
 
+  has_many :user_tournament_permissions
+  has_many :tournaments, through: :user_tournament_permissions
+
   # rubocop:disable Rails/InverseOf
   has_many :access_grants,
            class_name:  'Doorkeeper::AccessGrant',

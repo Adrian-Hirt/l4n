@@ -345,6 +345,8 @@ Rails.application.routes.draw do
     resources :tournaments, shallow: true, except: %i[destroy] do
       member do
         post :toggle_registration
+        get :permissions
+        patch :permissions, action: :update_permissions
       end
       collection do
         get :disputed_matches

@@ -1,5 +1,8 @@
 - content_for :header_buttons do
-  = edit_button model, namespace: %i[admin]
+  .d-flex.gap-1.flex-wrap
+    - if can?(:update_permissions, Tournament)
+      = button _('Admin|Tournament|Edit permissions'), permissions_admin_tournament_path(model)
+    = edit_button model, namespace: %i[admin]
 
 .row
   .col-md-6.mb-4.mb-md-0
