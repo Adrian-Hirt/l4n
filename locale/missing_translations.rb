@@ -44,6 +44,7 @@ N_('Tournament|Show')
 N_('User|Created at')
 
 N_('Doorkeeper::Application')
+N_('Doorkeeper::Application|Redirect uris')
 N_('ApiApplication|Id')
 N_('Ticket|You don\'t have a ticket assigned yet, purchase a ticket or assign yourself a ticket below')
 

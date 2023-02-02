@@ -1158,6 +1158,9 @@ msgstr ""
 msgid "Doorkeeper::Application|Redirect uri"
 msgstr ""
 
+msgid "Doorkeeper::Application|Redirect uris"
+msgstr ""
+
 msgid "Doorkeeper::Application|Scopes"
 msgstr ""
 

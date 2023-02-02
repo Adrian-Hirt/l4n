@@ -1157,6 +1157,9 @@ msgstr "Name"
 msgid "Doorkeeper::Application|Redirect uri"
 msgstr "Redirect URI"
 
+msgid "Doorkeeper::Application|Redirect uris"
+msgstr "Redirect URIs"
+
 msgid "Doorkeeper::Application|Scopes"
 msgstr "Scopes"
 
@@ -2487,7 +2490,7 @@ msgid "Seatmap|Selected seat"
 msgstr "Selected seat"
 
 msgid "Seatmap|Taken seat"
-msgstr "Taken seat"
+msgstr "Occupied seat"
 
 msgid "Seatmap|Toggle sidebar"
 msgstr "Toggle sidebar"

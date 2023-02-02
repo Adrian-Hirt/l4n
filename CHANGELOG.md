@@ -16,6 +16,12 @@
 
 * Fix some small bugs in ticket scanner
 
+## 1.3.4 - 2023-01-23
+
+### Changed
+
+* Update translations
+
 ## 1.3.3 - 2023-01-22
 
 ### Fixed
