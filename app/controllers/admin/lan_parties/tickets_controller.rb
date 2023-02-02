@@ -25,7 +25,7 @@ module Admin
       def create
         if run Operations::Admin::Ticket::Create
           flash[:success] = _('Admin|%{model_name}|Successfully created') % { model_name: _('Ticket') }
-          redirect_to admin_lan_party_tickets_path(model.lan_party)
+          redirect_to admin_ticket_path(model)
         else
           add_breadcrumb op.lan_party.name, admin_lan_party_path(op.lan_party)
           add_breadcrumb _('Admin|Tickets'), admin_lan_party_tickets_path(op.lan_party)

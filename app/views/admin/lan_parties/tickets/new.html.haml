@@ -4,7 +4,7 @@
       = f.association :seat_category, as: :grouped_select,
                       collection: op.available_seat_categories,
                       include_blank: _('Form|Select|Blank'),
-                      label: _('MenuItem|Page'),
+                      label: _('Ticket|Category'),
                       group_method: :last,
                       label_method: :first,
                       value_method: :last

@@ -11,11 +11,13 @@
   .card-body
     = simple_form_for op.grid, url: admin_tournaments_path, method: :get do |f|
       .d-flex.mb-3
-        .select.optional.me-2
+        .select.optional.me-3
+          = f.label :status
           = f.datagrid_filter :status, class: 'form-select rounded-0 select optional'
-        .select.optional.me-2
+        .select.optional.me-3
+          = f.label :lan_party
           = f.datagrid_filter :lan_party, class: 'form-select rounded-0 select optional'
-        %div
+        .d-flex.align-items-end.gap-1
           = f.save _('Apply filter')
           = button _('Search|Reset'), admin_tournaments_path, color: :secondary
     = datagrid_table op.grid, html: { class: 'table' }
