@@ -11,7 +11,7 @@
           = button _('TicketScanner|Stop'), nil, html: { data: { action: 'click->ticket-scanner#stopScanning' } }, color: :default
           = button _('TicketScanner|Toggle flash'), nil, html: { data: { action: 'click->ticket-scanner#toggleFlash' } }, color: :default
       .text-center
-        %video
+        %video.ticket-scanner-area
     = turbo_frame_tag 'ticket_scanner_actions' do
       = form_with url: ticket_scanner_info_path do |f|
         = f.hidden_field :qr_id

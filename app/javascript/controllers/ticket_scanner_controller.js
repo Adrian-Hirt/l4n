@@ -24,8 +24,6 @@ export default class extends Controller {
 
     // List the cameras
     this.#listCameras();
-
-    this.#processScanResult({ 'data':  '{ "qr_id": "MHhWbXhpUitkdGF3aGNEcUJnPT0tLVlGeFpuM3RldnAvOEpyYlYtLWgyUlBVV2lxejY0Y2E1RGxNcUUyTlE9PQ==" }' });
   }
 
   #listCameras() {
