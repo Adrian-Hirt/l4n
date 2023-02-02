@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.4.0 - UNRELEASED
+
+### Added
+
+* Add fine-grained permissions for tournaments
+* Add views for disputed matches in admin panel
+* Add some smaller quality of life features for tournament administration
+
+### Changed
+
+* Improve frontend styling of tournaments
+
+### Fixed
+
 ## 1.3.3 - 2023-01-22
 
 ### Fixed
