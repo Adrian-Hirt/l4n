@@ -198,13 +198,13 @@ msgid "Admin|LanParty|Tournaments"
 msgstr "Tournaments"
 
 msgid "Admin|Match|Dispute resolved?"
-msgstr ""
+msgstr "Is the dispute resolved?"
 
 msgid "Admin|Match|Not updateable hint"
 msgstr "Match is not updateable anymore"
 
 msgid "Admin|Match|Result is disputed, please resolve the dispute with the players"
-msgstr ""
+msgstr "Result is disputed, please resolve the dispute with the players"
 
 msgid "Admin|Match|Submit result"
 msgstr "Submit result"
@@ -297,7 +297,7 @@ msgid "Admin|PaymentAssist|Order is marked as paid successfully"
 msgstr "Order is marked as paid successfully"
 
 msgid "Admin|Phase|Disputed matches"
-msgstr ""
+msgstr "Disputed matches"
 
 msgid "Admin|ProductCategories"
 msgstr "Product Categories"
@@ -731,6 +731,12 @@ msgstr "Could not toggle registration"
 msgid "Admin|Tournament|Description"
 msgstr "Description"
 
+msgid "Admin|Tournament|Edit permissions"
+msgstr "Edit permissions"
+
+msgid "Admin|Tournament|Failed to update the permissions"
+msgstr "Failed to update the permissions"
+
 msgid "Admin|Tournament|Files"
 msgstr "Files"
 
@@ -743,9 +749,11 @@ msgstr "Not in current round"
 msgid "Admin|Tournament|Match|Not in running phase"
 msgstr "Not in running phase"
 
-#, fuzzy
 msgid "Admin|Tournament|No disputed matches"
-msgstr "Tournament"
+msgstr "No disputed matches"
+
+msgid "Admin|Tournament|Permissions"
+msgstr "Permissions"
 
 msgid "Admin|Tournament|Phase|Could not be destroyed"
 msgstr "Could not be destroyed"
@@ -797,6 +805,9 @@ msgstr "Ranks"
 
 msgid "Admin|Tournament|Successfully toggled registration"
 msgstr "Successfully toggled registration"
+
+msgid "Admin|Tournament|Successfully updated permissions"
+msgstr "Successfully updated permissions"
 
 msgid "Admin|Tournament|Team|Destroying failed"
 msgstr "Destroying failed"
@@ -2041,7 +2052,7 @@ msgid "PaypalPaymentGateway|Title"
 msgstr "Paypal payment"
 
 msgid "Phase|Are you sure you want to delete all rounds for this phase?"
-msgstr ""
+msgstr "Are you sure you want to delete all rounds for this phase?"
 
 msgid "Phase|Cannot change mode when phase is in another state than created"
 msgstr "Cannot change mode when phase is in another state than created"
@@ -3416,6 +3427,9 @@ msgstr "Tournaments"
 
 msgid "Tournament|%{participants} participants"
 msgstr "%{participants} participants"
+
+msgid "Tournament|Add permission"
+msgstr "Add permission"
 
 msgid "Tournament|Add team rank"
 msgstr "Add team rank"

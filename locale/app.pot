@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-15 20:42+0100\n"
-"PO-Revision-Date: 2023-01-15 20:42+0100\n"
+"POT-Creation-Date: 2023-02-02 17:19+0100\n"
+"PO-Revision-Date: 2023-02-02 17:19+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -732,6 +732,12 @@ msgstr ""
 msgid "Admin|Tournament|Description"
 msgstr ""
 
+msgid "Admin|Tournament|Edit permissions"
+msgstr ""
+
+msgid "Admin|Tournament|Failed to update the permissions"
+msgstr ""
+
 msgid "Admin|Tournament|Files"
 msgstr ""
 
@@ -745,6 +751,9 @@ msgid "Admin|Tournament|Match|Not in running phase"
 msgstr ""
 
 msgid "Admin|Tournament|No disputed matches"
+msgstr ""
+
+msgid "Admin|Tournament|Permissions"
 msgstr ""
 
 msgid "Admin|Tournament|Phase|Could not be destroyed"
@@ -796,6 +805,9 @@ msgid "Admin|Tournament|Ranks"
 msgstr ""
 
 msgid "Admin|Tournament|Successfully toggled registration"
+msgstr ""
+
+msgid "Admin|Tournament|Successfully updated permissions"
 msgstr ""
 
 msgid "Admin|Tournament|Team|Destroying failed"
@@ -3415,6 +3427,9 @@ msgid "Tournaments"
 msgstr ""
 
 msgid "Tournament|%{participants} participants"
+msgstr ""
+
+msgid "Tournament|Add permission"
 msgstr ""
 
 msgid "Tournament|Add team rank"

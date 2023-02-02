@@ -13,8 +13,8 @@
   .card-body
     - if model.ongoing_phases?
       %b= _('Tournament|In tournament teams')
-      - model.teams.in_tournament.order(:name).each do |team|
-        %div
+      - model.teams.in_tournament.order(:name).each_with_index do |team, index|
+        .py-1{ class: ('border-top' unless index.zero?) }
           = team.name
           .small.text-muted
             = team.humanized_status
@@ -23,8 +23,8 @@
               = team.tournament_team_rank.name
       %hr
       %b= _('Tournament|Not in tournament teams')
-      - model.teams.not_in_tournament.order(:name).each do |team|
-        %div
+      - model.teams.not_in_tournament.order(:name).each_with_index do |team, index|
+        .py-1{ class: ('border-top' unless index.zero?) }
           = team.name
           .small.text-muted
             = team.humanized_status
@@ -33,8 +33,8 @@
               = team.tournament_team_rank.name
     - else
       - tournament_full = model.teams_full?
-      - model.teams.order(:name).each do |team|
-        .d-flex.justify-content-between.align-items-center.py-1{ class: ('border-top' unless team == model.teams.order(:name).first) }
+      - model.teams.order(:name).each_with_index do |team, index|
+        .d-flex.justify-content-between.align-items-center.py-1{ class: ('border-top' unless index.zero?) }
           %div
             = team.name
             .small.text-muted

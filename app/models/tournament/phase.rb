@@ -78,8 +78,9 @@ class Tournament::Phase < ApplicationRecord
       # If we're the first phase, we get all teams from the tournament which are in
       # status "registered", i.e. all teams which have completed the
       # registration process.
-      # TODO: We maybe should sort this in some meaningful way
-      tournament.teams.where(status: 'registered')
+      tournament.teams.left_joins(:tournament_team_rank)
+                      .where(status: 'registered')
+                      .order('tournament_team_ranks.sort ASC, tournament_teams.name ASC')
     else
       # Otherwise, we get all teams from the previous phase that qualified themselfes
       # to move on to the next round, and remove the already seeded teams from that
