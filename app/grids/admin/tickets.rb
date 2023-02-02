@@ -13,7 +13,7 @@ module Grids
       column :product_variant_name
 
       column :assignee, html: ->(assignee) { assignee&.username }
-      column :seat, html: ->(seat) { seat&.id }
+      column :seat, html: ->(seat) { seat&.name_or_id }
       column :status, html: true, &:humanized_status
       column :order, html: true do |ticket|
         if ticket.order.present?
