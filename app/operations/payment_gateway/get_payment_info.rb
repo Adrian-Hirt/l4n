@@ -14,6 +14,9 @@ module Operations::PaymentGateway
       # Get order
       order = ::Order.find_by(uuid: osparams.order_id)
 
+      # Check that the order was actually found
+      fail InvalidOrder, _('Checkout|The given order was not found') if order.nil?
+
       # Verify that the order is still active and in the correct state
       fail InvalidOrder, _('Checkout|Order has wrong status') unless order.created? || order.payment_pending?
 
