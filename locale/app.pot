@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-02 17:19+0100\n"
-"PO-Revision-Date: 2023-02-02 17:19+0100\n"
+"POT-Creation-Date: 2023-02-02 18:24+0100\n"
+"PO-Revision-Date: 2023-02-02 18:24+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -574,6 +574,9 @@ msgid "Admin|Ticket|Not found"
 msgstr ""
 
 msgid "Admin|Ticket|Not in shop"
+msgstr ""
+
+msgid "Admin|Ticket|Order present"
 msgstr ""
 
 msgid "Admin|Ticket|Product is not available anymore"
@@ -2139,6 +2142,9 @@ msgstr ""
 msgid "Phase|Tournament mode"
 msgstr ""
 
+msgid "Players"
+msgstr ""
+
 msgid "Product"
 msgstr ""
 
@@ -2805,6 +2811,9 @@ msgstr ""
 msgid "TeamMember|Successfully promoted"
 msgstr ""
 
+msgid "Teams"
+msgstr ""
+
 msgid "Team|%{count} players"
 msgstr ""
 
@@ -3468,6 +3477,9 @@ msgstr ""
 msgid "Tournament|Lan party"
 msgstr ""
 
+msgid "Tournament|LanParty"
+msgstr ""
+
 msgid "Tournament|Leave team"
 msgstr ""
 
@@ -3510,13 +3522,13 @@ msgstr ""
 msgid "Tournament|Not in tournament teams"
 msgstr ""
 
-msgid "Tournament|Number of Participants"
-msgstr ""
-
 msgid "Tournament|Number of ranks"
 msgstr ""
 
 msgid "Tournament|Participant type"
+msgstr ""
+
+msgid "Tournament|Participants"
 msgstr ""
 
 msgid "Tournament|Participate in tournament"

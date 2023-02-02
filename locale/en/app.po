@@ -575,6 +575,9 @@ msgstr "Not found"
 msgid "Admin|Ticket|Not in shop"
 msgstr "Not in shop"
 
+msgid "Admin|Ticket|Order present"
+msgstr "Order present?"
+
 msgid "Admin|Ticket|Product is not available anymore"
 msgstr "Product is not available anymore"
 
@@ -2138,6 +2141,9 @@ msgstr "Tournament cannot have another phase"
 msgid "Phase|Tournament mode"
 msgstr "Tournament mode"
 
+msgid "Players"
+msgstr "Players"
+
 msgid "Product"
 msgstr "Product"
 
@@ -2804,6 +2810,9 @@ msgstr "Promoting failed"
 msgid "TeamMember|Successfully promoted"
 msgstr "Successfully promoted"
 
+msgid "Teams"
+msgstr "Teams"
+
 msgid "Team|%{count} players"
 msgstr "%{count} players"
 
@@ -3467,6 +3476,9 @@ msgstr "Info"
 msgid "Tournament|Lan party"
 msgstr "Lan Party"
 
+msgid "Tournament|LanParty"
+msgstr "LanParty"
+
 msgid "Tournament|Leave team"
 msgstr "Leave team"
 
@@ -3509,14 +3521,14 @@ msgstr "No teams"
 msgid "Tournament|Not in tournament teams"
 msgstr "Not in tournament teams"
 
-msgid "Tournament|Number of Participants"
-msgstr "Number of Participants"
-
 msgid "Tournament|Number of ranks"
 msgstr "Number of ranks"
 
 msgid "Tournament|Participant type"
 msgstr "Participant type"
+
+msgid "Tournament|Participants"
+msgstr "Participants"
 
 msgid "Tournament|Participate in tournament"
 msgstr "Participate in tournament"
@@ -3525,7 +3537,7 @@ msgid "Tournament|Phase"
 msgstr "Phase"
 
 msgid "Tournament|Please check-in at the event to see the available actions"
-msgstr "Please check-in at the event to see the available actions"
+msgstr "You need to check-in at the LAN Party to join this tournament."
 
 msgid "Tournament|Please login to see the available actions"
 msgstr "Please login to see the available actions"

@@ -3,28 +3,26 @@
 .row
   - op.tournaments.each do |tournament|
     - cache [tournament, I18n.locale, :frontend, :tournament_index] do
-      .col-md-4.mb-3
+      .col-md-6.mb-3
         .card
           .card-header.d-flex.justify-content-between.align-items-center
-            %b= tournament.name
-            - if tournament.lan_party.present?
-              .text-muted
-                = tournament.lan_party.name
+            = link_to tournament_path(tournament) do
+              %h4.mb-0= tournament.name
+            = format_registration_status(tournament)
           .card-body
-            .mb-2
-              = _('Tournament|Team types')
-              .small.text-muted
-                - if tournament.singleplayer?
-                  = icon %i[fas fa-user]
-                  = _('Team|1 player')
-                - else
-                  = icon %i[fas fa-users]
-                  = _('Team|%{count} players') % { count: tournament.team_size }
-            .mb-2
-              = _('Tournament|Number of Participants')
-              .small.text-muted
-                = "#{tournament.teams.in_tournament.count} / #{tournament.max_number_of_participants}"
-            %hr
-              = format_registration_status(tournament)
-          .card-footer
-            = show_button tournament, size: :sm, color: :default
+            .row
+              .col-md-6
+                = _('Tournament|Participants')
+                .small.text-muted
+                  - if tournament.singleplayer?
+                    = icon %i[fas fa-user]
+                    = "#{tournament.teams.in_tournament.count} / #{tournament.max_number_of_participants} #{_('Players')}"
+                  - else
+                    = icon %i[fas fa-users]
+                    = "#{tournament.teams.in_tournament.count} / #{tournament.max_number_of_participants} #{_('Teams')}"
+              - if tournament.lan_party.present?
+                .col-md-6
+                  = _('Tournament|LanParty')
+                  .small.text-muted
+                    = tournament.lan_party.name
+

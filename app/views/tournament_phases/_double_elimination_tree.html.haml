@@ -3,7 +3,7 @@
 
 .card
   .card-header.d-flex.justify-content-between.align-items-center
-    %h4.mb-0= "#{phase.phase_number}. #{phase.name}"
+    = "#{phase.phase_number}. #{phase.name}"
     .text-muted= phase.humanized_tournament_mode
   .card-body
     .mb-2= _('Phase|Double elimination upper bracket')
