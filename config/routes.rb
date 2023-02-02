@@ -342,7 +342,7 @@ Rails.application.routes.draw do
     end
 
     # Tournament system
-    resources :tournaments, shallow: true, except: %i[destroy] do
+    resources :tournaments, shallow: true do
       member do
         post :toggle_registration
         get :permissions

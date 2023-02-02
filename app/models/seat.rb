@@ -30,7 +30,7 @@ class Seat < ApplicationRecord
     name.presence || id
   end
 
-  def deletable?
+  def deleteable?
     ticket.nil?
   end
 
@@ -38,6 +38,6 @@ class Seat < ApplicationRecord
   private
 
   def check_if_deletable
-    throw :abort unless deletable?
+    throw :abort unless deleteable?
   end
 end

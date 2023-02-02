@@ -1,7 +1,7 @@
 - content_for :header_buttons do
   .d-flex.gap-1.flex-wrap
     = edit_button model, namespace: %i[admin]
-    = delete_button model, namespace: %i[admin], disabled: !model.deletable?
+    = delete_button model, namespace: %i[admin], disabled: !model.deleteable?
 
 .row
   .col-lg-8.mb-3

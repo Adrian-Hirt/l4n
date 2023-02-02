@@ -8,7 +8,7 @@ module Operations::Tournament::Team
 
     policy do
       # Check that the team is deletable
-      fail Operations::Exceptions::OpFailed, _('Team|Not deletable') unless model.deletable?
+      fail Operations::Exceptions::OpFailed, _('Team|Not deletable') unless model.deleteable?
 
       # Check that the registration of the tournament is open
       fail Operations::Exceptions::OpFailed, _('Tournament|Registration is closed') unless model.tournament.registration_open?

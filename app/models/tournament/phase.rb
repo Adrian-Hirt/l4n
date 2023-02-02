@@ -36,11 +36,9 @@ class Tournament::Phase < ApplicationRecord
   validates :size, presence: true, numericality: { greater_than: 0 }, unless: :first_phase?
   validate :tournament_must_allow_another_phase, on: :create
   validate :disallow_changes_when_not_created
-  # validate :size_smaller_than_previous_teams
   validates_boolean :auto_progress
 
   # == Hooks =======================================================================
-  before_destroy :check_if_deletable
 
   # == Scopes ======================================================================
 
@@ -104,7 +102,7 @@ class Tournament::Phase < ApplicationRecord
     rounds.order(:round_number).find { |r| r.matches.none? }
   end
 
-  def deletable?
+  def deleteable?
     created? && last_phase?
   end
 
@@ -140,16 +138,4 @@ class Tournament::Phase < ApplicationRecord
 
     errors.add(:size, _('Phase|Cannot change size when phase is in another state than created')) if size_changed?
   end
-
-  def check_if_deletable
-    throw :abort unless deletable?
-  end
-
-  # def size_smaller_than_previous_teams
-  #   return if first_phase?
-
-  #   return if size.blank?
-
-  #   errors.add(:size, _('Phase|Size must be smaller or equal to the number of teams in the previous stage')) if size > previous_phase.teams.count
-  # end
 end

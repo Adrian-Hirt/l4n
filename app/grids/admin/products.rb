@@ -18,7 +18,7 @@ module Grids
         tag.div class: %i[datagrid-actions-wrapper] do
           safe_join([
                       edit_button(product, namespace: %i[admin shop], size: :sm, icon_only: true),
-                      delete_button(product, namespace: %i[admin shop], size: :sm, icon_only: true, disabled: !product.deletable?)
+                      delete_button(product, namespace: %i[admin shop], size: :sm, icon_only: true, disabled: !product.deleteable?)
                     ])
         end
       end

@@ -20,7 +20,14 @@ module Grids
       end
       column :'datagrid-actions', html: true, header: false do |tournament|
         tag.div class: %i[datagrid-actions-wrapper] do
-          show_button(tournament, namespace: %i[admin], size: :sm, icon_only: true)
+          if can?(:destroy, Tournament)
+            safe_join([
+                        show_button(tournament, namespace: %i[admin], size: :sm, icon_only: true),
+                        delete_button(tournament, namespace: %i[admin], size: :sm, icon_only: true)
+                      ])
+          else
+            show_button(tournament, namespace: %i[admin], size: :sm, icon_only: true)
+          end
         end
       end
 

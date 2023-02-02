@@ -62,6 +62,6 @@
                                                                               color: :primary,
                                                                               html: { title: _('Admin|Teams|Unregister from tournament'), data: { 'bs-toggle' => :tooltip } }
             = edit_button team, size: :sm, icon_only: true, href: edit_admin_team_path(team)
-            = delete_button team, size: :sm, icon_only: true, href: admin_team_path(team), disabled: !team.deletable?
+            = delete_button team, size: :sm, icon_only: true, href: admin_team_path(team), disabled: !team.deleteable?
   .card-footer
     = _('Tournament|%{participants} participants') % { participants: model.teams.count }

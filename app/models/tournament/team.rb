@@ -31,7 +31,6 @@ class Tournament::Team < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6, maximum: 72 }, if: -> { !tournament.singleplayer? && (password.present? || new_record?) }
 
   # == Hooks =======================================================================
-  before_destroy :check_deletable?
 
   # == Scopes ======================================================================
   scope :in_tournament, -> { where.not(status: 'created') }
@@ -49,7 +48,7 @@ class Tournament::Team < ApplicationRecord
     team_members.none?(&:captain?)
   end
 
-  def deletable?
+  def deleteable?
     created?
   end
 
@@ -70,11 +69,4 @@ class Tournament::Team < ApplicationRecord
   end
 
   # == Private Methods =============================================================
-  private
-
-  def check_deletable?
-    return if deletable?
-
-    throw :abort
-  end
 end

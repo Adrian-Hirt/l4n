@@ -97,7 +97,7 @@ class Ability
 
       # A user can destroy a team if it's deletable and they are the captain
       can :destroy, Tournament::Team do |m|
-        m.captain?(user) && m.deletable?
+        m.captain?(user) && m.deleteable?
       end
 
       # A user can always join a Team

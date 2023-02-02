@@ -29,7 +29,7 @@ class LanParty < ApplicationRecord
 
   # == Instance Methods ============================================================
   # For now: not deletable if any tickets are created for the lan_party
-  def deletable?
+  def deleteable?
     tickets.none?
   end
 
@@ -45,6 +45,6 @@ class LanParty < ApplicationRecord
   end
 
   def check_if_deletable
-    throw :abort unless deletable?
+    throw :abort unless deleteable?
   end
 end

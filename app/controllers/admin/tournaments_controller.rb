@@ -43,6 +43,15 @@ module Admin
       end
     end
 
+    def destroy
+      if run Operations::Admin::Tournament::Destroy
+        flash[:success] = _('Admin|%{model_name}|Successfully deleted') % { model_name: _('Tournament') }
+      else
+        flash[:danger] = _('Admin|%{model_name}|Cannot be deleted') % { model_name: _('Tournament') }
+      end
+      redirect_to admin_tournaments_path
+    end
+
     def toggle_registration
       if run Operations::Admin::Tournament::ToggleRegistration
         flash[:success] = _('Admin|Tournament|Successfully toggled registration')

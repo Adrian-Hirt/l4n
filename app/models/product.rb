@@ -58,7 +58,7 @@ class Product < ApplicationRecord
 
   # == Hooks =======================================================================
   before_create :add_availability_and_total_inventory
-  before_destroy :check_deletable?
+  before_destroy :check_deleteable?
 
   # == Scopes ======================================================================
 
@@ -79,7 +79,7 @@ class Product < ApplicationRecord
     product_variants.map(&:price).min.presence || Money.zero
   end
 
-  def deletable?
+  def deleteable?
     Product.where('to_product_id = ? OR from_product_id = ?', id, id).none?
   end
 
@@ -91,8 +91,8 @@ class Product < ApplicationRecord
     self.total_inventory = inventory
   end
 
-  def check_deletable?
-    return if deletable?
+  def check_deleteable?
+    return if deleteable?
 
     throw :abort
   end

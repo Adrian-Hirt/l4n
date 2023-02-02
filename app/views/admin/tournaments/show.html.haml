@@ -56,7 +56,7 @@
               %div
                 = show_button phase, size: :sm, icon_only: true, href: admin_phase_path(phase)
                 = edit_button phase, size: :sm, icon_only: true, href: edit_admin_phase_path(phase)
-                = delete_button phase, size: :sm, icon_only: true, href: admin_phase_path(phase), disabled: !phase.deletable?
+                = delete_button phase, size: :sm, icon_only: true, href: admin_phase_path(phase), disabled: !phase.deleteable?
         - else
           = _('Tournament|No phases')
     .card.mb-0.mb-md-4
