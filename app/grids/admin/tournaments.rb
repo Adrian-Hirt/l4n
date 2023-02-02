@@ -25,7 +25,7 @@ module Grids
       end
 
       filter(:status, :enum, select: Tournament.statuses.keys, include_blank: _('Form|Select|Show all'))
-      filter(:lan_party, :enum, select: LanParty.where(id: scope.pluck(:lan_party_id)).order(:name).map { |lan_party| [lan_party.name, lan_party.id] },
+      filter(:lan_party, :enum, select:        LanParty.where(id: scope.pluck(:lan_party_id)).order(:name).map { |lan_party| [lan_party.name, lan_party.id] },
                                 include_blank: _('Form|Select|Show all'))
     end
   end

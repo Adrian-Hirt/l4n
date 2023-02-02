@@ -36,7 +36,7 @@ class User < ApplicationRecord
   has_many :tickets, foreign_key: :assignee_id, dependent: :nullify, inverse_of: :assignee
   has_many :user_achievements, dependent: :destroy
 
-  has_many :user_tournament_permissions
+  has_many :user_tournament_permissions, dependent: :destroy
   has_many :permitted_tournaments, through: :user_tournament_permissions, source: :tournament
 
   # rubocop:disable Rails/InverseOf
