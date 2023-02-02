@@ -4,6 +4,8 @@ module Operations::Shop::Order
       int! :id, cast_str: true
     end
 
+    load_model_authorization_action :read_public
+
     model ::Order
 
     policy :on_init do

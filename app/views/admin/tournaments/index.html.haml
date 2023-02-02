@@ -4,7 +4,8 @@
       = _('Admin|Tournaments|Disputed matches')
       .badge.bg-secondary
         = op.disputed_match_count
-    = new_button Tournament, namespace: %i[admin]
+    - if can?(:create, Tournament)
+      = new_button Tournament, namespace: %i[admin]
 
 .card
   .card-body

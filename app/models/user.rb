@@ -37,7 +37,7 @@ class User < ApplicationRecord
   has_many :user_achievements, dependent: :destroy
 
   has_many :user_tournament_permissions
-  has_many :tournaments, through: :user_tournament_permissions
+  has_many :permitted_tournaments, through: :user_tournament_permissions, source: :tournament
 
   # rubocop:disable Rails/InverseOf
   has_many :access_grants,
@@ -79,6 +79,10 @@ class User < ApplicationRecord
 
   def any_admin_permission?
     User::PERMISSION_FIELDS.any? { |permission| send(permission) }
+  end
+
+  def any_fine_grained_admin_permission?
+    user_tournament_permissions.any?
   end
 
   def only_payment_assist_permission?

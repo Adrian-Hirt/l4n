@@ -4,6 +4,8 @@ module Operations::NewsPost
       int! :id, cast_str: true
     end
 
+    load_model_authorization_action :read_public
+
     model ::NewsPost
   end
 end

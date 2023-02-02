@@ -20,7 +20,7 @@ class Tournament < ApplicationRecord
   accepts_nested_attributes_for :tournament_team_ranks, allow_destroy: true
 
   has_many :user_tournament_permissions
-  has_many :permitted_users, through: :user_tournament_permissions
+  has_many :permitted_users, through: :user_tournament_permissions, source: :user
   accepts_nested_attributes_for :user_tournament_permissions, allow_destroy: true
 
   # == Validations =================================================================

@@ -6,6 +6,10 @@ module Operations::Admin::Tournament::Team
       int! :seed
     end
 
+    policy :on_init do
+      authorize! :manage, phase
+    end
+
     def perform
       ActiveRecord::Base.transaction do
         ::Tournament::PhaseTeam.create!(

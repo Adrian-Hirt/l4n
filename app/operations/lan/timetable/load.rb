@@ -3,7 +3,7 @@ module Operations::Lan::Timetable
     schema3 {} # No params allowed for now
 
     policy :on_init do
-      authorize! :read, Timetable
+      authorize! :read_public, Timetable
     end
 
     model ::Timetable

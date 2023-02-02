@@ -5,7 +5,7 @@ module Operations::Event
     end
 
     policy :on_init do
-      authorize! :read, Event
+      authorize! :read_public, Event
     end
 
     def events

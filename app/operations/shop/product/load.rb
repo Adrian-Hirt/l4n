@@ -4,11 +4,7 @@ module Operations::Shop::Product
       int! :id, cast_str: true
     end
 
-    policy :on_init do
-      authorize! :read, :shop
-    end
-
-    load_model_authorization_action nil
+    load_model_authorization_action :read_public
 
     attr_reader :requested_quantity
 

@@ -6,7 +6,7 @@ module Operations::User
     end
 
     policy :on_init do
-      authorize! :read, ::User
+      authorize! :read_public, ::User
     end
 
     def grid

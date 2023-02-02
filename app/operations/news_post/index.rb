@@ -1,7 +1,7 @@
 module Operations::NewsPost
   class Index < RailsOps::Operation
     policy :on_init do
-      authorize! :read, NewsPost
+      authorize! :read_public, NewsPost
     end
 
     schema3 ignore_obsolete_properties: true do

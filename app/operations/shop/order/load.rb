@@ -2,6 +2,8 @@ module Operations::Shop::Order
   class Load < RailsOps::Operation::Model::Load
     model ::Order
 
+    load_model_authorization_action :read_public
+
     schema3 do
       str! :id, as: :uuid
     end

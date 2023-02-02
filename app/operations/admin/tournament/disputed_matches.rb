@@ -3,7 +3,7 @@ module Operations::Admin::Tournament
     schema3 {} # No params allowed
 
     policy :on_init do
-      authorize! :manage, Tournament
+      authorize! :manage, Tournament::Match
     end
 
     def matches

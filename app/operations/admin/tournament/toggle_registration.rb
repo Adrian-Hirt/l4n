@@ -1,5 +1,5 @@
 module Operations::Admin::Tournament
-  class ToggleRegistration < RailsOps::Operation::Model::Load
+  class ToggleRegistration < RailsOps::Operation::Model::Update
     schema3 do
       int! :id, cast_str: true
     end

@@ -9,6 +9,8 @@ module Operations::Shop::Order
       end
     end
 
+    load_model_authorization_action :read_public
+
     attr_accessor :reduction
     attr_accessor :matching
     attr_accessor :total

@@ -8,41 +8,44 @@ class Ability
     ##############################################################
 
     # Anyone can read a newspost if the feature flag is enabled and it's published
-    can :read, NewsPost, &:published? if FeatureFlag.enabled?(:news_posts)
+    can :read_public, NewsPost, &:published? if FeatureFlag.enabled?(:news_posts)
 
     # Anyone can read an event if the feature flag is enabled and it's published
-    can :read, Event, &:published? if FeatureFlag.enabled?(:events)
+    can :read_public, Event, &:published? if FeatureFlag.enabled?(:events)
 
     # Anyone can read a page if the feature flag is enabled and it's published
-    can :read, Page, &:published? if FeatureFlag.enabled?(:pages)
+    can :read_public, Page, &:published? if FeatureFlag.enabled?(:pages)
 
     # Anyone can look at the seatmap and the timetable if it's enabled
     if FeatureFlag.enabled?(:lan_party)
-      can :read, SeatMap
-      can :read, Timetable
+      can :read_public, SeatMap
+      can :read_public, Timetable
     end
 
-    can :read, :shop if FeatureFlag.enabled?(:shop)
+    if FeatureFlag.enabled?(:shop)
+      can :read_public, :shop
+      can :read_public, Product, &:on_sale
+    end
 
     # Tournament permissions. No permissions if the feature flag is
     # not enabled.
     if FeatureFlag.enabled?(:tournaments)
       # Anyone can view all published tournaments
-      can :read, Tournament, status: Tournament.statuses[:published]
+      can :read_public, Tournament, status: Tournament.statuses[:published]
 
       # Anyone can view any team that participates in a published tournament
-      can :read, Tournament::Team, Queries::Tournament::Team::FetchAccessibleBy.call(user: user) do |m|
+      can :read_public, Tournament::Team, Queries::Tournament::Team::FetchAccessibleBy.call(user: user) do |m|
         m.tournament.published?
       end
 
       # Anyone can view any match that is in a published tournament
-      can :read, Tournament::Match, Queries::Tournament::Match::FetchAccessibleBy.call(user: user) do |m|
+      can :read_public, Tournament::Match, Queries::Tournament::Match::FetchAccessibleBy.call(user: user) do |m|
         m.tournament.published?
       end
     end
 
     # Anyone can read user list and profiles
-    can :read, User
+    can :read_public, User
 
     # Return early if user does not exist
     return if user.nil?
@@ -53,7 +56,7 @@ class Ability
     # Shop permissions
     if FeatureFlag.enabled?(:shop)
       can :use, :shop
-      can :read, Order do |m|
+      can :read_public, Order do |m|
         m.user == user
       end
     end
@@ -102,7 +105,7 @@ class Ability
 
       # A user can update a TeamMember if it's in a team they are
       # the captain or if it's their own membership.
-      can %i[read update destroy], Tournament::TeamMember do |m|
+      can %i[read_public update destroy], Tournament::TeamMember do |m|
         m.user == user || m.team.captain?(user)
       end
 
@@ -117,11 +120,28 @@ class Ability
     ##############################################################
 
     # Return early if the user doesn't have any admin permission
-    return unless user.any_admin_permission?
+    # and doesn't have any fine-grained admin permission (e.g.
+    # to edit a single tournament)
+    return unless user.any_admin_permission? || user.any_fine_grained_admin_permission?
 
     # User can access admin panel if the user has any
-    # admin permission
+    # admin permission or any fine-grained admin permission
     can :access, :admin_panel
+
+    # An user may update a tournament, manage its registrations,
+    # phases, rounds and matches if they have the "fine-grained"
+    # permission for that tournament
+    if FeatureFlag.enabled?(:tournaments)
+      can %i[read update], Tournament, permitted_users: { id: user.id }
+      can :manage, Tournament::Phase, tournament: Tournament.accessible_by(self)
+      can :manage, Tournament::Team, tournament: Tournament.accessible_by(self)
+      can :manage, Tournament::TeamMember, team: Tournament::Team.accessible_by(self)
+      can :manage, Tournament::Match, round: { phase: Tournament::Phase.accessible_by(self) }
+    end
+
+    # Return early if the user only has fine-grained admin permissions
+    # but no other admin permissions
+    return unless user.any_admin_permission?
 
     # NewsPost admin permission
     can :manage, NewsPost if user.news_admin_permission? && FeatureFlag.enabled?(:news_posts)

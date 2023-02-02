@@ -5,7 +5,7 @@ module Operations::Shop::Home
     end
 
     policy :on_init do
-      authorize! :read, :shop
+      authorize! :read_public, :shop
     end
 
     def products

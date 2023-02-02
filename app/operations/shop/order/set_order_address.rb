@@ -7,6 +7,8 @@ module Operations::Shop::Order
 
     model ::Order
 
+    load_model_authorization_action :read_public
+
     attr_reader :no_address_given_error
     attr_reader :chosen_address
 

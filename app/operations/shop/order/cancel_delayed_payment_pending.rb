@@ -4,6 +4,8 @@ module Operations::Shop::Order
       str! :id, as: :uuid
     end
 
+    load_model_authorization_action :read_public
+
     policy :on_init do
       fail CanCan::AccessDenied unless model.delayed_payment_pending?
     end

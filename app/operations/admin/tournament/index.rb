@@ -6,12 +6,12 @@ module Operations::Admin::Tournament
     end
 
     policy :on_init do
-      authorize! :manage, Tournament
+      authorize! :read, Tournament
     end
 
     def grid
       @grid ||= Grids::Admin::Tournaments.new(osparams.grids_admin_tournaments) do |scope|
-        scope.page(params[:page])
+        scope.accessible_by(context.ability).page(params[:page])
       end
     end
 

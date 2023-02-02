@@ -7,7 +7,7 @@ module Operations::Gameaccounts
     end
 
     policy :on_init do
-      authorize! :read, user
+      authorize! :read_public, user
     end
 
     attr_accessor :data

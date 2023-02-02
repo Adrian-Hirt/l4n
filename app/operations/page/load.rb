@@ -6,10 +6,12 @@ module Operations::Page
 
     model ::Page
 
-    without_authorization
-
     policy :on_init do
+      # Check if the page was found
       fail ActiveRecord::RecordNotFound unless FeatureFlag.enabled?(:pages)
+
+      # Check that the user may access the page
+      authorize! :read_public, model
     end
 
     def model

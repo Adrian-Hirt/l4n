@@ -5,7 +5,7 @@ module Operations::Lan::SeatMap
     end
 
     policy :on_init do
-      authorize! :read, SeatMap
+      authorize! :read_public, SeatMap
     end
 
     model ::SeatMap

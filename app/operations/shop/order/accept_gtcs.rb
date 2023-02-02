@@ -6,6 +6,8 @@ module Operations::Shop::Order
 
     model ::Order
 
+    load_model_authorization_action :read_public
+
     def perform
       model.gtcs_accepted = true
       model.save!

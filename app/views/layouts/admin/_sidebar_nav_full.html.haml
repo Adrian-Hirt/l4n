@@ -106,7 +106,7 @@
         %span
           %i.nav-icon.fas.fa-barcode.fa-fw
           %span.nav-item-text= _('Admin|ScannerUsers')
-  - if can? :manage, Tournament
+  - if can? :read, Tournament
     .li.nav-item
       %a.nav-link{ href: admin_tournaments_path, class: active_link_classes(:tournaments, include_children: true) }
         %span

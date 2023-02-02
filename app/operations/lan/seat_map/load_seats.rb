@@ -3,7 +3,7 @@ module Operations::Lan::SeatMap
     schema3 {} # No params allowed for now
 
     policy :on_init do
-      authorize! :read, SeatMap
+      authorize! :read_public, SeatMap
     end
 
     def data
