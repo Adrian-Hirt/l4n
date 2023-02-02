@@ -91,4 +91,18 @@ module TestDataFactory
       }
     end
   end
+
+  def create_tournament(attrs = {})
+    ::Operations::Admin::Tournament::Create.run!(
+      tournament: {
+        name:                       'Testtournament',
+        singleplayer:               true,
+        max_number_of_participants: 12
+      }.merge!(attrs)
+    ).model.reload
+  end
+
+  def create_tournament_permission(tournament, user)
+    ::UserTournamentPermission.create!(tournament: tournament, user: user)
+  end
 end
