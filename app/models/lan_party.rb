@@ -12,20 +12,20 @@ class LanParty < ApplicationRecord
 
   # == Validations =================================================================
   validates :name, presence: true, length: { maximum: 255 }
+  validates :sort, presence: true
   validates_boolean :active
+  validates_boolean :sidebar_active
+  validates_boolean :timetable_enabled
+  validates_boolean :seatmap_enabled
   validates :event_start, presence: true
   validates :event_end, presence: true, comparison: { greater_than: :event_start }
 
   # == Hooks =======================================================================
-  before_save :set_others_to_inactive
   before_destroy :check_if_deletable, prepend: true
 
   # == Scopes ======================================================================
 
   # == Class Methods ===============================================================
-  def self.active
-    LanParty.find_by(active: true)
-  end
 
   # == Instance Methods ============================================================
   # For now: not deletable if any tickets are created for the lan_party
@@ -35,15 +35,6 @@ class LanParty < ApplicationRecord
 
   # == Private Methods =============================================================
   private
-
-  def set_others_to_inactive
-    return unless active?
-
-    # rubocop:disable Rails/SkipsModelValidations
-    self.class.where('id <> ? AND active = true', id).update_all("active = 'false'")
-    # rubocop:enable Rails/SkipsModelValidations
-  end
-
   def check_if_deletable
     throw :abort unless deleteable?
   end

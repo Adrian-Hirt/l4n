@@ -14,12 +14,12 @@
   end
 
 .progress.ticket-progress
-  .progress-bar
+  .progress-bar{ class: "progress-bar-#{lan_party.id}" }
     = sold_tickets
     \/
     = available_products
 
 :css
-  .progress-bar {
+  .progress-bar-#{lan_party.id} {
     background: linear-gradient(to right, #{color} #{percentage}%, transparent #{percentage}%);
   }

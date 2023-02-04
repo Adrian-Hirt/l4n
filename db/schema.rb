@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_22_192050) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_04_100808) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -119,6 +119,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_22_192050) do
     t.datetime "event_start"
     t.datetime "event_end"
     t.string "location"
+    t.boolean "sidebar_active", default: true, null: false
+    t.integer "sort", default: 0, null: false
+    t.boolean "timetable_enabled", default: true, null: false
+    t.boolean "seatmap_enabled", default: true, null: false
   end
 
   create_table "menu_items", force: :cascade do |t|

@@ -1,8 +1,7 @@
 .card.mb-3
   .card-header
-    = _('Sidebar|Next lan')
+    = lan_party.name
   .card-body
-    %h3= lan_party.name
     .mb-3
       .text-muted= _('Sidebar|Available tickets')
       = lan_party_progress_bar(lan_party)
@@ -20,7 +19,7 @@
   - if user && user.ticket_for(lan_party).present?
     .card-footer
       = button _('Ticket|Show ticket'),
-                lan_ticket_path,
+                lan_ticket_path(lan_party),
                 btn_icon: %i[fas fa-arrow-up-right-from-square],
                 html: { target: :_blank },
                 color: :default,

@@ -1,6 +1,8 @@
 module Operations::Lan::SeatMap
   class LoadSeats < RailsOps::Operation
-    schema3 {} # No params allowed for now
+    schema3 do
+      int! :id, cast_str: true
+    end
 
     policy :on_init do
       authorize! :read_public, SeatMap
@@ -29,7 +31,13 @@ module Operations::Lan::SeatMap
     end
 
     def lan_party
-      @lan_party ||= LanParty.find_by(active: true)
+      @lan_party ||= begin
+        lan_party = LanParty.find_by(id: osparams.id)
+
+        fail ActiveRecord::RecordNotFound if lan_party.nil? || !lan_party.active? || !lan_party.seatmap_enabled?
+
+        lan_party
+      end
     end
 
     def seat_map

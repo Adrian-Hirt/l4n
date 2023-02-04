@@ -9,7 +9,11 @@ module Operations::Application
       # Check that the config setting is enabled
       return unless AppConfig.enable_lan_party_block
 
-      ApplicationController.render partial: 'shared/sidebar/lan_party_info', locals: { lan_party: LanParty.active, user: context.user } if LanParty.active.present?
+      active_lan_parties_with_sidebar = Queries::LanParty::FetchActive.run.where(sidebar_active: true)
+
+      if active_lan_parties_with_sidebar.any?
+        ApplicationController.render partial: 'shared/sidebar/lan_party', locals: { user: context.user }, collection: active_lan_parties_with_sidebar
+      end
     end
 
     def next_events_block

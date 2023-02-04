@@ -7,6 +7,10 @@ module Operations::Admin::LanParty
         str? :location
         str? :event_start
         str? :event_end
+        str? :sort
+        boo? :sidebar_active, cast_str: true
+        boo? :timetable_enabled, cast_str: true
+        boo? :seatmap_enabled, cast_str: true
       end
     end
 

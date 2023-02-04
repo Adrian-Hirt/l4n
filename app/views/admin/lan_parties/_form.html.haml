@@ -5,7 +5,19 @@
         = f.input :name
       .col-md-6
         = f.input :location
-    = f.input :active, input_html: { class: 'no-validation' }
+    .row
+      .col-md-6
+        = f.input :active, as: :select, include_blank: false
+      .col-md-6
+        = f.input :sidebar_active, as: :select, include_blank: false
+    .row
+      .col-md-6
+        = f.input :timetable_enabled, as: :select, include_blank: false
+      .col-md-6
+        = f.input :seatmap_enabled, as: :select, include_blank: false
+    .row
+      .col-md-6
+        = f.input :sort
     .row
       .col-md-6
         = f.input :event_start, as: :datetime, html5: true

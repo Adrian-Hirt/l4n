@@ -1,6 +1,12 @@
 module Operations::Ticket
-  class LoadMyTicket < RailsOps::Operation
-    schema3 {} # No params allowed for now
+  class LoadMyTicket < RailsOps::Operation::Model::Load
+    schema3 do
+      int! :id, cast_str: true
+    end
+
+    model LanParty
+
+    load_model_authorization_action :read_public
 
     policy :on_init do
       # Fail if ticket not found
@@ -11,7 +17,7 @@ module Operations::Ticket
     end
 
     def ticket
-      context.user.ticket_for(lan_party)
+      context.user.ticket_for(model)
     end
 
     def qr_code
@@ -24,10 +30,6 @@ module Operations::Ticket
         shape_rendering: 'crispEdges',
         module_size:     6
       )
-    end
-
-    def lan_party
-      ::LanParty.active
     end
   end
 end

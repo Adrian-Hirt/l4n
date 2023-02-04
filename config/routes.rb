@@ -141,18 +141,20 @@ Rails.application.routes.draw do
 
   # == Lan related ======================================================================
   namespace :lan do
-    get :seatmap, to: 'seatmap#index'
+    get ':id/seatmap', to: 'seatmap#index'
+    get ':id/seatmap/seats.json', to: 'seatmap#seats'
+
     scope '/seatmap' do
-      get :seats, to: 'seatmap#seats'
       post :get_seat, to: 'seatmap#get_seat'
       post :remove_seat, to: 'seatmap#remove_seat'
     end
 
-    get :timetable, to: 'timetable#index'
+    get ':id/timetable', to: 'timetable#index'
 
-    get :ticket, to: 'tickets#my_ticket'
+    get ':id/ticket', to: 'tickets#my_ticket', as: :ticket
+    get ':id/tickets', to: 'tickets#index', as: :tickets
 
-    resources :tickets, only: %i[index] do
+    resources :tickets, only: [] do
       member do
         # Assign and remove assignation of tickets
         post :assign

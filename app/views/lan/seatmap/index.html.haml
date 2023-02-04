@@ -30,7 +30,7 @@
           = turbo_frame_tag :tickets do
             = render partial: 'tickets', locals: { tickets: op.available_tickets }
         .card-footer
-          = button _('Tickets|Assign & upgrade tickets'), lan_tickets_path, size: :sm, color: :default
+          = button _('Tickets|Assign & upgrade tickets'), lan_tickets_path(op.lan_party), size: :sm, color: :default
     .card.mb-3
       .card-header
         = _('Seatmap|Selected seat')

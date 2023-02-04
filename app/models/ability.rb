@@ -47,6 +47,9 @@ class Ability
     # Anyone can read user list and profiles
     can :read_public, User
 
+    # Anyone can read a lanparty if it's active
+    can :read_public, LanParty, &:active
+
     # Return early if user does not exist
     return if user.nil?
 

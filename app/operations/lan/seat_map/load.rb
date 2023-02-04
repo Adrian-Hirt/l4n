@@ -1,6 +1,7 @@
 module Operations::Lan::SeatMap
   class Load < RailsOps::Operation::Model
     schema3 ignore_obsolete_properties: true do
+      int! :id, cast_str: true
       obj? :highlight
     end
 
@@ -11,7 +12,13 @@ module Operations::Lan::SeatMap
     model ::SeatMap
 
     def lan_party
-      @lan_party ||= LanParty.find_by(active: true)
+      @lan_party ||= begin
+        lan_party = LanParty.find_by(id: osparams.id)
+
+        fail ActiveRecord::RecordNotFound if lan_party.nil? || !lan_party.active? || !lan_party.seatmap_enabled?
+
+        lan_party
+      end
     end
 
     def model
