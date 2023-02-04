@@ -35,6 +35,7 @@ class LanParty < ApplicationRecord
 
   # == Private Methods =============================================================
   private
+
   def check_if_deletable
     throw :abort unless deleteable?
   end

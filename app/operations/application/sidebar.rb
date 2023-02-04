@@ -11,9 +11,9 @@ module Operations::Application
 
       active_lan_parties_with_sidebar = Queries::LanParty::FetchActive.run.where(sidebar_active: true)
 
-      if active_lan_parties_with_sidebar.any?
-        ApplicationController.render partial: 'shared/sidebar/lan_party', locals: { user: context.user }, collection: active_lan_parties_with_sidebar
-      end
+      return unless active_lan_parties_with_sidebar.any?
+
+      ApplicationController.render partial: 'shared/sidebar/lan_party', locals: { user: context.user }, collection: active_lan_parties_with_sidebar
     end
 
     def next_events_block
