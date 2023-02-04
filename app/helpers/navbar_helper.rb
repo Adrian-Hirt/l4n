@@ -1,7 +1,7 @@
 module NavbarHelper
   def menu_item_active_classes(menu_item)
     if menu_item.lan_party_id.present?
-      return 'active' if ("lan/#{menu_item.static_page_name}" == controller_path && params[:id] == menu_item.lan_party_id.to_s)
+      return 'active' if "lan/#{menu_item.static_page_name}" == controller_path && params[:id] == menu_item.lan_party_id.to_s
     elsif menu_item.static_page_name.present?
       navbar_item_active_classes(menu_item.static_page_name, use_namespace: menu_item.use_namespace_for_active_detection)
     elsif menu_item.is_a? MenuDropdownItem

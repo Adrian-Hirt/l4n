@@ -8,18 +8,18 @@ class MenuLinkItem < MenuItem
 
   # == Constants ===================================================================
   PREDEFINED_PAGES = {
-    'news'          => { title: _('News'), feature_flag: :news_posts },
-    'events'        => { title: _('Events'), feature_flag: :events },
-    'shop'          => { title: _('Shop'), feature_flag: :shop },
-    'tournaments'   => { title: _('Tournaments'), feature_flag: :tournaments },
-    'users'         => { title: _('Users List') }
+    'news'        => { title: _('News'), feature_flag: :news_posts },
+    'events'      => { title: _('Events'), feature_flag: :events },
+    'shop'        => { title: _('Shop'), feature_flag: :shop },
+    'tournaments' => { title: _('Tournaments'), feature_flag: :tournaments },
+    'users'       => { title: _('Users List') }
   }.freeze
 
   PREDEFINED_LAN_PAGES = {
     'seatmap'   => { title: _('LanParty|SeatMap'), feature_flag: :lan_party },
     'timetable' => { title: _('LanParty|Timetable'), feature_flag: :lan_party },
     'tickets'   => { title: _('LanParty|Tickets'), feature_flag: :lan_party }
-  }
+  }.freeze
 
   # == Associations ================================================================
   belongs_to :parent, class_name: 'MenuDropdownItem', optional: true
@@ -100,11 +100,11 @@ class MenuLinkItem < MenuItem
       errors.add(:lan_party_id, _('MenuLinkItem|may not be set')) if page_id.present? || external_link.present?
 
       # The given page must be included in the PREDEFINED_LAN_PAGES enum
-      errors.add(:page_attr, _('MenuLinkItem|Must be a lan party page')) unless PREDEFINED_LAN_PAGES.keys.include?(static_page_name)
+      errors.add(:page_attr, _('MenuLinkItem|Must be a lan party page')) unless PREDEFINED_LAN_PAGES.key?(static_page_name)
     end
 
     # Lan party id must be set if the chosen page is a lan-party related page
-    errors.add(:lan_party_id, _('MenuLinkItem|must be set')) if PREDEFINED_LAN_PAGES.keys.include?(static_page_name) && lan_party_id.blank?
+    errors.add(:lan_party_id, _('MenuLinkItem|must be set')) if PREDEFINED_LAN_PAGES.key?(static_page_name) && lan_party_id.blank?
 
     return unless page_attr.present? && external_link.present?
 
