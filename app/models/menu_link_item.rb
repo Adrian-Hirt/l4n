@@ -7,10 +7,24 @@ class MenuLinkItem < MenuItem
   end
 
   # == Constants ===================================================================
+  PREDEFINED_PAGES = {
+    'news'          => { title: _('News'), feature_flag: :news_posts },
+    'events'        => { title: _('Events'), feature_flag: :events },
+    'shop'          => { title: _('Shop'), feature_flag: :shop },
+    'tournaments'   => { title: _('Tournaments'), feature_flag: :tournaments },
+    'users'         => { title: _('Users List') }
+  }.freeze
+
+  PREDEFINED_LAN_PAGES = {
+    'seatmap'   => { title: _('LanParty|SeatMap'), feature_flag: :lan_party },
+    'timetable' => { title: _('LanParty|Timetable'), feature_flag: :lan_party },
+    'tickets'   => { title: _('LanParty|Tickets'), feature_flag: :lan_party }
+  }
 
   # == Associations ================================================================
   belongs_to :parent, class_name: 'MenuDropdownItem', optional: true
   belongs_to :page, optional: true
+  belongs_to :lan_party, optional: true
 
   # == Validations =================================================================
   validates :static_page_name, length: { maximum: 255 }
@@ -27,6 +41,8 @@ class MenuLinkItem < MenuItem
   def link_destination
     if page
       page.title
+    elsif lan_party_id.present?
+      "#{lan_party.name} - #{PREDEFINED_LAN_PAGES.dig(static_page_name, :title)}"
     elsif static_page_name.present?
       PREDEFINED_PAGES.dig(static_page_name, :title)
     else
@@ -37,6 +53,8 @@ class MenuLinkItem < MenuItem
   def linked_page_url
     if page
       page.url
+    elsif lan_party_id.present?
+      "lan/#{lan_party_id}/#{static_page_name}"
     elsif static_page_name.present?
       static_page_name
     else
@@ -74,6 +92,19 @@ class MenuLinkItem < MenuItem
     end
 
     errors.add(:page_attr, _('MenuLinkItem|Can only set static page name or page id')) if static_page_name.present? && page_id.present?
+
+    # If the lan_party_id is set, the static_page_name needs to be set
+    # and needs to be a value from the PREDEFINED_LAN_PAGES enum
+    if lan_party_id.present?
+      # Page_id and external_link may not be present
+      errors.add(:lan_party_id, _('MenuLinkItem|may not be set')) if page_id.present? || external_link.present?
+
+      # The given page must be included in the PREDEFINED_LAN_PAGES enum
+      errors.add(:page_attr, _('MenuLinkItem|Must be a lan party page')) unless PREDEFINED_LAN_PAGES.keys.include?(static_page_name)
+    end
+
+    # Lan party id must be set if the chosen page is a lan-party related page
+    errors.add(:lan_party_id, _('MenuLinkItem|must be set')) if PREDEFINED_LAN_PAGES.keys.include?(static_page_name) && lan_party_id.blank?
 
     return unless page_attr.present? && external_link.present?
 

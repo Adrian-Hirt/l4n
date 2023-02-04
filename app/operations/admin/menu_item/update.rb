@@ -9,6 +9,7 @@ module Operations::Admin::MenuItem
         str? :external_link
         str? :parent_id
         str? :use_namespace_for_active_detection, format: :boolean
+        str? :lan_party_id
       end
       hsh? :menu_dropdown_item do
         str? :title
@@ -38,7 +39,7 @@ module Operations::Admin::MenuItem
         given_page = osparams.menu_link_item[:page_attr]
         model.page_id = nil
         model.static_page_name = nil
-        if ::MenuItem::PREDEFINED_PAGES.key?(given_page)
+        if ::MenuLinkItem::PREDEFINED_PAGES.key?(given_page) || ::MenuLinkItem::PREDEFINED_LAN_PAGES.key?(given_page)
           model.static_page_name = given_page
         elsif given_page.present?
           model.page_id = given_page.to_i
@@ -51,11 +52,17 @@ module Operations::Admin::MenuItem
     def page_candidates
       candidates = {}
       predefined_pages = []
+      predefined_lan_pages = []
       content_pages = []
 
       # Add "static" pages
-      ::MenuItem::PREDEFINED_PAGES.each do |page|
+      ::MenuLinkItem::PREDEFINED_PAGES.each do |page|
         predefined_pages << [page[1][:title], page[0]]
+      end
+
+      # Add "static" lan party pages
+      ::MenuLinkItem::PREDEFINED_LAN_PAGES.each do |page|
+        predefined_lan_pages << [page[1][:title], page[0]]
       end
 
       # Add dynamic pages
@@ -64,6 +71,7 @@ module Operations::Admin::MenuItem
       end
 
       candidates[_('MenuItem|Predefined pages')] = predefined_pages
+      candidates[_('MenuItem|Predefined lan pages')] = predefined_lan_pages
       candidates[_('MenuItem|Content pages')] = content_pages
 
       candidates
