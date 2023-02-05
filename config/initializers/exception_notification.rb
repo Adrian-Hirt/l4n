@@ -7,9 +7,16 @@ return if Figaro.env.building_docker_image
 # Skip then notifier is not enabled
 return unless Figaro.env.enable_exception_notifier
 
+IGNORED_EXCEPTIONS = [
+  'ActionController::BadRequest',
+  'ActionController::InvalidAuthenticityToken',
+  'ActionDispatch::Http::MimeNegotiation::InvalidType',
+  'ActionController::UnknownHttpMethod'
+].freeze
+
 # Otherwise, setup the exception notifier
 Rails.application.config.middleware.use ExceptionNotification::Rack,
-                                        ignore_exceptions: ['ActionController::BadRequest', 'ActionController::InvalidAuthenticityToken'] + ExceptionNotifier.ignored_exceptions,
+                                        ignore_exceptions: IGNORED_EXCEPTIONS + ExceptionNotifier.ignored_exceptions,
                                         email:             {
                                           email_prefix:         '[EXCEPTION NOTIFICATION] ',
                                           sender_address:       "notifier@#{Figaro.env.host_domain!}",

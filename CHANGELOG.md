@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.4.1 - 2023-02-05
+
+### Changed
+
+* Add error pages for status `405` and `406`
+* Add some user-error exceptions to the ignore list of the exception notifier
+
 ## 1.4.0 - 2023-02-02
 
 ### Added
