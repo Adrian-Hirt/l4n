@@ -11,6 +11,8 @@ module Operations::Shop::Order
 
     load_model_authorization_action :read_public
 
+    lock_mode :exclusive
+
     attr_accessor :reduction
     attr_accessor :matching
     attr_accessor :total

@@ -10,6 +10,8 @@ module Operations::Shop::CartItem
 
     load_model_authorization_action nil
 
+    lock_mode :exclusive
+
     model ::CartItem
 
     def perform

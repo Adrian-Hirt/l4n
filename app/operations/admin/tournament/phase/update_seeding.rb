@@ -10,6 +10,8 @@ module Operations::Admin::Tournament::Phase
 
     model ::Tournament::Phase
 
+    lock_mode :exclusive
+
     def perform
       if osparams.seeding[:team].present?
         # Check that the given seed is not taken already

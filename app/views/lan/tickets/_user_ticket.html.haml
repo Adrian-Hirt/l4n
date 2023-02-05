@@ -21,7 +21,7 @@
             \-
         .col-md-5.d-flex.align-items-center.gap-1.justify-content-end
           = button _('Ticket|Show ticket'),
-                    lan_ticket_path(model),
+                    lan_ticket_path(op.lan_party),
                     btn_icon: %i[fas fa-arrow-up-right-from-square],
                     html: { target: :_blank },
                     color: :default

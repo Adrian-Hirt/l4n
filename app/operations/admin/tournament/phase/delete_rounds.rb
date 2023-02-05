@@ -6,6 +6,8 @@ module Operations::Admin::Tournament::Phase
 
     model ::Tournament::Phase
 
+    lock_mode :exclusive
+
     policy do
       # We can only run this if the phase is in the "seeding" status
       fail Operations::Exceptions::OpFailed, _('Admin|Tournaments|Phase|Phase has wrong status') unless model.seeding?

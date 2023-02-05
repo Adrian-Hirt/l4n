@@ -6,6 +6,8 @@ module Operations::Admin::Tournament::Phase
 
     model ::Tournament::Phase
 
+    lock_mode :exclusive
+
     policy do
       fail Operations::Exceptions::OpFailed, _('Admin|Tournaments|Phase|No next round to generate the matches for') unless model.next_round
 

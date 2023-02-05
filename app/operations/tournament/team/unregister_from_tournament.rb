@@ -6,6 +6,8 @@ module Operations::Tournament::Team
 
     model ::Tournament::Team
 
+    lock_mode :exclusive
+
     policy do
       # Check that the user is the captain (also works for singleplayer games)
       fail Operations::Exceptions::OpFailed, _('Team|Only the captain can do this') unless model.captain?(context.user)

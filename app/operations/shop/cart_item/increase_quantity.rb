@@ -12,6 +12,8 @@ module Operations::Shop::CartItem
 
     model ::CartItem
 
+    lock_mode :exclusive
+
     def perform
       fail MaxQuantityReached if model.product.inventory <= model.quantity
 

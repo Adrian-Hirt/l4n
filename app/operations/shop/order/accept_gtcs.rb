@@ -8,6 +8,8 @@ module Operations::Shop::Order
 
     load_model_authorization_action :read_public
 
+    lock_mode :exclusive
+
     def perform
       model.gtcs_accepted = true
       model.save!

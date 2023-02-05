@@ -6,6 +6,8 @@ module Operations::Admin::Tournament::Phase
 
     model ::Tournament::Phase
 
+    lock_mode :exclusive
+
     policy :on_init do
       # Check that the phase is in the "seeding" status
       fail WrongStatus unless model.seeding?

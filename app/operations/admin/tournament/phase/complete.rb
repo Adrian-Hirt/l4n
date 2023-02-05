@@ -4,6 +4,8 @@ module Operations::Admin::Tournament::Phase
       int! :id, cast_str: true
     end
 
+    lock_mode :exclusive
+
     model ::Tournament::Phase
 
     policy do

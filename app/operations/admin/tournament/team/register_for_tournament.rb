@@ -6,6 +6,8 @@ module Operations::Admin::Tournament::Team
 
     model ::Tournament::Team
 
+    lock_mode :exclusive
+
     policy do
       fail Operations::Exceptions::OpFailed, _('Admin|Tournament|Team|Team cannot be registered as it has the wrong status') unless model.created?
 

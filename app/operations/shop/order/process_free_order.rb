@@ -8,6 +8,8 @@ module Operations::Shop::Order
 
     model ::Order
 
+    lock_mode :exclusive
+
     policy :on_init do
       # Check that the order is actually free
       fail Operations::Exceptions::OpFailed, _('Order|Your total is more than zero') unless model.total.zero?

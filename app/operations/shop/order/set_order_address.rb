@@ -9,6 +9,8 @@ module Operations::Shop::Order
 
     load_model_authorization_action :read_public
 
+    lock_mode :exclusive
+
     attr_reader :no_address_given_error
     attr_reader :chosen_address
 

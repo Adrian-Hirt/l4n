@@ -9,6 +9,8 @@ module Operations::Admin::Ticket
 
     model ::Ticket
 
+    lock_mode :exclusive
+
     def perform
       # Check that to_product is present
       fail Operations::Exceptions::OpFailed, _('Admin|Tickets|To product cannot be found') if to_product.blank?

@@ -9,6 +9,8 @@ module Operations::Admin::Tournament::Phase
 
     model ::Tournament::Phase
 
+    lock_mode :exclusive
+
     policy do
       # Can't generate the rounds without any teams
       fail Operations::Exceptions::OpFailed, _('Admin|Tournaments|Phase|Cannot generate rounds without any seedable teams') if model.seedable_teams.none?

@@ -26,5 +26,9 @@ module Operations::Ticket
     def ticket_for_lan_party
       @ticket_for_lan_party ||= context.user.ticket_for(model)
     end
+
+    def lan_party
+      model
+    end
   end
 end

@@ -12,6 +12,8 @@ module Operations::Shop::ProductVariant
 
     model ::ProductVariant
 
+    lock_mode :exclusive
+
     def perform
       cart = context.view.current_cart
       present_cart_item = cart.cart_items.find_by(product_variant_id: model.id)

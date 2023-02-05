@@ -33,10 +33,15 @@ module Operations::Ticket
       # the current event
       fail Operations::Exceptions::OpFailed, _('Ticket|User already has assigned ticket') if ::Ticket.where(lan_party: lan_party, assignee: user).any?
 
-      # Finally, if all good, assign the ticket
-      ticket.assignee = user
-      ticket.status = Ticket.statuses[:assigned]
-      ticket.save!
+      ActiveRecord::Base.transaction do
+        # Acquire a lock for the ticket
+        ticket.lock!
+
+        # Finally, if all good, assign the ticket
+        ticket.assignee = user
+        ticket.status = Ticket.statuses[:assigned]
+        ticket.save!
+      end
     end
 
     def available_tickets

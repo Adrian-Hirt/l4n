@@ -33,25 +33,25 @@ gem 'turbo-rails', '~> 1.3.2'
 # Application structure
 gem 'active_type', '~> 2.3.0' # Need to lock as 2.0 somehow does not work with rails_ops
 gem 'inquery', '~> 1.0.9'
-gem 'rails_ops', '~> 1.2.0'
+gem 'rails_ops', '~> 1.3.0'
 gem 'schemacop', '~> 3.0.11'
 
 # Views
 gem 'breadcrumbs_on_rails', '~> 4.1.0'
 gem 'cocoon', '~> 1.2.15'
-gem 'datagrid', '~> 1.6.3'
+gem 'datagrid', '~> 1.7.0'
 gem 'haml-rails', '~> 2.0'
 gem 'kaminari', '~> 1.2.1'
 gem 'rqrcode', '~> 2.1.0'
-gem 'simple_form', '~> 5.1.0'
+gem 'simple_form', '~> 5.2.0'
 
 # Translations
-gem 'gettext_i18n_rails', '~> 1.9.0'
+gem 'gettext_i18n_rails', '~> 1.10.0'
 gem 'mobility', '~> 1.2.5'
 gem 'rails-i18n', '~> 7.0.1'
 
 # Markdown rendering
-gem 'redcarpet', '~> 3.5.1'
+gem 'redcarpet', '~> 3.6.0'
 
 # Settings
 gem 'figaro', '1.2.0'
@@ -89,7 +89,7 @@ group :development do
   gem 'ruby_parser', require: false
 
   # Code analysis and standards
-  gem 'haml_lint', '~> 0.43.0', require: false
+  gem 'haml_lint', '~> 0.45.0', require: false
   gem 'rubocop', '~> 1.24'
   gem 'rubocop-performance', '~> 1.13'
   gem 'rubocop-rails', '~> 2.13'

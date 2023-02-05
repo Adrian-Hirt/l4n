@@ -6,6 +6,8 @@ module Operations::Admin::Tournament::TeamMember
 
     model ::Tournament::TeamMember
 
+    lock_mode :exclusive
+
     def perform
       # Don't need to do anything if the current team_member is already captain
       return if model.captain?

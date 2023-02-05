@@ -8,6 +8,8 @@ module Operations::Ticket
 
     load_model_authorization_action :use
 
+    lock_mode :exclusive
+
     policy :before_perform do
       # Check that the ticket is not checked in
       fail Operations::Exceptions::OpFailed, _('Admin|Ticket|Ticket is already checked in') if model.checked_in?

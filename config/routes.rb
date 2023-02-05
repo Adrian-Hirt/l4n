@@ -141,7 +141,7 @@ Rails.application.routes.draw do
 
   # == Lan related ======================================================================
   namespace :lan do
-    get ':id/seatmap', to: 'seatmap#index'
+    get ':id/seatmap', to: 'seatmap#index', as: :seatmap
     get ':id/seatmap/seats.json', to: 'seatmap#seats'
 
     scope '/seatmap' do

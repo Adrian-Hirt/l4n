@@ -4,6 +4,8 @@ module Operations::Admin::Order
       int! :id, cast_str: true
     end
 
+    lock_mode :exclusive
+
     policy :on_init do
       # Check that we're in the correct state
       fail Operations::Exceptions::OpFailed, _('Admin|Order|Wrong status to delete') unless model.created? || model.payment_pending?

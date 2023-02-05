@@ -9,6 +9,8 @@ module Operations::Admin::Tournament::Team
 
     model ::Tournament::Team
 
+    lock_mode :exclusive
+
     policy do
       # Check that we have an user
       fail Operations::Exceptions::OpFailed, _('Admin|Team|User not found') if user.nil?

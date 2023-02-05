@@ -12,6 +12,8 @@ module Operations::Shop::Order
 
     model ::Order
 
+    lock_mode :exclusive
+
     def perform
       run_sub Operations::Shop::Order::CleanupSingleOrder, order: model
     end

@@ -7,6 +7,8 @@ module Operations::Tournament::Team
       end
     end
 
+    lock_mode :exclusive
+
     policy do
       # Check that the registration of the tournament is open
       fail Operations::Exceptions::OpFailed, _('Tournament|Registration is closed') unless model.tournament.registration_open?
