@@ -12,7 +12,7 @@ IGNORED_EXCEPTIONS = [
   'ActionController::InvalidAuthenticityToken',
   'ActionDispatch::Http::MimeNegotiation::InvalidType',
   'ActionController::UnknownHttpMethod'
-]
+].freeze
 
 # Otherwise, setup the exception notifier
 Rails.application.config.middleware.use ExceptionNotification::Rack,
