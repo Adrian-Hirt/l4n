@@ -5,6 +5,7 @@
 ### Changed
 
 * Add possibility to have multiple lan parties active at the same time
+* Update gem dependencies
 
 ## 1.4.1 - 2023-02-05
 
