@@ -1,4 +1,6 @@
-.card
+.card.ticket-scanner-card
+  .card-header
+    = _('TicketScanner|Logged in as %{name} for %{lan_party}') % { name: current_scanner_user.name, lan_party: current_scanner_user.lan_party.name }
   .card-body{ data: { controller: 'ticket-scanner' } }
     = turbo_frame_tag 'ticket_scanner_scan' do
       .border-bottom.pb-3.mb-3

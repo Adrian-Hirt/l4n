@@ -1058,6 +1058,9 @@ msgstr "Promotion codes"
 msgid "Checkout|Select your billing address"
 msgstr "Select your billing address"
 
+msgid "Checkout|The given order was not found"
+msgstr "The order was not found"
+
 msgid "Checkout|The promotion code cannot be applied!"
 msgstr "The promotion code cannot be applied"
 
@@ -1457,14 +1460,26 @@ msgstr "Location"
 msgid "LanParty|Name"
 msgstr "Name"
 
+msgid "LanParty|Not active"
+msgstr "Not active"
+
 msgid "LanParty|Relevant seat categories for counter"
 msgstr "Relevant seat categories for counter"
 
 msgid "LanParty|SeatMap"
 msgstr "SeatMap"
 
+msgid "LanParty|Seatmap enabled"
+msgstr "Seatmap enabled"
+
+msgid "LanParty|Sidebar active"
+msgstr "Sidebar active"
+
 msgid "LanParty|Sold tickets"
 msgstr "Sold tickets"
+
+msgid "LanParty|Sort"
+msgstr "Sort"
 
 msgid "LanParty|Stats"
 msgstr "Stats"
@@ -1474,6 +1489,9 @@ msgstr "Tickets"
 
 msgid "LanParty|Timetable"
 msgstr "Timetable"
+
+msgid "LanParty|Timetable enabled"
+msgstr "Timetable enabled"
 
 msgid "LanParty|Total seats"
 msgstr "Total seats"
@@ -1679,6 +1697,9 @@ msgstr "Page"
 msgid "MenuItem|Page_name"
 msgstr "Page name"
 
+msgid "MenuItem|Predefined lan pages"
+msgstr "Predefined lan pages"
+
 msgid "MenuItem|Predefined pages"
 msgstr "Predefined pages"
 
@@ -1703,8 +1724,17 @@ msgstr "Can only select a page or enter an external link but not both"
 msgid "MenuLinkItem|Can only set static page name or page id"
 msgstr "Can only set static page name or page id"
 
+msgid "MenuLinkItem|Must be a lan party page"
+msgstr "Must be a lan party page"
+
 msgid "MenuLinkItem|Please either select a page or set an external link"
 msgstr "Please either select a page or set an external link"
+
+msgid "MenuLinkItem|may not be set"
+msgstr "may not be set"
+
+msgid "MenuLinkItem|must be set"
+msgstr "must be set"
 
 msgid "My Ticket"
 msgstr "My Ticket"
@@ -2714,9 +2744,6 @@ msgstr "Latest newsposts"
 msgid "Sidebar|Next events"
 msgstr "Next events"
 
-msgid "Sidebar|Next lan"
-msgstr "Next LAN"
-
 msgid "Signup"
 msgstr "Sign Up"
 
@@ -2960,8 +2987,8 @@ msgstr "Invalid QR code"
 msgid "TicketScanner|Invalid QR code, please try again"
 msgstr "Invalid QR code, please try again"
 
-msgid "TicketScanner|Logged in as %{name}"
-msgstr "Logged in as %{name}"
+msgid "TicketScanner|Logged in as %{name} for %{lan_party}"
+msgstr "Logged in as %{name} for %{lan_party}"
 
 msgid "TicketScanner|Logout"
 msgstr "Logout"
@@ -3643,9 +3670,6 @@ msgstr "This is a singleplayer tournament"
 
 msgid "Tournament|Toggle registration"
 msgstr "Toggle registration"
-
-msgid "Tournament|Tournament Teams"
-msgstr "Tournament Teams"
 
 msgid "Tournament|Tournament actions"
 msgstr "Tournament actions"

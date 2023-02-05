@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-02 18:24+0100\n"
-"PO-Revision-Date: 2023-02-02 18:24+0100\n"
+"POT-Creation-Date: 2023-02-05 13:24+0100\n"
+"PO-Revision-Date: 2023-02-05 13:24+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -1059,6 +1059,9 @@ msgstr ""
 msgid "Checkout|Select your billing address"
 msgstr ""
 
+msgid "Checkout|The given order was not found"
+msgstr ""
+
 msgid "Checkout|The promotion code cannot be applied!"
 msgstr ""
 
@@ -1458,13 +1461,25 @@ msgstr ""
 msgid "LanParty|Name"
 msgstr ""
 
+msgid "LanParty|Not active"
+msgstr ""
+
 msgid "LanParty|Relevant seat categories for counter"
 msgstr ""
 
 msgid "LanParty|SeatMap"
 msgstr ""
 
+msgid "LanParty|Seatmap enabled"
+msgstr ""
+
+msgid "LanParty|Sidebar active"
+msgstr ""
+
 msgid "LanParty|Sold tickets"
+msgstr ""
+
+msgid "LanParty|Sort"
 msgstr ""
 
 msgid "LanParty|Stats"
@@ -1474,6 +1489,9 @@ msgid "LanParty|Tickets"
 msgstr ""
 
 msgid "LanParty|Timetable"
+msgstr ""
+
+msgid "LanParty|Timetable enabled"
 msgstr ""
 
 msgid "LanParty|Total seats"
@@ -1680,6 +1698,9 @@ msgstr ""
 msgid "MenuItem|Page_name"
 msgstr ""
 
+msgid "MenuItem|Predefined lan pages"
+msgstr ""
+
 msgid "MenuItem|Predefined pages"
 msgstr ""
 
@@ -1704,7 +1725,16 @@ msgstr ""
 msgid "MenuLinkItem|Can only set static page name or page id"
 msgstr ""
 
+msgid "MenuLinkItem|Must be a lan party page"
+msgstr ""
+
 msgid "MenuLinkItem|Please either select a page or set an external link"
+msgstr ""
+
+msgid "MenuLinkItem|may not be set"
+msgstr ""
+
+msgid "MenuLinkItem|must be set"
 msgstr ""
 
 msgid "My Ticket"
@@ -2715,9 +2745,6 @@ msgstr ""
 msgid "Sidebar|Next events"
 msgstr ""
 
-msgid "Sidebar|Next lan"
-msgstr ""
-
 msgid "Signup"
 msgstr ""
 
@@ -2961,7 +2988,7 @@ msgstr ""
 msgid "TicketScanner|Invalid QR code, please try again"
 msgstr ""
 
-msgid "TicketScanner|Logged in as %{name}"
+msgid "TicketScanner|Logged in as %{name} for %{lan_party}"
 msgstr ""
 
 msgid "TicketScanner|Logout"
@@ -3643,9 +3670,6 @@ msgid "Tournament|This is a singleplayer tournament"
 msgstr ""
 
 msgid "Tournament|Toggle registration"
-msgstr ""
-
-msgid "Tournament|Tournament Teams"
 msgstr ""
 
 msgid "Tournament|Tournament actions"

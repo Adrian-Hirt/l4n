@@ -1,9 +1,5 @@
 .footer.mt-auto.d-flex.flex-wrap.justify-content-between.align-items-center.px-4.py-3.border-top.bg-light
   .text-muted
-    = _('L4N Version % {version}') % { version: L4N::VERSION }
-  .text-muted
-    = _('TicketScanner|Logged in as %{name}') % { name: current_scanner_user.name }
-  .text-muted
     © 2021 -
     = Time.zone.today.year
     %a{ href: 'https://l4n.ch', target: '_blank', rel: 'noopener' } L4N
