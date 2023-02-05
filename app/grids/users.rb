@@ -8,7 +8,7 @@ module Grids
 
     column :avatar, html: true do |user|
       if user.avatar.attached?
-        image_tag user.avatar.variant(:thumb).processed
+        image_tag user.avatar.variant(:thumb).processed, class: 'avatar-thumb'
       else
         tag.div(class: 'avatar-thumb-placeholder')
       end

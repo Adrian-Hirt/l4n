@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.0 - UNRELEASED
+
+### Changed
+
+* Add possibility to have multiple lan parties active at the same time
+
 ## 1.4.1 - 2023-02-05
 
 ### Changed
