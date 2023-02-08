@@ -16,10 +16,13 @@ class Ability
     # Anyone can read a page if the feature flag is enabled and it's published
     can :read_public, Page, &:published? if FeatureFlag.enabled?(:pages)
 
-    # Anyone can look at the seatmap and the timetable if it's enabled
     if FeatureFlag.enabled?(:lan_party)
-      can :read_public, SeatMap
-      can :read_public, Timetable
+      # Anyone can read a lanparty if it's active
+      can :read_public, LanParty, &:active
+
+      # Anyone can look at the seatmap and the timetable if it's enabled
+      can :read_public, SeatMap, lan_party: { seatmap_enabled: true, active: true }
+      can :read_public, Timetable, lan_party: { timetable_enabled: true, active: true }
     end
 
     if FeatureFlag.enabled?(:shop)
@@ -46,9 +49,6 @@ class Ability
 
     # Anyone can read user list and profiles
     can :read_public, User
-
-    # Anyone can read a lanparty if it's active
-    can :read_public, LanParty, &:active
 
     # Return early if user does not exist
     return if user.nil?

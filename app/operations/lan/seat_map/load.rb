@@ -6,19 +6,13 @@ module Operations::Lan::SeatMap
     end
 
     policy :on_init do
-      authorize! :read_public, SeatMap
+      authorize! :read_public, model
     end
 
     model ::SeatMap
 
     def lan_party
-      @lan_party ||= begin
-        lan_party = LanParty.find_by(id: osparams.id)
-
-        fail ActiveRecord::RecordNotFound if lan_party.nil? || !lan_party.active? || !lan_party.seatmap_enabled?
-
-        lan_party
-      end
+      @lan_party ||= LanParty.find(osparams.id)
     end
 
     def model

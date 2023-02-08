@@ -105,4 +105,20 @@ module TestDataFactory
   def create_tournament_permission(tournament, user)
     ::UserTournamentPermission.create!(tournament: tournament, user: user)
   end
+
+  def create_lan_party(attrs = {})
+    ::Operations::Admin::LanParty::Create.run!(
+      lan_party: {
+        name:              Random.alphanumeric(10),
+        active:            false,
+        location:          Random.alphanumeric(16),
+        event_start:       (Time.zone.today - 1.day).to_s,
+        event_end:         (Time.zone.today + 1.day).to_s,
+        sort:              '0',
+        sidebar_active:    true,
+        timetable_enabled: true,
+        seatmap_enabled:   true
+      }.merge!(attrs)
+    ).model.reload
+  end
 end

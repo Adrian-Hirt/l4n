@@ -2,7 +2,7 @@ module Grids
   module Admin
     class LanParties < ApplicationGrid
       scope do
-        LanParty.order(id: :desc)
+        LanParty.order(active: :desc, sort: :asc, id: :desc)
       end
 
       model LanParty
