@@ -2,7 +2,7 @@ def issuer_string
   @issuer_string ||= if Rails.env.development?
                        'http://localhost:3000/'
                      else
-                       "https://#{Figaro.env.host_domain}/"
+                       "https://#{Figaro.env.application_domain}/"
                      end
 end
 
