@@ -6,6 +6,9 @@
 
 * Added OpenID connect functions
 
+* Added new env variable `OIDC_RSA_PRIVATE_KEY` to `docker-compose.yml`
+  template
+
 ### Changed
 
 * Renamed env variable `HOST_DOMAIN` to `APPLICATION_DOMAIN` which
