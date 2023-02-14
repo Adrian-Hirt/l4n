@@ -11,6 +11,7 @@ gem 'cancancan', '~> 3.4.0'
 gem 'devise', '~> 4.8'
 gem 'devise-two-factor', '~> 5.0.0'
 gem 'doorkeeper', '~> 5.6.2'
+gem 'doorkeeper-openid_connect', '~> 1.8.4'
 gem 'recaptcha', '~> 5.12.3'
 
 # Session handling

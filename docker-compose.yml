@@ -52,6 +52,8 @@ services:
       # Exception notification
       ENABLE_EXCEPTION_NOTIFIER: ${ENABLE_EXCEPTION_NOTIFIER:-false}
       EXCEPTION_NOTIFIER_RECIPIENT: ${EXCEPTION_NOTIFIER_RECIPIENT}
+      # RSA private key for OIDC
+      OIDC_RSA_PRIVATE_KEY: ${OIDC_RSA_PRIVATE_KEY:?err}
     labels:
       - traefik.enable=true
       - traefik.docker.network=reverse_proxy
