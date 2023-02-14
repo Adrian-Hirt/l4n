@@ -10,9 +10,24 @@
 
 * Renamed env variable `HOST_DOMAIN` to `APPLICATION_DOMAIN` which
   must be a valid url, without the protocol and without trailing slash.
-  Make sure to replace all occurences of `HOST_DOMAIN` with `APPLICATION_DOMAIN`
-  in your `.env` file and the `docker-compose.yml` file (see the `docker-compose.yml`
-  in this repo for how it should look).
+
+### Upgrading instructions
+
+* Replace all occurences of `HOST_DOMAIN` with `APPLICATION_DOMAIN` in
+  your `.env` file and the `docker-compose.yml` file (see the
+  `docker-compose.yml` in this repo for how it should look).
+
+* Add the following two lines to your `environment` block of the
+  `docker-compose.yml` file:
+
+  ```yaml
+  # RSA private key for OIDC
+  OIDC_RSA_PRIVATE_KEY: ${OIDC_RSA_PRIVATE_KEY:?err}
+  ```
+
+  Also, set the value of the `OIDC_RSA_PRIVATE_KEY` env variable
+  (preferrably in the `.env` file) to a valid private RSA key
+  for signing the JWTs generated from the OpenID connect endpoint
 
 ## 1.5.0 - 2023-02-08
 

@@ -13,6 +13,10 @@ General application:
 
 * `APPLICATION_DOMAIN`
 
+OpenID connect:
+
+* `OIDC_RSA_PRIVATE_KEY` should contain a valid RSA private key to sign the JSON web signature
+
 For the production database:
 
 * `POSTGRES_HOSTNAME`

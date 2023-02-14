@@ -8,7 +8,9 @@
 set :output, "#{Whenever.path}/log/cron.log"
 
 # This is needed in order to have all the needed env vars set
-ENV.each { |k, v| env(k, v) }
+ENV.each do |key, value|
+  env(key, value) unless key == 'OIDC_RSA_PRIVATE_KEY'
+end
 
 every 2.minutes do
   runner 'Operations::Admin::Order::CleanupExpired.run'
