@@ -19,6 +19,6 @@ Rails.application.config.middleware.use ExceptionNotification::Rack,
                                         ignore_exceptions: IGNORED_EXCEPTIONS + ExceptionNotifier.ignored_exceptions,
                                         email:             {
                                           email_prefix:         '[EXCEPTION NOTIFICATION] ',
-                                          sender_address:       "notifier@#{Figaro.env.host_domain!}",
+                                          sender_address:       "notifier@#{Figaro.env.application_domain!}",
                                           exception_recipients: Figaro.env.exception_notifier_recipient
                                         }

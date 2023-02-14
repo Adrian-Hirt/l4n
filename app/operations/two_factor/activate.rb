@@ -22,7 +22,7 @@ module Operations::TwoFactor
     end
 
     def qr_code
-      qrcode = RQRCode::QRCode.new(user.otp_provisioning_uri(AppConfig.application_name, issuer: Figaro.env.host_domain!), level: :h)
+      qrcode = RQRCode::QRCode.new(user.otp_provisioning_uri(AppConfig.application_name, issuer: Figaro.env.application_domain!), level: :h)
       qrcode.as_svg(
         offset:          0,
         color:           '000',

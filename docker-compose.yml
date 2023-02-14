@@ -33,8 +33,9 @@ services:
       POSTGRES_HOSTNAME: ${POSTGRES_HOSTNAME:-db}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?err}
       POSTGRES_USER: ${POSTGRES_USER:-l4n}
+      # Application setting
+      APPLICATION_DOMAIN: ${APPLICATION_DOMAIN:?err}
       # Mailer
-      HOST_DOMAIN: ${HOST_DOMAIN:-localhost}
       USE_SMTP: ${USE_SMTP:-false}
       # ActiceRecord encryption
       SECRET_KEY_BASE: ${SECRET_KEY_BASE:?err}
@@ -57,7 +58,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=reverse_proxy
-      - traefik.http.routers.${ROUTER_NAME:-l4n}.rule=Host(`${HOST_DOMAIN:-localhost}`)
+      - traefik.http.routers.${ROUTER_NAME:-l4n}.rule=Host(`${APPLICATION_DOMAIN:-localhost}`)
       - traefik.http.routers.${ROUTER_NAME:-l4n}.tls.certresolver=letsencrypt
 volumes:
   db-data:

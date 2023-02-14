@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-05 13:24+0100\n"
-"PO-Revision-Date: 2023-02-05 13:24+0100\n"
+"POT-Creation-Date: 2023-02-13 18:58+0100\n"
+"PO-Revision-Date: 2023-02-13 18:58+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -235,6 +235,9 @@ msgid "Admin|Oauth|Available scopes"
 msgstr ""
 
 msgid "Admin|Oauth|No scopes"
+msgstr ""
+
+msgid "Admin|Oauth|openid description"
 msgstr ""
 
 msgid "Admin|Oauth|user:lan:read description"
@@ -1137,7 +1140,46 @@ msgstr ""
 msgid "Datagrid|No results"
 msgstr ""
 
+msgid "Doorkeeper/access grant"
+msgstr ""
+
+msgid "Doorkeeper/access token"
+msgstr ""
+
 msgid "Doorkeeper/application"
+msgstr ""
+
+msgid "Doorkeeper::AccessGrant|Expires in"
+msgstr ""
+
+msgid "Doorkeeper::AccessGrant|Redirect uri"
+msgstr ""
+
+msgid "Doorkeeper::AccessGrant|Revoked at"
+msgstr ""
+
+msgid "Doorkeeper::AccessGrant|Scopes"
+msgstr ""
+
+msgid "Doorkeeper::AccessGrant|Token"
+msgstr ""
+
+msgid "Doorkeeper::AccessToken|Expires in"
+msgstr ""
+
+msgid "Doorkeeper::AccessToken|Previous refresh token"
+msgstr ""
+
+msgid "Doorkeeper::AccessToken|Refresh token"
+msgstr ""
+
+msgid "Doorkeeper::AccessToken|Revoked at"
+msgstr ""
+
+msgid "Doorkeeper::AccessToken|Scopes"
+msgstr ""
+
+msgid "Doorkeeper::AccessToken|Token"
 msgstr ""
 
 msgid "Doorkeeper::Application"
@@ -1807,6 +1849,9 @@ msgid "Oauth|You have granted 1 application access to your account"
 msgstr ""
 
 msgid "Oauth|make any changes to your account"
+msgstr ""
+
+msgid "Oauth|openid description"
 msgstr ""
 
 msgid "Oauth|read any data not specified above"

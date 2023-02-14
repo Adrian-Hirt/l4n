@@ -236,6 +236,9 @@ msgstr "Available scopes"
 msgid "Admin|Oauth|No scopes"
 msgstr "No scopes"
 
+msgid "Admin|Oauth|openid description"
+msgstr "Allows the application to authenticate the user via OpenID connect."
+
 msgid "Admin|Oauth|user:lan:read description"
 msgstr "Allows the application to get status informations about an user connected to a lan party (e.g. wether the user is checked in at a LanParty). This does not allow the application to read general data of the user except the ID and the Username."
 
@@ -1136,8 +1139,47 @@ msgstr "No columns"
 msgid "Datagrid|No results"
 msgstr "No results"
 
+msgid "Doorkeeper/access grant"
+msgstr "Access grant"
+
+msgid "Doorkeeper/access token"
+msgstr "Access token"
+
 msgid "Doorkeeper/application"
 msgstr "OAuth Application"
+
+msgid "Doorkeeper::AccessGrant|Expires in"
+msgstr "Expires in"
+
+msgid "Doorkeeper::AccessGrant|Redirect uri"
+msgstr "Redirect URI"
+
+msgid "Doorkeeper::AccessGrant|Revoked at"
+msgstr "Revoked at"
+
+msgid "Doorkeeper::AccessGrant|Scopes"
+msgstr "Scopes"
+
+msgid "Doorkeeper::AccessGrant|Token"
+msgstr "Token"
+
+msgid "Doorkeeper::AccessToken|Expires in"
+msgstr "Expires in"
+
+msgid "Doorkeeper::AccessToken|Previous refresh token"
+msgstr "Previous refresh token"
+
+msgid "Doorkeeper::AccessToken|Refresh token"
+msgstr "Refresh token"
+
+msgid "Doorkeeper::AccessToken|Revoked at"
+msgstr "Revoked at"
+
+msgid "Doorkeeper::AccessToken|Scopes"
+msgstr "Scopes"
+
+msgid "Doorkeeper::AccessToken|Token"
+msgstr "Token"
 
 msgid "Doorkeeper::Application"
 msgstr "OAuth Application"
@@ -1807,6 +1849,9 @@ msgstr "You have granted 1 application access to your account"
 
 msgid "Oauth|make any changes to your account"
 msgstr "make any changes to your account"
+
+msgid "Oauth|openid description"
+msgstr "authenticate you via OpenID connect"
 
 msgid "Oauth|read any data not specified above"
 msgstr "read any data not specified above"

@@ -4,6 +4,10 @@ L4N_OAUTH_SCOPES = {
   'user:lan:read': {
     admin_description: _('Admin|Oauth|user:lan:read description'),
     user_description:  _('Oauth|user:lan:read description')
+  },
+  openid:          {
+    admin_description: _('Admin|Oauth|openid description'),
+    user_description:  _('Oauth|openid description')
   }
 }.freeze
 
@@ -24,6 +28,7 @@ Doorkeeper.configure do
       session[:user_return_to] = request.fullpath
       flash[:warning] = _('Oauth|Please sign in to continue')
       redirect_to(new_user_session_url)
+      nil
     end
   end
 

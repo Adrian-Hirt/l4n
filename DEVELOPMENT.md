@@ -9,6 +9,10 @@
 * `AR_DETERMINISTIC_KEY`
 * `AR_KEY_DERIVATION_SALT`
 
+General application:
+
+* `APPLICATION_DOMAIN`
+
 For the production database:
 
 * `POSTGRES_HOSTNAME`
@@ -17,7 +21,6 @@ For the production database:
 
 For the mailer gateway in production:
 
-* `HOST_DOMAIN`
 * `USE_SMTP`
 
 If `USE_SMTP` is set to true (and the app uses smtp), we need the following

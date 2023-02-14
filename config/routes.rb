@@ -24,6 +24,9 @@ Rails.application.routes.draw do
     controllers applications: :'admin/oauth_applications'
   end
 
+  # OIDC
+  use_doorkeeper_openid_connect
+
   # == Settings =========================================================================
   post 'toggle_dark_mode', to: 'application#toggle_dark_mode'
 

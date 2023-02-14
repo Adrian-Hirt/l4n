@@ -100,7 +100,7 @@ Rails.application.configure do
   # Skip when building the docker image
   unless Figaro.env.building_docker_image
     # Use the host defined in mailer host
-    config.action_mailer.default_url_options = { host: Figaro.env.host_domain! }
+    config.action_mailer.default_url_options = { host: Figaro.env.application_domain! }
 
     # When using smtp, configure it, otherwise configure sendmail
     if ActiveModel::Type::Boolean.new.cast(Figaro.env.use_smtp!)

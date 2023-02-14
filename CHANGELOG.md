@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.6.0 - 2023-02-14
+
+### Added
+
+* Added OpenID connect functions
+
+### Changed
+
+* Renamed env variable `HOST_DOMAIN` to `APPLICATION_DOMAIN` which
+  must be a valid url, without the protocol and without trailing slash
+
 ## 1.5.0 - 2023-02-08
 
 ### Changed
