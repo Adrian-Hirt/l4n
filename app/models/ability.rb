@@ -134,7 +134,7 @@ class Ability
     # An user may update a tournament, manage its registrations,
     # phases, rounds and matches if they have the "fine-grained"
     # permission for that tournament
-    if FeatureFlag.enabled?(:tournaments)
+    if FeatureFlag.enabled?(:tournaments) && user.user_tournament_permissions.any?
       can %i[read update], Tournament, permitted_users: { id: user.id }
       can :manage, Tournament::Phase, tournament: Tournament.accessible_by(self)
       can :manage, Tournament::Team, tournament: Tournament.accessible_by(self)
