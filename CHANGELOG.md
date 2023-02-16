@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.6.1 - 2023-02-16
+
+### Fixed
+
+* Fix a bug in the ability that would show the tournament index to anyone
+  having any admin permissions (without showing any torunaments)
+
 ## 1.6.0 - 2023-02-14
 
 ### Added
