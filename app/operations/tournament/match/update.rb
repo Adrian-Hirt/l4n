@@ -11,6 +11,8 @@ module Operations::Tournament::Match
       end
     end
 
+    load_model_authorization_action :read_public
+
     model ::Tournament::Match do
       attribute :confirmation
     end

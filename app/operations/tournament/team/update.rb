@@ -9,6 +9,8 @@ module Operations::Tournament::Team
       end
     end
 
+    load_model_authorization_action :read_public
+
     model ::Tournament::Team
 
     policy do

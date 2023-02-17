@@ -6,6 +6,8 @@ module Operations::Tournament::TeamMember
 
     model ::Tournament::TeamMember
 
+    load_model_authorization_action nil
+
     policy do
       # Check that the team is in "created" state
       fail Operations::Exceptions::OpFailed, _('Team|Cannot leave team') unless model.team.created?

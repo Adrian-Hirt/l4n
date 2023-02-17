@@ -6,6 +6,8 @@ module Operations::Tournament::Team
 
     model ::Tournament::Team
 
+    load_model_authorization_action :read_public
+
     policy do
       # Check that the user is the captain (also works for singleplayer games)
       fail Operations::Exceptions::OpFailed, _('Team|Only the captain can do this') unless model.captain?(context.user)
