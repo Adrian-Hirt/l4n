@@ -118,7 +118,7 @@
               .d-grid.gap-2
                 = simple_form_for :join_data, wrapper: :input_group, url: join_tournament_team_path(model) do |f|
                   = f.password :password, placeholder: _('TournamentTeam|Join password')
-                  = f.save _('TournamentTeam|Join'), class: 'w-100'
+                  = f.save _('TournamentTeam|Join'), class: %i[w-100]
             - else
               = _('Team|No actions possible')
           - else

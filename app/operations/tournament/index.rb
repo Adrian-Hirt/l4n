@@ -3,7 +3,7 @@ module Operations::Tournament
     schema3 {} # No params allowed for now
 
     policy :on_init do
-      authorize! :read, Tournament
+      authorize! :read_public, Tournament
     end
 
     def tournaments

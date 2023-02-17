@@ -5,7 +5,7 @@ module Operations::Tournament::Team
     end
 
     policy :on_init do
-      authorize! :read, Tournament
+      authorize! :read_public, Tournament
     end
 
     def teams

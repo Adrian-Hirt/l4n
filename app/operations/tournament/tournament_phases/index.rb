@@ -5,7 +5,7 @@ module Operations::Tournament::TournamentPhases
     end
 
     policy :on_init do
-      authorize! :read, tournament
+      authorize! :read_public, tournament
     end
 
     def tournament

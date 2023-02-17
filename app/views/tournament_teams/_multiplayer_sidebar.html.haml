@@ -20,7 +20,7 @@
       = f.password :password, placeholder: _('TournamentTeam|Password|Leave blank to leave')
       - if model.tournament.teams_need_rank?
         = f.association :tournament_team_rank, as: :select, collection: model.tournament.tournament_team_ranks.order(:sort), include_blank: _('Form|Select|Blank')
-      = f.save class: 'w-100 btn-default'
+      = f.save class: %i[w-100 btn-default]
 
   - elsif model.registered?
     .d-grid.gap-2
