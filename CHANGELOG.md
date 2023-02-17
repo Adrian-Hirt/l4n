@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.6.2 - 2023-02-17
+
+### Fixed
+
+* Fix a bug where users would not see any tournaments in the frontend
+
 ## 1.6.1 - 2023-02-16
 
 ### Fixed
