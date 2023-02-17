@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.6.3 - 2023-02-17
+
+### Fixed
+
+* Fix another bug with the tournaments view
+
 ## 1.6.2 - 2023-02-17
 
 ### Fixed
