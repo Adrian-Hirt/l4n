@@ -7,7 +7,7 @@ module Operations::Tournament
     end
 
     def tournaments
-      @tournaments ||= ::Tournament.accessible_by(context.ability)
+      @tournaments ||= ::Tournament.accessible_by(context.ability, :read_public)
                                    .where(status: Tournament.statuses[:published])
                                    .order(frontend_order: :desc, name: :asc)
                                    .includes(:lan_party)

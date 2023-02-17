@@ -13,7 +13,7 @@ module Operations::Tournament::Team
     end
 
     def tournament
-      @tournament ||= ::Tournament.accessible_by(context.ability).find(osparams.tournament_id)
+      @tournament ||= ::Tournament.accessible_by(context.ability, :read_public).find(osparams.tournament_id)
     end
 
     def user_team

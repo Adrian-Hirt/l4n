@@ -6,6 +6,8 @@ module Operations::Tournament
 
     model ::Tournament
 
+    load_model_authorization_action :read_public
+
     def user_team
       @user_team ||= if context.user.nil?
                        nil

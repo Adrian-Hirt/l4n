@@ -7,6 +7,8 @@ module Operations::Tournament::Team
       end
     end
 
+    load_model_authorization_action :read_public
+
     lock_mode :exclusive
 
     policy do
