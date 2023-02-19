@@ -6,7 +6,7 @@
       .card-header
         = _('Ticket|Ticket for %{lan_name}') % { lan_name: model.name }
       .card-body
-        .text-center= op.qr_code.html_safe # rubocop:disable Rails/OutputSafety
+        .text-center.ticket-qr= op.qr_code.html_safe # rubocop:disable Rails/OutputSafety
   .col-md-6
     .card
       .card-header
