@@ -83,6 +83,20 @@ class Tournament < ApplicationRecord
 
     # The Teams need rank flag cannot be changed if teams are present
     errors.add(:teams_need_rank, _('Tournament|Cannot be changed if teams are present')) if teams_need_rank_changed?
+
+    # The LanParty association cannot be changed if teams are present
+    errors.add(:lan_party_id, _('Tournament|Cannot be changed if teams are present')) if lan_party_id_changed?
+
+    # A teamrank cannot be deleted if it has any teams
+    rank_error = false
+    tournament_team_ranks.each do |tournament_team_rank|
+      if tournament_team_rank.tournament_teams.any?
+        rank_error = true
+        tournament_team_rank.errors.add(:base, _('Tournament|Cannot be deleted as teams have this rank'))
+      end
+    end
+
+    errors.add(:base, _('Tournament|There were some errors deleting ranks')) if rank_error
   end
 
   def max_number_of_participants_larger_than_in_tournament_teams

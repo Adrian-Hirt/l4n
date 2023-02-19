@@ -5,7 +5,7 @@ class Tournament::TeamRank < ApplicationRecord
 
   # == Associations ================================================================
   belongs_to :tournament
-  has_many :tournament_teams, dependent:   :restrict_with_exception,
+  has_many :tournament_teams, dependent:   :restrict_with_error,
                               class_name:  'Tournament::Team',
                               foreign_key: :tournament_team_rank_id,
                               inverse_of:  :tournament_team_rank

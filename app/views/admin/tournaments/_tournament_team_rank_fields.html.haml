@@ -1,11 +1,13 @@
 .nested-fields
   .row
     .col-md-8
-      = f.input :name, wrapper_html: { class: 'mb-0' }
-      = f.error :base, class: 'invalid-feedback d-block'
+      = f.input :name, wrapper_html: { style: 'margin-bottom: 0 !important;' }
+      = f.error :base, class: 'invalid-feedback d-block mb-3'
     .col-md-3
       = f.input :sort
     .col-md-1
       %label.form-label &nbsp;
-      = link_to_remove_association f, class: 'btn btn-danger icon-only-btn d-table', data: { action: 'click->cocoon#removeRow' } do
+      - classes = %i[btn btn-danger icon-only-btn d-table]
+      - classes << :disabled if f.object.tournament_teams.any?
+      = link_to_remove_association f, class: classes, data: { action: 'click->cocoon#removeRow' }  do
         = icon %i[fa fa-trash]

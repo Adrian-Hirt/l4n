@@ -39,12 +39,12 @@ module Admin
 
       def update
         if run Operations::Admin::Tournament::Team::Update
-          flash[:success] = _('Admin|%{model_name}|Create failed') % { model_name: _('Tournament|Team') }
+          flash[:success] = _('Admin|%{model_name}|Successfully updated') % { model_name: _('Tournament|Team') }
           redirect_to admin_tournament_path(model.tournament)
         else
           add_breadcrumb model.tournament.name, admin_tournament_path(model.tournament)
           add_breadcrumb model.name
-          flash[:danger] = _('Admin|%{model_name}|Create failed') % { model_name: _('Tournament|Team') }
+          flash[:danger] = _('Admin|%{model_name}|Update failed') % { model_name: _('Tournament|Team') }
           render :edit, status: :unprocessable_entity
         end
       end
