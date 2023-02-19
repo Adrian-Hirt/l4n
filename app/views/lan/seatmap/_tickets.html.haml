@@ -1,9 +1,10 @@
-%div{ data: { controller: 'seatmap-mutations' } }
-  - if op.respond_to?(:removed_seat_id)
-    #removed-seat{ data: { id: op.removed_seat_id } }
+- if op.respond_to?(:removed_seat_id) || op.respond_to?(:taken_seat)
+  %div{ data: { controller: 'seatmap-mutations' } }
+    - if op.respond_to?(:removed_seat_id)
+      #removed-seat{ data: { id: op.removed_seat_id } }
 
-  - if op.respond_to?(:taken_seat)
-    #taken-seat{ data: { id: op.taken_seat.id } }
+    - if op.respond_to?(:taken_seat)
+      #taken-seat{ data: { id: op.taken_seat.id } }
 
 %div{ data: { 'seatmap-target' => 'tickets' } }
   - if op.available_tickets.none?
