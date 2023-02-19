@@ -17,7 +17,11 @@ class TournamentTeamsController < ApplicationController
 
   def create
     if run Operations::Tournament::Team::CreateForTournament
-      flash[:success] = _('Team|Successfully created')
+      if model.tournament.singleplayer?
+        flash[:success] = _('Team|Successfully registered for tournament')
+      else
+        flash[:success] = _('Team|Successfully created')
+      end
     else
       flash[:danger] = model.errors.full_messages.to_sentence
     end
@@ -43,15 +47,19 @@ class TournamentTeamsController < ApplicationController
 
   def destroy
     if run Operations::Tournament::Team::Destroy
-      flash[:success] = _('Team|Successfully deleted')
+      if model.tournament.singleplayer?
+        flash[:success] = _('Team|Successfully unregistered from tournament')
+      else
+        flash[:success] = _('Team|Successfully deleted')
+      end
     else
       flash[:danger] = _('Team|Could not be deleted')
     end
 
-    redirect_to tournament_path(model.tournament)
+    redirect_back(fallback_location: tournament_path(model.tournament))
   rescue Operations::Exceptions::OpFailed => e
     flash[:danger] = e.message
-    redirect_to tournament_path(model.tournament)
+    redirect_back(fallback_location: tournament_path(model.tournament))
   end
 
   def register_for_tournament

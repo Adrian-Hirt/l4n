@@ -1,10 +1,8 @@
 .card
-  .card-header
+  .card-header.d-flex.justify-content-between
     = _('Tournament|Tournament actions')
-  .card-body
-    .mb-2.fw-bold= _('Tournament|Registration status')
     = format_registration_status(tournament)
-    %hr
+  .card-body
     -# Only display to logged-in users
     - if user_signed_in?
       -# User can only crate a team if the lan_party is not present or the user

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-13 18:58+0100\n"
-"PO-Revision-Date: 2023-02-13 18:58+0100\n"
+"POT-Creation-Date: 2023-02-19 14:07+0100\n"
+"PO-Revision-Date: 2023-02-19 14:07+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -499,6 +499,9 @@ msgid "Admin|Team|Team is full"
 msgstr ""
 
 msgid "Admin|Team|Teamcaptain missing"
+msgstr ""
+
+msgid "Admin|Team|This action is only available for multiplayer games"
 msgstr ""
 
 msgid "Admin|Team|User is in another team already"
@@ -2988,6 +2991,9 @@ msgstr ""
 msgid "Team|The other team needs to confirm the score!"
 msgstr ""
 
+msgid "Team|This action is only available for multiplayer games"
+msgstr ""
+
 msgid "Team|User cannot be found"
 msgstr ""
 
@@ -3561,6 +3567,9 @@ msgstr ""
 msgid "Tournament|Leave team?"
 msgstr ""
 
+msgid "Tournament|Leave tournament"
+msgstr ""
+
 msgid "Tournament|Leave tournament?"
 msgstr ""
 
@@ -3654,7 +3663,7 @@ msgstr ""
 msgid "Tournament|Show"
 msgstr ""
 
-msgid "Tournament|Sign up for tournaments"
+msgid "Tournament|Sign up for tournament"
 msgstr ""
 
 msgid "Tournament|Singleplayer"
@@ -3727,9 +3736,6 @@ msgid "Tournament|You are already in the tournament"
 msgstr ""
 
 msgid "Tournament|You are not in the tournament"
-msgstr ""
-
-msgid "Tournament|You are participating in the tournament"
 msgstr ""
 
 msgid "Tournament|You need to be checked in to do this"

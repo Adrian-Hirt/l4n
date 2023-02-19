@@ -500,6 +500,9 @@ msgstr "Team is full"
 msgid "Admin|Team|Teamcaptain missing"
 msgstr "Teamcaptain missing"
 
+msgid "Admin|Team|This action is only available for multiplayer games"
+msgstr "This action is only available for multiplayer games"
+
 msgid "Admin|Team|User is in another team already"
 msgstr "User is in another team already"
 
@@ -2987,6 +2990,9 @@ msgstr "The other team already reported the score, please confirm the score!"
 msgid "Team|The other team needs to confirm the score!"
 msgstr "The other team needs to confirm the score!"
 
+msgid "Team|This action is only available for multiplayer games"
+msgstr "This action is only available for multiplayer games"
+
 msgid "Team|User cannot be found"
 msgstr "User cannot be found"
 
@@ -3560,8 +3566,11 @@ msgstr "Leave team"
 msgid "Tournament|Leave team?"
 msgstr "Leave team"
 
-msgid "Tournament|Leave tournament?"
+msgid "Tournament|Leave tournament"
 msgstr "Leave tournament"
+
+msgid "Tournament|Leave tournament?"
+msgstr "Do you really want to leave the tournament?"
 
 msgid "Tournament|Match"
 msgstr "Match"
@@ -3653,8 +3662,8 @@ msgstr "Result needs to be confirmed by other team"
 msgid "Tournament|Show"
 msgstr "Show"
 
-msgid "Tournament|Sign up for tournaments"
-msgstr "Sign up for tournaments"
+msgid "Tournament|Sign up for tournament"
+msgstr "Sign up for tournament"
 
 msgid "Tournament|Singleplayer"
 msgstr "Singleplayer"
@@ -3727,9 +3736,6 @@ msgstr "You are already in the tournament"
 
 msgid "Tournament|You are not in the tournament"
 msgstr "You are not in the tournament"
-
-msgid "Tournament|You are participating in the tournament"
-msgstr "You are participating in the tournament"
 
 msgid "Tournament|You need to be checked in to do this"
 msgstr "You need to be checked in to do this"

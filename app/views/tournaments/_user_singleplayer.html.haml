@@ -4,7 +4,7 @@
       = simple_form_for :tournament_team, url: tournament_tournament_teams_path(tournament), wrapper: :input_group do |f|
         - if tournament.teams_need_rank?
           = f.input :tournament_team_rank_id, as: :select, collection: tournament.tournament_team_ranks.order(:sort), include_blank: _('Form|Select|Blank')
-        = f.save _('Tournament|Sign up for tournaments'), class: %i[w-100]
+        = f.save _('Tournament|Sign up for tournament'), class: %i[w-100]
   - else
     = button _('Tournament|Leave tournament'),
         op.user_team,
@@ -54,3 +54,5 @@
       = _('Tournament|No next match yet')
     - else
       = _('Tournament|No next match available')
+  - else
+    = _('Tournament|You are not in the tournament')
