@@ -761,6 +761,10 @@ msgstr "Not in running phase"
 msgid "Admin|Tournament|No disputed matches"
 msgstr "No disputed matches"
 
+#, fuzzy
+msgid "Admin|Tournament|No teams signed up yet"
+msgstr "No teams"
+
 msgid "Admin|Tournament|Permissions"
 msgstr "Permissions"
 
@@ -2925,7 +2929,7 @@ msgid "Team|Name"
 msgstr "Name"
 
 msgid "Team|Name placeholder"
-msgstr "Name placeholder"
+msgstr "Enter your teamname"
 
 msgid "Team|No actions possible"
 msgstr "No actions possible"
@@ -3483,7 +3487,7 @@ msgid "TournamentTeam|Password"
 msgstr "Password"
 
 msgid "TournamentTeam|Password|Leave blank to leave"
-msgstr "Leave blank to leave"
+msgstr "Leave blank to keep password"
 
 msgid "TournamentTeam|Player"
 msgstr "Player"
@@ -3525,6 +3529,10 @@ msgid "Tournament|Add team rank"
 msgstr "Add team rank"
 
 msgid "Tournament|Cannot be changed if teams are present"
+msgstr "Cannot be changed if teams are present"
+
+#, fuzzy
+msgid "Tournament|Cannot be deleted as teams have this rank"
 msgstr "Cannot be changed if teams are present"
 
 msgid "Tournament|Delete team"
@@ -3641,9 +3649,6 @@ msgstr "Registration is closed"
 msgid "Tournament|Registration open"
 msgstr "Registration open"
 
-msgid "Tournament|Registration status"
-msgstr "Registration status"
-
 msgid "Tournament|Remove listing"
 msgstr "Remove listing"
 
@@ -3718,6 +3723,10 @@ msgstr "The tournament has ongoing phases"
 
 msgid "Tournament|The tournament is full"
 msgstr "The tournament is full"
+
+#, fuzzy
+msgid "Tournament|There were some errors deleting ranks"
+msgstr "Tournament"
 
 msgid "Tournament|This is a singleplayer tournament"
 msgstr "This is a singleplayer tournament"

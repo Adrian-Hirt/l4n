@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-19 14:07+0100\n"
-"PO-Revision-Date: 2023-02-19 14:07+0100\n"
+"POT-Creation-Date: 2023-02-19 14:59+0100\n"
+"PO-Revision-Date: 2023-02-19 14:59+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -760,6 +760,9 @@ msgid "Admin|Tournament|Match|Not in running phase"
 msgstr ""
 
 msgid "Admin|Tournament|No disputed matches"
+msgstr ""
+
+msgid "Admin|Tournament|No teams signed up yet"
 msgstr ""
 
 msgid "Admin|Tournament|Permissions"
@@ -3528,6 +3531,9 @@ msgstr ""
 msgid "Tournament|Cannot be changed if teams are present"
 msgstr ""
 
+msgid "Tournament|Cannot be deleted as teams have this rank"
+msgstr ""
+
 msgid "Tournament|Delete team"
 msgstr ""
 
@@ -3642,9 +3648,6 @@ msgstr ""
 msgid "Tournament|Registration open"
 msgstr ""
 
-msgid "Tournament|Registration status"
-msgstr ""
-
 msgid "Tournament|Remove listing"
 msgstr ""
 
@@ -3718,6 +3721,9 @@ msgid "Tournament|The tournament has ongoing phases"
 msgstr ""
 
 msgid "Tournament|The tournament is full"
+msgstr ""
+
+msgid "Tournament|There were some errors deleting ranks"
 msgstr ""
 
 msgid "Tournament|This is a singleplayer tournament"
