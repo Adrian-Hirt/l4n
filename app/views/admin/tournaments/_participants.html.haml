@@ -46,21 +46,22 @@
                 \|
                 = "(#{team.team_members.count} / #{model.team_size} #{_('Team|Team members')})"
           %div
-            - if team.created?
-              = button nil, register_for_tournament_admin_team_path(team), icon_only: true,
-                                                                            btn_icon: %i[fas fa-plus fa-fw],
-                                                                            size: :sm,
-                                                                            method: :post,
-                                                                            color: :primary,
-                                                                            disabled: tournament_full || !team.full? || team.captain_missing?,
-                                                                            html: { title: _('Admin|Teams|Register for tournament'), data: { 'bs-toggle' => :tooltip } }
-            - elsif team.registered?
-              = button nil, unregister_from_tournament_admin_team_path(team), icon_only: true,
-                                                                              btn_icon: %i[fas fa-minus fa-fw],
+            - unless model.singleplayer?
+              - if team.created?
+                = button nil, register_for_tournament_admin_team_path(team), icon_only: true,
+                                                                              btn_icon: %i[fas fa-plus fa-fw],
                                                                               size: :sm,
                                                                               method: :post,
                                                                               color: :primary,
-                                                                              html: { title: _('Admin|Teams|Unregister from tournament'), data: { 'bs-toggle' => :tooltip } }
+                                                                              disabled: tournament_full || !team.full? || team.captain_missing?,
+                                                                              html: { title: _('Admin|Teams|Register for tournament'), data: { 'bs-toggle' => :tooltip } }
+              - elsif team.registered?
+                = button nil, unregister_from_tournament_admin_team_path(team), icon_only: true,
+                                                                                btn_icon: %i[fas fa-minus fa-fw],
+                                                                                size: :sm,
+                                                                                method: :post,
+                                                                                color: :primary,
+                                                                                html: { title: _('Admin|Teams|Unregister from tournament'), data: { 'bs-toggle' => :tooltip } }
             = edit_button team, size: :sm, icon_only: true, href: edit_admin_team_path(team)
             = delete_button team, size: :sm, icon_only: true, href: admin_team_path(team), disabled: !team.deleteable?
   .card-footer

@@ -18,6 +18,9 @@ module Operations::Admin::Tournament::Team
       # Check that the user is confirmed
       fail Operations::Exceptions::OpFailed, _('Admin|Team|User not confirmed') unless user.confirmed?
 
+      # This operation should only be used for multiplayer games
+      fail Operations::Exceptions::OpFailed, _('Admin|Team|This action is only available for multiplayer games') if model.tournament.singleplayer?
+
       # Check that there is still space in the team
       fail Operations::Exceptions::OpFailed, _('Admin|Team|Team is full') if model.full?
 

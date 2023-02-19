@@ -47,7 +47,10 @@ module Operations::Admin::Tournament::Team
     def perform
       # if it's a singleplayer game that the tournament is played in,
       # we add the user (identifier by the name) as a captain and set
-      # the name of the team to this users username.
+      # the name of the team to this users username. Also, we directly
+      # register the team for the tournament if it's a singleplayer
+      # game, as the two-step process is only required for the multiplayer
+      # games.
       if tournament.singleplayer?
         model.team_members.build(
           user:    singleplayer_user,
@@ -55,10 +58,12 @@ module Operations::Admin::Tournament::Team
         )
 
         model.name = singleplayer_user.username
+        model.status = Tournament::Team.statuses[:registered]
+      else
+        model.status = Tournament::Team.statuses[:created]
       end
 
       model.tournament = tournament
-      model.status = Tournament::Team.statuses[:created]
       super
     end
 

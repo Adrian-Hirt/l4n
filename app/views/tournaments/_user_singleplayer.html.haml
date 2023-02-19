@@ -5,42 +5,14 @@
         - if tournament.teams_need_rank?
           = f.input :tournament_team_rank_id, as: :select, collection: tournament.tournament_team_ranks.order(:sort), include_blank: _('Form|Select|Blank')
         = f.save _('Tournament|Sign up for tournaments'), class: %i[w-100]
-  - elsif op.user_team.created?
-    .mb-2.border-bottom
-      .mb-2.fw-bold= _('Tournament|Your participation page')
-      .mb-2
-        = link_to op.user_team.name, team_path(op.user_team)
-        - if tournament.teams_need_rank?
-          .d-inline.text-muted
-            \|
-            = op.user_team.tournament_team_rank&.name
-    .d-grid.gap-2
-      = button _('Tournament|Participate in tournament'),
-              register_for_tournament_tournament_team_path(op.user_team),
-              method: :post,
-              color: :default
-      = button _('Tournament|Remove listing'),
-              op.user_team,
-              color: :danger,
-              confirm: _('Tournament|Leave tournament?'),
-              tag: :button,
-              html: { method: :delete },
-              classes: 'w-100'
-  - elsif op.user_team.registered?
-    .mb-2.border-bottom
-      .mb-2.fw-bold= _('Tournament|Your participation page')
-      .mb-2
-        = link_to op.user_team.name, team_path(op.user_team)
-        - if tournament.teams_need_rank?
-          .d-inline.text-muted
-            \|
-            = op.user_team.tournament_team_rank&.name
-    .d-grid.gap-2
-      = button _('Tournament|Remove my participation from tournament'),
-              unregister_from_tournament_tournament_team_path(op.user_team),
-              method: :post
   - else
-    = _('Team|No actions possible')
+    = button _('Tournament|Leave tournament'),
+        op.user_team,
+        color: :danger,
+        confirm: _('Tournament|Leave tournament?'),
+        tag: :button,
+        html: { method: :delete },
+        classes: 'w-100'
 - else
   - if op.user_team.present? # rubocop:disable Style/IfInsideElse
     .mb-2.fw-bold= _('Tournament|Your participation page')
@@ -50,11 +22,6 @@
         .d-inline.text-muted
           \|
           = op.user_team.tournament_team_rank&.name
-      .text-muted
-        - if op.user_team.created?
-          = _('Tournament|You are not in the tournament')
-        - else
-          = _('Tournament|You are participating in the tournament')
     %hr
     .mb-2.fw-bold= _('Tournament|Your next match')
     - match = Queries::Tournament::Match::FetchNextForTeam.call(team: op.user_team)

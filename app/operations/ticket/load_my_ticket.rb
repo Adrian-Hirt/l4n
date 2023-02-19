@@ -29,7 +29,7 @@ module Operations::Ticket
         color:           '000',
         shape_rendering: 'crispEdges',
         module_size:     6,
-        viewbox: true
+        viewbox:         true
       )
     end
   end

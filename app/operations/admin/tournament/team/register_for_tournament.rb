@@ -9,6 +9,9 @@ module Operations::Admin::Tournament::Team
     lock_mode :exclusive
 
     policy do
+      # This operation should only be used for multiplayer games
+      fail Operations::Exceptions::OpFailed, _('Admin|Team|This action is only available for multiplayer games') if model.tournament.singleplayer?
+
       fail Operations::Exceptions::OpFailed, _('Admin|Tournament|Team|Team cannot be registered as it has the wrong status') unless model.created?
 
       # We need to check that there are no phases which are in

@@ -33,11 +33,15 @@ module Operations::Tournament::Team
 
     def perform
       # if it's a singleplayer game that the tournament is played in,
-      # we set the name of the team to this users username.
+      # we set the name of the team to this users username, and directly
+      # join the tournament, as the two-step process is only needed for
+      # teams with multiple players.
       if tournament.singleplayer?
         model.name = context.user.username
+        model.status = Tournament::Team.statuses[:registered]
       else
         model.name = osparams.tournament_team[:name]
+        model.status = Tournament::Team.statuses[:created]
       end
 
       # Add the current user as captain
@@ -47,7 +51,6 @@ module Operations::Tournament::Team
       )
 
       model.tournament = tournament
-      model.status = Tournament::Team.statuses[:created]
       super
     end
 

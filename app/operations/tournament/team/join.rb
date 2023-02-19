@@ -12,6 +12,9 @@ module Operations::Tournament::Team
     lock_mode :exclusive
 
     policy do
+      # This operation should only be used for multiplayer games
+      fail Operations::Exceptions::OpFailed, _('Team|This action is only available for multiplayer games') if model.tournament.singleplayer?
+
       # Check that the registration of the tournament is open
       fail Operations::Exceptions::OpFailed, _('Tournament|Registration is closed') unless model.tournament.registration_open?
 

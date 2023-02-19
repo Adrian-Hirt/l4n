@@ -14,6 +14,9 @@ module Operations::Tournament::Team
       # Check that the user is the captain (also works for singleplayer games)
       fail Operations::Exceptions::OpFailed, _('Team|Only the captain can do this') unless model.captain?(context.user)
 
+      # This operation should only be used for multiplayer games
+      fail Operations::Exceptions::OpFailed, _('Team|This action is only available for multiplayer games') if model.tournament.singleplayer?
+
       # Check that the team is not seeded
       fail Operations::Exceptions::OpFailed, _('Tournament|Team|Team is already seeded') if model.seeded?
 

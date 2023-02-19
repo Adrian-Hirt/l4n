@@ -49,7 +49,11 @@ class Tournament::Team < ApplicationRecord
   end
 
   def deleteable?
-    created?
+    if tournament.singleplayer?
+      registered?
+    else
+      created?
+    end
   end
 
   def captain
