@@ -1095,6 +1095,9 @@ msgstr "Your items"
 msgid "Checkout|Your promotion code is invalid or already used!"
 msgstr "Your promotion code is invalid or already used!"
 
+msgid "Click here"
+msgstr "click here"
+
 msgid "Colors|Blue"
 msgstr "Blue"
 
@@ -1201,7 +1204,7 @@ msgid "Doorkeeper::Application|Confidential"
 msgstr "Confidential"
 
 msgid "Doorkeeper::Application|Id"
-msgstr "Application ID"
+msgstr "Client ID"
 
 msgid "Doorkeeper::Application|Name"
 msgstr "Name"
@@ -1216,10 +1219,10 @@ msgid "Doorkeeper::Application|Scopes"
 msgstr "Scopes"
 
 msgid "Doorkeeper::Application|Secret"
-msgstr "Application secret"
+msgstr "Client secret"
 
 msgid "Doorkeeper::Application|Uid"
-msgstr "Application ID"
+msgstr "Client ID"
 
 msgid "Doorkeeper::AuthorizedApplication|Authenticated at"
 msgstr "Authenticated at"
@@ -2534,6 +2537,9 @@ msgstr "Saved successfully"
 
 msgid "SeatMap|User checked in"
 msgstr "Checked in"
+
+msgid "SeatMap|You have unassigned tickets, %{link} to assign your tickets!"
+msgstr "You have unassigned tickets, %{link} to assign your tickets!"
 
 msgid "SeatMap|You need to create at least 1 seat!"
 msgstr "You need to create at least 1 seat!"

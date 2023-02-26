@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-19 14:59+0100\n"
-"PO-Revision-Date: 2023-02-19 14:59+0100\n"
+"POT-Creation-Date: 2023-02-26 14:09+0100\n"
+"PO-Revision-Date: 2023-02-26 14:09+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -1093,6 +1093,9 @@ msgid "Checkout|Your items"
 msgstr ""
 
 msgid "Checkout|Your promotion code is invalid or already used!"
+msgstr ""
+
+msgid "Click here"
 msgstr ""
 
 msgid "Colors|Blue"
@@ -2533,6 +2536,9 @@ msgid "SeatMap|Saved successfully"
 msgstr ""
 
 msgid "SeatMap|User checked in"
+msgstr ""
+
+msgid "SeatMap|You have unassigned tickets, %{link} to assign your tickets!"
 msgstr ""
 
 msgid "SeatMap|You need to create at least 1 seat!"
