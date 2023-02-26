@@ -27,6 +27,10 @@ module Operations::Admin::Tournament::Phase
 
     def perform
       ActiveRecord::Base.transaction do
+        # Touch the current round to expire cache
+        model.current_round.touch
+
+        # Generate new round matches
         driver = TournamentDrivers::DefaultDriver.new(model, model.next_round)
         model.generator_class.generate driver
 

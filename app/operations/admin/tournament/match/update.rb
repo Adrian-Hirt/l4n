@@ -30,9 +30,14 @@ module Operations::Admin::Tournament::Match
       # For simplicity, we just subtract the winning points from the previous
       # winner (if present), and add them to the new winner (if present).
       # As such, we get the desired behaviour.
+      #
+      # Please note that we only remove the points from the users if the
+      # status is "confirmed", as otherwise we remove too many points
+      # from the user (e.g. when the status is "reported" [only one team
+      # reported the score so far] or the status is "disputed").
       ActiveRecord::Base.transaction do
-        # Remove points if swiss system
-        if model.phase.swiss?
+        # Remove points if swiss system AND the status is confirmed.
+        if model.phase.swiss? && model.result_confirmed?
           if model.draw_was
             previous_home.score -= Tournament::Match::DRAW_SCORE
             previous_home.save!
