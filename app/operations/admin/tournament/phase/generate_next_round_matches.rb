@@ -28,7 +28,9 @@ module Operations::Admin::Tournament::Phase
     def perform
       ActiveRecord::Base.transaction do
         # Touch the current round to expire cache
+        # rubocop:disable Rails/SkipsModelValidations
         model.current_round.touch
+        # rubocop:enable Rails/SkipsModelValidations
 
         # Generate new round matches
         driver = TournamentDrivers::DefaultDriver.new(model, model.next_round)
