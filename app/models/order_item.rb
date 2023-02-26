@@ -11,6 +11,7 @@ class OrderItem < ApplicationRecord
   delegate :product, to: :product_variant
 
   # == Validations =================================================================
+  validates :quantity, presence: true, numericality: { greater_than_or_equal_to: 0, less_than: MAX_PERMITTED_INT, integer_only: true }
 
   # == Hooks =======================================================================
 

@@ -37,8 +37,12 @@ class Tournament::Match < ApplicationRecord
   # == Validations =================================================================
   validates_boolean :draw
   validates :draw, absence: true, if: -> { winner.present? }
-  validates :home_score, presence: true, numericality: { greater_or_equal_to: 0 }
-  validates :away_score, presence: true, numericality: { greater_or_equal_to: 0 }
+  # The less_than is chosen arbitrarily. The original intend is to have the value be smaller
+  # then the max value in the database. However, the scores of matches usually should never
+  # be extremely large anyway, and as such we can restrict the value to be a max lenght
+  # of four digits, which makes styling a bit simpler.
+  validates :home_score, presence: true, numericality: { greater_or_equal_to: 0, less_than: 10_000, only_integer: true }
+  validates :away_score, presence: true, numericality: { greater_or_equal_to: 0, less_than: 10_000, only_integer: true }
   validates :result_status, presence: true, inclusion: result_statuses.keys
 
   # == Hooks =======================================================================

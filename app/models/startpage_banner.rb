@@ -11,7 +11,7 @@ class StartpageBanner < ApplicationRecord
   # == Validations =================================================================
   validates_boolean :visible
   validates :name, presence: true, length: { maximum: 255 }
-  validates :height, numericality: { in: 150..1000 }
+  validates :height, numericality: { in: 150..1000, integer_only: true }
 
   # == Hooks =======================================================================
   before_save :set_others_to_not_visible

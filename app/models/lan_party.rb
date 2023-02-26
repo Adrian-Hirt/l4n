@@ -13,7 +13,7 @@ class LanParty < ApplicationRecord
 
   # == Validations =================================================================
   validates :name, presence: true, length: { maximum: 255 }
-  validates :sort, presence: true
+  validates :sort, presence: true, numericality: { greater_than_or_equal_to: 0, less_than: MAX_PERMITTED_INT, integer_only: true }
   validates_boolean :active
   validates_boolean :sidebar_active
   validates_boolean :timetable_enabled

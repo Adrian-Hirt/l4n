@@ -9,7 +9,7 @@ class TimetableCategory < ApplicationRecord
 
   # == Validations =================================================================
   validates :name, presence: true, length: { maximum: 255 }
-  validates :order, presence: true
+  validates :order, presence: true, numericality: { greater_than_or_equal_to: 0, less_than: MAX_PERMITTED_INT, integer_only: true }
 
   # == Hooks =======================================================================
 

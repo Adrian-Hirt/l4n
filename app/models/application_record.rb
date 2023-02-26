@@ -1,6 +1,8 @@
 class ApplicationRecord < ActiveRecord::Base
   primary_abstract_class
 
+  MAX_PERMITTED_INT = 2_147_483_647
+
   def self.validates_translated(attribute, **validations)
     I18n.available_locales.each do |locale|
       validates "#{attribute}_#{locale}", validations

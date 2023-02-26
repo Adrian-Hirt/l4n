@@ -10,7 +10,7 @@ class CartItem < ApplicationRecord
   delegate :product, to: :product_variant
 
   # == Validations =================================================================
-  validates :quantity, numericality: { greater_than: 0 }
+  validates :quantity, numericality: { greater_than: 0, less_than: MAX_PERMITTED_INT, integer_only: true }
 
   # == Hooks =======================================================================
 

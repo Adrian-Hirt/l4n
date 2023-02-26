@@ -12,7 +12,7 @@ class Tournament::TeamRank < ApplicationRecord
 
   # == Validations =================================================================
   validates :name, presence: true, uniqueness: { scope: :tournament, case_sensitive: false }, length: { maximum: 255 }
-  validates :sort, numericality: { min: 0 }, presence: true
+  validates :sort, numericality: { greater_than_or_equal_to: 0, less_than: MAX_PERMITTED_INT, integer_only: true }, presence: true
 
   # == Hooks =======================================================================
 

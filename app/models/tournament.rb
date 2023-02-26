@@ -25,17 +25,17 @@ class Tournament < ApplicationRecord
 
   # == Validations =================================================================
   validates :name, presence: true, length: { maximum: 255 }
-  validates :team_size, presence: true, numericality: { greater_than: 0 }
+  validates :team_size, presence: true, numericality: { greater_than: 0, less_than: MAX_PERMITTED_INT, integer_only: true }
   validates :team_size, numericality: { equal_to: 1 }, if: :singleplayer
   validates :team_size, numericality: { greater_than: 1 }, unless: :singleplayer
   validates :status, presence: true, inclusion: statuses.keys
   validates_boolean :registration_open
   validates_boolean :singleplayer
   validates_boolean :teams_need_rank
-  validates :max_number_of_participants, presence: true
+  validates :max_number_of_participants, presence: true, numericality: { greater_than: 0, less_than: MAX_PERMITTED_INT, integer_only: true }
   validate :disallow_changes_when_teams_present
   validate :max_number_of_participants_larger_than_in_tournament_teams
-  validates :frontend_order, presence: true, numericality: true
+  validates :frontend_order, presence: true, numericality: { greater_than_or_equal_to: 0, less_than: MAX_PERMITTED_INT, integer_only: true }
 
   # == Hooks =======================================================================
 

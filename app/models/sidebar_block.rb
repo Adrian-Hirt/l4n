@@ -8,7 +8,7 @@ class SidebarBlock < ApplicationRecord
   # == Validations =================================================================
   validates_boolean :visible
   validates :title, presence: true, length: { maximum: 30 }
-  validates :sort, numericality: { min: 0 }, presence: true
+  validates :sort, numericality: { greater_than_or_equal_to: 0, less_than: MAX_PERMITTED_INT, integer_only: true }, presence: true
 
   # == Hooks =======================================================================
 
