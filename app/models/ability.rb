@@ -14,7 +14,12 @@ class Ability
     can :read_public, Event, &:published? if FeatureFlag.enabled?(:events)
 
     # Anyone can read a page if the feature flag is enabled and it's published
-    can :read_public, Page, &:published? if FeatureFlag.enabled?(:pages)
+    # if it's a content page, or in any case if it's a redirect page
+    if FeatureFlag.enabled?(:pages)
+      can :read_public, Page do |m|
+        m.is_a?(RedirectPage) || m.published?
+      end
+    end
 
     if FeatureFlag.enabled?(:lan_party)
       # Anyone can read a lanparty if it's active
