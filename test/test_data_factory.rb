@@ -106,11 +106,11 @@ module TestDataFactory
 
   def create_tournament_phase(tournament:, phase_attrs: {})
     ::Operations::Admin::Tournament::Phase::CreateForTournament.run!(
-      tournament_id: tournament.id,
+      tournament_id:    tournament.id,
       tournament_phase: {
-        name: SecureRandom.alphanumeric,
-        size: 6,
-        auto_progress: false,
+        name:            SecureRandom.alphanumeric,
+        size:            6,
+        auto_progress:   false,
         tournament_mode: 'single_elimination'
       }.merge!(phase_attrs)
     ).model.reload

@@ -31,7 +31,7 @@ module Unit
             # Generate the rounds. This needs to be done before the seeding can
             # happen.
             ::Operations::Admin::Tournament::Phase::GenerateRounds.run!(
-              id: fetch(:phase_1).id,
+              id:    fetch(:phase_1).id,
               phase: {
                 swiss_rounds: 4
               }
@@ -39,7 +39,7 @@ module Unit
 
             # Seed the four teams
             ::Operations::Admin::Tournament::Phase::UpdateSeeding.run!(
-              id: fetch(:phase_1).id,
+              id:      fetch(:phase_1).id,
               seeding: {
                 seed: 1,
                 team: fetch(:team_1).id
@@ -47,7 +47,7 @@ module Unit
             )
 
             ::Operations::Admin::Tournament::Phase::UpdateSeeding.run!(
-              id: fetch(:phase_1).id,
+              id:      fetch(:phase_1).id,
               seeding: {
                 seed: 2,
                 team: fetch(:team_2).id
@@ -55,7 +55,7 @@ module Unit
             )
 
             ::Operations::Admin::Tournament::Phase::UpdateSeeding.run!(
-              id: fetch(:phase_1).id,
+              id:      fetch(:phase_1).id,
               seeding: {
                 seed: 3,
                 team: fetch(:team_3).id
@@ -63,7 +63,7 @@ module Unit
             )
 
             ::Operations::Admin::Tournament::Phase::UpdateSeeding.run!(
-              id: fetch(:phase_1).id,
+              id:      fetch(:phase_1).id,
               seeding: {
                 seed: 4,
                 team: fetch(:team_4).id
@@ -99,8 +99,8 @@ module Unit
           def create_singleplayer_team(user, tournament)
             team = ::Tournament::Team.create!(
               tournament: tournament,
-              name: user.username,
-              status: ::Tournament::Team.statuses[:registered]
+              name:       user.username,
+              status:     ::Tournament::Team.statuses[:registered]
             )
 
             team.team_members.create!(
