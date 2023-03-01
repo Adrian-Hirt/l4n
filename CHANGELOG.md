@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.6.4 - 2023-03-01
+
+### Added
+
+* Add `username` to OIDC ID token
+* Add warning banner to seatmap when user has unassigned tickets
+
+### Fixed
+
+* Fixed various bugs with the tournament system
+* Fix redirect page not working properly
+
 ## 1.6.3 - 2023-02-17
 
 ### Fixed
