@@ -1,3 +1,5 @@
+require 'faker'
+
 module TestDataFactory
   # This module holds helper methods to create test data,
   # e.g. to create an user without much effort for the testing
@@ -11,8 +13,8 @@ module TestDataFactory
   def create_user(attrs = {})
     ::Operations::User::Create.run!(
       user: {
-        username: 'Testuser',
-        email:    'testuser@example.com',
+        username: Faker::Internet.username,
+        email:    Faker::Internet.safe_email,
         password: 'Password123'
       }.merge(attrs)
     ).model.reload
@@ -99,6 +101,18 @@ module TestDataFactory
         singleplayer:               true,
         max_number_of_participants: 12
       }.merge!(attrs)
+    ).model.reload
+  end
+
+  def create_tournament_phase(tournament:, phase_attrs: {})
+    ::Operations::Admin::Tournament::Phase::CreateForTournament.run!(
+      tournament_id: tournament.id,
+      tournament_phase: {
+        name: SecureRandom.alphanumeric,
+        size: 6,
+        auto_progress: false,
+        tournament_mode: 'single_elimination'
+      }.merge!(phase_attrs)
     ).model.reload
   end
 

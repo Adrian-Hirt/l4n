@@ -104,6 +104,7 @@ end
 
 # Test gems
 group :test do
+  gem 'faker', '~> 3.1.1'
   gem 'simplecov', '~> 0.22.0', require: false
 end
 

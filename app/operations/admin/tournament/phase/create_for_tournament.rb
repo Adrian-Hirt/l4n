@@ -16,6 +16,9 @@ module Operations::Admin::Tournament::Phase
       max_phase_number = tournament.phases.maximum(:phase_number) || 0
       model.phase_number = max_phase_number + 1
       super
+
+      # Remove size if phase is the first phase
+      model.update(size: nil) if model.phase_number == 1
     end
 
     def tournament

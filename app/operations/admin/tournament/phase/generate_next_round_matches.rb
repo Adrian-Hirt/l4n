@@ -29,7 +29,7 @@ module Operations::Admin::Tournament::Phase
       ActiveRecord::Base.transaction do
         # Touch the current round to expire cache
         # rubocop:disable Rails/SkipsModelValidations
-        model.current_round.touch
+        model.current_round&.touch
         # rubocop:enable Rails/SkipsModelValidations
 
         # Generate new round matches

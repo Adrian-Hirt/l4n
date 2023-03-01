@@ -18,7 +18,10 @@
                                 include_blank: _('Form|Select|Blank'),
                                 disabled: !model.created?,
                                 label_method: ->(mode) { humanize_enum_for_select(model.class, :tournament_mode, mode.second) }
-      - unless model.first_phase?
+      - if model.first_phase?
+        .col-md-6
+          = f.input :size, required: false, disabled: true, placeholder: _('Admin|Phase|Size for first phase is set by registered teams')
+      - else
         .col-md-6
           = f.input :size, required: true, disabled: !model.created?
       .col-md-6

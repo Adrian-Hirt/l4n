@@ -60,7 +60,7 @@ class Tournament::Phase < ApplicationRecord
   end
 
   def first_phase?
-    phase_number == 1
+    phase_number == 1 || tournament.phases.none?
   end
 
   def previous_phase
