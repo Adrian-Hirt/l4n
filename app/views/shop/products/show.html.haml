@@ -9,7 +9,7 @@
         .mb-3.text-muted= model.product_category.name
         %hr
 
-        -# Screenshots
+        -# Images
         - if model.images.attached?
           .carousel.slide.carousel-dark#product-images{ 'data-bs-ride' => 'true' }
             .carousel-indicators
@@ -28,6 +28,14 @@
         -# Description
         = markdown(model.description).presence || _('Product|No description')
   .col-md-4
+    - if model.show_availability?
+      .card.mb-3
+        .card-body.d-flex.justify-content-between
+          %div= _('Product|Availability')
+          %div
+            = model.availability
+            \/
+            = model.total_inventory
     .card
       .card-body
         - model.product_variants.each_with_index do |product_variant, index|
