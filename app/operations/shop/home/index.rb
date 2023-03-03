@@ -8,8 +8,8 @@ module Operations::Shop::Home
       authorize! :read_public, :shop
     end
 
-    def products
-      @products ||= begin
+    def grouped_products
+      @grouped_products ||= begin
         relevant_products = ::Product.where(on_sale: true)
 
         if osparams.category_id.present?
@@ -21,11 +21,12 @@ module Operations::Shop::Home
         relevant_products.order(sort: :asc)
                          .where.associated(:product_variants)
                          .includes(:product_category, :product_variants)
+                         .group_by(&:product_category)
       end
     end
 
     def available_categories
-      @available_categories ||= ::ProductCategory.where(id: ::Product.where(on_sale: true).map(&:id)).order(:name)
+      @available_categories ||= ::ProductCategory.where(id: ::Product.where(on_sale: true).map(&:id)).order(:sort)
     end
   end
 end

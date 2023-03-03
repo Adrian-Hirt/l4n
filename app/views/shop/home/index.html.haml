@@ -15,20 +15,26 @@
               %li.nav-item
                 = link_to category.name, shop_path(category_id: category.id), class: link_class
 
-.row
-  - if op.products.any?
-    - op.products.each do |product|
-      .col-xl-4.col-lg-6.d-flex.align-items-stretch.mb-4.mb-md-3
-        .card.w-100
-          .card-body
-            %small.text-muted
-              = product.product_category.name
-            %h4.product_title
-              = link_to product.name, [:shop, product]
-          .card-footer
-            .product-price
-              = _('Product|Starting from %{start_price}') % { start_price: money_formatted(product.starting_price) }
-  - else
+- if op.grouped_products.any?
+  - op.grouped_products.each do |group|
+    .row
+      - if op.available_categories.count > 1
+        .col-12
+          %h4.mb-0= group.first.name
+          %hr
+      - group.second.each do |product|
+        .col-xl-4.col-lg-6.d-flex.align-items-stretch.mb-4.mb-md-3
+          .card.w-100
+            .card-body
+              %small.text-muted
+                = product.product_category.name
+              %h4.product_title
+                = link_to product.name, [:shop, product]
+            .card-footer
+              .product-price
+                = _('Product|Starting from %{start_price}') % { start_price: money_formatted(product.starting_price) }
+- else
+  .row
     .col-12
       .card
         .card-body
