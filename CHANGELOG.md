@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.6.6 - 2023-03-03
+
+### Added
+
+* Add `show_availability` toggler for Product
+
 ## 1.6.5 - 2023-03-03
 
 ### Added
