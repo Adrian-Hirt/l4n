@@ -26,7 +26,7 @@ module Operations::Shop::Home
     end
 
     def available_categories
-      @available_categories ||= ::ProductCategory.where(id: ::Product.where(on_sale: true).map(&:id)).order(:sort)
+      @available_categories ||= ::ProductCategory.where(id: ::Product.where(on_sale: true).map(&:product_category_id).uniq).order(:sort)
     end
   end
 end
