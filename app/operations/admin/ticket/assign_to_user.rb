@@ -26,8 +26,9 @@ module Operations::Admin::Ticket
       fail Operations::Exceptions::OpFailed, _('Ticket|User not confirmed') unless user.confirmed?
 
       # Throw exception if the user already has an assigned ticket for
-      # the current event
-      fail Operations::Exceptions::OpFailed, _('Ticket|User already has assigned ticket') if ::Ticket.where(lan_party: model.lan_party, assignee: user).any?
+      # the current event, except if the lan_party allows to assign multiple
+      # tickets per user
+      fail Operations::Exceptions::OpFailed, _('Ticket|User already has assigned ticket') if !model.lan_party.users_may_have_multiple_tickets_assigned? && ::Ticket.where(lan_party: model.lan_party, assignee: user).any?
 
       # Finally, if all good, assign the ticket
       model.assignee = user

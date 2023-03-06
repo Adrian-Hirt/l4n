@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_13_141358) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_06_172951) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -123,6 +123,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_13_141358) do
     t.integer "sort", default: 0, null: false
     t.boolean "timetable_enabled", default: true, null: false
     t.boolean "seatmap_enabled", default: true, null: false
+    t.boolean "users_may_have_multiple_tickets_assigned", default: false, null: false
   end
 
   create_table "menu_items", force: :cascade do |t|

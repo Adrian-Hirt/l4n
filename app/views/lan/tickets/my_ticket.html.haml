@@ -1,52 +1,37 @@
-- provide :page_title, _('My Ticket')
+- provide :page_title, _('Ticket|Tickets for %{lan_name}') % { lan_name: model.name }
 
 .row
-  .col-md-6.mb-3
-    .card
-      .card-header
-        = _('Ticket|Ticket for %{lan_name}') % { lan_name: model.name }
-      .card-body
-        .text-center.ticket-qr= op.qr_code.html_safe # rubocop:disable Rails/OutputSafety
-  .col-md-6
-    .card
-      .card-header
-        = _('Ticket|Details')
-      %table.table.table-striped.table-borderless.mb-0.table-hover
-        %tr
-          %td= _('Ticket|Username')
-          %td= current_user.username
-        %tr
-          %td= _('Ticket|Seat')
-          %td
-            - if op.ticket.seat.present?
-              = link_to lan_seatmap_path(highlight: op.ticket.seat.id) do
-                = icon %i[fas fa-arrow-up-right-from-square]
-                = op.ticket.seat.name_or_id
-            - else
-              \-
-        %tr
-          %td= _('Ticket|Seat category')
-          %td
-            -# haml-lint:disable InlineStyles
-            .badge{ style: "background-color: #{op.ticket.seat_category.color_for_view}; color: #{op.ticket.seat_category.font_color_for_view}" }
-              = op.ticket.seat_category.name
-            -# haml-lint:enable InlineStyles
-        %tr
-          %td= _('Ticket|Product_variant_name')
-          %td= op.ticket.product_variant_name.presence || '-'
-        %tr
-          %td= _('Ticket|Status')
-          %td= op.ticket.humanized_status
-        %tr.border-top.border-dark
-          %td= _('Ticket|Event name')
-          %td= model.name
-        - if model.location.present?
+  - op.tickets.each do |ticket|
+    .col-md-6.mb-3
+      .card
+        .card-header
+          = _('Ticket|Ticket for %{lan_name}') % { lan_name: model.name }
+        .card-body
+          .text-center.ticket-qr= op.qr_code_for(ticket).html_safe # rubocop:disable Rails/OutputSafety
+      .card
+        %table.table.table-striped.table-borderless.mb-0.table-hover
           %tr
-            %td= _('Ticket|Event location')
-            %td= model.location
-        %tr
-          %td= _('Ticket|Event start')
-          %td= l model.event_start
-        %tr
-          %td= _('Ticket|Event end')
-          %td= l model.event_end
+            %td= _('Ticket|Username')
+            %td= current_user.username
+          %tr
+            %td= _('Ticket|Seat')
+            %td
+              - if ticket.seat.present?
+                = link_to lan_seatmap_path(highlight: op.ticket.seat.id) do
+                  = icon %i[fas fa-arrow-up-right-from-square]
+                  = ticket.seat.name_or_id
+              - else
+                \-
+          %tr
+            %td= _('Ticket|Seat category')
+            %td
+              -# haml-lint:disable InlineStyles
+              .badge{ style: "background-color: #{ticket.seat_category.color_for_view}; color: #{ticket.seat_category.font_color_for_view}" }
+                = ticket.seat_category.name
+              -# haml-lint:enable InlineStyles
+          %tr
+            %td= _('Ticket|Product_variant_name')
+            %td= ticket.product_variant_name.presence || '-'
+          %tr
+            %td= _('Ticket|Status')
+            %td= ticket.humanized_status

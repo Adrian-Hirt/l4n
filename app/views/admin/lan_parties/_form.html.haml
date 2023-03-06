@@ -18,6 +18,8 @@
     .row
       .col-md-6
         = f.input :sort
+      .col-md-6
+        = f.input :users_may_have_multiple_tickets_assigned, as: :select, include_blank: false
     .row
       .col-md-6
         = f.input :event_start, as: :datetime, html5: true

@@ -32,8 +32,8 @@ module Operations::Ticket
       Queries::Lan::Ticket::LoadForUserAndLanParty.call(user: context.user, lan_party: model.lan_party).includes(:seat_category, :seat)
     end
 
-    def ticket_for_lan_party
-      @ticket_for_lan_party ||= context.user.ticket_for(lan_party)
+    def tickets_for_lan_party
+      @tickets_for_lan_party ||= context.user.tickets_for(lan_party)
     end
 
     def ticket_upgrades

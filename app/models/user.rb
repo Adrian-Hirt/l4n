@@ -97,6 +97,10 @@ class User < ApplicationRecord
     tickets.find_by(lan_party: lan_party)
   end
 
+  def tickets_for(lan_party)
+    tickets.where(lan_party: lan_party)
+  end
+
   # == Private Methods =============================================================
   private
 

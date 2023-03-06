@@ -30,8 +30,9 @@ module Operations::Ticket
       fail Operations::Exceptions::OpFailed, _('Ticket|User not confirmed') unless user.confirmed?
 
       # Throw exception if the user already has an assigned ticket for
-      # the current event
-      fail Operations::Exceptions::OpFailed, _('Ticket|User already has assigned ticket') if ::Ticket.where(lan_party: lan_party, assignee: user).any?
+      # the current event, except if the lan_party allows to assign multiple
+      # tickets per user
+      fail Operations::Exceptions::OpFailed, _('Ticket|User already has assigned ticket') if !lan_party.users_may_have_multiple_tickets_assigned? && ::Ticket.where(lan_party: lan_party, assignee: user).any?
 
       ActiveRecord::Base.transaction do
         # Acquire a lock for the ticket
@@ -48,8 +49,8 @@ module Operations::Ticket
       Queries::Lan::Ticket::LoadForUserAndLanParty.call(user: context.user, lan_party: ticket.lan_party).includes(:seat_category, :seat)
     end
 
-    def ticket_for_lan_party
-      @ticket_for_lan_party ||= context.user.ticket_for(lan_party)
+    def tickets_for_lan_party
+      @tickets_for_lan_party ||= context.user.tickets_for(lan_party)
     end
 
     def lan_party

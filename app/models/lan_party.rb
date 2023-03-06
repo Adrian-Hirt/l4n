@@ -18,6 +18,7 @@ class LanParty < ApplicationRecord
   validates_boolean :sidebar_active
   validates_boolean :timetable_enabled
   validates_boolean :seatmap_enabled
+  validates_boolean :users_may_have_multiple_tickets_assigned
   validates :event_start, presence: true
   validates :event_end, presence: true, comparison: { greater_than: :event_start }
 

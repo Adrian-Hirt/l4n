@@ -10,17 +10,19 @@ module Operations::Ticket
 
     policy :on_init do
       # Fail if ticket not found
-      fail Operations::Exceptions::OpFailed, _('Ticket|No ticket found') if ticket.nil?
+      fail Operations::Exceptions::OpFailed, _('Ticket|No ticket found') if tickets.none?
 
       # Authorize
-      authorize! :use, ticket
+      tickets.each do |ticket|
+        authorize! :use, ticket
+      end
     end
 
-    def ticket
-      context.user.ticket_for(model)
+    def tickets
+      context.user.tickets_for(model).order(:id)
     end
 
-    def qr_code
+    def qr_code_for(ticket)
       data = { qr_id: Base64.urlsafe_encode64(ticket.encrypted_qr_id) }
 
       qrcode = RQRCode::QRCode.new(data.to_json)

@@ -30,7 +30,7 @@
 
   -# Also, if the current user does not have a ticket assigned yet for this lan,
   -# we display a "assign to myself" button
-  - if op.ticket_for_lan_party.nil?
+  - if op.lan_party.users_may_have_multiple_tickets_assigned? || op.tickets_for_lan_party.none?
     .ms-2
       = button nil,
               assign_lan_ticket_path(id: ticket.id, assignee: { user_id: current_user.id }),

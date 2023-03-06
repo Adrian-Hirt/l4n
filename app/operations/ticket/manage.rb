@@ -23,8 +23,8 @@ module Operations::Ticket
                                           .includes(:from_product, :to_product)
     end
 
-    def ticket_for_lan_party
-      @ticket_for_lan_party ||= context.user.ticket_for(model)
+    def tickets_for_lan_party
+      @tickets_for_lan_party ||= context.user.tickets_for(model)
     end
 
     def lan_party
