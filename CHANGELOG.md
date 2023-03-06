@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.6.7 - 2023-03-06
+
+### Added
+
+* Add ability to assign multiple tickets to an user
+
 ## 1.6.6 - 2023-03-03
 
 ### Added
