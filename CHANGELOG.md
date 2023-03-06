@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.6.6 - 2023-03-03
+
+### Added
+
+* Add `show_availability` toggler for Product
+
+## 1.6.5 - 2023-03-03
+
+### Added
+
+* Seperate products in shop by category
+
 ## 1.6.4 - 2023-03-01
 
 ### Added

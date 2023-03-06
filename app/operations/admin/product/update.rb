@@ -17,6 +17,7 @@ module Operations::Admin::Product
         opt :from_product_id
         opt :product_category_id
         opt :sort
+        opt :show_availability
       end
     end
 

@@ -146,7 +146,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_172951) do
   create_table "news_posts", force: :cascade do |t|
     t.string "title", null: false
     t.text "content"
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.boolean "published", default: false, null: false
     t.datetime "published_at", precision: nil
     t.datetime "created_at", null: false
@@ -280,6 +280,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_172951) do
     t.bigint "from_product_id"
     t.bigint "to_product_id"
     t.integer "total_inventory", default: 0, null: false
+    t.boolean "show_availability", default: false, null: false
     t.index ["from_product_id"], name: "index_products_on_from_product_id"
     t.index ["name"], name: "index_products_on_name", unique: true
     t.index ["product_category_id"], name: "index_products_on_product_category_id"

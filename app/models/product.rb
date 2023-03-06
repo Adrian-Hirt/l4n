@@ -49,6 +49,7 @@ class Product < ApplicationRecord
   # == Validations =================================================================
   validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }
   validates_boolean :on_sale
+  validates_boolean :show_availability
   validates :inventory, numericality: { greater_than_or_equal_to: 0, less_than: MAX_PERMITTED_INT, integer_only: true }, presence: true
   validates :availability, numericality: { greater_than_or_equal_to: 0, less_than: MAX_PERMITTED_INT, integer_only: true }, presence: true
   validates :total_inventory, numericality: { greater_than_or_equal_to: 0, less_than: MAX_PERMITTED_INT, integer_only: true }, presence: true
