@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.6.8 - 2023-03-06
+
+### Fixed
+
+* Fix a bug in the shop home view
+
 ## 1.6.7 - 2023-03-06
 
 ### Added
