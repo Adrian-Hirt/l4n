@@ -1,5 +1,5 @@
 module Operations::Api::V1::LanParty
-  class Me < RailsOps::Operation
+  class UserStatusForIndividualLanParty < RailsOps::Operation
     schema3 do
       int! :id, cast_str: true
       obj! :user, classes: [::User], strict: false
@@ -15,30 +15,36 @@ module Operations::Api::V1::LanParty
       # also return the same exception as before
       fail Operations::Api::V1::LanParty::LanNotFoundOrNotActive unless lan_party.active?
 
-      # Next, we need to check if the current user has a
-      # ticket for the LanParty
-      user_ticket = osparams.user.ticket_for(lan_party)
+      # Next, we need to check if the current user has at
+      # least one ticket for the LanParty
+      user_tickets = osparams.user.tickets_for(lan_party)
 
       # Fail with an exception if the user has no ticket
-      fail Operations::Api::V1::LanParty::UserHasNoTicket if user_ticket.nil?
+      fail Operations::Api::V1::LanParty::UserHasNoTicket if user_tickets.none?
 
-      # Next, check if the status of the ticket is checked in,
+      # Next, check if the status of at least one ticket is checked in,
       # otherwise fail as well
-      fail Operations::Api::V1::LanParty::NotCheckedIn unless user_ticket.checked_in?
+      fail Operations::Api::V1::LanParty::NotCheckedIn unless user_tickets.any?(&:checked_in?)
 
-      # Finally, we're all set to return the data. For that, we also need
-      # to get the seat assigned to the ticket
-      seat = user_ticket.seat
+      # Store seats data
+      seats_data = []
+
+      user_tickets.each do |ticket|
+        # Next iteration if the ticket does not have a seat
+        next if ticket.seat.nil?
+
+        seats_data << {
+          id:   ticket.seat.id,
+          name: ticket.seat.name_or_id.to_s
+        }
+      end
 
       {
-        user: {
+        user:  {
           id:       osparams.user.id,
           username: osparams.user.username
         },
-        seat: {
-          id:   seat.id,
-          name: seat.name_or_id.to_s
-        }
+        seats: seats_data
       }
     end
   end

@@ -198,7 +198,10 @@ Rails.application.routes.draw do
       resources :events, only: %i[index show]
       resources :lan_parties, only: [] do
         member do
-          get :me
+          get :me, action: :user_status_individual
+        end
+        collection do
+          get :me, action: :user_status_multiple
         end
       end
     end
