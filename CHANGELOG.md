@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.7.0 - 2023-03-12
+
+### Added
+
+* Added `/api/v1/lan_parties/me` API endpoint
+
+### Changed
+
+* Update `rack` gem
+
 ## 1.6.9 - 2023-03-06
 
 ### Fixed
