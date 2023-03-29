@@ -117,8 +117,8 @@ class Ability
         m.user == user || m.team.captain?(user)
       end
 
-      # Can update a match if captain of either teams
-      can :update, Tournament::Match do |m|
+      # Can update a match score if captain of either teams
+      can :update_score, Tournament::Match do |m|
         m.home.team.captain?(user) || m.away.team.captain?(user)
       end
     end
@@ -144,7 +144,7 @@ class Ability
       can :manage, Tournament::Phase, tournament: Tournament.accessible_by(self)
       can :manage, Tournament::Team, tournament: Tournament.accessible_by(self)
       can :manage, Tournament::TeamMember, team: Tournament::Team.accessible_by(self)
-      can :manage, Tournament::Match, round: { phase: Tournament::Phase.accessible_by(self) }
+      can %i[read update], Tournament::Match, round: { phase: Tournament::Phase.accessible_by(self) }
     end
 
     # Return early if the user only has fine-grained admin permissions
@@ -201,7 +201,7 @@ class Ability
       can :manage, Tournament
       can :manage, Tournament::Phase
       can :manage, Tournament::Team
-      can :manage, Tournament::Match
+      can %i[read update], Tournament::Match
       can :manage, Tournament::TeamMember
     end
 

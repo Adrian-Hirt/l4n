@@ -36,7 +36,7 @@ class Tournament::Match < ApplicationRecord
 
   # == Validations =================================================================
   validates_boolean :draw
-  validates :draw, absence: true, if: -> { winner.present? }
+  validates :draw, absence: { message: _('Tournament|Match|Cannot be set if winner is also set') }, if: -> { winner.present? }
   # The less_than is chosen arbitrarily. The original intend is to have the value be smaller
   # then the max value in the database. However, the scores of matches usually should never
   # be extremely large anyway, and as such we can restrict the value to be a max lenght
@@ -44,6 +44,7 @@ class Tournament::Match < ApplicationRecord
   validates :home_score, presence: true, numericality: { greater_or_equal_to: 0, less_than: 10_000, only_integer: true }
   validates :away_score, presence: true, numericality: { greater_or_equal_to: 0, less_than: 10_000, only_integer: true }
   validates :result_status, presence: true, inclusion: result_statuses.keys
+  validate :winner_is_participant
 
   # == Hooks =======================================================================
 
@@ -67,4 +68,15 @@ class Tournament::Match < ApplicationRecord
   end
 
   # == Private Methods =============================================================
+  private
+
+  def winner_is_participant
+    # Nothing to do if the winner is not set
+    return if winner_id.blank?
+
+    # Otherwise, validate that the winner is either the home or the away team
+    return if winner_id == home.id || winner_id == away&.id
+
+    errors.add(:winner_id, _('Tournament|Match|must be a participant of the match'))
+  end
 end

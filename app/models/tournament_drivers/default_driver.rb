@@ -25,7 +25,11 @@ module TournamentDrivers
     # teams. We probably need to rank the teams by their score for
     # the swiss system.
     def ranked_teams
-      @tournament_phase.phase_teams.order(:score).to_a
+      if @tournament_phase.first_phase?
+        seeded_teams
+      else
+        @tournament_phase.phase_teams.order(:score).to_a
+      end
     end
 
     def get_match_winner(match)

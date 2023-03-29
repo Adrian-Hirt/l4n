@@ -11,7 +11,8 @@ module Operations::Tournament::Match
       end
     end
 
-    load_model_authorization_action :read_public
+    load_model_authorization_action :update_score
+    model_authorization_action :update_score
 
     model ::Tournament::Match do
       attribute :confirmation
@@ -23,12 +24,9 @@ module Operations::Tournament::Match
 
       # Check that the match is in the current round
       fail Operations::Exceptions::OpFailed, _('Match|Match not in current round') unless model.round == model.phase.current_round
-
-      # Check that the user is the captain (also works for singleplayer games)
-      fail Operations::Exceptions::OpFailed, _('Team|Only the captain can do this') unless model.home.team.captain?(context.user) || model.away.team.captain?(context.user)
     end
 
-    def perform
+    policy :before_perform do
       # Check that the match is in a state where the score can be updated. We only do this when executing the operation
       fail Operations::Exceptions::OpFailed, _('Team|Cannot update score in wrong status') unless model.result_missing? || model.result_reported?
 
@@ -38,8 +36,12 @@ module Operations::Tournament::Match
         fail Operations::Exceptions::OpFailed, _('Team|The other team needs to confirm the score!') if user_team == model.reporter
 
         # Also check that we're not double-submitting anything
-        fail Operations::Exceptions::OpFailed, _('Team|The other team already reported the score, please confirm the score!') if osparams.tournament_match[:winner_id].present?
+        fail Operations::Exceptions::OpFailed, _('Team|The other team already reported the score, please confirm the score!') if osparams.tournament_match[:winner_id].present? || osparams.tournament_match[:draw].present? || osparams.tournament_match[:home_score].present? || osparams.tournament_match[:away_score].present?
       end
+    end
+
+    def perform
+      previous_status = model.result_status
 
       # If we're missing the result, it can be entered, and then needs to be
       # confirmed. When it's reported, we can only confirm the result.
@@ -54,19 +56,20 @@ module Operations::Tournament::Match
         model.draw = false if model.draw.nil?
 
         # If winner is present or result is a draw, we consider
-        # the result reported and set the needed fields
-        if model.draw? || model.winner.present?
+        # the result reported and set the needed fields. Please note
+        # that `reported` only means one team submitted the result,
+        # but it's not definitive, as the other team still needs to
+        # confirm the score!
+        if model.draw? ^ model.winner_id.present?
           # Update the status
           model.result_status = Tournament::Match.result_statuses[:reported]
 
           # Save who reported the score
           model.reporter = user_team
-        else
+        elsif !model.draw? && model.winner_id.nil?
           model.errors.add(:winner_id, _('Match|Please set the winner'))
           fail ActiveRecord::RecordInvalid
         end
-
-        # Save the model
       else
         # Fail if the user did not submit anything
         if osparams.tournament_match[:confirmation].nil?
@@ -101,12 +104,20 @@ module Operations::Tournament::Match
         end
 
       end
+
+      # Save the model
       model.save!
 
       # Finally, if the match is now confirmed and all other matches are confirmed
       # as well, we can generate the next round if auto_progress is enabled on the
       # phase.
       Operations::Admin::Tournament::Phase::GenerateNextRoundMatches.run!(id: model.phase.id) if model.result_confirmed? && model.round.completed? && model.phase.auto_progress?
+    rescue ActiveRecord::RecordInvalid => e
+      # Reset the state to the previous one if saving failed
+      model.result_status = previous_status
+
+      # And re-raise the exception
+      fail e
     end
 
     private
