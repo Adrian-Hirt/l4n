@@ -122,6 +122,10 @@ class Tournament::Phase < ApplicationRecord
     end
   end
 
+  def can_set_tournament_mode?
+    new_record? || (created? && last_phase?)
+  end
+
   # == Private Methods =============================================================
   private
 
@@ -134,8 +138,12 @@ class Tournament::Phase < ApplicationRecord
   def disallow_changes_when_not_created
     return if created?
 
-    errors.add(:tournament_mode, _('Phase|Cannot change mode when phase is in another state than created')) if tournament_mode_changed?
-
     errors.add(:size, _('Phase|Cannot change size when phase is in another state than created')) if size_changed?
+  end
+
+  def disallow_changing_tournament_mode_unless_last
+    return if can_set_tournament_mode?
+
+    errors.add(:tournament_mode, _('Phase|Can only change for the last phase and if it is in the created state')) if tournament_mode_changed?
   end
 end

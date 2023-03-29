@@ -32,7 +32,7 @@ class Tournament < ApplicationRecord
   validates_boolean :registration_open
   validates_boolean :singleplayer
   validates_boolean :teams_need_rank
-  validates :max_number_of_participants, presence: true, numericality: { greater_than: 0, less_than: MAX_PERMITTED_INT, integer_only: true }
+  validates :max_number_of_participants, presence: true, numericality: { less_than: MAX_PERMITTED_INT, integer_only: true }
   validate :disallow_changes_when_teams_present
   validate :max_number_of_participants_larger_than_in_tournament_teams
   validates :frontend_order, presence: true, numericality: { greater_than_or_equal_to: 0, less_than: MAX_PERMITTED_INT, integer_only: true }
