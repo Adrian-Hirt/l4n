@@ -15,11 +15,16 @@ module Operations::Admin::Tournament::Phase
 
     def perform
       ActiveRecord::Base.transaction do
-        # Remove all seeded teams
-        model.phase_teams.destroy_all
-
         # Delete all rounds
         model.rounds.destroy_all
+
+        # Set all teams to "registered"
+        model.phase_teams.each do |phase_team|
+          phase_team.team.registered!
+        end
+
+        # Remove all seeded teams
+        model.phase_teams.destroy_all
 
         # Set status to `created`
         model.created!

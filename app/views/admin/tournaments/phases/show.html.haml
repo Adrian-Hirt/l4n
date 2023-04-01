@@ -12,11 +12,12 @@
           = model.name
         .badge.bg-secondary
           = model.humanized_status
+      -# General info card
       .card-body
         .row
           .col-md-6
             .small.text-muted= _('Phase|Tournament mode')
-            .mb-1= model.tournament_mode
+            .mb-1= model.humanized_tournament_mode
           .col-md-6
             .small.text-muted= _('Phase|Number of participating teams')
             .mb-1= model.participating_teams.count
@@ -36,13 +37,15 @@
             -# Otherwise we just display the button to generate the phases
             = button _('Phase|Generate rounds'), generate_rounds_admin_phase_path(model), method: :post
         - elsif model.seeding?
-          .mb-2
-            .small.text-muted= _('Phase|Number of rounds')
-            = model.rounds.count
-          = delete_button nil, title: _('Phase|Delete rounds'),
-                               href: delete_rounds_admin_phase_path(model),
-                               confirm: _('Phase|Are you sure you want to delete all rounds for this phase?'),
-                               size: :sm
+          .d-flex.justify-content-between
+            %div
+              .small.text-muted= _('Phase|Number of rounds')
+              = model.rounds.count
+            %div
+              = delete_button nil, title: _('Phase|Delete rounds'),
+                                  href: delete_rounds_admin_phase_path(model),
+                                  confirm: _('Phase|Are you sure you want to delete all rounds for this phase?'),
+                                  size: :sm
         - elsif model.confirmed?
           = button _('Phase|Generate first round matches'), generate_next_round_matches_admin_phase_path(model), method: :post
         - elsif model.running?
@@ -60,10 +63,14 @@
     .col-md-6.mb-4.mb-md-0
       .card.mb-4
         .card-header
-          = _('Seeding')
+          = _('Phase|Participating teams')
         .card-body
-          = _('Phase|Create rounds for seeding')
-    .card-body
+          - if model.seedable_teams.none?
+            = _('Phase|No teams participating yet')
+          - else
+            %ul.mb-0
+              - model.seedable_teams.each do |team|
+                %li= team.name
   - elsif model.seeding?
     = render partial: 'seeding'
   - elsif model.confirmed?
