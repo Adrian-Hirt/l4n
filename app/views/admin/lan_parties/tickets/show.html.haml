@@ -37,7 +37,7 @@
             = _('Ticket|Seat')
             .small.text-muted
               - if model.seat.present?
-                = link_to lan_seatmap_path(highlight: model.seat.id), target: :_blank, rel: :noopener do
+                = link_to lan_seatmap_path(model.lan_party, highlight: model.seat.id), target: :_blank, rel: :noopener do
                   = model.seat.id
                   = icon %i[fas fa-arrow-up-right-from-square]
               - else
