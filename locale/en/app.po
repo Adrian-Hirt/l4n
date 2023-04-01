@@ -302,6 +302,9 @@ msgstr "Order is marked as paid successfully"
 msgid "Admin|Phase|Disputed matches"
 msgstr "Disputed matches"
 
+msgid "Admin|Phase|Size for first phase is set by registered teams"
+msgstr "Size for first phase is set by registered teams"
+
 msgid "Admin|ProductCategories"
 msgstr "Product Categories"
 
@@ -550,6 +553,9 @@ msgstr "Assign seat"
 
 msgid "Admin|Ticket|Assign to user"
 msgstr "Assign to user"
+
+msgid "Admin|Ticket|Assignee"
+msgstr "Assignee"
 
 msgid "Admin|Ticket|Assignee could not be removed"
 msgstr "Assignee could not be removed"
@@ -1551,6 +1557,9 @@ msgstr "Total seats"
 msgid "LanParty|Tournaments"
 msgstr "Tournaments"
 
+msgid "LanParty|Users may have multiple tickets assigned"
+msgstr "Users may have multiple tickets assigned"
+
 msgid "Login"
 msgstr "Login"
 
@@ -2145,8 +2154,8 @@ msgstr "Paypal payment"
 msgid "Phase|Are you sure you want to delete all rounds for this phase?"
 msgstr "Are you sure you want to delete all rounds for this phase?"
 
-msgid "Phase|Cannot change mode when phase is in another state than created"
-msgstr "Cannot change mode when phase is in another state than created"
+msgid "Phase|Can only change for the last phase and if it is in the created state"
+msgstr "Can only change for the last phase and if it is in the created state"
 
 msgid "Phase|Cannot change size when phase is in another state than created"
 msgstr "Cannot change size when phase is in another state than created"
@@ -2159,9 +2168,6 @@ msgstr "Confirm seeding"
 
 msgid "Phase|Confirm seeding?"
 msgstr "Is the seeding correct?"
-
-msgid "Phase|Create rounds for seeding"
-msgstr "Create rounds for seeding"
 
 msgid "Phase|Current round"
 msgstr "Current round"
@@ -2190,11 +2196,20 @@ msgstr "Generate rounds"
 msgid "Phase|Matches being played, please wait"
 msgstr "Matches being played"
 
+msgid "Phase|No teams participating yet"
+msgstr "No teams participating yet"
+
 msgid "Phase|Number of participating teams"
 msgstr "Number of participating teams"
 
 msgid "Phase|Number of rounds"
 msgstr "Number of rounds"
+
+msgid "Phase|Ordered by standing from previous phase"
+msgstr "Ordered by standing from previous phase"
+
+msgid "Phase|Participating teams"
+msgstr "Participating teams"
 
 msgid "Phase|Phase completed"
 msgstr "Phase completed"
@@ -2306,6 +2321,9 @@ msgstr "On sale"
 
 msgid "Product|Remove this image"
 msgstr "Remove this image"
+
+msgid "Product|Show availability"
+msgstr "Show availability"
 
 msgid "Product|Sort"
 msgstr "Sort"
@@ -2595,6 +2613,9 @@ msgstr "Your available tickets"
 msgid "Seatmap|Your ticket"
 msgstr "Your ticket"
 
+msgid "Seatmap|Your tickets"
+msgstr "Your tickets"
+
 msgid "Seat|Already taken"
 msgstr "Already taken"
 
@@ -2615,9 +2636,6 @@ msgstr "Seat is taken"
 
 msgid "Seat|Seat is taken by"
 msgstr "Seat is taken by"
-
-msgid "Seeding"
-msgstr "Seeding"
 
 msgid "SekiPaymentGateway"
 msgstr "Pay in VSETH Sekretariat"
@@ -3180,21 +3198,6 @@ msgstr "Check in"
 msgid "Ticket|Could not be assigned"
 msgstr "Could not be assigned"
 
-msgid "Ticket|Details"
-msgstr "Details"
-
-msgid "Ticket|Event end"
-msgstr "Event end"
-
-msgid "Ticket|Event location"
-msgstr "Event location"
-
-msgid "Ticket|Event name"
-msgstr "Event name"
-
-msgid "Ticket|Event start"
-msgstr "Event start"
-
 msgid "Ticket|Info"
 msgstr "Info"
 
@@ -3258,6 +3261,9 @@ msgstr "Show QR"
 msgid "Ticket|Show ticket"
 msgstr "Show ticket"
 
+msgid "Ticket|Show tickets"
+msgstr "Show tickets"
+
 msgid "Ticket|Status"
 msgstr "Status"
 
@@ -3278,6 +3284,9 @@ msgstr "Ticket for %{lan_name}"
 
 msgid "Ticket|Ticket is already checked in"
 msgstr "Ticket is already checked in"
+
+msgid "Ticket|Tickets for %{lan_name}"
+msgstr "Tickets for %{lan_name}"
 
 msgid "Ticket|Toggle QR"
 msgstr "Toggle QR"
@@ -3589,6 +3598,12 @@ msgstr "Do you really want to leave the tournament?"
 msgid "Tournament|Match"
 msgstr "Match"
 
+msgid "Tournament|Match|Cannot be set if winner is also set"
+msgstr "Cannot be set if winner is also set"
+
+msgid "Tournament|Match|must be a participant of the match"
+msgstr "must be a participant of the match"
+
 msgid "Tournament|Max number of participants"
 msgstr "Max number of participants"
 
@@ -3820,9 +3835,6 @@ msgstr "Uploaded at"
 
 msgid "Upload|Uploaded by"
 msgstr "Uploaded by"
-
-msgid "Upload|Uuid"
-msgstr "UUID"
 
 msgid "User"
 msgstr "User"

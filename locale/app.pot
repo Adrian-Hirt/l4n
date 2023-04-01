@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-26 14:09+0100\n"
-"PO-Revision-Date: 2023-02-26 14:09+0100\n"
+"POT-Creation-Date: 2023-04-01 19:04+0200\n"
+"PO-Revision-Date: 2023-04-01 19:04+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -303,6 +303,9 @@ msgstr ""
 msgid "Admin|Phase|Disputed matches"
 msgstr ""
 
+msgid "Admin|Phase|Size for first phase is set by registered teams"
+msgstr ""
+
 msgid "Admin|ProductCategories"
 msgstr ""
 
@@ -550,6 +553,9 @@ msgid "Admin|Ticket|Assign seat"
 msgstr ""
 
 msgid "Admin|Ticket|Assign to user"
+msgstr ""
+
+msgid "Admin|Ticket|Assignee"
 msgstr ""
 
 msgid "Admin|Ticket|Assignee could not be removed"
@@ -1551,6 +1557,9 @@ msgstr ""
 msgid "LanParty|Tournaments"
 msgstr ""
 
+msgid "LanParty|Users may have multiple tickets assigned"
+msgstr ""
+
 msgid "Login"
 msgstr ""
 
@@ -2145,7 +2154,7 @@ msgstr ""
 msgid "Phase|Are you sure you want to delete all rounds for this phase?"
 msgstr ""
 
-msgid "Phase|Cannot change mode when phase is in another state than created"
+msgid "Phase|Can only change for the last phase and if it is in the created state"
 msgstr ""
 
 msgid "Phase|Cannot change size when phase is in another state than created"
@@ -2158,9 +2167,6 @@ msgid "Phase|Confirm seeding"
 msgstr ""
 
 msgid "Phase|Confirm seeding?"
-msgstr ""
-
-msgid "Phase|Create rounds for seeding"
 msgstr ""
 
 msgid "Phase|Current round"
@@ -2190,10 +2196,19 @@ msgstr ""
 msgid "Phase|Matches being played, please wait"
 msgstr ""
 
+msgid "Phase|No teams participating yet"
+msgstr ""
+
 msgid "Phase|Number of participating teams"
 msgstr ""
 
 msgid "Phase|Number of rounds"
+msgstr ""
+
+msgid "Phase|Ordered by standing from previous phase"
+msgstr ""
+
+msgid "Phase|Participating teams"
 msgstr ""
 
 msgid "Phase|Phase completed"
@@ -2305,6 +2320,9 @@ msgid "Product|On sale"
 msgstr ""
 
 msgid "Product|Remove this image"
+msgstr ""
+
+msgid "Product|Show availability"
 msgstr ""
 
 msgid "Product|Sort"
@@ -2595,6 +2613,9 @@ msgstr ""
 msgid "Seatmap|Your ticket"
 msgstr ""
 
+msgid "Seatmap|Your tickets"
+msgstr ""
+
 msgid "Seat|Already taken"
 msgstr ""
 
@@ -2614,9 +2635,6 @@ msgid "Seat|Seat is taken"
 msgstr ""
 
 msgid "Seat|Seat is taken by"
-msgstr ""
-
-msgid "Seeding"
 msgstr ""
 
 msgid "SekiPaymentGateway"
@@ -3180,21 +3198,6 @@ msgstr ""
 msgid "Ticket|Could not be assigned"
 msgstr ""
 
-msgid "Ticket|Details"
-msgstr ""
-
-msgid "Ticket|Event end"
-msgstr ""
-
-msgid "Ticket|Event location"
-msgstr ""
-
-msgid "Ticket|Event name"
-msgstr ""
-
-msgid "Ticket|Event start"
-msgstr ""
-
 msgid "Ticket|Info"
 msgstr ""
 
@@ -3258,6 +3261,9 @@ msgstr ""
 msgid "Ticket|Show ticket"
 msgstr ""
 
+msgid "Ticket|Show tickets"
+msgstr ""
+
 msgid "Ticket|Status"
 msgstr ""
 
@@ -3277,6 +3283,9 @@ msgid "Ticket|Ticket for %{lan_name}"
 msgstr ""
 
 msgid "Ticket|Ticket is already checked in"
+msgstr ""
+
+msgid "Ticket|Tickets for %{lan_name}"
 msgstr ""
 
 msgid "Ticket|Toggle QR"
@@ -3588,6 +3597,12 @@ msgstr ""
 msgid "Tournament|Match"
 msgstr ""
 
+msgid "Tournament|Match|Cannot be set if winner is also set"
+msgstr ""
+
+msgid "Tournament|Match|must be a participant of the match"
+msgstr ""
+
 msgid "Tournament|Max number of participants"
 msgstr ""
 
@@ -3817,9 +3832,6 @@ msgid "Upload|Uploaded at"
 msgstr ""
 
 msgid "Upload|Uploaded by"
-msgstr ""
-
-msgid "Upload|Uuid"
 msgstr ""
 
 msgid "User"
