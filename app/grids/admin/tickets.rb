@@ -44,6 +44,10 @@ module Grids
           scope.where(order_id: nil)
         end
       end
+      filter(:assignee, :string) do |value, scope, _grid|
+        sanitized_value = Ticket.sanitize_sql_like(value.downcase)
+        scope.joins(:assignee).where('LOWER(users.username) LIKE ?', "%#{sanitized_value}%")
+      end
     end
   end
 end
