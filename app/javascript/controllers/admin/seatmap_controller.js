@@ -569,8 +569,9 @@ export default class extends Controller {
 
     if(categoryOption) {
       let infoString = '';
-      infoString += `<span class="badge bg-secondary">${attributes.seatName}</span>`;
-      infoString += `<span class="badge mx-2" style="background-color: ${categoryOption.dataset.color}; color: ${categoryOption.dataset.fontcolor};">
+      infoString += `<span class="badge me-2 bg-secondary">${attributes.seatName}</span>`;
+      infoString += `<span class="badge me-2 bg-secondary">${attributes.backendId}</span>`;
+      infoString += `<span class="badge me-2" style="background-color: ${categoryOption.dataset.color}; color: ${categoryOption.dataset.fontcolor};">
                       ${categoryOption.innerHTML}
                     </span>`;
 
