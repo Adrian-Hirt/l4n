@@ -8,14 +8,16 @@ module Operations::PaymentGateway
     end
 
     def perform
-      fail 'No order_id given' if osparams.order_id.blank?
+      fail InvalidOrder, _('Checkout|No order_id given') if osparams.order_id.blank?
 
       # Get order
       order = ::Order.find_by(uuid: osparams.order_id)
 
-      fail 'Order not found' if order.nil?
+      fail InvalidOrder, _('Checkout|The given order was not found') if order.nil?
 
       run_sub Operations::Shop::Order::ProcessMarkedForDelayedPayment, order: order, gateway_name: osparams.gateway_name
     end
+
+    class InvalidOrder < StandardError; end
   end
 end

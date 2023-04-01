@@ -15,6 +15,9 @@ module SekiPayment
         flash[:danger] = _('SekiPayment|There was an error, please try again')
         redirect_to start_payment_path(order_id: params[:order_id])
       end
+    rescue Operations::PaymentGateway::InvalidOrder => e
+      flash[:danger] = e.message
+      redirect_to main_app.shop_cart_path
     end
   end
 end
