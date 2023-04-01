@@ -4,17 +4,17 @@
 .card
   .card-body
     = simple_form_for op.grid, url: admin_lan_party_tickets_path(op.lan_party), method: :get do |f|
-      .d-flex.mb-3
-        .select.optional.me-3
+      .row.mb-3
+        .select.optional.col-lg-3.col-6
           = f.label :status
           = f.datagrid_filter :status, class: 'form-select rounded-0 select optional'
-        .select.optional.me-3
+        .select.optional.col-lg-3.col-6
           = f.label :seat_category
           = f.datagrid_filter :seat_category, class: 'form-select rounded-0 select optional'
-        .select.optional.me-3
+        .select.optional.col-lg-3.col-6
           = f.label :order_id, _('Admin|Ticket|Order present')
           = f.datagrid_filter :order_id, class: 'form-select rounded-0 select optional'
-        .d-flex.align-items-end.gap-1
+        .d-flex.align-items-end.gap-1.col-lg-3.col-6
           = f.save _('Apply filter')
           = button _('Search|Reset'), admin_lan_party_tickets_path(op.lan_party), color: :secondary
     = datagrid_table op.grid, html: { class: 'table' }

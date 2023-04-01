@@ -29,8 +29,12 @@ module Grids
         end
       end
 
+      def self.available_filters(lan_party)
+        lan_party.seat_categories.order(:name).map { |seat_category| [seat_category.name, seat_category.id] }
+      end
+
       filter(:lan_party)
-      filter(:seat_category, :enum, select:        scope.map(&:seat_category).uniq.map { |seat_category| [seat_category.name, seat_category.id] },
+      filter(:seat_category, :enum, select:        proc { |grid| available_filters(grid.lan_party) },
                                     include_blank: _('Form|Select|Show all'))
       filter(:status, :enum, select: Ticket.statuses.keys.map { |status| [humanize_enum_for_select(Ticket, :status, status), status] }, include_blank: _('Form|Select|Show all'))
       filter(:order_id, :xboolean, include_blank: _('Form|Select|Show all')) do |value, scope, _grid|
