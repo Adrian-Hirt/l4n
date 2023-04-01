@@ -5,6 +5,7 @@ class MenuItem < ApplicationRecord
   TYPES = %w[MenuLinkItem MenuDropdownItem].freeze
 
   # == Associations ================================================================
+  belongs_to :page, optional: true, inverse_of: :menu_items
 
   # == Validations =================================================================
   validates :sort, numericality: { greater_than_or_equal_to: 0, less_than: MAX_PERMITTED_INT, integer_only: true }, presence: true

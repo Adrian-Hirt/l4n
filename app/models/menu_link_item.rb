@@ -23,7 +23,6 @@ class MenuLinkItem < MenuItem
 
   # == Associations ================================================================
   belongs_to :parent, class_name: 'MenuDropdownItem', optional: true
-  belongs_to :page, optional: true
   belongs_to :lan_party, optional: true
 
   # == Validations =================================================================
