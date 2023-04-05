@@ -1,12 +1,21 @@
 module Services
   class Markdown
     class MarkdownRenderer < Redcarpet::Render::HTML
+      include ActionView::Helpers::TagHelper
+      include ActionView::Context
+  
       ##################################################################################################################################
       # Modify the postprocess of redcarpet renderer to include our own markup
       ##################################################################################################################################
       def postprocess(text)
         text = display_icons(text)
         allowed_iframe(text)
+      end
+
+      def table(header, body)
+        tag.table class: 'table table-striped table-bordered' do
+          (header + body).html_safe
+        end
       end
 
       ##################################################################################################################################
