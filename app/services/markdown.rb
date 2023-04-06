@@ -14,7 +14,7 @@ module Services
 
       def table(header, body)
         tag.table class: 'table table-striped table-bordered' do
-          (header + body).html_safe
+          (header + body).html_safe # rubocop:disable Rails/OutputSafety
         end
       end
 
