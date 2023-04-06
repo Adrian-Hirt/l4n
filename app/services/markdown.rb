@@ -3,7 +3,7 @@ module Services
     class MarkdownRenderer < Redcarpet::Render::HTML
       include ActionView::Helpers::TagHelper
       include ActionView::Context
-  
+
       ##################################################################################################################################
       # Modify the postprocess of redcarpet renderer to include our own markup
       ##################################################################################################################################

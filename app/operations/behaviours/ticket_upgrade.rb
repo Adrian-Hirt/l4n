@@ -45,7 +45,7 @@ module Operations::Behaviours
       to_product = cart_item.product.to_product
 
       to_product.availability -= cart_item.quantity
-      fail Operations::Shop::Order::MaxQuantityReached if to_product.availability.negative?
+      fail Operations::Exceptions::OpFailed, _('CartItem|A ticket upgrade has its max quantity reached!') if to_product.availability.negative?
 
       to_product.save!
     end
