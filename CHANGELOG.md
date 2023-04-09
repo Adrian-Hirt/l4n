@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.2 - 2023-04-09
+
+### Changed
+
+* Add nonce to oauth post form
+
 ## 1.7.1 - 2023-04-06
 
 ### Fixed
