@@ -17,7 +17,7 @@ module Shop
       end
       redirect_to shop_cart_path
     rescue Operations::Shop::CartItem::MaxQuantityReached
-      flash[:danger] = _('CartItem|Max quantity reached')
+      flash[:danger] = _('CartItem|Quantity cannod be increased')
       redirect_to shop_cart_path
     end
 

@@ -10,8 +10,6 @@ module Shop
     rescue Operations::Shop::Order::PrepareCheckout::CartEmpty
       flash[:danger] = _('Checkout|Your cart is empty, cannot checkout')
       redirect_to shop_cart_path
-    rescue Operations::Shop::Order::PrepareCheckout::MaxQuantityReached
-      redirect_to shop_cart_path
     end
 
     def accept_gtcs

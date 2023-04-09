@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.7.1 - 2023-04-06
+
+### Fixed
+
+* Fix exception in shop when purchasing ticket upgrade
+  where the `to_category` is not available anymore
+
+### Added
+
+* Various quality of usage improvements for tournament admin view
+* Add filters to ticket list in admin panel
+
+### Changed
+
+* Updated dependencies to fix CVEs
+
 ## 1.7.0 - 2023-03-12
 
 ### Added

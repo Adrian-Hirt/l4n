@@ -37,6 +37,14 @@ module Grids
       filter(:seat_category, :enum, select:        proc { |grid| available_filters(grid.lan_party) },
                                     include_blank: _('Form|Select|Show all'))
       filter(:status, :enum, select: Ticket.statuses.keys.map { |status| [humanize_enum_for_select(Ticket, :status, status), status] }, include_blank: _('Form|Select|Show all'))
+      filter(:seat_present, :xboolean, include_blank: _('Form|Select|Show all')) do |value, scope, grid|
+        if value.is_a?(TrueClass)
+          scope.joins(:seat)
+        else
+          seat_ids = grid.lan_party.seat_map.seats.collect(&:ticket_id)
+          scope.where.not(id: seat_ids)
+        end
+      end
       filter(:order_id, :xboolean, include_blank: _('Form|Select|Show all')) do |value, scope, _grid|
         if value.is_a?(TrueClass)
           scope.where.not(order_id: nil)
