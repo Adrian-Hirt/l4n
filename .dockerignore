@@ -5,6 +5,7 @@ Procfile
 # Documentation
 DEVELOPMENT.md
 README.md
+_model_comment_template.txt
 
 # docker-compose file
 docker-compose.yml
