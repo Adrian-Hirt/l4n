@@ -50,12 +50,15 @@ class Product < ApplicationRecord
   validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }
   validates_boolean :on_sale
   validates_boolean :show_availability
+  validates_boolean :archived
   validates :inventory, numericality: { greater_than_or_equal_to: 0, less_than: MAX_PERMITTED_INT, integer_only: true }, presence: true
   validates :availability, numericality: { greater_than_or_equal_to: 0, less_than: MAX_PERMITTED_INT, integer_only: true }, presence: true
   validates :total_inventory, numericality: { greater_than_or_equal_to: 0, less_than: MAX_PERMITTED_INT, integer_only: true }, presence: true
   validates :images, size: { less_than: 5.megabytes, message: _('File is too large, max. allowed %{size}') % { size: '5MB' } }, content_type: %r{\Aimage/.*\z}
   validates :sort, numericality: { greater_than_or_equal_to: 0, less_than: MAX_PERMITTED_INT, integer_only: true }, presence: true
   validates :seat_category, uniqueness: true, if: :seat_category
+
+  validate :archived_or_on_sale
 
   # == Hooks =======================================================================
   before_create :add_availability_and_total_inventory
@@ -96,5 +99,12 @@ class Product < ApplicationRecord
     return if deleteable?
 
     throw :abort
+  end
+
+  def archived_or_on_sale
+    return if !archived? || !on_sale
+
+    errors.add(:archived, _('Product|Cannot be true if on_sale is true'))
+    errors.add(:on_sale, _('Product|Cannot be true if archived is true'))
   end
 end
