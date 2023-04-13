@@ -4,7 +4,6 @@ class RedirectPage < Page
   # == Constants ===================================================================
 
   # == Associations ================================================================
-  has_many :menu_items, dependent: :destroy
 
   # == Validations =================================================================
   validates :redirects_to, presence: true, length: { maximum: 255 }

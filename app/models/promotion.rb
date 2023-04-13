@@ -29,6 +29,9 @@ class Promotion < ApplicationRecord
   # == Class Methods ===============================================================
 
   # == Instance Methods ============================================================
+  def deleteable?
+    promotion_codes.none?(&:used?)
+  end
 
   # == Private Methods =============================================================
 end

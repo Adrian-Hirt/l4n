@@ -19,12 +19,19 @@ class PromotionCode < ApplicationRecord
   # == Class Methods ===============================================================
 
   # == Instance Methods ============================================================
+  def used?
+    order.present?
+  end
+
+  def deleteable?
+    !used?
+  end
 
   # == Private Methods =============================================================
   private
 
   def ensure_not_used
-    return if promotion_code_mapping.order.blank?
+    return unless used?
 
     fail ActiveRecord::RecordNotDestroyed, _('PromotionCode|Cannot be deleted, as it has been used')
   end

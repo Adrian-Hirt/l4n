@@ -15,7 +15,7 @@ module Grids
 
       column :code
       column :used, html: true, order: false do |promotion_code|
-        format_boolean(promotion_code.order.present?)
+        format_boolean(promotion_code.used?)
       end
 
       column :used_for_order, html: true do |promotion_code|

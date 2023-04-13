@@ -17,6 +17,7 @@ class SeatCategory < ApplicationRecord
   belongs_to :lan_party
   has_one :product, dependent: :restrict_with_exception
   has_many :seats, dependent: :restrict_with_exception
+  has_many :tickets, dependent: :restrict_with_exception
 
   # == Validations =================================================================
   validates :name, presence: true, length: { maximum: 255 }
@@ -44,6 +45,10 @@ class SeatCategory < ApplicationRecord
 
   def font_color_for_view
     PREDEFINED_SEATCATEGORY_COLORS[color][:font_color]
+  end
+
+  def deleteable?
+    product.nil? && seats.none? && tickets.none?
   end
 
   # == Private Methods =============================================================
