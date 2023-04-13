@@ -26,6 +26,8 @@ services:
     volumes:
       - storage-data:/app/storage
     environment:
+      # Enable YJIT
+      RUBY_YJIT_ENABLE: true
       # Set defaults for running server
       RAILS_ENV: production
       RAILS_SERVE_STATIC_FILES: true

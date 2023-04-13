@@ -1,5 +1,5 @@
 # Use ruby image to build our own image
-FROM ruby:3.1.2
+FROM ruby:3.2.2
 
 # Install dependencies
 RUN apt-get update -qq && apt-get install -y postgresql-client libvips cron \
@@ -35,6 +35,9 @@ RUN bundle install
 COPY package.json /app/package.json
 COPY yarn.lock /app/yarn.lock
 RUN yarn install
+
+# Add env var to enable YJIT
+ENV RUBY_YJIT_ENABLE true
 
 # Copy rails code
 ADD . /app
