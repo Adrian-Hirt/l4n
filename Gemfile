@@ -7,12 +7,12 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'rails', '~> 7.0.4'
 
 # Authentication & Authorization
-gem 'cancancan', '~> 3.4.0'
+gem 'cancancan', '~> 3.5.0'
 gem 'devise', '~> 4.9'
 gem 'devise-two-factor', '~> 5.0.0'
 gem 'doorkeeper', '~> 5.6.5'
 gem 'doorkeeper-openid_connect', '~> 1.8.4'
-gem 'recaptcha', '~> 5.12.3'
+gem 'recaptcha', '~> 5.13.0'
 
 # Session handling
 gem 'activerecord-session_store', '~> 2.0.0'

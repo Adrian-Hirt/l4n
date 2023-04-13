@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_06_172951) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_13_093008) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -146,7 +146,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_172951) do
   create_table "news_posts", force: :cascade do |t|
     t.string "title", null: false
     t.text "content"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.boolean "published", default: false, null: false
     t.datetime "published_at", precision: nil
     t.datetime "created_at", null: false
@@ -202,6 +202,93 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_172951) do
     t.index ["access_grant_id"], name: "index_oauth_openid_requests_on_access_grant_id"
   end
 
+  create_table "old_achievements", id: false, force: :cascade do |t|
+    t.integer "id", null: false
+    t.integer "user_id"
+    t.integer "award_id"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.datetime "awarded_at", precision: nil
+  end
+
+  create_table "old_awards", id: false, force: :cascade do |t|
+    t.integer "id", null: false
+    t.string "title"
+    t.text "description"
+    t.string "icon_file_name"
+    t.string "icon_content_type"
+    t.integer "icon_file_size"
+    t.datetime "icon_updated_at", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+  end
+
+  create_table "old_events", id: false, force: :cascade do |t|
+    t.integer "id", null: false
+    t.string "title"
+    t.text "description"
+    t.string "location"
+    t.datetime "date", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.boolean "has_signup", default: false
+    t.boolean "number_of_signups_restricted", default: false
+    t.integer "max_number_of_signups"
+    t.boolean "is_draft", default: true
+  end
+
+  create_table "old_posts", id: false, force: :cascade do |t|
+    t.integer "id", null: false
+    t.string "title"
+    t.text "content"
+    t.integer "user_id"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.boolean "is_draft", default: false
+    t.datetime "published_at", precision: nil
+  end
+
+  create_table "old_profiles", id: false, force: :cascade do |t|
+    t.integer "id", null: false
+    t.text "bio"
+    t.datetime "birthday", precision: nil
+    t.string "location"
+    t.string "website"
+    t.string "lol_account_name"
+    t.string "lol_account_verification_string"
+    t.boolean "lol_account_verified", default: false
+    t.integer "user_id"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.string "lol_account_icon"
+    t.string "steam_id"
+    t.string "battlenet_id"
+    t.string "discord_id"
+    t.string "lol_encrypted_summoner_id"
+    t.string "lol_puuid"
+  end
+
+  create_table "old_users", id: false, force: :cascade do |t|
+    t.integer "id", null: false
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.string "password_digest"
+    t.string "remember_digest"
+    t.string "activation_digest"
+    t.boolean "activated", default: false
+    t.datetime "activated_at", precision: nil
+    t.string "reset_digest"
+    t.datetime "reset_sent_at", precision: nil
+    t.boolean "is_super_admin", default: false
+    t.integer "usergroup_id", default: 2
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at", precision: nil
+  end
+
   create_table "order_items", force: :cascade do |t|
     t.bigint "order_id", null: false
     t.bigint "product_variant_id"
@@ -236,7 +323,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_172951) do
   create_table "pages", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.boolean "published"
+    t.boolean "published", default: false
     t.string "url", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -582,14 +669,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_172951) do
     t.index ["lan_party_id"], name: "index_tournaments_on_lan_party_id"
   end
 
-  create_table "uploads", force: :cascade do |t|
-    t.uuid "uuid", default: -> { "gen_random_uuid()" }, null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_uploads_on_user_id"
-  end
-
   create_table "user_achievements", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "achievement_id", null: false
@@ -646,7 +725,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_172951) do
     t.datetime "remember_created_at"
     t.string "otp_secret"
     t.integer "consumed_timestep"
-    t.boolean "otp_required_for_login"
+    t.boolean "otp_required_for_login", default: false, null: false
     t.string "otp_backup_codes", array: true
     t.text "bio"
     t.string "steam_id"
@@ -676,14 +755,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_172951) do
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "users", column: "resource_owner_id"
   add_foreign_key "oauth_openid_requests", "oauth_access_grants", column: "access_grant_id", on_delete: :cascade
-  add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "product_variants"
-  add_foreign_key "orders", "users"
   add_foreign_key "product_variants", "products"
   add_foreign_key "products", "product_categories"
   add_foreign_key "products", "products", column: "from_product_id"
   add_foreign_key "products", "products", column: "to_product_id"
-  add_foreign_key "promotion_code_mappings", "orders"
   add_foreign_key "promotion_code_mappings", "promotion_codes"
   add_foreign_key "promotion_codes", "promotions"
   add_foreign_key "promotion_products", "products"
@@ -694,11 +770,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_172951) do
   add_foreign_key "seats", "seat_maps"
   add_foreign_key "seats", "tickets"
   add_foreign_key "ticket_upgrades", "lan_parties"
-  add_foreign_key "ticket_upgrades", "orders"
   add_foreign_key "ticket_upgrades", "products", column: "from_product_id"
   add_foreign_key "ticket_upgrades", "products", column: "to_product_id"
   add_foreign_key "tickets", "lan_parties"
-  add_foreign_key "tickets", "orders"
   add_foreign_key "tickets", "seat_categories"
   add_foreign_key "timetable_categories", "timetables"
   add_foreign_key "timetable_entries", "timetable_categories"
@@ -717,7 +791,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_172951) do
   add_foreign_key "tournament_team_ranks", "tournaments"
   add_foreign_key "tournament_teams", "tournament_team_ranks"
   add_foreign_key "tournament_teams", "tournaments"
-  add_foreign_key "uploads", "users"
   add_foreign_key "user_achievements", "achievements"
   add_foreign_key "user_achievements", "users"
   add_foreign_key "user_addresses", "users"

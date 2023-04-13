@@ -142,3 +142,11 @@ Style/FormatString:
 Layout/EmptyLineAfterGuardClause:
   Exclude:
     - 'app/views/**/*'
+
+Rails/ThreeStateBooleanColumn:
+  # Ignore the already existing migrations, as we fix this in a
+  # new migration, such that the existing migrations remain unchanged
+  Exclude:
+    - db/migrate/20210524120137_add_otp_secret_key_to_users.rb
+    - db/migrate/20211220111608_create_pages.rb
+    - db/migrate/20220924131014_add_devise_two_factor_to_users.rb
