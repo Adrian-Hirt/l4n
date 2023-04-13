@@ -95,9 +95,7 @@ module ButtonsHelper
       method: :delete
     }.merge!(html)
 
-    if model.respond_to?(:deleteable?)
-      html_options[:disabled] = !model.deleteable?
-    end
+    html_options[:disabled] = !model.deleteable? if model.respond_to?(:deleteable?)
 
     _button(title, href, get_btn_class(options), tag: :button, **html_options)
   end
@@ -112,7 +110,6 @@ module ButtonsHelper
       link_opts[:method] = nil
       tag = :a
     end
-
 
     if tag == :button
       button_to href, class: classes, **link_opts do
