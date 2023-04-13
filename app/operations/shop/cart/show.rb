@@ -36,7 +36,7 @@ module Operations::Shop::Cart
 
       @quantity_requested_by_product.each do |product, quantity_requested|
         @availability_by_product[product] = product.availability
-        if product.availability.zero?
+        if product.availability.zero? || !product.on_sale?
           @unavailable_products << product.id
           @availability_error = true
         elsif quantity_requested > product.availability

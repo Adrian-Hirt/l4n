@@ -10,9 +10,16 @@ module Operations::Shop::Order
 
     lock_mode :exclusive
 
-    policy :on_init do
+    policy do
       # Check that the order is actually free
       fail Operations::Exceptions::OpFailed, _('Order|Your total is more than zero') unless model.total.zero?
+
+      # Check that all products are still on sale
+      model.order_items.each do |order_item|
+        next if order_item.product&.on_sale?
+
+        fail Operations::Exceptions::OpFailed, _('ProductVariant|Some products are not on sale anymore')
+      end
     end
 
     def perform

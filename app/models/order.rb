@@ -77,6 +77,23 @@ class Order < ApplicationRecord
     end
   end
 
+  def delayed_payment_can_be_submitted?
+    # Check correct status
+    return false unless delayed_payment_pending?
+
+    # Check order not expired
+    return false if expired?
+
+    # Check that no product_variant has been deleted while loading the payment gateway
+    return false if order_items.any? { |order_item| order_item.product_variant.nil? }
+
+    # Check that no product is not not on sale anymore
+    return false if order_items.any? { |order_item| !order_item.product_variant.product.on_sale? }
+
+    # Otherwise, all good
+    true
+  end
+
   # == Private Methods =============================================================
   private
 

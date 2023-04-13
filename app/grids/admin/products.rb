@@ -32,9 +32,7 @@ module Grids
       filter(:include_archived, :enum, select: SELECT_OPTIONS, include_blank: false) do |value, scope|
         value = value.blank? ? nil : ::Datagrid::Utils.booleanize(value)
 
-        unless value.is_a?(FalseClass)
-          scope = scope.unscope(where: :archived)
-        end
+        scope = scope.unscope(where: :archived) unless value.is_a?(FalseClass)
 
         scope
       end

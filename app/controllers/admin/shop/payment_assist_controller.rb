@@ -21,6 +21,10 @@ module Admin
           flash[:danger] = _('Admin|PaymentAssist|Order could not be marked as paid')
           redirect_to admin_shop_payment_assist_show_order_path(op.order)
         end
+      rescue Operations::Exceptions::OpFailed => e
+        add_breadcrumb op.order.formatted_id, nil
+        flash[:danger] = e.message
+        redirect_to admin_shop_payment_assist_show_order_path(op.order)
       end
     end
   end

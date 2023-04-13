@@ -1,5 +1,8 @@
 .card
   .card-body
+    - unless op.order.delayed_payment_can_be_submitted?
+      .alert.alert-danger
+        = _('PaymentAssist|Order cannot be paid anymore, please contact the site admin')
     .row.pb-3.mb-2.border-bottom
       .col-md-4
         .text-muted= _('Order|User')
@@ -36,7 +39,8 @@
       %tr.border-top
         %td{ colspan: 3 }= _('Order|Total')
         %td= money_formatted(op.order.total)
-    .border-top.pt-3
-      = simple_form_for op.order, url: admin_shop_payment_assist_order_paid_path(op.order), wrapper: :input_group do |f|
-        = f.input :payment_gateway_payment_id, label: _('PaymentAssist|Optional payment id'), placeholder: _('PaymentAssist|Optional payment id placeholder')
-        = f.save _('PaymentAssist|Order paid button')
+    - if op.order.delayed_payment_can_be_submitted?
+      .border-top.pt-3
+        = simple_form_for op.order, url: admin_shop_payment_assist_order_paid_path(op.order), wrapper: :input_group do |f|
+          = f.input :payment_gateway_payment_id, label: _('PaymentAssist|Optional payment id'), placeholder: _('PaymentAssist|Optional payment id placeholder')
+          = f.save _('PaymentAssist|Order paid button')

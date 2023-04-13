@@ -22,6 +22,14 @@ module Operations::Shop::Order
         # For each cart_item, create an order_item and decrease the
         # availability of the product_variant.
         context.user.cart.cart_items.each do |cart_item|
+          product = cart_item.product
+
+          # Check that the product still exists
+          fail Operations::Exceptions::OpFailed, _('ProductVariant|Product not available anymore') if product.nil?
+
+          # Check that the product is still on sale
+          fail Operations::Exceptions::OpFailed, _('ProductVariant|Product not on sale anymore') unless product.on_sale?
+
           # Build order_item
           @order.order_items.build(
             product_variant: cart_item.product_variant,
@@ -31,9 +39,8 @@ module Operations::Shop::Order
           )
 
           # decrease availability of product
-          product = cart_item.product
           product.availability -= cart_item.quantity
-          fail MaxQuantityReached if product.availability.negative?
+          fail Operations::Exceptions::OpFailed, _('ProductVariant|Product not available in the requested quantity anymore') if product.availability.negative?
 
           # Run any behaviour before_checkout actions we might have
           product.before_checkout_behaviour_actions(cart_item)
@@ -53,6 +60,5 @@ module Operations::Shop::Order
     end
 
     class CartEmpty < StandardError; end
-    class MaxQuantityReached < StandardError; end
   end
 end
