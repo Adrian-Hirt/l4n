@@ -8,7 +8,7 @@ gem 'rails', '~> 7.0.4'
 
 # Authentication & Authorization
 gem 'cancancan', '~> 3.4.0'
-gem 'devise', '~> 4.8'
+gem 'devise', '~> 4.9'
 gem 'devise-two-factor', '~> 5.0.0'
 gem 'doorkeeper', '~> 5.6.5'
 gem 'doorkeeper-openid_connect', '~> 1.8.4'
@@ -18,8 +18,7 @@ gem 'recaptcha', '~> 5.12.3'
 gem 'activerecord-session_store', '~> 2.0.0'
 
 # Puma
-gem 'localhost', require: false
-gem 'puma', '~> 5.6'
+gem 'puma', '~> 6.2'
 
 # Database
 gem 'pg', '~> 1.4.3'
@@ -82,8 +81,14 @@ gem 'exception_notification', '~> 4.5.0'
 
 # Development gems
 group :development do
+  # Code reloading
   gem 'listen', '~> 3.2'
+
+  # Debugging
   gem 'pry-byebug', '~> 3.9'
+
+  # Application server
+  gem 'localhost', require: false
 
   # Translations
   gem 'gettext', '>=3.0.2', require: false
