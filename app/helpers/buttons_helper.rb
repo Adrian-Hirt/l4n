@@ -93,14 +93,27 @@ module ButtonsHelper
         action:     'click->button#confirmAction'
       },
       method: :delete
-    }
-    html_options.merge!(html)
+    }.merge!(html)
+
+    if model.respond_to?(:deleteable?)
+      html_options[:disabled] = !model.deleteable?
+    end
+
     _button(title, href, get_btn_class(options), tag: :button, **html_options)
   end
 
   private
 
   def _button(title, href, classes, tag: :a, **link_opts, &block)
+    # If the button is disabled, replace the link by a '#', such that even inspecting
+    # the HTML and enabling the button does not work
+    if link_opts[:disabled]
+      href = '#'
+      link_opts[:method] = nil
+      tag = :a
+    end
+
+
     if tag == :button
       button_to href, class: classes, **link_opts do
         if block
