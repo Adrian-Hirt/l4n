@@ -18,6 +18,12 @@ module Grids
           show_button(order, namespace: %i[admin shop], size: :sm, icon_only: true)
         end
       end
+
+      filter(:status, :enum, select: Order.statuses.keys.map { |status| [humanize_enum_for_select(Order, :status, status), status] }, include_blank: _('Form|Select|Show all'))
+      filter(:user, :string) do |value, scope, _grid|
+        sanitized_value = Order.sanitize_sql_like(value.downcase)
+        scope.joins(:user).where('LOWER(users.username) LIKE ?', "%#{sanitized_value}%")
+      end
     end
   end
 end

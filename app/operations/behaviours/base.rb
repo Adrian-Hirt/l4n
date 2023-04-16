@@ -27,5 +27,24 @@ module Operations::Behaviours
       # By default, this does nothing, but can be
       # overwritten
     end
+
+    def self.requires_manual_processing?
+      # By default, manual processing is not required.
+      # Manual processing usually involves steps which
+      # need to be taken by actual humans, e.g. packaging
+      # an item for shipment.
+      #
+      # Setting this to true means the order will get the
+      # status `processing` after payment instead of `completed`.
+      false
+    end
+
+    def self.requires_address?
+      # By default, product behaviours do not require address
+      # data of users. If a product behaviour does need some
+      # address data of users, e.g. for shipment, the behaviour
+      # needs to specify this.
+      false
+    end
   end
 end

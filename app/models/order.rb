@@ -4,7 +4,8 @@ class Order < ApplicationRecord
     created:                 'created',
     payment_pending:         'payment_pending',
     delayed_payment_pending: 'delayed_payment_pending',
-    paid:                    'paid'
+    processing:              'processing',
+    completed:               'completed'
   }
 
   translate_enums
@@ -63,7 +64,7 @@ class Order < ApplicationRecord
   end
 
   def expired?
-    # A paid order can never expire
+    # A completed or processing order can never expire
     return false if paid?
 
     if created?
@@ -92,6 +93,21 @@ class Order < ApplicationRecord
 
     # Otherwise, all good
     true
+  end
+
+  def paid!
+    # If any product behaviours on the order require manual
+    # processing, we set the status to `processing`, otherwise
+    # we set the status to `completed`
+    if order_items.any? { |order_item| order_item.product.enabled_product_behaviours.any? { |product_behaviour| product_behaviour.requires_manual_processing? } }
+      processing!
+    else
+      completed!
+    end
+  end
+
+  def paid?
+    completed? || processing?
   end
 
   # == Private Methods =============================================================

@@ -7,4 +7,15 @@
 
 .card
   .card-body
+    = simple_form_for op.grid, url: admin_shop_orders_path, method: :get do |f|
+      .row.mb-1
+        .select.optional.col-xl-4.col-md-6.col-12.mb-2
+          = f.label :status
+          = f.datagrid_filter :status, class: 'form-select rounded-0 select optional'
+        .optional.col-xl-4.col-md-6.col-12.mb-2
+          = f.label :user, _('Order|User')
+          = f.datagrid_filter :user, class: 'rounded-0 optional form-control'
+        .d-flex.align-items-end.gap-1.col-xl-4.col-md-6.col-12.mb-2
+          = f.save _('Apply filter')
+          = button _('Search|Reset'), admin_shop_orders_path, color: :secondary
     = datagrid_table op.grid, html: { class: 'table' }
