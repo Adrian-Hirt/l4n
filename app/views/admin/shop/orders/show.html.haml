@@ -5,8 +5,8 @@
         .text-muted= _('Order|Created at')
         = l(model.created_at, format: :long)
       .col-md-4
-        .text-muted= _('Order|Order items count')
-        = model.order_items.count
+        .text-muted= _('Order|Status')
+        = model.humanized_status
       .col-md-4
         .text-muted= _('Order|User')
         = model.user.username
@@ -54,3 +54,7 @@
         = delete_button model, namespace: %i[admin shop]
       - else
         = button _('Admin|Order|Cannot delete active order'), nil, disabled: true, color: :danger
+
+      - if model.processing?
+        = button _('Admin|Order|Complete processing'), complete_processing_admin_shop_order_path(model), method: :post,
+                                                                                                         confirm: _('Admin|Order|Really complete order?')

@@ -41,6 +41,16 @@ module Admin
           redirect_to admin_shop_order_path(model)
         end
       end
+
+      def complete_processing
+        if run Operations::Admin::Order::CompleteProcessing
+          flash[:success] = _('Admin|Order|Completed processing successfully')
+          redirect_to admin_shop_orders_path
+        else
+          flash[:danger] = _('Admin|Order|Couldn\'t complete processing')
+          redirect_to admin_shop_order_path(model)
+        end
+      end
     end
   end
 end

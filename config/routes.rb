@@ -282,6 +282,7 @@ Rails.application.routes.draw do
       resources :orders, only: %i[index show destroy] do
         member do
           delete :cancel_delayed_payment_pending
+          post :complete_processing
         end
         collection do
           post :cleanup_expired
