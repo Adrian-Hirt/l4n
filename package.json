@@ -22,7 +22,7 @@
     "easymde": "2.18.0",
     "esbuild": "^0.15.14",
     "gettext.js": "1.2.0",
-    "konva": "8.3.2",
+    "konva": "9.0.0",
     "qr-scanner": "^1.4.1",
     "stimulus-autocomplete": "^3.0.2",
     "sweetalert2": "11.7.3"
