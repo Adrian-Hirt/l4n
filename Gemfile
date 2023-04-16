@@ -28,7 +28,7 @@ gem 'cssbundling-rails', '~> 1.1.1'
 gem 'jsbundling-rails', '~> 1.1.1'
 gem 'sprockets-rails', '~> 3.4.1'
 gem 'stimulus-rails', '~> 1.2.1'
-gem 'turbo-rails', '~> 1.3.2'
+gem 'turbo-rails', '~> 1.4.0'
 
 # Application structure
 gem 'active_type', '~> 2.3.0'
@@ -109,7 +109,7 @@ end
 
 # Test gems
 group :test do
-  gem 'faker', '~> 3.1.1'
+  gem 'faker', '~> 3.2.0'
   gem 'simplecov', '~> 0.22.0', require: false
 end
 
