@@ -263,6 +263,15 @@ msgstr "Cannot delete active order"
 msgid "Admin|Order|Cannot delete paid order"
 msgstr "Cannot delete paid order"
 
+msgid "Admin|Order|Complete processing"
+msgstr "Complete processing"
+
+msgid "Admin|Order|Completed processing successfully"
+msgstr "Completed processing successfully"
+
+msgid "Admin|Order|Couldn't complete processing"
+msgstr "Couldn't complete processing"
+
 msgid "Admin|Order|Destroyed successfully"
 msgstr "Destroyed successfully"
 
@@ -274,6 +283,12 @@ msgstr "Expired could not be cleaned up"
 
 msgid "Admin|Order|Not expired yet"
 msgstr "Not expired yet"
+
+msgid "Admin|Order|Really complete order?"
+msgstr "Really complete order? This will also delete the address on the order!"
+
+msgid "Admin|Order|Wrong status to complete processing"
+msgstr "Wrong status to complete processing"
 
 msgid "Admin|Order|Wrong status to delete"
 msgstr "Wrong status to delete"
@@ -611,6 +626,9 @@ msgstr "Seat id to assign to"
 msgid "Admin|Ticket|Seat not set"
 msgstr "Seat not set"
 
+msgid "Admin|Ticket|Seat present"
+msgstr "Seat present"
+
 msgid "Admin|Ticket|Sold in shop"
 msgstr "Sold in shop"
 
@@ -767,9 +785,8 @@ msgstr "Not in running phase"
 msgid "Admin|Tournament|No disputed matches"
 msgstr "No disputed matches"
 
-#, fuzzy
 msgid "Admin|Tournament|No teams signed up yet"
-msgstr "No teams"
+msgstr "No teams signed up yet"
 
 msgid "Admin|Tournament|Permissions"
 msgstr "Permissions"
@@ -975,14 +992,14 @@ msgstr "Cart"
 msgid "Cart item"
 msgstr "Cart item"
 
+msgid "CartItem|A ticket upgrade has its max quantity reached!"
+msgstr "A ticket category change has its max quantity reached!"
+
 msgid "CartItem|Cannot be deleted"
 msgstr "Cannot be deleted"
 
 msgid "CartItem|Delete confirmation?"
 msgstr "Remove item from your cart?"
-
-msgid "CartItem|Max quantity reached"
-msgstr "Max quantity reached"
 
 msgid "CartItem|Quantity"
 msgstr "Quantity"
@@ -1038,11 +1055,14 @@ msgstr "Your items"
 msgid "Checkout"
 msgstr "Checkout"
 
-msgid "Checkout|An product variant has been deleted"
-msgstr "An product variant has been deleted"
+msgid "Checkout|A product is not on sale anymore"
+msgstr "A product is not on sale anymore"
 
-msgid "Checkout|Click here to add an address"
-msgstr "Click here to add an address"
+msgid "Checkout|A product variant has been deleted"
+msgstr "A product variant has been deleted"
+
+msgid "Checkout|Add your address"
+msgstr "Add your address"
 
 msgid "Checkout|Could not set the order as payment pending"
 msgstr "Could not set the order as payment pending"
@@ -1062,17 +1082,8 @@ msgstr "Order has wrong status"
 msgid "Checkout|Payment options"
 msgstr "Payment options"
 
-msgid "Checkout|Please add an address to your user profile"
-msgstr "Please add an address to your user profile"
-
-msgid "Checkout|Please set an address from the list below"
-msgstr "Please set an address from the list below"
-
 msgid "Checkout|Promotion codes"
 msgstr "Promotion codes"
-
-msgid "Checkout|Select your billing address"
-msgstr "Select your billing address"
 
 msgid "Checkout|The given order was not found"
 msgstr "The order was not found"
@@ -1082,9 +1093,6 @@ msgstr "The promotion code cannot be applied"
 
 msgid "Checkout|The promotion code is already applied to this order!"
 msgstr "The promotion code is already applied to this order!"
-
-msgid "Checkout|Use this address"
-msgstr "Use this address"
 
 msgid "Checkout|You did not accepd the terms and conditions"
 msgstr "You did not accepd the terms and conditions"
@@ -1905,9 +1913,6 @@ msgstr "Quantity"
 msgid "OrderItem|Total"
 msgstr "Total"
 
-msgid "Orders|Completed orders"
-msgstr "Completed orders"
-
 msgid "Orders|My Orders"
 msgstr "My Orders"
 
@@ -1917,14 +1922,14 @@ msgstr "No orders yet"
 msgid "Orders|No payment pending orders"
 msgstr "No payment pending orders"
 
+msgid "Orders|Paid orders"
+msgstr "Paid orders"
+
 msgid "Orders|Payment pending"
 msgstr "Payment pending"
 
 msgid "Order|Accept terms and conditions"
 msgstr "Accept terms and conditions"
-
-msgid "Order|Billing address"
-msgstr "Billing address"
 
 msgid "Order|Billing address city"
 msgstr "Billing address city"
@@ -1944,9 +1949,6 @@ msgstr "Billing address zip code"
 msgid "Order|By clicking the %{button_text} button below, you accept our terms and conditions, which you can find at"
 msgstr "By clicking the %{button_text} button below, you accept our terms and conditions, which you can find at"
 
-msgid "Order|Cancel order after accepting terms and conditions"
-msgstr "Cancel"
-
 msgid "Order|Canceled successfully"
 msgstr "Canceled successfully"
 
@@ -1965,9 +1967,6 @@ msgstr "Cleanup timestamp"
 msgid "Order|Complete without payment"
 msgstr "Complete without payment"
 
-msgid "Order|Completed at"
-msgstr "Completed at"
-
 msgid "Order|Created at"
 msgstr "Created at"
 
@@ -1979,6 +1978,9 @@ msgstr "Do not accept terms and conditions"
 
 msgid "Order|Gtcs accepted"
 msgstr "Gtcs accepted"
+
+msgid "Order|No billing address found"
+msgstr "No billing address found"
 
 msgid "Order|Number of items"
 msgstr "Number of items"
@@ -2046,14 +2048,17 @@ msgstr "User"
 msgid "Order|Uuid"
 msgstr "Uuid"
 
-msgid "Order|You have accepted the terms and condition"
-msgstr "You have accepted the terms and condition"
+msgid "Order|You have accepted the terms and conditions"
+msgstr "You have accepted the terms and conditions"
 
 msgid "Order|You need to accept the terms and conditions to continue your checkyout. Are you sure you do not want to accept the terms and conditions?"
 msgstr "You need to accept the terms and conditions to continue your checkyout. Are you sure you do not want to accept the terms and conditions?"
 
 msgid "Order|Your total is more than zero"
 msgstr "Your total is more than zero"
+
+msgid "Order|status|completed"
+msgstr "Completed"
 
 msgid "Order|status|created"
 msgstr "Created"
@@ -2066,6 +2071,9 @@ msgstr "Paid"
 
 msgid "Order|status|payment_pending"
 msgstr "Payment pending"
+
+msgid "Order|status|processing"
+msgstr "Processing"
 
 msgid "Order|the terms and conditions page"
 msgstr "the terms and conditions page"
@@ -2100,11 +2108,26 @@ msgstr "Request reset"
 msgid "PasswordReset|Update password"
 msgstr "Update password"
 
+msgid "PaymentAssist|A product is not on sale anymore"
+msgstr "A product is not on sale anymore"
+
+msgid "PaymentAssist|A product variant has been deleted"
+msgstr "A product variant has been deleted"
+
 msgid "PaymentAssist|Optional payment id"
 msgstr "Optional payment id"
 
 msgid "PaymentAssist|Optional payment id placeholder"
 msgstr "Optional payment id, can be left empty"
+
+msgid "PaymentAssist|Order cannot be paid anymore, please contact the site admin"
+msgstr "Order cannot be paid anymore, please contact the site admin"
+
+msgid "PaymentAssist|Order expired"
+msgstr "Order expired"
+
+msgid "PaymentAssist|Order has wrong status"
+msgstr "Order has wrong status"
 
 msgid "PaymentAssist|Order paid button"
 msgstr "Order is paid"
@@ -2259,6 +2282,12 @@ msgstr "Product variant"
 msgid "ProductBehaviours|Dummy"
 msgstr "Dummy"
 
+msgid "ProductBehaviours|Ticket"
+msgstr "Ticket"
+
+msgid "ProductBehaviours|Ticket_upgrade"
+msgstr "Ticket catgeory change"
+
 msgid "ProductCategory"
 msgstr "ProductCategory"
 
@@ -2286,6 +2315,18 @@ msgstr "Name"
 msgid "ProductVariant|Price cents"
 msgstr "Price"
 
+msgid "ProductVariant|Product not available anymore"
+msgstr "Product not available anymore"
+
+msgid "ProductVariant|Product not available in the requested quantity anymore"
+msgstr "Product not available in the requested quantity anymore"
+
+msgid "ProductVariant|Product not on sale anymore"
+msgstr "Product not on sale anymore"
+
+msgid "ProductVariant|Some products are not on sale anymore"
+msgstr "Some products are not on sale anymore"
+
 msgid "ProductVariant|Successfully added to cart"
 msgstr "Successfully added to cart"
 
@@ -2295,14 +2336,26 @@ msgstr "%{price} each"
 msgid "Product|Add product variant"
 msgstr "Add product variant"
 
+msgid "Product|Archived"
+msgstr "Archived"
+
 msgid "Product|Availability"
 msgstr "Availability"
+
+msgid "Product|Cannot be true if archived is true"
+msgstr "Cannot be true if archived is true"
+
+msgid "Product|Cannot be true if on_sale is true"
+msgstr "Cannot be true if on_sale is true"
 
 msgid "Product|Description"
 msgstr "Description"
 
 msgid "Product|Enabled product behaviours"
 msgstr "Enabled product behaviours"
+
+msgid "Product|Exclude archived"
+msgstr "Exclude archived"
 
 msgid "Product|From Product"
 msgstr "From Product"
@@ -2321,6 +2374,9 @@ msgstr "On sale"
 
 msgid "Product|Remove this image"
 msgstr "Remove this image"
+
+msgid "Product|Show all"
+msgstr "Show all"
 
 msgid "Product|Show availability"
 msgstr "Show availability"
@@ -2711,12 +2767,6 @@ msgstr "2FA"
 
 msgid "Settings|Activate 2FA"
 msgstr "Activate 2FA"
-
-msgid "Settings|Addresses"
-msgstr "Addresses"
-
-msgid "Settings|Addresses|Add new"
-msgstr "Add new"
 
 msgid "Settings|Authorized oauth apps"
 msgstr "Authorized OAuth apps"
@@ -3546,9 +3596,8 @@ msgstr "Add team rank"
 msgid "Tournament|Cannot be changed if teams are present"
 msgstr "Cannot be changed if teams are present"
 
-#, fuzzy
 msgid "Tournament|Cannot be deleted as teams have this rank"
-msgstr "Cannot be changed if teams are present"
+msgstr "Cannot be deleted as teams have this rank"
 
 msgid "Tournament|Delete team"
 msgstr "Delete team"
@@ -3745,9 +3794,8 @@ msgstr "The tournament has ongoing phases"
 msgid "Tournament|The tournament is full"
 msgstr "The tournament is full"
 
-#, fuzzy
 msgid "Tournament|There were some errors deleting ranks"
-msgstr "Tournament"
+msgstr "There were some errors deleting ranks"
 
 msgid "Tournament|This is a singleplayer tournament"
 msgstr "This is a singleplayer tournament"
@@ -3836,53 +3884,20 @@ msgstr "Uploaded at"
 msgid "Upload|Uploaded by"
 msgstr "Uploaded by"
 
+msgid "Upload|Uuid"
+msgstr "Uuid"
+
 msgid "User"
 msgstr "User"
 
 msgid "User achievement"
 msgstr "User achievement"
 
-msgid "User address"
-msgstr "User address"
-
 msgid "UserAchievement"
 msgstr "UserAchievement"
 
 msgid "UserAchievement|Awarded at"
 msgstr "Awarded at"
-
-msgid "UserAddress|City"
-msgstr "City"
-
-msgid "UserAddress|Could not be destroyed"
-msgstr "Address could not be destroyed"
-
-msgid "UserAddress|Create failed"
-msgstr "Creating the address failed"
-
-msgid "UserAddress|First name"
-msgstr "First name"
-
-msgid "UserAddress|Last name"
-msgstr "Last name"
-
-msgid "UserAddress|Street"
-msgstr "Street"
-
-msgid "UserAddress|Successfully created"
-msgstr "Address successfully created"
-
-msgid "UserAddress|Successfully destroyed"
-msgstr "Address successfully destroyed"
-
-msgid "UserAddress|Successfully updated"
-msgstr "Address successfully updated"
-
-msgid "UserAddress|Update failed"
-msgstr "Update failed"
-
-msgid "UserAddress|Zip code"
-msgstr "Zip code"
 
 msgid "Users"
 msgstr "Users"

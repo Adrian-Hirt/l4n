@@ -25,10 +25,10 @@ module Operations::PaymentGateway
       fail InvalidOrder, _('Checkout|You did not accepd the terms and conditions') if AppConfig.enable_terms_and_conditions && !order.gtcs_accepted
 
       # Check that no product_variant has been deleted while loading the payment gateway
-      fail InvalidOrder, _('Checkout|An product variant has been deleted') if order.order_items.any? { |order_item| order_item.product_variant.nil? }
+      fail InvalidOrder, _('Checkout|A product variant has been deleted') if order.order_items.any? { |order_item| order_item.product_variant.nil? }
 
       # Check that no product is not not on sale anymore
-      fail InvalidOrder, _('Checkout|An product is not on sale anymore') if order.order_items.any? { |order_item| !order_item.product_variant.product.on_sale? }
+      fail InvalidOrder, _('Checkout|A product is not on sale anymore') if order.order_items.any? { |order_item| !order_item.product_variant.product.on_sale? }
 
       fail InvalidOrder, _('Checkout|No address present') unless order.address_present?
 

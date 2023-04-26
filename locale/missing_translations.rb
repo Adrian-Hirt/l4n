@@ -35,6 +35,8 @@ N_('Tournament::Team|status|seeded')
 
 # Product Behaviours
 N_('ProductBehaviours|Dummy')
+N_('ProductBehaviours|Ticket')
+N_('ProductBehaviours|Ticket_upgrade')
 
 # Tournament
 N_('Tournament|Lan party')
@@ -141,3 +143,4 @@ N_("MarkdownEditor|Popup|Please paste the URL of the map you want to share here!
 N_('MarkdownEditor|Popup|Please enter your link')
 N_('MarkdownEditor|Popup|Please enter the URL of the image')
 N_('CartItem|Delete confirmation?')
+

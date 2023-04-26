@@ -22,10 +22,10 @@ module Operations::Admin::PaymentAssist
       fail Operations::Exceptions::OpFailed, _('PaymentAssist|Order expired') if order.expired?
 
       # Check that no product_variant has been deleted while loading the payment gateway
-      fail Operations::Exceptions::OpFailed, _('PaymentAssist|An product variant has been deleted') if order.order_items.any? { |order_item| order_item.product_variant.nil? }
+      fail Operations::Exceptions::OpFailed, _('PaymentAssist|A product variant has been deleted') if order.order_items.any? { |order_item| order_item.product_variant.nil? }
 
       # Check that no product is not not on sale anymore
-      fail Operations::Exceptions::OpFailed, _('PaymentAssist|An product is not on sale anymore') if order.order_items.any? { |order_item| !order_item.product_variant.product.on_sale? }
+      fail Operations::Exceptions::OpFailed, _('PaymentAssist|A product is not on sale anymore') if order.order_items.any? { |order_item| !order_item.product_variant.product.on_sale? }
 
       run_sub Operations::Shop::Order::ProcessPaid, order: order, payment_id: osparams.order[:payment_gateway_payment_id].presence
     end

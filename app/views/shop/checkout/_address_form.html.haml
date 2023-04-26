@@ -1,7 +1,7 @@
 .card.mb-3
   = simple_form_for op.order, url: shop_checkout_set_address_path(id: op.order.id), remote: true do |f|
     .card-header
-      = _('Checkout|Add your shipping address')
+      = _('Checkout|Add your address')
     .card-body.pb-0
       .row
         .col-md-6
