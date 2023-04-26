@@ -7,6 +7,10 @@
 * Update ruby to `3.2.2` and enable YJIT
 * Update gem dependencies
 * Payment & Payment Assist: Check if item is on sale before running process
+* Reduce stored sensitive data
+  + Remove saved addresses on User model
+  + Only request address for order if any product behaviour requires it
+  + Delete address on order on completion of order
 
 ## 1.7.2 - 2023-04-09
 
