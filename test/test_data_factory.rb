@@ -14,7 +14,7 @@ module TestDataFactory
     ::Operations::User::Create.run!(
       user: {
         username: Faker::Internet.username,
-        email:    Faker::Internet.safe_email,
+        email:    Faker::Internet.email,
         password: 'Password123'
       }.merge(attrs)
     ).model.reload

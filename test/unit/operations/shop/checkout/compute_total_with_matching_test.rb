@@ -22,6 +22,9 @@ module Unit
             store :order_item_1, create_order_item(fetch(:order), fetch(:variant_1_1), quantity: 1)
             store :order_item_2, create_order_item(fetch(:order), fetch(:variant_1_2), quantity: 2)
 
+            # Reload order, just to be safe
+            fetch(:order).reload
+
             store :promotion_1, create_promotion('Fixed', reduction: Money.new(1000), product_ids: [fetch(:product_1).id, fetch(:product_2).id])
             store :promotion_2, create_promotion('Free Item 1 only', code_type: Promotion.code_types[:free_item], product_ids: [fetch(:product_1).id])
           end
