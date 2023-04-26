@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.8.0 - UNRELEASED
+
+### Changed
+
+* Update ruby to `3.2.2` and enable YJIT
+* Update gem dependencies
+* Payment & Payment Assist: Check if item is on sale before running process
+
 ## 1.7.2 - 2023-04-09
 
 ### Changed

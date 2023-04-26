@@ -30,7 +30,6 @@ class User < ApplicationRecord
 
   has_many :orders, dependent: :destroy
   has_one :cart, dependent: :destroy
-  has_many :user_addresses, dependent: :destroy
   has_many :team_memberships, class_name: 'Tournament::TeamMember', dependent: :destroy, inverse_of: :user
   has_many :teams, through: :team_memberships
   has_many :tickets, foreign_key: :assignee_id, dependent: :nullify, inverse_of: :assignee

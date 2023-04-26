@@ -48,6 +48,7 @@ module Operations::Shop::Order
           product.save!
         end
 
+        @order.skip_address_validation = true
         @order.save!
         @total = @order.order_items.sum(&:total)
       end
@@ -57,6 +58,10 @@ module Operations::Shop::Order
       fail 'Operation not performed yet' unless performed?
 
       @order
+    end
+
+    def model
+      order
     end
 
     class CartEmpty < StandardError; end

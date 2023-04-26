@@ -69,12 +69,6 @@ class Ability
       end
     end
 
-    # User addresses
-    can :create, UserAddress
-    can %i[read update destroy], UserAddress do |m|
-      m.user == user
-    end
-
     # User profile
     can :destroy_my_user, User do |m|
       m == user

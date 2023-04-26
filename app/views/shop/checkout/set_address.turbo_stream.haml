@@ -1,24 +1,11 @@
 = turbo_stream.update 'address' do
-  - if op.no_address_given_error
-    .alert.alert-danger
-      = _('Checkout|Please set an address from the list below')
-  = render partial: 'address_form', locals: { chosen_address: op.chosen_address }
+  = render partial: 'address_form'
 
 - if model.address_present?
-  = turbo_stream.update 'chosen_address' do
-    .card.mb-3
-      .card-header
-        = _('Order|Billing address')
-      .card-body
-        = "#{model.billing_address_first_name} #{model.billing_address_last_name}"
-        %br
-        = model.billing_address_street
-        %br
-        = "#{model.billing_address_zip_code} #{model.billing_address_city}"
-
   - if AppConfig.enable_terms_and_conditions
     = turbo_stream.update 'terms_and_conditions' do
       = render partial: 'terms_and_conditions_form'
+    = turbo_stream.update 'payment_gateways'
   - else
     = turbo_stream.update 'payment_gateways' do
       = render partial: 'payment_gateways'

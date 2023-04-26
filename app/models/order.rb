@@ -10,6 +10,8 @@ class Order < ApplicationRecord
 
   translate_enums
 
+  attr_accessor :skip_address_validation
+
   # == Constants ===================================================================
   TIMEOUT = 15.minutes
   TIMEOUT_PAYMENT_PENDING = 45.minutes
@@ -26,7 +28,7 @@ class Order < ApplicationRecord
   # == Validations =================================================================
   SHIPPING_ADDRESS_FIELDS.each do |shipping_address_field|
     validates shipping_address_field, length: { maximum: 255 }
-    validates shipping_address_field, presence: true, unless: :created?
+    validates shipping_address_field, presence: true, if: :requires_address?, unless: :skip_address_validation
   end
 
   validates :payment_gateway_name, length: { maximum: 255 }
@@ -99,7 +101,7 @@ class Order < ApplicationRecord
     # If any product behaviours on the order require manual
     # processing, we set the status to `processing`, otherwise
     # we set the status to `completed`
-    if order_items.any? { |order_item| order_item.product.enabled_product_behaviours.any? { |product_behaviour| product_behaviour.requires_manual_processing? } }
+    if order_items.any? { |order_item| order_item.product.enabled_product_behaviours.any?(&:requires_manual_processing?) }
       processing!
     else
       completed!
@@ -108,6 +110,10 @@ class Order < ApplicationRecord
 
   def paid?
     completed? || processing?
+  end
+
+  def requires_address?
+    order_items.any? { |order_item| order_item.product.enabled_product_behaviours.any?(&:requires_address?) }
   end
 
   # == Private Methods =============================================================

@@ -4,12 +4,12 @@
 .card.mb-3
   .card-header
     = _('Orders|Payment pending')
-  .card-body
+  .card-body.p-0
     - if op.delayed_payment_pending_orders.any?
       %table.table.table-hover.mb-0
         %tr
           %th= _('Order|Order id')
-          %th= _('Order|Completed at')
+          %th= _('Order|Created at')
           %th= _('Order|Number of items')
           %th
         - op.delayed_payment_pending_orders.each do |order|
@@ -22,19 +22,27 @@
       = _('Orders|No payment pending orders')
 .card.mb-3
   .card-header
-    = _('Orders|Completed orders')
-  .card-body
-    - if op.completed_orders.any?
+    = _('Orders|Paid orders')
+  .card-body.p-0
+    - if op.paid_orders.any?
       %table.table.table-hover.mb-0
         %tr
           %th= _('Order|Order id')
-          %th= _('Order|Completed at')
+          %th= _('Order|Created at')
+          %th= _('Order|Status')
           %th= _('Order|Number of items')
           %th
-        - op.completed_orders.each do |order|
+        - op.paid_orders.each do |order|
           %tr
             %td.align-middle= order.uuid
             %td.align-middle= l(order.created_at, format: :long)
+            %td.align-middle
+              - if order.completed?
+                = icon %i[fas fa-check]
+                = _('Order|status|completed')
+              - else
+                = icon %i[fas fa-loader]
+                = _('Order|status|processing')
             %td.align-middle= order.order_items.sum(&:quantity)
             %td.text-end= show_button order, href: shop_order_path(id: order.uuid), size: :sm, icon_only: true, color: :default
     - else

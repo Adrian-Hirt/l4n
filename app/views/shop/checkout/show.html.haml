@@ -9,16 +9,13 @@
       = turbo_frame_tag 'promotion_codes_table' do
         = render partial: 'order_items', locals: { op: op }
 
-    - if current_user.user_addresses.any?
+    - if op.order.requires_address?
       = turbo_frame_tag 'address' do
-        = render partial: 'address_form', locals: { chosen_address: nil }
-    - else
-      .card
-        .card-body
-          .alert.alert-warning
-            = _('Checkout|Please add an address to your user profile')
-            = link_to _('Checkout|Click here to add an address'), settings_user_addresses_path, class: 'alert-link'
-    = turbo_frame_tag 'terms_and_conditions'
+        = render partial: 'address_form'
+      = turbo_frame_tag 'terms_and_conditions'
+    - elsif AppConfig.enable_terms_and_conditions
+      = turbo_frame_tag 'terms_and_conditions' do
+        = render partial: 'terms_and_conditions_form'
 
   .col-lg-3
     .card.mb-3
@@ -29,5 +26,11 @@
           = turbo_frame_tag 'promotion_codes_errors'
           = turbo_frame_tag 'promotion_codes_form' do
             = render partial: 'promotion_codes_form'
-    = turbo_frame_tag 'chosen_address'
-    = turbo_frame_tag 'payment_gateways'
+    -# If we need an address of the user needs to accept the GTCs,
+    -# we simply render an empty frame. If both are not required,
+    -# we can directly render the buttons to the payment gateways
+    - if op.order.requires_address? || AppConfig.enable_terms_and_conditions
+      = turbo_frame_tag 'payment_gateways'
+    - else
+      = turbo_frame_tag 'payment_gateways' do
+        = render partial: 'payment_gateways'

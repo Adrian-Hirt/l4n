@@ -75,8 +75,6 @@ Rails.application.routes.draw do
       delete :discord, action: :remove_discord
       delete :steam, action: :remove_steam
     end
-
-    resources :addresses, except: %i[show], controller: :user_addresses, as: :user_addresses
   end
 
   # == News =============================================================================
