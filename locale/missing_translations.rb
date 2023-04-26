@@ -143,4 +143,3 @@ N_("MarkdownEditor|Popup|Please paste the URL of the map you want to share here!
 N_('MarkdownEditor|Popup|Please enter your link')
 N_('MarkdownEditor|Popup|Please enter the URL of the image')
 N_('CartItem|Delete confirmation?')
-
