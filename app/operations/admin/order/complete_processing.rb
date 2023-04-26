@@ -12,7 +12,14 @@ module Operations::Admin::Order
     end
 
     def perform
-      model.completed!
+      ActiveRecord::Base.transaction do
+        model.status = Order.statuses[:completed]
+
+        # Remove the address on the order if it's set
+        model.remove_address
+
+        model.save!
+      end
     end
   end
 end

@@ -54,6 +54,10 @@ class Order < ApplicationRecord
     SHIPPING_ADDRESS_FIELDS.all? { |shipping_address_field| public_send(shipping_address_field).present? }
   end
 
+  def any_address_field_present?
+    SHIPPING_ADDRESS_FIELDS.any? { |shipping_address_field| public_send(shipping_address_field).present? }
+  end
+
   def formatted_id
     "#{_('Order')} ##{uuid}"
   end
@@ -104,7 +108,14 @@ class Order < ApplicationRecord
     if order_items.any? { |order_item| order_item.product.enabled_product_behaviours.any?(&:requires_manual_processing?) }
       processing!
     else
-      completed!
+      # Set status
+      self.status = Order.statuses[:completed]
+
+      # Remove the address, just to be on the safe side.
+      remove_address
+
+      # And finally save the order
+      save!
     end
   end
 
@@ -114,6 +125,15 @@ class Order < ApplicationRecord
 
   def requires_address?
     order_items.any? { |order_item| order_item.product.enabled_product_behaviours.any?(&:requires_address?) }
+  end
+
+  def remove_address
+    # Does not do anything unless the status is `completed`
+    fail 'Wrong status' unless completed?
+
+    SHIPPING_ADDRESS_FIELDS.each do |field|
+      public_send("#{field}=", nil)
+    end
   end
 
   # == Private Methods =============================================================

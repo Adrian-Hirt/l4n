@@ -13,14 +13,17 @@
     .row.border-bottom.pb-3.mb-2
       .col-md-4
         .text-muted= _('Order|Shipping address')
-        = "#{model.billing_address_first_name} #{model.billing_address_last_name}"
-        %br
-        = model.billing_address_street
-        %br
-        = "#{model.billing_address_zip_code} #{model.billing_address_city}"
+        - if model.any_address_field_present?
+          = "#{model.billing_address_first_name} #{model.billing_address_last_name}"
+          %br
+          = model.billing_address_street
+          %br
+          = "#{model.billing_address_zip_code} #{model.billing_address_city}"
+        - else
+          = _('Order|No billing address found')
       .col-md-4
         .text-muted= _('Order|Payment gateway name')
-        = model.payment_gateway_name
+        = model.payment_gateway_name.presence || '-'
       .col-md-4
         .text-muted= _('Order|Payment gateway payment id')
         = model.payment_gateway_payment_id.presence || '-'
