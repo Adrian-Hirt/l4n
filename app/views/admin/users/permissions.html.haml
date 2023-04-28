@@ -1,12 +1,12 @@
 .row
-  - User::PERMISSION_FIELDS.each do |permission_field|
-    - users_with_permissions = User.where(permission_field => true)
+  - UserPermission.all.group_by(&:permission).each do |permission_name, user_permissions|
     .col-md-6.mb-3
       .card
         .card-header.d-flex.justify-content-between.align-items-center
-          = permission_field.to_s.humanize
-          .badge.bg-primary= users_with_permissions.count
+          = permission_name.humanize
+          .badge.bg-primary= user_permissions.count
         .card-body
-          - users_with_permissions.each do |user|
-            = link_to user.username, permissions_admin_user_path(user)
+          - user_permissions.each do |user_permission|
+            = link_to user_permission.user.username, permissions_admin_user_path(user_permission.user)
+            %small.text-muted= user_permission.mode
             %br
