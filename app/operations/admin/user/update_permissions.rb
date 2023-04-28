@@ -1,25 +1,20 @@
 module Operations::Admin::User
   class UpdatePermissions < RailsOps::Operation::Model::Update
-    schema do
-      req :id
-      opt :user do
-        opt :user_admin_permission
-        opt :news_admin_permission
-        opt :event_admin_permission
-        opt :page_admin_permission
-        opt :menu_items_admin_permission
-        opt :shop_admin_permission
-        opt :payment_assist_admin_permission
-        opt :lan_party_admin_permission
-        opt :tournament_admin_permission
-        opt :design_admin_permission
-        opt :achievement_admin_permission
-        opt :upload_admin_permission
-        opt :developer_admin_permission
-        opt :system_admin_permission
+    schema3 do
+      int! :id, cast_str: true
+      hsh? :user do
+        hsh? :user_permissions_attributes, additional_properties: true
       end
     end
 
     model ::User
+
+    def available_permissions
+      UserPermission::AVAILABLE_PERMISSIONS.keys - context.user.user_permissions.collect(&:permission)
+    end
+
+    def permission_to_modes_map
+      UserPermission::AVAILABLE_PERMISSIONS.to_json
+    end
   end
 end

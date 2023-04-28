@@ -34,7 +34,6 @@ class User < ApplicationRecord
   has_many :teams, through: :team_memberships
   has_many :tickets, foreign_key: :assignee_id, dependent: :nullify, inverse_of: :assignee
   has_many :user_achievements, dependent: :destroy
-
   has_many :user_tournament_permissions, dependent: :destroy
   has_many :permitted_tournaments, through: :user_tournament_permissions, source: :tournament
 
@@ -49,6 +48,9 @@ class User < ApplicationRecord
            foreign_key: :resource_owner_id,
            dependent:   :destroy
   # rubocop:enable Rails/InverseOf
+
+  has_many :user_permissions, dependent: :destroy
+  accepts_nested_attributes_for :user_permissions, allow_destroy: true
 
   # == Validations =================================================================
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }, length: { maximum: 255 }

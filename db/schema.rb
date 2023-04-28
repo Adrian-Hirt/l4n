@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_16_150415) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_26_191223) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -602,6 +602,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_16_150415) do
     t.index ["user_id"], name: "index_user_achievements_on_user_id"
   end
 
+  create_table "user_permissions", force: :cascade do |t|
+    t.string "permission", null: false
+    t.string "mode", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_permissions_on_user_id"
+  end
+
   create_table "user_tournament_permissions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "tournament_id", null: false
@@ -709,6 +718,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_16_150415) do
   add_foreign_key "uploads", "users"
   add_foreign_key "user_achievements", "achievements"
   add_foreign_key "user_achievements", "users"
+  add_foreign_key "user_permissions", "users"
   add_foreign_key "user_tournament_permissions", "tournaments"
   add_foreign_key "user_tournament_permissions", "users"
 end

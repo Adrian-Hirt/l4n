@@ -25,6 +25,9 @@ application.register('admin--sidebar', Admin__SidebarController);
 import Admin__TournamentFormController from './admin/tournament_form_controller';
 application.register('admin--tournament-form', Admin__TournamentFormController);
 
+import Admin__UserPermissionsController from './admin/user_permissions_controller';
+application.register('admin--user-permissions', Admin__UserPermissionsController);
+
 import AlertController from './alert_controller';
 application.register('alert', AlertController);
 

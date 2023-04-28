@@ -1,0 +1,33 @@
+.nested-fields
+  .row
+    - if f.object.new_record?
+      .col-md-6
+        = f.input :permission, label: false,
+                               as: :select,
+                               include_blank: _('Form|Select|Blank'),
+                               collection: op.available_permissions,
+                               input_html: { data: { action: 'change->admin--user-permissions#changeAvailableOptions' } }
+      .col-md-5
+        - if f.object.permission.present?
+          = f.input :mode, label: false,
+                           as: :select,
+                           include_blank: _('Form|Select|Blank'),
+                           collection: f.object.modes_for_permission
+        - else
+          = f.input :mode, label: false,
+                          as: :select,
+                          include_blank: false,
+                          collection: [_('Userpermission|Please select a permission first')],
+                          disabled: true
+    - else
+      .col-md-6
+        = f.input :permission, label: false,
+                               disabled: true
+      .col-md-5
+        = f.input :mode, label: false,
+                         as: :select,
+                         include_blank: _('Form|Select|Blank'),
+                         collection: f.object.modes_for_permission
+    .col-md-1
+      = link_to_remove_association f, class: 'btn btn-danger icon-only-btn d-table', data: { action: 'click->cocoon#removeRow' } do
+        = icon %i[fa fa-trash]
