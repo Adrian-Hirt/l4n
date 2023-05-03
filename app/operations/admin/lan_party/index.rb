@@ -6,7 +6,7 @@ module Operations::Admin::LanParty
     end
 
     policy :on_init do
-      authorize! :manage, LanParty
+      authorize! :read, LanParty
     end
 
     def grid

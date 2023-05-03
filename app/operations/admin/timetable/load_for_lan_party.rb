@@ -5,7 +5,7 @@ module Operations::Admin::Timetable
     end
 
     policy :on_init do
-      authorize! :manage, Timetable
+      authorize! :read, Timetable
     end
 
     model ::Timetable

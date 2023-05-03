@@ -10,8 +10,11 @@ module Admin
     before_action :authenticate_user!
     before_action :check_admin_panel_access
     before_action :clear_app_breadcrumbs
-
-    before_action :grid, only: %i[index] # rubocop:disable Rails/LexicallyScopedActionFilter
+    # rubocop:disable Rails/LexicallyScopedActionFilter
+    before_action :check_read_access, only: %i[index show]
+    before_action :check_manage_access, except: %i[index show]
+    before_action :grid, only: %i[index]
+    # rubocop:enable Rails/LexicallyScopedActionFilter
 
     add_breadcrumb _('L4N Admin'), :admin_path
     add_breadcrumb _('Admin|OauthApplications'), :oauth_applications_path
@@ -20,6 +23,13 @@ module Admin
 
     def check_admin_panel_access
       authorize! :access, :admin_panel
+    end
+
+    def check_read_access
+      authorize! :read, Doorkeeper::Application
+    end
+
+    def check_manage_access
       authorize! :manage, Doorkeeper::Application
     end
 

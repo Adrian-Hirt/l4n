@@ -4,7 +4,7 @@
       %span
         %i.nav-icon.fas.fa-tachometer-alt.fa-fw
         %span.nav-item-text= _('Admin|Dashboard')
-  - if can? :manage, User
+  - if can? :read, User
     %li.nav-item
       %a.nav-link{ href: admin_users_path, class: active_link_classes(:users, include_children: true) }
         %span
@@ -95,7 +95,7 @@
                 %span
                   %i.nav-icon.fas.fa-cash-register.fa-fw
                   %span.nav-item-text= _('Admin|Payment Assist')
-  - if can? :manage, LanParty
+  - if can? :read, LanParty
     .li.nav-item
       %a.nav-link{ href: admin_lan_parties_path, class: active_link_classes(:lan_parties, include_children: true) }
         %span
@@ -112,7 +112,7 @@
         %span
           %i.nav-icon.fas.fa-ranking-star.fa-fw
           %span.nav-item-text= _('Admin|Tournaments')
-  - if can? :manage, Upload
+  - if can? :read, Upload
     .li.nav-item
       %a.nav-link{ href: admin_uploads_path, class: active_link_classes(:uploads, include_children: true) }
         %span
@@ -158,7 +158,7 @@
               %span
                 %i.nav-icon.fas.fa-palette.fa-fw
                 %span.nav-item-text= _('Admin|StylingVariables')
-  - if can?(:manage, :developer)
+  - if can? :read, :developer
     %li.nav-item.dropdown
       %a.nav-link.collapse-link{ data: { 'bs-toggle' => 'collapse' }, href: '#developer-collapse', class: sidenav_collapser_classes(:api_applications, :oauth_applications) }
         %span
@@ -167,13 +167,13 @@
         %i.right.fas.fa-angle-right.dropdown-icon
       .collapse#developer-collapse{ class: sidenav_collapse_classes(:api_applications, :oauth_applications), data: { 'bs-parent' => '.sidenav' } }
         %ul.nav.nav-pills.flex-column
-          - if can?(:manage, ApiApplication)
+          - if can?(:read, ApiApplication)
             %li.nav-item
               %a.nav-link{ href: admin_api_applications_path, class: active_link_classes(:api_applications) }
                 %span
                   %i.nav-icon.fas.fa-key.fa-fw
                   %span.nav-item-text= _('Admin|API applications')
-          - if can?(:manage, Doorkeeper::Application)
+          - if can?(:read, Doorkeeper::Application)
             %li.nav-item
               %a.nav-link{ href: oauth_applications_path, class: active_link_classes(:oauth_applications) }
                 %span

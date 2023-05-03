@@ -79,7 +79,11 @@ class User < ApplicationRecord
   end
 
   def any_admin_permission?
-    User::PERMISSION_FIELDS.any? { |permission| send(permission) }
+    user_permissions.any?
+  end
+
+  def permission_for?(permission, mode)
+    user_permissions.find_by(permission: permission, mode: mode).present?
   end
 
   def any_fine_grained_admin_permission?

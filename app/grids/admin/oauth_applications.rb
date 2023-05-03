@@ -14,11 +14,15 @@ module Grids
       column :confidential, html: ->(confidential) { format_boolean confidential }
       column :'datagrid-actions', html: true, header: false do |oauth_application|
         tag.div class: %i[datagrid-actions-wrapper] do
-          safe_join([
-                      show_button(oauth_application, size: :sm, icon_only: true, href: oauth_application_path(oauth_application)),
-                      edit_button(oauth_application, size: :sm, icon_only: true, href: edit_oauth_application_path(oauth_application)),
-                      delete_button(oauth_application, size: :sm, icon_only: true, href: oauth_application_path(oauth_application))
-                    ])
+          if can?(:manage, Doorkeeper::Application)
+            safe_join([
+                        show_button(oauth_application, size: :sm, icon_only: true, href: oauth_application_path(oauth_application)),
+                        edit_button(oauth_application, size: :sm, icon_only: true, href: edit_oauth_application_path(oauth_application)),
+                        delete_button(oauth_application, size: :sm, icon_only: true, href: oauth_application_path(oauth_application))
+                      ])
+          else
+            show_button(oauth_application, size: :sm, icon_only: true, href: oauth_application_path(oauth_application))
+          end
         end
       end
     end

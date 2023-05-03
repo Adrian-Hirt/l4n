@@ -6,6 +6,11 @@ module Admin
       op Operations::Admin::ApiApplication::Index
     end
 
+    def show
+      op Operations::Admin::ApiApplication::Load
+      add_breadcrumb model.name
+    end
+
     def new
       op Operations::Admin::ApiApplication::Create
       add_breadcrumb _('Admin|%{model_name}|New') % { model_name: _('API Application') }

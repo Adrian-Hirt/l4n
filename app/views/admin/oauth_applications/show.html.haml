@@ -1,7 +1,10 @@
-- content_for :header_buttons do
-  .d-flex.gap-1.flex-wrap
-    = edit_button @application, href: edit_oauth_application_path(@application)
-    = delete_button @application, href: oauth_application_path(@application)
+- if can?(:manage, Doorkeeper::Application)
+  - content_for :header_buttons do
+    .d-flex.gap-1.flex-wrap
+      = edit_button @application, href: edit_oauth_application_path(@application)
+      = delete_button @application, href: oauth_application_path(@application)
+
+- add_breadcrumb @application.name
 
 .card
   .card-body

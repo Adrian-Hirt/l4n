@@ -1,0 +1,9 @@
+.card
+  .card-body
+    .row
+      .col-md-6
+        %label.form-label= _('ApiApplication|Name')
+        %input.form-control.rounded-0.string.flex-grow-1{ value: model.name, disabled: true }
+      .col-md-6
+        %label.form-label= _('ApiApplication|Api key')
+        %input.form-control.rounded-0.string.flex-grow-1{ value: model.api_key, disabled: true }

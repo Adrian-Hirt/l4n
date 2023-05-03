@@ -1,4 +1,5 @@
 # rubocop:disable Style/GuardClause
+# rubocop:disable Metrics/ClassLength
 class Ability
   include CanCan::Ability
 
@@ -120,7 +121,6 @@ class Ability
     ##############################################################
     # Admin Permissions
     ##############################################################
-
     # Return early if the user doesn't have any admin permission
     # and doesn't have any fine-grained admin permission (e.g.
     # to edit a single tournament)
@@ -146,27 +146,32 @@ class Ability
     return unless user.any_admin_permission?
 
     # NewsPost admin permission
-    can :manage, NewsPost if user.news_admin_permission? && FeatureFlag.enabled?(:news_posts)
+    can :manage, NewsPost if FeatureFlag.enabled?(:news_posts) && user.permission_for?(:news_admin, :manage)
 
     # Event admin permission
-    can :manage, Event if user.event_admin_permission? && FeatureFlag.enabled?(:events)
+    # can :manage, Event if user.event_admin_permission? && FeatureFlag.enabled?(:events)
+    can :manage, Event if FeatureFlag.enabled?(:events) && user.permission_for?(:event_admin, :manage)
 
     # User admin permission
-    can :manage, User if user.user_admin_permission?
+    if user.permission_for?(:user_admin, :manage)
+      can :manage, User
+    elsif user.permission_for?(:user_admin, :readonly)
+      can :read, User
+    end
 
     # Pages admin permission
-    can :manage, Page if user.page_admin_permission? && FeatureFlag.enabled?(:pages)
+    can :manage, Page if FeatureFlag.enabled?(:pages) && user.permission_for?(:page_admin, :manage)
 
     # Menu items permission
-    can :manage, MenuItem if user.menu_items_admin_permission?
+    can :manage, MenuItem if user.permission_for?(:menu_item_admin, :manage)
 
     # User can use the payment assist
-    can :use, :payment_assist if user.payment_assist_admin_permission? && FeatureFlag.enabled?(:shop)
+    can :use, :payment_assist if FeatureFlag.enabled?(:shop) && user.permission_for?(:payment_assist, :use)
 
     # Shop permissions. For now, we group the models related to the shop
     # together, as we probably don't need a too fine-grained access control
     # for the shop, i.e. users that can create products can also see orders
-    if user.shop_admin_permission? && FeatureFlag.enabled?(:shop)
+    if FeatureFlag.enabled?(:shop) && user.permission_for?(:shop_admin, :manage)
       can :manage, :shop
       can :manage, Product
       can :manage, ProductCategory
@@ -177,21 +182,31 @@ class Ability
 
     # Lan party permissions. For now we don't use fine-grained permissions,
     # and just allow a lan party admin to do everything.
-    if user.lan_party_admin_permission && FeatureFlag.enabled?(:lan_party)
-      can :manage, LanParty
-      can :manage, SeatCategory
-      can :manage, SeatMap
-      can :manage, ScannerUser
-      can %i[create read update], Ticket
-      can :read, TicketUpgrade
-      can :manage, Timetable
-      can :manage, TimetableCategory
-      can :manage, TimetableEntry
+    if FeatureFlag.enabled?(:lan_party)
+      if user.permission_for?(:lan_party_admin, :readonly)
+        can :read, LanParty
+        can :read, SeatCategory
+        can :read, SeatMap
+        can :read, ScannerUser
+        can :read, Ticket
+        can :read, TicketUpgrade
+        can :read, Timetable
+      elsif user.permission_for?(:lan_party_admin, :manage)
+        can :manage, LanParty
+        can :manage, SeatCategory
+        can :manage, SeatMap
+        can :manage, ScannerUser
+        can %i[create read update], Ticket
+        can :read, TicketUpgrade
+        can :manage, Timetable
+        can :manage, TimetableCategory
+        can :manage, TimetableEntry
+      end
     end
 
     # Tournament system permissions. For now we don't use fine-grained permissions,
     # and just allow a tournament admin to do everything.
-    if user.tournament_admin_permission? && FeatureFlag.enabled?(:tournaments)
+    if FeatureFlag.enabled?(:tournaments) && user.permission_for?(:tournament_admin, :manage)
       can :manage, Tournament
       can :manage, Tournament::Phase
       can :manage, Tournament::Team
@@ -200,7 +215,7 @@ class Ability
     end
 
     # Design permissions (styling, footer logos etc.)
-    if user.design_admin_permission?
+    if user.permission_for?(:design_admin, :manage)
       can :manage, :frontent_design
       can :manage, FooterLogo
       can :manage, SidebarBlock
@@ -210,28 +225,39 @@ class Ability
     end
 
     # Achievement permissions
-    if user.achievement_admin_permission?
+    if user.permission_for?(:achievement_admin, :manage)
       can :manage, Achievement
       can :manage, UserAchievement
     end
 
     # Uploading files
-    can :manage, Upload if user.upload_admin_permission?
+    if user.permission_for?(:upload_admin, :readonly)
+      can :read, Upload
+    elsif user.permission_for?(:upload_admin, :manage)
+      can :manage, Upload
+    end
 
     # System admin permission, for actions such as clearing the cache and
     # feature flags. This permission should only be given very carefully
-    if user.system_admin_permission?
+    if user.permission_for?(:system_admin, :manage)
       can :manage, :system
       can :manage, AppConfig
       can :manage, FeatureFlag
     end
 
     # Access to stuff needed for developers, such as Api & OAuth applications
-    if FeatureFlag.enabled?(:api_and_oauth) && user.developer_admin_permission?
-      can :manage, :developer
-      can :manage, ApiApplication
-      can :manage, Doorkeeper::Application
+    if FeatureFlag.enabled?(:api_and_oauth)
+      if user.permission_for?(:developer_admin, :readonly)
+        can :read, :developer
+        can :read, ApiApplication
+        can :read, Doorkeeper::Application
+      elsif user.permission_for?(:developer_admin, :manage)
+        can :manage, :developer
+        can :manage, ApiApplication
+        can :manage, Doorkeeper::Application
+      end
     end
   end
 end
+# rubocop:enable Metrics/ClassLength
 # rubocop:enable Style/GuardClause

@@ -6,7 +6,7 @@ module Operations::Admin::Upload
     end
 
     policy :on_init do
-      authorize! :manage, Upload
+      authorize! :read, Upload
     end
 
     def grid

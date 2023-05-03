@@ -1,5 +1,6 @@
-- content_for :header_buttons do
-  = new_button Upload, namespace: %i[admin]
+- if can?(:create, Upload)
+  - content_for :header_buttons do
+    = new_button Upload, namespace: %i[admin]
 
 .card
   .card-body

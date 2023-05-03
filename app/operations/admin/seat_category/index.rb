@@ -7,7 +7,7 @@ module Operations::Admin::SeatCategory
     end
 
     policy :on_init do
-      authorize! :manage, SeatCategory
+      authorize! :read, SeatCategory
     end
 
     def lan_party

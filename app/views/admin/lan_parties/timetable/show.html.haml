@@ -1,7 +1,8 @@
-- content_for :header_buttons do
-  = new_button TimetableCategory, href: new_admin_lan_party_timetable_category_path(model)
-  = new_button TimetableEntry, href: new_admin_lan_party_timetable_entry_path(model)
-  = edit_button model, namespace: %i[admin lan_party]
+- if can? :manage, Timetable
+  - content_for :header_buttons do
+    = new_button TimetableCategory, href: new_admin_lan_party_timetable_category_path(model)
+    = new_button TimetableEntry, href: new_admin_lan_party_timetable_entry_path(model)
+    = edit_button model, namespace: %i[admin lan_party]
 
 - css_row_data = ''
 - css_column_data = ''
@@ -28,8 +29,9 @@
             .category-name
               = category.name
             .category-actions
-              = edit_button category, namespace: %i[admin], icon_only: true, size: :sm
-              = delete_button category, namespace: %i[admin], icon_only: true, size: :sm
+              - if can? :manage, TimetableCategory
+                = edit_button category, namespace: %i[admin], icon_only: true, size: :sm
+                = delete_button category, namespace: %i[admin], icon_only: true, size: :sm
           - css_column_data += "[category-#{category.id}] 1fr "
           .column-line{ style: "grid-column: category-#{category.id};" }
 
@@ -42,8 +44,9 @@
               = entry.title
               .entry-time= "#{entry.entry_start.strftime('%H:%M')} - #{entry.entry_end.strftime('%H:%M')}"
             .entry-actions
-              = edit_button entry, namespace: %i[admin], icon_only: true, size: :sm
-              = delete_button entry, namespace: %i[admin], icon_only: true, size: :sm
+              - if can? :manage, TimetableEntry
+                = edit_button entry, namespace: %i[admin], icon_only: true, size: :sm
+                = delete_button entry, namespace: %i[admin], icon_only: true, size: :sm
     - else
       .alert.alert-warning= _('Admin|Timetable|Times are not set')
 

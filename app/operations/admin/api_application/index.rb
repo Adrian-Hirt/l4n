@@ -6,7 +6,7 @@ module Operations::Admin::ApiApplication
     end
 
     policy :on_init do
-      authorize! :manage, ApiApplication
+      authorize! :read, ApiApplication
     end
 
     def grid

@@ -1,5 +1,6 @@
-- content_for :header_buttons do
-  = new_button LanParty, namespace: %i[admin]
+- if can? :create, LanParty
+  - content_for :header_buttons do
+    = new_button LanParty, namespace: %i[admin]
 
 .card
   .card-body

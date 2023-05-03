@@ -23,7 +23,7 @@ module Grids
         tag.div class: %i[datagrid-actions-wrapper] do
           safe_join([
                       show_button(upload, href: upload_path(upload.uuid), size: :sm, icon_only: true, html: { target: :_blank }),
-                      delete_button(upload, namespace: %i[admin], size: :sm, icon_only: true)
+                      can?(:delete, Upload) ? delete_button(upload, namespace: %i[admin], size: :sm, icon_only: true) : nil
                     ])
         end
       end

@@ -411,7 +411,7 @@ Rails.application.routes.draw do
     end
 
     # Api Applications management
-    resources :api_applications, except: %i[show]
+    resources :api_applications
 
     # Uploads
     resources :uploads, only: %i[index new create destroy]

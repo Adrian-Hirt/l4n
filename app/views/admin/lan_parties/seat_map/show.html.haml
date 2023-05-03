@@ -1,20 +1,31 @@
 .card
   .card-body{ data: { controller: 'admin--seatmap' } }
-    .d-flex.justify-content-between.align-items-center
-      .seatmap-actions
-        = button 'Add seat', nil, html: { data: { action: 'click->admin--seatmap#addNewSeat' } }
-        %span.select.optional
-          = select_tag 'seat_category',
-            options_for_select(op.seat_category_data),
-            include_blank: _('Form|Select|Blank'),
-            class: 'form-select rounded-0 select optional d-inline-block w-auto',
-            data: { 'admin--seatmap-target' => 'seatCategorySelector' }
-        = number_field_tag 'quantity', 1, class: 'form-control d-inline-block w-auto', min: 1, data: { 'admin--seatmap-target' => 'seatQuantity' }
-        = button 'Save seatmap', nil, html: { data: { action: 'click->admin--seatmap#saveSeatMap' } }
-      .selected-seat-info{ data: { 'admin--seatmap-target' => 'currentSelectedSeatInfo' } }
-        = _('Admin|Seatmap|Please select a seat')
+    - if can? :manage, SeatMap
+      .d-flex.justify-content-between.align-items-center
+        .seatmap-actions
+          = button 'Add seat', nil, html: { data: { action: 'click->admin--seatmap#addNewSeat' } }
+          %span.select.optional
+            = select_tag 'seat_category',
+              options_for_select(op.seat_category_data),
+              include_blank: _('Form|Select|Blank'),
+              class: 'form-select rounded-0 select optional d-inline-block w-auto',
+              data: { 'admin--seatmap-target' => 'seatCategorySelector' }
+          = number_field_tag 'quantity', 1, class: 'form-control d-inline-block w-auto', min: 1, data: { 'admin--seatmap-target' => 'seatQuantity' }
+          = button 'Save seatmap', nil, html: { data: { action: 'click->admin--seatmap#saveSeatMap' } }
+        .selected-seat-info{ data: { 'admin--seatmap-target' => 'currentSelectedSeatInfo' } }
+          = _('Admin|Seatmap|Please select a seat')
+    - else
+      .d-flex.justify-content-between.align-items-center
+        .seatmap-actions
+          .d-none
+            = select_tag 'seat_category',
+              options_for_select(op.seat_category_data),
+              data: { 'admin--seatmap-target' => 'seatCategorySelector' }
+            %div{data: { 'admin--seatmap-target' => 'seatQuantity' }}
+        .selected-seat-info{ data: { 'admin--seatmap-target' => 'currentSelectedSeatInfo' } }
+          = _('Admin|Seatmap|Please select a seat')
     %hr
-    .admin-seatmap.overflow-auto#seatmap-container{ data: { 'admin--seatmap-target' => 'container', seatmap_data: op.seat_map_data } }
+    .admin-seatmap.overflow-auto#seatmap-container{ data: { 'admin--seatmap-target' => 'container', seatmap_data: op.seat_map_data, can_write: can?(:manage, SeatMap).to_json } }
     #seatmap-context-menu{ data: { 'admin--seatmap-target' => 'contextMenu' } }
       %div
         %button#delete-button{ data: { action: 'click->admin--seatmap#deleteSeats' } }
@@ -29,5 +40,6 @@
       %div
         = tag.div style: "background-color: #{seat_category.color_for_view}; height: 1rem; width: 50px; display: inline-block;"
         = seat_category.name
-    %hr
-    = render partial: 'form'
+    - if can? :manage, SeatMap
+      %hr
+      = render partial: 'form'

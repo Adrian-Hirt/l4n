@@ -20,7 +20,10 @@ export default class extends Controller {
     // Setup interactions
     this.#setupZoomFunctionality();
     this.#setupSelectFunctionality();
-    this.#setupContextMenuFunctionality();
+
+    if(this.canWrite) {
+      this.#setupContextMenuFunctionality();
+    }
 
     // Load seats from the data
     this.#loadSeats();
@@ -193,6 +196,9 @@ export default class extends Controller {
     // Get the base data
     this.seatmapData = JSON.parse(this.containerTarget.dataset.seatmapData);
 
+    // Get the boolean wether the user can write the seatmap
+    this.canWrite = JSON.parse(this.containerTarget.dataset.canWrite);
+
     // Setup the stage
     this.stage = new KonvaJS.Stage({
       container: this.containerTarget,
@@ -318,6 +324,11 @@ export default class extends Controller {
         return;
       }
 
+      // also return if the user should not write the seatmap
+      if(!this.canWrite) {
+        return;
+      }
+
       // Skip the default event handlers
       e.evt.preventDefault();
 
@@ -413,7 +424,9 @@ export default class extends Controller {
       if (!metaPressed && !isSelected) {
         // if no key pressed and the node is not selected
         // select just one
-        this.transformer.nodes([e.target]);
+        if(this.canWrite) {
+          this.transformer.nodes([e.target]);
+        }
 
         // Update the seat info box
         this.#updateSelectedSeatInfo(e.target);

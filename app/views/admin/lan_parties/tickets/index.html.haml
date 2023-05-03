@@ -1,5 +1,6 @@
-- content_for :header_buttons do
-  = new_button Ticket, href: new_admin_lan_party_ticket_path(op.lan_party)
+- if can? :create, Ticket
+  - content_for :header_buttons do
+    = new_button Ticket, href: new_admin_lan_party_ticket_path(op.lan_party)
 
 .card
   .card-body

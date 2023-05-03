@@ -16,11 +16,13 @@ module Grids
         tag.div style: "background-color: #{seat_category.color_for_view}; height: 1rem; width: 100px;"
       end
       column :'datagrid-actions', html: true, header: false do |seat_category|
-        tag.div class: %i[datagrid-actions-wrapper] do
-          safe_join([
-                      edit_button(seat_category, namespace: %i[admin], size: :sm, icon_only: true),
-                      delete_button(seat_category, namespace: %i[admin], size: :sm, icon_only: true)
-                    ])
+        if can? :manage, LanParty
+          tag.div class: %i[datagrid-actions-wrapper] do
+            safe_join([
+                        edit_button(seat_category, namespace: %i[admin], size: :sm, icon_only: true),
+                        delete_button(seat_category, namespace: %i[admin], size: :sm, icon_only: true)
+                      ])
+          end
         end
       end
 

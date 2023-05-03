@@ -11,10 +11,15 @@ module Grids
       column :name
       column :'datagrid-actions', html: true, header: false do |api_application|
         tag.div class: %i[datagrid-actions-wrapper] do
-          safe_join([
-                      edit_button(api_application, namespace: %i[admin], size: :sm, icon_only: true),
-                      delete_button(api_application, namespace: %i[admin], size: :sm, icon_only: true)
-                    ])
+          if can?(:manage, ApiApplication)
+            safe_join([
+                        show_button(api_application, namespace: %i[admin], size: :sm, icon_only: true),
+                        edit_button(api_application, namespace: %i[admin], size: :sm, icon_only: true),
+                        delete_button(api_application, namespace: %i[admin], size: :sm, icon_only: true)
+                      ])
+          else
+            show_button(api_application, namespace: %i[admin], size: :sm, icon_only: true)
+          end
         end
       end
     end

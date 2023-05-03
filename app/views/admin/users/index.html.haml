@@ -1,7 +1,8 @@
-- content_for :header_buttons do
-  .d-flex.gap-1.flex-wrap
-    = button _('Admin|User|List permissions'), permissions_admin_users_path
-    = new_button User, namespace: %i[admin]
+- if can? :manage, User
+  - content_for :header_buttons do
+    .d-flex.gap-1.flex-wrap
+      = button _('Admin|User|List permissions'), permissions_admin_users_path
+      = new_button User, namespace: %i[admin]
 
 .card
   .card-body

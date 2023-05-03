@@ -5,7 +5,7 @@ module Operations::Admin::SeatMap
     end
 
     policy :on_init do
-      authorize! :manage, SeatMap
+      authorize! :read, SeatMap
     end
 
     model ::SeatMap

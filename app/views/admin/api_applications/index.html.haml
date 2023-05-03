@@ -1,5 +1,6 @@
-- content_for :header_buttons do
-  = new_button ApiApplication, namespace: %i[admin]
+- if can?(:create, ApiApplication)
+  - content_for :header_buttons do
+    = new_button ApiApplication, namespace: %i[admin]
 
 .card
   .card-body
