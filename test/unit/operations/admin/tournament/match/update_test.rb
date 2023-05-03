@@ -17,7 +17,7 @@ module Unit
               store :tournament_admin, create_user
 
               # Give the admin user the tournament permission
-              fetch(:admin).toggle!(:tournament_admin_permission) # rubocop:disable Rails/SkipsModelValidations
+              create_user_permission(fetch(:admin), :tournament_admin, :manage)
 
               # Create a tournament
               store :tournament_1, create_tournament(status: ::Tournament.statuses[:published])

@@ -7,9 +7,10 @@ module Unit
         class UpdateTest < ApplicationTest
           setup do
             user = create_user
-            user.news_admin_permission = true
-            user.save!
-            user.reload
+            create_user_permission(user, :news_admin, :manage)
+            # user.news_admin_permission = true
+            # user.save!
+            # user.reload
 
             store :post_1, create_news_post(title: 'Foobar', content: nil, published: false, user: user).model
 

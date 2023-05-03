@@ -135,4 +135,12 @@ module TestDataFactory
       }.merge!(attrs)
     ).model.reload
   end
+
+  def create_user_permission(user, permission, mode)
+    UserPermission.create!(
+      user:       user,
+      permission: permission,
+      mode:       mode
+    )
+  end
 end

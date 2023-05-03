@@ -21,7 +21,7 @@
             = select_tag 'seat_category',
               options_for_select(op.seat_category_data),
               data: { 'admin--seatmap-target' => 'seatCategorySelector' }
-            %div{data: { 'admin--seatmap-target' => 'seatQuantity' }}
+            %div{ data: { 'admin--seatmap-target' => 'seatQuantity' } }
         .selected-seat-info{ data: { 'admin--seatmap-target' => 'currentSelectedSeatInfo' } }
           = _('Admin|Seatmap|Please select a seat')
     %hr

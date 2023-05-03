@@ -8,7 +8,7 @@ module Unit
         store :admin, create_user(username: 'admin', email: 'admin@example.com')
 
         # Give the admin user the tournament permission
-        fetch(:admin).toggle!(:tournament_admin_permission) # rubocop:disable Rails/SkipsModelValidations
+        create_user_permission(fetch(:admin), :tournament_admin, :manage)
 
         store :tournament_1, create_tournament(status: Tournament.statuses[:published])
         store :tournament_2, create_tournament(status: Tournament.statuses[:published])
@@ -53,7 +53,7 @@ module Unit
         # able to do anything
 
         # Check that the flag is set to true
-        assert fetch(:admin).tournament_admin_permission?
+        assert fetch(:admin).permission_for?(:tournament_admin, :manage)
 
         # Define the ability
         ability = Ability.new(fetch(:admin))
