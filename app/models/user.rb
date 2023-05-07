@@ -4,22 +4,6 @@ class User < ApplicationRecord
   devise :two_factor_authenticatable, authentication_keys: %i[email]
 
   # == Constants ===================================================================
-  PERMISSION_FIELDS = %i[
-    user_admin_permission
-    news_admin_permission
-    event_admin_permission
-    page_admin_permission
-    menu_items_admin_permission
-    shop_admin_permission
-    payment_assist_admin_permission
-    lan_party_admin_permission
-    tournament_admin_permission
-    design_admin_permission
-    achievement_admin_permission
-    upload_admin_permission
-    developer_admin_permission
-    system_admin_permission
-  ].freeze
 
   # == Associations ================================================================
   # Avatar image
@@ -60,11 +44,6 @@ class User < ApplicationRecord
   validates :website, length: { maximum: 255 }
   validates :avatar, size: { less_than: 5.megabytes, message: _('File is too large, max. allowed %{size}') % { size: '5MB' } }, content_type: %r{\Aimage/.*\z}
 
-  # Permission booleans
-  PERMISSION_FIELDS.each do |field|
-    validates_boolean field
-  end
-
   # == Hooks =======================================================================
   before_save { self.email = email.downcase } # turns email to downcase for uniqueness
   after_update :update_singleplayer_teams
@@ -92,10 +71,10 @@ class User < ApplicationRecord
 
   def only_payment_assist_permission?
     # Return false if the user does not have the payment assist permission
-    return false unless payment_assist_admin_permission?
+    return false if user_permissions.find_by(permission: 'payment_assist').blank?
 
     # Otherwise check if this is the only permission the user has
-    User::PERMISSION_FIELDS.excluding(:payment_assist_admin_permission).none? { |permission| send(permission) }
+    user_permissions.where.not(permission: 'payment_assist').any?
   end
 
   def ticket_for(lan_party)

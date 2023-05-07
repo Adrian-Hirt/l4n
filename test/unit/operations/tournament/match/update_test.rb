@@ -15,7 +15,7 @@ module Unit
             store :admin, create_user(username: 'admin', email: 'admin@example.com')
 
             # Give the admin user the tournament permission
-            fetch(:admin).toggle!(:tournament_admin_permission) # rubocop:disable Rails/SkipsModelValidations
+            create_user_permission(fetch(:admin), :tournament_admin, :manage)
 
             # Create the abilities for all users we'll use
             store :user_1_ability, ::Ability.new(fetch(:user_1))
