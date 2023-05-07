@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_03_152204) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_05_150811) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -146,7 +146,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_152204) do
   create_table "news_posts", force: :cascade do |t|
     t.string "title", null: false
     t.text "content"
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.boolean "published", default: false, null: false
     t.datetime "published_at", precision: nil
     t.datetime "created_at", null: false
@@ -629,16 +629,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_152204) do
     t.string "username", null: false
     t.string "website"
     t.boolean "use_dark_mode", default: false, null: false
-    t.boolean "user_admin_permission", default: false, null: false
-    t.boolean "news_admin_permission", default: false, null: false
-    t.boolean "event_admin_permission", default: false, null: false
-    t.boolean "system_admin_permission", default: false, null: false
-    t.boolean "page_admin_permission", default: false, null: false
-    t.boolean "menu_items_admin_permission", default: false, null: false
-    t.boolean "shop_admin_permission", default: false, null: false
-    t.boolean "payment_assist_admin_permission", default: false, null: false
-    t.boolean "lan_party_admin_permission", default: false, null: false
-    t.boolean "tournament_admin_permission", default: false, null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -650,13 +640,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_152204) do
     t.text "bio"
     t.string "steam_id"
     t.string "discord_id"
-    t.boolean "design_admin_permission", default: false, null: false
-    t.boolean "achievement_admin_permission", default: false, null: false
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.boolean "upload_admin_permission", default: false, null: false
-    t.boolean "developer_admin_permission", default: false, null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
