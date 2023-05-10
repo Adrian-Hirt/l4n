@@ -20,7 +20,7 @@ class UserPermission < ApplicationRecord
   SENSITIVE_PERMISSIONS = %w[
     user_admin
     system_admin
-  ]
+  ].freeze
 
   # == Constants ===================================================================
 
@@ -58,7 +58,7 @@ class UserPermission < ApplicationRecord
     # If enabled in the settings, an user may only have permission for
     # "sensitive" features if the user has 2FA on their account enabled. This is
     # an additional security feature, which usually should be turned on.
-    
+
     # If the feature is not enabled, we can just directly return
     return unless AppConfig.enforce_2fa_for_sensitive_admin?
 
