@@ -34,3 +34,9 @@
       %tr
         %td.indent-1= _('Admin|Settings|Enable news block')
         %td= format_boolean AppConfig.enable_news_block
+      %tr
+        %td{ colspan: 2 }
+          %b= _('Settings|Scope|User')
+      %tr
+        %td.indent-1= _('Admin|Settings|Enforce 2FA for sensitive admin')
+        %td= format_boolean AppConfig.enforce_2fa_for_sensitive_admin

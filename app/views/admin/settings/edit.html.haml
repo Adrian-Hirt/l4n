@@ -41,6 +41,14 @@
                                     include_blank: false,
                                     collection: [[_('Yes'), true], [_('No'), false]],
                                     label: _('Admin|Settings|Enable news block')
-
+  .card.mb-3
+    .card-header
+      = _('Settings|Scope|User')
+    .card-body
+      = f.input :enforce_2fa_for_sensitive_admin, input_html: { value: op.entered_values[:enforce_2fa_for_sensitive_admin].presence || AppConfig.enforce_2fa_for_sensitive_admin },
+                                         as: :select,
+                                         include_blank: false,
+                                         collection: [[_('Yes'), true], [_('No'), false]],
+                                         label: _('Admin|Settings|Enforce 2FA for sensitive admin')
     .card-footer
       = f.save _('Admin|Settings|Save')

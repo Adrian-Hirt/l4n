@@ -17,4 +17,8 @@ class AppConfig < RailsSettings::Base
     field :enable_terms_and_conditions, default: false, validates: { inclusion: [true, false] }
     field :terms_and_conditions_url, default: nil
   end
+
+  scope :security do
+    field :enforce_2fa_for_sensitive_admin, default: false, validates: { inclusion: [true, false] }
+  end
 end

@@ -9,6 +9,7 @@ module Operations::Admin::Settings
         boo? :enable_lan_party_block, cast_str: true
         boo? :enable_events_block, cast_str: true
         boo? :enable_news_block, cast_str: true
+        boo? :enforce_2fa_for_sensitive_admin, cast_str: true
       end
     end
 

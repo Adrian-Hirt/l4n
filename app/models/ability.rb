@@ -7,7 +7,6 @@ class Ability
     ##############################################################
     # Default Permissions
     ##############################################################
-
     # Anyone can read a newspost if the feature flag is enabled and it's published
     can :read_public, NewsPost, &:published? if FeatureFlag.enabled?(:news_posts)
 
