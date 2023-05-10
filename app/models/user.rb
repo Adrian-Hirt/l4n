@@ -74,7 +74,7 @@ class User < ApplicationRecord
     return false if user_permissions.find_by(permission: 'payment_assist').blank?
 
     # Otherwise check if this is the only permission the user has
-    user_permissions.where.not(permission: 'payment_assist').any?
+    user_permissions.where.not(permission: 'payment_assist').none?
   end
 
   def ticket_for(lan_party)
