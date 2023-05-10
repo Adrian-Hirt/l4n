@@ -32,7 +32,7 @@ class UserPermission < ApplicationRecord
   validates :mode, presence: true
   validates :mode, inclusion: { in: proc { |record| AVAILABLE_PERMISSIONS[record.permission] } }, if: proc { |record| record.permission.present? && record.mode.present? }
   validate :disallow_permission_change_when_persisted
-  validate :enforce_2fa_for_user_admin_if_toggled_on
+  validate :enforce_2fa_for_sensitive_admin_if_toggled_on
 
   # == Hooks =======================================================================
 
@@ -60,7 +60,7 @@ class UserPermission < ApplicationRecord
     # an additional security feature, which usually should be turned on.
 
     # If the feature is not enabled, we can just directly return
-    return unless AppConfig.enforce_2fa_for_sensitive_admin?
+    return unless AppConfig.enforce_2fa_for_sensitive_admin
 
     # Otherwise, check wether the requested permission is one of the
     # permissions deemed sensitive
