@@ -51,6 +51,12 @@ class User < ApplicationRecord
   # == Scopes ======================================================================
 
   # == Class Methods ===============================================================
+  # Override method from devise, such that we can include the `user_permissions`
+  # association, to avoid lots of queries
+  def self.serialize_from_session(key, salt)
+    record = includes(:user_permissions).find_by(id: key)
+    record if record && record.authenticatable_salt == salt
+  end
 
   # == Instance Methods ============================================================
   def deleteable?
@@ -61,8 +67,14 @@ class User < ApplicationRecord
     user_permissions.any?
   end
 
+  # First, check wether the `user_permissions` association is loaded. If yes,
+  # we should operate on the present data with `find` to avoid another DB query.
   def permission_for?(permission, mode)
-    user_permissions.find_by(permission: permission, mode: mode).present?
+    if association(:user_permissions).loaded?
+      user_permissions.find { |up| up.permission == permission.to_s && up.mode == mode.to_s }.present?
+    else
+      user_permissions.find_by(permission: permission, mode: mode).present?
+    end
   end
 
   def any_fine_grained_admin_permission?
@@ -71,10 +83,10 @@ class User < ApplicationRecord
 
   def only_payment_assist_permission?
     # Return false if the user does not have the payment assist permission
-    return false if user_permissions.find_by(permission: 'payment_assist').blank?
+    return false if permission_for?('payment_assist', 'use')
 
     # Otherwise check if this is the only permission the user has
-    user_permissions.where.not(permission: 'payment_assist').none?
+    user_permissions.count > 1
   end
 
   def ticket_for(lan_party)
