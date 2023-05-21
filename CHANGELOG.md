@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.8.1 - 2023-05-21
+
+### Added
+
+* Added missing translations for new features from `1.8.0`
+
 ## 1.8.0 - 2023-05-21
 
 ### Changed
