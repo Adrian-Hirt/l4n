@@ -4,4 +4,15 @@
 
 .card
   .card-body
+    = simple_form_for op.grid, url: admin_uploads_path, method: :get do |f|
+      .row.mb-3
+        .select.optional.col-xl-4.col-md-6.col-12.mb-2
+          = f.label :content_type
+          = f.datagrid_filter :content_type, class: 'form-select rounded-0 select optional'
+        .select.optional.col-xl-4.col-md-6.col-12.mb-2
+          = f.label :uploaded_by
+          = f.datagrid_filter :uploaded_by, class: 'form-select rounded-0 select optional'
+        .d-flex.align-items-end.gap-1.col-xl-3.col-md-6.col-12.mb-2
+          = f.save _('Apply filter')
+          = button _('Search|Reset'), admin_uploads_path, color: :secondary
     = datagrid_table op.grid, html: { class: 'table' }

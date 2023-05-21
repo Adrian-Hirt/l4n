@@ -27,6 +27,16 @@ module Grids
                     ])
         end
       end
+
+      filter :content_type, :enum, select:        Upload.joins(file_attachment: :blob).pluck(:content_type).uniq.sort,
+                                   include_blank: _('Form|Select|Show all') do |value, scope, _grid|
+        scope.joins(file_attachment: :blob).where(blob: { content_type: value })
+      end
+
+      filter :uploaded_by, :enum, select:        User.where(id: Upload.all.select(:user_id)).sort.map { |user| [user.username, user.id] },
+                                  include_blank: _('Form|Select|Show all') do |value, scope, _grid|
+        scope.where(user_id: value)
+      end
     end
   end
 end
