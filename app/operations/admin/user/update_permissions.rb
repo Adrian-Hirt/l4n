@@ -12,7 +12,7 @@ module Operations::Admin::User
     def available_permissions
       permissions = UserPermission::AVAILABLE_PERMISSIONS.keys - model.user_permissions.select(&:persisted?).collect(&:permission)
 
-      return permissions.map { |permission| [permission.humanize, permission] }.sort
+      permissions.map { |permission| [permission.humanize, permission] }.sort
     end
 
     def permission_to_modes_map

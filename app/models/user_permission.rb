@@ -66,7 +66,6 @@ class UserPermission < ApplicationRecord
   end
 
   def enforce_2fa_for_sensitive_admin_if_toggled_on
-    return
     # If enabled in the settings, an user may only have permission for
     # "sensitive" features if the user has 2FA on their account enabled. This is
     # an additional security feature, which usually should be turned on.
