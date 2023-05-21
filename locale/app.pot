@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-26 20:09+0200\n"
-"PO-Revision-Date: 2023-04-26 20:09+0200\n"
+"POT-Creation-Date: 2023-05-21 21:01+0200\n"
+"PO-Revision-Date: 2023-05-21 21:01+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -412,6 +412,9 @@ msgid "Admin|Settings|Enable news block"
 msgstr ""
 
 msgid "Admin|Settings|Enable terms and conditions"
+msgstr ""
+
+msgid "Admin|Settings|Enforce 2FA for sensitive admin"
 msgstr ""
 
 msgid "Admin|Settings|Favicon URL"
@@ -885,6 +888,9 @@ msgstr ""
 msgid "Admin|Uploads"
 msgstr ""
 
+msgid "Admin|UserPermission|Successfully updated"
+msgstr ""
+
 msgid "Admin|Users"
 msgstr ""
 
@@ -919,6 +925,9 @@ msgid "Admin|Users|Profile|Update profile"
 msgstr ""
 
 msgid "Admin|Users|Registration is currently disabled"
+msgstr ""
+
+msgid "Admin|Users|User does not have 2FA enabled and therefore cannot have all permissions!"
 msgstr ""
 
 msgid "Admin|User|Avatar"
@@ -2805,6 +2814,9 @@ msgstr ""
 msgid "Settings|Scope|Sidebar"
 msgstr ""
 
+msgid "Settings|Scope|User"
+msgstr ""
+
 msgid "Settings|Update profile"
 msgstr ""
 
@@ -3894,10 +3906,28 @@ msgstr ""
 msgid "User achievement"
 msgstr ""
 
+msgid "User permission"
+msgstr ""
+
 msgid "UserAchievement"
 msgstr ""
 
 msgid "UserAchievement|Awarded at"
+msgstr ""
+
+msgid "UserPermission|Can only be added to user if the user has 2FA enabled!"
+msgstr ""
+
+msgid "UserPermission|Mode"
+msgstr ""
+
+msgid "UserPermission|Permission"
+msgstr ""
+
+msgid "UserPermission|cannot be changed"
+msgstr ""
+
+msgid "Userpermission|Please select a permission first"
 msgstr ""
 
 msgid "Users"
@@ -3918,19 +3948,22 @@ msgstr ""
 msgid "User|2FA could not be removed, please try again"
 msgstr ""
 
+msgid "User|2FA enabled?"
+msgstr ""
+
 msgid "User|2FA removed successfully"
 msgstr ""
 
 msgid "User|About me"
 msgstr ""
 
-msgid "User|Achievement admin permission"
-msgstr ""
-
 msgid "User|Achievements"
 msgstr ""
 
 msgid "User|Add 2FA"
+msgstr ""
+
+msgid "User|Add permission"
 msgstr ""
 
 msgid "User|Avatar could not be uploaded!"
@@ -3972,12 +4005,6 @@ msgstr ""
 msgid "User|Crop your avatar"
 msgstr ""
 
-msgid "User|Design admin permission"
-msgstr ""
-
-msgid "User|Developer admin permission"
-msgstr ""
-
 msgid "User|Discord account successfully added"
 msgstr ""
 
@@ -3987,22 +4014,13 @@ msgstr ""
 msgid "User|Encrypted password"
 msgstr ""
 
-msgid "User|Event admin permission"
-msgstr ""
-
 msgid "User|Game Profiles"
-msgstr ""
-
-msgid "User|Lan party admin permission"
 msgstr ""
 
 msgid "User|Login"
 msgstr ""
 
 msgid "User|Logout"
-msgstr ""
-
-msgid "User|Menu items admin permission"
 msgstr ""
 
 msgid "User|My profile"
@@ -4012,9 +4030,6 @@ msgid "User|My website"
 msgstr ""
 
 msgid "User|New Password"
-msgstr ""
-
-msgid "User|News admin permission"
 msgstr ""
 
 msgid "User|No bio added yet"
@@ -4035,13 +4050,7 @@ msgstr ""
 msgid "User|Otp secret"
 msgstr ""
 
-msgid "User|Page admin permission"
-msgstr ""
-
 msgid "User|Password"
-msgstr ""
-
-msgid "User|Payment assist admin permission"
 msgstr ""
 
 msgid "User|Permissions"
@@ -4077,9 +4086,6 @@ msgstr ""
 msgid "User|Reset password token"
 msgstr ""
 
-msgid "User|Shop admin permission"
-msgstr ""
-
 msgid "User|Show my profile"
 msgstr ""
 
@@ -4095,13 +4101,7 @@ msgstr ""
 msgid "User|Successfully created, check your mail for activation"
 msgstr ""
 
-msgid "User|System admin permission"
-msgstr ""
-
 msgid "User|The captcha verification failed, please try again"
-msgstr ""
-
-msgid "User|Tournament admin permission"
 msgstr ""
 
 msgid "User|TwoFactor|Enabled"
@@ -4110,16 +4110,10 @@ msgstr ""
 msgid "User|TwoFactor|Not enabled"
 msgstr ""
 
-msgid "User|Upload admin permission"
-msgstr ""
-
 msgid "User|Upload avatar"
 msgstr ""
 
 msgid "User|Use dark mode"
-msgstr ""
-
-msgid "User|User admin permission"
 msgstr ""
 
 msgid "User|Username"

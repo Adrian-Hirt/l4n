@@ -413,6 +413,9 @@ msgstr "Enable news block"
 msgid "Admin|Settings|Enable terms and conditions"
 msgstr "Enable terms and conditions"
 
+msgid "Admin|Settings|Enforce 2FA for sensitive admin"
+msgstr "Enforce 2FA for sensitive admin permissions"
+
 msgid "Admin|Settings|Favicon URL"
 msgstr "Favicon URL"
 
@@ -884,6 +887,9 @@ msgstr "The tournament is full"
 msgid "Admin|Uploads"
 msgstr "Uploads"
 
+msgid "Admin|UserPermission|Successfully updated"
+msgstr "Permissions were successfully updated"
+
 msgid "Admin|Users"
 msgstr "Users"
 
@@ -919,6 +925,9 @@ msgstr "Update profile"
 
 msgid "Admin|Users|Registration is currently disabled"
 msgstr "Registration is currently disabled"
+
+msgid "Admin|Users|User does not have 2FA enabled and therefore cannot have all permissions!"
+msgstr "User does not have 2FA enabled and therefore cannot have all permissions!"
 
 msgid "Admin|User|Avatar"
 msgstr "Avatar"
@@ -2804,6 +2813,9 @@ msgstr "Shop"
 msgid "Settings|Scope|Sidebar"
 msgstr "Sidebar"
 
+msgid "Settings|Scope|User"
+msgstr "User"
+
 msgid "Settings|Update profile"
 msgstr "Update profile"
 
@@ -3893,11 +3905,29 @@ msgstr "User"
 msgid "User achievement"
 msgstr "User achievement"
 
+msgid "User permission"
+msgstr "Permissions"
+
 msgid "UserAchievement"
 msgstr "UserAchievement"
 
 msgid "UserAchievement|Awarded at"
 msgstr "Awarded at"
+
+msgid "UserPermission|Can only be added to user if the user has 2FA enabled!"
+msgstr "Can only be added to user if the user has 2FA enabled!"
+
+msgid "UserPermission|Mode"
+msgstr "Mode"
+
+msgid "UserPermission|Permission"
+msgstr "Permission"
+
+msgid "UserPermission|cannot be changed"
+msgstr "cannot be changed"
+
+msgid "Userpermission|Please select a permission first"
+msgstr "Please select a permission first"
 
 msgid "Users"
 msgstr "Users"
@@ -3917,20 +3947,23 @@ msgstr "2FA already activated"
 msgid "User|2FA could not be removed, please try again"
 msgstr "2FA could not be removed, please try again"
 
+msgid "User|2FA enabled?"
+msgstr "2FA enabled?"
+
 msgid "User|2FA removed successfully"
 msgstr "2FA removed successfully"
 
 msgid "User|About me"
 msgstr "About me"
 
-msgid "User|Achievement admin permission"
-msgstr "Achievement admin permission"
-
 msgid "User|Achievements"
 msgstr "Achievements"
 
 msgid "User|Add 2FA"
 msgstr "Add"
+
+msgid "User|Add permission"
+msgstr "Add permission"
 
 msgid "User|Avatar could not be uploaded!"
 msgstr "Avatar could not be uploaded"
@@ -3971,12 +4004,6 @@ msgstr "Created at"
 msgid "User|Crop your avatar"
 msgstr "Crop your avatar"
 
-msgid "User|Design admin permission"
-msgstr "Design admin permission"
-
-msgid "User|Developer admin permission"
-msgstr "Developer admin permission"
-
 msgid "User|Discord account successfully added"
 msgstr "Discord account successfully added"
 
@@ -3986,23 +4013,14 @@ msgstr "Email"
 msgid "User|Encrypted password"
 msgstr "Encrypted password"
 
-msgid "User|Event admin permission"
-msgstr "Event admin permission"
-
 msgid "User|Game Profiles"
 msgstr "Game Profiles"
-
-msgid "User|Lan party admin permission"
-msgstr "Lan party admin permission"
 
 msgid "User|Login"
 msgstr "Login"
 
 msgid "User|Logout"
 msgstr "Logout"
-
-msgid "User|Menu items admin permission"
-msgstr "Menu items admin permission"
 
 msgid "User|My profile"
 msgstr "My profile"
@@ -4012,9 +4030,6 @@ msgstr "My website"
 
 msgid "User|New Password"
 msgstr "New Password"
-
-msgid "User|News admin permission"
-msgstr "News admin permission"
 
 msgid "User|No bio added yet"
 msgstr "No bio added yet"
@@ -4034,14 +4049,8 @@ msgstr "Otp required for login"
 msgid "User|Otp secret"
 msgstr "Otp secret"
 
-msgid "User|Page admin permission"
-msgstr "Page admin permission"
-
 msgid "User|Password"
 msgstr "Password"
-
-msgid "User|Payment assist admin permission"
-msgstr "Payment assist admin permission"
 
 msgid "User|Permissions"
 msgstr "Permissions"
@@ -4076,9 +4085,6 @@ msgstr "Reset password sent at"
 msgid "User|Reset password token"
 msgstr "Reset password token"
 
-msgid "User|Shop admin permission"
-msgstr "Shop admin permission"
-
 msgid "User|Show my profile"
 msgstr "Show my profile"
 
@@ -4094,14 +4100,8 @@ msgstr "Steam account successfully added"
 msgid "User|Successfully created, check your mail for activation"
 msgstr "Successfully created"
 
-msgid "User|System admin permission"
-msgstr "System admin permission"
-
 msgid "User|The captcha verification failed, please try again"
 msgstr "The captcha verification failed, please try again"
-
-msgid "User|Tournament admin permission"
-msgstr "Tournament admin permission"
 
 msgid "User|TwoFactor|Enabled"
 msgstr "Enabled"
@@ -4109,17 +4109,11 @@ msgstr "Enabled"
 msgid "User|TwoFactor|Not enabled"
 msgstr "Not enabled"
 
-msgid "User|Upload admin permission"
-msgstr "Upload admin permission"
-
 msgid "User|Upload avatar"
 msgstr "Upload avatar"
 
 msgid "User|Use dark mode"
 msgstr "Use dark mode"
-
-msgid "User|User admin permission"
-msgstr "User admin permission"
 
 msgid "User|Username"
 msgstr "Username"
