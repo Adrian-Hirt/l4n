@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.8.0 - UNRELEASED
+## 1.8.0 - 2023-05-21
 
 ### Changed
 
@@ -12,6 +12,9 @@
   + Only request address for order if any product behaviour requires it
   + Delete address on order on completion of order
 * Migrate permissions on user to more fine-grained system
+
+### Added
+
 * Add script to create the first admin user after a fresh install
 
 ## 1.7.2 - 2023-04-09
