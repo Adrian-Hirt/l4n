@@ -12,6 +12,7 @@
   + Only request address for order if any product behaviour requires it
   + Delete address on order on completion of order
 * Migrate permissions on user to more fine-grained system
+* Add script to create the first admin user after a fresh install
 
 ## 1.7.2 - 2023-04-09
 

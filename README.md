@@ -60,6 +60,21 @@ and as such you should replace `main` with the tag of the latest release.
 After that, you can start L4N using `docker compose up -d`. This will pull the image, create the database,
 run the migrations and prepare other required settings for L4N.
 
+### Creating the first user
+
+L4N contains a helpful script to create the first user from the CLI. This user has permission to edit
+users, and as such you can then use this user to log-in to the admin panel, grant that user the other
+required permissions and change settings in L4N.
+
+To run this script, simply execute the `rake setup:user` task from the command line, or if you're using
+the docker image, run the following:
+
+```bash
+docker exec -it <container_name> rake setup:user
+```
+
+where `<container_name>` is the name of the container, usually `l4n-web-1`.
+
 ### Custom installations
 
 L4N can also be used in a custom setup, with your own docker compose setup. Please note however, that L4N requires Postgresql as the application database server. Currently it is not possible to use SQLite, mySQL or any other database as the application database server.
