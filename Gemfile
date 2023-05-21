@@ -12,7 +12,7 @@ gem 'devise', '~> 4.9'
 gem 'devise-two-factor', '~> 5.0.0'
 gem 'doorkeeper', '~> 5.6.5'
 gem 'doorkeeper-openid_connect', '~> 1.8.4'
-gem 'recaptcha', '~> 5.13.0'
+gem 'recaptcha', '~> 5.14.0'
 
 # Session handling
 gem 'activerecord-session_store', '~> 2.0.0'
@@ -21,7 +21,7 @@ gem 'activerecord-session_store', '~> 2.0.0'
 gem 'puma', '~> 6.2'
 
 # Database
-gem 'pg', '~> 1.4.3'
+gem 'pg', '~> 1.5.3'
 
 # Assets
 gem 'cssbundling-rails', '~> 1.1.1'
@@ -42,7 +42,7 @@ gem 'cocoon', '~> 1.2.15'
 gem 'datagrid', '~> 1.7.0'
 gem 'haml-rails', '~> 2.0'
 gem 'kaminari', '~> 1.2.1'
-gem 'rqrcode', '~> 2.1.0'
+gem 'rqrcode', '~> 2.2.0'
 gem 'simple_form', '~> 5.2.0'
 
 # Translations
