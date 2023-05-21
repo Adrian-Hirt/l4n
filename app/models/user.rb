@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :two_factor_authenticatable, authentication_keys: %i[email]
 
   # == Constants ===================================================================
+  MIN_PASSWORD_LENGTH = 10
+  MAX_PASSWORD_LENGTH = 72
 
   # == Associations ================================================================
   # Avatar image
@@ -38,7 +40,7 @@ class User < ApplicationRecord
 
   # == Validations =================================================================
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }, length: { maximum: 255 }
-  validates :password, presence: true, length: { minimum: 10, maximum: 72 }, if: -> { password.present? || new_record? }
+  validates :password, presence: true, length: { minimum: MIN_PASSWORD_LENGTH, maximum: MAX_PASSWORD_LENGTH }, if: -> { password.present? || new_record? }
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }
   validates_boolean :use_dark_mode
   validates :website, length: { maximum: 255 }
