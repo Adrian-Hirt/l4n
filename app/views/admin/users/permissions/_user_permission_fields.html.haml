@@ -22,7 +22,8 @@
     - else
       .col-md-6
         = f.input :permission, label: false,
-                               disabled: true
+                               disabled: true,
+                               input_html: { value: f.object.permission.humanize }
       .col-md-5
         = f.input :mode, label: false,
                          as: :select,

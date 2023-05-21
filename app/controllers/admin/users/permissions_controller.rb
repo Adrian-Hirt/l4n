@@ -11,7 +11,7 @@ module Admin
 
       def update
         if run Operations::Admin::User::UpdatePermissions
-          flash[:success] = _('Admin|%{model_name}|Successfully updated') % { model_name: _('User|Permissions') }
+          flash[:success] = _('Admin|UserPermission|Successfully updated')
           redirect_to permissions_admin_user_path
         else
           add_breadcrumb model.username

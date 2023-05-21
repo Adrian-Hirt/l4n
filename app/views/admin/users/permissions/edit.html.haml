@@ -10,7 +10,7 @@
               .nested-fields
                 = render 'user_permission_fields', f: user_permission
             .links
-              = link_to_add_association f, :user_permissions, class: 'btn btn-primary', data: { action: 'click->cocoon#addRow' } do
+              = link_to_add_association f, :user_permissions, class: 'btn btn-primary btn-sm', data: { action: 'click->cocoon#addRow' } do
                 = icon %i[fa fa-plus]
                 = _('User|Add permission')
         .card-footer
