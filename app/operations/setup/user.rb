@@ -11,7 +11,7 @@ module Operations::Setup
     def perform
       # Should only be ran if no other users are present
       if User.any?
-        puts "There are already users present, this is only used to create the first user!"
+        puts 'There are already users present, this is only used to create the first user!'
         return
       end
 
@@ -50,7 +50,7 @@ module Operations::Setup
         mode:       'manage'
       )
 
-      puts "User has been created, you can now log-in and grant your user the other permissions as well as configure L4N!"
+      puts 'User has been created, you can now log-in and grant your user the other permissions as well as configure L4N!'
     end
 
     private
