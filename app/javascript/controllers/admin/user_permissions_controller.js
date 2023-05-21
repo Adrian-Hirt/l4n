@@ -6,18 +6,11 @@ export default class extends Controller {
 
   connect() {
     this.options = JSON.parse(this.element.dataset.permissionToModesMap);
-
-    console.log(this.options);
   }
 
   changeAvailableOptions(event) {
     let selectedOption = event.currentTarget.selectedOptions[0].value;
     let modeInput = event.currentTarget.closest('.row').querySelector('.user_user_permissions_mode > select');
-
-
-    // console.log(selectedOption);
-
-    // console.log(this.options[selectedOption]);
 
     if (selectedOption) {
       let optStr = `<option value="">${ Translations._('Form|Select|Blank') }</option>`;
