@@ -34,7 +34,7 @@ module Unit
       def test_user_without_permission
         # The user should be able to read the tournaments
         # in the frontend
-        ability = Ability.new(fetch(:user))
+        ability = Ability.new(fetch(:user).reload)
 
         ability.can?(:read_public, fetch(:tournament_1))
         ability.can?(:read_public, fetch(:tournament_2))
@@ -53,7 +53,7 @@ module Unit
         # able to do anything
 
         # Check that the flag is set to true
-        assert fetch(:admin).permission_for?(:tournament_admin, :manage)
+        assert fetch(:admin).reload.permission_for?(:tournament_admin, :manage)
 
         # Define the ability
         ability = Ability.new(fetch(:admin))

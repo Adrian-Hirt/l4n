@@ -8,9 +8,7 @@ module Unit
           setup do
             user = create_user
             create_user_permission(user, :news_admin, :manage)
-            # user.news_admin_permission = true
-            # user.save!
-            # user.reload
+            user.reload
 
             store :post_1, create_news_post(title: 'Foobar', content: nil, published: false, user: user).model
 

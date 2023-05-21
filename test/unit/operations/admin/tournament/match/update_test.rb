@@ -18,6 +18,7 @@ module Unit
 
               # Give the admin user the tournament permission
               create_user_permission(fetch(:admin), :tournament_admin, :manage)
+              fetch(:admin).reload
 
               # Create a tournament
               store :tournament_1, create_tournament(status: ::Tournament.statuses[:published])

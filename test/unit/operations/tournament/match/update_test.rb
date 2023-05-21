@@ -16,6 +16,7 @@ module Unit
 
             # Give the admin user the tournament permission
             create_user_permission(fetch(:admin), :tournament_admin, :manage)
+            fetch(:admin).reload
 
             # Create the abilities for all users we'll use
             store :user_1_ability, ::Ability.new(fetch(:user_1))
