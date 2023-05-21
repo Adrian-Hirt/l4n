@@ -2,7 +2,7 @@ module Grids
   module Admin
     class Users < ApplicationGrid
       scope do
-        User.order(:id)
+        User.includes(:user_permissions).order(:id)
       end
 
       model User
@@ -11,6 +11,12 @@ module Grids
       column :email
       column :confirmed, html: true, header: _('User|Confirmed') do |user|
         format_boolean user.confirmed?
+      end
+      column :permissions_count do |user|
+        user.user_permissions.count
+      end
+      column :otp_required_for_login, html: true, header: _('User|2FA enabled?'), order: false do |user|
+        format_boolean user.otp_required_for_login?
       end
       column :'datagrid-actions', html: true, header: false do |user|
         tag.div class: %i[datagrid-actions-wrapper] do

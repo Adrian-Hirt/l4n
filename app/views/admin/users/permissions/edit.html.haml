@@ -5,6 +5,9 @@
     .card{ data: { controller: 'admin--user-permissions', permission_to_modes_map: op.permission_to_modes_map } }
       = simple_form_for model, url: permissions_admin_user_path(model) do |f|
         .card-body
+          - if AppConfig.enforce_2fa_for_sensitive_admin && !model.otp_required_for_login?
+            .alert.alert-warning.rounded-0.p-1
+              = _('Admin|Users|User does not have 2FA enabled and therefore cannot have all permissions!')
           #user-permissions{ data: { controller: 'cocoon' } }
             = f.simple_fields_for :user_permissions do |user_permission|
               .nested-fields
