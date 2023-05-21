@@ -11,6 +11,7 @@
   + Remove saved addresses on User model
   + Only request address for order if any product behaviour requires it
   + Delete address on order on completion of order
+* Migrate permissions on user to more fine-grained system
 
 ## 1.7.2 - 2023-04-09
 
