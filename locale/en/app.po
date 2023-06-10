@@ -44,6 +44,9 @@ msgstr "Achievement"
 msgid "Achievement|Description"
 msgstr "Description"
 
+msgid "Achievement|Icon"
+msgstr "Icon"
+
 msgid "Achievement|Title"
 msgstr "Title"
 
@@ -548,17 +551,11 @@ msgstr "Ticket Upgrades"
 msgid "Admin|Tickets"
 msgstr "Tickets"
 
-msgid "Admin|Tickets|From product cannot be found"
-msgstr "From product cannot be found"
-
 msgid "Admin|Tickets|No more to products available"
 msgstr "No more to products available"
 
 msgid "Admin|Tickets|Please remove the seat first"
 msgstr "Please remove the seat first"
-
-msgid "Admin|Tickets|To product cannot be found"
-msgstr "To product cannot be found"
 
 msgid "Admin|Ticket|Already checked in"
 msgstr "Already checked in"
@@ -1985,6 +1982,9 @@ msgstr "This order still needs to be paid! Please do so until the time below, as
 msgid "Order|Do not accept terms and conditions"
 msgstr "Do not accept terms and conditions"
 
+msgid "Order|Expired"
+msgstr "Expired?"
+
 msgid "Order|Gtcs accepted"
 msgstr "Gtcs accepted"
 
@@ -2306,6 +2306,9 @@ msgstr "Name"
 msgid "ProductCategory|Products"
 msgstr "Products"
 
+msgid "ProductCategory|Products count"
+msgstr "Products"
+
 msgid "ProductCategory|Sort"
 msgstr "Sort"
 
@@ -2380,6 +2383,12 @@ msgstr "No description"
 
 msgid "Product|On sale"
 msgstr "On sale"
+
+msgid "Product|Product category"
+msgstr "Product category"
+
+msgid "Product|Product variants count"
+msgstr "Variants"
 
 msgid "Product|Remove this image"
 msgstr "Remove this image"
@@ -4053,6 +4062,9 @@ msgid "User|Password"
 msgstr "Password"
 
 msgid "User|Permissions"
+msgstr "Permissions"
+
+msgid "User|Permissions count"
 msgstr "Permissions"
 
 msgid "User|Preview your avatar"

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-21 21:01+0200\n"
-"PO-Revision-Date: 2023-05-21 21:01+0200\n"
+"POT-Creation-Date: 2023-06-10 12:58+0200\n"
+"PO-Revision-Date: 2023-06-10 12:58+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -43,6 +43,9 @@ msgid "Achievement"
 msgstr ""
 
 msgid "Achievement|Description"
+msgstr ""
+
+msgid "Achievement|Icon"
 msgstr ""
 
 msgid "Achievement|Title"
@@ -549,16 +552,10 @@ msgstr ""
 msgid "Admin|Tickets"
 msgstr ""
 
-msgid "Admin|Tickets|From product cannot be found"
-msgstr ""
-
 msgid "Admin|Tickets|No more to products available"
 msgstr ""
 
 msgid "Admin|Tickets|Please remove the seat first"
-msgstr ""
-
-msgid "Admin|Tickets|To product cannot be found"
 msgstr ""
 
 msgid "Admin|Ticket|Already checked in"
@@ -1986,6 +1983,9 @@ msgstr ""
 msgid "Order|Do not accept terms and conditions"
 msgstr ""
 
+msgid "Order|Expired"
+msgstr ""
+
 msgid "Order|Gtcs accepted"
 msgstr ""
 
@@ -2307,6 +2307,9 @@ msgstr ""
 msgid "ProductCategory|Products"
 msgstr ""
 
+msgid "ProductCategory|Products count"
+msgstr ""
+
 msgid "ProductCategory|Sort"
 msgstr ""
 
@@ -2380,6 +2383,12 @@ msgid "Product|No description"
 msgstr ""
 
 msgid "Product|On sale"
+msgstr ""
+
+msgid "Product|Product category"
+msgstr ""
+
+msgid "Product|Product variants count"
 msgstr ""
 
 msgid "Product|Remove this image"
@@ -4054,6 +4063,9 @@ msgid "User|Password"
 msgstr ""
 
 msgid "User|Permissions"
+msgstr ""
+
+msgid "User|Permissions count"
 msgstr ""
 
 msgid "User|Preview your avatar"

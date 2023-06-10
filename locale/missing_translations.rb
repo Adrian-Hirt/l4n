@@ -1,6 +1,4 @@
-N_('User|Password')
 N_('Ticket|Seat_category')
-N_('User|Logout')
 
 # Translated enums
 N_('Ticket|status|created')
@@ -33,6 +31,9 @@ N_('Tournament::Team|status|created')
 N_('Tournament::Team|status|registered')
 N_('Tournament::Team|status|seeded')
 
+# Achievements
+N_('Achievement|Icon')
+
 # Product Behaviours
 N_('ProductBehaviours|Dummy')
 N_('ProductBehaviours|Ticket')
@@ -44,6 +45,9 @@ N_('Tournament|Show')
 
 # Users
 N_('User|Created at')
+N_('User|Permissions count')
+N_('User|Password')
+N_('User|Logout')
 
 N_('Doorkeeper::Application')
 N_('Doorkeeper::Application|Redirect uris')
@@ -82,6 +86,14 @@ N_('Order|status|created')
 N_('Order|status|payment_pending')
 N_('Order|status|delayed_payment_pending')
 N_('Order|status|paid')
+N_('Order|Expired')
+
+# Products
+N_('Product|Product category')
+N_('Product|Product variants count')
+
+# Product categories
+N_('ProductCategory|Products count')
 
 # JS translations missing otherwise
 N_('Form|Select|Blank')
