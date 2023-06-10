@@ -4,7 +4,7 @@ ruby '3.2.2'
 
 # Rails and rails-y stuff
 gem 'bootsnap', '>= 1.4.4', require: false
-gem 'rails', '~> 7.0.4'
+gem 'rails', '~> 7.0.5'
 
 # Authentication & Authorization
 gem 'cancancan', '~> 3.5.0'
@@ -18,7 +18,7 @@ gem 'recaptcha', '~> 5.14.0'
 gem 'activerecord-session_store', '~> 2.0.0'
 
 # Puma
-gem 'puma', '~> 6.2'
+gem 'puma', '~> 6.3'
 
 # Database
 gem 'pg', '~> 1.5.3'
@@ -46,7 +46,7 @@ gem 'rqrcode', '~> 2.2.0'
 gem 'simple_form', '~> 5.2.0'
 
 # Translations
-gem 'gettext_i18n_rails', '~> 1.10.0'
+gem 'gettext_i18n_rails', '~> 1.11.0'
 gem 'mobility', '~> 1.2.5'
 gem 'rails-i18n', '~> 7.0.1'
 
@@ -55,7 +55,7 @@ gem 'redcarpet', '~> 3.6.0'
 
 # Settings
 gem 'figaro', '1.2.0'
-gem 'rails-settings-cached', '~> 2.8.2'
+gem 'rails-settings-cached', '~> 2.9.2'
 
 # Attachments
 gem 'active_storage_validations', '~> 1.0.2'
@@ -71,8 +71,8 @@ gem 'whenever', '~> 1.0.0', require: false
 gem 'tournament-system', '~> 2', require: 'tournament_system'
 
 # OAuth
-gem 'omniauth', '~> 2.0.4'
-gem 'omniauth-discord', '~> 1.0.2'
+gem 'omniauth', '~> 2.1.1'
+gem 'omniauth-discord', '~> 1.1.0'
 gem 'omniauth-rails_csrf_protection', '~> 1.0.1'
 gem 'omniauth-steam', '~> 1.0.6'
 
