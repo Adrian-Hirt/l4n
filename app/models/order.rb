@@ -105,7 +105,7 @@ class Order < ApplicationRecord
     # If any product behaviours on the order require manual
     # processing, we set the status to `processing`, otherwise
     # we set the status to `completed`
-    if order_items.any? { |order_item| order_item.product.enabled_product_behaviours.any?(&:requires_manual_processing?) }
+    if order_items.any? { |order_item| order_item.product.enabled_product_behaviour_classes.any?(&:requires_manual_processing?) }
       processing!
     else
       # Set status
@@ -124,7 +124,7 @@ class Order < ApplicationRecord
   end
 
   def requires_address?
-    order_items.any? { |order_item| order_item.product.enabled_product_behaviours.any?(&:requires_address?) }
+    order_items.any? { |order_item| order_item.product.enabled_product_behaviour_classes.any?(&:requires_address?) }
   end
 
   def remove_address
