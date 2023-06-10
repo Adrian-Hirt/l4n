@@ -47,10 +47,10 @@ Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
-  config.ssl_options = { 
-    hsts: { 
-      subdomains: false 
-    } 
+  config.ssl_options = {
+    hsts: {
+      subdomains: false
+    }
   }
 
   # Include generic and useful information about system operation, but avoid logging too much

@@ -12,14 +12,12 @@ module Operations::Admin::Ticket
     lock_mode :exclusive
 
     def perform
-      # Check that to_product is present
-      fail Operations::Exceptions::OpFailed, _('Admin|Tickets|To product cannot be found') if to_product.blank?
-
-      # Check that from_product is present
-      fail Operations::Exceptions::OpFailed, _('Admin|Tickets|From product cannot be found') if from_product.blank?
+      # Fetch the from_product
+      from_product
 
       # Check that we still have availability on the to_product
-      fail Operations::Exceptions::OpFailed, _('Admin|Tickets|No more to products available') if to_product.availability <= 0
+      # if it's present
+      fail Operations::Exceptions::OpFailed, _('Admin|Tickets|No more to products available') if to_product.present? && to_product.availability <= 0
 
       # Check that the ticket does not have a seat
       fail Operations::Exceptions::OpFailed, _('Admin|Tickets|Please remove the seat first') if model.seat.present?
@@ -30,18 +28,24 @@ module Operations::Admin::Ticket
         model.seat_category = new_category
         model.save!
 
-        # Increase availability and inventory of from product
-        from_product.availability += 1
-        from_product.inventory += 1
-        from_product.save!
+        # Increase availability and inventory of from_product if it is
+        # present, otherwise we don't need to do anything here.
+        if from_product.present?
+          from_product.availability += 1
+          from_product.inventory += 1
+          from_product.save!
+        end
 
-        # Decrease availability and inventory of to product
-        to_product.availability -= 1
-        to_product.inventory -= 1
-        to_product.save!
+        # Decrease availability and inventory of to_product if it is
+        # present, otherwise we don't need to do anything here.
+        if to_product.present?
+          to_product.availability -= 1
+          to_product.inventory -= 1
+          to_product.save!
+        end
 
         # Sanity check
-        fail Operations::Exceptions::OpFailed, _('Admin|Tickets|No more to products available') if to_product.availability.negative?
+        fail Operations::Exceptions::OpFailed, _('Admin|Tickets|No more to products available') if to_product.present? && to_product.availability.negative?
       end
     end
 
