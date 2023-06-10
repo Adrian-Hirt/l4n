@@ -6,6 +6,7 @@
 
 * Added filters for uploads in admin panel
 * Force SSL in production mode
+* Allow changing category of ticket to a category without a product
 
 ## 1.8.1 - 2023-05-21
 
