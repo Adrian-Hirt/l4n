@@ -78,6 +78,9 @@ where `<container_name>` is the name of the container, usually `l4n-web-1`.
 ### Custom installations
 
 L4N can also be used in a custom setup, with your own docker compose setup. Please note however, that L4N requires Postgresql as the application database server. Currently it is not possible to use SQLite, mySQL or any other database as the application database server.
+Also, please note that in development mode, SSL is required by the application, as
+only connections over SSL are accepted, Strict-Transport-Security is enabled and cookies
+are marked as secure.
 
 ## Development
 

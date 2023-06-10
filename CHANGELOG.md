@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.9.0 - UNRELEASED
+
+### Added
+
+* Added filters for uploads in admin panel
+* Force SSL in production mode
+
 ## 1.8.1 - 2023-05-21
 
 ### Added
