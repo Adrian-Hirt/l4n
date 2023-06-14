@@ -7,6 +7,8 @@
 * Added filters for uploads in admin panel
 * Force SSL in production mode
 * Allow changing category of ticket to a category without a product
+* Allow configuring the sender for exception notifications & devise
+  mails via env variables
 
 ## 1.8.1 - 2023-05-21
 

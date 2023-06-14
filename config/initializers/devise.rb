@@ -34,7 +34,13 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = "noreply@#{Figaro.env.application_domain}"
+  # Check if the user configured a special address to send
+  # the mails from. If not, use noreply@domain
+  if Figaro.env.devise_mail_sender.present?
+    config.mailer_sender = Figaro.env.devise_mail_sender
+  else
+    config.mailer_sender = "noreply@#{Figaro.env.application_domain}"
+  end
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'

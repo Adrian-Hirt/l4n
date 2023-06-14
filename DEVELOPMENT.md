@@ -42,6 +42,11 @@ For the exception notification:
 
 * `ENABLE_EXCEPTION_NOTIFIER`
 * `EXCEPTION_NOTIFIER_RECIPIENT`
+* `EXCEPTION_NOTIFIER_SENDER` (optional)
+
+For the devise mailer
+
+* `DEVISE_MAIL_SENDER` (optional)
 
 ### Securing registration
 
