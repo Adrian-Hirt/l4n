@@ -21,7 +21,6 @@ module Unit
               assert_not post.published
               assert_nil post.published_at
               assert_nil post.content
-              assert_equal fetch(:user).id, post.user.id
             end
           end
 
@@ -49,7 +48,6 @@ module Unit
               assert post.published
               assert_not_nil post.published_at
               assert_equal 'Lorem ipsum', post.content
-              assert_equal fetch(:user).id, post.user.id
             end
           end
         end

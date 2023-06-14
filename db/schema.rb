@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_05_150811) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_14_194745) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -146,12 +146,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_05_150811) do
   create_table "news_posts", force: :cascade do |t|
     t.string "title", null: false
     t.text "content"
-    t.integer "user_id", null: false
     t.boolean "published", default: false, null: false
     t.datetime "published_at", precision: nil
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_news_posts_on_user_id"
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|
@@ -655,7 +653,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_05_150811) do
   add_foreign_key "cart_items", "product_variants"
   add_foreign_key "carts", "users"
   add_foreign_key "event_dates", "events"
-  add_foreign_key "news_posts", "users"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_grants", "users", column: "resource_owner_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"

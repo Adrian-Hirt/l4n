@@ -4,7 +4,6 @@ class NewsPost < ApplicationRecord
   # == Constants ===================================================================
 
   # == Associations ================================================================
-  belongs_to :user
 
   # == Validations =================================================================
   validates :title, presence: true, length: { maximum: 255 }
