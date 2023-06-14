@@ -10,7 +10,7 @@ module Grids
       column :filename, header: _('Upload|Filename'), html: true do |upload|
         upload.file&.blob&.filename
       end
-      column :user, header: _('Upload|Uploaded by'), html: ->(user) { user.username }
+      column :user, header: _('Upload|Uploaded by'), html: ->(user) { user&.username.presence || '-' }
       column :size, header: _('Upload|Size'), html: true do |upload|
         number_to_human_size(upload.file&.blob&.byte_size)
       end
@@ -33,9 +33,13 @@ module Grids
         scope.joins(file_attachment: :blob).where(blob: { content_type: value })
       end
 
-      filter :uploaded_by, :enum, select:        User.where(id: Upload.all.select(:user_id)).sort.map { |user| [user.username, user.id] },
+      filter :uploaded_by, :enum, select:        User.where(id: Upload.all.select(:user_id)).map { |user| [user.username, user.id] }.sort << ['-', 0],
                                   include_blank: _('Form|Select|Show all') do |value, scope, _grid|
-        scope.where(user_id: value)
+        if value == '0'
+          scope.where(user_id: nil)
+        else
+          scope.where(user_id: value)
+        end
       end
     end
   end
