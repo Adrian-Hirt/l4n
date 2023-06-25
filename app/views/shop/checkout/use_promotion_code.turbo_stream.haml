@@ -8,6 +8,6 @@
   = turbo_stream.update 'promotion_codes_form' do
     = render partial: 'promotion_codes_form'
   = turbo_stream.update 'promotion_codes_errors'
-  - if op.order.address_present? && (!AppConfig.enable_terms_and_conditions || op.order.gtcs_accepted?)
+  - if (!op.order.requires_address?|| op.order.address_present?) && (!AppConfig.enable_terms_and_conditions || op.order.gtcs_accepted?)
     = turbo_stream.replace 'payment_gateways' do
       = render partial: 'payment_gateways'

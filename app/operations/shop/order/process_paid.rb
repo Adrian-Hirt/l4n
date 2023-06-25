@@ -20,6 +20,12 @@ module Operations::Shop::Order
 
         order.save!
 
+        # Mark the promotion_codes as used
+        order.promotion_codes.each do |promotion_code|
+          promotion_code.used = true
+          promotion_code.save!
+        end
+
         # Decrease inventory of items bought
         order.order_items.each do |order_item|
           order_item.product.inventory -= order_item.quantity

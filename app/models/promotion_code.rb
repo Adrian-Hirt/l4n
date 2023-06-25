@@ -10,6 +10,7 @@ class PromotionCode < ApplicationRecord
 
   # == Validations =================================================================
   validates :code, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }
+  validates_boolean :used
 
   # == Hooks =======================================================================
   before_destroy :ensure_not_used
@@ -19,10 +20,6 @@ class PromotionCode < ApplicationRecord
   # == Class Methods ===============================================================
 
   # == Instance Methods ============================================================
-  def used?
-    order.present?
-  end
-
   def deleteable?
     !used?
   end

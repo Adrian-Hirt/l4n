@@ -30,7 +30,8 @@ module Operations::PaymentGateway
       # Check that no product is not not on sale anymore
       fail InvalidOrder, _('Checkout|A product is not on sale anymore') if order.order_items.any? { |order_item| !order_item.product_variant.product.on_sale? }
 
-      fail InvalidOrder, _('Checkout|No address present') unless order.address_present?
+      # Check that address is present if needed
+      fail InvalidOrder, _('Checkout|No address present') if order.requires_address? && !order.address_present?
 
       # Set order as payment pending
       begin

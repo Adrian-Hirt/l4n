@@ -18,7 +18,7 @@ module Unit
             store :product_2, create_product
             store :variant_2_1, create_product_variant(fetch(:product_2), price: Money.new(4500))
 
-            store :order, create_order_for_checkout(fetch(:user))
+            store :order, create_order(fetch(:user), 'created')
             store :order_item_1, create_order_item(fetch(:order), fetch(:variant_1_1), quantity: 1)
             store :order_item_2, create_order_item(fetch(:order), fetch(:variant_1_2), quantity: 2)
 

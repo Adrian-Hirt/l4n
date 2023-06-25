@@ -57,7 +57,7 @@ module Operations::Shop::Order
     def order
       fail 'Operation not performed yet' unless performed?
 
-      @order
+      @order.reload
     end
 
     def model

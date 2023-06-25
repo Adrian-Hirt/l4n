@@ -41,6 +41,10 @@ module Operations::Shop::Order
 
         # Fail when the code is already applied to another order
         fail InvalidPromotionCode if promotion_code.promotion_code_mapping.order_id != order.id
+
+        # Fail when the code is already marked as used (but the order might not be present
+        # in the database anymore).
+        fail InvalidPromotionCode if promotion_code.used?
       end
 
       # Get the promotion the code belongs to
