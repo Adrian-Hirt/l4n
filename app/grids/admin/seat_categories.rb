@@ -2,7 +2,7 @@ module Grids
   module Admin
     class SeatCategories < ApplicationGrid
       scope do
-        SeatCategory
+        SeatCategory.order(:name)
       end
 
       model SeatCategory
