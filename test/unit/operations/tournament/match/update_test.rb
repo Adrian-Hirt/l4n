@@ -178,7 +178,7 @@ module Unit
             as_user fetch(:user_1) do
               run_op! ::Operations::Tournament::Match::Update, id:               fetch(:match_1).id,
                                                                tournament_match: {
-                                                                 winner_id:  fetch(:team_1).id,
+                                                                 winner_id:  fetch(:team_1_phase_team).id,
                                                                  home_score: 12,
                                                                  away_score: 5
                                                                }
@@ -223,7 +223,7 @@ module Unit
               assert_raises ::Operations::Exceptions::OpFailed do
                 run_op! ::Operations::Tournament::Match::Update, id:               fetch(:match_1).id,
                                                                  tournament_match: {
-                                                                   winner_id:  fetch(:team_2).id,
+                                                                   winner_id:  fetch(:team_2_phase_team).id,
                                                                    home_score: 13,
                                                                    away_score: 6
                                                                  }
@@ -399,7 +399,7 @@ module Unit
               assert_raises ActiveRecord::RecordInvalid do
                 run_op! ::Operations::Tournament::Match::Update, id:               fetch(:match_1).id,
                                                                  tournament_match: {
-                                                                   winner_id:  fetch(:team_1).id,
+                                                                   winner_id:  fetch(:team_1_phase_team).id,
                                                                    home_score: 12,
                                                                    away_score: 5,
                                                                    draw:       true
@@ -425,7 +425,7 @@ module Unit
               assert_raises ActiveRecord::RecordInvalid do
                 run_op! ::Operations::Tournament::Match::Update, id:               fetch(:match_1).id,
                                                                  tournament_match: {
-                                                                   winner_id:  fetch(:team_2).id,
+                                                                   winner_id:  fetch(:team_2_phase_team).id,
                                                                    home_score: 12,
                                                                    away_score: 5
                                                                  }
@@ -476,7 +476,7 @@ module Unit
             as_user fetch(:user_1) do
               run_op! ::Operations::Tournament::Match::Update, id:               fetch(:match_1).id,
                                                                tournament_match: {
-                                                                 winner_id:  fetch(:team_1).id,
+                                                                 winner_id:  fetch(:team_1_phase_team).id,
                                                                  home_score: 12,
                                                                  away_score: 5
                                                                }
@@ -544,7 +544,7 @@ module Unit
             as_user fetch(:user_1) do
               run_op! ::Operations::Tournament::Match::Update, id:               fetch(:match_1).id,
                                                                tournament_match: {
-                                                                 winner_id:  fetch(:team_1).id,
+                                                                 winner_id:  fetch(:team_1_phase_team).id,
                                                                  home_score: 12,
                                                                  away_score: 5
                                                                }
@@ -564,7 +564,7 @@ module Unit
               assert_raises ::Operations::Exceptions::OpFailed do
                 run_op! ::Operations::Tournament::Match::Update, id:               fetch(:match_1).id,
                                                                  tournament_match: {
-                                                                   winner_id:    fetch(:team_4).id,
+                                                                   winner_id:    fetch(:team_4_phase_team).id,
                                                                    home_score:   2,
                                                                    away_score:   15,
                                                                    confirmation: true

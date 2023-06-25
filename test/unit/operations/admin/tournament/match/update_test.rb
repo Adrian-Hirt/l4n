@@ -162,7 +162,7 @@ module Unit
               as_user user do
                 run_op! ::Operations::Admin::Tournament::Match::Update, id:               fetch(:match_1).id,
                                                                         tournament_match: {
-                                                                          winner_id:  fetch(:team_1).id,
+                                                                          winner_id:  fetch(:team_1_phase_team).id,
                                                                           home_score: 12,
                                                                           away_score: 5
                                                                         }
@@ -185,7 +185,7 @@ module Unit
               as_user user do
                 run_op! ::Operations::Admin::Tournament::Match::Update, id:               fetch(:match_1).id,
                                                                         tournament_match: {
-                                                                          winner_id:  fetch(:team_4).id,
+                                                                          winner_id:  fetch(:team_4_phase_team).id,
                                                                           home_score: 8,
                                                                           away_score: 9
                                                                         }
@@ -237,7 +237,7 @@ module Unit
               as_user fetch(:user_1) do
                 run_op! ::Operations::Tournament::Match::Update, id:               fetch(:match_1).id,
                                                                  tournament_match: {
-                                                                   winner_id:  fetch(:team_1).id,
+                                                                   winner_id:  fetch(:team_1_phase_team).id,
                                                                    home_score: 12,
                                                                    away_score: 5
                                                                  }
@@ -260,7 +260,7 @@ module Unit
               as_user fetch(:admin) do
                 run_op! ::Operations::Admin::Tournament::Match::Update, id:               fetch(:match_1).id,
                                                                         tournament_match: {
-                                                                          winner_id:  fetch(:team_4).id,
+                                                                          winner_id:  fetch(:team_4_phase_team).id,
                                                                           home_score: 3,
                                                                           away_score: 6
                                                                         }
@@ -288,7 +288,7 @@ module Unit
               as_user fetch(:user_1) do
                 run_op! ::Operations::Tournament::Match::Update, id:               fetch(:match_1).id,
                                                                  tournament_match: {
-                                                                   winner_id:  fetch(:team_1).id,
+                                                                   winner_id:  fetch(:team_1_phase_team).id,
                                                                    home_score: 12,
                                                                    away_score: 5
                                                                  }
@@ -332,7 +332,7 @@ module Unit
               as_user fetch(:admin) do
                 run_op! ::Operations::Admin::Tournament::Match::Update, id:               fetch(:match_1).id,
                                                                         tournament_match: {
-                                                                          winner_id:  fetch(:team_4).id,
+                                                                          winner_id:  fetch(:team_4_phase_team).id,
                                                                           home_score: 3,
                                                                           away_score: 6
                                                                         }
@@ -360,7 +360,7 @@ module Unit
               as_user fetch(:user_1) do
                 run_op! ::Operations::Tournament::Match::Update, id:               fetch(:match_1).id,
                                                                  tournament_match: {
-                                                                   winner_id:  fetch(:team_1).id,
+                                                                   winner_id:  fetch(:team_1_phase_team).id,
                                                                    home_score: 12,
                                                                    away_score: 5
                                                                  }
@@ -404,7 +404,7 @@ module Unit
               as_user fetch(:admin) do
                 run_op! ::Operations::Admin::Tournament::Match::Update, id:               fetch(:match_1).id,
                                                                         tournament_match: {
-                                                                          winner_id:  fetch(:team_4).id,
+                                                                          winner_id:  fetch(:team_4_phase_team).id,
                                                                           home_score: 3,
                                                                           away_score: 6
                                                                         }
