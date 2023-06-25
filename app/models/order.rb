@@ -146,7 +146,7 @@ class Order < ApplicationRecord
     return expired? if created? || payment_pending?
 
     # Return false if none of the previous conditions was true
-    return false
+    false
   end
 
   # == Private Methods =============================================================

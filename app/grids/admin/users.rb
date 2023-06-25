@@ -25,10 +25,10 @@ module Grids
                         show_button(user, size: :sm, icon_only: true),
                         edit_button(user, href: profile_admin_user_path(user), size: :sm, icon_only: true),
                         delete_button(user, namespace: %i[admin],
-                                            size: :sm,
+                                            size:      :sm,
                                             icon_only: true,
-                                            disabled: !user.deleteable? || user == current_user,
-                                            confirm: _('Admin|User|Long user delete confirm message for %{username}') %  { username: user.username })
+                                            disabled:  !user.deleteable? || user == current_user,
+                                            confirm:   _('Admin|User|Long user delete confirm message for %{username}') % { username: user.username })
                       ])
           else
             show_button(user, size: :sm, icon_only: true)

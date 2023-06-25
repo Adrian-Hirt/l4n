@@ -19,7 +19,7 @@ module TestDataFactory
       }.merge(attrs)
     ).model.id
 
-    return User.find(user_id)
+    User.find(user_id)
   end
 
   def create_order(user, status)
@@ -108,10 +108,10 @@ module TestDataFactory
 
   def create_tournament_team(name, tournament)
     ::Tournament::Team.create!(
-      name: name,
+      name:       name,
       tournament: tournament,
-      status: 'created',
-      password: 'foobar1234'
+      status:     'created',
+      password:   'foobar1234'
     )
   end
 

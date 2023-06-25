@@ -11,9 +11,7 @@ module Operations::Admin::Order
       fail Operations::Exceptions::OpFailed, _('Admin|Order|Wrong status to delete') unless model.deleteable?
 
       # We can only delete expired orders if the status is created or payment_pending.
-      if model.created? || model.payment_pending?
-        fail Operations::Exceptions::OpFailed, _('Admin|Order|Not expired yet') unless model.expired?
-      end
+      fail Operations::Exceptions::OpFailed, _('Admin|Order|Not expired yet') if (model.created? || model.payment_pending?) && !model.expired?
     end
 
     model ::Order

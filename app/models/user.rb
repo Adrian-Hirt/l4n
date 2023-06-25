@@ -67,7 +67,7 @@ class User < ApplicationRecord
     # For now, a user can be deleted if the user
     # only has orders which can be deleted, as the orders
     # are deleted as well.
-    orders.all? { |order| order.deleteable? }
+    orders.all?(&:deleteable?)
   end
 
   def any_admin_permission?

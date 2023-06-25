@@ -25,21 +25,21 @@ module Unit
       # Create a team and add the user as a member
       tournament = create_tournament
       store :tournament_team, create_tournament_team('Team', tournament)
-      teammember = fetch(:tournament_team).users << fetch(:user_1)
+      fetch(:tournament_team).users << fetch(:user_1)
 
       # Create some tickets for the user
       store :lan_party, create_lan_party
 
       ::Ticket.create!(
-        lan_party: fetch(:lan_party),
+        lan_party:     fetch(:lan_party),
         seat_category: ::SeatCategory.create!(name: 'Category 1', color: 'yellow', lan_party: fetch(:lan_party)),
-        assignee: fetch(:user_1)
+        assignee:      fetch(:user_1)
       )
 
       ::Ticket.create!(
-        lan_party: fetch(:lan_party),
+        lan_party:     fetch(:lan_party),
         seat_category: ::SeatCategory.create!(name: 'Category 2', color: 'green', lan_party: fetch(:lan_party)),
-        assignee: fetch(:user_1)
+        assignee:      fetch(:user_1)
       )
 
       # Create achievements for the user
@@ -54,7 +54,7 @@ module Unit
       # Create some admin permissions for the user
       fetch(:user_1).user_permissions.create!(
         permission: 'page_admin',
-        mode: 'manage'
+        mode:       'manage'
       )
     end
 
