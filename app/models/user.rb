@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   # == Constants ===================================================================
   MIN_PASSWORD_LENGTH = 10
-  MAX_PASSWORD_LENGTH = 72
+  MAX_PASSWORD_LENGTH = 72 # Limit from bcrypt!
 
   # == Associations ================================================================
   # Avatar image
@@ -20,8 +20,10 @@ class User < ApplicationRecord
   has_many :teams, through: :team_memberships
   has_many :tickets, foreign_key: :assignee_id, dependent: :nullify, inverse_of: :assignee
   has_many :user_achievements, dependent: :destroy
+  has_many :achievements, through: :user_achievements
   has_many :user_tournament_permissions, dependent: :destroy
   has_many :permitted_tournaments, through: :user_tournament_permissions, source: :tournament
+  has_many :uploads, dependent: :nullify
 
   # rubocop:disable Rails/InverseOf
   has_many :access_grants,
@@ -62,7 +64,10 @@ class User < ApplicationRecord
 
   # == Instance Methods ============================================================
   def deleteable?
-    false
+    # For now, a user can be deleted if the user
+    # only has orders which can be deleted, as the orders
+    # are deleted as well.
+    orders.all? { |order| order.deleteable? }
   end
 
   def any_admin_permission?

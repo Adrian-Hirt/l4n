@@ -11,7 +11,6 @@ module Operations::Admin::NewsPost
     model ::NewsPost
 
     def perform
-      model.user = context.user
       model.published_at = Time.zone.now if model.published?
 
       super

@@ -39,6 +39,9 @@ N_('ProductBehaviours|Dummy')
 N_('ProductBehaviours|Ticket')
 N_('ProductBehaviours|Ticket_upgrade')
 
+# Promotion codes
+N_('PromotionCode|Used for order')
+
 # Tournament
 N_('Tournament|Lan party')
 N_('Tournament|Show')

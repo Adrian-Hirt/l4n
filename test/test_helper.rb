@@ -29,6 +29,8 @@ class ApplicationTest < ActiveSupport::TestCase
   end
 
   def fetch(key)
+    fail "Key #{key} not found" unless test_data.key?(key)
+
     test_data[key]
   end
 

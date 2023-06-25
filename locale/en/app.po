@@ -92,6 +92,9 @@ msgstr "Cannot delete %{model_name}"
 msgid "Admin|%{model_name}|Create failed"
 msgstr "Creating %{model_name} failed"
 
+msgid "Admin|%{model_name}|Destroyed successfully"
+msgstr "Destroyed successfully"
+
 msgid "Admin|%{model_name}|Edit"
 msgstr "Edit %{model_name}"
 
@@ -263,9 +266,6 @@ msgstr "Cannot be canceled"
 msgid "Admin|Order|Cannot delete active order"
 msgstr "Cannot delete active order"
 
-msgid "Admin|Order|Cannot delete paid order"
-msgstr "Cannot delete paid order"
-
 msgid "Admin|Order|Complete processing"
 msgstr "Complete processing"
 
@@ -274,9 +274,6 @@ msgstr "Completed processing successfully"
 
 msgid "Admin|Order|Couldn't complete processing"
 msgstr "Couldn't complete processing"
-
-msgid "Admin|Order|Destroyed successfully"
-msgstr "Destroyed successfully"
 
 msgid "Admin|Order|Expired cleaned up successfully"
 msgstr "Expired cleaned up successfully"
@@ -946,6 +943,9 @@ msgstr "Do you really want to confirm this user?"
 
 msgid "Admin|User|List permissions"
 msgstr "List permissions"
+
+msgid "Admin|User|Long user delete confirm message for %{username}"
+msgstr "Do you really want to delete the user \"%{username}\"? This will also delete all the orders, permissions etc. of the user!"
 
 msgid "Admin|User|Permissions"
 msgstr "Permissions"
@@ -1826,9 +1826,6 @@ msgstr "News"
 msgid "NewsPosts"
 msgstr "News"
 
-msgid "NewsPosts|Author"
-msgstr "Author"
-
 msgid "NewsPost|Content"
 msgstr "Content"
 
@@ -2470,6 +2467,12 @@ msgstr "Cannot be deleted"
 
 msgid "PromotionCode|Code"
 msgstr "Code"
+
+msgid "PromotionCode|Used"
+msgstr "Used?"
+
+msgid "PromotionCode|Used for order"
+msgstr "Used in Order"
 
 msgid "Promotion|Active"
 msgstr "Active"

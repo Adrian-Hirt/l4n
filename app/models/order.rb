@@ -136,11 +136,24 @@ class Order < ApplicationRecord
     end
   end
 
+  def deleteable?
+    # An order which is completed or waiting for the delayed payment is
+    # always deleteable.
+    return true if delayed_payment_pending? || completed?
+
+    # Otherwise, a created or payment pending order is only
+    # deleteable if it's expired
+    return expired? if created? || payment_pending?
+
+    # Return false if none of the previous conditions was true
+    return false
+  end
+
   # == Private Methods =============================================================
   private
 
   def check_if_deletable
-    return if created? || payment_pending? || delayed_payment_pending?
+    return if deleteable?
 
     errors.add(:base, _('Order|Cannot delete order with that status'))
     throw :abort

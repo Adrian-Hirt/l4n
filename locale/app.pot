@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-10 12:58+0200\n"
-"PO-Revision-Date: 2023-06-10 12:58+0200\n"
+"POT-Creation-Date: 2023-06-25 21:19+0200\n"
+"PO-Revision-Date: 2023-06-25 21:19+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -91,6 +91,9 @@ msgid "Admin|%{model_name}|Cannot be deleted"
 msgstr ""
 
 msgid "Admin|%{model_name}|Create failed"
+msgstr ""
+
+msgid "Admin|%{model_name}|Destroyed successfully"
 msgstr ""
 
 msgid "Admin|%{model_name}|Edit"
@@ -264,9 +267,6 @@ msgstr ""
 msgid "Admin|Order|Cannot delete active order"
 msgstr ""
 
-msgid "Admin|Order|Cannot delete paid order"
-msgstr ""
-
 msgid "Admin|Order|Complete processing"
 msgstr ""
 
@@ -274,9 +274,6 @@ msgid "Admin|Order|Completed processing successfully"
 msgstr ""
 
 msgid "Admin|Order|Couldn't complete processing"
-msgstr ""
-
-msgid "Admin|Order|Destroyed successfully"
 msgstr ""
 
 msgid "Admin|Order|Expired cleaned up successfully"
@@ -946,6 +943,9 @@ msgid "Admin|User|Do you really want to confirm this user?"
 msgstr ""
 
 msgid "Admin|User|List permissions"
+msgstr ""
+
+msgid "Admin|User|Long user delete confirm message for %{username}"
 msgstr ""
 
 msgid "Admin|User|Permissions"
@@ -1827,9 +1827,6 @@ msgstr ""
 msgid "NewsPosts"
 msgstr ""
 
-msgid "NewsPosts|Author"
-msgstr ""
-
 msgid "NewsPost|Content"
 msgstr ""
 
@@ -2470,6 +2467,12 @@ msgid "PromotionCode|Cannot be deleted, as it has been used"
 msgstr ""
 
 msgid "PromotionCode|Code"
+msgstr ""
+
+msgid "PromotionCode|Used"
+msgstr ""
+
+msgid "PromotionCode|Used for order"
 msgstr ""
 
 msgid "Promotion|Active"

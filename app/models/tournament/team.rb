@@ -28,7 +28,7 @@ class Tournament::Team < ApplicationRecord
   validates :tournament_team_rank, presence: true, if: -> { tournament&.teams_need_rank? }
 
   # Password validations only relevant for multiplayer games
-  validates :password, presence: true, length: { minimum: 6, maximum: 72 }, if: -> { !tournament.singleplayer? && (password.present? || new_record?) }
+  validates :password, presence: true, length: { minimum: 6, maximum: 72 }, if: -> { !tournament&.singleplayer? && (password.present? || new_record?) }
 
   # == Hooks =======================================================================
 

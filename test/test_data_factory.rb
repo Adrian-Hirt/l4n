@@ -11,19 +11,21 @@ module TestDataFactory
   # and can safely use them in other tests to create data.
 
   def create_user(attrs = {})
-    ::Operations::User::Create.run!(
+    user_id = ::Operations::User::Create.run!(
       user: {
         username: Faker::Internet.username,
         email:    Faker::Internet.email,
         password: 'Password123'
       }.merge(attrs)
-    ).model.reload
+    ).model.id
+
+    return User.find(user_id)
   end
 
-  def create_order_for_checkout(user)
+  def create_order(user, status)
     ::Order.create!(
       user:              user,
-      status:            'created',
+      status:            status,
       cleanup_timestamp: Time.zone.now
     )
   end
@@ -102,6 +104,15 @@ module TestDataFactory
         max_number_of_participants: 12
       }.merge!(attrs)
     ).model.reload
+  end
+
+  def create_tournament_team(name, tournament)
+    ::Tournament::Team.create!(
+      name: name,
+      tournament: tournament,
+      status: 'created',
+      password: 'foobar1234'
+    )
   end
 
   def create_tournament_phase(tournament:, phase_attrs: {})

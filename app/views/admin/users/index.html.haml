@@ -4,12 +4,12 @@
       = button _('Admin|User|List permissions'), permissions_admin_users_path
       = new_button User, namespace: %i[admin]
 
+- unless FeatureFlag.enabled?(:user_registration)
+  .alert.alert-warning.rounded-0
+    = _('Admin|Users|Registration is currently disabled')
+
 .card
   .card-body
-    - unless FeatureFlag.enabled?(:user_registration)
-      .alert.alert-warning.rounded-0.p-1
-        = _('Admin|Users|Registration is currently disabled')
-
     = simple_form_for op.grid, url: admin_users_path, method: :get do |f|
       .d-flex.mb-3
         .optional.me-2
