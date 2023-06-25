@@ -10,6 +10,10 @@
 * Allow configuring the sender for exception notifications & devise
   mails via env variables
 
+### Changed
+
+* Allow users to be deleted by admins
+
 ## 1.8.1 - 2023-05-21
 
 ### Added
