@@ -11,10 +11,8 @@ module Operations::TwoFactor
     delegate :user, to: :context
 
     def perform
-       # Check that the OTP code is correct
-       if user.otp_required_for_login?
-        fail Operations::Exceptions::OpFailed, _('User|Wrong otp code') unless valid_otp_code?
-      end
+      # Check that the OTP code is correct
+      fail Operations::Exceptions::OpFailed, _('User|Wrong otp code') if user.otp_required_for_login? && !valid_otp_code?
 
       user.otp_required_for_login = false
       user.otp_secret = nil

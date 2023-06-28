@@ -20,9 +20,7 @@ module Operations::User
       fail Operations::Exceptions::OpFailed, _('User|Account|Wrong password to delete') unless model.valid_password?(osparams.data[:password])
 
       # If the user has 2FA enabled, check that the OTP code is correct
-      if model.otp_required_for_login?
-        fail Operations::Exceptions::OpFailed, _('User|Account|Wrong OTP code to delete') unless valid_otp_code?
-      end
+      fail Operations::Exceptions::OpFailed, _('User|Account|Wrong OTP code to delete') if model.otp_required_for_login? && !valid_otp_code?
 
       # Finally, delete the user
       model.destroy!
