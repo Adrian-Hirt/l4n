@@ -13,6 +13,8 @@
 ### Changed
 
 * Allow users to be deleted by admins
+* Allow users to delete their own account
+* Require OTP code to deactivate 2FA on an account
 
 ## 1.8.1 - 2023-05-21
 
