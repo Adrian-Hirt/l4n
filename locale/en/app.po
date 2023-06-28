@@ -2795,13 +2795,11 @@ msgstr "Authorized OAuth apps"
 msgid "Settings|Avatar"
 msgstr "Avatar"
 
-#, fuzzy
 msgid "Settings|Delete account"
-msgstr "Game accounts"
+msgstr "Delete my account"
 
-#, fuzzy
 msgid "Settings|Delete my account"
-msgstr "Settings"
+msgstr "Delete my account"
 
 msgid "Settings|Edit avatar"
 msgstr "Edit avatar"
@@ -2821,9 +2819,8 @@ msgstr "Leave blank to keep current password"
 msgid "Settings|Profile"
 msgstr "Profile"
 
-#, fuzzy
 msgid "Settings|Really delete account?"
-msgstr "Settings"
+msgstr "Really delete account? This cannot be undone, your account will be gone!"
 
 msgid "Settings|Save two factor code"
 msgstr "Save two factor code"
@@ -3980,29 +3977,23 @@ msgstr "2FA removed successfully"
 msgid "User|About me"
 msgstr "About me"
 
-#, fuzzy
 msgid "User|Account successfully deleted"
-msgstr "Steam account successfully added"
+msgstr "Account successfully deleted"
 
-#, fuzzy
 msgid "User|Account|Destroy hint message"
-msgstr "User"
+msgstr "Please note that deleting your account CAN NOT BE UNDONE. Your orders will also be deleted, and any tickets for events you might have will not be accessible to you anymore. Please only delete your account if you're really sure you don't need it anymore."
 
-#, fuzzy
 msgid "User|Account|Not deleteable"
-msgstr "User"
+msgstr "Your account currently cannot be deleted."
 
-#, fuzzy
-msgid "User|Account|USer not deleteable message"
-msgstr "User"
+msgid "User|Account|User not deleteable message"
+msgstr "Your account currently cannot be deleted. This is probably due to an order still being processed, please contact a site admin for more information."
 
-#, fuzzy
 msgid "User|Account|Wrong OTP code to delete"
-msgstr "User"
+msgstr "The entered otp code is wrong, please try again."
 
-#, fuzzy
 msgid "User|Account|Wrong password to delete"
-msgstr "User"
+msgstr "The entered password is wrong, please try again."
 
 msgid "User|Achievements"
 msgstr "Achievements"
@@ -4060,6 +4051,9 @@ msgstr "Email"
 
 msgid "User|Encrypted password"
 msgstr "Encrypted password"
+
+msgid "User|Enter otp code to remove 2FA from your account"
+msgstr "Enter otp code to remove 2FA from your account"
 
 msgid "User|Game Profiles"
 msgstr "Game Profiles"
@@ -4125,7 +4119,7 @@ msgid "User|Remove 2FA"
 msgstr "Remove 2FA from your account"
 
 msgid "User|Remove 2FA confirmation"
-msgstr "Remove"
+msgstr "Really remove 2FA from your account?"
 
 msgid "User|Remove avatar"
 msgstr "Remove avatar"
@@ -4171,6 +4165,9 @@ msgstr "Username"
 
 msgid "User|Website"
 msgstr "Website"
+
+msgid "User|Wrong otp code"
+msgstr "Wrong otp code, please try again"
 
 msgid "Yes"
 msgstr "Yes"

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-28 21:03+0200\n"
-"PO-Revision-Date: 2023-06-28 21:03+0200\n"
+"POT-Creation-Date: 2023-06-28 21:16+0200\n"
+"PO-Revision-Date: 2023-06-28 21:16+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -3987,7 +3987,7 @@ msgstr ""
 msgid "User|Account|Not deleteable"
 msgstr ""
 
-msgid "User|Account|USer not deleteable message"
+msgid "User|Account|User not deleteable message"
 msgstr ""
 
 msgid "User|Account|Wrong OTP code to delete"
@@ -4051,6 +4051,9 @@ msgid "User|Email"
 msgstr ""
 
 msgid "User|Encrypted password"
+msgstr ""
+
+msgid "User|Enter otp code to remove 2FA from your account"
 msgstr ""
 
 msgid "User|Game Profiles"
@@ -4162,6 +4165,9 @@ msgid "User|Username"
 msgstr ""
 
 msgid "User|Website"
+msgstr ""
+
+msgid "User|Wrong otp code"
 msgstr ""
 
 msgid "Yes"
