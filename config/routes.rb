@@ -75,6 +75,11 @@ Rails.application.routes.draw do
       delete :discord, action: :remove_discord
       delete :steam, action: :remove_steam
     end
+
+    namespace :account do
+      get :/, action: :show
+      delete :/, action: :delete, as: :delete
+    end
   end
 
   # == News =============================================================================

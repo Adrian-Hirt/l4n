@@ -1,0 +1,28 @@
+- provide :page_title, _('Settings|Delete account')
+
+.row
+  .col-md-3
+    = render partial: 'settings/sidebar'
+  .col-md-9
+    .card
+      .card-body
+        - if model.deleteable?
+          .alert.alert-danger.rounded-0.p-2.mb-0
+            = icon %i[fas fa-triangle-exclamation fa-fw]
+            = _('User|Account|Destroy hint message')
+          %hr
+        - else
+          .alert.alert-warning.rounded-0.p-2.mb-0
+            = icon %i[fas fa-triangle-exclamation fa-fw]
+            = _('User|Account|USer not deleteable message')
+
+        - if model.deleteable?
+          .mt-3
+            = simple_form_for :data, url: settings_account_delete_path,
+                                     method: :delete,
+                                     wrapper: :input_group,
+                                     confirm: 'soos?' do |f|
+              = f.password :password, input_html: { autocomplete: 'new-password' }
+              - if model.otp_required_for_login?
+                = f.input :otp_code
+              = f.save _('Settings|Delete account'), class: %i[btn-danger], data: { confirm: _('Settings|Really delete account?'), controller: 'button', action: 'click->button#confirmAction' }

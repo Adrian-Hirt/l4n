@@ -7,5 +7,6 @@
       - if FeatureFlag.enabled?(:api_and_oauth)
         = link_to _('Settings|Authorized oauth apps'), oauth_authorized_applications_path, class: nav_item_classes(controller: 'doorkeeper/authorized_applications')
       = link_to _('Settings|2FA'), settings_two_factor_path, class: nav_item_classes(controller: 'settings/two_factor')
+      = link_to _('Settings|Delete my account'), settings_account_path, class: nav_item_classes(controller: 'settings/account')
   .card-footer
     = button _('User|Show my profile'), current_user, size: :sm, color: :default
