@@ -1,5 +1,12 @@
 module Operations::User
   class DeleteAccount < RailsOps::Operation::Model
+    schema3 do
+      hsh? :data do
+        str? :password
+        str? :otp_code
+      end
+    end
+
     # Uses context user, so no need to authorize
     without_authorization
 

@@ -29,6 +29,9 @@ module Settings
         flash[:danger] = _('User|2FA could not be removed, please try again')
       end
       redirect_to settings_two_factor_path
+    rescue Operations::Exceptions::OpFailed => e
+      flash[:danger] = e.message
+      redirect_to settings_two_factor_path
     end
 
     private

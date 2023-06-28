@@ -2795,6 +2795,14 @@ msgstr "Authorized OAuth apps"
 msgid "Settings|Avatar"
 msgstr "Avatar"
 
+#, fuzzy
+msgid "Settings|Delete account"
+msgstr "Game accounts"
+
+#, fuzzy
+msgid "Settings|Delete my account"
+msgstr "Settings"
+
 msgid "Settings|Edit avatar"
 msgstr "Edit avatar"
 
@@ -2812,6 +2820,10 @@ msgstr "Leave blank to keep current password"
 
 msgid "Settings|Profile"
 msgstr "Profile"
+
+#, fuzzy
+msgid "Settings|Really delete account?"
+msgstr "Settings"
 
 msgid "Settings|Save two factor code"
 msgstr "Save two factor code"
@@ -3968,11 +3980,35 @@ msgstr "2FA removed successfully"
 msgid "User|About me"
 msgstr "About me"
 
+#, fuzzy
+msgid "User|Account successfully deleted"
+msgstr "Steam account successfully added"
+
+#, fuzzy
+msgid "User|Account|Destroy hint message"
+msgstr "User"
+
+#, fuzzy
+msgid "User|Account|Not deleteable"
+msgstr "User"
+
+#, fuzzy
+msgid "User|Account|USer not deleteable message"
+msgstr "User"
+
+#, fuzzy
+msgid "User|Account|Wrong OTP code to delete"
+msgstr "User"
+
+#, fuzzy
+msgid "User|Account|Wrong password to delete"
+msgstr "User"
+
 msgid "User|Achievements"
 msgstr "Achievements"
 
 msgid "User|Add 2FA"
-msgstr "Add"
+msgstr "Add two factor authentication to your account"
 
 msgid "User|Add permission"
 msgstr "Add permission"
@@ -4086,7 +4122,7 @@ msgid "User|Remember created at"
 msgstr "Remember created at"
 
 msgid "User|Remove 2FA"
-msgstr "Remove 2FA"
+msgstr "Remove 2FA from your account"
 
 msgid "User|Remove 2FA confirmation"
 msgstr "Remove"
@@ -4119,10 +4155,10 @@ msgid "User|The captcha verification failed, please try again"
 msgstr "The captcha verification failed, please try again"
 
 msgid "User|TwoFactor|Enabled"
-msgstr "Enabled"
+msgstr "Two factor authentication on your account is enabled"
 
 msgid "User|TwoFactor|Not enabled"
-msgstr "Not enabled"
+msgstr "Two factor authentication on your account is not enabled"
 
 msgid "User|Upload avatar"
 msgstr "Upload avatar"

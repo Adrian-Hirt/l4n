@@ -10,8 +10,13 @@
           .alert.alert-success.rounded-0.p-2.mb-0
             = icon %i[fas fa-check fa-fw]
             = _('User|TwoFactor|Enabled')
-        .card-footer
-          = delete_button(current_user, href: settings_two_factor_deactivate_path, title: _('User|Remove 2FA'), html: { data: { confirm: _('User|Remove 2FA confirmation') } })
+          %hr
+          .mt-3
+            = simple_form_for :data, url: settings_two_factor_deactivate_path,
+                                     method: :delete,
+                                     wrapper: :input_group do |f|
+              = f.input :otp_code, input_html: { placeholder: _('User|Enter otp code to remove 2FA from your account') }
+              = f.save _('User|Remove 2FA'), class: %i[btn-danger], data: { confirm: _('User|Remove 2FA confirmation'), controller: 'button', action: 'click->button#confirmAction' }
       - else
         .card-body
           .alert.alert-danger.rounded-0.p-2.mb-0

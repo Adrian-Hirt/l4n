@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-25 21:19+0200\n"
-"PO-Revision-Date: 2023-06-25 21:19+0200\n"
+"POT-Creation-Date: 2023-06-28 21:03+0200\n"
+"PO-Revision-Date: 2023-06-28 21:03+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -2796,6 +2796,12 @@ msgstr ""
 msgid "Settings|Avatar"
 msgstr ""
 
+msgid "Settings|Delete account"
+msgstr ""
+
+msgid "Settings|Delete my account"
+msgstr ""
+
 msgid "Settings|Edit avatar"
 msgstr ""
 
@@ -2812,6 +2818,9 @@ msgid "Settings|Password|Leave blank to keep current password"
 msgstr ""
 
 msgid "Settings|Profile"
+msgstr ""
+
+msgid "Settings|Really delete account?"
 msgstr ""
 
 msgid "Settings|Save two factor code"
@@ -3967,6 +3976,24 @@ msgid "User|2FA removed successfully"
 msgstr ""
 
 msgid "User|About me"
+msgstr ""
+
+msgid "User|Account successfully deleted"
+msgstr ""
+
+msgid "User|Account|Destroy hint message"
+msgstr ""
+
+msgid "User|Account|Not deleteable"
+msgstr ""
+
+msgid "User|Account|USer not deleteable message"
+msgstr ""
+
+msgid "User|Account|Wrong OTP code to delete"
+msgstr ""
+
+msgid "User|Account|Wrong password to delete"
 msgstr ""
 
 msgid "User|Achievements"
