@@ -4,7 +4,7 @@ ruby '3.2.2'
 
 # Rails and rails-y stuff
 gem 'bootsnap', '>= 1.4.4', require: false
-gem 'rails', '~> 7.0.5'
+gem 'rails', '~> 7.0.6'
 
 # Authentication & Authorization
 gem 'cancancan', '~> 3.5.0'
@@ -24,8 +24,8 @@ gem 'puma', '~> 6.3'
 gem 'pg', '~> 1.5.3'
 
 # Assets
-gem 'cssbundling-rails', '~> 1.1.1'
-gem 'jsbundling-rails', '~> 1.1.1'
+gem 'cssbundling-rails', '~> 1.2.0'
+gem 'jsbundling-rails', '~> 1.1.2'
 gem 'sprockets-rails', '~> 3.4.1'
 gem 'stimulus-rails', '~> 1.2.1'
 gem 'turbo-rails', '~> 1.4.0'
@@ -46,7 +46,7 @@ gem 'rqrcode', '~> 2.2.0'
 gem 'simple_form', '~> 5.2.0'
 
 # Translations
-gem 'gettext_i18n_rails', '~> 1.11.0'
+gem 'gettext_i18n_rails', '~> 1.12.0'
 gem 'mobility', '~> 1.2.5'
 gem 'rails-i18n', '~> 7.0.1'
 
@@ -95,7 +95,7 @@ group :development do
   gem 'ruby_parser', require: false
 
   # Code analysis and standards
-  gem 'haml_lint', '~> 0.45.0', require: false
+  gem 'haml_lint', '~> 0.46.0', require: false
   gem 'rubocop', '~> 1.24'
   gem 'rubocop-performance', '~> 1.13'
   gem 'rubocop-rails', '~> 2.13'
