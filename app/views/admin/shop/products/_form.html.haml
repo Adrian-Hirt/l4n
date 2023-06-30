@@ -9,8 +9,9 @@
           = f.input :name
         .col-md-6
           = f.association :product_category, include_blank: _('Form|Select|Blank')
-      = f.markdown :description, preview_url: admin_markdown_preview_path,
-                                 wrapper_html: { style: 'margin-bottom: 0 !important; min-height: 287px;' }
+      = f.markdown :description,
+                   preview_url:  admin_markdown_preview_path,
+                   wrapper_html: { style: 'margin-bottom: 0 !important; min-height: 287px;' }
       .row
         .col-md-3
           = f.input :on_sale, input_html: { class: 'no-validation' }, as: :select, include_blank: false
@@ -34,11 +35,11 @@
       = _('Admin|Product|Product behaviours')
     .card-body{ data: { controller: 'admin--product-behaviours' } }
       = f.input :enabled_product_behaviours,
-        as: :check_boxes,
-        collection: model.available_product_behaviours,
-        input_html: { class: 'no-validation', data: { action: 'change->admin--product-behaviours#behavioursChanged' } },
-        value_method: :first,
-        label_method: :second
+                as:           :check_boxes,
+                collection:   model.available_product_behaviours,
+                input_html:   { class: 'no-validation', data: { action: 'change->admin--product-behaviours#behavioursChanged' } },
+                value_method: :first,
+                label_method: :second
 
       - model.available_product_behaviour_classes.each do |behaviour|
         - enabled = model.enabled_product_behaviour_classes.include?(behaviour)

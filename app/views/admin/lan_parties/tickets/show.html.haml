@@ -58,18 +58,19 @@
 
               - if model.assigned?
                 = button _('Admin|Ticket|Remove user'),
-                        remove_assignee_admin_ticket_path(model),
-                        method: :post,
-                        color: :danger
+                         remove_assignee_admin_ticket_path(model),
+                         method: :post,
+                         color:  :danger
               - else
                 %b= _('Admin|Ticket|Assign to user')
                 = simple_form_for :assignee, url: assign_user_admin_ticket_path(model), wrapper: :input_group do |f|
-                  = f.input :username, label: false,
-                                      wrapper_html: { style: 'margin-bottom: 0 !important;' },
-                                      append: f.save('>', style: 'border-radius: 0;', class: %i[rounded-end btn-sm]),
-                                      append_options: { class: '' },
-                                      placeholder: _('Admin|Ticket|Username of user to assign to'),
-                                      input_html: { class: %i[py-0] }
+                  = f.input :username,
+                            label:          false,
+                            wrapper_html:   { style: 'margin-bottom: 0 !important;' },
+                            append:         f.save('>', style: 'border-radius: 0;', class: %i[rounded-end btn-sm]),
+                            append_options: { class: '' },
+                            placeholder:    _('Admin|Ticket|Username of user to assign to'),
+                            input_html:     { class: %i[py-0] }
               - unless model.assigned? && model.seat.present?
                 %hr
               - if model.seat.present?
@@ -77,23 +78,25 @@
               - else
                 %b= _('Admin|Ticket|Assign seat')
                 = simple_form_for :seat, url: assign_seat_admin_ticket_path(model), wrapper: :input_group do |f|
-                  = f.input :seat_id, label: false,
-                                      wrapper_html: { style: 'margin-bottom: 0 !important;' },
-                                      append: f.save('>', style: 'border-radius: 0;', class: %i[rounded-end btn-sm]),
-                                      append_options: { class: '' },
-                                      placeholder: _('Admin|Ticket|Seat id to assign to'),
-                                      input_html: { class: %i[py-0] }
+                  = f.input :seat_id,
+                            label:          false,
+                            wrapper_html:   { style: 'margin-bottom: 0 !important;' },
+                            append:         f.save('>', style: 'border-radius: 0;', class: %i[rounded-end btn-sm]),
+                            append_options: { class: '' },
+                            placeholder:    _('Admin|Ticket|Seat id to assign to'),
+                            input_html:     { class: %i[py-0] }
                 %hr
                 %b= _('Admin|Ticket|Change category')
                 = simple_form_for :ticket_upgrade, url: change_category_admin_ticket_path(model) do |f|
                   .d-flex
-                    = f.input :category_id, as: :select,
-                                            collection: op.seat_categories.reject { |category| category == model.seat_category },
-                                            include_blank: _('Form|Select|Blank'),
-                                            label_method: :name,
-                                            label: false,
-                                            wrapper_html: { style: 'margin-bottom: 0 !important;', class: 'flex-grow-1' },
-                                            input_html: { class: %i[py-1] }
+                    = f.input :category_id,
+                              as:            :select,
+                              collection:    op.seat_categories.reject { |category| category == model.seat_category },
+                              include_blank: _('Form|Select|Blank'),
+                              label_method:  :name,
+                              label:         false,
+                              wrapper_html:  { style: 'margin-bottom: 0 !important;', class: 'flex-grow-1' },
+                              input_html:    { class: %i[py-1] }
                     = f.save '>', class: %i[btn-sm rounded-end], style: 'border-radius: 0;'
     .card.mb-3
       .card-header

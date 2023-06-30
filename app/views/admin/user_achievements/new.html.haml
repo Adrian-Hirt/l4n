@@ -3,9 +3,10 @@
     .card-body
       .row
         .col-md-6
-          = f.association :user, include_blank: _('Form|Select|Blank'),
-                                 label_method: :username,
-                                 collection: op.user_candidates
+          = f.association :user,
+                          include_blank: _('Form|Select|Blank'),
+                          label_method:  :username,
+                          collection:    op.user_candidates
         .col-md-6
           = f.input :awarded_at, as: :datetime, html5: true, wrapper_html: { class: 'mb-0' }
     .card-footer

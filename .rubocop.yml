@@ -115,6 +115,11 @@ Naming/VariableNumber:
   Exclude:
     - 'app/views/**/*'
 
+Style/IfUnlessModifier:
+  # Disable this cop in the haml files
+  Exclude:
+    - 'app/views/**/*'
+
 # Disable for test files
 Metrics/ClassLength:
   Exclude:

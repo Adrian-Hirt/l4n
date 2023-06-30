@@ -55,5 +55,7 @@
         = button _('Admin|Order|Cannot delete active order'), nil, disabled: true, color: :danger
 
       - if model.processing?
-        = button _('Admin|Order|Complete processing'), complete_processing_admin_shop_order_path(model), method: :post,
-                                                                                                         confirm: _('Admin|Order|Really complete order?')
+        = button _('Admin|Order|Complete processing'),
+                 complete_processing_admin_shop_order_path(model),
+                 method:  :post,
+                 confirm: _('Admin|Order|Really complete order?')

@@ -32,20 +32,30 @@
                   = f.input :seed, as: :hidden, input_html: { value: current_seed }
                   = f.input :team, as: :hidden, input_html: { team: nil }
           - else
-            = simple_form_for :seeding, url: update_seeding_admin_phase_path(model),
-                                        html: { class: 'd-flex align-items-center justify-content-between flex-grow-1' } do |f|
+            = simple_form_for :seeding,
+                              url:  update_seeding_admin_phase_path(model),
+                              html: { class: 'd-flex align-items-center justify-content-between flex-grow-1' } do |f|
               .flex-grow-1
-                = f.input :seed, as: :hidden, input_html: { value: current_seed }, wrapper_html: { style: 'margin-bottom: 0 !important;' }
-                = f.input :team, as: :select, collection: seedable_teams,
-                                              include_blank: _('Form|Select|Blank'),
-                                              label: false,
-                                              wrapper_html: { style: 'margin-bottom: 0 !important;' },
-                                              input_html: { class: 'form-select-sm' },
-                                              label_method: :name_with_optional_rank
+                = f.input :seed,
+                          as:           :hidden,
+                          input_html:   { value: current_seed },
+                          wrapper_html: { style: 'margin-bottom: 0 !important;' }
+                = f.input :team,
+                          as:            :select,
+                          collection:    seedable_teams,
+                          include_blank: _('Form|Select|Blank'),
+                          label:         false,
+                          wrapper_html:  { style: 'margin-bottom: 0 !important;' },
+                          input_html:    { class: 'form-select-sm' },
+                          label_method:  :name_with_optional_rank
               .ms-2
                 = f.save _('Admin|Seeding|Save'), class: %i[btn-sm me-2]
     .card-footer
       - if seedable_teams.any?
         = _('Phase|Seeding not completed hint')
       - else
-        = button _('Phase|Confirm seeding'), confirm_seeding_admin_phase_path(model), method: :post, confirm: _('Phase|Confirm seeding?'), btn_icon: %i[fas fa-check]
+        = button _('Phase|Confirm seeding'),
+                 confirm_seeding_admin_phase_path(model),
+                 method:   :post,
+                 confirm:  _('Phase|Confirm seeding?'),
+                 btn_icon: %i[fas fa-check]

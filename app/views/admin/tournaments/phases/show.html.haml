@@ -42,10 +42,11 @@
               .small.text-muted= _('Phase|Number of rounds')
               = model.rounds.count
             %div
-              = delete_button nil, title: _('Phase|Delete rounds'),
-                                  href: delete_rounds_admin_phase_path(model),
-                                  confirm: _('Phase|Are you sure you want to delete all rounds for this phase?'),
-                                  size: :sm
+              = delete_button nil,
+                              title:   _('Phase|Delete rounds'),
+                              href:    delete_rounds_admin_phase_path(model),
+                              confirm: _('Phase|Are you sure you want to delete all rounds for this phase?'),
+                              size:    :sm
         - elsif model.confirmed?
           = button _('Phase|Generate first round matches'), generate_next_round_matches_admin_phase_path(model), method: :post
         - elsif model.running?

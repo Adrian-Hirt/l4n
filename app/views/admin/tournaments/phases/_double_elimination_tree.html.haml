@@ -13,7 +13,6 @@
             - cache [round, I18n.locale, :admin_round, :double_elim_upper] do
               = render partial: 'admin/tournaments/phases/double_elimination/upper_bracket_round', locals: { round: round, total_visible_rounds: total_visible_rounds, total_rounds: total_rounds }
 
-
         %h4= _('Phase|Double elimination lower bracket')
         .double-elimination-tournament-tree
           - model.rounds.order(:round_number).includes(matches: %i[away home]).each do |round|

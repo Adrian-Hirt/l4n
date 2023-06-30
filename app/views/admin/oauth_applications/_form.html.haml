@@ -1,12 +1,15 @@
 .card
-  = simple_form_for application, url: doorkeeper_submit_path(application),
-                                 as: :doorkeeper_application,
-                                 html: { data: { turbo: false } } do |f|
+  = simple_form_for application,
+                    url:  doorkeeper_submit_path(application),
+                    as:   :doorkeeper_application,
+                    html: { data: { turbo: false } } do |f|
     .card-body
       = f.input :name
       = f.input :redirect_uri, wrapper_html: { style: 'margin-bottom: 0 !important;' }
       = f.hint t('doorkeeper.applications.help.redirect_uri')
-      = f.input :confidential, input_html: { class: 'no-validation' }, wrapper_html: { class: 'mt-3', style: 'margin-bottom: 0 !important;' }
+      = f.input :confidential,
+                input_html:   { class: 'no-validation' },
+                wrapper_html: { class: 'mt-3', style: 'margin-bottom: 0 !important;' }
       = f.hint t('doorkeeper.applications.help.confidential')
       .row
         .col-md-6

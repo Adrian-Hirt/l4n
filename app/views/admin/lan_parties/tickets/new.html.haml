@@ -1,12 +1,13 @@
 .card
   = simple_form_for [:admin, :lan_party, model] do |f|
     .card-body
-      = f.association :seat_category, as: :grouped_select,
-                      collection: op.available_seat_categories,
+      = f.association :seat_category,
+                      as:            :grouped_select,
+                      collection:    op.available_seat_categories,
                       include_blank: _('Form|Select|Blank'),
-                      label: _('Ticket|Category'),
-                      group_method: :last,
-                      label_method: :first,
-                      value_method: :last
+                      label:         _('Ticket|Category'),
+                      group_method:  :last,
+                      label_method:  :first,
+                      value_method:  :last
     .card-footer
       = f.save

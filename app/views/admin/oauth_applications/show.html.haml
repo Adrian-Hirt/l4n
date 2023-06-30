@@ -32,9 +32,13 @@
               %td.align-middle
                 %code.bg-light= uri
               %td.text-end
-                = link_to _('Doorkeeper::Application|Authorize'), oauth_authorization_path(client_id: @application.uid,
-                                                                                           redirect_uri: uri,
-                                                                                           response_type: 'code',
-                                                                                           scope: @application.scopes), class: 'btn btn-primary btn-sm', target: :_blank, rel: :noopener
+                = link_to _('Doorkeeper::Application|Authorize'),
+                          oauth_authorization_path(client_id:     @application.uid,
+                                                   redirect_uri:  uri,
+                                                   response_type: 'code',
+                                                   scope:         @application.scopes),
+                          class:  'btn btn-primary btn-sm',
+                          target: :_blank,
+                          rel:    :noopener
       - else
         %span.bg-light.font-italic.text-uppercase.text-muted= t('.not_defined')

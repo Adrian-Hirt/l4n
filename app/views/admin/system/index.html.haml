@@ -11,10 +11,11 @@
       .card-body
         = op.cache_space_usage
       .card-footer
-        = button _('Admin|Cache|Cleanup cache now'), admin_system_cleanup_cache_path,
-                                                     size: :sm,
-                                                     btn_icon: %i[fas fa-snowplow],
-                                                     method: :post
+        = button _('Admin|Cache|Cleanup cache now'),
+                 admin_system_cleanup_cache_path,
+                 size:     :sm,
+                 btn_icon: %i[fas fa-snowplow],
+                 method:   :post
   .col-md-6.mb-3
     .card
       .card-header

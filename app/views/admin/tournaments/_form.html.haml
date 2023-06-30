@@ -14,23 +14,26 @@
           %br
           .text-muted= model.singleplayer? ? _('Tournament|Singleplayer participants') : _('Tournament|Team participants')
       - else
-        = f.input :singleplayer, as: :radio_buttons,
-                                label: _('Tournament|Participant type'),
-                                collection: [[_('Tournament|Team participants'), false], [_('Tournament|Singleplayer participants'), true]],
-                                input_html: { class: 'no-validation' },
-                                wrapper_html: { data: { 'admin--tournament-form-target' => 'participantType' } }
+        = f.input :singleplayer,
+                  as:           :radio_buttons,
+                  label:        _('Tournament|Participant type'),
+                  collection:   [[_('Tournament|Team participants'), false], [_('Tournament|Singleplayer participants'), true]],
+                  input_html:   { class: 'no-validation' },
+                  wrapper_html: { data: { 'admin--tournament-form-target' => 'participantType' } }
       - team_size_classes = model.singleplayer? ? %w[d-none] : []
-      = f.input :team_size, disabled: model.teams.any?,
-                            input_html: { class: 'no-validation' },
-                            wrapper_html: { class: team_size_classes, data: { 'admin--tournament-form-target' => 'teamSize' } }
+      = f.input :team_size,
+                disabled:     model.teams.any?,
+                input_html:   { class: 'no-validation' },
+                wrapper_html: { class: team_size_classes, data: { 'admin--tournament-form-target' => 'teamSize' } }
 
       .row
         .col-md-6
           = f.input :status, collection: Tournament.statuses, include_blank: false
         .col-md-6
-          = f.input :lan_party_id, collection: LanParty.order(:name),
-                                   include_blank: _('Form|Select|Blank'),
-                                   disabled: model.teams.any?
+          = f.input :lan_party_id,
+                    collection:    LanParty.order(:name),
+                    include_blank: _('Form|Select|Blank'),
+                    disabled:      model.teams.any?
       .row
         .col-md-6
           = f.input :frontend_order
@@ -54,7 +57,11 @@
             %th
           - model.files.each do |file|
             %tr
-              %td= link_to file.filename, rails_blob_path(file, disposition: 'inline'), target: :_blank, rel: :noopener
+              %td
+                = link_to file.filename,
+                          rails_blob_path(file, disposition: 'inline'),
+                          target: :_blank,
+                          rel:    :noopener
               %td= number_to_human_size(file.blob.byte_size)
               %td
                 .form-check

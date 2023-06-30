@@ -13,7 +13,7 @@
       .opponent
         %h2
           - if model.away
-            =  model.away.team.name
+            = model.away.team.name
           - elsif model.winner.present?
             = _('Match|Bye')
           - else
@@ -28,9 +28,10 @@
               = f.input :home_score
             .col-md-6
               = f.input :away_score
-          = f.input :winner_id, as: :select,
-                                collection: teams,
-                                include_blank: _('Form|Select|Blank')
+          = f.input :winner_id,
+                    as:            :select,
+                    collection:    teams,
+                    include_blank: _('Form|Select|Blank')
           - if model.phase.swiss?
             = f.input :draw, input_html: { class: 'no-validation' }
           - if model.result_disputed?

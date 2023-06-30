@@ -5,10 +5,10 @@
         .col-md-6
           = f.input :name
         .col-md-6
-          = f.input :color, as: :select,
-                            collection: SeatCategory::PREDEFINED_SEATCATEGORY_COLORS,
-                            value_method: :first,
-                            label_method: ->(color) { color.second[:title] },
+          = f.input :color, as:            :select,
+                            collection:    SeatCategory::PREDEFINED_SEATCATEGORY_COLORS,
+                            value_method:  :first,
+                            label_method:  ->(color) { color.second[:title] },
                             include_blank: _('Form|Select|Blank')
       .row
         .col-md-12

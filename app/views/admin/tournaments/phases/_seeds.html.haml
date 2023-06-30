@@ -10,5 +10,7 @@
           \.
           = phase_team.team.name
     .card-footer
-      = button _('Phase|Reset seeding confirmation'), reset_seeding_confirmation_admin_phase_path(model), method: :post,
-                                                                                                          confirm: _('Phase|Reset seeding confirmation?')
+      = button _('Phase|Reset seeding confirmation'),
+               reset_seeding_confirmation_admin_phase_path(model),
+               method:  :post,
+               confirm: _('Phase|Reset seeding confirmation?')

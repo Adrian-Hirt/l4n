@@ -3,11 +3,15 @@
     = format_registration_status(model)
     - unless model.ongoing_phases?
       %div
-        = button _('Tournament|Toggle registration'), toggle_registration_admin_tournament_path(model), size: :sm, method: :post
-        = new_button Tournament::Team, href: new_admin_tournament_team_path(model),
-                                      size: :sm,
-                                      icon_only: true,
-                                      color: :primary
+        = button _('Tournament|Toggle registration'),
+                 toggle_registration_admin_tournament_path(model),
+                 size:   :sm,
+                 method: :post
+        = new_button Tournament::Team,
+                     href:      new_admin_tournament_team_path(model),
+                     size:      :sm,
+                     icon_only: true,
+                     color:     :primary
   .card-body
     - if model.ongoing_phases?
       %b= _('Tournament|In tournament teams')
@@ -49,20 +53,24 @@
           %div
             - unless model.singleplayer?
               - if team.created?
-                = button nil, register_for_tournament_admin_team_path(team), icon_only: true,
-                                                                              btn_icon: %i[fas fa-plus fa-fw],
-                                                                              size: :sm,
-                                                                              method: :post,
-                                                                              color: :primary,
-                                                                              disabled: tournament_full || !team.full? || team.captain_missing?,
-                                                                              html: { title: _('Admin|Teams|Register for tournament'), data: { 'bs-toggle' => :tooltip } }
+                = button nil,
+                         register_for_tournament_admin_team_path(team),
+                         icon_only: true,
+                         btn_icon:  %i[fas fa-plus fa-fw],
+                         size:      :sm,
+                         method:    :post,
+                         color:     :primary,
+                         disabled:  tournament_full || !team.full? || team.captain_missing?,
+                         html:      { title: _('Admin|Teams|Register for tournament'), data: { 'bs-toggle' => :tooltip } }
               - elsif team.registered?
-                = button nil, unregister_from_tournament_admin_team_path(team), icon_only: true,
-                                                                                btn_icon: %i[fas fa-minus fa-fw],
-                                                                                size: :sm,
-                                                                                method: :post,
-                                                                                color: :primary,
-                                                                                html: { title: _('Admin|Teams|Unregister from tournament'), data: { 'bs-toggle' => :tooltip } }
+                = button nil,
+                         unregister_from_tournament_admin_team_path(team),
+                         icon_only: true,
+                         btn_icon:  %i[fas fa-minus fa-fw],
+                         size:      :sm,
+                         method:    :post,
+                         color:     :primary,
+                         html:      { title: _('Admin|Teams|Unregister from tournament'), data: { 'bs-toggle' => :tooltip } }
             = edit_button team, size: :sm, icon_only: true, href: edit_admin_team_path(team)
             = delete_button team, size: :sm, icon_only: true, href: admin_team_path(team), disabled: !team.deleteable?
   .card-footer

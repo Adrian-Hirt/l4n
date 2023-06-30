@@ -13,14 +13,18 @@
       .col-md-6
         = f.input :name
       .col-md-6
-        = f.input :tournament_mode, as: :select,
-                                collection: Tournament::Phase.tournament_modes,
-                                include_blank: _('Form|Select|Blank'),
-                                disabled: !model.can_set_tournament_mode?,
-                                label_method: ->(mode) { humanize_enum_for_select(model.class, :tournament_mode, mode.second) }
+        = f.input :tournament_mode,
+                  as:            :select,
+                  collection:    Tournament::Phase.tournament_modes,
+                  include_blank: _('Form|Select|Blank'),
+                  disabled:      !model.can_set_tournament_mode?,
+                  label_method:  ->(mode) { humanize_enum_for_select(model.class, :tournament_mode, mode.second) }
       - if model.first_phase?
         .col-md-6
-          = f.input :size, required: false, disabled: true, placeholder: _('Admin|Phase|Size for first phase is set by registered teams')
+          = f.input :size,
+                    required:    false,
+                    disabled:    true,
+                    placeholder: _('Admin|Phase|Size for first phase is set by registered teams')
       - else
         .col-md-6
           = f.input :size, required: true, disabled: !model.created?
