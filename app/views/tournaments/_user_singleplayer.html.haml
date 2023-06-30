@@ -7,12 +7,12 @@
         = f.save _('Tournament|Sign up for tournament'), class: %i[w-100]
   - else
     = button _('Tournament|Leave tournament'),
-        op.user_team,
-        color: :danger,
-        confirm: _('Tournament|Leave tournament?'),
-        tag: :button,
-        html: { method: :delete },
-        classes: 'w-100'
+             op.user_team,
+             color:   :danger,
+             confirm: _('Tournament|Leave tournament?'),
+             tag:     :button,
+             html:    { method: :delete },
+             classes: 'w-100'
 - else
   - if op.user_team.present? # rubocop:disable Style/IfInsideElse
     .mb-2.fw-bold= _('Tournament|Your participation page')

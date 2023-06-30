@@ -10,7 +10,7 @@
         -# is used), without raising an exception
         - if model.next_date.present?
           = _('Event|From %{start_date} to %{end_date}') % { start_date: l(model.next_date.start_date, format: :short),
-                                                             end_date: l(model.next_date.end_date, format: :short) }
+                                                             end_date:   l(model.next_date.end_date, format: :short) }
         - else
           = _('Event|This event is over')
       - if model.next_date&.location.present?

@@ -36,15 +36,19 @@
                 = model.captain&.user&.username
               - if model.captain?(current_user)
                 %div
-                  = button nil, nil, btn_icon: %i[fas fa-chevron-up fa-fw],
-                                    icon_only: true,
-                                    size: :sm,
-                                    disabled: true
-                  = button nil, nil, btn_icon: %i[fas fa-trash fa-fw],
-                                    icon_only: true,
-                                    size: :sm,
-                                    disabled: true,
-                                    color: :danger
+                  = button nil,
+                           nil,
+                           btn_icon:  %i[fas fa-chevron-up fa-fw],
+                           icon_only: true,
+                           size:      :sm,
+                           disabled:  true
+                  = button nil,
+                           nil,
+                           btn_icon:  %i[fas fa-trash fa-fw],
+                           icon_only: true,
+                           size:      :sm,
+                           disabled:  true,
+                           color:     :danger
 
             -# Then the other users
             - model.team_members.includes(:user).each do |team_member|
@@ -56,18 +60,21 @@
                   = team_member.user.username
                 - if model.captain?(current_user)
                   %div
-                    = button nil, promote_tournament_team_member_path(team_member), btn_icon: %i[fas fa-chevron-up fa-fw],
-                                                                        icon_only: true,
-                                                                        size: :sm,
-                                                                        html: { title: _('TeamMember|Promote to captain'), data: { 'bs-toggle' => :tooltip } },
-                                                                        method: :post,
-                                                                        disabled: !model.tournament.registration_open?,
-                                                                        confirm: _('Team|Promote to captain?'),
-                                                                        color: :default
-                    = delete_button team_member, href: tournament_team_member_path(team_member),
-                                                icon_only: true,
-                                                size: :sm,
-                                                disabled: !model.created? || !model.tournament.registration_open?
+                    = button nil,
+                             promote_tournament_team_member_path(team_member),
+                             btn_icon:  %i[fas fa-chevron-up fa-fw],
+                             icon_only: true,
+                             size:      :sm,
+                             html:      { title: _('TeamMember|Promote to captain'), data: { 'bs-toggle' => :tooltip } },
+                             method:    :post,
+                             disabled:  !model.tournament.registration_open?,
+                             confirm:   _('Team|Promote to captain?'),
+                             color:     :default
+                    = delete_button team_member,
+                                    href:      tournament_team_member_path(team_member),
+                                    icon_only: true,
+                                    size:      :sm,
+                                    disabled:  !model.created? || !model.tournament.registration_open?
         -# -- Matches -----------------------------------------------------------------------------
         .mb-2.fw-bold= _('Team|Matches')
         - if op.grouped_matches.none?

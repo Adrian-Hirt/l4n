@@ -8,7 +8,6 @@
       %p.card-text.mb-auto
         = markdown(truncate(newspost.content, length: 600, separator: ' ', escape: false))
 
-
       = button _('NewsPost|Read more'), news_path(newspost), size: :sm, color: :default
 
 - if op.posts.total_pages > 1

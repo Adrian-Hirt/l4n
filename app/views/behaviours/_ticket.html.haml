@@ -4,16 +4,16 @@
       .select.optional
         = f.label :lan_party, class: 'form-label select optional'
         = select_tag :lan_party,
-          options_from_collection_for_select(LanParty.all, 'id', 'name', product.seat_category&.lan_party_id),
-          class: 'form-select rounded-0 select optional mb-0',
-          include_blank: _('Form|Select|Blank'),
-          data: { action: 'change->admin--product-seat-category-input#changeAvailableOptions' },
-          disabled: !enabled
+                     options_from_collection_for_select(LanParty.all, 'id', 'name', product.seat_category&.lan_party_id),
+                     class:         'form-select rounded-0 select optional mb-0',
+                     include_blank: _('Form|Select|Blank'),
+                     data:          { action: 'change->admin--product-seat-category-input#changeAvailableOptions' },
+                     disabled:      !enabled
 
     .col-md-6
       = f.association :seat_category,
-        include_blank: _('Form|Select|Blank'),
-        collection: product&.seat_category&.lan_party&.seat_categories&.all || [],
-        input_html: { data: { 'admin--product-seat-category-input-target' => 'category' } },
-        wrapper_html: { style: 'margin-bottom: 0 !important;' },
-        disabled: !enabled
+                      include_blank: _('Form|Select|Blank'),
+                      collection:    product&.seat_category&.lan_party&.seat_categories&.all || [],
+                      input_html:    { data: { 'admin--product-seat-category-input-target' => 'category' } },
+                      wrapper_html:  { style: 'margin-bottom: 0 !important;' },
+                      disabled:      !enabled

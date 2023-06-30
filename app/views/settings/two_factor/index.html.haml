@@ -12,9 +12,10 @@
             = _('User|TwoFactor|Enabled')
           %hr
           .mt-3
-            = simple_form_for :data, url: settings_two_factor_deactivate_path,
-                                     method: :delete,
-                                     wrapper: :input_group do |f|
+            = simple_form_for :data,
+                              url:     settings_two_factor_deactivate_path,
+                              method:  :delete,
+                              wrapper: :input_group do |f|
               = f.input :otp_code, input_html: { placeholder: _('User|Enter otp code to remove 2FA from your account') }
               = f.save _('User|Remove 2FA'), class: %i[btn-danger], data: { confirm: _('User|Remove 2FA confirmation'), controller: 'button', action: 'click->button#confirmAction' }
       - else

@@ -6,17 +6,17 @@
       = ticket.assignee.username
 
   -# Render the button if ticket is not checked in
-  -  if ticket.checked_in?
+  - if ticket.checked_in?
     = button nil, nil, size: :sm, disabled: true, btn_icon: %i[fas fa-user-slash fa-fw], icon_only: true, color: :danger
   - else
     = button nil,
-            remove_assignee_lan_ticket_path(id: ticket.id),
-            size: :sm,
-            method: :post,
-            btn_icon: %i[fas fa-user-slash fa-fw],
-            icon_only: true,
-            html: { title: _('Ticket|Remove assignation') },
-            color: :danger
+             remove_assignee_lan_ticket_path(id: ticket.id),
+             size:      :sm,
+             method:    :post,
+             btn_icon:  %i[fas fa-user-slash fa-fw],
+             icon_only: true,
+             html:      { title: _('Ticket|Remove assignation') },
+             color:     :danger
 
 - else
   .flex-grow-1{ data: { autocomplete: { 'url-value' => autocomplete_users_path, 'min-length-value' => '3' }, controller: 'autocomplete' } }
@@ -33,9 +33,9 @@
   - if op.lan_party.users_may_have_multiple_tickets_assigned? || op.tickets_for_lan_party.none?
     .ms-2
       = button nil,
-              assign_lan_ticket_path(id: ticket.id, assignee: { user_id: current_user.id }),
-              size: :sm,
-              method: :post,
-              btn_icon: %i[fas fa-user-plus fa-fw],
-              icon_only: true,
-              html: { title: _('Ticket|Assign to myself') }
+               assign_lan_ticket_path(id: ticket.id, assignee: { user_id: current_user.id }),
+               size:      :sm,
+               method:    :post,
+               btn_icon:  %i[fas fa-user-plus fa-fw],
+               icon_only: true,
+               html:      { title: _('Ticket|Assign to myself') }

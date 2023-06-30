@@ -12,15 +12,19 @@
       .card-header.d-flex.align-items-center.py-1.justify-content-between
         = _('Seatmap')
         .d-flex.gap-2
-          = button _('Seatmap|Reset zoom & position'), nil, btn_icon: %i[fas fa-bars],
-                                                      color: :default,
-                                                      html: { data: { action: 'click->seatmap#resetZoomAndPosition' } },
-                                                      size: :sm
+          = button _('Seatmap|Reset zoom & position'),
+                   nil,
+                   btn_icon: %i[fas fa-bars],
+                   color:    :default,
+                   html:     { data: { action: 'click->seatmap#resetZoomAndPosition' } },
+                   size:     :sm
           .d-none.d-xl-block
-            = button _('Seatmap|Toggle sidebar'), nil, btn_icon: %i[fas fa-bars],
-                                                      color: :default,
-                                                      html: { data: { 'seatmap-target' => 'sidebarToggle' } },
-                                                      size: :sm
+            = button _('Seatmap|Toggle sidebar'),
+                     nil,
+                     btn_icon: %i[fas fa-bars],
+                     color:    :default,
+                     html:     { data: { 'seatmap-target' => 'sidebarToggle' } },
+                     size:     :sm
       .d-flex.justify-content-center
         .frontend-seatmap#seatmap-container{ data: { 'seatmap-target' => 'container', seatmap_data: op.seat_map_data } }
 

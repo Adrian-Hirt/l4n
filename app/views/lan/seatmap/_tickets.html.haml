@@ -16,8 +16,8 @@
           .me-2
             -# haml-lint:disable InlineStyles
             .badge.seat-id-badge{ style: "background-color: #{ticket.seat_category.color_for_view}; color: #{ticket.seat_category.font_color_for_view};",
-                                data: { seat_id: ticket.seat&.id, action: 'click->seatmap#highlightSeatOfBadge', 'bs-toggle': :tooltip, 'bs-placement': :left },
-                                title: ticket.product_variant_name.presence || '-' }
+                                  data:  { seat_id: ticket.seat&.id, action: 'click->seatmap#highlightSeatOfBadge', 'bs-toggle': :tooltip, 'bs-placement': :left },
+                                  title: ticket.product_variant_name.presence || '-' }
               = ticket.seat&.name_or_id.presence || '&nbsp;'.html_safe
             -# haml-lint:enable InlineStyles
           .ticket-username

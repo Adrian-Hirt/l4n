@@ -13,29 +13,29 @@
 
         = f.label :lan_party, class: 'form-label select optional'
         = select_tag :lan_party,
-          options_from_collection_for_select(LanParty.all, 'id', 'name', lan_party),
-          class: 'form-select rounded-0 select optional mb-0',
-          include_blank: _('Form|Select|Blank'),
-          data: { action: 'change->admin--product-to-and-from-product-input#changeAvailableOptions' },
-          disabled: !enabled
+                     options_from_collection_for_select(LanParty.all, 'id', 'name', lan_party),
+                     class:         'form-select rounded-0 select optional mb-0',
+                     include_blank: _('Form|Select|Blank'),
+                     data:          { action: 'change->admin--product-to-and-from-product-input#changeAvailableOptions' },
+                     disabled:      !enabled
 
     .col-md-4
       = f.association :from_product,
-        include_blank: _('Form|Select|Blank'),
-        collection: initially_available,
-        wrapper_html: { style: 'margin-bottom: 0 !important;' },
-        input_html: { data: { 'admin--product-to-and-from-product-input-target' => 'fromProduct' } },
-        disabled: !enabled,
-        label: _('Product|From Product')
+                      include_blank: _('Form|Select|Blank'),
+                      collection:    initially_available,
+                      wrapper_html:  { style: 'margin-bottom: 0 !important;' },
+                      input_html:    { data: { 'admin--product-to-and-from-product-input-target' => 'fromProduct' } },
+                      disabled:      !enabled,
+                      label:         _('Product|From Product')
 
     .col-md-4
       = f.association :to_product,
-        include_blank: _('Form|Select|Blank'),
-        collection: initially_available,
-        wrapper_html: { style: 'margin-bottom: 0 !important;' },
-        input_html: { data: { 'admin--product-to-and-from-product-input-target' => 'toProduct' } },
-        disabled: !enabled,
-        label: _('Product|To Product')
+                      include_blank: _('Form|Select|Blank'),
+                      collection:    initially_available,
+                      wrapper_html:  { style: 'margin-bottom: 0 !important;' },
+                      input_html:    { data: { 'admin--product-to-and-from-product-input-target' => 'toProduct' } },
+                      disabled:      !enabled,
+                      label:         _('Product|To Product')
 
   - if product.to_product.present?
     .row.mt-3

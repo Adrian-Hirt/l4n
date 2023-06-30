@@ -23,18 +23,18 @@
               \-
           .col-md-5.d-flex.align-items-center.gap-1.justify-content-end
             = button _('Ticket|Remove ticket from myself'),
-                    remove_assignee_lan_ticket_path(id: ticket.id),
-                    method: :post,
-                    btn_icon: %i[fas fa-user-slash fa-fw],
-                    confirm: _('Ticket|Really remove ticket from myself?'),
-                    color: :danger,
-                    disabled: ticket.checked_in?
+                     remove_assignee_lan_ticket_path(id: ticket.id),
+                     method:   :post,
+                     btn_icon: %i[fas fa-user-slash fa-fw],
+                     confirm:  _('Ticket|Really remove ticket from myself?'),
+                     color:    :danger,
+                     disabled: ticket.checked_in?
     .card-footer
       = button _('Ticket|Show tickets'),
-          lan_ticket_path(op.lan_party),
-          btn_icon: %i[fas fa-arrow-up-right-from-square],
-          html: { target: :_blank },
-          color: :default
+               lan_ticket_path(op.lan_party),
+               btn_icon: %i[fas fa-arrow-up-right-from-square],
+               html:     { target: :_blank },
+               color:    :default
 
   - else
     .card-body

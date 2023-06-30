@@ -2,11 +2,17 @@
 -# the "remove seat" button, otherwise display the "get seat" button
 - unless ticket.checked_in?
   - if ticket.seat.present?
-    = button _('Seatmap|Remove seat'), remove_seat_lan_ticket_path(ticket), size: :sm, method: :post, color: :danger, class: 'text-nowrap'
+    = button _('Seatmap|Remove seat'),
+             remove_seat_lan_ticket_path(ticket),
+             size:   :sm,
+             method: :post,
+             color:  :danger,
+             class:  'text-nowrap'
   - else
     = simple_form_for :ticket, url: take_seat_lan_ticket_path(ticket) do |f|
-      = f.input :selected_seat_id, input_html: { class: 'selected-seat-input' },
-                                  as: :hidden,
-                                  wrapper_html: { style: 'margin-bottom: 0 !important;' }
+      = f.input :selected_seat_id,
+                input_html:   { class: 'selected-seat-input' },
+                as:           :hidden,
+                wrapper_html: { style: 'margin-bottom: 0 !important;' }
       = button_tag class: %i[btn btn-primary btn-sm icon-only-btn take-seat-button disabled text-nowrap], name: '' do
         = _('Seatmap|Get seat')

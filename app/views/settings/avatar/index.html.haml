@@ -25,9 +25,9 @@
               %label{ for: 'imageLoader', class: 'btn btn-outline-default mb-0 font-weight-normal' }= _('ImageUploader|Select file')
       .card-footer
         = button _('User|Upload avatar'),
-                nil,
-                html: { data: { url: '/settings/avatar', 'image-cropper-target' => 'uploadButton', 'action' => 'click->image-cropper#uploadImage' } },
-                disabled: !avatar_present,
-                color: :default
+                 nil,
+                 html:     { data: { url: '/settings/avatar', 'image-cropper-target' => 'uploadButton', 'action' => 'click->image-cropper#uploadImage' } },
+                 disabled: !avatar_present,
+                 color:    :default
         - if avatar_present
           = delete_button nil, title: _('User|Remove avatar'), href: settings_avatar_path

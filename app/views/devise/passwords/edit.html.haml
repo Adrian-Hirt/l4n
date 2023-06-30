@@ -7,8 +7,9 @@
       .card-body.pb-1
         = f.input :reset_password_token, as: :hidden
         = f.full_error :reset_password_token
-        = f.password :password, label: false,
-                                placeholder: _('User|New Password')
+        = f.password :password,
+                     label:       false,
+                     placeholder: _('User|New Password')
       .card-footer
         .d-grid.gap-3
           = f.save _('PasswordReset|Update password'), class: %i[btn-default]

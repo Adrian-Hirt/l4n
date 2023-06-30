@@ -19,8 +19,8 @@
   - if user && user.ticket_for(lan_party).present?
     .card-footer
       = button _('Ticket|Show ticket'),
-                lan_ticket_path(lan_party),
-                btn_icon: %i[fas fa-arrow-up-right-from-square],
-                html: { target: :_blank },
-                color: :default,
-                size: :sm
+               lan_ticket_path(lan_party),
+               btn_icon: %i[fas fa-arrow-up-right-from-square],
+               html:     { target: :_blank },
+               color:    :default,
+               size:     :sm

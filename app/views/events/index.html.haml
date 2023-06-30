@@ -8,7 +8,7 @@
         .mb-3
           .text-muted
             = _('Event|From %{start_date} to %{end_date}') % { start_date: l(event.next_date.start_date, format: :short),
-                                                              end_date: l(event.next_date.end_date, format: :short) }
+                                                               end_date:   l(event.next_date.end_date, format: :short) }
           - if event.next_date.location.present?
             .text-muted
               = "#{_('Event|Location')}:"

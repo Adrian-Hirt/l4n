@@ -3,16 +3,16 @@
   - if model.created?
     .d-grid.gap-2
       = button _('Tournament|Participate in tournament'),
-              register_for_tournament_tournament_team_path(model),
-              method: :post,
-              color: :default
+               register_for_tournament_tournament_team_path(model),
+               method: :post,
+               color:  :default
       = button _('Tournament|Delete team'),
-              model,
-              color: :danger,
-              confirm: _('Tournament|Leave tournament?'),
-              tag: :button,
-              html: { method: :delete },
-              classes: 'w-100'
+               model,
+               color:   :danger,
+               confirm: _('Tournament|Leave tournament?'),
+               tag:     :button,
+               html:    { method: :delete },
+               classes: 'w-100'
     %hr
     -# Display form to change the name & password of the form
     = simple_form_for model, wrapper: :input_group do |f|
@@ -25,18 +25,18 @@
   - elsif model.registered?
     .d-grid.gap-2
       = button _('Tournament|Remove team from tournament'),
-              unregister_from_tournament_tournament_team_path(model),
-              method: :post
+               unregister_from_tournament_tournament_team_path(model),
+               method: :post
   - else
     = _('Team|No actions possible')
 - elsif model.created?
   -# Case: Normal teammember with correct state
   = button _('Tournament|Leave team'),
-          op.user_team_membership,
-          color: :danger,
-          confirm: _('Tournament|Leave team?'),
-          tag: :button,
-          html: { method: :delete },
-          classes: 'w-100'
+           op.user_team_membership,
+           color:   :danger,
+           confirm: _('Tournament|Leave team?'),
+           tag:     :button,
+           html:    { method: :delete },
+           classes: 'w-100'
 - else
   = _('Team|No actions possible')

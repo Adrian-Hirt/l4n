@@ -1,9 +1,10 @@
 .d-flex.justify-content-center.align-items-center.sessions-page
   .card.devise-card
-    = simple_form_for resource, as: resource_name,
-                                  url: session_path(resource_name),
-                                  data: { turbo: false },
-                                  wrapper: :input_group do |f|
+    = simple_form_for resource,
+                      as:      resource_name,
+                      url:     session_path(resource_name),
+                      data:    { turbo: false },
+                      wrapper: :input_group do |f|
       .card-header.text-center
         %a.h1{ href: root_path }
           = AppConfig.application_name
@@ -14,10 +15,11 @@
           %small= link_to _('Session|Forgot password'), new_password_path(resource_name)
         - if devise_mapping.rememberable?
           .input-group
-            = f.input :remember_me, as: :boolean,
-                                    label: _('Session|Remember me'),
-                                    input_html: { class: 'checkbox-primary no-validation' },
-                                    wrapper_html: { style: 'margin-bottom: 0.25rem !important;' }
+            = f.input :remember_me,
+                      as:           :boolean,
+                      label:        _('Session|Remember me'),
+                      input_html:   { class: 'checkbox-primary no-validation' },
+                      wrapper_html: { style: 'margin-bottom: 0.25rem !important;' }
       .card-footer
         .d-grid.gap-3
           = f.save _('Session|Log in'), class: %i[btn-default]

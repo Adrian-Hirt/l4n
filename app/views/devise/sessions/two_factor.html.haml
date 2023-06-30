@@ -1,17 +1,19 @@
 .d-flex.justify-content-center.align-items-center.sessions-page
   .card.devise-card
-    = simple_form_for resource, as: resource_name,
-                                    url: session_path(resource_name),
-                                    data: { turbo: false },
-                                    method: :post do |f|
+    = simple_form_for resource,
+                      as:     resource_name,
+                      url:    session_path(resource_name),
+                      data:   { turbo: false },
+                      method: :post do |f|
       .card-header.text-center
         %a.h1{ href: root_path }
           = AppConfig.application_name
       .card-body
         %p.login-box-msg= _('Session|2FA authentication required hint')
-        = f.input :otp_attempt, label: false,
-                                placeholder: _('Session|2FA code from authenticator'),
-                                wrapper_html: { style: 'margin-bottom: 0 !important;' }
+        = f.input :otp_attempt,
+                  label:        false,
+                  placeholder:  _('Session|2FA code from authenticator'),
+                  wrapper_html: { style: 'margin-bottom: 0 !important;' }
       .card-footer
         .d-grid.gap-3
           = f.save _('Session|Submit 2FA code'), class: %i[btn-default]
