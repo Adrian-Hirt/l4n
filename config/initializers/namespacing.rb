@@ -1,7 +1,7 @@
 # Define a helper method
 def setup_namespacing(folder, module_name)
   # Remove the folder from the autoload paths
-  app_path = "#{Rails.root}/#{folder}"
+  app_path = Rails.root.join(folder.to_s).to_s
   ActiveSupport::Dependencies.autoload_paths.delete(app_path)
 
   # Define the module if not exists

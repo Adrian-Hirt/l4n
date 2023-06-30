@@ -62,7 +62,7 @@ class Product < ApplicationRecord
 
   # == Hooks =======================================================================
   before_create :add_availability_and_total_inventory
-  before_destroy :check_deleteable?
+  before_destroy :check_deleteable
 
   # == Scopes ======================================================================
 
@@ -95,7 +95,7 @@ class Product < ApplicationRecord
     self.total_inventory = inventory
   end
 
-  def check_deleteable?
+  def check_deleteable
     return if deleteable?
 
     throw :abort
