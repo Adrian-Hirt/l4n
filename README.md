@@ -82,6 +82,16 @@ Also, please note that in development mode, SSL is required by the application, 
 only connections over SSL are accepted, Strict-Transport-Security is enabled and cookies
 are marked as secure.
 
+## Useful commands
+
+Sometimes, if might be useful to have to have some CLI commands at hand. While most of the settings in L4N can be configured in the admin panel or the `.env` File (or env variables, if you're not using the docker-compose file), sometimes you might need to access the logfiles, rails console or something else, so here are some useful commands:
+
+| Task                              | Command in the L4N container      | Command from the host                                              |
+| --------------------------------- | --------------------------------- | ------------------------------------------------------------------ |
+| Restart the webserver (puma)      | `touch /app/tmp/restart.txt`      | `docker exec <container_name> touch /app/tmp/restart.txt`          |
+| Access the Rails console          | `rails c`                         | `docker exec <container_name> -it rails c`                         |
+| Read the logfiles as they come in | `tail -f /app/log/production.log` | `docker exec <container_name> -it tail -f /app/log/production.log` |
+
 ## Development
 
 ### Code style
