@@ -35,4 +35,15 @@ module ApplicationHelper
   def lan_party_progress_bar(lan_party)
     render partial: 'shared/lan_party_progress_bar', locals: { lan_party: lan_party }
   end
+
+  def color_theme
+    # If the user is set, take the value from the users account
+    return current_user.color_theme_preference if current_user
+
+    # Otherwise, check if we have a cookie for the theme
+    return cookies[:_l4n_color_theme] if cookies[:_l4n_color_theme].present?
+
+    # Otherwise, fall-back to 'auto'
+    'auto'
+  end
 end

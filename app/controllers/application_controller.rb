@@ -31,6 +31,14 @@ class ApplicationController < ActionController::Base
     redirect_back(fallback_location: root_path)
   end
 
+  def change_color_mode
+    new_mode = params[:mode]
+
+    current_user&.update(color_theme_preference: new_mode)
+    cookies[:_l4n_color_theme] = new_mode
+    redirect_back(fallback_location: root_path)
+  end
+
   private
 
   def set_gettext_locale

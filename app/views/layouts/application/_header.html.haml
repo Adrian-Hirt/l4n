@@ -40,6 +40,23 @@
       -# Right menu
       %ul.order-1.order-md-3.navbar-nav.ml-auto
         %li.nav-item.dropdown
+          %a.nav-link{ data: { 'bs-toggle' => :dropdown }, href: '#' }
+            = icon %i[fa fa-lightbulb]
+            = icon %i[fa fa-chevron-down]
+          %ul.dropdown-menu.dropdown-menu-end.dropdown-menu-dark.border-0.rounded-0
+            %li
+              %li
+              = button_to change_color_mode_path(mode: 'light'), data: { turbo: false }, class: 'dropdown-item' do
+                = icon %i[fas fa-sun]
+                = _('ColorTheme|Light')
+              %li
+              = button_to change_color_mode_path(mode: 'dark'), data: { turbo: false }, class: 'dropdown-item' do
+                = icon %i[fas fa-moon]
+                = _('ColorTheme|Dark')
+              = button_to change_color_mode_path(mode: 'auto'), data: { turbo: false }, class: 'dropdown-item' do
+                = icon %i[fa fa-adjust]
+                = _('ColorTheme|Auto')
+        %li.nav-item.dropdown
           - if current_user
             %a.nav-link{ data: { 'bs-toggle' => :dropdown }, href: '#' }
               = current_user.username

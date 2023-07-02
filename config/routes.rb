@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
   # == Settings =========================================================================
   post 'toggle_dark_mode', to: 'application#toggle_dark_mode'
+  post 'change_color_mode', to: 'application#change_color_mode'
 
   # == Password resetting ===============================================================
   match '/request_password_reset', to: 'password_resets#request_password_reset', via: %i[get post]

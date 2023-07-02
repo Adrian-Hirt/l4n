@@ -1,6 +1,16 @@
 !!!
-%html{ lang: FastGettext.locale, 'data-bs-theme' => 'dark' }
+%html{ lang: FastGettext.locale, 'data-bs-theme' => color_theme }
   %head
+    -# This is put here such that it runs as soon as possible, to avoid a flash of unstyled content
+    :javascript
+      if (document.documentElement.dataset['bsTheme'] === 'auto') {
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-bs-theme', 'dark')
+        } else {
+          document.documentElement.setAttribute('data-bs-theme', 'light')
+        }
+      }
+
     %title= page_title
     %meta{ content: 'width=device-width,initial-scale=1', name: 'viewport' }
     = csrf_meta_tags
