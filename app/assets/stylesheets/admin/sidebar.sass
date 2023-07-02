@@ -91,16 +91,17 @@
           color: white !important
           svg
             filter: drop-shadow(0 0 3px $sidenav-color)
-      .button_to
-        button
-          color: $sidenav-color !important
-          background-color: transparent
-          border: none
-          padding: 0
-          &:hover
-            color: white !important
-            svg
-              filter: drop-shadow(0 0 3px $sidenav-color)
+      button
+        color: $sidenav-color !important
+        background-color: transparent
+        border: none
+        padding: 0
+        &:hover
+          color: white !important
+          svg
+            filter: drop-shadow(0 0 3px $sidenav-color)
+        &.dropdown-item.active
+          background-color: $secondary
     .sidebar-footer-more-dots
       display: none
       height: 35px

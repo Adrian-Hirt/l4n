@@ -14,14 +14,6 @@ module ApplicationHelper
     nil
   end
 
-  def dark_mode_active?
-    current_user&.use_dark_mode || cookies[:_l4n_dark_mode].present?
-  end
-
-  def dark_mode_classes
-    'dark' if dark_mode_active?
-  end
-
   def admin_page_title
     breadcrumbs_on_rails.map(&:name).join(' > ')
   end
@@ -45,5 +37,11 @@ module ApplicationHelper
 
     # Otherwise, fall-back to 'auto'
     'auto'
+  end
+
+  def color_theme_active_classes(name, other_classes)
+    return "active #{other_classes}" if color_theme == name
+
+    other_classes
   end
 end
