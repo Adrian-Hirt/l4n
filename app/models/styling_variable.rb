@@ -57,7 +57,7 @@ class StylingVariable < ApplicationRecord
           output << '}'
         end
 
-        output.join("\n").html_safe
+        output.join("\n").html_safe # rubocop:disable Rails/OutputSafety
       end
     end
   end

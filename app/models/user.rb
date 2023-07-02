@@ -11,7 +11,7 @@ class User < ApplicationRecord
     light
     dark
     auto
-  ]
+  ].freeze
 
   # == Associations ================================================================
   # Avatar image

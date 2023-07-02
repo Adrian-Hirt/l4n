@@ -28,7 +28,6 @@ Rails.application.routes.draw do
   use_doorkeeper_openid_connect
 
   # == Settings =========================================================================
-  post 'toggle_dark_mode', to: 'application#toggle_dark_mode'
   post 'change_color_mode', to: 'application#change_color_mode'
 
   # == Password resetting ===============================================================
