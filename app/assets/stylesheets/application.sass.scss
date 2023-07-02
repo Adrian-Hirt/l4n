@@ -1,5 +1,6 @@
 // Libraries
-@import 'bootstrap/bootstrap.scss';
+@import 'bootstrap/scss/bootstrap';
+
 @import 'cropperjs/cropper.scss';
 
 // General stuff
@@ -32,9 +33,7 @@
 @import 'application/theme-variable-defaults';
 @import 'application/theming';
 @import 'application/body';
-@import 'application/buttons';
 @import 'application/cards';
-@import 'application/footer';
 @import 'application/homepage';
 @import 'application/users-table';
 @import 'application/sessions_page';

@@ -1,7 +1,7 @@
 .d-flex.justify-content-between.align-items-center.mb-3
   %h1
     = yield(:shop_page_title).presence || _('Shop')
-  %ul.nav.justify-content-end
+  %ul.nav.justify-content-end.shop-topnav
     %li.nav-item
       = link_to _('Shop'), shop_path, class: 'nav-link'
     - if current_user

@@ -44,7 +44,7 @@
             %a.nav-link{ data: { 'bs-toggle' => :dropdown }, href: '#' }
               = current_user.username
               = icon %i[fa fa-chevron-down]
-            %ul.dropdown-menu.dropdown-menu-end.dropdown-menu-dark
+            %ul.dropdown-menu.dropdown-menu-end.dropdown-menu-dark.border-0.rounded-0
               %li
                 = link_to current_user, class: %i[dropdown-item] do
                   = icon %i[fa fa-address-card fa-fw]
