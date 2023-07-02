@@ -66,7 +66,7 @@
                   = _('User|Logout')
           - elsif FeatureFlag.enabled?(:user_registration)
             %a.nav-link.dropdown-toggle{ data: { 'bs-toggle' => :dropdown }, href: '#' }= _('Login / Sign up')
-            %ul.dropdown-menu.dropdown-menu-end.dropdown-menu-dark
+            %ul.dropdown-menu.dropdown-menu-end.dropdown-menu-dark.border-0.rounded-0
               %li
                 = link_to _('User|Login'), new_user_session_path, class: %i[dropdown-item]
               %li

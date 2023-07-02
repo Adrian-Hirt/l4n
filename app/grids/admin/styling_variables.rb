@@ -8,7 +8,8 @@ module Grids
       model StylingVariable
 
       column :key
-      column :value
+      column :light_mode_value
+      column :dark_mode_value
       column :'datagrid-actions', html: true, header: false do |styling_variable|
         tag.div class: %i[datagrid-actions-wrapper] do
           safe_join([

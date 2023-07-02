@@ -3,7 +3,8 @@ module Operations::Admin::StylingVariable
     schema3 do
       hsh? :styling_variable do
         str? :key
-        str? :value
+        str? :light_mode_value
+        str? :dark_mode_value
       end
     end
 

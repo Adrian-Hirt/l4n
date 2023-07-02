@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_25_181235) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_02_191436) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -418,9 +418,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_25_181235) do
 
   create_table "styling_variables", force: :cascade do |t|
     t.string "key", null: false
-    t.string "value", null: false
+    t.string "light_mode_value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "dark_mode_value"
     t.index ["key"], name: "index_styling_variables_on_key", unique: true
   end
 
