@@ -9,6 +9,7 @@
 * Allow changing category of ticket to a category without a product
 * Allow configuring the sender for exception notifications & devise
   mails via env variables
+* Add light and dark color modes to frontend
 
 ### Changed
 
@@ -16,6 +17,7 @@
 * Allow users to delete their own account
 * Require OTP code to deactivate 2FA on an account
 * Update gem dependencies
+* Update bootstrap to `5.3.0`
 
 ## 1.8.1 - 2023-05-21
 
