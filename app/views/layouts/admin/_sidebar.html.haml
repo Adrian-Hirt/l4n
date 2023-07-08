@@ -25,8 +25,21 @@
         = link_to root_path do
           = icon %i[fas fa-house]
       .sidebar-footer-button
-        = button_to toggle_dark_mode_path, data: { turbo: false } do
-          = icon %i[fa fa-adjust]
+        %button.button_to{ 'data-bs-toggle' => 'dropdown' }
+          = icon %i[fa fa-lightbulb]
+        %ul.dropdown-menu.dropdown-menu-dark.border-0.rounded-0
+          %li
+            = button_to change_color_mode_path(mode: 'light'), data: { turbo: false }, class: color_theme_active_classes('light', 'dropdown-item px-3') do
+              = icon %i[fas fa-sun]
+              = _('ColorTheme|Light')
+          %li
+            = button_to change_color_mode_path(mode: 'dark'), data: { turbo: false }, class: color_theme_active_classes('dark', 'dropdown-item px-3') do
+              = icon %i[fas fa-moon]
+              = _('ColorTheme|Dark')
+          %li
+            = button_to change_color_mode_path(mode: 'auto'), data: { turbo: false }, class: color_theme_active_classes('auto', 'dropdown-item px-3') do
+              = icon %i[fa fa-adjust]
+              = _('ColorTheme|Auto')
       .sidebar-footer-button
         = button_to destroy_user_session_path, method: :delete, html: { turbo: false } do
           = icon %i[fa fa-sign-out-alt fa-fw]

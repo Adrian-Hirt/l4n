@@ -11,5 +11,5 @@
       .card-header
         = _('Admin|StylingVariables|Generated CSS')
       .card-body
-        %code
+        %pre.styling-css-output
           = simple_format StylingVariable.generate_css

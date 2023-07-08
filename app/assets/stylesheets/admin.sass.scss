@@ -1,6 +1,5 @@
 // Libraries
-@import 'bootstrap/bootstrap.scss';
-@import 'bootstrap-nightshade/bootstrap-nightshade.min.scss';
+@import 'bootstrap/scss/bootstrap';
 @import 'cropperjs/cropper.scss';
 @import 'easymde/easymde.scss';
 
@@ -25,10 +24,10 @@
 @import 'components/users';
 
 // Admin CSS stuff
+@import 'admin/theming';
 @import 'admin/body';
 @import 'admin/cards';
-@import 'admin/dark_mode';
 @import 'admin/footer';
 @import 'admin/header';
-@import 'admin/light_mode';
 @import 'admin/sidebar';
+@import 'admin/styling_variables';

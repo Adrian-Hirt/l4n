@@ -2,9 +2,11 @@
   = simple_form_for [:admin, model] do |f|
     .card-body
       .row
-        .col-md-6
+        .col-md-4
           = f.input :key, as: :select, include_blank: _('Form|Select|Blank'), collection: op.key_candidates
-        .col-md-6
-          = f.input :value
+        .col-md-4
+          = f.input :light_mode_value
+        .col-md-4
+          = f.input :dark_mode_value
     .card-footer
       = f.save

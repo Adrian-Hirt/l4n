@@ -7,6 +7,12 @@ class User < ApplicationRecord
   MIN_PASSWORD_LENGTH = 10
   MAX_PASSWORD_LENGTH = 72 # Limit from bcrypt!
 
+  AVAILABLE_THEME_MODES = %w[
+    light
+    dark
+    auto
+  ].freeze
+
   # == Associations ================================================================
   # Avatar image
   has_one_attached :avatar do |attachable|
@@ -44,9 +50,9 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }, length: { maximum: 255 }
   validates :password, presence: true, length: { minimum: MIN_PASSWORD_LENGTH, maximum: MAX_PASSWORD_LENGTH }, if: -> { password.present? || new_record? }
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }
-  validates_boolean :use_dark_mode
   validates :website, length: { maximum: 255 }
   validates :avatar, size: { less_than: 5.megabytes, message: _('File is too large, max. allowed %{size}') % { size: '5MB' } }, content_type: %r{\Aimage/.*\z}
+  validates :color_theme_preference, presence: true, inclusion: AVAILABLE_THEME_MODES
 
   # == Hooks =======================================================================
   before_save { self.email = email.downcase } # turns email to downcase for uniqueness

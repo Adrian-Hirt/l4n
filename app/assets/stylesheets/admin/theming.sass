@@ -1,0 +1,73 @@
+html[data-bs-theme="light"]
+  // Background color
+  --l4n-admin-bg-color: #eeeeee
+
+  // Text color
+  --l4n-admin-text-color: black
+
+  // Background of the footer
+  --l4n-admin-footer-bg: white
+
+  // Background of the cards
+  --l4n-admin-card-bg-color: white
+
+html[data-bs-theme="dark"]
+  // Background color
+  --l4n-admin-bg-color: #222
+
+  // Text color
+  --l4n-admin-text-color: #adb5bd
+
+  // Background of the footer
+  --l4n-admin-footer-bg: black
+
+  // Background of the cards
+  --l4n-admin-card-bg-color: #2f2f2f
+
+  .swal2-modal
+    background-color: var(--l4n-admin-card-bg-color)
+    color: var(--l4n-admin-text-color)
+  .list-group-item
+    background-color: var(--l4n-admin-card-bg-color)
+
+  // Markdown editor
+  .EasyMDEContainer
+    background-color: transparent !important
+    .CodeMirror,
+    .editor-preview,
+    .editor-toolbar
+      color: $white !important
+      border-color: $gray-600 !important
+      background-color: #222 !important
+      .CodeMirror-selectedtext
+        color: black
+    .editor-preview
+      pre
+        background-color: #333 !important
+    .cm-s-easymde
+      .CodeMirror-cursor
+        border-color: $gray-100 !important
+    .editor-toolbar
+      button
+        color: $white !important
+        border: 0 !important
+        &.active,
+        &:hover
+          background-color: $secondary !important
+
+.swal2-styled.swal2-confirm
+  background-color: $primary
+  &:focus
+    box-shadow: 0 0 0 3px rgba($primary, 50%)
+
+body
+  background-color: var(--l4n-admin-bg-color)
+  color: var(--l4n-admin-text-color)
+
+.card
+  background-color: var(--l4n-admin-card-bg-color) !important
+  .card-footer
+    background-color: var(--l4n-admin-card-bg-color) !important
+
+footer
+  background-color: var(--l4n-admin-footer-bg)

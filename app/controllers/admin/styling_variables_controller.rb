@@ -34,7 +34,7 @@ module Admin
       else
         add_breadcrumb _('Admin|%{model_name}|Edit') % { model_name: _('StylingVariable') }
         flash[:danger] = _('Admin|%{model_name}|Update failed') % { model_name: _('StylingVariable') }
-        render :new, status: :unprocessable_entity
+        render :edit, status: :unprocessable_entity
       end
     end
 
