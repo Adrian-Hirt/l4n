@@ -1,7 +1,17 @@
 !!!
-%html{lang: FastGettext.locale}
+- color_theme = cookies[:_l4n_color_theme].presence || 'auto'
+%html{ lang: FastGettext.locale, 'data-bs-theme' => color_theme }
   %head
-    %title L4n
+    -# This is put here such that it runs as soon as possible, to avoid a flash of unstyled content
+    :javascript
+      if (document.documentElement.dataset['bsTheme'] === 'auto') {
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-bs-theme', 'dark')
+        } else {
+          document.documentElement.setAttribute('data-bs-theme', 'light')
+        }
+      }
+    %title L4n Dummy Payment
     %meta{content: 'width=device-width,initial-scale=1', name: 'viewport'}
     = csrf_meta_tags
     = csp_meta_tag
