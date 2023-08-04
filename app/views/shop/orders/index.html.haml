@@ -19,7 +19,7 @@
             %td.align-middle= order.order_items.sum(&:quantity)
             %td.text-end= show_button order, href: shop_order_path(id: order.uuid), size: :sm, icon_only: true, color: :default
     - else
-      = _('Orders|No payment pending orders')
+      .p-3= _('Orders|No payment pending orders')
 .card.mb-3
   .card-header
     = _('Orders|Paid orders')
@@ -46,4 +46,4 @@
             %td.align-middle= order.order_items.sum(&:quantity)
             %td.text-end= show_button order, href: shop_order_path(id: order.uuid), size: :sm, icon_only: true, color: :default
     - else
-      = _('Orders|No orders yet')
+      .p-3= _('Orders|No orders yet')
