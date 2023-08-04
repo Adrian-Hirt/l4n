@@ -14,8 +14,8 @@ module Operations::Ticket
       # Throw exception if the ticket is nil
       fail Operations::Exceptions::OpFailed, _('Ticket|Not found') if ticket.nil?
 
-      # Check that the current user can assign the ticket
-      fail CanCan::AccessDenied unless context.user == ticket.order.user
+      # Check that the current user can assign the ticket (only if context user is given)
+      fail CanCan::AccessDenied if context.user.present? && context.user != ticket.order.user
 
       # Throw exception if the ticket already has an user assigned
       fail Operations::Exceptions::OpFailed, _('Ticket|Already assigned') if ticket.assignee.present?

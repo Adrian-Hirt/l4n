@@ -1,13 +1,28 @@
 module Operations::Behaviours
   class Ticket < Base
     def perform
+      tickets = []
+
       osparams.order_item.quantity.times do
-        ::Ticket.create!({
+        ticket = ::Ticket.create!({
                            lan_party:            osparams.product.seat_category.lan_party,
                            seat_category:        osparams.product.seat_category,
                            order:                osparams.order_item.order,
                            product_variant_name: osparams.order_item.product_variant.name
                          })
+
+        tickets << ticket
+      end
+
+      # Assign the ticket to the user if the user does not have a ticket for that
+      # lan party already
+      if tickets.count == 1
+        user = osparams.order_item.order.user
+        ticket_to_assign = tickets.first
+
+        if user.ticket_for(osparams.product.seat_category.lan_party).nil?
+          run_sub! Operations::Ticket::AssignToUser, id: ticket_to_assign.id, assignee: { user_id: user.id }
+        end
       end
     end
 
@@ -21,6 +36,10 @@ module Operations::Behaviours
 
     def self.render_view(form, product, enabled)
       ApplicationController.render partial: 'behaviours/ticket', locals: { f: form, op: self, product: product, enabled: enabled }
+    end
+
+    def self.order_show_hint(order)
+      ApplicationController.render partial: 'behaviours/order_show_hints/ticket', locals: { order: order }
     end
   end
 end
