@@ -1,7 +1,7 @@
 - provide :shop_page_title, _('Your Order')
 = render partial: 'shop/shared/header'
 
-.card
+.card.mb-3
   .card-header
     = model.uuid
   .card-body
@@ -47,3 +47,6 @@
       %tr.border-top
         %td{ colspan: 3 }= _('Order|Total')
         %td= money_formatted(model.total)
+
+
+= op.product_behaviour_hints.join.html_safe

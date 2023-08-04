@@ -46,5 +46,12 @@ module Operations::Behaviours
       # needs to specify this.
       false
     end
+
+    def self.order_show_hint(order)
+      # By default, don't need to show any hint views. Overwrite
+      # this if you need to display a hint in the "Show order" view
+      # for an order that is completed.
+      nil
+    end
   end
 end

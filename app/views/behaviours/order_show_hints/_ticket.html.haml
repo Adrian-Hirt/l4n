@@ -1,0 +1,44 @@
+- tickets = Ticket.where(order: order)
+- lan_party = tickets.first.lan_party
+
+.card
+  .card-header
+    = _('Tickets')
+  .card-body.p-0
+    - if tickets.any?(&:created?)
+      .px-3.pt-3
+        .alert.alert-warning.mb-0
+          -# rubocop:disable Rails/OutputSafety
+          = _('Order|You have unassigned tickets, make sure to assign the tickets to the user that will use it! %{click_here_link} to assign the tickets!').html_safe % { click_here_link: link_to(_('Click here'), lan_tickets_path(lan_party)) }
+          -# rubocop:enable Rails/OutputSafety!
+      %hr
+
+    %table.table.mb-0
+      %tr
+        %th= _('Ticket|Category')
+        %th= _('Ticket|Product_variant_name')
+        %th= _('Ticket|Seat')
+        %th= _('Ticket|Assignee')
+      - tickets.order(:id).each do |ticket|
+        %tr
+          %td.align-middle
+            = ticket_seat_category_badge(ticket)
+          %td.align-middle
+            = ticket.product_variant_name.presence || '-'
+          %td.align-middle
+            - if ticket.seat.present?
+              = link_to lan_seatmap_path(id: lan_party, highlight: ticket.seat.id), target: :_blank, rel: :noopener do
+                = icon %i[fas fa-arrow-up-right-from-square]
+                = ticket.seat.name_or_id
+            - else
+              \-
+          %td.align-middle
+            .d-flex.align-items-center
+              - if ticket.assignee.present?
+                -# If assignee is present, we display the name of the assignee
+                .me-2.flex-grow-1
+                  = link_to ticket.assignee, target: :_blank, rel: :noopener do
+                    = icon %i[fas fa-arrow-up-right-from-square]
+                    = ticket.assignee.username
+              - else
+                = link_to _('Ticket|No user assigned, click here to assign'), lan_tickets_path(lan_party)
