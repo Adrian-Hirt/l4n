@@ -20,7 +20,7 @@ module PaypalPayment
     def execute_payment
       if run PaypalPayment::ExecutePayment
         flash[:success] = _('Order|Successfully paid for the order')
-        render json: { status: 'ok', path: main_app.shop_path }
+        render json: { status: 'ok', path: main_app.shop_order_path(id: params[:order_id]) }
       else
         render json: { status: 'error', message: _('PaypalPaymentGateway|Something went wrong, please try again') }
       end
