@@ -41,4 +41,19 @@ class ApplicationController < ActionController::Base
   def enable_sidebar_layout
     @use_sidebar_layout = FeatureFlag.enabled?(:frontend_sidebar)
   end
+
+  def update_turbo_modal(partial:, partial_locals:)
+    respond_to do |format|
+      format.turbo_stream do
+        render 'components/modal_update',
+               status: :unprocessable_entity,
+               locals: { partial: partial, partial_locals: partial_locals }
+      end
+    end
+  end
+
+  def show_turbo_modal(partial:, partial_locals:, modal_title:)
+    render partial: 'components/remote_modal',
+           locals:  { partial: partial, partial_locals: partial_locals, modal_title: modal_title }
+  end
 end

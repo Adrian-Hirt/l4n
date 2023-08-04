@@ -19,6 +19,9 @@ application.register('image-cropper', ImageCropperController);
 import RedirectController from './redirect_controller';
 application.register('redirect', RedirectController);
 
+import RemoteModalController from './remote_modal_controller';
+application.register('remote-modal', RemoteModalController);
+
 import SeatmapController from './seatmap_controller';
 application.register('seatmap', SeatmapController);
 

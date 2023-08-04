@@ -66,3 +66,46 @@ When using Paypal gateway:
 
 * `PAYPAL_ID`
 * `PAYPAL_SECRET`
+
+
+## Use remote form modal
+
+L4N features a remote form modal, which enables to create / update data without having to navigate to a new page.
+
+The feature is used as follows:
+
+**Link to open the modal**:
+
+```ruby
+= link_to "New item", new_item_path, class: "btn btn-primary", data: { turbo_frame: "remote_modal" }
+```
+
+**Controller**:
+
+```ruby
+def new
+  @item = NewsPost.new
+
+  show_turbo_modal modal_title: 'New Item', partial: 'form', partial_locals: { item: @item }
+end
+
+def create
+  @item = NewsPost.new(params[:news_post].permit(:title))
+
+  if @item.save
+    redirect_to root_path, notice: "Item was successfully created."
+  else
+    update_turbo_modal partial: 'form', partial_locals: { item: @item }
+  end
+end
+```
+
+**Form partial**:
+
+Contains only the content to be rendered in the modal!
+
+```ruby
+= simple_form_for item , url: items_path do |f|
+  = f.input :title
+  = f.save
+```

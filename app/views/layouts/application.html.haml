@@ -37,3 +37,5 @@
         - else
           = yield
     = render partial: 'layouts/application/footer'
+
+    = turbo_frame_tag 'remote_modal', target: '_top'
