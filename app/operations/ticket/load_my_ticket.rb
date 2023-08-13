@@ -29,6 +29,7 @@ module Operations::Ticket
       qrcode.as_svg(
         offset:          0,
         color:           '000',
+        fill:             'fff',
         shape_rendering: 'crispEdges',
         module_size:     6,
         viewbox:         true
