@@ -7,7 +7,8 @@
       %th= _('Ticket|Product_variant_name')
       %th= _('Ticket|Seat')
       %th= _('Ticket|Assignee')
-      %th= _('Ticket|Apply upgrade')
+      - if op.ticket_upgrades.any?
+        %th= _('Ticket|Apply upgrade')
     - op.available_tickets.order(:id).each do |ticket|
       %tr
         %td.align-middle
@@ -24,17 +25,18 @@
         %td.align-middle
           .d-flex.align-items-center
             = render partial: 'ticket_assignee_actions', locals: { ticket: ticket }
-        %td.align-middle
-          = simple_form_for :ticket_upgrade, url: apply_upgrade_lan_tickets_path(ticket) do |f|
-            .d-flex
-              = f.input :ticket_id, input_html: { value: ticket.id }, as: :hidden
-              - available_upgrades = op.ticket_upgrades.reject(&:used).filter { |upgrade| upgrade.from_product.seat_category == ticket.seat_category }
-              = f.input :upgrade_id,
-                        as:            :select,
-                        collection:    available_upgrades,
-                        include_blank: _('Form|Select|Blank'),
-                        label_method:  :name,
-                        label:         false,
-                        wrapper_html:  { style: 'margin-bottom: 0 !important;', class: 'me-1 flex-grow-1' },
-                        disabled:      available_upgrades.none?
-              = f.save _('TicketUpgrade|Upgrade'), class: %i[btn-default], disabled: available_upgrades.none?
+        - if op.ticket_upgrades.any?
+          %td.align-middle
+            = simple_form_for :ticket_upgrade, url: apply_upgrade_lan_tickets_path(ticket) do |f|
+              .d-flex
+                = f.input :ticket_id, input_html: { value: ticket.id }, as: :hidden
+                - available_upgrades = op.ticket_upgrades.reject(&:used).filter { |upgrade| upgrade.from_product.seat_category == ticket.seat_category }
+                = f.input :upgrade_id,
+                          as:            :select,
+                          collection:    available_upgrades,
+                          include_blank: _('Form|Select|Blank'),
+                          label_method:  :name,
+                          label:         false,
+                          wrapper_html:  { style: 'margin-bottom: 0 !important;', class: 'me-1 flex-grow-1' },
+                          disabled:      available_upgrades.none?
+                = f.save _('TicketUpgrade|Upgrade'), class: %i[btn-default], disabled: available_upgrades.none?

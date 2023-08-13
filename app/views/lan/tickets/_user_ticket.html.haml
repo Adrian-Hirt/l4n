@@ -1,6 +1,13 @@
 .card.mb-3
-  .card-header
-    = _('Seatmap|Your tickets')
+  .card-header.d-flex.justify-content-between.align-items-center
+    = _('Seatmap|Your assigned tickets')
+    - if op.tickets_for_lan_party.any?
+      = button _('Ticket|Show ticket QR codes'),
+                lan_ticket_path(op.lan_party),
+                btn_icon: %i[fas fa-arrow-up-right-from-square],
+                html:     { target: :_blank },
+                color:    :default,
+                size: :sm
   - if op.tickets_for_lan_party.present?
     .card-body
       - op.tickets_for_lan_party.each_with_index do |ticket, index|
@@ -26,16 +33,10 @@
                      remove_assignee_lan_ticket_path(id: ticket.id),
                      method:   :post,
                      btn_icon: %i[fas fa-user-slash fa-fw],
-                     confirm:  _('Ticket|Really remove ticket from myself?'),
+                     confirm:  _('Ticket|Really remove ticket from your account?'),
                      color:    :danger,
-                     disabled: ticket.checked_in?
-    .card-footer
-      = button _('Ticket|Show tickets'),
-               lan_ticket_path(op.lan_party),
-               btn_icon: %i[fas fa-arrow-up-right-from-square],
-               html:     { target: :_blank },
-               color:    :default
-
+                     disabled: ticket.checked_in?,
+                     size: :sm
   - else
     .card-body
       = _('Ticket|You don\'t have a ticket assigned yet, purchase a ticket or assign yourself a ticket below')

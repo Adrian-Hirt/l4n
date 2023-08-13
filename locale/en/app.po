@@ -3960,7 +3960,7 @@ msgid "Users|Autocomplete|Nothing found"
 msgstr "Nothing found"
 
 msgid "Users|Autocomplete|Type to search"
-msgstr "Type to search"
+msgstr "Type username to search user"
 
 msgid "User|2FA already activated"
 msgstr "2FA already activated"

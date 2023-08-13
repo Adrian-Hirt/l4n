@@ -35,7 +35,7 @@
 
       .card.mb-3
         .card-header
-          = _('Seatmap|Your available tickets')
+          = _('Seatmap|Your tickets')
         .card-body
           = turbo_frame_tag :tickets do
             = render partial: 'tickets', locals: { tickets: op.available_tickets }

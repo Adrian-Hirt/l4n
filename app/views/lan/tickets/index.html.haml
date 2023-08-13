@@ -5,15 +5,15 @@
 
 .card.mb-3
   .card-header
-    = _('Tickets|Manage my tickets')
+    = _('Tickets|Purchased tickets')
   .card-body
-    = _('Tickets|Ticket manage view hint')
-    %hr
+    .small.text-muted.mb-3= _('Tickets|Ticket manage view hint')
+
     = turbo_frame_tag :tickets do
       = render partial: 'tickets'
 .card
   .card-header
-    = _('TicketUpgrades|Manage my ticket upgrades')
+    = _('TicketUpgrades|Purchased ticket upgrades')
   .card-body
     - if op.ticket_upgrades.none?
       = _('TicketUpgrades|You don\'t have any upgrades for this event')

@@ -1,10 +1,10 @@
 - if op.ticket_for_lan_party.present?
   .card.mb-3
-    .card-header
-      = _('Seatmap|Your ticket')
+    -# .card-header
+    -#   = _('Seatmap|Your ticket')
     .card-body
       .d-grid
-        = button _('Ticket|Show ticket'),
+        = button _('Ticket|Show QR code of tickets'),
                  lan_ticket_path(model),
                  btn_icon: %i[fas fa-arrow-up-right-from-square],
                  html:     { target: :_blank },

@@ -13,4 +13,6 @@
   border-radius: unset
 
 button.swal2-styled.swal2-confirm
-  @include button-variant($primary, $primary)
+  background-color: $primary
+  &:focus
+    box-shadow: 0 0 0 3px rgba($primary, 50%)

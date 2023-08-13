@@ -9,13 +9,11 @@
   - if ticket.checked_in?
     = button nil, nil, size: :sm, disabled: true, btn_icon: %i[fas fa-user-slash fa-fw], icon_only: true, color: :danger
   - else
-    = button nil,
+    = button _('Ticket|Remove assigned user'),
              remove_assignee_lan_ticket_path(id: ticket.id),
              size:      :sm,
              method:    :post,
              btn_icon:  %i[fas fa-user-slash fa-fw],
-             icon_only: true,
-             html:      { title: _('Ticket|Remove assignation') },
              color:     :danger
 
 - else
@@ -24,7 +22,7 @@
       .d-flex
         %input.form-control.rounded-0.string.py-0.seatmap-username-input.flex-grow-1{ 'data-autocomplete-target' => 'input', placeholder: _('Users|Autocomplete|Type to search') }
         = f.input :user_id, label: false, input_html: { data: { 'autocomplete-target' => 'hidden' } }, as: :hidden, wrapper_html: { style: 'margin-bottom: 0 !important;' }
-        = f.save '>', style: 'border-radius: 0; width: 2.25rem;', class: %i[rounded-end btn-sm]
+        = f.save _('Assign to user'), style: 'border-radius: 0 !important;', class: %i[rounded-end btn-sm]
     %ul.shadow.user-autocomplete-popup.list-group{ 'data-autocomplete-target' => 'results' }
 
 
@@ -32,10 +30,7 @@
   -# we display a "assign to myself" button
   - if op.lan_party.users_may_have_multiple_tickets_assigned? || op.tickets_for_lan_party.none?
     .ms-2
-      = button nil,
+      = button _('Ticket|Assign to myself'),
                assign_lan_ticket_path(id: ticket.id, assignee: { user_id: current_user.id }),
                size:      :sm,
-               method:    :post,
-               btn_icon:  %i[fas fa-user-plus fa-fw],
-               icon_only: true,
-               html:      { title: _('Ticket|Assign to myself') }
+               method:    :post

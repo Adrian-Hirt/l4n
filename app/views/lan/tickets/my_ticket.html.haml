@@ -1,13 +1,13 @@
 - provide :page_title, _('Ticket|Tickets for %{lan_name}') % { lan_name: model.name }
 
 .row
-  - op.tickets.each do |ticket|
+  - if op.tickets.count == 1
+    - ticket = op.tickets.first
     .col-md-6.mb-3
       .card
-        .card-header
-          = _('Ticket|Ticket for %{lan_name}') % { lan_name: model.name }
         .card-body
           .text-center.ticket-qr= op.qr_code_for(ticket).html_safe # rubocop:disable Rails/OutputSafety
+    .col-md.6
       .card
         %table.table.table-striped.table-borderless.mb-0.table-hover
           %tr
@@ -35,3 +35,37 @@
           %tr
             %td= _('Ticket|Status')
             %td= ticket.humanized_status
+
+  - else
+    - op.tickets.each do |ticket|
+      .col-md-6.mb-3
+        .card
+          .card-body
+            .text-center.ticket-qr= op.qr_code_for(ticket).html_safe # rubocop:disable Rails/OutputSafety
+        .card
+          %table.table.table-striped.table-borderless.mb-0.table-hover
+            %tr
+              %td= _('Ticket|Username')
+              %td= current_user.username
+            %tr
+              %td= _('Ticket|Seat')
+              %td
+                - if ticket.seat.present?
+                  = link_to lan_seatmap_path(highlight: ticket.seat.id) do
+                    = icon %i[fas fa-arrow-up-right-from-square]
+                    = ticket.seat.name_or_id
+                - else
+                  \-
+            %tr
+              %td= _('Ticket|Seat category')
+              %td
+                -# haml-lint:disable InlineStyles
+                .badge{ style: "background-color: #{ticket.seat_category.color_for_view}; color: #{ticket.seat_category.font_color_for_view}" }
+                  = ticket.seat_category.name
+                -# haml-lint:enable InlineStyles
+            %tr
+              %td= _('Ticket|Product_variant_name')
+              %td= ticket.product_variant_name.presence || '-'
+            %tr
+              %td= _('Ticket|Status')
+              %td= ticket.humanized_status
