@@ -155,3 +155,8 @@ Rails/ThreeStateBooleanColumn:
     - db/migrate/20210524120137_add_otp_secret_key_to_users.rb
     - db/migrate/20211220111608_create_pages.rb
     - db/migrate/20220924131014_add_devise_two_factor_to_users.rb
+
+# Does not work in haml files
+Lint/RedundantCopDisableDirective:
+  Exclude:
+    - 'app/views/**/*'

@@ -49,19 +49,12 @@
           %span.nav-item-text= _('Admin|MenuItems')
   - if can?(:manage, :shop) || can?(:use, :payment_assist)
     %li.nav-item.dropdown
-      %a.nav-link.collapse-link{
-                                  data: { 'bs-toggle' => 'collapse' },
-                                  href: '#shop-collapse',
-                                  class: sidenav_collapser_classes(:products, :orders, :product_categories, :dashboard, :promotions, :payment_assist)
-                                }
+      %a.nav-link.collapse-link{ data: { 'bs-toggle' => 'collapse' }, href: '#shop-collapse', class: sidenav_collapser_classes(:products, :orders, :product_categories, :dashboard, :promotions, :payment_assist) }
         %span
           %i.nav-icon.fas.fa-shop.fa-fw
           %span.nav-item-text= _('Admin|Shop')
         %i.right.fas.fa-angle-right.dropdown-icon
-      .collapse#shop-collapse{
-                                class: sidenav_collapse_classes(:products, :orders, :product_categories, :dashboard, :promotions, :payment_assist),
-                                data: { 'bs-parent' => '.sidenav' }
-                              }
+      .collapse#shop-collapse{ class: sidenav_collapse_classes(:products, :orders, :product_categories, :dashboard, :promotions, :payment_assist), data: { 'bs-parent' => '.sidenav' } }
         %ul.nav.nav-pills.flex-column
           - if can?(:manage, :shop)
             %li.nav-item
