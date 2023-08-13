@@ -3,11 +3,11 @@
     = _('Seatmap|Your assigned tickets')
     - if op.tickets_for_lan_party.any?
       = button _('Ticket|Show QR code of tickets'),
-                lan_ticket_path(op.lan_party),
-                btn_icon: %i[fas fa-arrow-up-right-from-square],
-                html:     { target: :_blank },
-                color:    :default,
-                size: :sm
+               lan_ticket_path(op.lan_party),
+               btn_icon: %i[fas fa-arrow-up-right-from-square],
+               html:     { target: :_blank },
+               color:    :default,
+               size:     :sm
   - if op.tickets_for_lan_party.present?
     .card-body
       - op.tickets_for_lan_party.each_with_index do |ticket, index|
@@ -36,7 +36,7 @@
                      confirm:  _('Ticket|Really remove ticket from your account?'),
                      color:    :danger,
                      disabled: ticket.checked_in?,
-                     size: :sm
+                     size:     :sm
   - else
     .card-body
       = _('Ticket|You don\'t have a ticket assigned yet, purchase a ticket or assign yourself a ticket below')

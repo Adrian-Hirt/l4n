@@ -11,10 +11,10 @@
   - else
     = button _('Ticket|Remove assigned user'),
              remove_assignee_lan_ticket_path(id: ticket.id),
-             size:      :sm,
-             method:    :post,
-             btn_icon:  %i[fas fa-user-slash fa-fw],
-             color:     :danger
+             size:     :sm,
+             method:   :post,
+             btn_icon: %i[fas fa-user-slash fa-fw],
+             color:    :danger
 
 - else
   .flex-grow-1{ data: { autocomplete: { 'url-value' => autocomplete_users_path, 'min-length-value' => '3' }, controller: 'autocomplete' } }
@@ -32,5 +32,5 @@
     .ms-2
       = button _('Ticket|Assign to myself'),
                assign_lan_ticket_path(id: ticket.id, assignee: { user_id: current_user.id }),
-               size:      :sm,
-               method:    :post
+               size:   :sm,
+               method: :post
