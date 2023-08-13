@@ -49,22 +49,22 @@ class ApplicationTest < ActiveSupport::TestCase
     @context = nil
   end
 
-  def run_op(operation, *args)
+  def run_op(operation, *)
     fail 'Can only be used within the `as_user` block' if @context.nil?
 
-    @context.run operation, *args
+    @context.run(operation, *)
   end
 
-  def run_op!(operation, *args)
+  def run_op!(operation, *)
     fail 'Can only be used within the `as_user` block' if @context.nil?
 
-    @context.run! operation, *args
+    @context.run!(operation, *)
   end
 
-  def build_op(operation, *args)
+  def build_op(operation, *)
     fail 'Can only be used within the `as_user` block' if @context.nil?
 
-    operation.new(@context, *args)
+    operation.new(@context, *)
   end
 
   private

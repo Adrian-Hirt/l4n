@@ -9,8 +9,8 @@ class ApplicationRecord < ActiveRecord::Base
     end
   end
 
-  def self.validates_boolean(attribute, **options)
-    validates attribute, inclusion: [true, false], **options
+  def self.validates_boolean(attribute, **)
+    validates(attribute, inclusion: [true, false], **)
   end
 
   def self.translate_enums

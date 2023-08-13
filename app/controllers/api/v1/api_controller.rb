@@ -39,7 +39,7 @@ module Api
         return unauthorized! if api_key.blank?
 
         # Find the application with the api_key
-        return unauthorized! if ApiApplication.where(api_key: api_key).none?
+        unauthorized! if ApiApplication.where(api_key: api_key).none?
       end
 
       # 401 response

@@ -1,12 +1,12 @@
 module MarkdownEditor
-  def markdown(*args, **kwargs, &)
+  def markdown(*, **kwargs, &)
     url = kwargs.delete(:preview_url)
     kwargs[:input_html] ||= {}
     kwargs[:input_html][:data] = {
       preview_url: url,
       controller:  'admin--markdown-editor'
     }
-    input(*args, **kwargs, &)
+    input(*, **kwargs, &)
   end
 end
 

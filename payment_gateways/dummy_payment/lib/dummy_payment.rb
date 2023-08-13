@@ -2,8 +2,8 @@ require 'dummy_payment/version'
 require 'dummy_payment/engine'
 
 module DummyPayment
-  def self.payment_path(*args)
-    DummyPayment::Engine.routes.url_helpers.start_payment_path(*args)
+  def self.payment_path(*)
+    DummyPayment::Engine.routes.url_helpers.start_payment_path(*)
   end
 
   def self.name
