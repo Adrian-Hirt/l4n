@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.9.0 - UNRELEASED
+## 1.9.0 - 2023-08-13
 
 ### Added
 
