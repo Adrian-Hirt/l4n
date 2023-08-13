@@ -4,7 +4,7 @@ ruby '3.2.2'
 
 # Rails and rails-y stuff
 gem 'bootsnap', '>= 1.4.4', require: false
-gem 'rails', '~> 7.0.6'
+gem 'rails', '~> 7.0.7'
 
 # Authentication & Authorization
 gem 'cancancan', '~> 3.5.0'
@@ -95,7 +95,7 @@ group :development do
   gem 'ruby_parser', require: false
 
   # Code analysis and standards
-  gem 'haml_lint', '~> 0.46.0', require: false
+  gem 'haml_lint', '~> 0.49.0', require: false
   gem 'rubocop', '~> 1.24'
   gem 'rubocop-performance', '~> 1.13'
   gem 'rubocop-rails', '~> 2.13'
