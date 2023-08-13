@@ -1,7 +1,7 @@
 - provide :page_title, _('Seatmap')
 
 - if user_signed_in? && op.available_tickets.any?(&:created?)
-  .alert.alert-warning
+  .alert.alert-warning.rounded-0
     -# rubocop:disable Rails/OutputSafety
     = _('SeatMap|You have unassigned tickets, %{link} to assign your tickets!').html_safe % { link: link_to(_('Click here'), lan_tickets_path(op.lan_party)) }
     -# rubocop:enable Rails/OutputSafety

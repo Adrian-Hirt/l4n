@@ -7,7 +7,7 @@
   .card-body.p-0
     - if tickets.any?(&:created?)
       .px-3.pt-3
-        .alert.alert-warning.mb-0
+        .alert.alert-warning.mb-0.rounded-0
           -# rubocop:disable Rails/OutputSafety
           = _('Order|You have unassigned tickets, make sure to assign the tickets to the user that will use it! %{click_here_link} to assign the tickets!').html_safe % { click_here_link: link_to(_('Click here'), lan_tickets_path(lan_party)) }
           -# rubocop:enable Rails/OutputSafety!
