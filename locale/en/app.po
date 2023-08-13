@@ -974,14 +974,11 @@ msgstr "ID"
 msgid "ApiApplication|Name"
 msgstr "Name"
 
-msgid "Application|Dark mode successfully disabled"
-msgstr "Dark mode successfully disabled"
-
-msgid "Application|Dark mode successfully enabled"
-msgstr "Dark mode successfully enabled"
-
 msgid "Apply filter"
 msgstr "Apply filter"
+
+msgid "Assign to user"
+msgstr "Assign to user"
 
 msgid "Avatar|Uploading avatar failed"
 msgstr "Uploading avatar failed"
@@ -1117,6 +1114,15 @@ msgstr "Your promotion code is invalid or already used!"
 
 msgid "Click here"
 msgstr "click here"
+
+msgid "ColorTheme|Auto"
+msgstr "Auto"
+
+msgid "ColorTheme|Dark"
+msgstr "Dark"
+
+msgid "ColorTheme|Light"
+msgstr "Light"
 
 msgid "Colors|Blue"
 msgstr "Blue"
@@ -2057,6 +2063,9 @@ msgstr "Uuid"
 msgid "Order|You have accepted the terms and conditions"
 msgstr "You have accepted the terms and conditions"
 
+msgid "Order|You have unassigned tickets, make sure to assign the tickets to the user that will use it! %{click_here_link} to assign the tickets!"
+msgstr "You have unassigned tickets, make sure to assign the tickets to the user that will use it! %{click_here_link} to assign the tickets!"
+
 msgid "Order|You need to accept the terms and conditions to continue your checkyout. Are you sure you do not want to accept the terms and conditions?"
 msgstr "You need to accept the terms and conditions to continue your checkyout. Are you sure you do not want to accept the terms and conditions?"
 
@@ -2684,11 +2693,8 @@ msgstr "Unassigned"
 msgid "Seatmap|You don't have any tickets for this event"
 msgstr "You don't have any tickets for this event"
 
-msgid "Seatmap|Your available tickets"
-msgstr "Your available tickets"
-
-msgid "Seatmap|Your ticket"
-msgstr "Your ticket"
+msgid "Seatmap|Your assigned tickets"
+msgstr "Tickets assigned to your account"
 
 msgid "Seatmap|Your tickets"
 msgstr "Your tickets"
@@ -2975,11 +2981,17 @@ msgstr "Styling Variable"
 msgid "StylingVariable"
 msgstr "Styling Variable"
 
+msgid "StylingVariable|Dark mode value"
+msgstr "Value for dark mode"
+
 msgid "StylingVariable|Key"
 msgstr "Key"
 
-msgid "StylingVariable|Value"
-msgstr "Value"
+msgid "StylingVariable|Light mode value"
+msgstr "Value for light mode"
+
+msgid "StylingVariable|Set at least one value"
+msgstr "Set at least a value for light mode or for dark mode"
 
 msgid "SweetAlertForm|Cancel"
 msgstr "Cancel"
@@ -3185,7 +3197,8 @@ msgstr "Wrong event"
 msgid "TicketScanner|Wrong user"
 msgstr "Wrong user"
 
-msgid "TicketUpgrades|Manage my ticket upgrades"
+#, fuzzy
+msgid "TicketUpgrades|Purchased ticket upgrades"
 msgstr "My ticket upgrades"
 
 msgid "TicketUpgrades|You don't have any upgrades for this event"
@@ -3236,14 +3249,17 @@ msgstr "Wrong category"
 msgid "TicketUpgrade|You can only buy as many upgrades as the number of upgradeable tickets you own"
 msgstr "You can only buy as many upgrades as the number of upgradeable tickets you own"
 
+msgid "Tickets"
+msgstr "Tickets"
+
 msgid "Tickets|Assign & upgrade tickets"
 msgstr "Assign & upgrade tickets"
 
 msgid "Tickets|Manage"
 msgstr "Tickets"
 
-msgid "Tickets|Manage my tickets"
-msgstr "Manage my tickets"
+msgid "Tickets|Purchased tickets"
+msgstr "Tickets you purchased"
 
 msgid "Tickets|Ticket manage view hint"
 msgstr "Here you can assign & upgrade all tickets you have purchased. Please note that you can only manage the tickets you purchased, if someone else assigned a ticket to you they have to manage it!"
@@ -3287,6 +3303,9 @@ msgstr "Info"
 msgid "Ticket|No ticket found"
 msgstr "No ticket found"
 
+msgid "Ticket|No user assigned, click here to assign"
+msgstr "No user assigned, click here to assign"
+
 msgid "Ticket|Not allowed"
 msgstr "Not allowed"
 
@@ -3311,11 +3330,11 @@ msgstr "Ticket type"
 msgid "Ticket|QR code only available when user is assigned"
 msgstr "QR code only available when user is assigned"
 
-msgid "Ticket|Really remove ticket from myself?"
-msgstr "Really remove ticket from myself?"
+msgid "Ticket|Really remove ticket from your account?"
+msgstr "Really remove ticket from your account?"
 
-msgid "Ticket|Remove assignation"
-msgstr "Remove assignation"
+msgid "Ticket|Remove assigned user"
+msgstr "Remove assigned user"
 
 msgid "Ticket|Remove ticket from myself"
 msgstr "Remove ticket from myself"
@@ -3341,11 +3360,11 @@ msgstr "Seat category"
 msgid "Ticket|Show QR"
 msgstr "Show QR"
 
+msgid "Ticket|Show QR code of tickets"
+msgstr "Show QR code of tickets"
+
 msgid "Ticket|Show ticket"
 msgstr "Show ticket"
-
-msgid "Ticket|Show tickets"
-msgstr "Show tickets"
 
 msgid "Ticket|Status"
 msgstr "Status"
@@ -3361,9 +3380,6 @@ msgstr "Successfully removed seat"
 
 msgid "Ticket|Successfully taken seat"
 msgstr "Successfully taken seat"
-
-msgid "Ticket|Ticket for %{lan_name}"
-msgstr "Ticket for %{lan_name}"
 
 msgid "Ticket|Ticket is already checked in"
 msgstr "Ticket is already checked in"
@@ -4016,6 +4032,9 @@ msgstr "Avatar updated successfully"
 msgid "User|Bio"
 msgstr "Bio"
 
+msgid "User|Color theme preference"
+msgstr "Color theme preference"
+
 msgid "User|Confirmation sent at"
 msgstr "Confirmation sent at"
 
@@ -4156,9 +4175,6 @@ msgstr "Two factor authentication on your account is not enabled"
 
 msgid "User|Upload avatar"
 msgstr "Upload avatar"
-
-msgid "User|Use dark mode"
-msgstr "Use dark mode"
 
 msgid "User|Username"
 msgstr "Username"

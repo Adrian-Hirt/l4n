@@ -2,7 +2,7 @@
   .card-header.d-flex.justify-content-between.align-items-center
     = _('Seatmap|Your assigned tickets')
     - if op.tickets_for_lan_party.any?
-      = button _('Ticket|Show ticket QR codes'),
+      = button _('Ticket|Show QR code of tickets'),
                 lan_ticket_path(op.lan_party),
                 btn_icon: %i[fas fa-arrow-up-right-from-square],
                 html:     { target: :_blank },

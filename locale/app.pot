@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: app 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-28 21:16+0200\n"
-"PO-Revision-Date: 2023-06-28 21:16+0200\n"
+"POT-Creation-Date: 2023-08-13 16:31+0200\n"
+"PO-Revision-Date: 2023-08-13 16:31+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -975,13 +975,10 @@ msgstr ""
 msgid "ApiApplication|Name"
 msgstr ""
 
-msgid "Application|Dark mode successfully disabled"
-msgstr ""
-
-msgid "Application|Dark mode successfully enabled"
-msgstr ""
-
 msgid "Apply filter"
+msgstr ""
+
+msgid "Assign to user"
 msgstr ""
 
 msgid "Avatar|Uploading avatar failed"
@@ -1117,6 +1114,15 @@ msgid "Checkout|Your promotion code is invalid or already used!"
 msgstr ""
 
 msgid "Click here"
+msgstr ""
+
+msgid "ColorTheme|Auto"
+msgstr ""
+
+msgid "ColorTheme|Dark"
+msgstr ""
+
+msgid "ColorTheme|Light"
 msgstr ""
 
 msgid "Colors|Blue"
@@ -2058,6 +2064,9 @@ msgstr ""
 msgid "Order|You have accepted the terms and conditions"
 msgstr ""
 
+msgid "Order|You have unassigned tickets, make sure to assign the tickets to the user that will use it! %{click_here_link} to assign the tickets!"
+msgstr ""
+
 msgid "Order|You need to accept the terms and conditions to continue your checkyout. Are you sure you do not want to accept the terms and conditions?"
 msgstr ""
 
@@ -2685,10 +2694,7 @@ msgstr ""
 msgid "Seatmap|You don't have any tickets for this event"
 msgstr ""
 
-msgid "Seatmap|Your available tickets"
-msgstr ""
-
-msgid "Seatmap|Your ticket"
+msgid "Seatmap|Your assigned tickets"
 msgstr ""
 
 msgid "Seatmap|Your tickets"
@@ -2976,10 +2982,16 @@ msgstr ""
 msgid "StylingVariable"
 msgstr ""
 
+msgid "StylingVariable|Dark mode value"
+msgstr ""
+
 msgid "StylingVariable|Key"
 msgstr ""
 
-msgid "StylingVariable|Value"
+msgid "StylingVariable|Light mode value"
+msgstr ""
+
+msgid "StylingVariable|Set at least one value"
 msgstr ""
 
 msgid "SweetAlertForm|Cancel"
@@ -3186,7 +3198,7 @@ msgstr ""
 msgid "TicketScanner|Wrong user"
 msgstr ""
 
-msgid "TicketUpgrades|Manage my ticket upgrades"
+msgid "TicketUpgrades|Purchased ticket upgrades"
 msgstr ""
 
 msgid "TicketUpgrades|You don't have any upgrades for this event"
@@ -3237,13 +3249,16 @@ msgstr ""
 msgid "TicketUpgrade|You can only buy as many upgrades as the number of upgradeable tickets you own"
 msgstr ""
 
+msgid "Tickets"
+msgstr ""
+
 msgid "Tickets|Assign & upgrade tickets"
 msgstr ""
 
 msgid "Tickets|Manage"
 msgstr ""
 
-msgid "Tickets|Manage my tickets"
+msgid "Tickets|Purchased tickets"
 msgstr ""
 
 msgid "Tickets|Ticket manage view hint"
@@ -3288,6 +3303,9 @@ msgstr ""
 msgid "Ticket|No ticket found"
 msgstr ""
 
+msgid "Ticket|No user assigned, click here to assign"
+msgstr ""
+
 msgid "Ticket|Not allowed"
 msgstr ""
 
@@ -3312,10 +3330,10 @@ msgstr ""
 msgid "Ticket|QR code only available when user is assigned"
 msgstr ""
 
-msgid "Ticket|Really remove ticket from myself?"
+msgid "Ticket|Really remove ticket from your account?"
 msgstr ""
 
-msgid "Ticket|Remove assignation"
+msgid "Ticket|Remove assigned user"
 msgstr ""
 
 msgid "Ticket|Remove ticket from myself"
@@ -3342,10 +3360,10 @@ msgstr ""
 msgid "Ticket|Show QR"
 msgstr ""
 
-msgid "Ticket|Show ticket"
+msgid "Ticket|Show QR code of tickets"
 msgstr ""
 
-msgid "Ticket|Show tickets"
+msgid "Ticket|Show ticket"
 msgstr ""
 
 msgid "Ticket|Status"
@@ -3361,9 +3379,6 @@ msgid "Ticket|Successfully removed seat"
 msgstr ""
 
 msgid "Ticket|Successfully taken seat"
-msgstr ""
-
-msgid "Ticket|Ticket for %{lan_name}"
 msgstr ""
 
 msgid "Ticket|Ticket is already checked in"
@@ -4017,6 +4032,9 @@ msgstr ""
 msgid "User|Bio"
 msgstr ""
 
+msgid "User|Color theme preference"
+msgstr ""
+
 msgid "User|Confirmation sent at"
 msgstr ""
 
@@ -4156,9 +4174,6 @@ msgid "User|TwoFactor|Not enabled"
 msgstr ""
 
 msgid "User|Upload avatar"
-msgstr ""
-
-msgid "User|Use dark mode"
 msgstr ""
 
 msgid "User|Username"
