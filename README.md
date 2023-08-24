@@ -89,8 +89,8 @@ Sometimes, if might be useful to have to have some CLI commands at hand. While m
 | Task                              | Command in the L4N container      | Command from the host                                              |
 | --------------------------------- | --------------------------------- | ------------------------------------------------------------------ |
 | Restart the webserver (puma)      | `touch /app/tmp/restart.txt`      | `docker exec <container_name> touch /app/tmp/restart.txt`          |
-| Access the Rails console          | `rails c`                         | `docker exec <container_name> -it rails c`                         |
-| Read the logfiles as they come in | `tail -f /app/log/production.log` | `docker exec <container_name> -it tail -f /app/log/production.log` |
+| Access the Rails console          | `rails c`                         | `docker exec -it <container_name> rails c`                         |
+| Read the logfiles as they come in | `tail -f /app/log/production.log` | `docker exec -it <container_name> tail -f /app/log/production.log` |
 
 ## Development
 
