@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.9.1 - 2023-08-24
+
+### Fixed
+
+* Fix a bug preventing users to be deleted
+* Fix color theme in login view
+
+### Changed
+
+* Updates gems to fix CVEs
+
 ## 1.9.0 - 2023-08-13
 
 ### Added
