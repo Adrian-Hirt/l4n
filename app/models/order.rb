@@ -21,7 +21,7 @@ class Order < ApplicationRecord
   # == Associations ================================================================
   belongs_to :user
   has_many :order_items, dependent: :destroy
-
+  has_many :tickets, dependent: :nullify
   has_many :promotion_code_mappings, dependent: :destroy
   has_many :promotion_codes, through: :promotion_code_mappings
 
