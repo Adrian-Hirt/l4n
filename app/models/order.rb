@@ -137,13 +137,13 @@ class Order < ApplicationRecord
   end
 
   def deleteable?
-    # An order which is completed or waiting for the delayed payment is
+    # An order which is created, completed or waiting for the delayed payment is
     # always deleteable.
-    return true if delayed_payment_pending? || completed?
+    return true if created? || delayed_payment_pending? || completed?
 
-    # Otherwise, a created or payment pending order is only
+    # Otherwise, a payment pending order is only
     # deleteable if it's expired
-    return expired? if created? || payment_pending?
+    return expired? if payment_pending?
 
     # Return false if none of the previous conditions was true
     false
