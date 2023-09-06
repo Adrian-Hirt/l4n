@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.9.2 - 2023-09-06
+
+### Fixed
+
+* Fixed two minor bugs in the shop
+
 ## 1.9.1 - 2023-08-24
 
 ### Fixed
