@@ -18,6 +18,10 @@ module Shop
       respond_to :turbo_stream
     end
 
+    def refuse_gtcs
+      respond_to :turbo_stream
+    end
+
     def set_address
       run Operations::Shop::Order::SetOrderAddress
 

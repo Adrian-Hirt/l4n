@@ -135,6 +135,7 @@ Rails.application.routes.draw do
     get :checkout, to: 'checkout#show'
     patch :'checkout/set_address', to: 'checkout#set_address'
     patch :'checkout/accept_gtcs', to: 'checkout#accept_gtcs'
+    patch :'checkout/refuse_gtcs', to: 'checkout#refuse_gtcs'
     post :'checkout/use_promotion_code', to: 'checkout#use_promotion_code'
 
     resources :orders, only: %i[index show] do
