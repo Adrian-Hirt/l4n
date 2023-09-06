@@ -9,6 +9,6 @@
       = f.save _('Order|Accept terms and conditions'), class: %i[btn-default]
       = button _('Order|Do not accept terms and conditions'),
                shop_checkout_refuse_gtcs_path(id: op.order.id),
-               color: :secondary,
-               method: :patch,
+               color:   :secondary,
+               method:  :patch,
                confirm: _('Order|You need to accept the terms and conditions to continue your checkyout. Are you sure you do not want to accept the terms and conditions?')
