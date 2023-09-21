@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.9.4 - 2023-09-21
+
+### Fixed
+
+* Fix another logic bug
+
 ## 1.9.3 - 2023-09-21
 
 ### Fixed
