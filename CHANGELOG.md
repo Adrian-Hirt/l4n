@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.9.3 - 2023-09-21
+
+### Fixed
+
+* Fix a logic bug in the User model
+
 ## 1.9.2 - 2023-09-06
 
 ### Fixed
