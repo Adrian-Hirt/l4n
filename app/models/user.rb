@@ -96,10 +96,14 @@ class User < ApplicationRecord
 
   def only_payment_assist_permission?
     # Return false if the user does not have the payment assist permission
-    return false if permission_for?('payment_assist', 'use')
+    return false unless permission_for?('payment_assist', 'use')
 
     # Otherwise check if this is the only permission the user has
-    user_permissions.count > 1
+    if association(:user_permissions).loaded?
+      user_permissions.find { |up| up.permission != 'payment_assist' }.present?
+    else
+      user_permissions.where.not(permission: :payment_assist).any?
+    end
   end
 
   def ticket_for(lan_party)
