@@ -100,9 +100,9 @@ class User < ApplicationRecord
 
     # Otherwise check if this is the only permission the user has
     if association(:user_permissions).loaded?
-      user_permissions.find { |up| up.permission != 'payment_assist' }.present?
+      user_permissions.find { |up| up.permission != 'payment_assist' }.nil?
     else
-      user_permissions.where.not(permission: :payment_assist).any?
+      user_permissions.where.not(permission: :payment_assist).none?
     end
   end
 
