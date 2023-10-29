@@ -94,7 +94,7 @@ class Product < ApplicationRecord
     return false if TicketUpgrade.where('to_product_id = ? OR from_product_id = ?', id, id).any?
 
     # Otherwise, it should be good to delete
-    return true
+    true
   end
 
   # == Private Methods =============================================================
