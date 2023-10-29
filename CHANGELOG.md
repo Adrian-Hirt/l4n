@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.9.5 - 2023-10-21
+
+### Fixed
+
+* Fix a bug in order#show view
+
+* Mark products as not deleteable if the product is used in a ticket upgrade
+
 ## 1.9.4 - 2023-09-21
 
 ### Fixed
