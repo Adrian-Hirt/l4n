@@ -84,7 +84,17 @@ class Product < ApplicationRecord
   end
 
   def deleteable?
-    Product.where('to_product_id = ? OR from_product_id = ?', id, id).none?
+    # Cannot delete if the product is used in another product as the "from" or "to"
+    # product (i.e. if it is used in a ticket upgrade product). You'd first need to
+    # delete the other product.
+    return false if Product.where('to_product_id = ? OR from_product_id = ?', id, id).any?
+
+    # Can also not delete it if there is a ticket upgrade with that product, as
+    # otherwise the "upgrading" logic does not work anymore.
+    return false if TicketUpgrade.where('to_product_id = ? OR from_product_id = ?', id, id).any?
+
+    # Otherwise, it should be good to delete
+    return true
   end
 
   # == Private Methods =============================================================
