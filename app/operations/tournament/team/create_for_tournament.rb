@@ -20,6 +20,10 @@ module Operations::Tournament::Team
 
       fail Operations::Exceptions::OpFailed, _('Tournament|You are already in the tournament') if context.user.teams.where(tournament: tournament).any?
 
+      # If the tournament is already full and a singleplayer tournament,
+      # throw an error
+      fail Operations::Exceptions::OpFailed, _('Tournament|The tournament is full') if tournament.singleplayer? && model.tournament.teams_full?
+
       # If the tournament is linked to a lan_party, the current_user needs to have a ticket
       # in "checked_in" status to create a team.
       # rubocop:disable Style/SoleNestedConditional
