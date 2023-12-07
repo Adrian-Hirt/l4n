@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.9.6 - 2023-12-07
+
+* Fix a bug in singleplayer tournament signup
+
 ## 1.9.5 - 2023-10-21
 
 ### Fixed
