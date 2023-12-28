@@ -4,7 +4,7 @@ ruby '3.3.0'
 
 # Rails and rails-y stuff
 gem 'bootsnap', '>= 1.4.4', require: false
-gem 'rails', '~> 7.0.7'
+gem 'rails', '~> 7.1.2'
 
 # Authentication & Authorization
 gem 'cancancan', '~> 3.5.0'
@@ -33,7 +33,7 @@ gem 'turbo-rails', '~> 1.4.0'
 # Application structure
 gem 'active_type', '~> 2.3.0'
 gem 'inquery', '~> 1.0.9'
-gem 'rails_ops', '~> 1.4.0'
+gem 'rails_ops', '~> 1.5.0'
 gem 'schemacop', '~> 3.0.11'
 
 # Views

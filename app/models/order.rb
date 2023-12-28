@@ -44,7 +44,7 @@ class Order < ApplicationRecord
 
   # == Instance Methods ============================================================
   def encrypted_base64_id
-    secret = ENV['SECRET_KEY_BASE'] || Rails.application.secrets.secret_key_base
+    secret = ENV['SECRET_KEY_BASE'] || Rails.application.credentials.secret_key_base
     crypt = ActiveSupport::MessageEncryptor.new(secret[0..31])
     encrypted_id = crypt.encrypt_and_sign(id)
     Base64.urlsafe_encode64(encrypted_id)
