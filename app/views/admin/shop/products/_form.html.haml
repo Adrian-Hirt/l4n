@@ -60,6 +60,7 @@
                 .form-check
                   = f.check_box :remove_images, { multiple: true }, image.id, nil
                   = f.label :remove_images, _('Product|Remove this image'), for: "product_remove_images_#{image.id}"
+                  = f.hidden_field :images, value: image.signed_id, multiple: true
 
   -# -- Variants inputs -----------------------------------------------------------
   .card.mb-3
