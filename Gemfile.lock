@@ -2,20 +2,20 @@ PATH
   remote: payment_gateways/dummy_payment
   specs:
     dummy_payment (1.0.0)
-      rails (>= 7.0.1)
+      rails (>= 7.1.2)
 
 PATH
   remote: payment_gateways/paypal_payment
   specs:
     paypal_payment (1.1.0)
       httparty
-      rails (>= 7.0.1)
+      rails (>= 7.1.2)
 
 PATH
   remote: payment_gateways/seki_payment
   specs:
     seki_payment (1.0.0)
-      rails (>= 7.0.1)
+      rails (>= 7.1.2)
 
 GEM
   remote: https://rubygems.org/
