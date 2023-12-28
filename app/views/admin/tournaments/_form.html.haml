@@ -67,6 +67,7 @@
                 .form-check
                   = f.check_box :remove_files, { multiple: true }, file.id, nil
                   = f.label :remove_files, _('Tournament|Remove this file'), for: "tournament_remove_files_#{file.id}"
+                  = f.hidden_field :files, value: file.signed_id, multiple: true
 
   .card.mb-3
     .card-header
