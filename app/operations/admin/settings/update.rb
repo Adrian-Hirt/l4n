@@ -42,7 +42,7 @@ module Operations::Admin::Settings
           entered_values[key] = value
 
           if config.valid?
-            AppConfig.send("#{key}=", value)
+            AppConfig.send(:"#{key}=", value)
           else
             model.errors.merge!(config.errors)
           end

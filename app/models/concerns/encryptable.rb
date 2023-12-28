@@ -3,7 +3,7 @@ module Encryptable
 
   class_methods do
     def encryptable_attribute(name, attributes = nil)
-      define_method "encrypted_#{name}" do
+      define_method :"encrypted_#{name}" do
         if attributes.nil?
           data = send(name)
         elsif attributes.is_a?(Array)

@@ -33,7 +33,7 @@ module Grids
         scope.joins(file_attachment: :blob).where(blob: { content_type: value })
       end
 
-      filter :uploaded_by, :enum, select:        User.where(id: Upload.all.select(:user_id)).map { |user| [user.username, user.id] }.sort << ['-', 0],
+      filter :uploaded_by, :enum, select:        User.where(id: Upload.select(:user_id)).map { |user| [user.username, user.id] }.sort << ['-', 0],
                                   include_blank: _('Form|Select|Show all') do |value, scope, _grid|
         if value == '0'
           scope.where(user_id: nil)

@@ -15,7 +15,7 @@ class ApplicationRecord < ActiveRecord::Base
 
   def self.translate_enums
     defined_enums.each_key do |key|
-      define_method "humanized_#{key}" do
+      define_method :"humanized_#{key}" do
         _("#{self.class.name}|#{key}|#{send(key)}")
       end
     end

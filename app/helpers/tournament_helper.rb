@@ -3,7 +3,7 @@ module TournamentHelper
     show_score = match.away_score != 0 || match.home_score != 0
 
     team = match.send(relevant_team)
-    score = match.send("#{relevant_team}_score").to_s
+    score = match.send(:"#{relevant_team}_score").to_s
 
     if match.draw?
       tag.span(class: 'text-warning') do
@@ -26,7 +26,7 @@ module TournamentHelper
     show_score = match.away_score != 0 || match.home_score != 0
 
     team = match.send(relevant_team)
-    score = match.send("#{relevant_team}_score").to_s
+    score = match.send(:"#{relevant_team}_score").to_s
 
     # rubocop:disable Lint/DuplicateBranch
     if match.errors.any?

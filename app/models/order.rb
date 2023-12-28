@@ -132,7 +132,7 @@ class Order < ApplicationRecord
     fail 'Wrong status' unless completed?
 
     SHIPPING_ADDRESS_FIELDS.each do |field|
-      public_send("#{field}=", nil)
+      public_send(:"#{field}=", nil)
     end
   end
 
