@@ -11,8 +11,8 @@ module L4n
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 
-    # Load the secret key base from figaro
-    credentials.secret_key_base = Figaro.env.secret_key_base!
+    # Load the secret key base from figaro if they're not present yet
+    credentials.secret_key_base ||= Figaro.env.secret_key_base
 
     # Time tone
     config.time_zone = 'Bern'
