@@ -17,7 +17,7 @@ module Operations::Shop::Order
     end
 
     def product_behaviour_hints
-      enabled_product_behaviours = model.order_items.collect { |oi| oi.product.enabled_product_behaviour_classes }.flatten.uniq
+      enabled_product_behaviours = model.order_items.collect { |oi| oi.product&.enabled_product_behaviour_classes }.flatten.compact.uniq
 
       enabled_product_behaviours.map { |behaviour| behaviour.order_show_hint(model) }
     end

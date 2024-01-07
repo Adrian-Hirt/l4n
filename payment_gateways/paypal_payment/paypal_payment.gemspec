@@ -13,13 +13,13 @@ Gem::Specification.new do |spec|
   spec.metadata['source_code_uri'] = 'https://github.com/Adrian-Hirt/l4n'
   spec.metadata['changelog_uri'] = 'https://github.com/Adrian-Hirt/l4n'
 
-  spec.required_ruby_version = '>= 3.2'
+  spec.required_ruby_version = '>= 3.3'
 
   spec.files = Dir.chdir(File.expand_path(__dir__)) do
     Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
   end
 
   spec.add_dependency 'httparty'
-  spec.add_dependency 'rails', '>= 7.0.1'
+  spec.add_dependency 'rails', '>= 7.1.2'
   spec.metadata['rubygems_mfa_required'] = 'true'
 end

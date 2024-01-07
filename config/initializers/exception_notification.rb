@@ -28,5 +28,5 @@ Rails.application.config.middleware.use ExceptionNotification::Rack,
                                         email:             {
                                           email_prefix:         '[EXCEPTION NOTIFICATION] ',
                                           sender_address:       sender,
-                                          exception_recipients: Figaro.env.exception_notifier_recipient
+                                          exception_recipients: Figaro.env.exception_notifier_recipients.split(';').map(&:strip)
                                         }

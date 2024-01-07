@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-ruby '3.2.2'
+ruby '3.3.0'
 
 # Rails and rails-y stuff
 gem 'bootsnap', '>= 1.4.4', require: false
-gem 'rails', '~> 7.0.7'
+gem 'rails', '~> 7.1.2'
 
 # Authentication & Authorization
 gem 'cancancan', '~> 3.5.0'
@@ -12,38 +12,38 @@ gem 'devise', '~> 4.9'
 gem 'devise-two-factor', '~> 5.0.0'
 gem 'doorkeeper', '~> 5.6.5'
 gem 'doorkeeper-openid_connect', '~> 1.8.4'
-gem 'recaptcha', '~> 5.14.0'
+gem 'recaptcha', '~> 5.16.0'
 
 # Session handling
-gem 'activerecord-session_store', '~> 2.0.0'
+gem 'activerecord-session_store', '~> 2.1.0'
 
 # Puma
-gem 'puma', '~> 6.3'
+gem 'puma', '~> 6.4'
 
 # Database
 gem 'pg', '~> 1.5.3'
 
 # Assets
-gem 'cssbundling-rails', '~> 1.2.0'
-gem 'jsbundling-rails', '~> 1.1.2'
+gem 'cssbundling-rails', '~> 1.3.0'
+gem 'jsbundling-rails', '~> 1.2.1'
 gem 'sprockets-rails', '~> 3.4.1'
-gem 'stimulus-rails', '~> 1.2.1'
-gem 'turbo-rails', '~> 1.4.0'
+gem 'stimulus-rails', '~> 1.3.0'
+gem 'turbo-rails', '~> 1.5.0'
 
 # Application structure
-gem 'active_type', '~> 2.3.0'
+gem 'active_type', '~> 2.4.0'
 gem 'inquery', '~> 1.0.9'
-gem 'rails_ops', '~> 1.4.0'
+gem 'rails_ops', '~> 1.5.0'
 gem 'schemacop', '~> 3.0.11'
 
 # Views
 gem 'breadcrumbs_on_rails', '~> 4.1.0'
 gem 'cocoon', '~> 1.2.15'
-gem 'datagrid', '~> 1.7.0'
+gem 'datagrid', '~> 1.8.0'
 gem 'haml-rails', '~> 2.0'
 gem 'kaminari', '~> 1.2.1'
 gem 'rqrcode', '~> 2.2.0'
-gem 'simple_form', '~> 5.2.0'
+gem 'simple_form', '~> 5.3.0'
 
 # Translations
 gem 'gettext_i18n_rails', '~> 1.12.0'
@@ -58,7 +58,7 @@ gem 'figaro', '1.2.0'
 gem 'rails-settings-cached', '~> 2.9.2'
 
 # Attachments
-gem 'active_storage_validations', '~> 1.0.2'
+gem 'active_storage_validations', '~> 1.1.4'
 gem 'image_processing', '~> 1.12'
 
 # Models
@@ -95,7 +95,7 @@ group :development do
   gem 'ruby_parser', require: false
 
   # Code analysis and standards
-  gem 'haml_lint', '~> 0.49.0', require: false
+  gem 'haml_lint', '~> 0.52.0', require: false
   gem 'rubocop', '~> 1.24'
   gem 'rubocop-performance', '~> 1.13'
   gem 'rubocop-rails', '~> 2.13'

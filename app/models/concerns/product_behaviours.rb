@@ -69,7 +69,7 @@ module ProductBehaviours
     cattr_accessor(:registry) { {} }
 
     # Serialize the enabled product behaviours
-    serialize :enabled_product_behaviours, Array
+    serialize :enabled_product_behaviours, coder: YAML
 
     # We want to run the behaviour validations after the normal validations
     after_validation :validate_behaviours

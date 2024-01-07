@@ -41,8 +41,11 @@ variables set as well:
 For the exception notification:
 
 * `ENABLE_EXCEPTION_NOTIFIER`
-* `EXCEPTION_NOTIFIER_RECIPIENT`
+* `EXCEPTION_NOTIFIER_RECIPIENTS` (optional, only if `ENABLE_EXCEPTION_NOTIFIER` is `true`)
 * `EXCEPTION_NOTIFIER_SENDER` (optional)
+
+If you want to add more than one recipient, you can pass in a string where the recipients
+are delimited by a semicolon `;`, e.g. `"foo@example.com; bar@example.com`
 
 For the devise mailer
 

@@ -7,7 +7,7 @@ module Operations::Api::V1::News
     def result
       result = []
 
-      :: NewsPost.where(published: true).each do |news_post|
+      :: NewsPost.where(published: true).find_each do |news_post|
         result << {
           title:        news_post.title,
           content:      news_post.content,

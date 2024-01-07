@@ -9,16 +9,16 @@ Bundler.require(*Rails.groups)
 module L4n
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.0
+    config.load_defaults 7.1
+
+    # Load the secret key base from figaro if they're not present yet
+    credentials.secret_key_base ||= Figaro.env.secret_key_base
 
     # Time tone
     config.time_zone = 'Bern'
 
     # We don't want remote forms for now (turbo does not work perfectly without it)
     config.form_with_generates_remote_forms = false
-
-    # We want to be able to add new files while keeping the old ones
-    config.active_storage.replace_on_assign_to_many = false
 
     # ActiveRecord encryption
     config.active_record.encryption.primary_key = Figaro.env.ar_primary_key

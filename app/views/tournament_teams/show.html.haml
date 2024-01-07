@@ -51,7 +51,7 @@
                            color:     :danger
 
             -# Then the other users
-            - model.team_members.includes(:user).each do |team_member|
+            - model.team_members.includes(:user).find_each do |team_member|
               - next if team_member.captain?
 
               .d-flex.justify-content-between.align-items-center.border-bottom.py-2

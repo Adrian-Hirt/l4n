@@ -23,7 +23,7 @@
           - if op.teams.none?
             %tr
               %td= _('Tournament|No teams')
-          - op.teams.includes(:users).each do |team|
+          - op.teams.includes(:users).find_each do |team|
             %tr
               %td
                 = link_to team.name, team_path(team)

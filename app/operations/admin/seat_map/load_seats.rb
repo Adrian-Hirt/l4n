@@ -13,7 +13,7 @@ module Operations::Admin::SeatMap
         seats: []
       }
 
-      seat_map.seats.includes(:seat_category, ticket: :assignee).each do |seat|
+      seat_map.seats.includes(:seat_category, ticket: :assignee).find_each do |seat|
         seat_data = {
           backendId:      seat.id,
           seatCategoryId: seat.seat_category_id,
