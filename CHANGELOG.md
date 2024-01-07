@@ -1,10 +1,36 @@
 # Changelog
 
+## 1.10.0 - 2024-01-07
+
+### Changed
+
+* Updated ruby version to `3.3.0`
+* Updated gem dependencies
+
+### Fixed
+
+* Fixed an exception in the orders show view
+
+### Added
+
+* Added ability to set multiple exception recipients
+
+### Upgrading instructions
+
+* Rename the env var (e.g. in your `.env` file) `EXCEPTION_NOTIFIER_RECIPIENT`
+  to `EXCEPTION_NOTIFIER_RECIPIENTS` (now pluralized). You can now set multiple
+  recipients by setting the variable to a string containing all email addresses,
+  delimited by a semicolon `;`, e.g. `"foo@example.com; bar@example.com"`
+
 ## 1.9.7 - 2023-12-07
+
+### Fixed
 
 * Fix a previously introduced bug
 
 ## 1.9.6 - 2023-12-07
+
+### Fixed
 
 * Fix a bug in singleplayer tournament signup
 
