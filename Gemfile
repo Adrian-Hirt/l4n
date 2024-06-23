@@ -7,12 +7,12 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'rails', '~> 7.1.3'
 
 # Authentication & Authorization
-gem 'cancancan', '~> 3.5.0'
+gem 'cancancan', '~> 3.6.0'
 gem 'devise', '~> 4.9'
-gem 'devise-two-factor', '~> 5.0.0'
-gem 'doorkeeper', '~> 5.6.5'
+gem 'devise-two-factor', '~> 5.1.0'
+gem 'doorkeeper', '~> 5.7.0'
 gem 'doorkeeper-openid_connect', '~> 1.8.4'
-gem 'recaptcha', '~> 5.16.0'
+gem 'recaptcha', '~> 5.17.0'
 
 # Session handling
 gem 'activerecord-session_store', '~> 2.1.0'
@@ -24,14 +24,14 @@ gem 'puma', '~> 6.4'
 gem 'pg', '~> 1.5.3'
 
 # Assets
-gem 'cssbundling-rails', '~> 1.3.0'
-gem 'jsbundling-rails', '~> 1.2.1'
-gem 'sprockets-rails', '~> 3.4.1'
+gem 'cssbundling-rails', '~> 1.4.0'
+gem 'jsbundling-rails', '~> 1.3.0'
+gem 'sprockets-rails', '~> 3.5.1'
 gem 'stimulus-rails', '~> 1.3.0'
 gem 'turbo-rails', '~> 1.5.0'
 
 # Application structure
-gem 'active_type', '~> 2.4.0'
+gem 'active_type', '~> 2.5.0'
 gem 'inquery', '~> 1.0.9'
 gem 'rails_ops', '~> 1.5.0'
 gem 'schemacop', '~> 3.0.11'
@@ -72,7 +72,7 @@ gem 'tournament-system', '~> 2', require: 'tournament_system'
 
 # OAuth
 gem 'omniauth', '~> 2.1.1'
-gem 'omniauth-discord', '~> 1.1.0'
+gem 'omniauth-discord', '~> 1.2.0'
 gem 'omniauth-rails_csrf_protection', '~> 1.0.1'
 gem 'omniauth-steam', '~> 1.0.6'
 
@@ -95,7 +95,7 @@ group :development do
   gem 'ruby_parser', require: false
 
   # Code analysis and standards
-  gem 'haml_lint', '~> 0.52.0', require: false
+  gem 'haml_lint', '~> 0.58.0', require: false
   gem 'rubocop', '~> 1.24'
   gem 'rubocop-performance', '~> 1.13'
   gem 'rubocop-rails', '~> 2.13'
@@ -109,7 +109,7 @@ end
 
 # Test gems
 group :test do
-  gem 'faker', '~> 3.2.0'
+  gem 'faker', '~> 3.4.0'
   gem 'simplecov', '~> 0.22.0', require: false
 end
 
