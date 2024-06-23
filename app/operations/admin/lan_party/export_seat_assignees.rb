@@ -19,10 +19,8 @@ module Operations::Admin::LanParty
     end
 
     def json_data
-      data = []
-
-      model.seat_map.seats.order(:id).each do |seat|
-        data << {
+      data = model.seat_map.seats.order(:id).map do |seat|
+        {
           seat_name: seat.name_or_id,
           user_name: seat.ticket&.assignee&.username,
           user_id:   seat.ticket&.assignee&.id

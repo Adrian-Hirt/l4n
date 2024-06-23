@@ -4,7 +4,7 @@ module TurboForm
     options[:data] ||= {}
     options[:data]['turbo-frame'] = '_top'
 
-    super(record, options, &)
+    super
   end
 end
 

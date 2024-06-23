@@ -5,7 +5,7 @@ module Operations::Session
     without_authorization
 
     def perform
-      Session.where('updated_at < ?', Time.zone.now - Session::EXPIRATION_TIME).destroy_all
+      Session.where(updated_at: ...Time.zone.now - Session::EXPIRATION_TIME).destroy_all
     end
   end
 end

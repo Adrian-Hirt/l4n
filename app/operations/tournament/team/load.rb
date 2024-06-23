@@ -22,13 +22,9 @@ module Operations::Tournament::Team
 
         sorted_keys = data.keys.sort_by(&:phase_number)
 
-        result = []
-
-        sorted_keys.each do |key|
-          result << [key, data[key]]
+        sorted_keys.map do |key|
+          [key, data[key]]
         end
-
-        result
       end
     end
 

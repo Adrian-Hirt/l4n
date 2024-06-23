@@ -8,7 +8,7 @@ module ButtonsHelper
     disabled:  false
   }.freeze
 
-  def button(title, href, html: {}, tag: :a, **opts, &block)
+  def button(title, href, html: {}, tag: :a, **opts, &)
     options = get_options(opts)
     if opts[:btn_icon]
       button_icon = icon opts[:btn_icon]
@@ -40,7 +40,7 @@ module ButtonsHelper
 
     html[:data] ||= {}
     html[:data].merge!(data)
-    _button(title, href, get_btn_class(options), tag: tag, **html, &block)
+    _button(title, href, get_btn_class(options), tag: tag, **html, &)
   end
 
   def show_button(model, html: {}, **opts)

@@ -51,23 +51,19 @@ module Operations::Admin::MenuItem
 
     def page_candidates
       candidates = {}
-      predefined_pages = []
-      predefined_lan_pages = []
-      content_pages = []
-
       # Add "static" pages
-      ::MenuLinkItem::PREDEFINED_PAGES.each do |page|
-        predefined_pages << [page[1][:title], page[0]]
+      predefined_pages = ::MenuLinkItem::PREDEFINED_PAGES.map do |page|
+        [page[1][:title], page[0]]
       end
 
       # Add "static" lan party pages
-      ::MenuLinkItem::PREDEFINED_LAN_PAGES.each do |page|
-        predefined_lan_pages << [page[1][:title], page[0]]
+      predefined_lan_pages = ::MenuLinkItem::PREDEFINED_LAN_PAGES.map do |page|
+        [page[1][:title], page[0]]
       end
 
       # Add dynamic pages
-      ::ContentPage.order(:title).each do |page|
-        content_pages << [page.title, page.id]
+      content_pages = ::ContentPage.order(:title).map do |page|
+        [page.title, page.id]
       end
 
       candidates[_('MenuItem|Predefined pages')] = predefined_pages

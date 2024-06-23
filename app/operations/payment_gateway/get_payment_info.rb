@@ -43,10 +43,8 @@ module Operations::PaymentGateway
       @result = {}
       @result[:order_id] = order.uuid
 
-      items = []
-
-      order.order_items.each do |order_item|
-        items << {
+      items = order.order_items.map do |order_item|
+        {
           product:  order_item.product_name,
           quantity: order_item.quantity,
           price:    order_item.price,

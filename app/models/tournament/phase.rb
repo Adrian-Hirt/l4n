@@ -64,7 +64,7 @@ class Tournament::Phase < ApplicationRecord
   end
 
   def previous_phase
-    tournament.phases.where('phase_number < ?', phase_number).order(phase_number: :desc).first
+    tournament.phases.where(phase_number: ...phase_number).order(phase_number: :desc).first
   end
 
   def last_phase?

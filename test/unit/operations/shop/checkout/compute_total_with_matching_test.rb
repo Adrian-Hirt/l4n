@@ -289,10 +289,8 @@ module Unit
 
           # Expected is of the form [{ promotion_code_id: <id>, order_item_id: <id>, reduction: <Money> }, ...]
           def assert_matching(expected, result)
-            result_array = []
-
-            result.each do |result_element|
-              result_array << {
+            result_array = result.map do |result_element|
+              {
                 promotion_code_id: result_element[:promotion_code].id,
                 order_item_id:     result_element[:order_item].id,
                 reduction:         result_element[:reduction]

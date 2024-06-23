@@ -6,7 +6,7 @@ module Queries::Order
     # to the normal ones.
     def call
       ::Order.where(status: Order.statuses[:delayed_payment_pending])
-             .where('cleanup_timestamp < ?', Time.zone.now - ::Order::TIMEOUT_DELAYED_PAYMENT_PENDING)
+             .where(cleanup_timestamp: ...(Time.zone.now - ::Order::TIMEOUT_DELAYED_PAYMENT_PENDING))
     end
   end
 end

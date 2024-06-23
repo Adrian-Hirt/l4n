@@ -15,10 +15,8 @@ module PaypalPayment
     private
 
     def create_payment(order_data)
-      items = []
-
-      order_data[:items].each do |item|
-        items << {
+      items = order_data[:items].map do |item|
+        {
           quantity:    item[:quantity],
           name:        item[:product],
           price:       item[:price].format(symbol: false, decimal_mark: '.'),
