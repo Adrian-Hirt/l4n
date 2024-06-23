@@ -19,4 +19,4 @@
             .text-white.bg-info.p-2
               = icon %i[fas fa-fw fa-user-clock]
           .text-muted.fw-normal.mt-0= _('Admin|Shop|New users in the last week')
-          %h3.mt-3.mb-3= User.where('created_at >= ?', 7.days.ago).count
+          %h3.mt-3.mb-3= User.where(created_at: 7.days.ago..).count
