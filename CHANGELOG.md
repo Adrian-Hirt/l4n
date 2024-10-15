@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.10.1 - 2024-10-15
+
+* Add white background arount ticket QR code in dark mode
+
 ## 1.10.0 - 2024-01-07
 
 ### Changed
