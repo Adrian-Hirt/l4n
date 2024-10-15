@@ -2,9 +2,9 @@
 
 .row
   - if op.tickets.count == 1
-    - ticket = op.tickets.first 
+    - ticket = op.tickets.first
     .col-md-6.mb-3
-      .card     
+      .card
         .card-body.qrbox
           .text-center.ticket-qr= op.qr_code_for(ticket).html_safe # rubocop:disable Rails/OutputSafety
     .col-md.6
@@ -40,8 +40,7 @@
     - op.tickets.each do |ticket|
       .col-md-6.mb-3
         .card
-          .card-body
-            
+          .card-body.qrbox
             .text-center.ticket-qr= op.qr_code_for(ticket).html_safe # rubocop:disable Rails/OutputSafety
         .card
           %table.table.table-striped.table-borderless.mb-0.table-hover

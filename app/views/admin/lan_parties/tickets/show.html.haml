@@ -106,7 +106,7 @@
           .d-grid
             %a.btn.btn-primary{ 'data-bs-toggle' => 'collapse', href: '#qr-ticket' }
               = _('Ticket|Toggle QR')
-          .collapse.mt-3.text-center#qr-ticket
+          .collapse.mt-3.text-center.bg-white.py-3#qr-ticket
             = op.qr_code.html_safe # rubocop:disable Rails/OutputSafety
         - else
           = _('Ticket|QR code only available when user is assigned')
