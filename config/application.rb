@@ -11,6 +11,9 @@ module L4n
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 
+    # Keep backwards compatibility for now. We probably will need to update this to SHA256 and make an upgrade migration
+    config.active_record.encryption.hash_digest_class = OpenSSL::Digest::SHA1
+
     # Load the secret key base from figaro if they're not present yet
     credentials.secret_key_base ||= Figaro.env.secret_key_base
 
