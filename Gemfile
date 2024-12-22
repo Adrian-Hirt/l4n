@@ -31,7 +31,7 @@ gem 'stimulus-rails', '~> 1.3.0'
 gem 'turbo-rails', '~> 1.5.0'
 
 # Application structure
-gem 'active_type', '~> 2.5.0'
+gem 'active_type', '~> 2.6.0'
 gem 'inquery', '~> 1.0.9'
 gem 'rails_ops', '~> 1.5.0'
 gem 'schemacop', '~> 3.0.11'

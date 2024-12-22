@@ -69,8 +69,8 @@ GEM
       activemodel (>= 5.2.0)
       activestorage (>= 5.2.0)
       activesupport (>= 5.2.0)
-    active_type (2.5.0)
-      activerecord (>= 3.2)
+    active_type (2.6.0)
+      activerecord (>= 6.1)
     activejob (7.2.2.1)
       activesupport (= 7.2.2.1)
       globalid (>= 0.3.6)
@@ -502,7 +502,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_storage_validations (~> 1.1.4)
-  active_type (~> 2.5.0)
+  active_type (~> 2.6.0)
   activerecord-session_store (~> 2.1.0)
   bootsnap (>= 1.4.4)
   breadcrumbs_on_rails (~> 4.1.0)
