@@ -1,12 +1,12 @@
 class Tournament::Phase < ApplicationRecord
   # == Attributes ==================================================================
-  enum tournament_mode: {
+  enum :tournament_mode, {
     swiss:              'swiss',
     single_elimination: 'single_elimination',
     double_elimination: 'double_elimination'
   }
 
-  enum status: {
+  enum :status, {
     created:   'created',   # Freshly created
     seeding:   'seeding',   # In seeding, where rounds have been generated but seeding not completed
     confirmed: 'confirmed', # Seeding confirmed, matches can be generated

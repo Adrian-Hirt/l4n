@@ -1,6 +1,6 @@
 class Tournament < ApplicationRecord
   # == Attributes ==================================================================
-  enum status: {
+  enum :status, {
     draft:     'draft',
     published: 'published',
     archived:  'archived'

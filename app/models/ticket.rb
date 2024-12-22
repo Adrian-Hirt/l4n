@@ -2,7 +2,7 @@ class Ticket < ApplicationRecord
   include Encryptable
 
   # == Attributes ==================================================================
-  enum status: {
+  enum :status, {
     created:    'created',
     assigned:   'assigned',
     checked_in: 'checked_in'

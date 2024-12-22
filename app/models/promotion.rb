@@ -1,6 +1,6 @@
 class Promotion < ApplicationRecord
   # == Attributes ==================================================================
-  enum code_type: {
+  enum :code_type, {
     free_item:   'free_item',
     fixed_value: 'fixed_value'
   }

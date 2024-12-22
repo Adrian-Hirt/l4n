@@ -1,6 +1,6 @@
 class Tournament::Team < ApplicationRecord
   # == Attributes ==================================================================
-  enum status: {
+  enum :status, {
     created:    'created',
     registered: 'registered',
     seeded:     'seeded'

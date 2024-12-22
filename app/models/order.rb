@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
   # == Attributes ==================================================================
-  enum status: {
+  enum :status, {
     created:                 'created',
     payment_pending:         'payment_pending',
     delayed_payment_pending: 'delayed_payment_pending',

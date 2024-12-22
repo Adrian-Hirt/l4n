@@ -15,12 +15,12 @@ class Tournament::Match < ApplicationRecord
   FORFEITED_SCORE = 0
 
   # Statuses for the results
-  enum result_status: {
+  enum :result_status, {
     missing:   'missing',   # No result reported so far
     reported:  'reported',  # Result reported by one team captain
     confirmed: 'confirmed', # Result confirmed by other team captain
     disputed:  'disputed'   # Result disputed by other team captain
-  }, _prefix: :result
+  }, prefix: :result
 
   translate_enums
 
