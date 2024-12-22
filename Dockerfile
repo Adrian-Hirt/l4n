@@ -1,5 +1,5 @@
 # Use ruby image to build our own image
-FROM ruby:3.3.0
+FROM ruby:3.3.6
 
 # Install dependencies
 RUN apt-get update -qq && apt-get install -y postgresql-client libvips cron \
