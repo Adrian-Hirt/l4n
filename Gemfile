@@ -46,7 +46,7 @@ gem 'rqrcode', '~> 2.2.0'
 gem 'simple_form', '~> 5.3.0'
 
 # Translations
-gem 'gettext_i18n_rails', '~> 1.12.0'
+gem 'gettext_i18n_rails', '~> 1.13.0'
 gem 'mobility', '~> 1.3.1'
 gem 'rails-i18n', '~> 8.0.0'
 
@@ -107,7 +107,7 @@ end
 
 # Test gems
 group :test do
-  gem 'faker', '~> 3.4.0'
+  gem 'faker', '~> 3.5.1'
   gem 'simplecov', '~> 0.22.0', require: false
 end
 
