@@ -4,12 +4,12 @@ ruby '3.3.6'
 
 # Rails and rails-y stuff
 gem 'bootsnap', '>= 1.4.4', require: false
-gem 'rails', '~> 7.2.0'
+gem 'rails', '~> 8.0.1'
 
 # Authentication & Authorization
 gem 'cancancan', '~> 3.6.0'
 gem 'devise', '~> 4.9'
-gem 'devise-two-factor', '~> 5.1.0'
+gem 'devise-two-factor', '~> 6.1.0'
 gem 'doorkeeper', '~> 5.7.0'
 gem 'doorkeeper-openid_connect', '~> 1.8.4'
 gem 'recaptcha', '~> 5.17.0'
@@ -48,7 +48,7 @@ gem 'simple_form', '~> 5.3.0'
 # Translations
 gem 'gettext_i18n_rails', '~> 1.12.0'
 gem 'mobility', '~> 1.2.5'
-gem 'rails-i18n', '~> 7.0.1'
+gem 'rails-i18n', '~> 8.0.0'
 
 # Markdown rendering
 gem 'redcarpet', '~> 3.6.0'
@@ -77,7 +77,8 @@ gem 'omniauth-rails_csrf_protection', '~> 1.0.1'
 gem 'omniauth-steam', '~> 1.0.6'
 
 # Notifications
-gem 'exception_notification', '~> 4.5.0'
+# TODO: either see that this gets tagged or that I can use something else
+gem 'exception_notification', git: 'https://github.com/smartinez87/exception_notification.git', branch: 'master'
 
 # Development gems
 group :development do
