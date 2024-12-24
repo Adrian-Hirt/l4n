@@ -165,3 +165,8 @@ Rails/ThreeStateBooleanColumn:
 Lint/RedundantCopDisableDirective:
   Exclude:
     - 'app/views/**/*'
+
+# Exclude in view files
+Style/SafeNavigationChainLength:
+  Exclude:
+    - 'app/views/**/*'

@@ -87,7 +87,7 @@ module Operations::Shop::Order
       codes_to_apply_matrix = codes_to_apply.first.product(*codes_to_apply.drop(1))
 
       # Check if we have any matching permutations
-      matching_permutations = codes_to_apply_matrix.filter_map { |element| element if product_ids.contains_all?(element) }
+      matching_permutations = codes_to_apply_matrix.select { |element| product_ids.contains_all?(element) }
 
       # Return if we don't have any permutations
       fail PromoCodeCannotBeApplied if matching_permutations.empty?
