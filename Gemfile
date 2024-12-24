@@ -10,18 +10,18 @@ gem 'rails', '~> 8.0.1'
 gem 'cancancan', '~> 3.6.0'
 gem 'devise', '~> 4.9'
 gem 'devise-two-factor', '~> 6.1.0'
-gem 'doorkeeper', '~> 5.7.0'
-gem 'doorkeeper-openid_connect', '~> 1.8.4'
-gem 'recaptcha', '~> 5.17.0'
+gem 'doorkeeper', '~> 5.8.1'
+gem 'doorkeeper-openid_connect', '~> 1.8.10'
+gem 'recaptcha', '~> 5.18.0'
 
 # Session handling
 gem 'activerecord-session_store', '~> 2.1.0'
 
 # Puma
-gem 'puma', '~> 6.4'
+gem 'puma', '~> 6.5'
 
 # Database
-gem 'pg', '~> 1.5.3'
+gem 'pg', '~> 1.5.9'
 
 # Assets
 gem 'cssbundling-rails', '~> 1.4.0'
@@ -39,7 +39,7 @@ gem 'schemacop', '~> 3.0.11'
 # Views
 gem 'breadcrumbs_on_rails', '~> 4.1.0'
 gem 'cocoon', '~> 1.2.15'
-gem 'datagrid', '~> 1.8.0'
+gem 'datagrid', '~> 1.8.0' # TODO: update to 2.0
 gem 'haml-rails', '~> 2.0'
 gem 'kaminari', '~> 1.2.1'
 gem 'rqrcode', '~> 2.2.0'
@@ -47,7 +47,7 @@ gem 'simple_form', '~> 5.3.0'
 
 # Translations
 gem 'gettext_i18n_rails', '~> 1.12.0'
-gem 'mobility', '~> 1.2.5'
+gem 'mobility', '~> 1.3.1'
 gem 'rails-i18n', '~> 8.0.0'
 
 # Markdown rendering
@@ -58,8 +58,8 @@ gem 'figaro', '1.2.0'
 gem 'rails-settings-cached', '~> 2.9.2'
 
 # Attachments
-gem 'active_storage_validations', '~> 1.1.4'
-gem 'image_processing', '~> 1.12'
+gem 'active_storage_validations', '~> 1.4.0'
+gem 'image_processing', '~> 1.13.0'
 
 # Models
 gem 'money-rails', '~>1.12'
@@ -92,17 +92,14 @@ group :development do
   gem 'localhost', require: false
 
   # Translations
-  gem 'gettext', '>=3.0.2', require: false
+  gem 'gettext', '~> 3.5.0', require: false
   gem 'ruby_parser', require: false
 
   # Code analysis and standards
-  gem 'haml_lint', '~> 0.58.0', require: false
-  gem 'rubocop', '~> 1.24'
-  gem 'rubocop-performance', '~> 1.13'
-  gem 'rubocop-rails', '~> 2.13'
-
-  # Security
-  gem 'bundler-audit', '~> 0.9.0'
+  gem 'haml_lint', '~> 0.59.0', require: false
+  gem 'rubocop', '~> 1.69.2'
+  gem 'rubocop-performance', '~> 1.23.0'
+  gem 'rubocop-rails', '~> 2.27.0'
 
   # Payment gateways
   gem 'dummy_payment', path: 'payment_gateways/dummy_payment'
