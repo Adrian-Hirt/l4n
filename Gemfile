@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '3.3.6'
 
 # Rails and rails-y stuff
-gem 'bootsnap', '>= 1.4.4', require: false
+gem 'bootsnap', '>= 1.18.4', require: false
 gem 'rails', '~> 8.0.1'
 
 # Authentication & Authorization
