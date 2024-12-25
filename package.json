@@ -20,7 +20,7 @@
     "bootstrap": "5.3.3",
     "cropperjs": "^1.5.12",
     "easymde": "2.18.0",
-    "esbuild": "0.18.10",
+    "esbuild": "0.24.2",
     "gettext.js": "^2.0.3",
     "konva": "^9.3.18",
     "qr-scanner": "^1.4.1",
