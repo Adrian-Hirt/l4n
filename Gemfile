@@ -28,7 +28,7 @@ gem 'cssbundling-rails', '~> 1.4.0'
 gem 'jsbundling-rails', '~> 1.3.0'
 gem 'sprockets-rails', '~> 3.5.1'
 gem 'stimulus-rails', '~> 1.3.0'
-gem 'turbo-rails', '~> 1.5.0'
+gem 'turbo-rails', '~> 2.0.11'
 
 # Application structure
 gem 'active_type', '~> 2.6.0'
@@ -99,7 +99,7 @@ group :development do
   gem 'haml_lint', '~> 0.59.0', require: false
   gem 'rubocop', '~> 1.69.2'
   gem 'rubocop-performance', '~> 1.23.0'
-  gem 'rubocop-rails', '~> 2.27.0'
+  gem 'rubocop-rails', '~> 2.28.0'
 
   # Payment gateways
   gem 'dummy_payment', path: 'payment_gateways/dummy_payment'
