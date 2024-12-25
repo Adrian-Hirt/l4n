@@ -387,10 +387,10 @@ balanced-match@^1.0.0:
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
   integrity sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==
 
-bootstrap@5.3.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.3.0.tgz#0718a7cc29040ee8dbf1bd652b896f3436a87c29"
-  integrity sha512-UnBV3E3v4STVNQdms6jSGO2CvOkjUMdDAVR2V5N4uCMdaIkaQjbcEAMqRimDHIs4uqBYzDAKCQwCB+97tJgHQw==
+bootstrap@5.3.3:
+  version "5.3.3"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.3.3.tgz#de35e1a765c897ac940021900fcbb831602bac38"
+  integrity sha512-8HLCdWgyoMguSO9o+aH+iuZ+aht+mzW0u3HIMzVu7Srrpv7EBBxTnrFlSCskwdY1+EOFQSm7uMJhNQHkdPcmjg==
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -742,10 +742,10 @@ gettext-to-messageformat@0.3.1:
   dependencies:
     gettext-parser "^1.4.0"
 
-gettext.js@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/gettext.js/-/gettext.js-2.0.0.tgz#fc1ffa17ede38a84f709bc27595be5cc8d63964b"
-  integrity sha512-sXJpNl+wGH3VcZ+C0Uuvmb5Hh5fV/syya6UwpSyfQyT8qLMBp5ZIlPdV1lWlaqtZD/+xyCswOKCtH4dX6l5W4Q==
+gettext.js@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/gettext.js/-/gettext.js-2.0.3.tgz#ae6a9f396b193fafe9f3f089cef141f14ffb1648"
+  integrity sha512-11gyttZWBUBkenEVgPMqJTL9TIKaH4PW6ZCMZr+lNXrgiYHXBg+bOGAc8OjfLE8lvi0dgwtqrSfScd310PlKJw==
   dependencies:
     po2json "^1.0.0-beta-3"
 
@@ -877,10 +877,10 @@ json-stable-stringify-without-jsonify@^1.0.1:
   resolved "https://registry.yarnpkg.com/json-stable-stringify-without-jsonify/-/json-stable-stringify-without-jsonify-1.0.1.tgz#9db7b59496ad3f3cfef30a75142d2d930ad72651"
   integrity sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==
 
-konva@9.2.0:
-  version "9.2.0"
-  resolved "https://registry.yarnpkg.com/konva/-/konva-9.2.0.tgz#3739e539724b0e6b76d697a322efdaa01baa1508"
-  integrity sha512-+woI76Sk+VFVl9z7zPkuTnN2zFpEYg27YWz8BCdQXpt5IS3pdnSPAPQVPPMidcbDi9/G5b/IOIp35/KqMGiYPA==
+konva@^9.3.18:
+  version "9.3.18"
+  resolved "https://registry.yarnpkg.com/konva/-/konva-9.3.18.tgz#20979ae78c51aaabdf7c16ac568fe0e3a649d3ed"
+  integrity sha512-ad5h0Y9phUrinBrKXyIISbURRHQO7Rx5cz7mAEEfdVCs45gDqRD8Y0I0nJRk8S6iqEbiRE87CEZu5GVSnU8oow==
 
 levn@^0.4.1:
   version "0.4.1"
@@ -1140,10 +1140,10 @@ supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
-sweetalert2@11.7.12:
-  version "11.7.12"
-  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.7.12.tgz#3ac15a3138159ccdcd2ec55ea7abe749cd528a80"
-  integrity sha512-TQJy8mQymJLzqWPQOMQErd81Zd/rSYr0UL4pEc7bqEihtjS+zt7LWJXLhfPp93e+Hf3Z2FHMB6QGNskAMCsdTg==
+sweetalert2@^11.15.3:
+  version "11.15.3"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.15.3.tgz#6322a7c5fa2e835d5a3570c83e55071e357cd4a7"
+  integrity sha512-+0imNg+XYL8tKgx8hM0xoiXX3KfgxHDmiDc8nTJFO89fQEEhJlkecSdyYOZ3IhVMcUmoNte4fTIwWiugwkPU6w==
 
 text-table@^0.2.0:
   version "0.2.0"
