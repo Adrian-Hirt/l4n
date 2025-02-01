@@ -78,7 +78,7 @@ gem 'omniauth-steam', '~> 1.0.6'
 
 # Notifications
 # TODO: either see that this gets tagged or that I can use something else
-gem 'exception_notification', git: 'https://github.com/smartinez87/exception_notification.git', branch: 'master'
+gem 'exception_notification', git: 'https://github.com/smartinez87/exception_notification.git', ref: '26441fb'
 
 # Development gems
 group :development do
