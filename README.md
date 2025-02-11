@@ -94,6 +94,32 @@ Sometimes, if might be useful to have to have some CLI commands at hand. While m
 
 ## Development
 
+### Setup
+
+To develop features for L4N locally, we recommend to install Ruby as well as Postgres locally:
+
+1. Install Ruby on your machine (we recommend using [RVM](https://rvm.io/) to manage your ruby installations). Check the `.ruby-version` file for the exact ruby version (RVM should inform you if you are missing the required ruby version).
+2. Install Postgres on your machine, and create an user with username `rails` and a database `l4n` for the application to connect to. Check `config/database.yml` for more information.
+3. Install yarn on your machine (https://yarnpkg.com/getting-started/install)
+4. Clone the L4N repo onto your machine and `cd` to this directory.
+5. Install all the dependencies:
+   ```bash
+   # Install Ruby gems
+   bundle install
+
+   # Install yarn packages
+   yarn
+   ```
+6. Create the file `config/application.yml` with the required env variables as follows. You can set dummy values if you don't want to use the Paypal payment gateway or recaptcha locally, replacing the placeholders in brackets with some random values:
+   ```yaml
+   paypal_id: <your-paypal-id>
+   paypal_secret: <your-paypal-secret>
+   recaptcha_site_key: <your-recaptcha-site-key>
+   recaptcha_site_secret: <your-recaptcha-site-key>
+   ```
+7. To start the server locally, use the command `bin/dev`, which will launch the Rails server as well as a JS and CSS compilation process
+
+
 ### Code style
 
 To ensure a consistent code style, we use the following code analyzers / linters:
